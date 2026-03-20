@@ -4,21 +4,21 @@ import { Card, CardContent } from "./ui/card";
 
 const Testimonials = () => {
   return (
-    <section 
-      id="testimonials" 
-      className="py-6 sm:py-12 md:py-16 bg-accent"
+    <section
+      id="testimonials"
+      className="section-padding bg-accent"
       aria-labelledby="testimonials-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center mb-12">
-          <h2 
+      <div className="section-container">
+        <header className="text-center mb-8 md:mb-12">
+          <h2
             id="testimonials-heading"
-            className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-3"
           >
-            Loved by Businesses Like Yours
+            Trusted by Business Owners Like You
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See what business owners are saying about finding the perfect payment solution through myPayAdvisor.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            See how businesses found their perfect payment match and started saving.
           </p>
         </header>
 

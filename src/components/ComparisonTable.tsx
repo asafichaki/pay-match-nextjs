@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Star } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { Button } from "./ui/button";
 import {
   Table,
   TableBody,
@@ -25,6 +26,7 @@ interface Provider {
 const ComparisonTable = () => {
   const [providers, setProviders] = useState<Provider[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mobileIndex, setMobileIndex] = useState(0);
 
   useEffect(() => {
     loadProviders();
@@ -64,27 +66,97 @@ const ComparisonTable = () => {
 
   if (loading) {
     return (
-      <section id="compare" className="hidden md:block py-6 sm:py-12 md:py-16 bg-muted/30">
-        <div className="container mx-auto px-4 text-center">
+      <section className="section-padding bg-muted/30">
+        <div className="section-container text-center">
           <div className="animate-pulse bg-muted rounded-xl h-64"></div>
         </div>
       </section>
     );
   }
 
+  if (providers.length === 0) return null;
+
+  const currentProvider = providers[mobileIndex];
+
   return (
-    <section id="compare" className="hidden md:block py-6 sm:py-12 md:py-16 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+    <section className="section-padding bg-muted/30" aria-labelledby="comparison-heading">
+      <div className="section-container">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 id="comparison-heading" className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-3">
             Detailed Feature Comparison
           </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center">
-              Compare key features side-by-side to find the perfect fit for your business
-            </p>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Compare key features side-by-side to find the perfect fit for your business
+          </p>
         </div>
 
-        <div className="overflow-x-auto rounded-xl border border-border shadow-lg bg-card -mx-4 sm:mx-0">
+        {/* Mobile: Card-based comparison with navigation */}
+        <div className="md:hidden">
+          {currentProvider && (
+            <div className="bg-card rounded-xl border border-border shadow-md p-5">
+              <div className="flex items-center justify-between mb-4">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setMobileIndex(Math.max(0, mobileIndex - 1))}
+                  disabled={mobileIndex === 0}
+                  className="h-8 w-8"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <div className="text-center">
+                  <h3 className="font-display font-bold text-lg">{currentProvider.name}</h3>
+                  <span className="text-xs text-muted-foreground">
+                    {mobileIndex + 1} of {providers.length}
+                  </span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setMobileIndex(Math.min(providers.length - 1, mobileIndex + 1))}
+                  disabled={mobileIndex === providers.length - 1}
+                  className="h-8 w-8"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  { label: "Transaction Fees", value: currentProvider.transaction_fees },
+                  { label: "Setup Speed", value: currentProvider.setup_speed },
+                  { label: "Customer Support", value: currentProvider.customer_support },
+                  { label: "Payment Methods", value: currentProvider.payment_methods },
+                  { label: "Countries", value: currentProvider.countries },
+                ].map((row) => (
+                  <div key={row.label} className="flex justify-between items-start py-2 border-b border-border/50 last:border-0">
+                    <span className="text-sm text-muted-foreground font-medium">{row.label}</span>
+                    <span className="text-sm text-foreground font-medium text-right max-w-[55%]">{row.value}</span>
+                  </div>
+                ))}
+                <div className="flex justify-between items-center py-2">
+                  <span className="text-sm text-muted-foreground font-medium">Rating</span>
+                  {renderStars(currentProvider.rating)}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-1.5 mt-4">
+            {providers.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setMobileIndex(i)}
+                className={`h-2 rounded-full transition-all ${i === mobileIndex ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30"}`}
+                aria-label={`View provider ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Full table */}
+        <div className="hidden md:block overflow-x-auto rounded-xl border border-border shadow-lg bg-card">
           <Table>
             <TableHeader>
               <TableRow className="bg-foreground hover:bg-foreground">
@@ -99,28 +171,16 @@ const ComparisonTable = () => {
             </TableHeader>
             <TableBody>
               {providers.map((provider, index) => (
-                <TableRow 
+                <TableRow
                   key={provider.id}
                   className={index % 2 === 0 ? "bg-background" : "bg-muted/20"}
                 >
-                  <TableCell className="font-semibold text-foreground">
-                    {provider.name}
-                  </TableCell>
-                  <TableCell className="text-foreground font-medium">
-                    {provider.transaction_fees}
-                  </TableCell>
-                  <TableCell className="text-foreground">
-                    {provider.setup_speed}
-                  </TableCell>
-                  <TableCell className="text-foreground">
-                    {provider.customer_support}
-                  </TableCell>
-                  <TableCell className="text-foreground font-medium">
-                    {provider.payment_methods}
-                  </TableCell>
-                  <TableCell className="text-foreground">
-                    {provider.countries}
-                  </TableCell>
+                  <TableCell className="font-semibold text-foreground">{provider.name}</TableCell>
+                  <TableCell className="text-foreground font-medium">{provider.transaction_fees}</TableCell>
+                  <TableCell className="text-foreground">{provider.setup_speed}</TableCell>
+                  <TableCell className="text-foreground">{provider.customer_support}</TableCell>
+                  <TableCell className="text-foreground font-medium">{provider.payment_methods}</TableCell>
+                  <TableCell className="text-foreground">{provider.countries}</TableCell>
                   <TableCell>{renderStars(provider.rating)}</TableCell>
                 </TableRow>
               ))}

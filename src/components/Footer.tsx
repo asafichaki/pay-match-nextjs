@@ -1,62 +1,90 @@
-import { CreditCard } from "lucide-react";
+import { CreditCard, Shield, Lock } from "lucide-react";
 import Link from "next/link";
+import NewsletterForm from "./NewsletterForm";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
-    <footer 
-      className="bg-foreground text-background py-6 sm:py-8"
+    <footer
+      className="bg-foreground text-background py-10 sm:py-14"
       role="contentinfo"
       aria-label="Site footer"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Brand - Mobile Centered */}
-        <div className="text-center mb-6 md:hidden">
-          <Link href="/" className="inline-flex items-center gap-2 mb-2 justify-center" aria-label="myPayAdvisor Home">
-            <CreditCard className="h-5 w-5" aria-hidden="true" />
-            <span className="text-lg font-bold">myPayAdvisor</span>
-          </Link>
-          <p className="text-xs text-background/70 max-w-xs mx-auto">
-            Helping businesses find the perfect payment processing solution.
-          </p>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        {/* Top section: Brand + Newsletter */}
+        <div className="grid md:grid-cols-2 gap-8 mb-10 pb-10 border-b border-background/15">
+          {/* Brand + About */}
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2 mb-3" aria-label="myPayAdvisor Home">
+              <CreditCard className="h-5 w-5" aria-hidden="true" />
+              <span className="text-lg font-display font-bold">myPayAdvisor</span>
+            </Link>
+            <p className="text-sm text-background/70 max-w-md mb-4">
+              We help businesses find the payment processor that fits their needs. Our independent comparison platform analyzes pricing, features, and support to match you with the right solution - completely free.
+            </p>
+            <div className="flex items-center gap-4 text-xs text-background/50">
+              <span className="flex items-center gap-1"><Shield className="h-3 w-3" /> Free & Unbiased</span>
+              <span className="flex items-center gap-1"><Lock className="h-3 w-3" /> Bank-Level Security</span>
+            </div>
+          </div>
+
+          {/* Footer Newsletter */}
+          <div>
+            <h3 className="font-display font-bold text-sm mb-3">Get Payment Processing Tips</h3>
+            <p className="text-xs text-background/70 mb-4">
+              Weekly insights on saving money, avoiding hidden fees, and choosing the right processor.
+            </p>
+            <NewsletterForm source="footer" variant="compact" />
+          </div>
         </div>
 
-        {/* Main Footer Content - Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-4 gap-6 mb-6">
-          {/* Brand - Desktop */}
-          <div>
-            <Link href="/" className="flex items-center gap-2 mb-2" aria-label="myPayAdvisor Home">
-              <CreditCard className="h-5 w-5" aria-hidden="true" />
-              <span className="text-lg font-bold">myPayAdvisor</span>
-            </Link>
-            <p className="text-xs text-background/70">
-              Helping businesses find the perfect payment processing solution.
-            </p>
-          </div>
-          
+        {/* Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
           {/* Quick Links */}
           <nav aria-label="Quick links">
             <h3 className="font-semibold mb-3 text-sm">Quick Links</h3>
-            <ul className="flex flex-col gap-1.5 text-xs list-none p-0 m-0">
+            <ul className="flex flex-col gap-2 text-xs list-none p-0 m-0">
               <li>
-                <a href="#compare" className="hover:text-primary transition-colors">
+                <a href="#compare" className="text-background/70 hover:text-primary transition-colors">
                   Compare Processors
                 </a>
               </li>
               <li>
-                <Link href="/quiz" className="hover:text-primary transition-colors">
+                <Link href="/quiz" className="text-background/70 hover:text-primary transition-colors">
                   Find Your Match
                 </Link>
               </li>
               <li>
-                <Link href="/insights" className="hover:text-primary transition-colors">
+                <Link href="/insights" className="text-background/70 hover:text-primary transition-colors">
                   Payment Insights
                 </Link>
               </li>
               <li>
-                <Link href="/calculator" className="hover:text-primary transition-colors">
+                <Link href="/calculator" className="text-background/70 hover:text-primary transition-colors">
                   Fee Calculator
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Comparisons */}
+          <nav aria-label="Comparison pages">
+            <h3 className="font-semibold mb-3 text-sm">Comparisons</h3>
+            <ul className="flex flex-col gap-2 text-xs list-none p-0 m-0">
+              <li>
+                <Link href="/comparisons/stripe-vs-paypal" className="text-background/70 hover:text-primary transition-colors">
+                  Stripe vs PayPal
+                </Link>
+              </li>
+              <li>
+                <Link href="/comparisons/square-vs-stripe" className="text-background/70 hover:text-primary transition-colors">
+                  Square vs Stripe
+                </Link>
+              </li>
+              <li>
+                <Link href="/comparisons/best-payment-processors-2026" className="text-background/70 hover:text-primary transition-colors">
+                  Best Processors 2026
                 </Link>
               </li>
             </ul>
@@ -65,14 +93,14 @@ const Footer = () => {
           {/* Legal */}
           <nav aria-label="Legal links">
             <h3 className="font-semibold mb-3 text-sm">Legal</h3>
-            <ul className="flex flex-col gap-1.5 text-xs list-none p-0 m-0">
+            <ul className="flex flex-col gap-2 text-xs list-none p-0 m-0">
               <li>
-                <Link href="/terms" className="hover:text-primary transition-colors">
+                <Link href="/terms" className="text-background/70 hover:text-primary transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-primary transition-colors">
+                <Link href="/privacy" className="text-background/70 hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
               </li>
@@ -82,11 +110,10 @@ const Footer = () => {
           {/* Contact */}
           <address className="not-italic">
             <h3 className="font-semibold mb-3 text-sm">Contact</h3>
-            <div className="flex flex-col gap-1.5 text-xs">
-              <a 
-                href="mailto:info@mypayadvisor.com" 
-                className="hover:text-primary transition-colors"
-                aria-label="Email us at info@mypayadvisor.com"
+            <div className="flex flex-col gap-2 text-xs">
+              <a
+                href="mailto:info@mypayadvisor.com"
+                className="text-background/70 hover:text-primary transition-colors"
               >
                 info@mypayadvisor.com
               </a>
@@ -94,45 +121,16 @@ const Footer = () => {
           </address>
         </div>
 
-        {/* Mobile Links - Centered Single Column */}
-        <nav className="md:hidden flex flex-col items-center gap-3 mb-6 text-xs" aria-label="Footer navigation">
-          <a href="#compare" className="hover:text-primary transition-colors">
-            Compare Processors
-          </a>
-          <Link href="/quiz" className="hover:text-primary transition-colors">
-            Find Your Match
-          </Link>
-          <Link href="/insights" className="hover:text-primary transition-colors">
-            Payment Insights
-          </Link>
-          <Link href="/calculator" className="hover:text-primary transition-colors">
-            Fee Calculator
-          </Link>
-          <Link href="/terms" className="hover:text-primary transition-colors">
-            Terms of Service
-          </Link>
-          <Link href="/privacy" className="hover:text-primary transition-colors">
-            Privacy Policy
-          </Link>
-          <a 
-            href="mailto:info@mypayadvisor.com" 
-            className="hover:text-primary transition-colors"
-            aria-label="Email us"
-          >
-            info@mypayadvisor.com
-          </a>
-        </nav>
-
         {/* Disclaimer */}
-        <aside className="text-center border-t border-background/20 pt-3 sm:pt-4 mb-2 sm:mb-3">
-          <p className="text-[10px] sm:text-xs text-background/50 max-w-5xl mx-auto px-2">
+        <aside className="text-center border-t border-background/15 pt-6 mb-3">
+          <p className="text-[10px] sm:text-xs text-background/40 max-w-5xl mx-auto">
             <strong>Affiliate Disclosure:</strong> myPayAdvisor may receive compensation from payment providers featured on this site. This does not influence our rankings or recommendations.
           </p>
         </aside>
 
         {/* Copyright */}
-        <div className="text-center text-[10px] sm:text-xs text-background/70">
-          <p>© {currentYear} myPayAdvisor. All rights reserved.</p>
+        <div className="text-center text-[10px] sm:text-xs text-background/50">
+          <p>&copy; {currentYear} myPayAdvisor. All rights reserved.</p>
         </div>
       </div>
     </footer>

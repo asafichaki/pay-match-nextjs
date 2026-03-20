@@ -1,6 +1,7 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "next-themes";
 import { Suspense, useState } from "react";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 
@@ -18,11 +19,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Suspense fallback={null}>
-        <AnalyticsTracker />
-      </Suspense>
-      {children}
-    </QueryClientProvider>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+      <QueryClientProvider client={queryClient}>
+        <Suspense fallback={null}>
+          <AnalyticsTracker />
+        </Suspense>
+        {children}
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }

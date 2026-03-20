@@ -37,8 +37,8 @@ import {
   Settings
 } from "lucide-react";
 import { providers } from "@/data/providers";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { submitQuizLead } from "@/app/actions/quiz";
 
 interface QuizAnswers {
   monthlyVolume: string;
@@ -183,36 +183,35 @@ const QuizContent = ({ onComplete, showBackButton = true }: QuizContentProps) =>
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     setIsSavingLead(true);
 
     try {
       const recommendation = getRecommendation();
-      
-      const { error } = await supabase.from("quiz_leads").insert({
-        full_name: answers.fullName || "",
+
+      const result = await submitQuizLead({
+        fullName: answers.fullName || "",
         email: answers.email || "",
-        phone: answers.phone || null,
-        monthly_volume: answers.monthlyVolume || null,
-        business_type: answers.businessType || null,
-        industry: answers.industry || null,
-        international_payments: answers.internationalPayments || null,
-        average_transaction: answers.averageTransaction || null,
-        chargeback_history: null,
-        integration_needs: Array.isArray(answers.priority) ? answers.priority.join(", ") : null,
-        recommended_provider: recommendation.name,
-        status: "new"
+        phone: answers.phone || "",
+        monthlyVolume: answers.monthlyVolume as string | undefined,
+        businessType: answers.businessType as string | undefined,
+        industry: answers.industry as string | undefined,
+        internationalPayments: answers.internationalPayments as string | undefined,
+        averageTransaction: answers.averageTransaction as string | undefined,
+        priority: Array.isArray(answers.priority) ? answers.priority : undefined,
+        recommendedProvider: recommendation.name,
       });
 
-      if (error) throw error;
-      
+      if (!result.success) {
+        throw new Error(result.error || "Failed to save");
+      }
+
       setShowResult(true);
     } catch (error: any) {
-      console.error("Error saving quiz lead:", error);
       toast({
         title: "Error",
-        description: "Failed to save your information. Please try again.",
+        description: error.message || "Failed to save your information. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -223,7 +222,7 @@ const QuizContent = ({ onComplete, showBackButton = true }: QuizContentProps) =>
   const getRecommendation = () => {
     const { monthlyVolume, businessType, priority } = answers;
     
-    if (monthlyVolume === "over-50k") {
+    if (monthlyVolume === "over-200k") {
       return providers.find(p => p.name === "Worldpay") || providers[0];
     }
     

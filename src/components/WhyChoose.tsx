@@ -26,20 +26,20 @@ const WhyChoose = () => {
   ];
 
   return (
-    <section 
-      className="py-8 sm:py-10 md:py-12 px-4"
+    <section
+      className="section-padding bg-background"
       aria-labelledby="why-choose-heading"
     >
-      <div className="container mx-auto max-w-6xl">
+      <div className="section-container">
         <header className="text-center mb-8 sm:mb-10">
-          <h2 
+          <h2
             id="why-choose-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-3 sm:mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-3"
           >
-            Why Choose Our Recommended Payment Processors
+            Why Use myPayAdvisor Instead of Googling It?
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4">
-            Every payment processor in our network is carefully vetted to ensure they meet the highest standards for security, reliability, and value
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
+            We analyze interchange-plus vs flat rate, hidden PCI fees, contract lock-ins, and 50+ data points so you don't have to.
           </p>
         </header>
 
@@ -64,7 +64,7 @@ const WhyChoose = () => {
                     >
                       <Icon className="w-7 h-7 text-primary" />
                     </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">
+                    <h3 className="text-lg font-display font-bold text-foreground mb-2">
                       {benefit.title}
                     </h3>
                     <p className="text-sm text-muted-foreground">

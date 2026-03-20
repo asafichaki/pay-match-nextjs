@@ -14,7 +14,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter();
   const pathname = usePathname();
 
-  const isAuthPage = pathname === "/admin/login" || pathname === "/admin/signup";
+  const isAuthPage = pathname === "/admin/login";
 
   useEffect(() => {
     // Don't run auth checks on login/signup pages

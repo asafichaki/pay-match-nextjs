@@ -34,20 +34,34 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Protect admin routes (except login and signup)
+  // Protect admin routes (except login)
   const isAdminRoute = request.nextUrl.pathname.startsWith('/admin');
-  const isAuthRoute =
-    request.nextUrl.pathname === '/admin/login' ||
-    request.nextUrl.pathname === '/admin/signup';
+  const isLoginRoute = request.nextUrl.pathname === '/admin/login';
 
-  if (isAdminRoute && !isAuthRoute && !user) {
+  if (isAdminRoute && !isLoginRoute && !user) {
     const url = request.nextUrl.clone();
     url.pathname = '/admin/login';
     return NextResponse.redirect(url);
   }
 
-  // If logged in user visits login page, redirect to dashboard
-  if (isAuthRoute && user) {
+  // Verify admin role for authenticated users on admin routes (except login)
+  if (isAdminRoute && !isLoginRoute && user) {
+    const { data: roleData } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user.id)
+      .single();
+
+    if (roleData?.role !== 'admin') {
+      await supabase.auth.signOut();
+      const url = request.nextUrl.clone();
+      url.pathname = '/admin/login';
+      return NextResponse.redirect(url);
+    }
+  }
+
+  // If logged in admin visits login page, redirect to dashboard
+  if (isLoginRoute && user) {
     const url = request.nextUrl.clone();
     url.pathname = '/admin/dashboard';
     return NextResponse.redirect(url);

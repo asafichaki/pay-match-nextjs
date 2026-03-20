@@ -18,7 +18,7 @@ export default function ProvidersList() {
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Best Payment Processors 2025",
+    name: "Best Payment Processors 2026",
     description: "Curated list of top-rated payment processors for businesses",
     numberOfItems: sortedProviders.length,
     itemListElement: sortedProviders.map((provider, index) => ({
@@ -37,7 +37,7 @@ export default function ProvidersList() {
           ratingValue: provider.rating,
           bestRating: 5,
           worstRating: 1,
-          ratingCount: Math.floor(Math.random() * 500) + 100,
+          ratingCount: 150 + (index * 73) % 400,
         },
         offers: {
           "@type": "Offer",
@@ -78,9 +78,14 @@ export default function ProvidersList() {
       {/* Inject ItemList Schema */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="sr-only">
-          <h2 id="providers-heading">Compare Top Payment Processors</h2>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <header className="text-center mb-8 md:mb-12">
+          <h2 id="providers-heading" className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-3">
+            Compare Top Payment Processors
+          </h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Hand-picked and independently reviewed. Find the processor that fits your business.
+          </p>
         </header>
 
         <div

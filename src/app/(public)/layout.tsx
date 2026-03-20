@@ -1,5 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
+import StickyCTABar from "@/components/StickyCTABar";
 
 export default function PublicLayout({
   children,
@@ -13,6 +15,8 @@ export default function PublicLayout({
         {children}
       </main>
       <Footer />
+      <ExitIntentPopup />
+      <StickyCTABar />
     </>
   );
 }

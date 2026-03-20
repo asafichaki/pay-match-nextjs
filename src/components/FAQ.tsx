@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
 import { faqs } from "@/data/faqs";
+import PaymentQuiz from "./PaymentQuiz";
 import {
   Accordion,
   AccordionContent,
@@ -7,22 +13,24 @@ import {
 } from "./ui/accordion";
 
 const FAQ = () => {
+  const [quizOpen, setQuizOpen] = useState(false);
+
   return (
-    <section 
-      id="faq" 
-      className="py-6 sm:py-12 md:py-16 bg-muted/30"
+    <section
+      id="faq"
+      className="section-padding bg-muted/30"
       aria-labelledby="faq-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         <header className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 
+          <h2
             id="faq-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground mb-3"
           >
-            Frequently Asked Questions
+            Common Questions About Payment Processors
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Quick answers to common questions about payment processing, fees, and choosing the right provider for your business.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Get answers to the most common questions about choosing, switching, and optimizing your payment processing.
           </p>
         </header>
 
@@ -53,8 +61,20 @@ const FAQ = () => {
               </AccordionItem>
             ))}
           </Accordion>
+
+          {/* Inline quiz CTA */}
+          <div className="mt-8 text-center p-6 rounded-2xl bg-primary/5 border border-primary/20">
+            <p className="text-base font-medium text-foreground mb-3">
+              Still comparing? Let us match you in 90 seconds.
+            </p>
+            <Button onClick={() => setQuizOpen(true)} className="font-semibold">
+              Find My Perfect Match
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </div>
+      <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </section>
   );
 };

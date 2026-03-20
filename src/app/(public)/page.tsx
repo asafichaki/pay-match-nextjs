@@ -1,24 +1,24 @@
 import { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Hero from "@/components/Hero";
-import ProvidersList from "@/components/ProvidersList";
-import WhyChoose from "@/components/WhyChoose";
-import QuizCTA from "@/components/QuizCTA";
-import ComparisonTable from "@/components/ComparisonTable";
+import SocialProofBar from "@/components/SocialProofBar";
+import ProblemSection from "@/components/ProblemSection";
+import QuizPreview from "@/components/QuizPreview";
+import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
-import SimpleCTA from "@/components/SimpleCTA";
-import GlobalPayments from "@/components/GlobalPayments";
+import ProvidersList from "@/components/ProvidersList";
+import ComparisonTable from "@/components/ComparisonTable";
+import WhyChoose from "@/components/WhyChoose";
+import NewsletterSection from "@/components/NewsletterSection";
 import FAQ from "@/components/FAQ";
 import Insights from "@/components/Insights";
-import FeaturedArticles from "@/components/FeaturedArticles";
-import AboutUs from "@/components/AboutUs";
 import { faqs } from "@/data/faqs";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "myPayAdvisor - Find the Perfect Payment Processor for Your Business",
+    absolute: "myPayAdvisor - Compare Payment Processors & Save Up to 40% on Fees",
   },
-  description: "Compare top payment processors for your business. Find solutions with low fees, fast funding & 24/7 support. Save up to 40% on processing.",
+  description: "Compare top payment processors for your business. Find solutions with low fees, fast funding & 24/7 support. Free quiz matches you in 90 seconds.",
   keywords: "payment processor comparison, payment gateway, credit card processing, merchant services, payment solutions, transaction fees, best payment processor 2026",
   robots: {
     index: true,
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com",
-    title: "Best Payment Processors 2026 | Compare & Save",
-    description: "Compare top payment processors. Find low fees, fast funding & expert support. Save up to 40%.",
+    title: "Best Payment Processors 2026 | Compare & Save Up to 40%",
+    description: "Compare top payment processors. Find low fees, fast funding & expert support. Free quiz matches you in 90 seconds.",
     images: [
       {
         url: "https://www.mypayadvisor.com/og-logo.png",
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Payment Processors 2026",
-    description: "Compare payment processors and save up to 40% on fees. Expert reviews & transparent pricing.",
+    title: "Best Payment Processors 2026 | Compare & Save",
+    description: "Compare payment processors and save up to 40% on fees. Free 90-second quiz matches you with the best fit.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
 };
 
-// Generate FAQ Schema
+// FAQ Schema
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -86,11 +86,11 @@ const organizationSchema = {
   }
 };
 
-// WebPage Schema with enhanced info
+// WebPage Schema with speakable
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "myPayAdvisor - Find the Perfect Payment Processor for Your Business",
+  "name": "myPayAdvisor - Compare Payment Processors & Save Up to 40% on Fees",
   "description": "Compare leading payment processors trusted by thousands of businesses. Find the best payment solution with transparent pricing, next-day funding, and 24/7 support.",
   "url": "https://www.mypayadvisor.com/",
   "mainEntity": {
@@ -118,7 +118,7 @@ const breadcrumbSchema = {
   }]
 };
 
-// Service Schema (clean, no invalid Offers)
+// Service Schema
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -135,26 +135,30 @@ const serviceSchema = {
   }
 };
 
-// AboutPage Schema
-const aboutSchema = {
+// HowTo Schema for quiz
+const howToSchema = {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "About Us - myPayAdvisor",
-  "description": "myPayAdvisor helps you find the payment processor that best fits your business needs. We simplify the comparison process so you can make an informed decision.",
-  "url": "https://www.mypayadvisor.com/#about",
-  "mainEntity": {
-    "@type": "Organization",
-    "name": "myPayAdvisor",
-    "description": "Payment processor comparison platform helping businesses find the right payment solution",
-    "foundingDate": "2024",
-    "knowsAbout": [
-      "Payment Processing",
-      "Credit Card Processing",
-      "Merchant Services",
-      "Payment Gateways",
-      "E-commerce Payments"
-    ]
-  }
+  "@type": "HowTo",
+  "name": "How to Find the Best Payment Processor for Your Business",
+  "description": "Use our free 90-second quiz to get matched with the ideal payment processor based on your business needs.",
+  "totalTime": "PT2M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Take the Quiz",
+      "text": "Answer 6 quick questions about your business type, volume, and priorities."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "See Your Matches",
+      "text": "Our algorithm analyzes 50+ data points to find processors that fit your specific needs."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Get Your Free Quote",
+      "text": "Connect directly with your matched processors and start saving on processing fees."
+    }
+  ]
 };
 
 export default function HomePage() {
@@ -165,20 +169,43 @@ export default function HomePage() {
       <JsonLd data={webPageSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={serviceSchema} />
-      <JsonLd data={aboutSchema} />
+      <JsonLd data={howToSchema} />
 
+      {/* 1. Hero - Hook with single quiz CTA */}
       <Hero />
-      <WhyChoose />
-      <ProvidersList />
-      <QuizCTA />
-      <ComparisonTable />
+
+      {/* 2. Social Proof - Trust immediately */}
+      <SocialProofBar />
+
+      {/* 3. Problem - Loss aversion activation */}
+      <ProblemSection />
+
+      {/* 4. Quiz Preview - Solution to the problem */}
+      <QuizPreview />
+
+      {/* 5. How It Works - Reduce anxiety */}
+      <HowItWorks />
+
+      {/* 6. Testimonials - Proof the process works */}
       <Testimonials />
-      <SimpleCTA />
-      <GlobalPayments />
+
+      {/* 7. Providers - Now with context + trust + motivation */}
+      <ProvidersList />
+
+      {/* 8. Comparison Table - Detail for analytical buyers */}
+      <ComparisonTable />
+
+      {/* 9. Why Choose Us - Reinforce vs DIY */}
+      <WhyChoose />
+
+      {/* 10. Newsletter - Catch scrollers who didn't convert */}
+      <NewsletterSection />
+
+      {/* 11. FAQ - Objection handling */}
       <FAQ />
+
+      {/* 12. Insights - SEO + internal links */}
       <Insights />
-      <FeaturedArticles />
-      <AboutUs />
     </>
   );
 }

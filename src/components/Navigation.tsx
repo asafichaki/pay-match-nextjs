@@ -6,6 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import PaymentQuiz from "./PaymentQuiz";
+import ThemeToggle from "./ThemeToggle";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const Navigation = () => {
@@ -43,7 +44,7 @@ const Navigation = () => {
             aria-label="myPayAdvisor - Home"
           >
             <CreditCard className="h-6 w-6 text-primary" aria-hidden="true" />
-            <span className="text-xl font-bold text-foreground">myPayAdvisor</span>
+            <span className="text-xl font-display font-bold text-foreground">myPayAdvisor</span>
           </Link>
           
           {/* Desktop Menu */}
@@ -88,33 +89,28 @@ const Navigation = () => {
             >
               Insights
             </Link>
-            <button 
-              onClick={() => handleScrollToSection('about')}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
-              role="menuitem"
-              aria-label="About myPayAdvisor"
-            >
-              About Us
-            </button>
           </div>
 
-          <Button 
-            className="hidden md:block font-semibold flex-shrink-0" 
-            onClick={handleGetOffers}
-            aria-label="Get custom payment processor offers"
-          >
-            Get Custom Offers
-          </Button>
+          <div className="hidden md:flex items-center gap-2">
+            <ThemeToggle />
+            <Button
+              className="font-semibold flex-shrink-0"
+              onClick={handleGetOffers}
+              aria-label="Find your perfect payment processor match"
+            >
+              Find My Match
+            </Button>
+          </div>
 
           {/* Mobile Quiz Button + Menu */}
           <div className="flex items-center gap-2 md:hidden">
-            <Button 
+            <ThemeToggle />
+            <Button
               size="sm"
               className="font-semibold text-sm"
               onClick={handleGetOffers}
-              aria-label="Get custom payment processor offers"
             >
-              Get Offers
+              Find Match
             </Button>
             
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -163,14 +159,8 @@ const Navigation = () => {
                 >
                   Insights
                 </Link>
-                <button 
-                  onClick={() => handleScrollToSection('about')}
-                  className="text-lg font-medium text-foreground hover:text-primary transition-colors text-left bg-transparent border-none cursor-pointer"
-                >
-                  About Us
-                </button>
                 <Button className="font-semibold w-full mt-4" onClick={handleGetOffers}>
-                  Get Custom Offers
+                  Find My Match
                 </Button>
               </nav>
             </SheetContent>

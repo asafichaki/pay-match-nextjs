@@ -115,6 +115,32 @@
     @apply border-primary bg-primary/5 shadow-lg ring-2 ring-primary ring-offset-2;
   }
 
+  /* Mesh gradient for Hero section */
+  .hero-mesh-gradient {
+    background:
+      radial-gradient(ellipse at 20% 50%, hsl(221 83% 53% / 0.06), transparent 60%),
+      radial-gradient(ellipse at 80% 20%, hsl(220 60% 97% / 0.8), transparent 50%),
+      radial-gradient(ellipse at 60% 80%, hsl(43 96% 56% / 0.03), transparent 50%),
+      hsl(var(--background));
+  }
+
+  .dark .hero-mesh-gradient {
+    background:
+      radial-gradient(ellipse at 20% 50%, hsl(221 83% 53% / 0.03), transparent 60%),
+      radial-gradient(ellipse at 80% 20%, hsl(220 60% 20% / 0.4), transparent 50%),
+      radial-gradient(ellipse at 60% 80%, hsl(43 96% 56% / 0.015), transparent 50%),
+      hsl(var(--background));
+  }
+
+  /* Section spacing standardization */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
   @keyframes scale-in {
     0% {
       transform: scale(0);
@@ -132,4 +158,21 @@
   .animate-scale-in {
     animation: scale-in 0.3s ease-out;
   }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode border visibility fix */
+.dark {
+  --border: 220 13% 28%;
 }

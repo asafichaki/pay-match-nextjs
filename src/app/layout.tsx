@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -10,6 +10,14 @@ import { JsonLd } from "@/components/JsonLd";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-inter",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+  weight: ["700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +37,7 @@ export const metadata: Metadata = {
     "payment solutions",
     "transaction fees",
     "payment processing rates",
-    "best payment processor 2025",
+    "best payment processor 2026",
     "merchant account",
     "POS system",
   ],
@@ -173,7 +181,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${inter.className}`}>
       <head>
         <JsonLd data={websiteSchema} />
         <JsonLd data={organizationSchema} />

@@ -364,6 +364,33 @@ export type Database = {
         }
         Relationships: []
       }
+      newsletter_subscribers: {
+        Row: {
+          id: string
+          email: string
+          subscribed_at: string
+          source: string
+          status: string
+          monthly_volume: string | null
+        }
+        Insert: {
+          id?: string
+          email: string
+          subscribed_at?: string
+          source?: string
+          status?: string
+          monthly_volume?: string | null
+        }
+        Update: {
+          id?: string
+          email?: string
+          subscribed_at?: string
+          source?: string
+          status?: string
+          monthly_volume?: string | null
+        }
+        Relationships: []
+      }
       quiz_leads: {
         Row: {
           assigned_to: string | null

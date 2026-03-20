@@ -1,10 +1,10 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ArrowRight, TrendingUp } from "lucide-react";
+import { useState } from "react";
+import { Button } from "./ui/button";
 import PaymentQuiz from "./PaymentQuiz";
-
-const heroImage = "/images/hero-payment-woman.jpg";
+import TrustBadges from "./TrustBadges";
 
 const Hero = () => {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -12,7 +12,7 @@ const Hero = () => {
   const getCurrentMonth = () => {
     const months = [
       "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "July", "August", "September", "October", "November", "December",
     ];
     return months[new Date().getMonth()];
   };
@@ -20,74 +20,50 @@ const Hero = () => {
   const currentYear = 2026;
 
   return (
-    <section 
-      className="relative overflow-hidden bg-muted/50 border-b border-border/40"
+    <section
+      className="relative overflow-hidden hero-mesh-gradient border-b border-border/40"
       aria-labelledby="hero-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 items-center">
-          {/* Text content - left side */}
-          <div className="relative py-8 md:py-10 lg:py-12 pr-4 lg:pr-8">
-            {/* Gray extension under text area */}
-            <div 
-              className="absolute -bottom-4 -left-20 right-0 h-24 bg-gradient-to-t from-muted/40 via-muted/20 to-transparent lg:block hidden"
-              aria-hidden="true"
-            />
-            <header className="space-y-2 sm:space-y-3 relative z-10 text-center md:text-left">
-              <h1 
-                id="hero-heading"
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight"
-              >
-                Top{" "}
-                <span className="text-primary">
-                  Payment Processing
-                </span>{" "}
-                Solutions for Business in {currentYear}
-              </h1>
-              
-              <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-xl hidden md:block">
-                Compare leading providers on features, pricing, and support to pick award winning payment processors that reduce costs and fit any business size.
-              </p>
-              
-              <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
-                <TrendingUp className="h-4 w-4" aria-hidden="true" />
-                <time dateTime={new Date().toISOString().slice(0, 7)}>
-                  Updated {getCurrentMonth()} {currentYear}
-                </time>
-              </div>
-            </header>
-            
-            <div className="mt-4 relative z-10">
-              <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
-            </div>
+      <div className="section-container py-16 md:py-24 lg:py-28">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Updated badge */}
+          <div className="inline-flex items-center gap-2 text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-6">
+            <TrendingUp className="h-4 w-4" aria-hidden="true" />
+            <time dateTime={new Date().toISOString().slice(0, 7)}>
+              Updated {getCurrentMonth()} {currentYear}
+            </time>
           </div>
 
-          {/* Image - right side */}
-          <div className="relative hidden lg:block h-full min-h-[300px]">
-            {/* Image container */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center brightness-105"
-              style={{ 
-                backgroundImage: `url(${heroImage})`,
-                backgroundPosition: 'center center'
-              }}
-              aria-hidden="true"
-            />
-            {/* Gradient fade on left edge */}
-            <div 
-              className="absolute inset-0 bg-gradient-to-r from-muted/50 via-muted/30 via-20% to-transparent"
-              aria-hidden="true"
-            />
+          <h1
+            id="hero-heading"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-foreground leading-tight mb-5"
+          >
+            Compare Payment Processors &{" "}
+            <span className="text-primary">Save Up to 40%</span> on Fees
+          </h1>
+
+          <p className="hero-description text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+            Take our free 90-second quiz. Get matched with the best payment processor for your business type, volume, and priorities.
+          </p>
+
+          {/* Single CTA: Quiz */}
+          <Button
+            onClick={() => setQuizOpen(true)}
+            size="lg"
+            className="h-14 px-10 text-lg font-bold shadow-lg hover:shadow-xl transition-shadow"
+          >
+            Find My Perfect Match
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+
+          {/* Trust badges */}
+          <div className="mt-8">
+            <TrustBadges variant="compact" />
           </div>
         </div>
       </div>
 
-      {/* Mobile background */}
-      <div 
-        className="absolute inset-0 lg:hidden bg-cover bg-center opacity-25 brightness-110"
-        style={{ backgroundImage: `url(${heroImage})` }}
-        aria-hidden="true"
-      />
+      <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </section>
   );
 };
