@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ClipboardList, LayoutDashboard, Users, FileText, CreditCard, MessageSquare, LogOut, Shield, BarChart3 } from "lucide-react";
+import { ClipboardList, LayoutDashboard, Users, FileText, CreditCard, MessageSquare, LogOut, Shield, BarChart3, Zap } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -22,7 +22,8 @@ const menuItems = [
   { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
   { title: "Payment Providers", url: "/admin/providers", icon: CreditCard },
   { title: "Quiz Management", url: "/admin/quiz", icon: ClipboardList },
-  { title: "Blog Articles", url: "/admin/articles", icon: FileText },
+  { title: "Content", url: "/admin/articles", icon: FileText },
+  { title: "Automations", url: "/admin/automations", icon: Zap },
   { title: "Contacts", url: "/admin/contacts", icon: MessageSquare },
   { title: "Users & Roles", url: "/admin/users", icon: Users },
   { title: "Permissions", url: "/admin/permissions", icon: Shield },
