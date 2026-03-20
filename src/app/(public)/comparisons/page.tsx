@@ -1,0 +1,248 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, TrendingUp } from "lucide-react";
+import { JsonLd } from "@/components/JsonLd";
+
+export const metadata: Metadata = {
+  title: "Payment Processor Comparisons 2026",
+  description: "Compare top payment processors side-by-side. Square vs Stripe, PayPal vs Stripe, and more. Find the best payment solution for your business.",
+  keywords: "payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor, merchant services comparison",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://www.mypayadvisor.com/comparisons",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://www.mypayadvisor.com/comparisons",
+    title: "Payment Processor Comparisons 2026",
+    description: "Side-by-side comparisons of top payment processors. Find the best solution for your business.",
+    images: [
+      {
+        url: "https://www.mypayadvisor.com/og-logo.png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Payment Processor Comparisons 2026",
+    description: "Compare top payment processors side-by-side.",
+    images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+};
+
+const comparisons = [
+  {
+    title: "Best Payment Processing Companies 2026: Complete Guide",
+    description: "Expert analysis of Leaders Merchant Services, Worldpay, Clover, Payment Depot, Stax, Stripe, and more. Find the lowest fees and best features for your business.",
+    href: "/comparisons/best-payment-processors-2026",
+    date: "Jan. 6, 2026",
+    featured: true
+  },
+  {
+    title: "Square vs Stripe: Which Payment Processor Is Right for You?",
+    description: "In-person POS vs online payments. A comprehensive breakdown of fees, features, and best use cases to help you decide which platform suits your business model.",
+    href: "/comparisons/square-vs-stripe",
+    date: "Nov. 15, 2025"
+  },
+  {
+    title: "PayPal vs Square: Complete Comparison for Small Businesses",
+    description: "Online payments & international reach vs in-person POS excellence. Compare transaction fees, hardware costs, and features for retail and e-commerce.",
+    href: "/comparisons/paypal-vs-square",
+    date: "Nov. 12, 2025"
+  },
+  {
+    title: "Stripe vs PayPal: Developer Tools vs Consumer Trust",
+    description: "Which payment gateway wins for online businesses? We compare APIs, subscription billing, international fees, and merchant experience.",
+    href: "/comparisons/stripe-vs-paypal",
+    date: "Nov. 10, 2025"
+  },
+  {
+    title: "Helcim vs Stripe: Transparent Pricing vs Advanced Features",
+    description: "Save 15-25% with Helcim's interchange-plus pricing or get powerful developer tools with Stripe. Find out which processor delivers better value for your business.",
+    href: "/comparisons/helcim-vs-stripe",
+    date: "Nov. 8, 2025"
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Payment Processor Comparisons",
+  "description": "Side-by-side comparisons of top payment processors to help you choose the best solution for your business.",
+  "url": "https://www.mypayadvisor.com/comparisons",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": comparisons.map((comparison, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `https://www.mypayadvisor.com${comparison.href}`,
+      "name": comparison.title
+    }))
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.mypayadvisor.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Comparisons",
+      "item": "https://www.mypayadvisor.com/comparisons"
+    }
+  ]
+};
+
+function getCurrentMonthYear() {
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  return `${months[new Date().getMonth()]} ${new Date().getFullYear()}`;
+}
+
+export default function ComparisonsPage() {
+  return (
+    <>
+      <JsonLd data={structuredData} />
+      <JsonLd data={breadcrumbSchema} />
+
+      <div className="min-h-screen bg-background">
+        {/* Hero Section */}
+        <section
+          className="relative overflow-hidden bg-background border-b border-border/50"
+          aria-labelledby="comparisons-heading"
+        >
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 items-center">
+              {/* Text content - left side */}
+              <div className="relative py-8 md:py-10 lg:py-12 pr-4 lg:pr-8">
+                {/* Gray extension under text area */}
+                <div
+                  className="absolute -bottom-4 -left-20 right-0 h-24 bg-gradient-to-t from-muted/40 via-muted/20 to-transparent lg:block hidden"
+                  aria-hidden="true"
+                />
+                <header className="space-y-2 sm:space-y-3 relative z-10 text-center md:text-left">
+                  <h1
+                    id="comparisons-heading"
+                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight"
+                  >
+                    Payment Processor{" "}
+                    <span className="text-primary">Comparisons</span>
+                  </h1>
+
+                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-xl hidden md:block">
+                    Detailed side-by-side comparisons to help you choose the right payment
+                    processor for your unique business needs and budget.
+                  </p>
+
+                  <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
+                    <TrendingUp className="h-4 w-4" aria-hidden="true" />
+                    <span>Updated {getCurrentMonthYear()}</span>
+                  </div>
+                </header>
+              </div>
+
+              {/* Image - right side */}
+              <div className="relative hidden lg:block h-full min-h-[300px]">
+                {/* Image container */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center brightness-105"
+                  style={{
+                    backgroundImage: `url(/images/comparisons-hero-new.png)`,
+                    backgroundPosition: 'center center'
+                  }}
+                  aria-hidden="true"
+                />
+                {/* Gradient fade on left edge */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-background via-background/40 via-10% to-transparent"
+                  aria-hidden="true"
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-background via-background/40 via-10% to-transparent"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile background */}
+          <div
+            className="absolute inset-0 lg:hidden bg-contain bg-center bg-no-repeat opacity-25"
+            style={{ backgroundImage: `url(/images/comparisons-hero-new.png)` }}
+            aria-hidden="true"
+          />
+        </section>
+
+        {/* Comparisons List */}
+        <section className="py-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <div className="divide-y divide-border">
+              {comparisons.map((comparison) => (
+                <Link
+                  key={comparison.href}
+                  href={comparison.href}
+                  className="group block py-8 first:pt-4"
+                >
+                  <article className="flex flex-col gap-4">
+                    <h2 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
+                      {comparison.title}
+                    </h2>
+
+                    <p className="text-muted-foreground leading-relaxed">
+                      {comparison.description}
+                    </p>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground">
+                        {comparison.date}
+                      </span>
+                      <span className="flex items-center gap-2 text-sm font-medium text-primary">
+                        Read comparison
+                        <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
+
+            {/* Quiz CTA */}
+            <div className="mt-12 pt-8 border-t border-border">
+              <div className="rounded-xl border border-border bg-background p-6 sm:p-8">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                  <div className="space-y-2">
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground">
+                      Not Sure Which Processor to Choose?
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Take our free 2-minute assessment to get a personalized recommendation based on your business needs.
+                    </p>
+                  </div>
+
+                  <Link href="/quiz" className="shrink-0">
+                    <button className="w-full lg:w-auto inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                      Start Free Assessment
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}

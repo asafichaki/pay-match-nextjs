@@ -1,0 +1,111 @@
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import SquareVsStripeContent from "./SquareVsStripeContent";
+
+export const metadata: Metadata = {
+  title: "Square vs Stripe 2026: Complete Payment Processor Comparison",
+  description: "Square vs Stripe comparison 2026: Compare fees (2.6% vs 2.7%), POS features, ecommerce, APIs. Find the best payment processor for brick-and-mortar or online business.",
+  keywords: ["Square vs Stripe", "Stripe vs Square", "payment processor comparison", "Square POS", "Stripe API", "best payment processor 2026", "credit card processing", "online payments", "in-person payments"],
+  alternates: {
+    canonical: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
+  },
+  openGraph: {
+    title: "Square vs Stripe 2026: Which Payment Processor is Best?",
+    description: "Complete comparison of Square and Stripe. Compare POS features, pricing, APIs, and find the right payment processor for your business.",
+    url: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
+    type: "article",
+    images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Square vs Stripe: Which Payment Processor Is Right for Your Business? (2026)",
+  description: "Complete Square vs Stripe comparison for 2026. Compare pricing, POS features, ecommerce capabilities, APIs, and find the best payment processor for your business type.",
+  image: "https://www.mypayadvisor.com/og-logo.png",
+  author: {
+    "@type": "Organization",
+    name: "myPayAdvisor",
+    url: "https://www.mypayadvisor.com",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "myPayAdvisor",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://www.mypayadvisor.com/og-logo.png",
+    },
+  },
+  datePublished: "2024-12-01",
+  dateModified: "2024-12-01",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
+  },
+};
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Which is cheaper, Square or Stripe?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "For in-person transactions, Square is slightly cheaper (2.6% + $0.10 vs 2.7% + $0.05). Online rates are identical (2.9% + $0.30). For ACH payments, Stripe is much cheaper (0.8% capped at $5 vs Square's 3.3% + $0.30).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Which is better for restaurants?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Square wins for restaurants with Square for Restaurants offering table management, course firing, menu modifiers, kitchen display system, tableside ordering, split checks, and tip pooling. Stripe would require building or buying third-party restaurant POS.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Which is better for SaaS/subscription businesses?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Stripe wins for SaaS with advanced billing features including usage-based pricing, metered billing, tiered pricing, smart dunning, revenue recognition, and customer portal. Square only offers basic recurring billing.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need a developer for Stripe?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Not necessarily. You don't need a developer if using Stripe with platforms like Shopify/WooCommerce, Stripe Checkout hosted pages, or simple payment links. Developers are helpful for custom checkout design and required for building marketplaces or complex automation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I accept international payments with Square?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Very limited. Square only operates in 8 countries with no currency conversion or local payment methods. Stripe supports 46 countries, 135+ currencies, and local payment methods, making it the clear choice for international businesses.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I switch from Square to Stripe?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, switching is straightforward with no cancellation fees from either processor. Timeline is typically 1-3 weeks including account setup, integration, customer data migration, and testing.",
+      },
+    },
+  ],
+};
+
+export default function SquareVsStripePage() {
+  return (
+    <>
+      <JsonLd data={structuredData} />
+      <JsonLd data={faqStructuredData} />
+      <SquareVsStripeContent />
+    </>
+  );
+}
