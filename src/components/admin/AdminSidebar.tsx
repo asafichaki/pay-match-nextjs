@@ -18,12 +18,12 @@ import { supabase } from "@/integrations/supabase/client";
 
 const menuItems = [
   { title: "Dashboard", url: "/admin/dashboard", icon: LayoutDashboard },
+  { title: "CRM / Leads", url: "/admin/leads", icon: Users },
   { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
   { title: "Payment Providers", url: "/admin/providers", icon: CreditCard },
-  { title: "Quiz Leads", url: "/admin/leads", icon: Users },
   { title: "Quiz Management", url: "/admin/quiz", icon: ClipboardList },
   { title: "Blog Articles", url: "/admin/articles", icon: FileText },
-  { title: "Contact Submissions", url: "/admin/contacts", icon: MessageSquare },
+  { title: "Contacts", url: "/admin/contacts", icon: MessageSquare },
   { title: "Users & Roles", url: "/admin/users", icon: Users },
   { title: "Permissions", url: "/admin/permissions", icon: Shield },
 ];
@@ -34,7 +34,7 @@ export function AdminSidebar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.push("/admin/login");
+    window.location.href = "/admin/login";
   };
 
   const isActive = (url: string) => pathname === url || pathname.startsWith(url + "/");

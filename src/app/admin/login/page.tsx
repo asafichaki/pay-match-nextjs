@@ -36,7 +36,7 @@ export default function AdminLogin() {
       }
 
       toast({ title: "Login successful", description: "Redirecting to dashboard..." });
-      router.push("/admin/dashboard");
+      window.location.href = "/admin/dashboard";
     } catch (error: any) {
       toast({ title: "Login error", description: error.message, variant: "destructive" });
     } finally {

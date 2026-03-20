@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { supabase } from "@/integrations/supabase/client";
 import type { Session } from "@supabase/supabase-js";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -12,8 +12,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
+
+  const isAuthPage = pathname === "/admin/login" || pathname === "/admin/signup";
 
   useEffect(() => {
+    // Don't run auth checks on login/signup pages
+    if (isAuthPage) {
+      setLoading(false);
+      return;
+    }
+
     const checkAdminRole = async (userId: string) => {
       const { data: roleData } = await supabase
         .from("user_roles")
@@ -24,7 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       if (roleData?.role !== "admin") {
         setLoading(false);
         supabase.auth.signOut();
-        router.push("/admin/login");
+        window.location.href = "/admin/login";
         return false;
       }
       setLoading(false);
@@ -35,9 +44,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       (event, session) => {
         setSession(session);
 
-        if (!session || event === 'SIGNED_OUT') {
+        if (!session || event === "SIGNED_OUT") {
           setLoading(false);
-          router.push("/admin/login");
+          window.location.href = "/admin/login";
           return;
         }
 
@@ -52,18 +61,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       if (!session) {
         setLoading(false);
-        router.push("/admin/login");
+        window.location.href = "/admin/login";
         return;
       }
 
-      const isAdmin = await checkAdminRole(session.user.id);
-      if (isAdmin) {
-        setLoading(false);
-      }
+      await checkAdminRole(session.user.id);
     });
 
     return () => subscription.unsubscribe();
-  }, [router]);
+  }, [isAuthPage]);
+
+  // Auth pages render without sidebar
+  if (isAuthPage) {
+    return <>{children}</>;
+  }
 
   if (loading) {
     return (
