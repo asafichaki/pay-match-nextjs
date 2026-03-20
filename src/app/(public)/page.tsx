@@ -118,7 +118,7 @@ const breadcrumbSchema = {
   }]
 };
 
-// Service Schema
+// Service Schema (clean, no invalid Offers)
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -132,65 +132,6 @@ const serviceSchema = {
   "areaServed": {
     "@type": "Country",
     "name": "United States"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Payment Processor Recommendations",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Payment Processor Comparison Quiz"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Custom Payment Solution Recommendations"
-        }
-      }
-    ]
-  }
-};
-
-// AggregateRating Schema for social proof
-const aggregateRatingSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "myPayAdvisor Payment Processor Comparison",
-  "description": "Expert payment processor comparison and recommendation platform",
-  "brand": {
-    "@type": "Brand",
-    "name": "myPayAdvisor"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "847",
-    "reviewCount": "312"
-  }
-};
-
-// SoftwareApplication Schema (for the quiz tool)
-const softwareSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "myPayAdvisor Payment Processor Finder",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "523"
   }
 };
 
@@ -224,8 +165,6 @@ export default function HomePage() {
       <JsonLd data={webPageSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={serviceSchema} />
-      <JsonLd data={aggregateRatingSchema} />
-      <JsonLd data={softwareSchema} />
       <JsonLd data={aboutSchema} />
 
       <Hero />

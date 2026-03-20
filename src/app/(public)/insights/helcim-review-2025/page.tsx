@@ -31,29 +31,22 @@ export const metadata: Metadata = {
 export default function HelcimReview2025Page() {
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Review",
-    "itemReviewed": {
-      "@type": "Product",
-      "name": "Helcim Payment Processor",
-      "brand": { "@type": "Brand", "name": "Helcim" },
-      "category": "Payment Processing Services"
-    },
-    "reviewRating": {
-      "@type": "Rating",
-      "ratingValue": "9.3",
-      "bestRating": "10",
-      "worstRating": "1"
-    },
-    "author": { 
-      "@type": "Person", 
+    "@type": "Article",
+    "headline": "Helcim Review 2026: Is This the Best Low-Fee Payment Processor?",
+    "description": "Comprehensive review of Helcim payment processor - interchange-plus pricing, automatic volume discounts, and transparent fees for businesses.",
+    "image": "https://www.mypayadvisor.com/og-logo.png",
+    "author": {
+      "@type": "Person",
       "name": "Noah Briggs",
       "description": "A seasoned reporter focused on the payments ecosystem."
     },
     "publisher": { "@type": "Organization", "name": "myPayAdvisor", "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" } },
     "datePublished": "2025-12-01",
     "dateModified": "2025-12-07",
-    "reviewBody": "Helcim is one of the most cost-effective payment processors available in 2026, particularly for businesses processing over $20,000 per month.",
-    "headline": "Helcim Review 2026: Is This the Best Low-Fee Payment Processor?"
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.mypayadvisor.com/insights/helcim-review-2025"
+    }
   };
 
   const breadcrumbSchema = {
