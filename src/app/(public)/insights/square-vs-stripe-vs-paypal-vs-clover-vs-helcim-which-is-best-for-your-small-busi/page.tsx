@@ -91,8 +91,8 @@ const articleSchema = {
   "@type": "Article",
   headline: "Square vs Stripe vs PayPal vs Clover vs Helcim for Small Business 2026",
   description: "Compare Square, Stripe, PayPal, Clover, and Helcim for small businesses in 2026. Find the best payment processor with transparent pricing and features.",
-  datePublished: "2026-03-23T13:14:00.857Z",
-  dateModified: "2026-03-23T13:14:00.857Z",
+  datePublished: "2026-03-23T13:14:01.541Z",
+  dateModified: "2026-03-23T13:14:01.541Z",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/square-vs-stripe-vs-paypal-vs-clover-vs-helcim-which-is-best-for-your-small-busi"
