@@ -71,8 +71,8 @@ const articleSchema = {
   "@type": "Article",
   headline: "Top Payment Processors with Built-In Fraud Protection 2026",
   description: "Discover the leading payment processors offering robust, built-in fraud protection in 2026. Secure your business with advanced AI, tokenization, and chargeback tools.",
-  datePublished: "2026-03-23T13:18:35.952Z",
-  dateModified: "2026-03-23T13:18:35.952Z",
+  datePublished: "2026-03-23T13:18:36.451Z",
+  dateModified: "2026-03-23T13:18:36.451Z",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/top-payment-processors-with-built-in-fraud-protection-for-2026-a-comprehensive-g"
