@@ -85,8 +85,8 @@ const articleSchema = {
   "@type": "Article",
   headline: "Interchange Plus Pricing Guide for Merchants 2026 | MyPayAdvisor",
   description: "Unlock transparency and savings with our 2026 Interchange Plus pricing guide for merchants. Learn how it works, compare models, and choose the best processor.",
-  datePublished: "2026-03-23T13:25:02.115Z",
-  dateModified: "2026-03-23T13:25:02.115Z",
+  datePublished: "2026-03-23T13:25:04.141Z",
+  dateModified: "2026-03-23T13:25:04.141Z",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/interchange-plus-pricing-guide-for-merchants-2026-a-beginner-s-comprehensive-ove"
