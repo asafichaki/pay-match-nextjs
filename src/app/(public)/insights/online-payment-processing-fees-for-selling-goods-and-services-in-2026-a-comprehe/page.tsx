@@ -51,8 +51,8 @@ const articleSchema = {
   "@type": "Article",
   headline: "2026 Online Payment Processing Fees for Selling Goods & Services",
   description: "Navigate online payment processing fees for selling goods and services in 2026. Understand costs, trends, and strategies to optimize your business's bottom line.",
-  datePublished: "2026-03-23T13:13:59.788Z",
-  dateModified: "2026-03-23T13:13:59.788Z",
+  datePublished: "2026-03-23T13:14:00.438Z",
+  dateModified: "2026-03-23T13:14:00.438Z",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/online-payment-processing-fees-for-selling-goods-and-services-in-2026-a-comprehe"
