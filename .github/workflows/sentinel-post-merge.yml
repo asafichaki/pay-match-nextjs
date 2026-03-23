@@ -1,0 +1,31 @@
+name: Sentinel Post-Merge Trigger
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  trigger-sentinel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Sentinel daily cron
+        env:
+          SENTINEL_URL: https://seo.joyohub.com/api/cron/daily
+          SENTINEL_CRON_SECRET: ${{ secrets.SENTINEL_CRON_SECRET }}
+        run: |
+          if [ -z "$SENTINEL_CRON_SECRET" ]; then
+            echo "Missing SENTINEL_CRON_SECRET secret"
+            exit 1
+          fi
+
+          http_code=$(curl -sS -o response.json -w "%{http_code}" \
+            -H "Authorization: Bearer $SENTINEL_CRON_SECRET" \
+            "$SENTINEL_URL")
+
+          echo "Sentinel response code: $http_code"
+          cat response.json
+
+          if [ "$http_code" -lt 200 ] || [ "$http_code" -ge 300 ]; then
+            echo "Sentinel trigger failed"
+            exit 1
+          fi
