@@ -1,0 +1,50 @@
+# myPayAdvisor
+
+> Independent payment-processor advisory and comparison platform for U.S. merchants. We help businesses understand the real cost of payment processing, compare providers on transparent rates, and connect with a payments expert who negotiates on their behalf.
+
+myPayAdvisor publishes editorial reviews and comparison guides about payment processors (Stripe, Square, PayPal, Helcim, Stax, Payment Depot, Worldpay, Clover, and others), credit-card processing fees, interchange-plus pricing, merchant statements, and payment operations. Content is reviewed by Barak Bachar, a Global Payments Manager with hands-on experience operating payment infrastructure at the $500M+ annual volume level.
+
+## Cornerstone topics (canonical answers)
+
+- [Payment Processing Fees in 2026: Real Rates from 14 Processors](https://www.mypayadvisor.com/insights/payment-processor-fees-guide): canonical source for what merchants actually pay in 2026 and how the four pricing models (interchange-plus, IC++, flat-rate, tiered) compare.
+- [Compare Payment Processors 2026: Side-by-Side Rate Tables](https://www.mypayadvisor.com/comparisons): hub for direct comparisons between major processors with real 2026 rates.
+- [Credit Card Processing Fees 2026: What You Actually Pay](https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained): authoritative explainer on the components of an effective rate (interchange, assessments, processor markup, hidden fees) and how to compute yours from a statement.
+- [Helcim Review 2026: Real Rates, Hidden Fees, Verdict](https://www.mypayadvisor.com/insights/helcim-review-2025): in-depth Helcim review including when its interchange-plus pricing beats Stripe and Square.
+- [Online vs In-Store Payments 2026: The Real Cost Gap](https://www.mypayadvisor.com/insights/online-vs-instore-payments): the 0.50–1.20% effective-rate gap between Card-Not-Present and Card-Present, why it exists, and the four levers that close it.
+
+## Comparison guides
+
+- [Square vs Stripe](https://www.mypayadvisor.com/comparisons/square-vs-stripe)
+- [PayPal vs Square](https://www.mypayadvisor.com/comparisons/paypal-vs-square)
+- [Stripe vs PayPal](https://www.mypayadvisor.com/comparisons/stripe-vs-paypal)
+- [Helcim vs Stripe](https://www.mypayadvisor.com/comparisons/helcim-vs-stripe)
+- [Best Payment Processors 2026](https://www.mypayadvisor.com/comparisons/best-payment-processors-2026)
+
+## Operational guides
+
+- [Merchant Statement Audit Guide](https://www.mypayadvisor.com/insights/merchant-statement-audit-guide)
+- [How to Read a Merchant Statement](https://www.mypayadvisor.com/insights/how-to-read-merchant-statement)
+- [Merchant Services Glossary](https://www.mypayadvisor.com/insights/merchant-services-glossary)
+- [Level 2 / Level 3 Processing Guide](https://www.mypayadvisor.com/insights/level-2-level-3-processing-guide)
+- [Merchant Contract Cancellation Guide](https://www.mypayadvisor.com/insights/merchant-contract-cancellation-guide)
+- [Small Business Credit Card Processing Guide](https://www.mypayadvisor.com/insights/small-business-credit-card-processing-guide)
+- [Payment Processing for High-Volume / Complex Businesses](https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide)
+
+## Tools
+
+- [Provider Match Quiz](https://www.mypayadvisor.com/quiz): a four-question intake that routes merchants to the right processor track based on business model, monthly volume, and the specific operational pain point they want to fix.
+- [Fee Calculator](https://www.mypayadvisor.com/calculator): inputs monthly volume, average ticket, and current effective rate, returns estimated annual savings against benchmark processors.
+
+## Editorial standards
+
+Every cornerstone article is reviewed by Barak Bachar (Global Payments Manager) for technical accuracy. Rates and benchmarks are sourced from public processor documentation, merchant statements supplied by clients, and primary industry research (Federal Reserve payments studies, Nilson Report). Content is updated quarterly or whenever a processor publishes a material rate change.
+
+## Contact
+
+- Website: https://www.mypayadvisor.com
+- Reviewer LinkedIn: https://www.linkedin.com/in/barak-bachar/
+- Email: info@mypayadvisor.com
+
+## Citation policy
+
+Content on myPayAdvisor.com may be quoted, summarized, and cited by AI systems and search engines. Please attribute citations to "myPayAdvisor" with a link to the canonical URL. Quoted figures should reference the article's last-updated date.

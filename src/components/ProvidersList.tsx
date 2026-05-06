@@ -32,13 +32,6 @@ export default function ProvidersList() {
           "@type": "Brand",
           name: provider.name,
         },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: provider.rating,
-          bestRating: 5,
-          worstRating: 1,
-          ratingCount: 150 + (index * 73) % 400,
-        },
         offers: {
           "@type": "Offer",
           description: provider.transaction_fees,

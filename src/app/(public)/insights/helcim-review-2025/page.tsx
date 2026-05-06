@@ -2,29 +2,25 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { Star, CheckCircle2, XCircle } from "lucide-react";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Helcim Review 2026: Is This the Best Low-Fee Payment Processor?",
-  description: "Complete Helcim review for 2026. Discover interchange-plus pricing, automatic volume discounts, and why Helcim can save businesses $3,000-$8,000 annually vs Square or Stripe.",
+  title: "Helcim Review 2026: Real Rates, Hidden Fees, Verdict",
+  description: "Helcim's interchange-plus pricing in 2026: real rates, what we like, what's missing, and when it beats Stripe and Square. No contracts, no fluff.",
   keywords: "Helcim review, Helcim pricing, best payment processor, interchange-plus pricing, low-fee payment processor, Helcim vs Square, Helcim vs Stripe",
-  alternates: {
-    canonical: "https://www.mypayadvisor.com/insights/helcim-review-2025",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  alternates: { canonical: "https://www.mypayadvisor.com/insights/helcim-review-2025" },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/helcim-review-2025",
-    title: "Helcim Review 2026: Is This the Best Low-Fee Payment Processor?",
-    description: "Complete Helcim review. Interchange-plus pricing, automatic volume discounts, and real cost comparisons.",
+    title: "Helcim Review 2026: Real Rates, Hidden Fees, Verdict",
+    description: "Real 2026 rates, what we like, what's missing, and when Helcim beats Stripe and Square. No contracts, no fluff.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Helcim Review 2026",
-    description: "Is Helcim the best low-fee payment processor? Our expert review.",
+    title: "Helcim Review 2026: Real Rates, Hidden Fees, Verdict",
+    description: "Real 2026 rates, when Helcim beats Stripe and Square, and what it doesn't do well.",
   },
 };
 
@@ -32,17 +28,18 @@ export default function HelcimReview2025Page() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Helcim Review 2026: Is This the Best Low-Fee Payment Processor?",
-    "description": "Comprehensive review of Helcim payment processor - interchange-plus pricing, automatic volume discounts, and transparent fees for businesses.",
+    "headline": "Helcim Review 2026: Real Rates, Hidden Fees, Verdict",
+    "description": "Helcim's interchange-plus pricing in 2026 — real rates, what we like, what's missing, and when it beats Stripe and Square.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
       "name": "Noah Briggs",
       "description": "A seasoned reporter focused on the payments ecosystem."
     },
+    "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": { "@type": "Organization", "name": "myPayAdvisor", "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" } },
     "datePublished": "2025-12-01",
-    "dateModified": "2025-12-07",
+    "dateModified": "2026-05-06",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/helcim-review-2025"
@@ -92,7 +89,15 @@ export default function HelcimReview2025Page() {
         "name": "Is there a contract with Helcim?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, Helcim operates on a month-to-month basis with no long-term contracts or cancellation fees."
+          "text": "No, Helcim operates on a month-to-month basis with no long-term contracts or cancellation fees. That makes it the safest test if you are switching from a tiered or flat-rate processor — you can roll back without penalty."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When does Helcim beat Stripe or Square on price?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Helcim's interchange-plus pricing typically beats Stripe and Square once monthly volume crosses about $20,000 to $25,000, especially on card-present and B2B card mixes. Below that, the volume-based discount tier matters less and Stripe or Square may be equivalent. Above $50,000 monthly, Helcim's automatic volume discounts compound — that is where the $3,000 to $8,000 annual savings figure comes from."
         }
       }
     ]
@@ -113,11 +118,11 @@ export default function HelcimReview2025Page() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Expert Review</span>
                 <span>•</span>
-                <span>Updated December 2026</span>
+                <span>Updated May 2026</span>
               </div>
-              
+
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Helcim Review 2026: Is This the Best Low-Fee Payment Processor?
+                Helcim Review 2026: Real Rates, Hidden Fees, Verdict
               </h1>
               
               <div className="flex items-center gap-4 text-lg mb-6">
@@ -145,6 +150,16 @@ export default function HelcimReview2025Page() {
                   <p className="text-sm text-muted-foreground">A seasoned reporter focused on the payments ecosystem. He covers trends in processing, billing systems, card networks, and emerging payment technologies.</p>
                 </div>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
 
             {/* Quick Verdict Box */}

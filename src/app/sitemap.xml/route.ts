@@ -52,7 +52,7 @@ export async function GET() {
   <!-- Comparisons Hub -->
   <url>
     <loc>https://www.mypayadvisor.com/comparisons</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -96,21 +96,21 @@ export async function GET() {
   <!-- Insight Articles -->
   <url>
     <loc>https://www.mypayadvisor.com/insights/online-vs-instore-payments</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.mypayadvisor.com/insights/helcim-review-2025</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://www.mypayadvisor.com/insights/payment-processor-fees-guide</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -124,7 +124,7 @@ export async function GET() {
 
   <url>
     <loc>https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -176,6 +176,15 @@ export async function GET() {
     <lastmod>2025-12-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  </url>
+
+
+  <!-- About / Reviewer -->
+  <url>
+    <loc>https://www.mypayadvisor.com/about/barak</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Legal Pages -->

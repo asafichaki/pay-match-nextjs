@@ -1,29 +1,25 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Credit Card Processing Fees Explained: Complete Guide (2026)",
-  description: "Complete 2026 guide to credit card processing fees explained. Learn how to calculate, compare, and reduce merchant fees to save thousands annually on payment processing.",
+  title: "Credit Card Processing Fees 2026: What You Actually Pay",
+  description: "Real 2026 credit card processing rates by industry, the 4 hidden fees most merchants miss, and the negotiation moves that drop your effective rate.",
   keywords: "credit card processing fees, merchant fees, interchange fees, payment processing costs, reduce processing fees, effective rate, tiered pricing, interchange-plus",
-  alternates: {
-    canonical: "https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  alternates: { canonical: "https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained" },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained",
-    title: "Credit Card Processing Fees Explained: Complete Guide (2026)",
-    description: "The definitive guide to understanding every dollar you pay in credit card fees, and proven strategies to save thousands annually.",
+    title: "Credit Card Processing Fees 2026: What You Actually Pay",
+    description: "Real 2026 rates by industry, the 4 hidden fees most merchants miss, and the negotiation moves that actually drop your effective rate.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Credit Card Processing Fees Explained",
-    description: "Complete guide to understanding and reducing credit card processing costs.",
+    title: "Credit Card Processing Fees 2026: What You Actually Pay",
+    description: "Real 2026 rates by industry, the hidden fees most merchants miss, and the moves that drop your effective rate.",
   },
 };
 
@@ -31,14 +27,15 @@ export default function CreditCardProcessingFeesExplainedPage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Credit Card Processing Fees Explained: Complete Guide to Understanding & Reducing Costs (2026)",
-    "description": "Complete 2026 guide to credit card processing fees explained. Learn how to calculate, compare, and reduce merchant fees to save thousands annually on payment processing.",
+    "headline": "Credit Card Processing Fees in 2026: What You Actually Pay (and How to Cut It)",
+    "description": "Real 2026 credit card processing rates by industry, the four hidden fees most merchants miss, and the negotiation moves that drop your effective rate.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
       "name": "Noah Briggs",
       "description": "A seasoned reporter focused on the payments ecosystem."
     },
+    "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": {
       "@type": "Organization",
       "name": "myPayAdvisor",
@@ -48,7 +45,7 @@ export default function CreditCardProcessingFeesExplainedPage() {
       }
     },
     "datePublished": "2025-01-15",
-    "dateModified": "2025-01-15",
+    "dateModified": "2026-05-06",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained"
@@ -73,10 +70,10 @@ export default function CreditCardProcessingFeesExplainedPage() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is a good credit card processing rate?",
+        "name": "What is a good credit card processing rate in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A good rate depends on your business type. Retail card-present businesses should aim for 1.7-2.2%, e-commerce for 2.4-2.8%, and restaurants for 1.9-2.4%."
+          "text": "A good effective rate depends on your channel. Retail card-present should land at 1.7% to 2.2%, e-commerce at 2.4% to 2.8%, and restaurants at 1.9% to 2.4%. If your effective rate is above the high end of your bracket, you are leaving real money on the table."
         }
       },
       {
@@ -84,7 +81,7 @@ export default function CreditCardProcessingFeesExplainedPage() {
         "name": "Can I negotiate credit card processing fees?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You can negotiate the processor markup (10-20% of total fees), but interchange and assessment fees are set by card networks and non-negotiable."
+          "text": "Yes — but only the processor markup, which is roughly 10% to 20% of the total. Interchange and assessment fees are set by Visa, Mastercard, Amex, and Discover and are the same across every processor. Above $50,000 monthly volume, a 0.10% to 0.30% markup reduction is realistic."
         }
       },
       {
@@ -92,7 +89,23 @@ export default function CreditCardProcessingFeesExplainedPage() {
         "name": "What is interchange-plus pricing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Interchange-plus pricing separates the actual interchange rate from the processor's markup, providing complete transparency and usually the lowest total cost for businesses processing over $10k monthly."
+          "text": "Interchange-plus pricing (IC+) shows you the actual interchange fee plus a fixed processor markup, instead of a blended rate. It is the most transparent model: when interchange goes down, your costs go down. IC++ adds the assessment fees as a separate line for even more clarity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my effective rate higher than the rate I was quoted?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three reasons usually account for the gap: tiered pricing buckets that downgrade rewards or corporate cards into a higher tier, monthly statement and PCI fees that compound at low volume, and non-qualified surcharges that are not visible on your contract. Pulling 90 days of statements and computing fees ÷ volume is the only honest measurement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What hidden credit card processing fees should I watch for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The four most common hidden fees are PCI compliance ($99 to $199 per year), monthly minimum or statement fees ($10 to $35 per month), batch fees ($0.10 to $0.25 per batch), and non-qualified surcharges (0.30% to 1.00% on downgraded transactions). Together they can add 0.20% to 0.50% to your effective rate."
         }
       }
     ]
@@ -113,11 +126,11 @@ export default function CreditCardProcessingFeesExplainedPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>•</span>
-                <span>Updated January 2026</span>
+                <span>Updated May 2026</span>
               </div>
-              
+
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Credit Card Processing Fees Explained: Complete Guide to Understanding & Reducing Costs
+                Credit Card Processing Fees in 2026: What You Actually Pay (and How to Cut It)
               </h1>
               
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
@@ -136,6 +149,16 @@ export default function CreditCardProcessingFeesExplainedPage() {
                   <p className="text-sm text-muted-foreground">A seasoned reporter focused on the payments ecosystem. He covers trends in processing, billing systems, card networks, and emerging payment technologies.</p>
                 </div>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
 
             {/* Table of Contents */}

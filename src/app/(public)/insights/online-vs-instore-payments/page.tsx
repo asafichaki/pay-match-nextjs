@@ -1,29 +1,25 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Online vs In-Store Payments: Key Differences Explained",
-  description: "Comprehensive breakdown of Card-Present vs Card-Not-Present payments. Learn transaction mechanics, cost differences, security requirements, and omnichannel strategies for 2025.",
+  title: "Online vs In-Store Payments 2026: The Real Cost Gap",
+  description: "Card-Not-Present runs 0.50–1.20% higher than Card-Present in 2026. Why, what it costs you per year, and the 4 levers that close the gap.",
   keywords: "online payments, in-store payments, card-present, card-not-present, payment processing costs, omnichannel payments, PCI compliance",
-  alternates: {
-    canonical: "https://www.mypayadvisor.com/insights/online-vs-instore-payments",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  alternates: { canonical: "https://www.mypayadvisor.com/insights/online-vs-instore-payments" },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/online-vs-instore-payments",
-    title: "Online vs In-Store Payments Explained",
-    description: "Card-Present vs Card-Not-Present: mechanics, costs, and security.",
+    title: "Online vs In-Store Payments 2026: The Real Cost Gap",
+    description: "CNP runs 0.50–1.20% higher than CP. What that costs your business per year, and the 4 levers that close it.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Online vs In-Store Payments",
-    description: "Key differences between payment types explained.",
+    title: "Online vs In-Store Payments 2026: The Real Cost Gap",
+    description: "CNP runs 0.50–1.20% higher than CP. What it costs and how to close it.",
   },
 };
 
@@ -31,17 +27,18 @@ export default function OnlineVsInStorePaymentsPage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Online vs. In-Store Payments: Understanding the Key Differences",
-    "description": "Comprehensive breakdown of Card-Present vs Card-Not-Present payments covering mechanics, costs, and security requirements.",
+    "headline": "Online vs In-Store Payments in 2026: Real Cost Gap and How to Close It",
+    "description": "Card-Not-Present runs 0.50–1.20% higher than Card-Present in 2026. Why, what it costs you per year, and the four levers that close the gap.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
-    "author": { 
-      "@type": "Person", 
+    "author": {
+      "@type": "Person",
       "name": "Noah Briggs",
       "description": "A seasoned reporter focused on the payments ecosystem."
     },
+    "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": { "@type": "Organization", "name": "myPayAdvisor", "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" } },
     "datePublished": "2025-11-18",
-    "dateModified": "2025-12-07",
+    "dateModified": "2026-05-06",
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.mypayadvisor.com/insights/online-vs-instore-payments" },
     "keywords": ["card-present", "card-not-present", "interchange fees", "omnichannel", "PCI compliance"],
     "articleSection": "Payment Processing"
@@ -66,7 +63,7 @@ export default function OnlineVsInStorePaymentsPage() {
         "name": "Why are online payment fees higher than in-store fees?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Online transactions are classified as Card-Not-Present (CNP), which carry higher fraud risk since the physical card cannot be verified. Interchange fees are higher to compensate for this elevated risk."
+          "text": "Online transactions are classified as Card-Not-Present (CNP), which carry higher fraud risk because the physical card cannot be verified. Interchange fees are set 0.50% to 1.20% higher to compensate for that elevated risk, and processors usually add a CNP markup on top."
         }
       },
       {
@@ -74,7 +71,31 @@ export default function OnlineVsInStorePaymentsPage() {
         "name": "What is the difference between Card-Present and Card-Not-Present transactions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Card-Present (CP) transactions occur when the physical card is present and verified at a terminal, such as chip or tap payments. Card-Not-Present (CNP) transactions occur remotely, such as online or phone orders, where the card cannot be physically verified."
+          "text": "Card-Present (CP) transactions happen when the physical card is verified at a terminal — chip, tap, or swipe. Card-Not-Present (CNP) transactions happen remotely — online checkout, phone orders, manual key-in. CP gets the lowest interchange because fraud risk is lowest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does Card-Not-Present cost compared to Card-Present?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On a typical credit card transaction in 2026, CP runs 1.7% to 2.2% effective and CNP runs 2.4% to 2.9%. The gap is roughly 0.50% to 1.20%, mostly driven by interchange. On $500,000 of annual CNP volume that is $2,500 to $6,000 per year."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I lower my online payment processing fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Four levers actually move the number on CNP: enable AVS and CVV checks (some interchange tiers require them), implement 3DS2 properly to qualify for the liability shift, send Level 2 and Level 3 data on B2B transactions, and switch to interchange-plus pricing if you are still on flat or tiered."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I use the same processor for online and in-store payments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If reconciliation matters and you operate omnichannel, yes — one processor with both rails simplifies settlement and reporting. If you want best-of-breed pricing per channel and have a finance team that can handle two settlement streams, splitting can save 10 to 25 basis points on your CNP volume."
         }
       }
     ]
@@ -95,22 +116,22 @@ export default function OnlineVsInStorePaymentsPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>•</span>
-                <span>Updated December 2025</span>
+                <span>Updated May 2026</span>
               </div>
-              
+
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Online vs. In-Store Payments: Understanding the Key Differences
+                Online vs In-Store Payments in 2026: The Real Cost Gap (and How to Close It)
               </h1>
-              
+
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                The mechanics, risks, security requirements, and costs for Card-Present and Card-Not-Present payments are fundamentally different. Here's how to optimize both for your business.
+                Card-Not-Present runs 0.50% to 1.20% higher than Card-Present in 2026. Here is exactly why, what it costs your business per year, and the four levers that actually close the gap.
               </p>
 
-              {/* Author Byline */}
+              {/* Author + Reviewer Byline */}
               <div className="flex items-center gap-4 pt-6 border-t border-border">
-                <img 
-                  src="/images/noah-briggs.png" 
-                  alt="Noah Briggs" 
+                <img
+                  src="/images/noah-briggs.png"
+                  alt="Noah Briggs"
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
@@ -118,6 +139,16 @@ export default function OnlineVsInStorePaymentsPage() {
                   <p className="text-sm text-muted-foreground">A seasoned reporter focused on the payments ecosystem. He covers trends in processing, billing systems, card networks, and emerging payment technologies.</p>
                 </div>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
 
             {/* Table of Contents */}

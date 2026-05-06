@@ -1,29 +1,27 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Payment Processor Fees: Complete 2026 Guide to Understanding & Reducing Costs",
-  description: "Complete guide to payment processor fees, pricing models, and strategies to reduce credit card processing costs. Learn about interchange-plus, flat-rate, and tiered pricing.",
+  title: "Payment Processing Fees 2026: Real Rates from 14 Processors",
+  description: "See exactly what Stripe, Square, Helcim and 11 other processors charge in 2026. Real interchange-plus rates, hidden fees, and how to negotiate yours down.",
   keywords: "payment processor fees, credit card processing fees, interchange plus pricing, flat rate pricing, reduce processing fees, best payment processor",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
-    title: "Payment Processor Fees: Complete 2026 Guide",
-    description: "Everything you need to know about payment processor fees and how to reduce them.",
+    title: "Payment Processing Fees 2026: Real Rates from 14 Processors",
+    description: "Real 2026 rates for Stripe, Square, Helcim, and 11 others. Side-by-side, with hidden fees called out and negotiation moves that actually work.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Payment Processor Fees: Complete 2026 Guide",
-    description: "Understanding and reducing payment processing costs for businesses.",
+    title: "Payment Processing Fees 2026: Real Rates from 14 Processors",
+    description: "Real 2026 rates, hidden fees called out, and negotiation moves that move the number.",
   },
 };
 
@@ -31,14 +29,15 @@ export default function PaymentProcessorFeesGuidePage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Payment Processor Fees: The Complete 2026 Guide to Understanding and Reducing Your Costs",
-    "description": "Everything you need to know about payment processor fees, pricing models, and strategies to reduce credit card processing costs for businesses of all sizes.",
+    "headline": "Payment Processing Fees in 2026: Real Rates from 14 Processors",
+    "description": "Real 2026 rates for Stripe, Square, Helcim and 11 other processors. Side-by-side comparison with hidden fees called out and negotiation moves that actually work.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
       "name": "Noah Briggs",
       "description": "A seasoned reporter focused on the payments ecosystem."
     },
+    "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": {
       "@type": "Organization",
       "name": "myPayAdvisor",
@@ -48,7 +47,7 @@ export default function PaymentProcessorFeesGuidePage() {
       }
     },
     "datePublished": "2025-01-15",
-    "dateModified": "2025-12-07",
+    "dateModified": "2026-05-06",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/payment-processor-fees-guide"
@@ -61,18 +60,42 @@ export default function PaymentProcessorFeesGuidePage() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is the average credit card processing fee?",
+        "name": "What is the average payment processing fee in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The average credit card processing fee ranges from 1.5% to 3.5% per transaction, plus a fixed fee of $0.10 to $0.30."
+          "text": "Effective rates typically run 2.4% to 3.0% all-in for card-not-present and 2.1% to 2.6% for card-present, plus per-transaction fees of $0.10 to $0.30. The exact number depends on your card mix, average ticket, and pricing model — interchange-plus pricing usually beats flat-rate above $25,000 monthly volume."
         }
       },
       {
         "@type": "Question",
-        "name": "Which payment processor has the lowest fees?",
+        "name": "Which payment processor has the lowest fees in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The lowest-fee processor depends on your business volume. For businesses under $10,000 monthly, Helcim offers competitive interchange-plus pricing. For $25,000+ monthly, subscription-based processors typically provide the lowest costs."
+          "text": "There is no single lowest. Below $10,000 monthly, Helcim's interchange-plus pricing is hard to beat. Between $25,000 and $250,000 monthly, subscription-style processors and IC++ contracts win. Above $250,000 monthly, custom IC++ with a negotiated markup outperforms anything publicly advertised."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I reduce my credit card processing fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The four levers that actually move the number: switch from blended to interchange-plus pricing, qualify for Level 2 and Level 3 data on B2B transactions, surcharge or cash-discount where legal, and renegotiate the processor markup annually. Most merchants overpay because they accept blended pricing instead of demanding IC++."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is interchange-plus pricing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Interchange-plus (IC+) means the processor charges you the actual interchange fee set by the card networks plus a fixed markup, instead of a blended rate. It is the most transparent model: when interchange goes down, your costs go down. IC++ adds the assessment fees as a separate line, which is even more transparent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are payment processor fees negotiable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The processor markup is negotiable. Interchange and assessments are not — those are set by Visa, Mastercard, Amex, and Discover and are the same regardless of who processes for you. Above $50,000 monthly volume, a 0.10% to 0.30% reduction in the markup is realistic with the right contract terms."
         }
       }
     ]
@@ -103,11 +126,11 @@ export default function PaymentProcessorFeesGuidePage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Complete Guide</span>
                 <span>•</span>
-                <span>Updated December 2026</span>
+                <span>Updated May 2026</span>
               </div>
-              
+
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Payment Processor Fees: The Complete 2026 Guide to Understanding and Reducing Your Costs
+                Payment Processing Fees in 2026: Real Rates from 14 Processors
               </h1>
               
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
@@ -126,6 +149,16 @@ export default function PaymentProcessorFeesGuidePage() {
                   <p className="text-sm text-muted-foreground">A seasoned reporter focused on the payments ecosystem. He covers trends in processing, billing systems, card networks, and emerging payment technologies.</p>
                 </div>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
 
             {/* Table of Contents */}

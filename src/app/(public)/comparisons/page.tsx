@@ -4,33 +4,71 @@ import { ArrowRight, TrendingUp } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Payment Processor Comparisons 2026",
-  description: "Compare top payment processors side-by-side. Square vs Stripe, PayPal vs Stripe, and more. Find the best payment solution for your business.",
-  keywords: "payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor, merchant services comparison",
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://www.mypayadvisor.com/comparisons",
-  },
+  title: "Compare Payment Processors 2026: Side-by-Side Rate Tables",
+  description: "Stripe, Square, PayPal, Helcim and more — real 2026 rates side-by-side. Pick the right processor in under 5 minutes with our match quiz.",
+  keywords: "compare payment processors, payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor 2026, merchant services comparison",
+  robots: { index: true, follow: true },
+  alternates: { canonical: "https://www.mypayadvisor.com/comparisons" },
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/comparisons",
-    title: "Payment Processor Comparisons 2026",
-    description: "Side-by-side comparisons of top payment processors. Find the best solution for your business.",
-    images: [
-      {
-        url: "https://www.mypayadvisor.com/og-logo.png",
-      },
-    ],
+    title: "Compare Payment Processors 2026: Side-by-Side Rate Tables",
+    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim and more — side by side. Find your match in 5 minutes.",
+    images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Payment Processor Comparisons 2026",
-    description: "Compare top payment processors side-by-side.",
+    title: "Compare Payment Processors 2026: Side-by-Side Rate Tables",
+    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim and more — side by side.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I compare payment processors fairly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compare on five things: effective rate at your card mix and ticket size, contract length and termination fee, settlement time, hidden fees (PCI, monthly minimum, batch, statement), and approval rate for your industry. Sticker rates rarely match what you actually pay."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Stripe cheaper than Square?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on your channel mix. For online-only and recurring payments under $25,000 monthly, Stripe and Square are roughly equivalent. For in-person retail, Square is usually cheaper because Stripe's hardware ecosystem is thinner. Above $80,000 monthly, both are beaten by interchange-plus alternatives like Helcim or Stax."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which payment processor has the lowest fees in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Below $10,000 monthly volume, Helcim's interchange-plus pricing is the standard answer. Between $25,000 and $250,000 monthly, subscription processors like Stax or negotiated IC++ contracts win. Above $250,000 monthly, custom IC++ contracts beat anything advertised publicly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use PayPal or Stripe for online payments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stripe wins on developer tooling, subscription billing, and global routing. PayPal wins on consumer trust at checkout — especially for first-time buyers. Many high-converting checkouts run both: Stripe as the primary processor and PayPal as an alternative button."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to switch payment processors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For an online merchant on a standard processor, switching takes 1 to 3 weeks: underwriting (2 to 7 days), integration testing (3 to 5 days), and DNS or webhook updates. For complex verticals, 2 to 6 weeks is realistic. Most contracts have a termination fee — calculate the breakeven before you start."
+      }
+    }
+  ]
 };
 
 const comparisons = [
@@ -116,6 +154,7 @@ export default function ComparisonsPage() {
     <>
       <JsonLd data={structuredData} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
@@ -137,13 +176,12 @@ export default function ComparisonsPage() {
                     id="comparisons-heading"
                     className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight"
                   >
-                    Payment Processor{" "}
-                    <span className="text-primary">Comparisons</span>
+                    Compare Payment Processors:{" "}
+                    <span className="text-primary">Real 2026 Rates Side-by-Side</span>
                   </h1>
 
                   <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-xl hidden md:block">
-                    Detailed side-by-side comparisons to help you choose the right payment
-                    processor for your unique business needs and budget.
+                    Stripe, Square, PayPal, Helcim and more — real interchange-plus rates and hidden fees, side by side. Pick your match in five minutes.
                   </p>
 
                   <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
