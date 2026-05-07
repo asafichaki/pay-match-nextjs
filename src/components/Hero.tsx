@@ -25,13 +25,12 @@ const Hero = () => {
               id="hero-heading"
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] tracking-tight mb-5"
             >
-              A real payments operator reviews your shortlist —{" "}
-              <span className="text-primary">so you stop overpaying</span>{" "}
-              on processing.
+              A real operator picks your shortlist, so you{" "}
+              <span className="text-primary">stop overpaying</span> on processing.
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
-              Reviewed by people who&apos;ve operated payment infrastructure at the $500M+ annual volume level. Tell us what you sell in 30 seconds and you get a personally-vetted shortlist plus the exact questions to ask each provider before you sign. No generic CRM. No bot.
+              30 seconds in. You get a vetted match plus the exact questions to ask before you sign. No CRM, no bot.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
