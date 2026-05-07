@@ -21,6 +21,7 @@ import crypto from "crypto";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 300;
 
 const SITE_BASE =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.mypayadvisor.com";
