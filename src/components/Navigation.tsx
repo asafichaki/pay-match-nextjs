@@ -48,7 +48,7 @@ const Navigation = () => {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6 ml-auto mr-6" role="menubar">
-            <Link 
+            <Link
               href="/"
               className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               role="menuitem"
@@ -56,15 +56,31 @@ const Navigation = () => {
             >
               Home
             </Link>
-            <button 
+            <Link
+              href="/comparisons"
+              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+              role="menuitem"
+              aria-label="Payment processor comparisons"
+            >
+              Comparisons
+            </Link>
+            <Link
+              href="/insights"
+              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+              role="menuitem"
+              aria-label="Read payment processing insights and guides"
+            >
+              Insights
+            </Link>
+            <button
               onClick={() => handleScrollToSection('voices')}
               className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
               role="menuitem"
-              aria-label="View customer testimonials"
+              aria-label="What operators say about each processor"
             >
               Voices
             </button>
-            <button 
+            <button
               onClick={() => handleScrollToSection('faq')}
               className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
               role="menuitem"
@@ -72,22 +88,6 @@ const Navigation = () => {
             >
               FAQ
             </button>
-            <Link 
-              href="/comparisons" 
-              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-              role="menuitem"
-              aria-label="Payment processor comparisons"
-            >
-              Comparisons
-            </Link>
-            <Link 
-              href="/insights" 
-              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-              role="menuitem"
-              aria-label="Read payment processing insights and guides"
-            >
-              Insights
-            </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-2">
@@ -127,39 +127,39 @@ const Navigation = () => {
               </SheetTrigger>
             <SheetContent side="right" className="w-[280px] sm:w-[320px]" aria-label="Mobile navigation">
               <nav className="flex flex-col gap-6 mt-8" role="navigation" aria-label="Mobile menu">
-                <Link 
+                <Link
                   href="/"
                   className="text-lg font-medium text-foreground hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Home
                 </Link>
-                <button 
-                  onClick={() => handleScrollToSection('voices')}
-                  className="text-lg font-medium text-foreground hover:text-primary transition-colors text-left bg-transparent border-none cursor-pointer"
-                >
-                  Voices
-                </button>
-                <button 
-                  onClick={() => handleScrollToSection('faq')}
-                  className="text-lg font-medium text-foreground hover:text-primary transition-colors text-left bg-transparent border-none cursor-pointer"
-                >
-                  FAQ
-                </button>
-                <Link 
-                  href="/comparisons" 
+                <Link
+                  href="/comparisons"
                   className="text-lg font-medium text-foreground hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Comparisons
                 </Link>
-                <Link 
-                  href="/insights" 
+                <Link
+                  href="/insights"
                   className="text-lg font-medium text-foreground hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Insights
                 </Link>
+                <button
+                  onClick={() => handleScrollToSection('voices')}
+                  className="text-lg font-medium text-foreground hover:text-primary transition-colors text-left bg-transparent border-none cursor-pointer"
+                >
+                  Voices
+                </button>
+                <button
+                  onClick={() => handleScrollToSection('faq')}
+                  className="text-lg font-medium text-foreground hover:text-primary transition-colors text-left bg-transparent border-none cursor-pointer"
+                >
+                  FAQ
+                </button>
                 <Button variant="cta" className="font-semibold w-full mt-4" onClick={handleGetOffers}>
                   Find My Match
                 </Button>

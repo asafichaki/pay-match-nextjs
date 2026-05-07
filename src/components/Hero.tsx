@@ -18,19 +18,19 @@ const Hero = () => {
           <div className="max-w-2xl">
             <p className="text-xs uppercase tracking-wider font-medium text-primary mb-4 inline-flex items-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5" />
-              Independent · Reviewed by payments operators
+              Independent payment experts
             </p>
 
             <h1
               id="hero-heading"
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] tracking-tight mb-5"
             >
-              A real operator picks your shortlist, so you{" "}
-              <span className="text-primary">stop overpaying</span> on processing.
+              Payment experts,{" "}
+              <span className="text-primary">only on your side.</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
-              30 seconds in. You get a vetted match plus the exact questions to ask before you sign. No CRM, no bot.
+              We answer to you, not to the processors. Tell us what you sell in 30 seconds and you get a vetted shortlist plus the exact questions to ask before you sign. No CRM, no bot.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
