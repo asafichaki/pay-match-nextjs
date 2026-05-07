@@ -217,7 +217,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
         </header>
 
         {article.youtube_id ? (
-          <div className="mb-10 overflow-hidden rounded-xl border bg-muted">
+          <div className="mb-8 overflow-hidden rounded-xl border bg-muted">
             <iframe
               src={`https://www.youtube.com/embed/${article.youtube_id}`}
               title={article.title}
@@ -227,18 +227,32 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
             />
           </div>
         ) : article.video_url ? (
-          <div className="mb-10 overflow-hidden rounded-xl border bg-muted">
+          <div className="mb-8 overflow-hidden rounded-xl border bg-muted">
             <video controls className="w-full" preload="metadata" src={article.video_url} />
           </div>
-        ) : article.audio_url ? (
-          <div className="mb-10">
-            <audio controls preload="metadata" src={article.audio_url} className="w-full" />
-          </div>
         ) : article.image_url ? (
-          <figure className="mb-10 overflow-hidden rounded-xl border border-border">
+          <figure className="mb-8 overflow-hidden rounded-xl border border-border">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={article.image_url} alt={article.title} className="aspect-video w-full object-cover" />
           </figure>
+        ) : null}
+
+        {article.audio_url && !article.youtube_id && !article.video_url ? (
+          <section aria-label="Audio overview" className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-4 sm:p-5">
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-primary">
+                Audio overview · 8 min listen
+              </p>
+              <a
+                href={article.audio_url}
+                download
+                className="text-[11px] sm:text-xs font-semibold text-primary hover:text-primary/80 underline underline-offset-2"
+              >
+                Download
+              </a>
+            </div>
+            <audio controls preload="metadata" src={article.audio_url} className="w-full" />
+          </section>
         ) : null}
 
         {article.key_findings && article.key_findings.length ? (
@@ -270,6 +284,25 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
         ) : null}
 
         <div className="article-body" dangerouslySetInnerHTML={{ __html: cleanBody }} />
+
+        {article.slide_image_urls && article.slide_image_urls.length ? (
+          <section className="mt-12 border-t border-border pt-8">
+            <p className="mb-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-primary">
+              Visual summary
+            </p>
+            <h2 className="mb-5 text-xl sm:text-2xl font-bold text-foreground">
+              The story in three slides.
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {article.slide_image_urls.map((u, i) => (
+                <figure key={i} className="overflow-hidden rounded-xl border border-border bg-muted">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={u} alt={`Slide ${i + 1}`} loading="lazy" className="w-full h-auto" />
+                </figure>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {article.faq_json && article.faq_json.length ? (
           <section id="faq" className="mt-12 border-t border-border pt-10">
