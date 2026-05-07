@@ -75,29 +75,30 @@ const TONE_STYLE: Record<Voice["tone"], { dot: string; label: string }> = {
 export default function ProcessorVoices() {
   return (
     <section id="voices" className="bg-background border-y border-border scroll-mt-20" aria-labelledby="voices-heading">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-16 md:py-24">
-        <div className="max-w-3xl mb-10 md:mb-14">
-          <p className="text-xs uppercase tracking-[0.18em] font-semibold text-primary mb-3">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 sm:py-14 md:py-20">
+        <div className="max-w-3xl mb-7 sm:mb-10 md:mb-14 text-center md:text-left mx-auto md:mx-0">
+          <p className="text-[11px] sm:text-xs uppercase tracking-[0.18em] font-semibold text-primary mb-2 sm:mb-3">
             Industry voices
           </p>
           <h2
             id="voices-heading"
-            className="font-display text-3xl md:text-5xl font-bold text-foreground tracking-tight leading-[1.05] mb-4"
+            className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mb-3 sm:mb-4"
           >
-            What operators actually say about their processors.
+            What operators actually say.
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            Real merchant sentiment pulled from Trustpilot, BBB, Indie Hackers, r/SaaS, and r/smallbusiness. The good and the ugly. We surface the patterns so you can verify them yourself.
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+            Real merchant sentiment from Trustpilot, BBB, Indie Hackers, r/SaaS. The good and the ugly. Verify the source yourself.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* 3 voices on mobile, all 6 from md up */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {VOICES.map((v, i) => {
             const tone = TONE_STYLE[v.tone];
             return (
               <article
                 key={i}
-                className="group relative flex flex-col rounded-2xl border border-border bg-card p-6 md:p-7 hover:border-primary/40 hover:shadow-[0_18px_40px_-20px_rgba(0,0,0,0.18)] transition-all"
+                className={`${i >= 3 ? "hidden sm:flex" : "flex"} group relative flex-col rounded-2xl border border-border bg-card p-5 sm:p-6 md:p-7 hover:border-primary/40 hover:shadow-[0_18px_40px_-20px_rgba(0,0,0,0.18)] transition-all`}
               >
                 {/* Top row — processor + tone */}
                 <div className="flex items-center justify-between mb-5">
@@ -125,7 +126,7 @@ export default function ProcessorVoices() {
           })}
         </div>
 
-        <div className="mt-10 md:mt-14 flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-border">
+        <div className="mt-8 sm:mt-10 md:mt-14 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center sm:justify-between gap-4 pt-6 sm:pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground max-w-xl">
             We track these patterns continuously. The shortlist we hand you reflects what merchants in your bracket and category actually report after 6+ months.
           </p>

@@ -42,30 +42,30 @@ export default function LeadCaptureBrief() {
     >
       {/* Decorative tinted band */}
       <div className="bg-gradient-to-br from-primary/[0.06] via-primary/[0.04] to-cta/[0.05]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-16 md:py-24">
-          <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 sm:py-14 md:py-20 lg:py-24">
+          <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-8 sm:gap-10 lg:gap-16 items-center">
             {/* Decorative orbs (clipped to band) */}
             <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/15 blur-3xl" aria-hidden="true" />
             <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-cta/12 blur-3xl" aria-hidden="true" />
 
             {/* Copy */}
-            <div className="relative">
-              <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-primary mb-4">
+            <div className="relative text-center lg:text-left">
+              <p className="inline-flex items-center gap-2 text-[11px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.18em] font-bold text-primary mb-3 sm:mb-4">
                 <FileText className="h-3.5 w-3.5" />
                 The Rate Brief · free
               </p>
               <h2
                 id="brief-heading"
-                className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.05] mb-5"
+                className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.1] sm:leading-[1.05] mb-4 sm:mb-5"
               >
                 Get the 2026 payment-rate brief.{" "}
                 <span className="text-primary">Free, no fluff.</span>
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 max-w-xl">
-                A short PDF plus a weekly two-minute note from the desk. Numbers, contract clauses, what changed. Nothing else.
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-5 sm:mb-6 max-w-xl mx-auto lg:mx-0">
+                A short PDF plus a weekly two-minute note. Numbers, contract clauses, what changed. Nothing else.
               </p>
 
-              <ul className="space-y-3 mb-2">
+              <ul className="space-y-2.5 sm:space-y-3 mb-2 max-w-xl mx-auto lg:mx-0 text-left">
                 {POINTS.map((p) => (
                   <li key={p} className="flex items-start gap-3 text-base text-foreground">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />

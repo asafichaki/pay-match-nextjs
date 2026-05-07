@@ -68,7 +68,7 @@ export default async function RateTable() {
       className="relative bg-gradient-to-b from-background via-background to-accent/30"
       aria-labelledby="rate-table-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-16 md:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 sm:py-14 md:py-20">
         {/* Heading row */}
         <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
           <div>

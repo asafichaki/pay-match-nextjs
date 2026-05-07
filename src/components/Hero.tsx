@@ -12,33 +12,33 @@ const Hero = () => {
       className="hero-flat relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 md:py-20 lg:py-24">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
-          {/* Copy column */}
-          <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-wider font-medium text-primary mb-4 inline-flex items-center gap-1.5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-8 sm:py-12 md:py-20 lg:py-24">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-center">
+          {/* Copy column — centered on mobile, left-aligned from lg */}
+          <div className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
+            <p className="text-[11px] sm:text-xs uppercase tracking-wider font-medium text-primary mb-3 sm:mb-4 inline-flex items-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5" />
               Independent payment experts
             </p>
 
             <h1
               id="hero-heading"
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] tracking-tight mb-5"
+              className="font-display text-[2rem] leading-[1.1] sm:text-5xl lg:text-6xl font-bold text-foreground sm:leading-[1.05] tracking-tight mb-4 sm:mb-5"
             >
               Payment experts,{" "}
               <span className="text-primary">only on your side.</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
-              We answer to you, not to the processors. Tell us what you sell in 30 seconds and you get a vetted shortlist plus the exact questions to ask before you sign. No CRM, no bot.
+            <p className="text-base sm:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
+              We answer to you, not to the processors. Tell us what you sell in 30 seconds, get a vetted shortlist plus the questions to ask before you sign.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
               <Button
                 variant="cta"
                 size="lg"
                 onClick={() => openSortingHat()}
-                className="text-base h-12 px-7"
+                className="text-base h-12 px-7 w-full sm:w-auto"
               >
                 Find my match
                 <ArrowRight className="h-4 w-4 ml-1" />
@@ -51,7 +51,7 @@ const Hero = () => {
               </Link>
             </div>
 
-            <p className="text-xs text-muted-foreground mt-6">
+            <p className="text-xs text-muted-foreground mt-5 sm:mt-6">
               Free. No credit card. First email lands in minutes.
             </p>
           </div>

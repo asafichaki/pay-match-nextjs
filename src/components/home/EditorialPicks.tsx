@@ -35,9 +35,9 @@ const PICKS: Pick[] = [
 export default function EditorialPicks() {
   return (
     <section className="bg-muted/30 border-y border-border" aria-labelledby="editorial-picks-heading">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-16 md:py-20">
-        <div className="mb-8">
-          <p className="text-xs uppercase tracking-wider font-medium text-primary mb-2">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 sm:py-14 md:py-20">
+        <div className="mb-6 sm:mb-8 text-center md:text-left">
+          <p className="text-[11px] sm:text-xs uppercase tracking-wider font-medium text-primary mb-2">
             Editorial · Independent review
           </p>
           <h2

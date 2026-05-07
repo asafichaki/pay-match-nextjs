@@ -24,24 +24,23 @@ const FAQ = () => {
         aria-hidden="true"
       />
 
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-16 md:py-24">
-        <div className="grid lg:grid-cols-[0.9fr_1.4fr] gap-10 lg:gap-16">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 sm:py-14 md:py-20 lg:py-24">
+        <div className="grid lg:grid-cols-[0.9fr_1.4fr] gap-7 sm:gap-10 lg:gap-16">
           {/* Left rail — sticky on desktop */}
-          <aside className="lg:sticky lg:top-24 lg:self-start">
-            <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-primary mb-4">
+          <aside className="lg:sticky lg:top-24 lg:self-start text-center lg:text-left">
+            <p className="inline-flex items-center gap-2 text-[11px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.18em] font-bold text-primary mb-3 sm:mb-4">
               <HelpCircle className="h-3.5 w-3.5" />
               Frequently asked
             </p>
             <h2
               id="faq-heading"
-              className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.05] mb-5"
+              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.1] sm:leading-[1.05] mb-3 sm:mb-5"
             >
               Quick answers,{" "}
               <span className="text-primary">straight from the desk.</span>
             </h2>
-            <p className="text-base text-foreground/70 leading-relaxed mb-8 max-w-md">
-              Pricing models, switching costs, hidden fees, and what the
-              shortlist covers. If yours isn&rsquo;t here, ask in the next step.
+            <p className="text-sm sm:text-base text-foreground/70 leading-relaxed mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0">
+              Pricing models, switching costs, hidden fees, what the shortlist covers.
             </p>
 
             <div className="rounded-2xl border border-border bg-card p-5">
