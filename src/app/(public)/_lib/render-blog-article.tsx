@@ -26,6 +26,9 @@ interface BlogArticleRow {
   schema_json: unknown;
   faq_json: { question: string; answer: string }[] | null;
   sources_json: { name: string; url: string }[] | null;
+  key_findings: string[] | null;
+  toc: { id: string; label: string }[] | null;
+  eyebrow: string | null;
   audio_url: string | null;
   video_url: string | null;
   youtube_id: string | null;
@@ -35,12 +38,23 @@ interface BlogArticleRow {
   updated_at: string;
 }
 
+const PLACEHOLDER_RE = /\[INTERNAL_LINK:[^\]]*\]/gi;
+const FALLBACK_INTERNAL_RE = /\(INTERNAL_LINK:[^)]*\)/gi;
+
+function sanitizeBody(html: string): string {
+  if (!html) return html;
+  return html
+    .replace(PLACEHOLDER_RE, "")
+    .replace(FALLBACK_INTERNAL_RE, "")
+    .replace(/[—–]/g, ", ");
+}
+
 async function fetchArticle(kind: Kind, slug: string): Promise<BlogArticleRow | null> {
   const supabase = await createSupabaseServerClient();
   const { data, error } = await (supabase as any)
     .from("blog_articles")
     .select(
-      "slug,kind,title,description,body_html,content,image_url,meta_title,meta_description,canonical_url,og_title,og_description,og_image,tags,schema_json,faq_json,sources_json,audio_url,video_url,youtube_id,slide_image_urls,author,published_at,updated_at",
+      "slug,kind,title,description,body_html,content,image_url,meta_title,meta_description,canonical_url,og_title,og_description,og_image,tags,schema_json,faq_json,sources_json,key_findings,toc,eyebrow,audio_url,video_url,youtube_id,slide_image_urls,author,published_at,updated_at",
     )
     .eq("kind", kind)
     .eq("slug", slug)
@@ -73,12 +87,24 @@ export async function buildBlogArticleMetadata(kind: Kind, slug: string): Promis
   };
 }
 
+function readingMinutes(body: string): number {
+  const words = (body || "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+  return Math.max(3, Math.round(words / 230));
+}
+
+function formatDate(d: string): string {
+  return new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+}
+
 export async function renderBlogArticle(kind: Kind, slug: string) {
   const article = await fetchArticle(kind, slug);
   if (!article) notFound();
 
   const url = article.canonical_url || `${SITE}/${kind}/${article.slug}`;
   const kindLabel = kind === "insights" ? "Insights" : "Comparisons";
+  const eyebrow = article.eyebrow || (kind === "insights" ? "Deep Dive" : "Comparison");
+  const minutes = readingMinutes(article.body_html || article.content);
+  const cleanBody = sanitizeBody(article.body_html || article.content);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -103,44 +129,53 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
     : null;
 
   return (
-    <article className="container mx-auto max-w-3xl px-4 py-10 sm:py-14">
+    <main className="container mx-auto px-4 py-8 lg:py-12">
       {article.schema_json ? <JsonLd data={article.schema_json} /> : null}
       <JsonLd data={breadcrumbSchema} />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
 
-      <nav className="mb-6 text-sm text-muted-foreground">
+      <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-foreground">Home</Link>
         <span className="mx-2">/</span>
         <Link href={`/${kind}`} className="hover:text-foreground">{kindLabel}</Link>
+        <span className="mx-2">/</span>
+        <span className="text-foreground">{article.title}</span>
       </nav>
 
-      <header className="mb-8">
-        <h1 className="font-display text-3xl sm:text-4xl font-bold leading-tight tracking-tight text-foreground">
-          {article.title}
-        </h1>
-        <p className="mt-4 text-lg text-muted-foreground">{article.description}</p>
-        <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
-          <span>By {article.author}</span>
-          <span aria-hidden>·</span>
-          <time dateTime={article.published_at || article.updated_at}>
-            {new Date(article.published_at || article.updated_at).toLocaleDateString("en-US", {
-              year: "numeric", month: "long", day: "numeric",
-            })}
-          </time>
-          {article.updated_at && article.updated_at !== article.published_at ? (
-            <>
-              <span aria-hidden>·</span>
-              <span>Updated {new Date(article.updated_at).toLocaleDateString("en-US", {
-                year: "numeric", month: "short", day: "numeric",
-              })}</span>
-            </>
-          ) : null}
-        </div>
-      </header>
+      <article className="mx-auto max-w-3xl">
+        <header className="mb-10 border-b border-border pb-8">
+          <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+            <span className="font-semibold text-primary">{eyebrow}</span>
+            <span className="text-muted-foreground">·</span>
+            <span className="text-muted-foreground">{minutes} min read</span>
+            <span className="text-muted-foreground">·</span>
+            <time className="text-muted-foreground" dateTime={article.published_at || article.updated_at}>
+              {formatDate(article.published_at || article.updated_at)}
+            </time>
+            {article.updated_at && article.published_at && article.updated_at.slice(0, 10) !== article.published_at.slice(0, 10) ? (
+              <>
+                <span className="text-muted-foreground">·</span>
+                <span className="text-muted-foreground">Updated {formatDate(article.updated_at)}</span>
+              </>
+            ) : null}
+          </div>
+          <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            {article.title}
+          </h1>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl">{article.description}</p>
+          <div className="mt-6 flex items-center gap-3 text-sm">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
+              {article.author?.[0] || "M"}
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">{article.author || "myPayAdvisor Editorial"}</p>
+              <p className="text-muted-foreground">Payment processing experts</p>
+            </div>
+          </div>
+        </header>
 
-      {article.video_url || article.youtube_id ? (
-        <div className="mb-8 overflow-hidden rounded-xl border bg-muted">
-          {article.youtube_id ? (
+        {article.youtube_id ? (
+          <div className="mb-10 overflow-hidden rounded-xl border bg-muted">
             <iframe
               src={`https://www.youtube.com/embed/${article.youtube_id}`}
               title={article.title}
@@ -148,38 +183,76 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
               allowFullScreen
               className="aspect-video w-full"
             />
-          ) : (
-            <video controls className="w-full" preload="metadata" src={article.video_url || undefined} />
-          )}
-        </div>
-      ) : article.audio_url ? (
-        <div className="mb-8">
-          <audio controls preload="metadata" src={article.audio_url} className="w-full" />
-        </div>
-      ) : article.image_url ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={article.image_url} alt="" className="mb-8 w-full rounded-xl border" />
-      ) : null}
+          </div>
+        ) : article.video_url ? (
+          <div className="mb-10 overflow-hidden rounded-xl border bg-muted">
+            <video controls className="w-full" preload="metadata" src={article.video_url} />
+          </div>
+        ) : article.audio_url ? (
+          <div className="mb-10">
+            <audio controls preload="metadata" src={article.audio_url} className="w-full" />
+          </div>
+        ) : null}
 
-      <div
-        className="article-html-content prose prose-neutral max-w-none dark:prose-invert"
-        dangerouslySetInnerHTML={{ __html: article.body_html || article.content }}
-      />
+        {article.key_findings && article.key_findings.length ? (
+          <section className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-7">
+            <h2 className="mb-3 text-base font-bold uppercase tracking-wider text-primary">Key findings</h2>
+            <ul className="space-y-2 text-foreground">
+              {article.key_findings.map((k, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
+                  <span dangerouslySetInnerHTML={{ __html: sanitizeBody(k) }} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
-      {article.sources_json && article.sources_json.length ? (
-        <section className="mt-12 border-t pt-8">
-          <h2 className="text-xl font-semibold">Sources</h2>
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-            {article.sources_json.map((s, i) => (
-              <li key={i}>
-                <a href={s.url} target="_blank" rel="noopener nofollow" className="underline hover:text-foreground">
-                  {s.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
-    </article>
+        {article.toc && article.toc.length >= 3 ? (
+          <nav aria-label="Table of contents" className="mb-10 rounded-xl bg-muted/50 p-6">
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">In this guide</h2>
+            <ol className="grid gap-1.5 text-sm sm:grid-cols-2">
+              {article.toc.map((t, i) => (
+                <li key={t.id} className="text-muted-foreground">
+                  <span className="mr-1 tabular-nums">{i + 1}.</span>
+                  <a href={`#${t.id}`} className="text-primary hover:underline">{t.label}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        ) : null}
+
+        <div className="article-body" dangerouslySetInnerHTML={{ __html: cleanBody }} />
+
+        {article.faq_json && article.faq_json.length ? (
+          <section id="faq" className="mt-12 border-t border-border pt-10">
+            <h2 className="mb-6 text-2xl font-bold text-foreground sm:text-3xl">Frequently asked questions</h2>
+            <div className="space-y-6">
+              {article.faq_json.map((q, i) => (
+                <div key={i}>
+                  <h3 className="mb-2 text-lg font-semibold text-foreground">{q.question}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{q.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {article.sources_json && article.sources_json.length ? (
+          <section className="mt-12 border-t border-border pt-8">
+            <h2 className="mb-3 text-base font-bold uppercase tracking-wider text-muted-foreground">Sources</h2>
+            <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+              {article.sources_json.map((s, i) => (
+                <li key={i}>
+                  <a href={s.url} target="_blank" rel="noopener nofollow" className="text-primary underline hover:text-primary/80">
+                    {s.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+      </article>
+    </main>
   );
 }
