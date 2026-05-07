@@ -43,30 +43,30 @@ const Navigation = () => {
             aria-label="myPayAdvisor - Home"
           >
             <CreditCard className="h-6 w-6 text-primary" aria-hidden="true" />
-            <span className="text-xl font-display font-bold text-foreground">myPayAdvisor</span>
+            <span className="text-2xl font-display font-bold text-foreground tracking-tight">myPayAdvisor</span>
           </Link>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6 ml-auto mr-6" role="menubar">
             <Link 
               href="/"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               role="menuitem"
               aria-label="Go to homepage"
             >
               Home
             </Link>
             <button 
-              onClick={() => handleScrollToSection('testimonials')}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
+              onClick={() => handleScrollToSection('voices')}
+              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
               role="menuitem"
               aria-label="View customer testimonials"
             >
-              Testimonials
+              Voices
             </button>
             <button 
               onClick={() => handleScrollToSection('faq')}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
+              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
               role="menuitem"
               aria-label="Frequently asked questions"
             >
@@ -74,7 +74,7 @@ const Navigation = () => {
             </button>
             <Link 
               href="/comparisons" 
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               role="menuitem"
               aria-label="Payment processor comparisons"
             >
@@ -82,7 +82,7 @@ const Navigation = () => {
             </Link>
             <Link 
               href="/insights" 
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               role="menuitem"
               aria-label="Read payment processing insights and guides"
             >
@@ -135,10 +135,10 @@ const Navigation = () => {
                   Home
                 </Link>
                 <button 
-                  onClick={() => handleScrollToSection('testimonials')}
+                  onClick={() => handleScrollToSection('voices')}
                   className="text-lg font-medium text-foreground hover:text-primary transition-colors text-left bg-transparent border-none cursor-pointer"
                 >
-                  Testimonials
+                  Voices
                 </button>
                 <button 
                   onClick={() => handleScrollToSection('faq')}

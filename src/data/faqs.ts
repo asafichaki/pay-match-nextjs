@@ -37,7 +37,7 @@ export const faqs: FAQ[] = [
   },
   {
     id: 7,
-    question: "What does the free shortlist from Barak actually include?",
-    answer: "Three providers picked against your specific vertical, monthly volume, and the operational pain you flagged. For each: realistic effective rate at your tier, settlement time, contract length and termination fee, and the specific questions to ask their sales team before you sign. No generic CRM. You get a personal reply from Barak.",
+    question: "What does the free matched shortlist actually include?",
+    answer: "Three providers picked against your specific vertical, monthly volume, and the operational pain you flagged. For each: realistic effective rate at your tier, settlement time, contract length and termination fee, and the specific questions to ask their sales team before you sign. No generic CRM, no bot — a real human reply lands in minutes.",
   },
 ];

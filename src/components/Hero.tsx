@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Linkedin } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "./ui/button";
 import { openSortingHat } from "./sorting-hat/useSortingHatModal";
-import { BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 const Hero = () => {
   return (
@@ -17,8 +16,9 @@ const Hero = () => {
         <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
           {/* Copy column */}
           <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-wider font-medium text-primary mb-4">
-              Reviewed by {BARAK_NAME} · {BARAK_TITLE}
+            <p className="text-xs uppercase tracking-wider font-medium text-primary mb-4 inline-flex items-center gap-1.5">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Independent · Reviewed by payments operators
             </p>
 
             <h1
@@ -31,7 +31,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
-              Barak ran payment ops at the $500M+ annual volume level. Tell him what you sell in 30 seconds and he sends you a personally-vetted shortlist plus the exact questions to ask each provider before you sign. No generic CRM. No bot.
+              Reviewed by people who&apos;ve operated payment infrastructure at the $500M+ annual volume level. Tell us what you sell in 30 seconds and you get a personally-vetted shortlist plus the exact questions to ask each provider before you sign. No generic CRM. No bot.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -57,32 +57,19 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Barak column — desktop only */}
+          {/* Visual column — desktop only */}
           <aside
-            className="hidden lg:flex flex-col items-center text-center w-[280px]"
-            aria-label={`About ${BARAK_NAME}`}
+            className="hidden lg:block w-[420px]"
+            aria-label="Sample shortlist preview"
           >
-            <div className="relative mb-4">
-              <Image
-                src="/images/barak-monogram.svg"
-                alt={`${BARAK_NAME} portrait`}
-                width={200}
-                height={200}
-                className="rounded-full border border-border shadow-sm"
-                priority
-              />
-            </div>
-            <p className="text-base font-semibold text-foreground">{BARAK_NAME}</p>
-            <p className="text-sm text-muted-foreground mb-3">{BARAK_TITLE}</p>
-            <a
-              href={BARAK_LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary border border-border rounded-full px-3 py-1.5"
-            >
-              <Linkedin className="h-3.5 w-3.5" />
-              LinkedIn
-            </a>
+            <Image
+              src="/images/hero-shortlist.svg"
+              alt="Sample personally-vetted shortlist of payment processors with effective rates"
+              width={420}
+              height={420}
+              className="w-full h-auto"
+              priority
+            />
           </aside>
         </div>
       </div>

@@ -38,7 +38,7 @@ export default function EditorialPicks() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-16 md:py-20">
         <div className="mb-8">
           <p className="text-xs uppercase tracking-wider font-medium text-primary mb-2">
-            Editorial · Reviewed by Barak
+            Editorial · Independent review
           </p>
           <h2
             id="editorial-picks-heading"

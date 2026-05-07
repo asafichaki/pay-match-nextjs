@@ -35,7 +35,7 @@ export default function StickyCTABar() {
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur border-t border-border shadow-lg animate-slide-up">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between gap-4 py-3">
         <p className="text-sm font-medium text-foreground hidden sm:block">
-          Get a personally-vetted shortlist from Barak in minutes
+          Get a personally-vetted payment-processor shortlist in minutes
         </p>
         <div className="flex items-center gap-2 ml-auto">
           <Button

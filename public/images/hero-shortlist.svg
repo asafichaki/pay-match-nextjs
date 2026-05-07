@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="Sample shortlist of payment processors with effective rates">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="hsl(184 35% 96%)" />
+      <stop offset="100%" stop-color="hsl(184 35% 92%)" />
+    </linearGradient>
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="6" />
+      <feOffset dx="0" dy="3" result="off" />
+      <feMerge><feMergeNode in="off"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background panel -->
+  <rect width="480" height="480" rx="24" fill="url(#bg)" />
+
+  <!-- Title pill -->
+  <g transform="translate(40 36)">
+    <rect width="180" height="26" rx="13" fill="hsl(184 50% 36%)" />
+    <text x="90" y="18" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="white" letter-spacing="1.5">YOUR SHORTLIST · 2026</text>
+  </g>
+
+  <!-- Card 1 — top pick -->
+  <g transform="translate(40 86)">
+    <rect width="400" height="100" rx="14" fill="white" stroke="hsl(184 50% 36%)" stroke-width="2" filter="url(#card-shadow)" />
+    <text x="22" y="32" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="700" fill="hsl(184 50% 36%)" letter-spacing="1">TOP PICK</text>
+    <text x="22" y="60" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="700" fill="hsl(220 13% 13%)">Provider A</text>
+    <text x="22" y="84" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="hsl(220 10% 38%)">Interchange-plus · Next-day funding</text>
+    <text x="378" y="50" text-anchor="end" font-family="ui-monospace, monospace" font-size="26" font-weight="700" fill="hsl(220 13% 13%)">2.15%</text>
+    <text x="378" y="74" text-anchor="end" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="hsl(184 50% 36%)" font-weight="600">−0.32% vs your rate</text>
+  </g>
+
+  <!-- Card 2 -->
+  <g transform="translate(40 206)">
+    <rect width="400" height="100" rx="14" fill="white" stroke="hsl(220 13% 91%)" stroke-width="1.5" filter="url(#card-shadow)" />
+    <text x="22" y="32" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="700" fill="hsl(220 13% 13%)">Provider B</text>
+    <text x="22" y="56" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="hsl(220 10% 38%)">Multi-acquirer routing · Capped reserve</text>
+    <text x="22" y="78" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="hsl(220 10% 50%)">Onboarding · 7 to 14 days</text>
+    <text x="378" y="50" text-anchor="end" font-family="ui-monospace, monospace" font-size="26" font-weight="700" fill="hsl(220 13% 13%)">2.28%</text>
+    <text x="378" y="74" text-anchor="end" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="hsl(184 50% 36%)" font-weight="600">−0.19% vs your rate</text>
+  </g>
+
+  <!-- Card 3 -->
+  <g transform="translate(40 326)">
+    <rect width="400" height="100" rx="14" fill="white" stroke="hsl(220 13% 91%)" stroke-width="1.5" filter="url(#card-shadow)" />
+    <text x="22" y="32" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="700" fill="hsl(220 13% 13%)">Provider C</text>
+    <text x="22" y="56" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="hsl(220 10% 38%)">Fastest go-live · Flat rate</text>
+    <text x="22" y="78" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="hsl(220 10% 50%)">Best if speed beats margin</text>
+    <text x="378" y="50" text-anchor="end" font-family="ui-monospace, monospace" font-size="26" font-weight="700" fill="hsl(220 13% 13%)">2.59%</text>
+    <text x="378" y="74" text-anchor="end" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="hsl(28 90% 50%)" font-weight="600">+0.12% vs your rate</text>
+  </g>
+
+  <!-- Footer line -->
+  <text x="240" y="460" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="hsl(220 10% 50%)">Illustrative example · real shortlist tailored to your business</text>
+</svg>

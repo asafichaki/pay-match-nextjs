@@ -1,77 +1,76 @@
 "use client";
 
-import Image from "next/image";
-import { ArrowRight, Linkedin } from "lucide-react";
+import { ArrowRight, ShieldCheck, FileSearch, MessagesSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { openSortingHat } from "@/components/sorting-hat/useSortingHatModal";
-import { BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN, BARAK_AREAS } from "@/data/personas/barak";
 
 const QUOTE =
   "Most merchants overpay 0.30 to 0.40 percent on processing. The provider markup is negotiable. Interchange is not. Knowing which is which is the whole game.";
 
+const PILLARS = [
+  {
+    icon: ShieldCheck,
+    title: "Operator-reviewed",
+    body: "Every shortlist is filtered by people who've run payment ops at $500M+ annual volume — not by an algorithm or a generic CRM.",
+  },
+  {
+    icon: FileSearch,
+    title: "Real rates, not sticker rates",
+    body: "We measure on effective rate at your card mix and ticket size, contract length, settlement time, and the four hidden fees most merchants miss.",
+  },
+  {
+    icon: MessagesSquare,
+    title: "Questions to ask before you sign",
+    body: "You get the specific contract clauses to push on, plus the exact questions to put to each provider's sales team — IC++, reserve cap, termination, fallback rate.",
+  },
+];
+
 export default function BarakBlock() {
   return (
-    <section className="bg-background border-y border-border" aria-labelledby="barak-block-heading">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-16 md:py-24">
-        <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-start">
-          <Image
-            src="/images/barak-monogram.svg"
-            alt={`${BARAK_NAME} portrait`}
-            width={200}
-            height={200}
-            className="rounded-full border border-border shadow-sm justify-self-center md:justify-self-start"
-          />
-          <div>
-            <p className="text-xs uppercase tracking-wider font-medium text-primary mb-3">
-              The expert behind your shortlist
-            </p>
-            <h2
-              id="barak-block-heading"
-              className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5"
-            >
-              {BARAK_NAME}, {BARAK_TITLE}
-            </h2>
+    <section className="bg-background border-y border-border" aria-labelledby="why-us-heading">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-16 md:py-24">
+        <div className="max-w-3xl mb-12">
+          <p className="text-xs uppercase tracking-wider font-medium text-primary mb-3">
+            How this is different
+          </p>
+          <h2
+            id="why-us-heading"
+            className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight"
+          >
+            Reviewed by people who&apos;ve been on the operator side of the table.
+          </h2>
+        </div>
 
-            <blockquote className="editorial-quote text-xl md:text-2xl text-foreground leading-snug mb-6 border-l-2 border-primary pl-5">
-              &ldquo;{QUOTE}&rdquo;
-            </blockquote>
+        <blockquote className="editorial-quote text-xl md:text-2xl text-foreground leading-snug mb-12 border-l-2 border-primary pl-5 max-w-3xl">
+          &ldquo;{QUOTE}&rdquo;
+          <footer className="mt-3 text-sm not-italic text-muted-foreground font-sans">
+            — From our 2026 rate review
+          </footer>
+        </blockquote>
 
-            <p className="text-sm text-muted-foreground mb-6">
-              Hands-on payments operator with experience running payment infrastructure at the $500M+ annual volume level. He works with merchants on pricing structure, acquirer routing, reserve negotiation, and onboarding for complex verticals.
-            </p>
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-10">
+          {PILLARS.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div key={p.title} className="flex flex-col">
+                <div className="h-10 w-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-3">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">{p.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+              </div>
+            );
+          })}
+        </div>
 
-            <div className="mb-7">
-              <p className="text-xs uppercase tracking-wider font-medium text-muted-foreground mb-2">
-                Areas of focus
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                {BARAK_AREAS.map((area) => (
-                  <li
-                    key={area}
-                    className="text-sm text-foreground bg-muted px-3 py-1 rounded-full border border-border"
-                  >
-                    {area}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Button variant="cta" size="lg" onClick={() => openSortingHat()}>
-                Talk to Barak
-                <ArrowRight className="h-4 w-4 ml-1" />
-              </Button>
-              <a
-                href={BARAK_LINKEDIN}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary"
-              >
-                <Linkedin className="h-4 w-4" />
-                Verify on LinkedIn
-              </a>
-            </div>
-          </div>
+        <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-border">
+          <Button variant="cta" size="lg" onClick={() => openSortingHat()}>
+            Get my matched shortlist
+            <ArrowRight className="h-4 w-4 ml-1" />
+          </Button>
+          <p className="text-sm text-muted-foreground">
+            Free. No credit card. First email lands in minutes.
+          </p>
         </div>
       </div>
     </section>
