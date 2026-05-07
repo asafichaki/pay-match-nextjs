@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import InlineStep1 from "@/components/sorting-hat/InlineStep1";
 import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
 import LeadCaptureBrief from "@/components/home/LeadCaptureBrief";
+import LatestUpdatesStrip from "@/components/home/LatestUpdatesStrip";
 import RateTable from "@/components/home/RateTable";
 import BarakBlock from "@/components/home/BarakBlock";
 import ProcessorVoices from "@/components/home/ProcessorVoices";
@@ -128,6 +129,9 @@ export default function HomePage() {
 
       {/* 2. Inline Sorting Hat Step 1 */}
       <InlineStep1 />
+
+      {/* 2b. Live updates strip (renders only if 3+ items) */}
+      <LatestUpdatesStrip />
 
       {/* 3. Lead capture — The Rate Brief */}
       <LeadCaptureBrief />

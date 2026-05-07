@@ -1,4 +1,46 @@
+import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
+
+async function fetchRecentWeekRoundups(): Promise<Array<{ slug: string; published_at: string }>> {
+  try {
+    const sb = getAdminSupabase();
+    const cutoff = new Date(Date.now() - 12 * 7 * 24 * 60 * 60 * 1000).toISOString();
+    const { data } = await (sb as any)
+      .from("updates_feed")
+      .select("slug,published_at")
+      .eq("status", "published")
+      .eq("type", "editorial")
+      .like("slug", "%-week-%")
+      .gte("published_at", cutoff)
+      .order("published_at", { ascending: false })
+      .limit(12);
+    return (data as Array<{ slug: string; published_at: string }>) || [];
+  } catch {
+    return [];
+  }
+}
+
 export async function GET() {
+  const roundups = await fetchRecentWeekRoundups();
+  const roundupXml = roundups
+    .map(
+      (r) => `
+  <url>
+    <loc>https://www.mypayadvisor.com/updates/week/${r.slug}</loc>
+    <lastmod>${r.published_at.slice(0, 10)}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`
+    )
+    .join("");
+
+  const updatesIndexXml = `
+  <url>
+    <loc>https://www.mypayadvisor.com/updates</loc>
+    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>`;
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
@@ -236,6 +278,7 @@ export async function GET() {
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+${updatesIndexXml}${roundupXml}
 
 </urlset>`;
 

@@ -19,6 +19,7 @@ import { supabase } from "@/integrations/supabase/client";
 const menuItems = [
   { title: "Dashboard", url: "/admin/dashboard", icon: LayoutDashboard },
   { title: "Funnel", url: "/admin/funnel", icon: Activity },
+  { title: "Updates", url: "/admin/updates", icon: Zap },
   { title: "CRM / Leads", url: "/admin/leads", icon: Users },
   { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
   { title: "Payment Providers", url: "/admin/providers", icon: CreditCard },

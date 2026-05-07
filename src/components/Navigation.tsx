@@ -2,16 +2,36 @@
 
 import { CreditCard, Menu } from "lucide-react";
 import { Button } from "./ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { openSortingHat } from "./sorting-hat/useSortingHatModal";
+import { supabase } from "@/integrations/supabase/client";
 
 const Navigation = () => {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hasHighSeverity, setHasHighSeverity] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const since = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
+      const { data } = await (supabase as any)
+        .from("updates_feed")
+        .select("id")
+        .eq("status", "published")
+        .eq("severity", "high")
+        .gte("published_at", since)
+        .limit(1);
+      if (!cancelled) setHasHighSeverity(Array.isArray(data) && data.length > 0);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const handleGetOffers = () => {
     openSortingHat();
@@ -71,6 +91,20 @@ const Navigation = () => {
               aria-label="Read payment processing insights and guides"
             >
               Insights
+            </Link>
+            <Link
+              href="/updates"
+              className="relative text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+              role="menuitem"
+              aria-label="Live payment industry updates"
+            >
+              Updates
+              {hasHighSeverity && (
+                <span
+                  className="absolute -top-1 -right-2 inline-block h-2 w-2 rounded-full bg-rose-500"
+                  aria-label="High-severity update in last 48 hours"
+                />
+              )}
             </Link>
             <button
               onClick={() => handleScrollToSection('voices')}
@@ -147,6 +181,19 @@ const Navigation = () => {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Insights
+                </Link>
+                <Link
+                  href="/updates"
+                  className="relative inline-flex items-center gap-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Updates
+                  {hasHighSeverity && (
+                    <span
+                      className="inline-block h-2 w-2 rounded-full bg-rose-500"
+                      aria-label="High-severity update in last 48 hours"
+                    />
+                  )}
                 </Link>
                 <button
                   onClick={() => handleScrollToSection('voices')}

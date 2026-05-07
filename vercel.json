@@ -8,6 +8,18 @@
     {
       "path": "/api/funnel/distribute",
       "schedule": "17 * * * *"
+    },
+    {
+      "path": "/api/updates/scrape-rates",
+      "schedule": "7 6 * * *"
+    },
+    {
+      "path": "/api/updates/pull-news",
+      "schedule": "23 */4 * * *"
+    },
+    {
+      "path": "/api/updates/roundup-generate",
+      "schedule": "0 9 * * 5"
     }
   ]
 }
