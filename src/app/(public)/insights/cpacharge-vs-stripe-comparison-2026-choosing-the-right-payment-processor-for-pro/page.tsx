@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: "CPACharge vs Stripe Comparison 2025/2026: Payment Processors",
@@ -101,7 +102,7 @@ const articleSchema = {
   headline: "CPACharge vs Stripe Comparison 2025/2026: Payment Processors",
   description: "Making a CPACharge vs Stripe comparison for 2025 or 2026? Our guide helps accounting & legal firms choose the ideal payment processor. Compare fees, features, and compliance. Choose wisely!",
   datePublished: "2026-04-02T07:08:41.508Z",
-  dateModified: "2026-04-02T07:08:41.508Z",
+  dateModified: "2026-05-07",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro"
@@ -110,6 +111,7 @@ const articleSchema = {
     "@type": "Organization",
     name: "myPayAdvisor",
   },
+  reviewedBy: BARAK_PERSON_SCHEMA,
   publisher: {
     "@type": "Organization",
     name: "myPayAdvisor",
@@ -130,11 +132,43 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is CPACharge cheaper than Stripe for accounting and law firms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On the headline rate Stripe is usually cheaper, around 2.9% plus $0.30 versus CPACharge at roughly 2.95% plus $2.95 per transaction with a $10 monthly fee. CPACharge wins on total cost only when trust accounting compliance, IOLTA segregation, and fee-on-client features outweigh the rate gap, which is common for legal and accounting firms billing larger invoices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does CPACharge separate trust funds from operating funds automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. CPACharge is built around IOLTA and trust account compliance, depositing client funds into the trust account while routing processing fees to the operating account. Stripe does not do this natively. Firms using Stripe must build the separation manually with separate Stripe accounts or accounting workflows, which raises bar association compliance risk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I pass processing fees to clients on either platform?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CPACharge supports surcharging and convenience-fee models out of the box, with state-specific compliance handled in the dashboard. Stripe also supports surcharging through its API and Stripe Tax, but the merchant is responsible for verifying state and card-network surcharge rules. For firms that want surcharging without engineering effort, CPACharge is the lower-friction option."
+      }
+    }
+  ]
+};
+
 export default function InsightPage() {
   return (
     <>
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
       <div className="container mx-auto px-4 pt-20 pb-16">
         <div className="flex gap-12 justify-center">
           <article className="max-w-3xl flex-1 min-w-0">
@@ -155,6 +189,16 @@ export default function InsightPage() {
                   Back to Insights
                 </Link>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
             <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
           </article>

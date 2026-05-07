@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: "Payment Platform Comparison 2026: Fees, Features & Best Fit for Business Growth",
@@ -103,7 +104,7 @@ const articleSchema = {
   headline: "Payment Platform Comparison 2026: Fees, Features & Best Fit for Business Growth",
   description: "Our 2026 payment platform comparison provides an expert analysis of fees, fraud tools, and integration capabilities to optimize merchant operations and drive strategic growth for diverse business needs.",
   datePublished: "2026-04-29T04:30:29.056Z",
-  dateModified: "2026-04-29T04:30:29.056Z",
+  dateModified: "2026-05-07",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business"
@@ -112,6 +113,7 @@ const articleSchema = {
     "@type": "Organization",
     name: "myPayAdvisor",
   },
+  reviewedBy: BARAK_PERSON_SCHEMA,
   publisher: {
     "@type": "Organization",
     name: "myPayAdvisor",
@@ -132,11 +134,43 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which payment platform has the best mix of fees and features for a small business in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most small businesses under $25,000 monthly volume, Helcim and Stripe deliver the best mix. Helcim's interchange-plus pricing with no monthly fee is ideal when your average ticket is over $50, while Stripe wins when developer flexibility, recurring billing, and global reach matter more than the lowest possible rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I compare effective rates across payment platforms fairly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take total fees paid in a month, divide by total processing volume, and multiply by 100. That single number is your effective rate, and it is the only fair way to compare a flat-rate platform against an interchange-plus or subscription platform. Quoted advertised rates almost never match the effective rate once monthly fees, batch fees, and downgrades are added in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does it make sense to switch payment platforms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Switch when your effective rate is more than 0.40% above what a comparable interchange-plus quote shows, when your platform cannot support a payment method your customers want, or when support response times are blocking revenue. The migration cost is usually recovered in 60 to 120 days at $25,000+ monthly volume."
+      }
+    }
+  ]
+};
+
 export default function InsightPage() {
   return (
     <>
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
       <div className="container mx-auto px-4 pt-20 pb-16">
         <div className="flex gap-12 justify-center">
           <article className="max-w-3xl flex-1 min-w-0">
@@ -157,6 +191,16 @@ export default function InsightPage() {
                   Back to Insights
                 </Link>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
             <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
           </article>

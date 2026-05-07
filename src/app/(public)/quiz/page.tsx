@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { CreditCard } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
-import QuizContent from "@/components/QuizContent";
+import SortingHat from "@/components/sorting-hat/SortingHat";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import WhyChoose from "@/components/WhyChoose";
@@ -104,12 +104,12 @@ export default function QuizPage() {
                 </h1>
               </div>
               <p className="text-sm sm:text-base text-muted-foreground">
-                Answer a few quick questions to get personalized recommendations tailored to your business needs
+                Four questions. Barak (Global Payments Manager) sends your matched shortlist personally.
               </p>
             </header>
 
-            {/* Quiz Content */}
-            <QuizContent showBackButton={true} />
+            {/* Sorting Hat — 4 step intake */}
+            <SortingHat variant="page" />
           </div>
         </div>
       </div>

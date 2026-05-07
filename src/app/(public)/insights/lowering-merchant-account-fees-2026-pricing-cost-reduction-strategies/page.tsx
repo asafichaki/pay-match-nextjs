@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: "Lowering Merchant Account Fees: 2026 Pricing & Cost Reduction Strategies",
@@ -99,7 +100,7 @@ const articleSchema = {
   headline: "Lowering Merchant Account Fees: 2026 Pricing & Cost Reduction Strategies",
   description: "Navigate 2026 merchant account fees with our practical guide. Discover strategies to reduce costs, understand pricing structures, and identify optimal solutions for your business.",
   datePublished: "2026-04-17T04:30:57.574Z",
-  dateModified: "2026-04-17T04:30:57.574Z",
+  dateModified: "2026-05-07",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/lowering-merchant-account-fees-2026-pricing-cost-reduction-strategies"
@@ -108,6 +109,7 @@ const articleSchema = {
     "@type": "Organization",
     name: "myPayAdvisor",
   },
+  reviewedBy: BARAK_PERSON_SCHEMA,
   publisher: {
     "@type": "Organization",
     name: "myPayAdvisor",
@@ -153,6 +155,16 @@ export default function InsightPage() {
                   Back to Insights
                 </Link>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
             <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
           </article>

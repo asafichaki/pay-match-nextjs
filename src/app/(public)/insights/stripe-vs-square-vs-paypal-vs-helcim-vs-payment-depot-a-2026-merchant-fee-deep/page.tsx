@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: "Stripe vs. Square vs. PayPal vs. Helcim vs. Payment Depot Fees 2026",
@@ -142,7 +143,7 @@ const articleSchema = {
   headline: "Stripe vs. Square vs. PayPal vs. Helcim vs. Payment Depot Fees 2026",
   description: "Compare 2026 fees for Stripe, Square, PayPal, Helcim, and Payment Depot. Get detailed breakdowns of flat-rate vs. interchange-plus pricing to find your true effective rate. Optimize your costs!",
   datePublished: "2026-04-20T04:45:55.412Z",
-  dateModified: "2026-04-20T04:45:55.412Z",
+  dateModified: "2026-05-07",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/stripe-vs-square-vs-paypal-vs-helcim-vs-payment-depot-a-2026-merchant-fee-deep"
@@ -151,6 +152,7 @@ const articleSchema = {
     "@type": "Organization",
     name: "myPayAdvisor",
   },
+  reviewedBy: BARAK_PERSON_SCHEMA,
   publisher: {
     "@type": "Organization",
     name: "myPayAdvisor",
@@ -196,6 +198,16 @@ export default function InsightPage() {
                   Back to Insights
                 </Link>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
             <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
           </article>

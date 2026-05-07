@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: "where can i compare the top payment platforms side by side?",
@@ -127,7 +128,7 @@ const articleSchema = {
   headline: "where can i compare the top payment platforms side by side?",
   description: "where can i compare the top payment platforms side by side? is a topic where unclear decisions create unnecessary cost, delay, and rework. This guide gives",
   datePublished: "2026-04-14T17:32:09.255Z",
-  dateModified: "2026-04-14T17:32:09.255Z",
+  dateModified: "2026-05-07",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/top-payment-platforms-compared-pricing-benchmarks-risk-factors-and-best-fit-scen"
@@ -136,6 +137,7 @@ const articleSchema = {
     "@type": "Organization",
     name: "myPayAdvisor",
   },
+  reviewedBy: BARAK_PERSON_SCHEMA,
   publisher: {
     "@type": "Organization",
     name: "myPayAdvisor",
@@ -156,11 +158,43 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which payment platforms should every merchant compare side by side in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compare at least one flat-rate provider (Stripe or Square), one interchange-plus provider (Helcim or Payment Depot), and one enterprise platform (Adyen or Worldpay) if your monthly volume is over $250,000. That spread covers the realistic decision space for almost every US merchant and exposes the trade-offs between simplicity, transparency, and negotiation leverage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What metrics matter most when comparing payment platforms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Effective rate, authorization approval rate, settlement timing, dispute win rate, and developer time to integrate. Headline rates do not capture downgrades or junk fees, and a 0.20% better rate is wiped out by a 2-point lower approval rate. Always pull at least 60 days of statements when modeling a switch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to switch payment platforms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a card-not-present merchant, a switch takes 2 to 6 weeks: underwriting and approval (5 to 10 business days), tokenized card vault migration (1 to 2 weeks), and parallel running for reconciliation (1 to 2 weeks). For card-present merchants, terminal reprovisioning adds another week. Plan the cutover for a low-volume window to limit transaction risk."
+      }
+    }
+  ]
+};
+
 export default function InsightPage() {
   return (
     <>
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
       <div className="container mx-auto px-4 pt-20 pb-16">
         <div className="flex gap-12 justify-center">
           <article className="max-w-3xl flex-1 min-w-0">
@@ -181,6 +215,16 @@ export default function InsightPage() {
                   Back to Insights
                 </Link>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
             <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
           </article>

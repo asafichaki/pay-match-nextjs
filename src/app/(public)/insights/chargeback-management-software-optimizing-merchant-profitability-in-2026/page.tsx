@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: "Chargeback Management Software: ROI, Pricing & Prevention Guide",
@@ -71,7 +72,7 @@ const articleSchema = {
   headline: "Chargeback Management Software: ROI, Pricing & Prevention Guide",
   description: "Evaluate chargeback management software to reduce dispute costs, boost win rates, and optimize payment processing. This 2026 guide covers pricing, trade-offs, and best-fit solutions. Protect your profits.",
   datePublished: "2026-04-23T04:45:43.116Z",
-  dateModified: "2026-04-23T04:45:43.116Z",
+  dateModified: "2026-05-07",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/chargeback-management-software-optimizing-merchant-profitability-in-2026"
@@ -80,6 +81,7 @@ const articleSchema = {
     "@type": "Organization",
     name: "myPayAdvisor",
   },
+  reviewedBy: BARAK_PERSON_SCHEMA,
   publisher: {
     "@type": "Organization",
     name: "myPayAdvisor",
@@ -100,11 +102,43 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is chargeback management software worth it for a small merchant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It pays for itself once chargebacks exceed about 0.5% of monthly transactions or your dispute win rate is under 30%. Below those thresholds, manual handling and a clean refund policy usually beat the software cost. Most platforms charge a flat fee plus a per-dispute fee, so model the breakeven against your actual chargeback volume before signing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a healthy chargeback win rate in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A merchant with strong evidence packages and well-tuned software wins 40 to 65 percent of disputes. Card-present and recurring-billing merchants tend to land at the high end, while card-not-present and digital-goods merchants land lower. Anything under 25% signals broken evidence collection or a process gap, not a bad customer base."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will chargeback software help me stay below the Visa and Mastercard monitoring thresholds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, when the prevention layer is configured correctly. Tools that integrate with Verifi CDRN, Ethoca, and Visa RDR resolve disputes before they become chargebacks, which keeps your chargeback ratio below the 0.9% Visa threshold and the 1.0% Mastercard threshold. Recovery-only tools that only respond after a dispute will not protect your ratio."
+      }
+    }
+  ]
+};
+
 export default function InsightPage() {
   return (
     <>
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
       <div className="container mx-auto px-4 pt-20 pb-16">
         <div className="flex gap-12 justify-center">
           <article className="max-w-3xl flex-1 min-w-0">
@@ -125,6 +159,16 @@ export default function InsightPage() {
                   Back to Insights
                 </Link>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Reviewed for technical accuracy by{" "}
+                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
+                  {BARAK_NAME}
+                </Link>
+                , {BARAK_TITLE} ·{" "}
+                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
+                  LinkedIn
+                </a>
+              </p>
             </header>
             <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
           </article>

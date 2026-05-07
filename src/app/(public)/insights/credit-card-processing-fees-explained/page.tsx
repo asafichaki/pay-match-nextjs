@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
+import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
 
 export const metadata: Metadata = {
   title: "Credit Card Processing Fees 2026: What You Actually Pay",
@@ -160,6 +161,8 @@ export default function CreditCardProcessingFeesExplainedPage() {
                 </a>
               </p>
             </header>
+
+            <EffectiveRateCalculator defaultChannel="online" />
 
             {/* Table of Contents */}
             <nav className="mb-12 p-6 bg-muted/30 rounded-lg">

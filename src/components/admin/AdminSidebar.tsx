@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { ClipboardList, LayoutDashboard, Users, FileText, CreditCard, MessageSquare, LogOut, Shield, BarChart3, Zap } from "lucide-react";
+import { ClipboardList, LayoutDashboard, Users, FileText, CreditCard, MessageSquare, LogOut, Shield, BarChart3, Zap, Activity } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -18,6 +18,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const menuItems = [
   { title: "Dashboard", url: "/admin/dashboard", icon: LayoutDashboard },
+  { title: "Funnel", url: "/admin/funnel", icon: Activity },
   { title: "CRM / Leads", url: "/admin/leads", icon: Users },
   { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
   { title: "Payment Providers", url: "/admin/providers", icon: CreditCard },
