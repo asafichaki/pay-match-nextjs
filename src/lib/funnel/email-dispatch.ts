@@ -25,7 +25,7 @@ interface DispatchInput {
 }
 
 interface DispatchResult {
-  importPath: string | null;
+  emailKey: string | null;
   nextState: FunnelState;
   props: Record<string, unknown>;
 }
@@ -46,83 +46,64 @@ export function chooseEmail(input: DispatchInput): DispatchResult {
   const trackDir =
     input.track === "B" ? "track-b" : input.track === "C" ? "track-c" : "track-a";
 
-  // Day 0 confirmation
+  // Day 0
   if (input.funnelState === "day0") {
-    return {
-      importPath: `@/emails/${trackDir}/Day0_Confirmation`,
-      nextState: "day1",
-      props: sharedProps,
-    };
+    return { emailKey: `${trackDir}/Day0_Confirmation`, nextState: "day1", props: sharedProps };
   }
 
-  // Day 1 shortlist
+  // Day 1
   if (input.funnelState === "day1") {
-    return {
-      importPath: `@/emails/${trackDir}/Day1_Shortlist`,
-      nextState: "day4",
-      props: sharedProps,
-    };
+    return { emailKey: `${trackDir}/Day1_Shortlist`, nextState: "day4", props: sharedProps };
   }
 
-  // Day 4 — pain-point-specific variants
+  // Day 4 — pain-point-specific
   if (input.funnelState === "day4") {
     if (input.track === "A") {
       if (input.trackVariant === "subscriptions" || input.painPoint === "failed_recurring") {
-        return { importPath: "@/emails/track-a/Day4_Subscriptions", nextState: "day9", props: sharedProps };
-      }
-      if (input.painPoint === "approval_rates") {
-        return { importPath: "@/emails/track-a/Day4_ApprovalRates", nextState: "day9", props: sharedProps };
+        return { emailKey: "track-a/Day4_Subscriptions", nextState: "day9", props: sharedProps };
       }
       if (input.painPoint === "new_markets") {
-        return { importPath: "@/emails/track-a/Day4_NewMarkets", nextState: "day9", props: sharedProps };
+        return { emailKey: "track-a/Day4_NewMarkets", nextState: "day9", props: sharedProps };
       }
-      // Default for Track A — approval rates wins as catch-all
-      return { importPath: "@/emails/track-a/Day4_ApprovalRates", nextState: "day9", props: sharedProps };
+      return { emailKey: "track-a/Day4_ApprovalRates", nextState: "day9", props: sharedProps };
     }
     if (input.track === "B") {
-      if (
-        input.businessType === "restaurant_hospitality" ||
-        input.painPoint === "in_person_costs"
-      ) {
-        return { importPath: "@/emails/track-b/Day4_RestaurantsHospitality", nextState: "day9", props: sharedProps };
+      if (input.businessType === "restaurant_hospitality" || input.painPoint === "in_person_costs") {
+        return { emailKey: "track-b/Day4_RestaurantsHospitality", nextState: "day9", props: sharedProps };
       }
-      return { importPath: "@/emails/track-b/Day4_RetailInPerson", nextState: "day9", props: sharedProps };
+      return { emailKey: "track-b/Day4_RetailInPerson", nextState: "day9", props: sharedProps };
     }
     if (input.track === "C") {
       if (input.painPoint === "funds_frozen") {
-        return { importPath: "@/emails/track-c/Day4_Reserves", nextState: "day9", props: sharedProps };
+        return { emailKey: "track-c/Day4_Reserves", nextState: "day9", props: sharedProps };
       }
       if (input.painPoint === "approval_rates") {
-        return { importPath: "@/emails/track-c/Day4_ApprovalRates", nextState: "day9", props: sharedProps };
+        return { emailKey: "track-c/Day4_ApprovalRates", nextState: "day9", props: sharedProps };
       }
       if (input.painPoint === "long_onboarding" || input.painPoint === "needs_approval") {
-        return { importPath: "@/emails/track-c/Day4_Onboarding", nextState: "day9", props: sharedProps };
+        return { emailKey: "track-c/Day4_Onboarding", nextState: "day9", props: sharedProps };
       }
-      return { importPath: "@/emails/track-c/Day4_Reserves", nextState: "day9", props: sharedProps };
+      return { emailKey: "track-c/Day4_Reserves", nextState: "day9", props: sharedProps };
     }
   }
 
   // Day 9
   if (input.funnelState === "day9") {
     if (input.track === "B") {
-      return { importPath: "@/emails/track-b/Day9_HiddenCosts", nextState: "day13", props: sharedProps };
+      return { emailKey: "track-b/Day9_HiddenCosts", nextState: "day13", props: sharedProps };
     }
     if (input.track === "C") {
-      return { importPath: "@/emails/track-c/Day9_Underwriting", nextState: "day13", props: sharedProps };
+      return { emailKey: "track-c/Day9_Underwriting", nextState: "day13", props: sharedProps };
     }
-    return { importPath: "@/emails/track-a/Day9_DemoQuestions", nextState: "day13", props: sharedProps };
+    return { emailKey: "track-a/Day9_DemoQuestions", nextState: "day13", props: sharedProps };
   }
 
-  // Day 13 — only fire if no click + no booking (caller checks)
+  // Day 13
   if (input.funnelState === "day13") {
-    return {
-      importPath: `@/emails/${trackDir}/Day13_Followup`,
-      nextState: "day17",
-      props: sharedProps,
-    };
+    return { emailKey: `${trackDir}/Day13_Followup`, nextState: "day17", props: sharedProps };
   }
 
-  // Day 17 — final
+  // Day 17
   if (input.funnelState === "day17") {
     const fileName =
       input.track === "B"
@@ -130,14 +111,10 @@ export function chooseEmail(input: DispatchInput): DispatchResult {
         : input.track === "C"
           ? "Day17_StayingCost"
           : "Day17_Decision";
-    return {
-      importPath: `@/emails/${trackDir}/${fileName}`,
-      nextState: "complete",
-      props: sharedProps,
-    };
+    return { emailKey: `${trackDir}/${fileName}`, nextState: "complete", props: sharedProps };
   }
 
-  return { importPath: null, nextState: input.funnelState, props: sharedProps };
+  return { emailKey: null, nextState: input.funnelState, props: sharedProps };
 }
 
 // Days since lead created -> what state should we be in

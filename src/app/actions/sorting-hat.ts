@@ -17,6 +17,7 @@ import {
   CALENDLY_URL,
   SHORTLIST_URL_BASE,
 } from "@/lib/funnel/resend-client";
+import { getEmail } from "@/lib/funnel/email-registry";
 
 const schema = z.object({
   fullName: z.string().min(1).max(120),
@@ -190,23 +191,12 @@ async function sendDay0Email(args: Day0Args) {
     calendlyUrl: CALENDLY_URL,
   };
 
-  let subject: string;
-  let react: React.ReactElement;
-
-  if (args.track === "B") {
-    const mod = await import("@/emails/track-b/Day0_Confirmation");
-    react = mod.default(sharedProps);
-    subject = mod.subject(sharedProps);
-  } else if (args.track === "C") {
-    const mod = await import("@/emails/track-c/Day0_Confirmation");
-    react = mod.default(sharedProps);
-    subject = mod.subject(sharedProps);
-  } else {
-    // Track A (default + subscriptions both share Day 0)
-    const mod = await import("@/emails/track-a/Day0_Confirmation");
-    react = mod.default(sharedProps);
-    subject = mod.subject(sharedProps);
-  }
+  const trackDir =
+    args.track === "B" ? "track-b" : args.track === "C" ? "track-c" : "track-a";
+  const mod = getEmail(`${trackDir}/Day0_Confirmation`);
+  if (!mod) throw new Error(`Day 0 email module not found for track ${args.track}`);
+  const subject = mod.subject(sharedProps);
+  const react = mod.default(sharedProps);
 
   await resend.emails.send({
     from: FUNNEL_FROM,

@@ -10,6 +10,7 @@ import {
   chooseEmail,
   expectedStateForAge,
 } from "@/lib/funnel/email-dispatch";
+import { getEmail } from "@/lib/funnel/email-registry";
 import {
   FUNNEL_FROM,
   FUNNEL_REPLY_TO,
@@ -142,15 +143,16 @@ export async function GET(req: NextRequest) {
         affiliateUrl: AFFILIATE_URL_BASE,
       });
 
-      if (!choice.importPath) {
+      if (!choice.emailKey) {
         results.push({ id: lead.id, action: "no_email" });
         continue;
       }
 
-      const mod = (await import(/* webpackIgnore: true */ choice.importPath)) as {
-        default: (props: Record<string, unknown>) => React.ReactElement;
-        subject: (props: Record<string, unknown>) => string;
-      };
+      const mod = getEmail(choice.emailKey);
+      if (!mod) {
+        results.push({ id: lead.id, action: "error", detail: `email key not found: ${choice.emailKey}` });
+        continue;
+      }
 
       const subject = mod.subject(choice.props);
       const react = mod.default(choice.props);
