@@ -19,7 +19,10 @@ alter table public.blog_articles
   add column if not exists internal_links text[],
   add column if not exists is_autopilot boolean not null default false,
   add column if not exists autopilot_run_id uuid,
-  add column if not exists index_in_sitemap boolean not null default true;
+  add column if not exists index_in_sitemap boolean not null default true,
+  add column if not exists key_findings jsonb,
+  add column if not exists toc jsonb,
+  add column if not exists eyebrow text;
 
 -- Backfill kind on any pre-existing rows so the check constraint is safe.
 update public.blog_articles
