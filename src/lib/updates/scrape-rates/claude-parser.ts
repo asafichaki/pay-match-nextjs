@@ -1,7 +1,7 @@
 // Claude-powered rate extractor. Runs the daily-budget gate first; if cap is
 // exceeded, throws BudgetBlockedError so the caller can record a partial run.
 
-import Anthropic from "@anthropic-ai/sdk";
+import { getAnthropicClient } from "@/lib/updates/anthropic-client";
 import { shouldRunClaude, estimateCostUsd } from "@/lib/updates/budget";
 
 const MODEL = "claude-sonnet-4-6";
@@ -51,10 +51,7 @@ export async function extractRates(html: string, providerName: string): Promise<
     throw new BudgetBlockedError();
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not set");
-
-  const client = new Anthropic({ apiKey });
+  const client = getAnthropicClient();
   const trimmed = trimHtml(html);
 
   const userPrompt = `Provider: ${providerName}

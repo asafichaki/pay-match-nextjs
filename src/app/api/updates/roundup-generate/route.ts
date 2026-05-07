@@ -5,7 +5,7 @@
 // The roundup is the only sitemap-indexed surface from this pipeline.
 
 import { NextRequest, NextResponse } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
+import { getAnthropicClient } from "@/lib/updates/anthropic-client";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import { authorizedCron, recordRun } from "@/lib/updates/cron-health";
 import { shouldRunClaude, estimateCostUsd } from "@/lib/updates/budget";
@@ -137,7 +137,7 @@ Each section is plain markdown paragraphs. Refer to items by processor and sourc
 Items:
 ${itemsBlock}`;
 
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const client = getAnthropicClient();
     const msg = await client.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 2000,

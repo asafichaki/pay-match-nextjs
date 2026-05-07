@@ -2,7 +2,7 @@
 // Always run shouldRunClaude() first; throws BudgetBlockedError if capped.
 // Output is run through voiceCheck(); voice score < 80 -> skip publish (caller's call).
 
-import Anthropic from "@anthropic-ai/sdk";
+import { getAnthropicClient } from "@/lib/updates/anthropic-client";
 import { shouldRunClaude, estimateCostUsd } from "@/lib/updates/budget";
 import { VOICE_PROMPT_FRAGMENT, voiceCheck } from "@/lib/updates/voice-rules";
 import type { VoiceCheckResult } from "@/lib/updates/voice-rules";
@@ -41,14 +41,8 @@ export interface ClassifierOutput {
   cost_usd_estimate: number;
 }
 
-let client: Anthropic | null = null;
-function getClient(): Anthropic {
-  if (!client) {
-    const apiKey = process.env.ANTHROPIC_API_KEY;
-    if (!apiKey) throw new Error("ANTHROPIC_API_KEY missing");
-    client = new Anthropic({ apiKey });
-  }
-  return client;
+function getClient() {
+  return getAnthropicClient();
 }
 
 function buildPrompt(item: ClassifierInput): string {
