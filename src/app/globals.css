@@ -13,9 +13,9 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 13% 13%;
 
-    --primary: 221 83% 53%;
+    --primary: 184 50% 36%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 221 83% 48%;
+    --primary-hover: 184 55% 30%;
 
     --secondary: 220 14% 96%;
     --secondary-foreground: 220 13% 13%;
@@ -23,8 +23,12 @@
     --muted: 220 14% 96%;
     --muted-foreground: 220 10% 38%;
 
-    --accent: 220 60% 97%;
-    --accent-foreground: 221 83% 53%;
+    --accent: 184 35% 96%;
+    --accent-foreground: 184 50% 26%;
+
+    --cta: 28 90% 50%;
+    --cta-foreground: 0 0% 100%;
+    --cta-hover: 28 90% 44%;
 
     --success: 158 64% 52%;
     --success-foreground: 0 0% 100%;
@@ -37,7 +41,7 @@
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 221 83% 53%;
+    --ring: 184 50% 36%;
 
     --radius: 0.75rem;
 
@@ -59,9 +63,9 @@
     --popover: 220 13% 18%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
-    --primary-hover: 221 83% 58%;
+    --primary: 184 45% 48%;
+    --primary-foreground: 220 13% 13%;
+    --primary-hover: 184 50% 54%;
 
     --secondary: 220 13% 23%;
     --secondary-foreground: 0 0% 98%;
@@ -71,6 +75,10 @@
 
     --accent: 220 13% 23%;
     --accent-foreground: 0 0% 98%;
+
+    --cta: 28 90% 56%;
+    --cta-foreground: 220 13% 13%;
+    --cta-hover: 28 90% 62%;
 
     --success: 158 64% 52%;
     --success-foreground: 0 0% 100%;
@@ -83,7 +91,7 @@
 
     --border: 220 13% 23%;
     --input: 220 13% 23%;
-    --ring: 221 83% 53%;
+    --ring: 184 45% 48%;
 
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.1);
     --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.2);
@@ -115,21 +123,14 @@
     @apply border-primary bg-primary/5 shadow-lg ring-2 ring-primary ring-offset-2;
   }
 
-  /* Mesh gradient for Hero section */
-  .hero-mesh-gradient {
-    background:
-      radial-gradient(ellipse at 20% 50%, hsl(221 83% 53% / 0.06), transparent 60%),
-      radial-gradient(ellipse at 80% 20%, hsl(220 60% 97% / 0.8), transparent 50%),
-      radial-gradient(ellipse at 60% 80%, hsl(43 96% 56% / 0.03), transparent 50%),
-      hsl(var(--background));
+  /* Hero — flat, calm, hairline-bordered. No gradient. */
+  .hero-flat {
+    @apply bg-background border-b border-border;
   }
-
-  .dark .hero-mesh-gradient {
-    background:
-      radial-gradient(ellipse at 20% 50%, hsl(221 83% 53% / 0.03), transparent 60%),
-      radial-gradient(ellipse at 80% 20%, hsl(220 60% 20% / 0.4), transparent 50%),
-      radial-gradient(ellipse at 60% 80%, hsl(43 96% 56% / 0.015), transparent 50%),
-      hsl(var(--background));
+  /* Pull-quote — used by Barak block */
+  .editorial-quote {
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
   }
 
   /* Section spacing standardization */

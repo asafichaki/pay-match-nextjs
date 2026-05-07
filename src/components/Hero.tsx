@@ -1,69 +1,91 @@
 "use client";
 
-import { ArrowRight, TrendingUp } from "lucide-react";
-import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
-import PaymentQuiz from "./PaymentQuiz";
-import TrustBadges from "./TrustBadges";
+import { openSortingHat } from "./sorting-hat/useSortingHatModal";
+import { BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 const Hero = () => {
-  const [quizOpen, setQuizOpen] = useState(false);
-
-  const getCurrentMonth = () => {
-    const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December",
-    ];
-    return months[new Date().getMonth()];
-  };
-
-  const currentYear = 2026;
-
   return (
     <section
-      className="relative overflow-hidden hero-mesh-gradient border-b border-border/40"
+      className="hero-flat relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="section-container py-16 md:py-24 lg:py-28">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Updated badge */}
-          <div className="inline-flex items-center gap-2 text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-6">
-            <TrendingUp className="h-4 w-4" aria-hidden="true" />
-            <time dateTime={new Date().toISOString().slice(0, 7)}>
-              Updated {getCurrentMonth()} {currentYear}
-            </time>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 md:py-20 lg:py-24">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
+          {/* Copy column */}
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-wider font-medium text-primary mb-4">
+              Reviewed by {BARAK_NAME} · {BARAK_TITLE}
+            </p>
+
+            <h1
+              id="hero-heading"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] tracking-tight mb-5"
+            >
+              A real payments operator reviews your shortlist —{" "}
+              <span className="text-primary">so you stop overpaying</span>{" "}
+              on processing.
+            </h1>
+
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
+              Barak ran payment ops at the $500M+ annual volume level. Tell him what you sell in 30 seconds and he sends you a personally-vetted shortlist plus the exact questions to ask each provider before you sign. No generic CRM. No bot.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Button
+                variant="cta"
+                size="lg"
+                onClick={() => openSortingHat()}
+                className="text-base h-12 px-7"
+              >
+                Find my match
+                <ArrowRight className="h-4 w-4 ml-1" />
+              </Button>
+              <Link
+                href="/insights/payment-processor-fees-guide"
+                className="text-sm text-foreground hover:text-primary underline underline-offset-4"
+              >
+                Or read the 2026 rate guide
+              </Link>
+            </div>
+
+            <p className="text-xs text-muted-foreground mt-6">
+              Free. No credit card. First email lands in minutes.
+            </p>
           </div>
 
-          <h1
-            id="hero-heading"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-foreground leading-tight mb-5"
+          {/* Barak column — desktop only */}
+          <aside
+            className="hidden lg:flex flex-col items-center text-center w-[280px]"
+            aria-label={`About ${BARAK_NAME}`}
           >
-            Compare Payment Processors &{" "}
-            <span className="text-primary">Save Up to 40%</span> on Fees
-          </h1>
-
-          <p className="hero-description text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Take our free 90-second quiz. Get matched with the best payment processor for your business type, volume, and priorities.
-          </p>
-
-          {/* Single CTA: Quiz */}
-          <Button
-            onClick={() => setQuizOpen(true)}
-            size="lg"
-            className="h-14 px-10 text-lg font-bold shadow-lg hover:shadow-xl transition-shadow"
-          >
-            Find My Perfect Match
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-
-          {/* Trust badges */}
-          <div className="mt-8">
-            <TrustBadges variant="compact" />
-          </div>
+            <div className="relative mb-4">
+              <Image
+                src="/images/barak-monogram.svg"
+                alt={`${BARAK_NAME} portrait`}
+                width={200}
+                height={200}
+                className="rounded-full border border-border shadow-sm"
+                priority
+              />
+            </div>
+            <p className="text-base font-semibold text-foreground">{BARAK_NAME}</p>
+            <p className="text-sm text-muted-foreground mb-3">{BARAK_TITLE}</p>
+            <a
+              href={BARAK_LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary border border-border rounded-full px-3 py-1.5"
+            >
+              <Linkedin className="h-3.5 w-3.5" />
+              LinkedIn
+            </a>
+          </aside>
         </div>
       </div>
-
-      <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </section>
   );
 };

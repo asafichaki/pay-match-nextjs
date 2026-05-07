@@ -19,12 +19,13 @@ import {
 interface Props {
   onComplete?: () => void;
   variant?: "popup" | "page";
+  initialBusinessType?: BusinessType | null;
 }
 
-export default function SortingHat({ onComplete, variant = "popup" }: Props) {
+export default function SortingHat({ onComplete, variant = "popup", initialBusinessType = null }: Props) {
   const router = useRouter();
-  const [step, setStep] = useState(1);
-  const [businessType, setBusinessType] = useState<BusinessType | null>(null);
+  const [step, setStep] = useState(initialBusinessType ? 2 : 1);
+  const [businessType, setBusinessType] = useState<BusinessType | null>(initialBusinessType);
   const [volumeTier, setVolumeTier] = useState<VolumeTier | null>(null);
   const [painPoint, setPainPoint] = useState<PainPoint | null>(null);
   const [fullName, setFullName] = useState("");

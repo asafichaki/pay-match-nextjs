@@ -3,13 +3,15 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { CreditCard } from "lucide-react";
 import SortingHat from "./sorting-hat/SortingHat";
+import type { BusinessType } from "@/lib/funnel/types";
 
 interface PaymentQuizProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  initialBusinessType?: BusinessType | null;
 }
 
-const PaymentQuiz = ({ open, onOpenChange }: PaymentQuizProps) => {
+const PaymentQuiz = ({ open, onOpenChange, initialBusinessType = null }: PaymentQuizProps) => {
   const handleClose = () => {
     onOpenChange(false);
   };
@@ -24,7 +26,11 @@ const PaymentQuiz = ({ open, onOpenChange }: PaymentQuizProps) => {
           </DialogTitle>
         </DialogHeader>
 
-        <SortingHat onComplete={handleClose} variant="popup" />
+        <SortingHat
+          onComplete={handleClose}
+          variant="popup"
+          initialBusinessType={initialBusinessType}
+        />
       </DialogContent>
     </Dialog>
   );

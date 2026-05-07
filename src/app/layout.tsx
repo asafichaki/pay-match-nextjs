@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -18,6 +18,14 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
   variable: "--font-display",
   weight: ["700", "800"],
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -181,7 +189,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${inter.className}`}>
+    <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${sourceSerif.variable} ${inter.className}`}>
       <head>
         <JsonLd data={websiteSchema} />
         <JsonLd data={organizationSchema} />

@@ -5,17 +5,16 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import PaymentQuiz from "./PaymentQuiz";
 import ThemeToggle from "./ThemeToggle";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { openSortingHat } from "./sorting-hat/useSortingHatModal";
 
 const Navigation = () => {
   const router = useRouter();
-  const [quizOpen, setQuizOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleGetOffers = () => {
-    setQuizOpen(true);
+    openSortingHat();
     setMobileMenuOpen(false);
   };
 
@@ -94,6 +93,7 @@ const Navigation = () => {
           <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
             <Button
+              variant="cta"
               className="font-semibold flex-shrink-0"
               onClick={handleGetOffers}
               aria-label="Find your perfect payment processor match"
@@ -106,6 +106,7 @@ const Navigation = () => {
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <Button
+              variant="cta"
               size="sm"
               className="font-semibold text-sm"
               onClick={handleGetOffers}
@@ -159,7 +160,7 @@ const Navigation = () => {
                 >
                   Insights
                 </Link>
-                <Button className="font-semibold w-full mt-4" onClick={handleGetOffers}>
+                <Button variant="cta" className="font-semibold w-full mt-4" onClick={handleGetOffers}>
                   Find My Match
                 </Button>
               </nav>
@@ -168,8 +169,6 @@ const Navigation = () => {
           </div>
         </div>
       </nav>
-      
-      <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </header>
   );
 };

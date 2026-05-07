@@ -33,6 +33,11 @@ export const faqs: FAQ[] = [
   {
     id: 6,
     question: "How do I choose the best payment processor for my small business?",
-    answer: "Consider these key factors: transaction fees (flat-rate vs. interchange-plus pricing), monthly costs, contract terms and cancellation fees, hardware requirements, integration with your existing systems, customer support availability, funding speed, and specific features for your industry. Our free quiz helps match you with the ideal processor based on your business needs.",
+    answer: "Five things to compare: effective rate at your card mix and ticket size, contract length and termination fee, settlement time, hidden fees (PCI, monthly minimum, batch, statement), and approval rate for your industry. Sticker rates rarely match what you actually pay.",
+  },
+  {
+    id: 7,
+    question: "What does the free shortlist from Barak actually include?",
+    answer: "Three providers picked against your specific vertical, monthly volume, and the operational pain you flagged. For each: realistic effective rate at your tier, settlement time, contract length and termination fee, and the specific questions to ask their sales team before you sign. No generic CRM. You get a personal reply from Barak.",
   },
 ];

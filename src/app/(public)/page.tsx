@@ -1,25 +1,23 @@
 import { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Hero from "@/components/Hero";
-import SocialProofBar from "@/components/SocialProofBar";
-import ProblemSection from "@/components/ProblemSection";
-import QuizPreview from "@/components/QuizPreview";
-import HowItWorks from "@/components/HowItWorks";
-import Testimonials from "@/components/Testimonials";
-import ProvidersList from "@/components/ProvidersList";
-import ComparisonTable from "@/components/ComparisonTable";
-import WhyChoose from "@/components/WhyChoose";
-import NewsletterSection from "@/components/NewsletterSection";
+import InlineStep1 from "@/components/sorting-hat/InlineStep1";
+import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
+import RateTable from "@/components/home/RateTable";
+import BarakBlock from "@/components/home/BarakBlock";
+import EditorialPicks from "@/components/home/EditorialPicks";
 import FAQ from "@/components/FAQ";
-import Insights from "@/components/Insights";
 import { faqs } from "@/data/faqs";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "myPayAdvisor - Compare Payment Processors & Save Up to 40% on Fees",
+    absolute: "myPayAdvisor — Reviewed by Barak Bachar, Global Payments Manager",
   },
-  description: "Compare top payment processors for your business. Find solutions with low fees, fast funding & 24/7 support. Free quiz matches you in 90 seconds.",
-  keywords: "payment processor comparison, payment gateway, credit card processing, merchant services, payment solutions, transaction fees, best payment processor 2026",
+  description:
+    "A real payments operator who's run $500M+ in volume reviews your shortlist. Real 2026 rates, exact questions to ask each processor, no generic CRM.",
+  keywords:
+    "payment processor comparison, payment processing rates 2026, merchant account negotiation, interchange-plus pricing, Barak Bachar payments expert",
   robots: {
     index: true,
     follow: true,
@@ -27,15 +25,16 @@ export const metadata: Metadata = {
     "max-snippet": -1,
     "max-video-preview": -1,
   },
-  authors: [{ name: "myPayAdvisor" }],
+  authors: [{ name: BARAK_NAME }],
   alternates: {
     canonical: "https://www.mypayadvisor.com",
   },
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com",
-    title: "Best Payment Processors 2026 | Compare & Save Up to 40%",
-    description: "Compare top payment processors. Find low fees, fast funding & expert support. Free quiz matches you in 90 seconds.",
+    title: "myPayAdvisor — Reviewed by Barak Bachar, Global Payments Manager",
+    description:
+      "A real payments operator reviews your shortlist. Real 2026 rates and the questions to ask before you sign with anyone.",
     images: [
       {
         url: "https://www.mypayadvisor.com/og-logo.png",
@@ -48,117 +47,89 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Payment Processors 2026 | Compare & Save",
-    description: "Compare payment processors and save up to 40% on fees. Free 90-second quiz matches you with the best fit.",
+    title: "myPayAdvisor — Reviewed by Barak Bachar",
+    description:
+      "Real 2026 processor rates, reviewed by a $500M+ payments operator. No generic CRM. Personal reply in minutes.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
 };
 
-// FAQ Schema
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
+  mainEntity: faqs.map((faq) => ({
     "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
 };
 
-// Organization Schema
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "myPayAdvisor",
-  "url": "https://www.mypayadvisor.com",
-  "logo": "https://www.mypayadvisor.com/og-logo.png",
-  "description": "Expert payment processing advisory and comparison platform helping businesses find the best payment solutions",
-  "foundingDate": "2024",
-  "sameAs": [],
-  "contactPoint": {
+  name: "myPayAdvisor",
+  url: "https://www.mypayadvisor.com",
+  logo: "https://www.mypayadvisor.com/og-logo.png",
+  description:
+    "Independent payment-processor advisory and comparison platform reviewed by Barak Bachar, Global Payments Manager.",
+  foundingDate: "2024",
+  sameAs: [BARAK_LINKEDIN],
+  employee: {
+    "@type": "Person",
+    name: BARAK_NAME,
+    jobTitle: "Global Payments Manager",
+    sameAs: [BARAK_LINKEDIN],
+    url: "https://www.mypayadvisor.com/about/barak",
+  },
+  contactPoint: {
     "@type": "ContactPoint",
-    "email": "info@mypayadvisor.com",
-    "contactType": "customer service",
-    "availableLanguage": ["English"]
-  }
+    email: "info@mypayadvisor.com",
+    contactType: "customer service",
+    availableLanguage: ["English"],
+  },
 };
 
-// WebPage Schema with speakable
+const personSchema = {
+  "@context": "https://schema.org",
+  ...BARAK_PERSON_SCHEMA,
+  worksFor: {
+    "@type": "Organization",
+    name: "myPayAdvisor",
+    url: "https://www.mypayadvisor.com",
+  },
+};
+
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "myPayAdvisor - Compare Payment Processors & Save Up to 40% on Fees",
-  "description": "Compare leading payment processors trusted by thousands of businesses. Find the best payment solution with transparent pricing, next-day funding, and 24/7 support.",
-  "url": "https://www.mypayadvisor.com/",
-  "mainEntity": {
-    "@type": "ItemList",
-    "name": "Top Payment Processors 2026",
-    "description": "Curated list of the best payment processors for businesses",
-    "itemListOrder": "https://schema.org/ItemListOrderDescending",
-    "numberOfItems": 5
-  },
-  "speakable": {
+  name: "myPayAdvisor — Reviewed by Barak Bachar, Global Payments Manager",
+  description:
+    "A real payments operator reviews your shortlist so you stop overpaying on processing.",
+  url: "https://www.mypayadvisor.com/",
+  reviewedBy: BARAK_PERSON_SCHEMA,
+  speakable: {
     "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", ".hero-description"]
-  }
+    cssSelector: ["h1"],
+  },
 };
 
-// BreadcrumbList Schema
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Home",
-    "item": "https://www.mypayadvisor.com/"
-  }]
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com/" },
+  ],
 };
 
-// Service Schema
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Payment Processor Comparison Service",
-  "description": "Free payment processor comparison and recommendation service for businesses of all sizes",
-  "provider": {
-    "@type": "Organization",
-    "name": "myPayAdvisor"
-  },
-  "serviceType": "Payment Processing Advisory",
-  "areaServed": {
-    "@type": "Country",
-    "name": "United States"
-  }
-};
-
-// HowTo Schema for quiz
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Find the Best Payment Processor for Your Business",
-  "description": "Use our free 90-second quiz to get matched with the ideal payment processor based on your business needs.",
-  "totalTime": "PT2M",
-  "step": [
-    {
-      "@type": "HowToStep",
-      "name": "Take the Quiz",
-      "text": "Answer 6 quick questions about your business type, volume, and priorities."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "See Your Matches",
-      "text": "Our algorithm analyzes 50+ data points to find processors that fit your specific needs."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Get Your Free Quote",
-      "text": "Connect directly with your matched processors and start saving on processing fees."
-    }
-  ]
+  name: "Personally-vetted payment processor shortlist",
+  description:
+    "A short list of payment processors picked by a Global Payments Manager for your specific vertical, monthly volume, and operational pain.",
+  provider: { "@type": "Organization", name: "myPayAdvisor" },
+  serviceType: "Payment Processing Advisory",
+  areaServed: { "@type": "Country", name: "United States" },
 };
 
 export default function HomePage() {
@@ -166,46 +137,33 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema} />
       <JsonLd data={organizationSchema} />
+      <JsonLd data={personSchema} />
       <JsonLd data={webPageSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={serviceSchema} />
-      <JsonLd data={howToSchema} />
 
-      {/* 1. Hero - Hook with single quiz CTA */}
+      {/* 1. Hero — Barak-first */}
       <Hero />
 
-      {/* 2. Social Proof - Trust immediately */}
-      <SocialProofBar />
+      {/* 2. Inline Sorting Hat Step 1 */}
+      <InlineStep1 />
 
-      {/* 3. Problem - Loss aversion activation */}
-      <ProblemSection />
+      {/* 3. Effective Rate Calculator */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-4">
+        <EffectiveRateCalculator defaultChannel="online" />
+      </div>
 
-      {/* 4. Quiz Preview - Solution to the problem */}
-      <QuizPreview />
+      {/* 4. Provider rate table — editorial */}
+      <RateTable />
 
-      {/* 5. How It Works - Reduce anxiety */}
-      <HowItWorks />
+      {/* 5. Barak credibility block */}
+      <BarakBlock />
 
-      {/* 6. Testimonials - Proof the process works */}
-      <Testimonials />
+      {/* 6. Editorial picks (3 cornerstones) */}
+      <EditorialPicks />
 
-      {/* 7. Providers - Now with context + trust + motivation */}
-      <ProvidersList />
-
-      {/* 8. Comparison Table - Detail for analytical buyers */}
-      <ComparisonTable />
-
-      {/* 9. Why Choose Us - Reinforce vs DIY */}
-      <WhyChoose />
-
-      {/* 10. Newsletter - Catch scrollers who didn't convert */}
-      <NewsletterSection />
-
-      {/* 11. FAQ - Objection handling */}
+      {/* 7. FAQ */}
       <FAQ />
-
-      {/* 12. Insights - SEO + internal links */}
-      <Insights />
     </>
   );
 }

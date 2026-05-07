@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import StickyCTABar from "@/components/StickyCTABar";
+import SortingHatModalHost from "@/components/sorting-hat/SortingHatModalHost";
 
 export default function PublicLayout({
   children,
@@ -17,6 +18,7 @@ export default function PublicLayout({
       <Footer />
       <ExitIntentPopup />
       <StickyCTABar />
+      <SortingHatModalHost />
     </>
   );
 }
