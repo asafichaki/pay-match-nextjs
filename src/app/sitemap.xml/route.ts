@@ -1,5 +1,21 @@
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 
+async function fetchAutopilotArticles(): Promise<Array<{ kind: string; slug: string; updated_at: string; published_at: string | null; index_in_sitemap: boolean }>> {
+  try {
+    const sb = getAdminSupabase();
+    const { data } = await (sb as any)
+      .from("blog_articles")
+      .select("kind,slug,updated_at,published_at,index_in_sitemap")
+      .eq("published", true)
+      .eq("index_in_sitemap", true)
+      .order("published_at", { ascending: false })
+      .limit(2000);
+    return (data as Array<{ kind: string; slug: string; updated_at: string; published_at: string | null; index_in_sitemap: boolean }>) || [];
+  } catch {
+    return [];
+  }
+}
+
 async function fetchRecentWeekRoundups(): Promise<Array<{ slug: string; published_at: string }>> {
   try {
     const sb = getAdminSupabase();
@@ -20,7 +36,24 @@ async function fetchRecentWeekRoundups(): Promise<Array<{ slug: string; publishe
 }
 
 export async function GET() {
-  const roundups = await fetchRecentWeekRoundups();
+  const [roundups, autopilotArticles] = await Promise.all([
+    fetchRecentWeekRoundups(),
+    fetchAutopilotArticles(),
+  ]);
+
+  const autopilotXml = autopilotArticles
+    .map((a) => {
+      const lastmod = (a.updated_at || a.published_at || new Date().toISOString()).slice(0, 10);
+      return `
+  <url>
+    <loc>https://www.mypayadvisor.com/${a.kind}/${a.slug}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    })
+    .join("");
+
   const roundupXml = roundups
     .map(
       (r) => `
@@ -278,7 +311,7 @@ export async function GET() {
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-${updatesIndexXml}${roundupXml}
+${updatesIndexXml}${roundupXml}${autopilotXml}
 
 </urlset>`;
 
