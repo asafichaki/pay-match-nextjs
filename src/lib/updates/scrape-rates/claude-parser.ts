@@ -90,8 +90,9 @@ Rules:
   const cost = estimateCostUsd(inputTokens, outputTokens);
 
   const text = resp.content
-    .filter((b): b is Anthropic.TextBlock => b.type === "text")
-    .map((b) => b.text)
+    .filter((b: { type: string }) => b.type === "text")
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .map((b: any) => b.text as string)
     .join("")
     .trim();
 
