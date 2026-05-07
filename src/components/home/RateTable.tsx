@@ -1,7 +1,7 @@
 // Editorial rate table for the homepage. Reads from Supabase server-side.
 
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, ShieldCheck, Star, ExternalLink } from "lucide-react";
 import { createClient } from "@supabase/supabase-js";
 
 interface ProviderRow {
@@ -15,6 +15,8 @@ interface ProviderRow {
   url: string | null;
   is_top_pick: boolean;
   display_order: number;
+  source_url: string | null;
+  last_verified: string | null;
 }
 
 async function fetchProviders(): Promise<ProviderRow[]> {
@@ -26,11 +28,11 @@ async function fetchProviders(): Promise<ProviderRow[]> {
   const { data } = await (supabase as any)
     .from("providers")
     .select(
-      "name, rating, rating_label, transaction_fees, setup_speed, funding_speed, customer_support, url, is_top_pick, display_order"
+      "name, rating, rating_label, transaction_fees, setup_speed, funding_speed, customer_support, url, is_top_pick, display_order, source_url, last_verified"
     )
     .eq("is_active", true)
     .order("display_order", { ascending: true })
-    .limit(8);
+    .limit(10);
   return (data || []) as ProviderRow[];
 }
 
@@ -84,8 +86,17 @@ export default async function RateTable() {
           </div>
           <p className="text-xs text-muted-foreground inline-flex items-center gap-2 bg-background border border-border rounded-full px-3 py-1.5">
             <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-            Independent review · Updated{" "}
-            {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
+            Pulled from public pricing pages · Last verified{" "}
+            {(() => {
+              const dates = rows.map((r) => r.last_verified).filter(Boolean) as string[];
+              if (!dates.length) return "May 2026";
+              const latest = dates.sort().reverse()[0];
+              return new Date(latest).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              });
+            })()}
           </p>
         </div>
 
@@ -114,10 +125,22 @@ export default async function RateTable() {
                     idx !== rows.length - 1 ? "border-b border-border/70" : ""
                   }`}
                 >
-                  <div className="font-display text-lg font-semibold text-foreground tracking-tight">
-                    {p.name}
+                  <div className="flex flex-col gap-1">
+                    <span className="font-display text-lg font-semibold text-foreground tracking-tight">
+                      {p.name}
+                    </span>
+                    {p.source_url && (
+                      <a
+                        href={p.source_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        Source <ExternalLink className="h-2.5 w-2.5" />
+                      </a>
+                    )}
                   </div>
-                  <div className="font-mono text-base text-foreground tabular-nums">
+                  <div className="font-mono text-sm text-foreground tabular-nums leading-snug">
                     {p.transaction_fees || "—"}
                   </div>
                   <div className="text-sm text-muted-foreground">{p.setup_speed || "—"}</div>
@@ -139,9 +162,21 @@ export default async function RateTable() {
               rows.map((p) => (
                 <div key={p.name} className="p-5">
                   <div className="flex items-start justify-between gap-3 mb-3">
-                    <span className="font-display text-lg font-semibold text-foreground tracking-tight">
-                      {p.name}
-                    </span>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-display text-lg font-semibold text-foreground tracking-tight">
+                        {p.name}
+                      </span>
+                      {p.source_url && (
+                        <a
+                          href={p.source_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary"
+                        >
+                          Source <ExternalLink className="h-2.5 w-2.5" />
+                        </a>
+                      )}
+                    </div>
                     <RatingPill rating={p.rating ? Number(p.rating) : null} label={p.rating_label} />
                   </div>
                   <div className="grid grid-cols-2 gap-3 text-sm">
