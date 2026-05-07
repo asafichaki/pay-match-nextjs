@@ -271,6 +271,47 @@
   letter-spacing: 0.05em;
 }
 
+/* Inline figures: <figure class="article-figure"><img/><figcaption/></figure> */
+.article-body .article-figure,
+.article-body figure {
+  margin: 2rem 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--muted) / 0.3);
+}
+.article-body .article-figure img,
+.article-body figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.article-body .article-figure figcaption,
+.article-body figure figcaption {
+  padding: 0.625rem 1rem 0.875rem;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+  border-top: 1px solid hsl(var(--border));
+}
+
+/* Section spacing — generous between top-level <section> blocks */
+.article-body > section + section { margin-top: 2.5rem; }
+.article-body > section { scroll-margin-top: 5rem; }
+
+/* Drop-cap on first paragraph of the first section (deep-dive elegance) */
+.article-body > section:first-of-type > p:first-of-type::first-letter {
+  font-family: var(--font-serif), Georgia, serif;
+  float: left;
+  font-size: 3.25rem;
+  line-height: 1;
+  padding: 0.25rem 0.6rem 0 0;
+  color: hsl(var(--primary));
+  font-weight: 600;
+}
+
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,

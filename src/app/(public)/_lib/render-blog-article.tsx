@@ -116,6 +116,47 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
     ],
   };
 
+  // Augment schema_json with ImageObject if hero exists
+  const articleSchema = (() => {
+    const base: any = article.schema_json && typeof article.schema_json === "object"
+      ? { ...(article.schema_json as object) }
+      : null;
+    if (!base) return null;
+    if (article.image_url) {
+      base.image = {
+        "@type": "ImageObject",
+        url: article.image_url,
+        width: 1600,
+        height: 900,
+      };
+    }
+    return base;
+  })();
+
+  // HowTo schema for deepdive playbook section
+  const howToSchema = (() => {
+    if (kind !== "insights") return null;
+    if (!cleanBody.includes('id="playbook"')) return null;
+    const playbookMatch = cleanBody.match(/<section[^>]*id="playbook"[^>]*>([\s\S]*?)<\/section>/i);
+    if (!playbookMatch) return null;
+    const items = Array.from(playbookMatch[1].matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi))
+      .map((m) => m[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim())
+      .filter((t) => t.length > 10);
+    if (items.length < 3) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: article.title,
+      description: article.description,
+      step: items.map((text, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: text.split(/[.:]/)[0].slice(0, 80),
+        text,
+      })),
+    };
+  })();
+
   const faqSchema = article.faq_json && article.faq_json.length
     ? {
         "@context": "https://schema.org",
@@ -130,9 +171,10 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
 
   return (
     <main className="container mx-auto px-4 py-8 lg:py-12">
-      {article.schema_json ? <JsonLd data={article.schema_json} /> : null}
+      {articleSchema ? <JsonLd data={articleSchema} /> : null}
       <JsonLd data={breadcrumbSchema} />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
+      {howToSchema ? <JsonLd data={howToSchema} /> : null}
 
       <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-foreground">Home</Link>
@@ -192,6 +234,11 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           <div className="mb-10">
             <audio controls preload="metadata" src={article.audio_url} className="w-full" />
           </div>
+        ) : article.image_url ? (
+          <figure className="mb-10 overflow-hidden rounded-xl border border-border">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={article.image_url} alt={article.title} className="aspect-video w-full object-cover" />
+          </figure>
         ) : null}
 
         {article.key_findings && article.key_findings.length ? (
