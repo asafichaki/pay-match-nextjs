@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import Hero from "@/components/Hero";
 import InlineStep1 from "@/components/sorting-hat/InlineStep1";
 import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
+import LeadCaptureBrief from "@/components/home/LeadCaptureBrief";
 import RateTable from "@/components/home/RateTable";
 import BarakBlock from "@/components/home/BarakBlock";
 import ProcessorVoices from "@/components/home/ProcessorVoices";
@@ -128,24 +129,27 @@ export default function HomePage() {
       {/* 2. Inline Sorting Hat Step 1 */}
       <InlineStep1 />
 
-      {/* 3. Effective Rate Calculator */}
+      {/* 3. Lead capture — The Rate Brief */}
+      <LeadCaptureBrief />
+
+      {/* 4. Effective Rate Calculator */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
         <EffectiveRateCalculator defaultChannel="online" />
       </div>
 
-      {/* 4. Provider rate table — editorial */}
+      {/* 5. Provider rate table — editorial */}
       <RateTable />
 
-      {/* 5. How this is different (operator review process) */}
+      {/* 6. How this is different (operator review process) */}
       <BarakBlock />
 
-      {/* 6. Industry voices — processor sentiment */}
+      {/* 7. Industry voices — processor sentiment */}
       <ProcessorVoices />
 
-      {/* 7. Editorial picks (3 cornerstones) */}
+      {/* 8. Editorial picks (3 cornerstones) */}
       <EditorialPicks />
 
-      {/* 8. FAQ */}
+      {/* 9. FAQ */}
       <FAQ />
     </>
   );

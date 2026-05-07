@@ -45,9 +45,9 @@ export default function InlineStep1() {
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-16 md:py-24">
         {/* Step header */}
         <div className="text-center mb-10 md:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs uppercase tracking-[0.18em] font-bold mb-5">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Step 1 of 4 · 30 seconds
+          <div className="inline-flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs uppercase tracking-[0.16em] font-bold mb-6 shadow-[0_6px_18px_-6px_hsl(184_50%_36%_/_0.5)]">
+            <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-white/15 text-[10px] font-black">1</span>
+            of 4 · 30 seconds
           </div>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.05] mb-4">
             What do you sell?

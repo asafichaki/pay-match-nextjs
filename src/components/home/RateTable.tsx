@@ -1,7 +1,7 @@
 // Editorial rate table for the homepage. Reads from Supabase server-side.
 
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, ShieldCheck, Star, Award } from "lucide-react";
 import { createClient } from "@supabase/supabase-js";
 
 interface ProviderRow {
@@ -111,19 +111,26 @@ export default async function RateTable() {
               rows.map((p, idx) => (
                 <div
                   key={p.name}
-                  className={`grid grid-cols-[1.6fr_1.1fr_0.9fr_0.9fr_1.2fr_1.1fr] gap-4 px-6 py-5 items-center transition-colors hover:bg-accent/40 ${
+                  className={`relative grid grid-cols-[1.6fr_1.1fr_0.9fr_0.9fr_1.2fr_1.1fr] gap-4 pl-7 pr-6 py-5 items-center transition-colors hover:bg-accent/40 ${
                     idx !== rows.length - 1 ? "border-b border-border/70" : ""
-                  } ${p.is_top_pick ? "bg-primary/[0.03]" : ""}`}
+                  }`}
                 >
-                  <div className="flex items-center gap-3">
+                  {p.is_top_pick && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r-full bg-primary"
+                    />
+                  )}
+                  <div className="flex flex-col gap-1">
+                    {p.is_top_pick && (
+                      <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] font-bold text-primary">
+                        <Award className="h-3 w-3" />
+                        Editor&rsquo;s choice
+                      </span>
+                    )}
                     <div className="font-display text-lg font-semibold text-foreground tracking-tight">
                       {p.name}
                     </div>
-                    {p.is_top_pick && (
-                      <span className="inline-flex items-center gap-1 rounded-md bg-primary text-primary-foreground text-[10px] uppercase tracking-[0.14em] font-bold px-2 py-1">
-                        Top pick
-                      </span>
-                    )}
                   </div>
                   <div className="font-mono text-base text-foreground tabular-nums">
                     {p.transaction_fees || "—"}
@@ -147,18 +154,25 @@ export default async function RateTable() {
               rows.map((p) => (
                 <div
                   key={p.name}
-                  className={`p-5 ${p.is_top_pick ? "bg-primary/[0.03]" : ""}`}
+                  className={`relative p-5 ${p.is_top_pick ? "pl-6" : ""}`}
                 >
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-display text-lg font-semibold text-foreground">
-                        {p.name}
-                      </span>
+                  {p.is_top_pick && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 top-5 bottom-5 w-[3px] rounded-r-full bg-primary"
+                    />
+                  )}
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="flex flex-col gap-1">
                       {p.is_top_pick && (
-                        <span className="inline-flex items-center rounded-md bg-primary text-primary-foreground text-[10px] uppercase tracking-[0.14em] font-bold px-2 py-1">
-                          Top pick
+                        <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] font-bold text-primary">
+                          <Award className="h-3 w-3" />
+                          Editor&rsquo;s choice
                         </span>
                       )}
+                      <span className="font-display text-lg font-semibold text-foreground tracking-tight">
+                        {p.name}
+                      </span>
                     </div>
                     <RatingPill rating={p.rating ? Number(p.rating) : null} label={p.rating_label} />
                   </div>
