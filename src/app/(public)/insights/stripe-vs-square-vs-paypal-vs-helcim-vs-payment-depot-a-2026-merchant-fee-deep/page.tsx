@@ -4,10 +4,21 @@ import { JsonLd } from "@/components/JsonLd";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Stripe vs. Square vs. PayPal vs. Helcim vs. Payment Depot Fees 2026",
-  description: "Compare 2026 fees for Stripe, Square, PayPal, Helcim, and Payment Depot. Get detailed breakdowns of flat-rate vs. interchange-plus pricing to find your true effective rate. Optimize your costs!",
+  title: "Stripe vs Square vs PayPal vs Helcim 2026: Real Rates",
+  description: "Real 2026 effective rates for Stripe, Square, PayPal, Helcim, and Payment Depot. With per-tier benchmarks and where each one wins.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/stripe-vs-square-vs-paypal-vs-helcim-vs-payment-depot-a-2026-merchant-fee-deep",
+  },
+  openGraph: {
+    title: "Stripe vs Square vs PayPal vs Helcim 2026: Real Rates",
+    description: "Real 2026 effective rates for Stripe, Square, PayPal, Helcim, and Payment Depot. With per-tier benchmarks and where each one wins.",
+    url: "https://www.mypayadvisor.com/insights/stripe-vs-square-vs-paypal-vs-helcim-vs-payment-depot-a-2026-merchant-fee-deep",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Stripe vs Square vs PayPal vs Helcim 2026: Real Rates",
+    description: "Real 2026 effective rates for Stripe, Square, PayPal, Helcim, and Payment Depot. With per-tier benchmarks and where each one wins.",
   },
   robots: {
     index: true,
@@ -140,8 +151,8 @@ const html = `<script type="application/ld+json">{"@context":"https://schema.org
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Stripe vs. Square vs. PayPal vs. Helcim vs. Payment Depot Fees 2026",
-  description: "Compare 2026 fees for Stripe, Square, PayPal, Helcim, and Payment Depot. Get detailed breakdowns of flat-rate vs. interchange-plus pricing to find your true effective rate. Optimize your costs!",
+  headline: "Stripe vs Square vs PayPal vs Helcim 2026: Real Rates",
+  description: "Real 2026 effective rates for Stripe, Square, PayPal, Helcim, and Payment Depot. With per-tier benchmarks and where each one wins.",
   datePublished: "2026-04-20T04:45:55.412Z",
   dateModified: "2026-05-07",
   mainEntityOfPage: {
@@ -169,7 +180,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
     { "@type": "ListItem", position: 2, name: "Insights", item: "https://www.mypayadvisor.com/insights" },
-    { "@type": "ListItem", position: 3, name: "Stripe vs. Square vs. PayPal vs. Helcim vs. Payment Depot Fees 2026", item: "https://www.mypayadvisor.com/insights/stripe-vs-square-vs-paypal-vs-helcim-vs-payment-depot-a-2026-merchant-fee-deep" }
+    { "@type": "ListItem", position: 3, name: "Stripe vs Square vs PayPal vs Helcim 2026: Real Rates", item: "https://www.mypayadvisor.com/insights/stripe-vs-square-vs-paypal-vs-helcim-vs-payment-depot-a-2026-merchant-fee-deep" }
   ]
 };
 
@@ -185,13 +196,13 @@ export default function InsightPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>&bull;</span>
-                <span>Updated April 2026</span>
+                <span>Updated May 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Stripe vs. Square vs. PayPal vs. Helcim vs. Payment Depot Fees 2026
+                Stripe vs Square vs PayPal vs Helcim 2026: Real Rates
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Compare 2026 fees for Stripe, Square, PayPal, Helcim, and Payment Depot. Get detailed breakdowns of flat-rate vs. interchange-plus pricing to find your true effective rate. Optimize your costs!
+                Real 2026 effective rates for Stripe, Square, PayPal, Helcim, and Payment Depot. With per-tier benchmarks and where each one wins.
               </p>
               <div className="pt-4 border-t border-border">
                 <Link href="/insights" className="text-sm text-primary hover:underline">

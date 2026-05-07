@@ -4,10 +4,21 @@ import { JsonLd } from "@/components/JsonLd";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "CPACharge vs Stripe Comparison 2025/2026: Payment Processors",
-  description: "Making a CPACharge vs Stripe comparison for 2025 or 2026? Our guide helps accounting & legal firms choose the ideal payment processor. Compare fees, features, and compliance. Choose wisely!",
+  title: "CPACharge vs Stripe 2026: Which Wins for Pro Services",
+  description: "CPACharge vs Stripe in 2026: real rates, IOLTA/trust handling, surcharging, and which one fits law firms, accountants, and other pro services.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro",
+  },
+  openGraph: {
+    title: "CPACharge vs Stripe 2026: Which Wins for Pro Services",
+    description: "CPACharge vs Stripe in 2026: real rates, IOLTA/trust handling, surcharging, and which one fits law firms, accountants, and other pro services.",
+    url: "https://www.mypayadvisor.com/insights/cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CPACharge vs Stripe 2026: Which Wins for Pro Services",
+    description: "CPACharge vs Stripe in 2026: real rates, IOLTA/trust handling, surcharging, and which one fits law firms, accountants, and other pro services.",
   },
   robots: {
     index: true,
@@ -99,8 +110,8 @@ const html = `<figure style="margin:0 0 24px;"><img src="https://images.unsplash
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "CPACharge vs Stripe Comparison 2025/2026: Payment Processors",
-  description: "Making a CPACharge vs Stripe comparison for 2025 or 2026? Our guide helps accounting & legal firms choose the ideal payment processor. Compare fees, features, and compliance. Choose wisely!",
+  headline: "CPACharge vs Stripe 2026: Which Wins for Pro Services",
+  description: "CPACharge vs Stripe in 2026: real rates, IOLTA/trust handling, surcharging, and which one fits law firms, accountants, and other pro services.",
   datePublished: "2026-04-02T07:08:41.508Z",
   dateModified: "2026-05-07",
   mainEntityOfPage: {
@@ -128,7 +139,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
     { "@type": "ListItem", position: 2, name: "Insights", item: "https://www.mypayadvisor.com/insights" },
-    { "@type": "ListItem", position: 3, name: "CPACharge vs Stripe Comparison 2025/2026: Payment Processors", item: "https://www.mypayadvisor.com/insights/cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro" }
+    { "@type": "ListItem", position: 3, name: "CPACharge vs Stripe 2026: Which Wins for Pro Services", item: "https://www.mypayadvisor.com/insights/cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro" }
   ]
 };
 
@@ -176,13 +187,13 @@ export default function InsightPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>\u2022</span>
-                <span>Updated April 2026</span>
+                <span>Updated May 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                CPACharge vs Stripe Comparison 2025/2026: Payment Processors
+                CPACharge vs Stripe 2026: Which Wins for Pro Services
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Making a CPACharge vs Stripe comparison for 2025 or 2026? Our guide helps accounting & legal firms choose the ideal payment processor. Compare fees, features, and compliance. Choose wisely!
+                CPACharge vs Stripe in 2026: real rates, IOLTA/trust handling, surcharging, and which one fits law firms, accountants, and other pro services.
               </p>
               <div className="pt-4 border-t border-border">
                 <Link href="/insights" className="text-sm text-primary hover:underline">

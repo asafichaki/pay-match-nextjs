@@ -4,10 +4,21 @@ import { JsonLd } from "@/components/JsonLd";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "High-Risk Merchant Processing Account: Fees & Approval Guide",
-  description: "A high-risk merchant processing account typically costs 2.9%-4.5% + $0.20-$0.30/txn in 2026. Learn to lower fees, navigate compliance, and secure approval. Get a quote!",
+  title: "High-Risk Merchant Processing 2026: Approval and Reserve Guide",
+  description: "High-risk merchant processing in 2026: real approval rates, reserve structures, onboarding timelines, and how to lower fees once you are live.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/high-risk-merchant-processing-account-a-2026-guide-to-lowering-fees-thriving",
+  },
+  openGraph: {
+    title: "High-Risk Merchant Processing 2026: Approval and Reserve Guide",
+    description: "High-risk merchant processing in 2026: real approval rates, reserve structures, onboarding timelines, and how to lower fees once you are live.",
+    url: "https://www.mypayadvisor.com/insights/high-risk-merchant-processing-account-a-2026-guide-to-lowering-fees-thriving",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "High-Risk Merchant Processing 2026: Approval and Reserve Guide",
+    description: "High-risk merchant processing in 2026: real approval rates, reserve structures, onboarding timelines, and how to lower fees once you are live.",
   },
   robots: {
     index: true,
@@ -191,8 +202,8 @@ const html = `<script type="application/ld+json">{"@context":"https://schema.org
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "High-Risk Merchant Processing Account: Fees & Approval Guide",
-  description: "A high-risk merchant processing account typically costs 2.9%-4.5% + $0.20-$0.30/txn in 2026. Learn to lower fees, navigate compliance, and secure approval. Get a quote!",
+  headline: "High-Risk Merchant Processing 2026: Approval and Reserve Guide",
+  description: "High-risk merchant processing in 2026: real approval rates, reserve structures, onboarding timelines, and how to lower fees once you are live.",
   datePublished: "2026-04-28T04:30:28.874Z",
   dateModified: "2026-05-07",
   mainEntityOfPage: {
@@ -220,7 +231,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
     { "@type": "ListItem", position: 2, name: "Insights", item: "https://www.mypayadvisor.com/insights" },
-    { "@type": "ListItem", position: 3, name: "High-Risk Merchant Processing Account: Fees & Approval Guide", item: "https://www.mypayadvisor.com/insights/high-risk-merchant-processing-account-a-2026-guide-to-lowering-fees-thriving" }
+    { "@type": "ListItem", position: 3, name: "High-Risk Merchant Processing 2026: Approval and Reserve Guide", item: "https://www.mypayadvisor.com/insights/high-risk-merchant-processing-account-a-2026-guide-to-lowering-fees-thriving" }
   ]
 };
 
@@ -236,13 +247,13 @@ export default function InsightPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>&bull;</span>
-                <span>Updated April 2026</span>
+                <span>Updated May 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                High-Risk Merchant Processing Account: Fees & Approval Guide
+                High-Risk Merchant Processing 2026: Approval and Reserve Guide
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                A high-risk merchant processing account typically costs 2.9%-4.5% + $0.20-$0.30/txn in 2026. Learn to lower fees, navigate compliance, and secure approval. Get a quote!
+                High-risk merchant processing in 2026: real approval rates, reserve structures, onboarding timelines, and how to lower fees once you are live.
               </p>
               <div className="pt-4 border-t border-border">
                 <Link href="/insights" className="text-sm text-primary hover:underline">

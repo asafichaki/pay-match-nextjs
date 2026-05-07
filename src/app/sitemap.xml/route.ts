@@ -179,6 +179,41 @@ export async function GET() {
   </url>
 
 
+  <url>
+    <loc>https://www.mypayadvisor.com/insights/free-statement-audit-playbook</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mypayadvisor.com/insights/payment-processor-negotiation-playbook</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mypayadvisor.com/insights/approval-rate-recovery-routing-acquirers-3ds</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mypayadvisor.com/insights/reserves-frozen-funds-capped-vs-rolling</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mypayadvisor.com/insights/in-person-payments-hardware-lockin-mdr</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- About / Reviewer -->
   <url>
     <loc>https://www.mypayadvisor.com/about/barak</loc>

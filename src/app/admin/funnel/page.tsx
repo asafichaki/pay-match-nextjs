@@ -148,6 +148,9 @@ export default function FunnelDashboard() {
           </p>
         </div>
         <div className="flex gap-2">
+          <Link href="/admin/funnel/distribution">
+            <Button variant="default" size="sm">Lead distribution</Button>
+          </Link>
           <Link href="/admin/dashboard">
             <Button variant="outline" size="sm">Classic dashboard</Button>
           </Link>

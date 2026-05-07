@@ -4,10 +4,21 @@ import { JsonLd } from "@/components/JsonLd";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Online Payment Processing Fees Comparison -2026: Navigating",
-  description: "Compare online payment processing fees for 2025-2026. Understand pricing models, hidden costs, and find the best processor for your business with MyPayAdvisor.",
+  title: "Online Payment Processing Fees 2026: Real Comparison",
+  description: "Real 2026 online payment processing fees compared across 14 providers, with effective rates by volume tier and the four hidden fees most merchants miss.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/online-payment-processing-fees-comparison-2026-navigating-the-evolving-landscape",
+  },
+  openGraph: {
+    title: "Online Payment Processing Fees 2026: Real Comparison",
+    description: "Real 2026 online payment processing fees compared across 14 providers, with effective rates by volume tier and the four hidden fees most merchants miss.",
+    url: "https://www.mypayadvisor.com/insights/online-payment-processing-fees-comparison-2026-navigating-the-evolving-landscape",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Online Payment Processing Fees 2026: Real Comparison",
+    description: "Real 2026 online payment processing fees compared across 14 providers, with effective rates by volume tier and the four hidden fees most merchants miss.",
   },
   robots: {
     index: true,
@@ -89,8 +100,8 @@ const html = `<script type="application/ld+json">{"@context":"https://schema.org
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Online Payment Processing Fees Comparison -2026: Navigating",
-  description: "Compare online payment processing fees for 2025-2026. Understand pricing models, hidden costs, and find the best processor for your business with MyPayAdvisor.",
+  headline: "Online Payment Processing Fees 2026: Real Comparison",
+  description: "Real 2026 online payment processing fees compared across 14 providers, with effective rates by volume tier and the four hidden fees most merchants miss.",
   datePublished: "2026-04-19T04:45:56.326Z",
   dateModified: "2026-05-07",
   mainEntityOfPage: {
@@ -118,7 +129,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
     { "@type": "ListItem", position: 2, name: "Insights", item: "https://www.mypayadvisor.com/insights" },
-    { "@type": "ListItem", position: 3, name: "Online Payment Processing Fees Comparison -2026: Navigating", item: "https://www.mypayadvisor.com/insights/online-payment-processing-fees-comparison-2026-navigating-the-evolving-landscape" }
+    { "@type": "ListItem", position: 3, name: "Online Payment Processing Fees 2026: Real Comparison", item: "https://www.mypayadvisor.com/insights/online-payment-processing-fees-comparison-2026-navigating-the-evolving-landscape" }
   ]
 };
 
@@ -134,13 +145,13 @@ export default function InsightPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>&bull;</span>
-                <span>Updated April 2026</span>
+                <span>Updated May 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Online Payment Processing Fees Comparison -2026: Navigating
+                Online Payment Processing Fees 2026: Real Comparison
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Compare online payment processing fees for 2025-2026. Understand pricing models, hidden costs, and find the best processor for your business with MyPayAdvisor.
+                Real 2026 online payment processing fees compared across 14 providers, with effective rates by volume tier and the four hidden fees most merchants miss.
               </p>
               <div className="pt-4 border-t border-border">
                 <Link href="/insights" className="text-sm text-primary hover:underline">

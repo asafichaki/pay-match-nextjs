@@ -4,10 +4,21 @@ import { JsonLd } from "@/components/JsonLd";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Payment Platform Comparison 2026: Fees, Features & Best Fit for Business Growth",
-  description: "Our 2026 payment platform comparison provides an expert analysis of fees, fraud tools, and integration capabilities to optimize merchant operations and drive strategic growth for diverse business needs.",
+  title: "Payment Platform Comparison 2026: Real Rates Side-by-Side",
+  description: "Real 2026 rates for Stripe, Square, PayPal, Helcim, Stax and Payment Depot side-by-side. Find the best fit for your volume in under 5 minutes.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business",
+  },
+  openGraph: {
+    title: "Payment Platform Comparison 2026: Real Rates Side-by-Side",
+    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim, Stax and Payment Depot side-by-side. Find the best fit for your volume in under 5 minutes.",
+    url: "https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Payment Platform Comparison 2026: Real Rates Side-by-Side",
+    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim, Stax and Payment Depot side-by-side. Find the best fit for your volume in under 5 minutes.",
   },
   robots: {
     index: true,
@@ -17,7 +28,7 @@ export const metadata: Metadata = {
 
 const html = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Payment Platform Comparison 2026: Fees, Features & Best Fit for Business Growth","description":"Our 2026 payment platform comparison provides an expert analysis of fees, fraud tools, and integration capabilities to optimize merchant operations and drive strategic growth for diverse business needs.","url":"https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business","datePublished":"2026-04-29T04:30:29.054Z","dateModified":"2026-04-29T04:30:29.054Z","author":{"@type":"Person","name":"David Feldman","jobTitle":"Senior Editor, Merchant Payments","description":"David Feldman has been covering the US payments industry since 2014, with focus on interchange economics, processor comparisons, chargeback defense, and the regulatory environment around merchant payment acceptance. He translates card-network complexity into practical guidance for small and mid-market merchants.","url":"https://seo.joyohub.com/authors/david-feldman","sameAs":["https://www.linkedin.com/in/assafichaki/"],"knowsAbout":["payment processing","merchant services","interchange fees","chargeback defense","POS systems","payment gateways","card networks","PCI compliance"],"worksFor":{"@type":"Organization","name":"MyPayAdvisor","url":"https://www.mypayadvisor.com"}},"editor":{"@type":"Person","name":"Assaf Ichaki","jobTitle":"Managing Editor","sameAs":["https://www.linkedin.com/in/assafichaki/"]},"publisher":{"@type":"Organization","name":"MyPayAdvisor","url":"https://www.mypayadvisor.com","logo":{"@type":"ImageObject","url":"https://www.mypayadvisor.com/logo.png"},"description":"Independent payment-processor advisory covering merchant fees, gateway comparisons, POS systems, and chargeback management."},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business"},"image":{"@type":"ImageObject","url":"https://bydwilwxiczwfarolhuu.supabase.co/storage/v1/object/public/article-images/477d713d-8ef1-432b-a7c6-c97ec83e04d5/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-b-hero.png","caption":"A customer taps a smartphone on a Square payment terminal, illustrating a seamless payment platform comparison experience in a modern retail setting.","width":1200,"height":675},"wordCount":2164,"articleSection":"payment","inLanguage":"en-US","isAccessibleForFree":true,"copyrightHolder":{"@type":"Organization","name":"MyPayAdvisor","url":"https://www.mypayadvisor.com","logo":{"@type":"ImageObject","url":"https://www.mypayadvisor.com/logo.png"},"description":"Independent payment-processor advisory covering merchant fees, gateway comparisons, POS systems, and chargeback management."},"copyrightYear":2026,"keywords":"payment platform comparison, best payment platforms 2026, payment processing fees, fraud prevention payments, payment gateway integration, B2B payment solutions, SaaS payment processing, recurring billing platforms","citation":["https://www.linkedin.com/in/assafichaki/"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business#speakable","url":"https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1","h2","h3","[data-speakable]",".article-summary"],"xpath":["/html/head/title","/html/head/meta[@name='description']/@content"]}}</script>
-<h1>Payment Platform Comparison 2026: Fees, Features, and Best Fit for Your Business</h1><div class="article-byline" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;font-size:0.875rem;color:#334155;margin:1rem 0 1.25rem;">
+<h1>Payment Platform Comparison 2026: Real Rates Side-by-Side</h1><div class="article-byline" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;font-size:0.875rem;color:#334155;margin:1rem 0 1.25rem;">
   <span>By <a href="https://www.mypayadvisor.com" rel="author" style="color:#0f172a;font-weight:600;text-decoration:none;border-bottom:1px solid #94a3b8;">Assaf Ichaki</a></span>
   <span style="color:#94a3b8;">·</span>
   <span>Managing Editor</span>
@@ -101,8 +112,8 @@ const html = `<script type="application/ld+json">{"@context":"https://schema.org
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Payment Platform Comparison 2026: Fees, Features & Best Fit for Business Growth",
-  description: "Our 2026 payment platform comparison provides an expert analysis of fees, fraud tools, and integration capabilities to optimize merchant operations and drive strategic growth for diverse business needs.",
+  headline: "Payment Platform Comparison 2026: Real Rates Side-by-Side",
+  description: "Real 2026 rates for Stripe, Square, PayPal, Helcim, Stax and Payment Depot side-by-side. Find the best fit for your volume in under 5 minutes.",
   datePublished: "2026-04-29T04:30:29.056Z",
   dateModified: "2026-05-07",
   mainEntityOfPage: {
@@ -130,7 +141,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
     { "@type": "ListItem", position: 2, name: "Insights", item: "https://www.mypayadvisor.com/insights" },
-    { "@type": "ListItem", position: 3, name: "Payment Platform Comparison 2026: Fees, Features & Best Fit for Business Growth", item: "https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business" }
+    { "@type": "ListItem", position: 3, name: "Payment Platform Comparison 2026: Real Rates Side-by-Side", item: "https://www.mypayadvisor.com/insights/payment-platform-comparison-2026-fees-features-and-best-fit-for-your-business" }
   ]
 };
 
@@ -178,13 +189,13 @@ export default function InsightPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>&bull;</span>
-                <span>Updated April 2026</span>
+                <span>Updated May 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Payment Platform Comparison 2026: Fees, Features & Best Fit for Business Growth
+                Payment Platform Comparison 2026: Real Rates Side-by-Side
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Our 2026 payment platform comparison provides an expert analysis of fees, fraud tools, and integration capabilities to optimize merchant operations and drive strategic growth for diverse business needs.
+                Real 2026 rates for Stripe, Square, PayPal, Helcim, Stax and Payment Depot side-by-side. Find the best fit for your volume in under 5 minutes.
               </p>
               <div className="pt-4 border-t border-border">
                 <Link href="/insights" className="text-sm text-primary hover:underline">

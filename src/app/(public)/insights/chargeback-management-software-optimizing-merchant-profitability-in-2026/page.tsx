@@ -4,10 +4,21 @@ import { JsonLd } from "@/components/JsonLd";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Chargeback Management Software: ROI, Pricing & Prevention Guide",
-  description: "Evaluate chargeback management software to reduce dispute costs, boost win rates, and optimize payment processing. This 2026 guide covers pricing, trade-offs, and best-fit solutions. Protect your profits.",
+  title: "Chargeback Management Software 2026: ROI and Win Rates",
+  description: "Chargeback management software in 2026 compared on ROI, win rates, and monitoring thresholds. Plus when to skip software entirely.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/chargeback-management-software-optimizing-merchant-profitability-in-2026",
+  },
+  openGraph: {
+    title: "Chargeback Management Software 2026: ROI and Win Rates",
+    description: "Chargeback management software in 2026 compared on ROI, win rates, and monitoring thresholds. Plus when to skip software entirely.",
+    url: "https://www.mypayadvisor.com/insights/chargeback-management-software-optimizing-merchant-profitability-in-2026",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chargeback Management Software 2026: ROI and Win Rates",
+    description: "Chargeback management software in 2026 compared on ROI, win rates, and monitoring thresholds. Plus when to skip software entirely.",
   },
   robots: {
     index: true,
@@ -69,8 +80,8 @@ const html = `<script type="application/ld+json">{"@context":"https://schema.org
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Chargeback Management Software: ROI, Pricing & Prevention Guide",
-  description: "Evaluate chargeback management software to reduce dispute costs, boost win rates, and optimize payment processing. This 2026 guide covers pricing, trade-offs, and best-fit solutions. Protect your profits.",
+  headline: "Chargeback Management Software 2026: ROI and Win Rates",
+  description: "Chargeback management software in 2026 compared on ROI, win rates, and monitoring thresholds. Plus when to skip software entirely.",
   datePublished: "2026-04-23T04:45:43.116Z",
   dateModified: "2026-05-07",
   mainEntityOfPage: {
@@ -98,7 +109,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
     { "@type": "ListItem", position: 2, name: "Insights", item: "https://www.mypayadvisor.com/insights" },
-    { "@type": "ListItem", position: 3, name: "Chargeback Management Software: ROI, Pricing & Prevention Guide", item: "https://www.mypayadvisor.com/insights/chargeback-management-software-optimizing-merchant-profitability-in-2026" }
+    { "@type": "ListItem", position: 3, name: "Chargeback Management Software 2026: ROI and Win Rates", item: "https://www.mypayadvisor.com/insights/chargeback-management-software-optimizing-merchant-profitability-in-2026" }
   ]
 };
 
@@ -146,13 +157,13 @@ export default function InsightPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>&bull;</span>
-                <span>Updated April 2026</span>
+                <span>Updated May 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Chargeback Management Software: ROI, Pricing & Prevention Guide
+                Chargeback Management Software 2026: ROI and Win Rates
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Evaluate chargeback management software to reduce dispute costs, boost win rates, and optimize payment processing. This 2026 guide covers pricing, trade-offs, and best-fit solutions. Protect your profits.
+                Chargeback management software in 2026 compared on ROI, win rates, and monitoring thresholds. Plus when to skip software entirely.
               </p>
               <div className="pt-4 border-t border-border">
                 <Link href="/insights" className="text-sm text-primary hover:underline">

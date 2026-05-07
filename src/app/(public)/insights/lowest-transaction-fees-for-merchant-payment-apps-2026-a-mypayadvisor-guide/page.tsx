@@ -4,10 +4,21 @@ import { JsonLd } from "@/components/JsonLd";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
-  title: "Lowest Transaction Fees for Merchant Payment Apps 2026",
-  description: "Identify payment apps with the lowest transaction fees for merchants in 2026, comparing flat rates, interchange-plus, and subscription models for small businesses and growing enterprises.",
+  title: "Lowest Transaction Fees 2026: 12 Apps Compared",
+  description: "Twelve payment apps compared on real 2026 effective rates, hidden fees, and contract terms. Includes side-by-side savings examples for $50K to $1M monthly.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide",
+  },
+  openGraph: {
+    title: "Lowest Transaction Fees 2026: 12 Apps Compared",
+    description: "Twelve payment apps compared on real 2026 effective rates, hidden fees, and contract terms. Includes side-by-side savings examples for $50K to $1M monthly.",
+    url: "https://www.mypayadvisor.com/insights/lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lowest Transaction Fees 2026: 12 Apps Compared",
+    description: "Twelve payment apps compared on real 2026 effective rates, hidden fees, and contract terms. Includes side-by-side savings examples for $50K to $1M monthly.",
   },
   robots: {
     index: true,
@@ -121,8 +132,8 @@ const html = `<script type="application/ld+json">{"@context":"https://schema.org
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Lowest Transaction Fees for Merchant Payment Apps 2026",
-  description: "Identify payment apps with the lowest transaction fees for merchants in 2026, comparing flat rates, interchange-plus, and subscription models for small businesses and growing enterprises.",
+  headline: "Lowest Transaction Fees 2026: 12 Apps Compared",
+  description: "Twelve payment apps compared on real 2026 effective rates, hidden fees, and contract terms. Includes side-by-side savings examples for $50K to $1M monthly.",
   datePublished: "2026-04-20T04:30:39.857Z",
   dateModified: "2026-05-07",
   mainEntityOfPage: {
@@ -150,7 +161,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
     { "@type": "ListItem", position: 2, name: "Insights", item: "https://www.mypayadvisor.com/insights" },
-    { "@type": "ListItem", position: 3, name: "Lowest Transaction Fees for Merchant Payment Apps 2026", item: "https://www.mypayadvisor.com/insights/lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide" }
+    { "@type": "ListItem", position: 3, name: "Lowest Transaction Fees 2026: 12 Apps Compared", item: "https://www.mypayadvisor.com/insights/lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide" }
   ]
 };
 
@@ -166,13 +177,13 @@ export default function InsightPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>&bull;</span>
-                <span>Updated April 2026</span>
+                <span>Updated May 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Lowest Transaction Fees for Merchant Payment Apps 2026
+                Lowest Transaction Fees 2026: 12 Apps Compared
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Identify payment apps with the lowest transaction fees for merchants in 2026, comparing flat rates, interchange-plus, and subscription models for small businesses and growing enterprises.
+                Twelve payment apps compared on real 2026 effective rates, hidden fees, and contract terms. Includes side-by-side savings examples for $50K to $1M monthly.
               </p>
               <div className="pt-4 border-t border-border">
                 <Link href="/insights" className="text-sm text-primary hover:underline">

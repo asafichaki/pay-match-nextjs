@@ -4,6 +4,10 @@
     {
       "path": "/api/funnel/tick",
       "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/funnel/distribute",
+      "schedule": "17 * * * *"
     }
   ]
 }
