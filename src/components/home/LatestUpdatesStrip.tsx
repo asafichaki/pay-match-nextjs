@@ -73,14 +73,14 @@ export default function LatestUpdatesStrip() {
             id="latest-updates-heading"
             className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-tight"
           >
-            Latest from the desk
+            Latest pulse
           </h2>
         </div>
         <Link
-          href="/updates"
+          href="/pulse"
           className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
         >
-          See all updates
+          See the full pulse
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
@@ -99,7 +99,7 @@ export default function LatestUpdatesStrip() {
           return (
             <Link
               key={item.id}
-              href={`/updates/${item.slug}`}
+              href={`/pulse/${item.slug}`}
               className="group rounded-2xl border border-border bg-card p-5 hover:border-primary/40 transition-colors flex flex-col"
             >
               <div className="flex items-center gap-2 mb-3 flex-wrap">

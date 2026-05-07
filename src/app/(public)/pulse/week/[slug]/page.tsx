@@ -98,7 +98,7 @@ export async function generateMetadata({
   return {
     title: { absolute: `${r.title} · myPayAdvisor` },
     description: r.summary || undefined,
-    alternates: { canonical: `https://www.mypayadvisor.com/updates/week/${r.slug}` },
+    alternates: { canonical: `https://www.mypayadvisor.com/pulse/week/${r.slug}` },
     robots: { index: true, follow: true },
   };
 }
@@ -155,7 +155,7 @@ export default async function WeekRoundupPage({
         url: "https://www.mypayadvisor.com/og-logo.png",
       },
     },
-    mainEntityOfPage: `https://www.mypayadvisor.com/updates/week/${roundup.slug}`,
+    mainEntityOfPage: `https://www.mypayadvisor.com/pulse/week/${roundup.slug}`,
   };
 
   const dateline = `${range.start.toLocaleDateString("en-US", {
@@ -173,7 +173,7 @@ export default async function WeekRoundupPage({
 
       <article className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl py-10 md:py-16">
         <Link
-          href="/updates"
+          href="/pulse"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -210,7 +210,7 @@ export default async function WeekRoundupPage({
                 {list.map((it) => (
                   <Link
                     key={it.id}
-                    href={`/updates/${it.slug}`}
+                    href={`/pulse/${it.slug}`}
                     className="block rounded-xl border border-border bg-card p-4 hover:border-primary/40 transition-colors"
                   >
                     <div className="flex items-center gap-2 mb-1 flex-wrap">

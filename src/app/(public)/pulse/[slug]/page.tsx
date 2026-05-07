@@ -62,7 +62,7 @@ export async function generateMetadata({
     title: { absolute: `${item.title} · myPayAdvisor` },
     description: item.summary || undefined,
     robots: { index: false, follow: false },
-    alternates: { canonical: `https://www.mypayadvisor.com/updates/${item.slug}` },
+    alternates: { canonical: `https://www.mypayadvisor.com/pulse/${item.slug}` },
   };
 }
 
@@ -108,7 +108,7 @@ export default async function UpdateDetailPage({
         url: "https://www.mypayadvisor.com/og-logo.png",
       },
     },
-    mainEntityOfPage: `https://www.mypayadvisor.com/updates/${item.slug}`,
+    mainEntityOfPage: `https://www.mypayadvisor.com/pulse/${item.slug}`,
   };
 
   return (
@@ -117,7 +117,7 @@ export default async function UpdateDetailPage({
 
       <article className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl py-10 md:py-16">
         <Link
-          href="/updates"
+          href="/pulse"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft className="h-4 w-4" />

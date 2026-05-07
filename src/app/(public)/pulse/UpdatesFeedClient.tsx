@@ -66,7 +66,7 @@ function FeedCard({ item }: { item: FeedRow }) {
         <span className="text-xs text-muted-foreground ml-auto">{time}</span>
       </div>
 
-      <Link href={`/updates/${item.slug}`} className="block">
+      <Link href={`/pulse/${item.slug}`} className="block">
         <h3 className="font-display text-lg md:text-xl font-semibold text-foreground tracking-tight leading-snug group-hover:text-primary transition-colors">
           {item.title}
         </h3>

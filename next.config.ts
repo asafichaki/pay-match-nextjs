@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Old /updates URLs -> new /pulse (rebrand 2026-05-07)
+      { source: "/updates", destination: "/pulse", permanent: true },
+      { source: "/updates/:slug*", destination: "/pulse/:slug*", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

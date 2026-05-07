@@ -93,12 +93,12 @@ const Navigation = () => {
               Insights
             </Link>
             <Link
-              href="/updates"
+              href="/pulse"
               className="relative text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               role="menuitem"
-              aria-label="Live payment industry updates"
+              aria-label="Live payments pulse — rate moves and industry updates"
             >
-              Updates
+              Pulse
               {hasHighSeverity && (
                 <span
                   className="absolute -top-1 -right-2 inline-block h-2 w-2 rounded-full bg-rose-500"
@@ -106,14 +106,6 @@ const Navigation = () => {
                 />
               )}
             </Link>
-            <button
-              onClick={() => handleScrollToSection('voices')}
-              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
-              role="menuitem"
-              aria-label="What operators say about each processor"
-            >
-              Voices
-            </button>
             <button
               onClick={() => handleScrollToSection('faq')}
               className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
@@ -183,11 +175,11 @@ const Navigation = () => {
                   Insights
                 </Link>
                 <Link
-                  href="/updates"
+                  href="/pulse"
                   className="relative inline-flex items-center gap-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Updates
+                  Pulse
                   {hasHighSeverity && (
                     <span
                       className="inline-block h-2 w-2 rounded-full bg-rose-500"
@@ -195,12 +187,6 @@ const Navigation = () => {
                     />
                   )}
                 </Link>
-                <button
-                  onClick={() => handleScrollToSection('voices')}
-                  className="text-lg font-medium text-foreground hover:text-primary transition-colors text-left bg-transparent border-none cursor-pointer"
-                >
-                  Voices
-                </button>
                 <button
                   onClick={() => handleScrollToSection('faq')}
                   className="text-lg font-medium text-foreground hover:text-primary transition-colors text-left bg-transparent border-none cursor-pointer"

@@ -25,7 +25,7 @@ export async function GET() {
     .map(
       (r) => `
   <url>
-    <loc>https://www.mypayadvisor.com/updates/week/${r.slug}</loc>
+    <loc>https://www.mypayadvisor.com/pulse/week/${r.slug}</loc>
     <lastmod>${r.published_at.slice(0, 10)}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -35,7 +35,7 @@ export async function GET() {
 
   const updatesIndexXml = `
   <url>
-    <loc>https://www.mypayadvisor.com/updates</loc>
+    <loc>https://www.mypayadvisor.com/pulse</loc>
     <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>

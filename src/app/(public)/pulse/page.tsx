@@ -8,15 +8,15 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: { absolute: "Live Updates · myPayAdvisor" },
+  title: { absolute: "The Payments Pulse · myPayAdvisor" },
   description:
     "What is moving in payments right now. Rate changes, processor news, outages, and weekly editorial roundups, tracked in near real time.",
-  alternates: { canonical: "https://www.mypayadvisor.com/updates" },
+  alternates: { canonical: "https://www.mypayadvisor.com/pulse" },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
-    url: "https://www.mypayadvisor.com/updates",
-    title: "Live Updates · myPayAdvisor",
+    url: "https://www.mypayadvisor.com/pulse",
+    title: "The Payments Pulse · myPayAdvisor",
     description:
       "Rate changes, processor news, outages, weekly roundups. Tracked in near real time.",
     images: [
@@ -95,10 +95,10 @@ export default async function UpdatesIndexPage() {
   const collectionSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Live Updates",
+    name: "The Payments Pulse",
     description:
       "Rate changes, processor news, outages, and weekly editorial roundups from myPayAdvisor.",
-    url: "https://www.mypayadvisor.com/updates",
+    url: "https://www.mypayadvisor.com/pulse",
     publisher: { "@type": "Organization", name: "myPayAdvisor" },
   };
 
@@ -112,7 +112,7 @@ export default async function UpdatesIndexPage() {
             What is moving in payments right now
           </p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.05]">
-            Live Updates
+            The Payments Pulse
           </h1>
           <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
             Rate changes, processor news, outages. Tracked in near real time, summarised in plain operator English.
@@ -133,7 +133,7 @@ export default async function UpdatesIndexPage() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10 md:py-14">
         {roundup && (
           <Link
-            href={`/updates/week/${roundup.slug}`}
+            href={`/pulse/week/${roundup.slug}`}
             className="block mb-10 rounded-3xl border border-border bg-gradient-to-br from-primary/[0.06] via-primary/[0.04] to-cta/[0.05] p-6 md:p-8 hover:border-primary/40 transition-colors"
           >
             <p className="text-xs uppercase tracking-[0.18em] font-bold text-primary mb-2">
