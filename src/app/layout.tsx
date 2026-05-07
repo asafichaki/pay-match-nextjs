@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     "apple-mobile-web-app-status-bar-style": "default",
     "apple-mobile-web-app-title": "myPayAdvisor",
     "application-name": "myPayAdvisor",
-    "msapplication-TileColor": "#0056D2",
+    "msapplication-TileColor": "#2D8C8C",
     language: "English",
     "geo.region": "US",
     "geo.placename": "United States",
@@ -114,7 +114,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0056D2",
+  themeColor: "#2D8C8C",
 };
 
 const websiteSchema = {
