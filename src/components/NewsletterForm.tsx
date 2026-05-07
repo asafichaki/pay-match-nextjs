@@ -39,9 +39,9 @@ export default function NewsletterForm({
 
   if (status === "success") {
     return (
-      <div className={`flex items-center gap-2 text-sm text-success ${className}`}>
+      <div className={`flex items-center gap-2 text-sm text-primary ${className}`}>
         <CheckCircle2 className="h-5 w-5" />
-        <span className="font-medium">You're in! Check your inbox for a welcome message.</span>
+        <span className="font-medium">You&rsquo;re on the list. The first Rate Brief is on its way.</span>
       </div>
     );
   }
@@ -106,7 +106,7 @@ export default function NewsletterForm({
           {status === "loading" ? (
             <Loader2 className="h-5 w-5 animate-spin" />
           ) : (
-            "Join Free"
+            "Send me the brief"
           )}
         </Button>
       </div>
