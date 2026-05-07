@@ -92,8 +92,9 @@ export function voiceCheck(input: string, opts?: { minScore?: number }): VoiceCh
     }
   }
 
-  // Defamation gate
-  const DEFAMATION_RE = /\b(screwed|fraud|scam|stole|deceived|swindled|scammed|cheated)\b/gi;
+  // Defamation gate — only accusatory verb forms, not topic nouns.
+  // (e.g. "Stripe scammed merchants" -> flag. "Fraud detection update" -> OK.)
+  const DEFAMATION_RE = /\b(screwed (over)?|scammed|stole from|deceived|swindled|defrauded|ripped off|cheated out of|conned)\b/gi;
   const defamationHits = cleaned.match(DEFAMATION_RE) || [];
   defamationHits.forEach((hit) => violations.push({ kind: "defamation", match: hit }));
 
