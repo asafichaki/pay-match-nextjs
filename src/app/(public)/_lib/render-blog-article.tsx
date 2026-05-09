@@ -133,6 +133,26 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
     return base;
   })();
 
+  // VideoObject schema — required for Google Indexing API eligibility on non-job URLs
+  const videoSchema = (() => {
+    if (!article.video_url) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: article.title,
+      description: article.description,
+      thumbnailUrl: article.image_url || `${SITE}/og-logo.png`,
+      uploadDate: article.published_at || article.updated_at,
+      contentUrl: article.video_url,
+      embedUrl: article.video_url,
+      publisher: {
+        "@type": "Organization",
+        name: "myPayAdvisor",
+        logo: { "@type": "ImageObject", url: `${SITE}/og-logo.png` },
+      },
+    };
+  })();
+
   // HowTo schema for deepdive playbook section
   const howToSchema = (() => {
     if (kind !== "insights") return null;
@@ -175,6 +195,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
       <JsonLd data={breadcrumbSchema} />
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
       {howToSchema ? <JsonLd data={howToSchema} /> : null}
+      {videoSchema ? <JsonLd data={videoSchema} /> : null}
 
       <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-foreground">Home</Link>
