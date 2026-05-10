@@ -4,22 +4,22 @@ import { ArrowRight, TrendingUp } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Compare Payment Processors 2026: Side-by-Side Rate Tables",
-  description: "Stripe, Square, PayPal, Helcim and more — real 2026 rates side-by-side. Pick the right processor in under 5 minutes with our match quiz.",
+  title: "Compare Payment Processors 2026: Real Rates for $25K-$5M",
+  description: "Stripe, Square, PayPal, Helcim and 11 others. Real 2026 interchange-plus rates side by side. Pick your match in under 5 minutes.",
   keywords: "compare payment processors, payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor 2026, merchant services comparison",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://www.mypayadvisor.com/comparisons" },
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/comparisons",
-    title: "Compare Payment Processors 2026: Side-by-Side Rate Tables",
-    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim and more — side by side. Find your match in 5 minutes.",
+    title: "Compare Payment Processors 2026: Real Rates for $25K-$5M",
+    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim and 11 others, side by side. Find your match in 5 minutes.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Compare Payment Processors 2026: Side-by-Side Rate Tables",
-    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim and more — side by side.",
+    title: "Compare Payment Processors 2026: Real Rates for $25K-$5M",
+    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim and 11 others, side by side.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
 };
@@ -177,11 +177,11 @@ export default function ComparisonsPage() {
                     className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight"
                   >
                     Compare Payment Processors:{" "}
-                    <span className="text-primary">Real 2026 Rates Side-by-Side</span>
+                    <span className="text-primary">Real 2026 Rates for $25K to $5M Merchants</span>
                   </h1>
 
                   <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-xl hidden md:block">
-                    Stripe, Square, PayPal, Helcim and more — real interchange-plus rates and hidden fees, side by side. Pick your match in five minutes.
+                    Stripe, Square, PayPal, Helcim and 11 others. Real interchange-plus rates and hidden fees, side by side. Pick your match in five minutes.
                   </p>
 
                   <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
