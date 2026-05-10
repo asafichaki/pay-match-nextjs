@@ -3,8 +3,8 @@ import { JsonLd } from "@/components/JsonLd";
 import BestPaymentProcessors2026Content from "./BestPaymentProcessors2026Content";
 
 export const metadata: Metadata = {
-  title: "Best Payment Processing Companies 2026: Complete Guide | MyPayAdvisor",
-  description: "Compare the best payment processors for 2026. Expert analysis of Leaders Merchant Services, Worldpay, Clover, Payment Depot, Stax, Stripe & more. Find lowest fees.",
+  title: "Best Payment Processors 2026: Lowest Effective Rate by Volume",
+  description: "Ranked by effective rate at $10K, $50K, $250K and $1M monthly volume. Stripe, Helcim, Stax, Payment Depot and 10 more. Updated for 2026.",
   keywords: ["best payment processors 2026", "payment processing companies", "merchant services", "credit card processing", "Leaders Merchant Services", "Worldpay", "Clover", "Payment Depot", "Stax", "Stripe"],
   robots: { index: true, follow: true },
   alternates: {
@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/comparisons/best-payment-processors-2026",
-    title: "Best Payment Processing Companies 2026: Complete Guide",
-    description: "Expert analysis of top payment processors. Compare fees, features & find the best solution for your business.",
+    title: "Best Payment Processors 2026: Lowest Effective Rate by Volume",
+    description: "Ranked by effective rate at $10K, $50K, $250K and $1M monthly volume. Stripe, Helcim, Stax, Payment Depot and 10 more.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Payment Processing Companies 2026",
-    description: "Expert analysis of top payment processors for 2026.",
+    title: "Best Payment Processors 2026: Lowest Effective Rate",
+    description: "Ranked by effective rate by volume tier. Stripe, Helcim, Stax and 10 more.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
 };
