@@ -3,15 +3,15 @@ import { JsonLd } from "@/components/JsonLd";
 import SquareVsStripeContent from "./SquareVsStripeContent";
 
 export const metadata: Metadata = {
-  title: "Square vs Stripe 2026: Complete Payment Processor Comparison",
-  description: "Square vs Stripe comparison 2026: Compare fees (2.6% vs 2.7%), POS features, ecommerce, APIs. Find the best payment processor for brick-and-mortar or online business.",
+  title: "Square vs Stripe 2026: Effective Rate at $10K, $50K, $250K",
+  description: "Square 2.6% + $0.10 vs Stripe 2.9% + $0.30. Effective rate by volume tier, hardware costs, and where each one beats the other in 2026.",
   keywords: ["Square vs Stripe", "Stripe vs Square", "payment processor comparison", "Square POS", "Stripe API", "best payment processor 2026", "credit card processing", "online payments", "in-person payments"],
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
   },
   openGraph: {
-    title: "Square vs Stripe 2026: Which Payment Processor is Best?",
-    description: "Complete comparison of Square and Stripe. Compare POS features, pricing, APIs, and find the right payment processor for your business.",
+    title: "Square vs Stripe 2026: Effective Rate at $10K, $50K, $250K",
+    description: "Square 2.6% + $0.10 vs Stripe 2.9% + $0.30. Effective rate by volume tier and where each one wins in 2026.",
     url: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],

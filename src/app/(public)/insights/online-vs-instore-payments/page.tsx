@@ -5,7 +5,7 @@ import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/
 
 export const metadata: Metadata = {
   title: "Online vs In-Store Payments 2026: The Real Cost Gap",
-  description: "Card-Not-Present runs 0.50–1.20% higher than Card-Present in 2026. Why, what it costs you per year, and the 4 levers that close the gap.",
+  description: "Card-Not-Present runs 0.50 to 1.20 percent higher than Card-Present in 2026. Why, what it costs you per year, and the 4 levers that close the gap.",
   keywords: "online payments, in-store payments, card-present, card-not-present, payment processing costs, omnichannel payments, PCI compliance",
   alternates: { canonical: "https://www.mypayadvisor.com/insights/online-vs-instore-payments" },
   robots: { index: true, follow: true },
@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/online-vs-instore-payments",
     title: "Online vs In-Store Payments 2026: The Real Cost Gap",
-    description: "CNP runs 0.50–1.20% higher than CP. What that costs your business per year, and the 4 levers that close it.",
+    description: "CNP runs 0.50 to 1.20 percent higher than CP. What that costs your business per year, and the 4 levers that close it.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Online vs In-Store Payments 2026: The Real Cost Gap",
-    description: "CNP runs 0.50–1.20% higher than CP. What it costs and how to close it.",
+    description: "CNP runs 0.50 to 1.20 percent higher than CP. What it costs and how to close it.",
   },
 };
 
@@ -28,7 +28,7 @@ export default function OnlineVsInStorePaymentsPage() {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Online vs In-Store Payments in 2026: Real Cost Gap and How to Close It",
-    "description": "Card-Not-Present runs 0.50–1.20% higher than Card-Present in 2026. Why, what it costs you per year, and the four levers that close the gap.",
+    "description": "Card-Not-Present runs 0.50 to 1.20 percent higher than Card-Present in 2026. Why, what it costs you per year, and the four levers that close the gap.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
@@ -71,7 +71,7 @@ export default function OnlineVsInStorePaymentsPage() {
         "name": "What is the difference between Card-Present and Card-Not-Present transactions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Card-Present (CP) transactions happen when the physical card is verified at a terminal — chip, tap, or swipe. Card-Not-Present (CNP) transactions happen remotely — online checkout, phone orders, manual key-in. CP gets the lowest interchange because fraud risk is lowest."
+          "text": "Card-Present (CP) transactions happen when the physical card is verified at a terminal: chip, tap, or swipe. Card-Not-Present (CNP) transactions happen remotely: online checkout, phone orders, manual key-in. CP gets the lowest interchange because fraud risk is lowest."
         }
       },
       {
@@ -95,7 +95,7 @@ export default function OnlineVsInStorePaymentsPage() {
         "name": "Should I use the same processor for online and in-store payments?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If reconciliation matters and you operate omnichannel, yes — one processor with both rails simplifies settlement and reporting. If you want best-of-breed pricing per channel and have a finance team that can handle two settlement streams, splitting can save 10 to 25 basis points on your CNP volume."
+          "text": "If reconciliation matters and you operate omnichannel, yes. One processor with both rails simplifies settlement and reporting. If you want best-of-breed pricing per channel and have a finance team that can handle two settlement streams, splitting can save 10 to 25 basis points on your CNP volume."
         }
       }
     ]
