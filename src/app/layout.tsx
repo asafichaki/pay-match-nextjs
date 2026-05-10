@@ -150,6 +150,7 @@ const organizationSchema = {
   foundingDate: "2024",
   sameAs: [
     "https://www.linkedin.com/company/mypayadvisor",
+    "https://www.crunchbase.com/organization/mypayadvisor",
   ],
   contactPoint: {
     "@type": "ContactPoint",
