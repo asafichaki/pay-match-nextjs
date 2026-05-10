@@ -3,8 +3,8 @@ import { JsonLd } from "@/components/JsonLd";
 import StripeVsPayPalContent from "./StripeVsPayPalContent";
 
 export const metadata: Metadata = {
-  title: "Stripe vs PayPal 2026: Complete Comparison Guide",
-  description: "Stripe vs PayPal comparison 2026: Compare fees (2.9% vs 3.49%), APIs, subscriptions, developer experience.",
+  title: "Stripe vs PayPal 2026: Real Fees, Conversion Lift, FX Cost",
+  description: "Stripe 2.9% + $0.30 vs PayPal 2.99% + $0.49 plus FX. PayPal lifts checkout conversion 5 to 10 percent. When each one wins in 2026.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal",
   },
