@@ -78,6 +78,7 @@ const organizationSchema = {
   sameAs: [
     "https://www.linkedin.com/company/mypayadvisor",
     "https://www.crunchbase.com/organization/mypayadvisor",
+    "https://www.wikidata.org/wiki/Q139731888",
   ],
   contactPoint: {
     "@type": "ContactPoint",
