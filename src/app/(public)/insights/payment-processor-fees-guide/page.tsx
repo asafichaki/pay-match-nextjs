@@ -6,7 +6,7 @@ import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalcul
 
 export const metadata: Metadata = {
   title: "Payment Processing Fees 2026: Real Rates from 14 Processors",
-  description: "See exactly what Stripe, Square, Helcim and 11 other processors charge in 2026. Real interchange-plus rates, hidden fees, and how to negotiate yours down.",
+  description: "Real 2026 rates from 14 processors. Stripe, Square, Helcim and 11 more, side by side. Hidden fees called out. Negotiation moves that move the rate.",
   keywords: "payment processor fees, credit card processing fees, interchange plus pricing, flat rate pricing, reduce processing fees, best payment processor",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
@@ -183,11 +183,11 @@ export default function PaymentProcessorFeesGuidePage() {
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed">
-                When you're running a business, few things impact your bottom line more directly than payment processor fees. Whether you're processing $1,000 or $1,000,000 monthly, understanding these costs can mean the difference between healthy profit margins and watching your revenue disappear into processing fees.
+                Effective rates run 2.4% to 3.0% for card-not-present and 2.1% to 2.6% for card-present in 2026. The gap between what you&rsquo;re quoted and what you actually pay is usually 0.30 to 0.80 percent. This guide shows the real numbers for 14 processors and the four levers that move the rate down.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                After helping hundreds of businesses optimize their payment processing costs, we've seen firsthand how confusing this landscape can be. Payment processors don't always make their fee structures transparent, and comparing providers often feels like comparing apples to oranges. That's why we've created this comprehensive guide to help you understand exactly what you're paying for and how to reduce those costs significantly.
+                After auditing hundreds of merchant statements, the same pattern repeats: blended pricing hides 0.20 to 0.50 percent of markup that interchange-plus exposes. Below is the side-by-side, with hidden fees called out and the negotiation moves that move the number.
               </p>
 
               {/* Section 1 */}
