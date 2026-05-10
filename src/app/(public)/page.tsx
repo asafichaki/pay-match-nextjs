@@ -75,6 +75,9 @@ const organizationSchema = {
   description:
     "Independent payment-processor advisory and comparison platform. Reviewed by people who've operated payment infrastructure at the $500M+ annual volume level.",
   foundingDate: "2024",
+  sameAs: [
+    "https://www.linkedin.com/company/mypayadvisor",
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     email: "info@mypayadvisor.com",

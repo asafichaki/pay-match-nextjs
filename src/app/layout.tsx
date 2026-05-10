@@ -148,6 +148,9 @@ const organizationSchema = {
   description:
     "Expert payment processing advisory and comparison platform helping businesses find the best payment solutions",
   foundingDate: "2024",
+  sameAs: [
+    "https://www.linkedin.com/company/mypayadvisor",
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     email: "info@mypayadvisor.com",
