@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "./ui/button";
+import { HeroHighlight, Highlight } from "./ui/hero-highlight";
 import { openSortingHat } from "./sorting-hat/useSortingHatModal";
 
 const Hero = () => {
@@ -12,7 +13,8 @@ const Hero = () => {
       className="hero-flat relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-8 sm:py-12 md:py-20 lg:py-24">
+      <HeroHighlight containerClassName="py-8 sm:py-12 md:py-20 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-center">
           {/* Copy column — centered on mobile, left-aligned from lg */}
           <div className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
@@ -26,7 +28,7 @@ const Hero = () => {
               className="font-display text-[2rem] leading-[1.1] sm:text-5xl lg:text-6xl font-bold text-foreground sm:leading-[1.05] tracking-tight mb-4 sm:mb-5"
             >
               Payment experts,{" "}
-              <span className="text-primary">only on your side.</span>
+              <Highlight className="text-primary">only on your side.</Highlight>
             </h1>
 
             <p className="text-base sm:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
@@ -72,6 +74,7 @@ const Hero = () => {
           </aside>
         </div>
       </div>
+      </HeroHighlight>
     </section>
   );
 };
