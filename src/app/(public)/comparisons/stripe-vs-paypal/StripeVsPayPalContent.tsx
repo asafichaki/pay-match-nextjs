@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
+import { MatchCTA } from "@/components/MatchCTA";
 
 export default function StripeVsPayPalContent() {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -33,6 +34,12 @@ export default function StripeVsPayPalContent() {
                 <p className="text-sm text-muted-foreground">Finance & Payments Analyst - December 2026</p>
               </div>
             </div>
+
+            <MatchCTA
+              variant="inline"
+              headline="Stripe or PayPal — which actually fits you?"
+              subline="Get a 60-second personalized match based on your volume, channels, and what you sell. We answer to you, not the processors."
+            />
           </header>
 
           <section className="py-10 border-b border-border">

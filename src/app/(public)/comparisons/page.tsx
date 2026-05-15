@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
+import { MatchCTA } from "@/components/MatchCTA";
 
 export const metadata: Metadata = {
   title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
@@ -188,6 +189,8 @@ export default function ComparisonsPage() {
                     <TrendingUp className="h-4 w-4" aria-hidden="true" />
                     <span>Updated {getCurrentMonthYear()}</span>
                   </div>
+
+                  <MatchCTA variant="inline" className="max-w-xl !my-5" />
                 </header>
               </div>
 

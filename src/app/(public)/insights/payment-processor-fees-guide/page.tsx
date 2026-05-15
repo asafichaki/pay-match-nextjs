@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
+import { MatchCTA } from "@/components/MatchCTA";
 
 export const metadata: Metadata = {
   title: "Payment Processing Fees 2026: 14 Processors Compared by Rate",
@@ -163,6 +164,12 @@ export default function PaymentProcessorFeesGuidePage() {
             </header>
 
             <EffectiveRateCalculator defaultChannel="online" />
+
+            <MatchCTA
+              variant="inline"
+              headline="Want the personalized version of this?"
+              subline="Get 3 vetted processors matched to your volume, channel mix, and ticket size — with the negotiation questions to ask each one."
+            />
 
             {/* Table of Contents */}
             <nav className="mb-12 p-6 bg-muted/30 rounded-lg">
@@ -559,6 +566,8 @@ export default function PaymentProcessorFeesGuidePage() {
               <p className="text-foreground leading-relaxed">
                 Most modern providers bundle both services, simplifying integration but reducing flexibility. For larger businesses, separating gateway and processor allows you to negotiate each independently and maintain backup options.
               </p>
+
+              <MatchCTA variant="section" />
 
               {/* FAQ Section */}
               <h2 id="faq" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">

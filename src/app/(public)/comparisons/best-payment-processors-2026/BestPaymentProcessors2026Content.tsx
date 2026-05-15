@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
+import { MatchCTA } from "@/components/MatchCTA";
 
 export default function BestPaymentProcessors2026Content() {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -32,6 +33,12 @@ export default function BestPaymentProcessors2026Content() {
                     <p className="text-sm text-muted-foreground">Payment Processing Experts - January 2026</p>
                   </div>
                 </div>
+
+                <MatchCTA
+                  variant="inline"
+                  headline="Skip the long list — get your 3 best matches in 60 seconds"
+                  subline="Tell us your monthly volume and channel mix. We send back the 3 processors that actually fit, with effective rates and what to ask before signing."
+                />
               </header>
 
               <section className="py-10 border-b border-border">

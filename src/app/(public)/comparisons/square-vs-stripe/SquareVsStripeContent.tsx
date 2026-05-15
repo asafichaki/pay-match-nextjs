@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
+import { MatchCTA } from "@/components/MatchCTA";
 
 export default function SquareVsStripeContent() {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -40,6 +41,12 @@ export default function SquareVsStripeContent() {
                 <p className="text-sm text-muted-foreground">Finance & Payments Analyst - December 2026</p>
               </div>
             </div>
+
+            <MatchCTA
+              variant="inline"
+              headline="Square or Stripe — which fits your business?"
+              subline="Skip the 4,000-word read. Get a 60-second match based on your channel mix, volume, and ticket size."
+            />
           </header>
 
           <section className="py-10 border-b border-border">
