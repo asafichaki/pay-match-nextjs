@@ -137,10 +137,12 @@ const websiteSchema = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://www.mypayadvisor.com/#organization",
   name: "myPayAdvisor",
   url: "https://www.mypayadvisor.com",
   logo: {
     "@type": "ImageObject",
+    "@id": "https://www.mypayadvisor.com/#logo",
     url: "https://www.mypayadvisor.com/og-logo.png",
     width: 512,
     height: 512,
