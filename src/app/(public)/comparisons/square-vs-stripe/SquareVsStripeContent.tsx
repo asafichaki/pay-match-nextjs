@@ -7,6 +7,7 @@ import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
 import { MatchCTA } from "@/components/MatchCTA";
+import ReviewerBioBox from "@/components/ReviewerBioBox";
 
 export default function SquareVsStripeContent() {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -491,6 +492,8 @@ export default function SquareVsStripeContent() {
               <Link href="/comparisons" className="text-primary hover:underline text-sm">View All Comparisons &rarr;</Link>
             </div>
           </section>
+
+          <ReviewerBioBox />
 
           <footer className="py-8 border-t border-border">
             <p className="text-xs text-muted-foreground leading-relaxed">

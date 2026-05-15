@@ -110,6 +110,7 @@ export async function GET() {
     entry(`${SITE}/calculator`, today, "monthly", 0.85),
     entry(`${SITE}/insights`, today, "weekly", 0.9),
     entry(`${SITE}/comparisons`, today, "weekly", 0.95),
+    entry(`${SITE}/data/effective-rates-2026`, today, "monthly", 0.9),
     entry(`${SITE}/about/barak`, today, "monthly", 0.7),
     entry(`${SITE}/pulse`, today, "daily", 0.85),
     entry(`${SITE}/privacy`, "2025-12-11", "yearly", 0.3),

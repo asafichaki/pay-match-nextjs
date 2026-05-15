@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
+import ReviewerBioBox from "@/components/ReviewerBioBox";
 
 export default function PayPalVsSquareContent() {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -268,6 +269,8 @@ export default function PayPalVsSquareContent() {
                   ))}
                 </div>
               </section>
+
+              <ReviewerBioBox />
 
               <footer className="py-8 border-t border-border">
                 <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links. This does not affect our ratings or recommendations.</p>

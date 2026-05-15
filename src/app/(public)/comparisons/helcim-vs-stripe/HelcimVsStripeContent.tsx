@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
+import ReviewerBioBox from "@/components/ReviewerBioBox";
 
 export default function HelcimVsStripeContent() {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -228,6 +229,8 @@ export default function HelcimVsStripeContent() {
               <Link href="/comparisons" className="text-primary hover:underline text-sm">View All Comparisons &rarr;</Link>
             </div>
           </section>
+
+          <ReviewerBioBox />
 
           <footer className="py-8 border-t border-border">
             <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links.</p>
