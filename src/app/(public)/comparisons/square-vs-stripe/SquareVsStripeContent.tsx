@@ -49,9 +49,13 @@ export default function SquareVsStripeContent() {
             />
           </header>
 
-          <section className="py-10 border-b border-border">
+          <section className="py-10 border-b border-border aeo-answer">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Quick Verdict</h2>
             <div className="space-y-4">
+              <p className="text-lg text-foreground leading-relaxed">
+                Square charges <strong>2.6% + $0.10</strong> in-person and <strong>2.9% + $0.30</strong> online. Stripe charges <strong>2.7% + $0.05</strong> in-person and <strong>2.9% + $0.30</strong> online.
+                For physical retail under $80,000 monthly, Square is usually cheaper because hardware is free and tap-to-pay is built in. For online-only or developer-driven setups, Stripe wins on API depth, subscriptions, and global currency support.
+              </p>
               <p className="text-foreground">
                 <strong className="text-primary">Choose Square</strong> if you have a physical store and need an all-in-one <Link href="/insights" className="text-primary hover:underline">POS system</Link> with free hardware.
               </p>

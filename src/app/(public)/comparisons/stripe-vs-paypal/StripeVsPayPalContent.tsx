@@ -42,11 +42,16 @@ export default function StripeVsPayPalContent() {
             />
           </header>
 
-          <section className="py-10 border-b border-border">
+          <section className="py-10 border-b border-border aeo-answer">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Quick Verdict</h2>
             <div className="space-y-4">
+              <p className="text-lg text-foreground leading-relaxed">
+                Stripe charges <strong>2.9% + $0.30</strong> per online transaction. PayPal charges{" "}
+                <strong>2.99% + $0.49</strong> for standard checkout. On a $50 sale, Stripe costs $1.75; PayPal costs $1.99 — a 14% fee gap.
+                PayPal typically lifts checkout conversion by <strong>5-10%</strong> due to its 400M+ user base; Stripe wins on API customization, subscriptions, and global currency support.
+              </p>
               <p><strong className="text-primary">Choose Stripe</strong> if you need customization, have technical resources, and want <Link href="/insights/best-payment-gateway-ecommerce" className="text-primary hover:underline">advanced features</Link>.</p>
-              <p><strong className="text-primary">Choose PayPal</strong> if you need quick setup and want to leverage instant consumer trust.</p>
+              <p><strong className="text-primary">Choose PayPal</strong> if you sell to U.S. consumers, want plug-and-play setup, and value the conversion lift from one-click checkout.</p>
             </div>
           </section>
 

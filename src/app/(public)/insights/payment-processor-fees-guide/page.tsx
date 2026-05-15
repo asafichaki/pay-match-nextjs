@@ -333,6 +333,19 @@ export default function PaymentProcessorFeesGuidePage() {
                 How to Compare Payment Gateway Providers
               </h2>
 
+              <div className="my-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
+                <p className="text-sm font-semibold text-primary mb-1">
+                  Want the side-by-side table?
+                </p>
+                <p className="text-foreground">
+                  We maintain a live comparison at{" "}
+                  <Link href="/comparisons" className="text-primary font-medium hover:underline">
+                    15 Payment Processors Compared 2026
+                  </Link>
+                  {" "}— effective rate at $10K / $50K / $250K / $1M monthly volume, hardware costs, and contract red flags. Updated quarterly.
+                </p>
+              </div>
+
               <p className="text-foreground leading-relaxed">
                 Comparing payment processors requires looking beyond the advertised rates. Here's a systematic approach to evaluating your options:
               </p>

@@ -49,11 +49,22 @@ const breadcrumbSchema = {
   ],
 };
 
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal#webpage",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: [".aeo-answer", "h1"],
+  },
+};
+
 export default function StripeVsPayPalPage() {
   return (
     <>
       <JsonLd data={structuredData} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={speakableSchema} />
       <StripeVsPayPalContent />
     </>
   );

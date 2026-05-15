@@ -232,7 +232,12 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
             </div>
             <div>
               <p className="font-semibold text-foreground">{article.author || "myPayAdvisor Editorial"}</p>
-              <p className="text-muted-foreground">Payment processing experts</p>
+              <p className="text-muted-foreground">
+                Reviewed by{" "}
+                <a href="/about/barak" className="text-primary hover:underline font-medium">
+                  Barak Bachar, Global Payments Manager
+                </a>
+              </p>
             </div>
           </div>
         </header>

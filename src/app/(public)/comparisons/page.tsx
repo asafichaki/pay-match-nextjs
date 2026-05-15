@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { MatchCTA } from "@/components/MatchCTA";
+import ProcessorComparisonTable from "@/components/ProcessorComparisonTable";
 
 export const metadata: Metadata = {
   title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
@@ -142,6 +143,16 @@ const breadcrumbSchema = {
   ]
 };
 
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.mypayadvisor.com/comparisons#webpage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["[aria-labelledby='rates-table-heading'] header", "h1"]
+  }
+};
+
 function getCurrentMonthYear() {
   const months = [
     "January", "February", "March", "April", "May", "June",
@@ -156,6 +167,7 @@ export default function ComparisonsPage() {
       <JsonLd data={structuredData} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
+      <JsonLd data={speakableSchema} />
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
@@ -225,6 +237,9 @@ export default function ComparisonsPage() {
             aria-hidden="true"
           />
         </section>
+
+        {/* Above-fold comparison table */}
+        <ProcessorComparisonTable />
 
         {/* Comparisons List */}
         <section className="py-8">

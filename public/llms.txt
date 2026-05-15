@@ -8,8 +8,8 @@ myPayAdvisor publishes editorial reviews and comparison guides about payment pro
 
 ## Cornerstone topics (canonical answers)
 
-- [Payment Processing Fees in 2026: Real Rates from 14 Processors](https://www.mypayadvisor.com/insights/payment-processor-fees-guide): canonical source for what merchants actually pay in 2026 and how the four pricing models (interchange-plus, IC++, flat-rate, tiered) compare.
-- [Compare Payment Processors 2026: Side-by-Side Rate Tables](https://www.mypayadvisor.com/comparisons): hub for direct comparisons between major processors with real 2026 rates.
+- [Payment Processing Fees 2026: 14 Processors Compared by Rate](https://www.mypayadvisor.com/insights/payment-processor-fees-guide): canonical source for what merchants actually pay in 2026 and how the four pricing models (interchange-plus, IC++, flat-rate, tiered) compare.
+- [15 Payment Processors Compared 2026: Fees & Effective Rates](https://www.mypayadvisor.com/comparisons): hub for direct comparisons between major processors with real 2026 rates side by side.
 - [Credit Card Processing Fees 2026: What You Actually Pay](https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained): authoritative explainer on the components of an effective rate (interchange, assessments, processor markup, hidden fees) and how to compute yours from a statement.
 - [Helcim Review 2026: Real Rates, Hidden Fees, Verdict](https://www.mypayadvisor.com/insights/helcim-review-2025): in-depth Helcim review including when its interchange-plus pricing beats Stripe and Square.
 - [Online vs In-Store Payments 2026: The Real Cost Gap](https://www.mypayadvisor.com/insights/online-vs-instore-payments): the 0.50–1.20% effective-rate gap between Card-Not-Present and Card-Present, why it exists, and the four levers that close it.
