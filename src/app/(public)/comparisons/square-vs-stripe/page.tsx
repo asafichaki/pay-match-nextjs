@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
+import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
 import SquareVsStripeContent from "./SquareVsStripeContent";
 
 export const metadata: Metadata = {
-  title: "Square vs Stripe 2026: Effective Rate at $10K, $50K, $250K",
-  description: "Square 2.6% + $0.10 vs Stripe 2.9% + $0.30. Effective rate by volume tier, hardware costs, and where each one beats the other in 2026.",
+  title: "Square vs Stripe 2026: Fees, POS & Online Comparison",
+  description: "Square 2.6% + $0.10 vs Stripe 2.9% + $0.30. POS vs online, hardware, effective rate by volume. Which wins for your channel mix in 2026.",
   keywords: ["Square vs Stripe", "Stripe vs Square", "payment processor comparison", "Square POS", "Stripe API", "best payment processor 2026", "credit card processing", "online payments", "in-person payments"],
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
   },
   openGraph: {
-    title: "Square vs Stripe 2026: Effective Rate at $10K, $50K, $250K",
-    description: "Square 2.6% + $0.10 vs Stripe 2.9% + $0.30. Effective rate by volume tier and where each one wins in 2026.",
+    title: "Square vs Stripe 2026: Fees, POS & Online Comparison",
+    description: "Square 2.6% + $0.10 vs Stripe 2.9% + $0.30. POS vs online, hardware, effective rate by volume. Which wins for your channel mix in 2026.",
     url: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
@@ -21,14 +22,15 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Square vs Stripe: Which Payment Processor Is Right for Your Business? (2026)",
-  description: "Complete Square vs Stripe comparison for 2026. Compare pricing, POS features, ecommerce capabilities, APIs, and find the best payment processor for your business type.",
+  headline: "Square vs Stripe 2026: Fees, POS & Online Comparison",
+  description: "Square vs Stripe comparison for 2026. Compare pricing, POS features, ecommerce capabilities, APIs, and find the best payment processor for your channel mix.",
   image: "https://www.mypayadvisor.com/og-logo.png",
   author: {
     "@type": "Organization",
     name: "myPayAdvisor",
     url: "https://www.mypayadvisor.com",
   },
+  reviewedBy: BARAK_PERSON_SCHEMA,
   publisher: {
     "@type": "Organization",
     name: "myPayAdvisor",
@@ -37,8 +39,8 @@ const structuredData = {
       url: "https://www.mypayadvisor.com/og-logo.png",
     },
   },
-  datePublished: "2024-12-01",
-  dateModified: "2024-12-01",
+  datePublished: "2025-11-15",
+  dateModified: "2026-05-15",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/comparisons/square-vs-stripe",

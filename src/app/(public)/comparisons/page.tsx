@@ -4,22 +4,22 @@ import { ArrowRight, TrendingUp } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Compare Payment Processors 2026: Real Rates for $25K-$5M",
-  description: "Stripe, Square, PayPal, Helcim and 11 others. Real 2026 interchange-plus rates side by side. Pick your match in under 5 minutes.",
+  title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
+  description: "Compare 15 payment processors side by side: real 2026 fees, effective rates by volume, hidden costs. Stripe, Square, PayPal, Helcim and 11 more.",
   keywords: "compare payment processors, payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor 2026, merchant services comparison",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://www.mypayadvisor.com/comparisons" },
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/comparisons",
-    title: "Compare Payment Processors 2026: Real Rates for $25K-$5M",
-    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim and 11 others, side by side. Find your match in 5 minutes.",
+    title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
+    description: "Compare 15 payment processors side by side: real 2026 fees, effective rates by volume, hidden costs. Stripe, Square, PayPal, Helcim and 11 more.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Compare Payment Processors 2026: Real Rates for $25K-$5M",
-    description: "Real 2026 rates for Stripe, Square, PayPal, Helcim and 11 others, side by side.",
+    title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
+    description: "Compare 15 payment processors side by side: real 2026 fees, effective rates by volume, hidden costs.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
 };

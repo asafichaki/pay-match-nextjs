@@ -5,7 +5,7 @@ import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/
 import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
 
 export const metadata: Metadata = {
-  title: "Payment Processing Fees 2026: Real Rates from 14 Processors",
+  title: "Payment Processing Fees 2026: 14 Processors Compared by Rate",
   description: "Real 2026 rates from 14 processors. Stripe, Square, Helcim and 11 more, side by side. Hidden fees called out. Negotiation moves that move the rate.",
   keywords: "payment processor fees, credit card processing fees, interchange plus pricing, flat rate pricing, reduce processing fees, best payment processor",
   alternates: {
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
-    title: "Payment Processing Fees 2026: Real Rates from 14 Processors",
+    title: "Payment Processing Fees 2026: 14 Processors Compared by Rate",
     description: "Real 2026 rates for Stripe, Square, Helcim, and 11 others. Side-by-side, with hidden fees called out and negotiation moves that actually work.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Payment Processing Fees 2026: Real Rates from 14 Processors",
+    title: "Payment Processing Fees 2026: 14 Processors Compared by Rate",
     description: "Real 2026 rates, hidden fees called out, and negotiation moves that move the number.",
   },
 };
