@@ -102,11 +102,22 @@ const faqStructuredData = {
   ],
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
+    { "@type": "ListItem", position: 2, name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
+    { "@type": "ListItem", position: 3, name: "Square vs Stripe", item: "https://www.mypayadvisor.com/comparisons/square-vs-stripe" },
+  ],
+};
+
 export default function SquareVsStripePage() {
   return (
     <>
       <JsonLd data={structuredData} />
       <JsonLd data={faqStructuredData} />
+      <JsonLd data={breadcrumbSchema} />
       <SquareVsStripeContent />
     </>
   );

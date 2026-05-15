@@ -12,21 +12,30 @@ export default function StickyCTABar() {
   useEffect(() => {
     if (dismissed) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Show bar when hero is NOT visible (scrolled past)
-        setVisible(!entry.isIntersecting);
-      },
-      { threshold: 0 }
-    );
+    // Show on /thank-you, /quiz, and the in-funnel pages → noisy; skip
+    const path = window.location.pathname;
+    if (path.startsWith("/thank-you") || path.startsWith("/quiz")) return;
 
-    // Observe the hero section
-    const hero = document.querySelector("[aria-labelledby='hero-heading']");
-    if (hero) {
-      observer.observe(hero);
+    // Try to observe a hero/header element. Comparison pages use
+    // [aria-labelledby$='-heading']; long-form articles use <header>.
+    const target =
+      document.querySelector("[aria-labelledby$='-heading']") ||
+      document.querySelector("main header") ||
+      document.querySelector("main > * > h1, main h1");
+
+    if (target) {
+      const observer = new IntersectionObserver(
+        ([entry]) => setVisible(!entry.isIntersecting),
+        { threshold: 0 }
+      );
+      observer.observe(target);
+      return () => observer.disconnect();
     }
 
-    return () => observer.disconnect();
+    // Fallback: scroll-distance threshold
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [dismissed]);
 
   if (!visible || dismissed) return null;

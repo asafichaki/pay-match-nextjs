@@ -1,6 +1,6 @@
 import { buildBlogArticleMetadata, renderBlogArticle } from "../../_lib/render-blog-article";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

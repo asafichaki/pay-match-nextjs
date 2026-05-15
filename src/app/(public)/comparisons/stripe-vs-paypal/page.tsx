@@ -39,10 +39,21 @@ const structuredData = {
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
+    { "@type": "ListItem", position: 2, name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
+    { "@type": "ListItem", position: 3, name: "Stripe vs PayPal", item: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal" },
+  ],
+};
+
 export default function StripeVsPayPalPage() {
   return (
     <>
       <JsonLd data={structuredData} />
+      <JsonLd data={breadcrumbSchema} />
       <StripeVsPayPalContent />
     </>
   );

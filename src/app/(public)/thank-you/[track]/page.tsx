@@ -7,7 +7,7 @@ import { CALENDLY_URL } from "@/lib/funnel/resend-client";
 export const metadata: Metadata = {
   title: "You're in. Barak is on it.",
   description: "Your shortlist is on the way. While you wait, you can also book a 15-minute call with Barak Bachar.",
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
 };
 
 const COPY = {
