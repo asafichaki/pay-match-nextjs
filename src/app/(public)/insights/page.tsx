@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { JsonLd } from "@/components/JsonLd";
 import InsightsContent from "./InsightsContent";
+import { REDIRECTED_INSIGHT_SLUGS } from "@/lib/insights/redirected-slugs";
 
 export const metadata: Metadata = {
   title: "Payment Processing Insights & Expert Guides 2026",
@@ -61,7 +62,8 @@ function discoverArticles(): Article[] {
   try {
     entries = fs.readdirSync(insightsDir, { withFileTypes: true })
       .filter((e) => e.isDirectory() && !e.name.startsWith("[") && !e.name.startsWith("_"))
-      .map((e) => e.name);
+      .map((e) => e.name)
+      .filter((name) => !REDIRECTED_INSIGHT_SLUGS.has(name));
   } catch {
     return [];
   }
