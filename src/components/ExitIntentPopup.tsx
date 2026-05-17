@@ -8,9 +8,9 @@ import { subscribeNewsletter } from "@/app/actions/newsletter";
 import { openSortingHat } from "./sorting-hat/useSortingHatModal";
 
 const BULLETS = [
-  "Real 2026 effective rates by tier and channel.",
-  "The four hidden fees most merchants miss on their statement.",
-  "The contract clauses to push on before you sign.",
+  "2026 effective rates, by tier.",
+  "The four hidden statement fees.",
+  "Contract clauses to push on.",
 ];
 
 export default function ExitIntentPopup() {
@@ -91,15 +91,17 @@ export default function ExitIntentPopup() {
 
         {!done ? (
           <div className="p-6 sm:p-8">
-            <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-primary mb-3">
+            <p className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] font-bold text-primary mb-3">
               <FileText className="h-3.5 w-3.5" />
               The Rate Brief · free
             </p>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-foreground mb-3">
-              Most merchants overpay 0.30 to 0.45 percent on processing.
+            <h3 className="font-display text-2xl sm:text-3xl font-bold leading-[1.1] tracking-tight text-foreground mb-2">
+              Stop overpaying{" "}
+              <span className="text-primary">0.30–0.45%</span>{" "}
+              on processing.
             </h3>
-            <p className="text-sm sm:text-base text-muted-foreground mb-5">
-              The Rate Brief is a weekly two-minute note from the desk: real 2026 numbers, the contract clauses worth flagging, and the one move worth making this week. No fluff.
+            <p className="text-sm text-muted-foreground mb-5">
+              A two-minute weekly note. Real rates, no fluff.
             </p>
 
             <ul className="space-y-2 mb-6">
