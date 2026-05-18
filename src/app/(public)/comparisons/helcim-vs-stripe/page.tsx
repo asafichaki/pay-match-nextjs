@@ -4,11 +4,28 @@ import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import HelcimVsStripeContent from "./HelcimVsStripeContent";
 
 export const metadata: Metadata = {
-  title: "Helcim vs Stripe 2026: Complete Comparison Guide",
-  description: "Helcim vs Stripe comparison 2026: Compare interchange-plus vs flat-rate pricing, features, support. Save 15-25% with Helcim or get advanced features with Stripe.",
+  title: "Helcim vs Stripe 2026: 2.51% vs 2.97% Effective Rate",
+  description: "Helcim 2.51% interchange-plus vs Stripe 2.97% flat-rate at $10K monthly. Helcim wins above $25K with no monthly fee. Stripe wins on SaaS subscriptions.",
   keywords: ["Helcim vs Stripe", "Stripe vs Helcim", "interchange-plus pricing", "payment processor comparison"],
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/helcim-vs-stripe",
+  },
+  openGraph: {
+    title: "Helcim vs Stripe 2026: 2.51% vs 2.97% Effective Rate",
+    description: "Helcim 2.51% interchange-plus vs Stripe 2.97% flat-rate at $10K monthly. Helcim wins above $25K with no monthly fee. Stripe wins on SaaS subscriptions.",
+    url: "https://www.mypayadvisor.com/comparisons/helcim-vs-stripe",
+    type: "article",
+    images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Helcim vs Stripe 2026: 2.51% vs 2.97% Effective Rate",
+    description: "Helcim 2.51% interchange-plus vs Stripe 2.97% flat-rate at $10K monthly. Helcim wins above $25K with no monthly fee. Stripe wins on SaaS subscriptions.",
+    images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+  other: {
+    "article:published_time": "2024-12-01T00:00:00.000Z",
+    "article:modified_time": new Date().toISOString(),
   },
 };
 

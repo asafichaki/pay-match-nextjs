@@ -54,8 +54,8 @@ async function fetchDbComparisons(): Promise<Comparison[]> {
 }
 
 export const metadata: Metadata = {
-  title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
-  description: "Compare 15 payment processors side by side: real 2026 fees, effective rates by volume, hidden costs. Stripe, Square, PayPal, Helcim and 11 more.",
+  title: "2026 Payment Processor Comparison: 15 Fees Side-by-Side",
+  description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%. Compare 15 processors' effective rates at $10K, $50K, $250K monthly. Updated weekly.",
   keywords: "compare payment processors, payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor 2026, merchant services comparison",
   robots: { index: true, follow: true },
   alternates: {
@@ -67,14 +67,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/comparisons",
-    title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
-    description: "Compare 15 payment processors side by side: real 2026 fees, effective rates by volume, hidden costs. Stripe, Square, PayPal, Helcim and 11 more.",
+    title: "2026 Payment Processor Comparison: 15 Fees Side-by-Side",
+    description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%. Compare 15 processors' effective rates at $10K, $50K, $250K monthly. Updated weekly.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
-    description: "Compare 15 payment processors side by side: real 2026 fees, effective rates by volume, hidden costs.",
+    title: "2026 Payment Processor Comparison: 15 Fees Side-by-Side",
+    description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%. Compare 15 processors' effective rates at $10K, $50K, $250K monthly. Updated weekly.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
 };

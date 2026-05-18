@@ -1,11 +1,44 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
+import { EFFECTIVE_RATES_2026 } from "@/lib/data/effective-rates-2026";
 import BestPaymentProcessors2026Content from "./BestPaymentProcessors2026Content";
+
+function parseRate(rate: string): number {
+  return parseFloat(rate.replace("%", ""));
+}
+
+function buildItemListSchema() {
+  // Pick best (lowest) effective rate at $10K per processor, then rank ascending.
+  const byProcessor = new Map<string, number>();
+  for (const row of EFFECTIVE_RATES_2026) {
+    const v = parseRate(row.rates[0]);
+    const prev = byProcessor.get(row.processor);
+    if (prev === undefined || v < prev) byProcessor.set(row.processor, v);
+  }
+  const ranked = Array.from(byProcessor.entries()).sort((a, b) => a[1] - b[1]);
+  const baseUrl = "https://www.mypayadvisor.com/comparisons/best-payment-processors-2026";
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "15 Best Payment Processors 2026, Ranked by Effective Rate",
+    description:
+      "Payment processors ranked by lowest effective rate at $10K monthly volume.",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: ranked.length,
+    itemListElement: ranked.map(([processor, rate], i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `${processor}: ${rate.toFixed(2)}% effective rate`,
+      url: `${baseUrl}#${processor.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    })),
+  };
+}
 
 export const metadata: Metadata = {
   title: "15 Best Payment Processors 2026: Ranked by Effective Rate",
-  description: "15 best payment processors of 2026, ranked by effective rate at $10K, $50K, $250K and $1M monthly volume. Stripe, Helcim, Stax, Payment Depot and more.",
+  description: "Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked by effective rate at $10K, $50K, $250K, $1M. Updated weekly.",
   keywords: ["best payment processors 2026", "payment processing companies", "merchant services", "credit card processing", "Leaders Merchant Services", "Worldpay", "Clover", "Payment Depot", "Stax", "Stripe"],
   robots: { index: true, follow: true },
   alternates: {
@@ -15,14 +48,18 @@ export const metadata: Metadata = {
     type: "article",
     url: "https://www.mypayadvisor.com/comparisons/best-payment-processors-2026",
     title: "15 Best Payment Processors 2026: Ranked by Effective Rate",
-    description: "15 best payment processors of 2026, ranked by effective rate at $10K, $50K, $250K and $1M monthly volume.",
+    description: "Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked by effective rate at $10K, $50K, $250K, $1M. Updated weekly.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "15 Best Payment Processors 2026: Ranked by Effective Rate",
-    description: "Ranked by effective rate by volume tier. Stripe, Helcim, Stax and 10 more.",
+    description: "Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked by effective rate at $10K, $50K, $250K, $1M. Updated weekly.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+  other: {
+    "article:published_time": "2026-01-01T00:00:00.000Z",
+    "article:modified_time": new Date().toISOString(),
   },
 };
 
@@ -67,6 +104,7 @@ export default function BestPaymentProcessors2026Page() {
         }}
       />
       <JsonLd data={faqStructuredData} />
+      <JsonLd data={buildItemListSchema()} />
       <BestPaymentProcessors2026Content />
     </>
   );

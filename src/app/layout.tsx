@@ -134,7 +134,7 @@ const websiteSchema = {
     target: {
       "@type": "EntryPoint",
       urlTemplate:
-        "https://www.mypayadvisor.com/quiz?q={search_term_string}",
+        "https://www.mypayadvisor.com/search?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },
@@ -178,6 +178,15 @@ const organizationSchema = {
     "Payment Gateways",
     "POS Systems",
   ],
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate:
+        "https://www.mypayadvisor.com/search?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 const professionalServiceSchema = {

@@ -4,18 +4,22 @@ import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import SquareVsStripeContent from "./SquareVsStripeContent";
 
 export const metadata: Metadata = {
-  title: "Square vs Stripe 2026: Fees, POS & Online Comparison",
-  description: "Square 2.6% + $0.10 vs Stripe 2.9% + $0.30. POS vs online, hardware, effective rate by volume. Which wins for your channel mix in 2026.",
+  title: "Square vs Stripe 2026: POS 2.65% vs Online 2.97% Fees",
+  description: "Square 2.6% + $0.10 POS vs Stripe 2.9% + $0.30 online. Square wins retail under $80K, Stripe wins SaaS and subscriptions. Effective rates by volume.",
   keywords: ["Square vs Stripe", "Stripe vs Square", "payment processor comparison", "Square POS", "Stripe API", "best payment processor 2026", "credit card processing", "online payments", "in-person payments"],
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
   },
   openGraph: {
-    title: "Square vs Stripe 2026: Fees, POS & Online Comparison",
-    description: "Square 2.6% + $0.10 vs Stripe 2.9% + $0.30. POS vs online, hardware, effective rate by volume. Which wins for your channel mix in 2026.",
+    title: "Square vs Stripe 2026: POS 2.65% vs Online 2.97% Fees",
+    description: "Square 2.6% + $0.10 POS vs Stripe 2.9% + $0.30 online. Square wins retail under $80K, Stripe wins SaaS and subscriptions. Effective rates by volume.",
     url: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+  other: {
+    "article:published_time": "2025-11-15T00:00:00.000Z",
+    "article:modified_time": new Date().toISOString(),
   },
 };
 

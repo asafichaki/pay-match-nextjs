@@ -7,6 +7,7 @@ import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
+import { ArticleByline } from "@/components/seo/ArticleByline";
 
 export default function PayPalVsSquareContent() {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -32,6 +33,11 @@ export default function PayPalVsSquareContent() {
                     <p className="text-sm text-muted-foreground">Finance & Payments Analyst - Updated January 2026</p>
                   </div>
                 </div>
+                <ArticleByline
+                  author="Reviewed by Barak Bachar"
+                  authorUrl="/about/barak"
+                  className="mt-4"
+                />
               </header>
 
               <nav className="py-10 border-b border-border">

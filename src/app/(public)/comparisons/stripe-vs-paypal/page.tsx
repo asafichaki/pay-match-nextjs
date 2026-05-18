@@ -4,17 +4,21 @@ import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import StripeVsPayPalContent from "./StripeVsPayPalContent";
 
 export const metadata: Metadata = {
-  title: "Stripe vs PayPal 2026: Fees, FX Cost & Conversion Compared",
-  description: "Stripe 2.9% + $0.30 vs PayPal 2.99% + $0.49 plus FX. PayPal lifts checkout conversion 5 to 10 percent. When each one wins in 2026.",
+  title: "Stripe vs PayPal 2026: 2.97% vs 3.07% Effective Rate",
+  description: "Stripe 2.9% + $0.30 vs PayPal 2.99% + $0.49. PayPal processes 135+ currencies for cross-border sellers, Stripe wins on subscriptions. Effective rates at $10K, $50K, $250K.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal",
   },
   openGraph: {
-    title: "Stripe vs PayPal 2026: Fees, FX Cost & Conversion Compared",
-    description: "Stripe 2.9% + $0.30 vs PayPal 2.99% + $0.49 plus FX. PayPal lifts checkout conversion 5 to 10 percent. When each one wins in 2026.",
+    title: "Stripe vs PayPal 2026: 2.97% vs 3.07% Effective Rate",
+    description: "Stripe 2.9% + $0.30 vs PayPal 2.99% + $0.49. PayPal processes 135+ currencies for cross-border sellers, Stripe wins on subscriptions. Effective rates at $10K, $50K, $250K.",
     url: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+  other: {
+    "article:published_time": "2025-11-15T00:00:00.000Z",
+    "article:modified_time": new Date().toISOString(),
   },
 };
 

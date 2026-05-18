@@ -8,6 +8,7 @@ import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
 import { MatchCTA } from "@/components/MatchCTA";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
+import { ArticleByline } from "@/components/seo/ArticleByline";
 
 export default function StripeVsPayPalContent() {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -35,6 +36,11 @@ export default function StripeVsPayPalContent() {
                 <p className="text-sm text-muted-foreground">Finance & Payments Analyst - December 2026</p>
               </div>
             </div>
+            <ArticleByline
+              author="Reviewed by Barak Bachar"
+              authorUrl="/about/barak"
+              className="mt-4"
+            />
 
             <MatchCTA
               variant="inline"

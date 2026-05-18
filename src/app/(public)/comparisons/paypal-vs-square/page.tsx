@@ -4,11 +4,28 @@ import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import PayPalVsSquareContent from "./PayPalVsSquareContent";
 
 export const metadata: Metadata = {
-  title: "Square vs PayPal 2026: Complete Comparison for Small Businesses",
-  description: "Complete comparison of Square vs PayPal for 2026. Compare fees, features, hardware, and find which payment processor is best for your small business needs.",
+  title: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate",
+  description: "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
   keywords: ["Square vs PayPal", "PayPal vs Square", "payment processor comparison", "small business payments", "POS comparison"],
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/paypal-vs-square",
+  },
+  openGraph: {
+    title: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate",
+    description: "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
+    url: "https://www.mypayadvisor.com/comparisons/paypal-vs-square",
+    type: "article",
+    images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate",
+    description: "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
+    images: ["https://www.mypayadvisor.com/og-logo.png"],
+  },
+  other: {
+    "article:published_time": "2024-12-01T00:00:00.000Z",
+    "article:modified_time": new Date().toISOString(),
   },
 };
 
