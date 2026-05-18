@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
+import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import HelcimVsStripeContent from "./HelcimVsStripeContent";
 
 export const metadata: Metadata = {
@@ -9,19 +10,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/helcim-vs-stripe",
   },
-};
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Helcim vs Stripe: Which Payment Processor Offers Better Value? (2026)",
-  description: "Complete Helcim vs Stripe comparison for 2026. Compare interchange-plus vs flat-rate pricing, features, support, and find which payment processor saves you more money.",
-  image: "https://www.mypayadvisor.com/og-logo.png",
-  author: { "@type": "Organization", name: "myPayAdvisor", url: "https://www.mypayadvisor.com" },
-  publisher: { "@type": "Organization", name: "myPayAdvisor", logo: { "@type": "ImageObject", url: "https://www.mypayadvisor.com/og-logo.png" } },
-  datePublished: "2024-12-01",
-  dateModified: "2024-12-01",
-  mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.mypayadvisor.com/comparisons/helcim-vs-stripe" },
 };
 
 const faqStructuredData = {
@@ -36,7 +24,17 @@ const faqStructuredData = {
 export default function HelcimVsStripePage() {
   return (
     <>
-      <JsonLd data={structuredData} />
+      <ComparisonSchema
+        title="Helcim vs Stripe 2026: Complete Comparison Guide"
+        description="Complete Helcim vs Stripe comparison for 2026. Compare interchange-plus vs flat-rate pricing, features, support, and find which payment processor saves you more money."
+        slug="helcim-vs-stripe"
+        datePublished="2024-12-01"
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.mypayadvisor.com" },
+          { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
+          { name: "Helcim vs Stripe" },
+        ]}
+      />
       <JsonLd data={faqStructuredData} />
       <HelcimVsStripeContent />
     </>

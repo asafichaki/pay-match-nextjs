@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
+import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import SquareVsStripeContent from "./SquareVsStripeContent";
 
 export const metadata: Metadata = {
@@ -16,34 +16,6 @@ export const metadata: Metadata = {
     url: "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
-  },
-};
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Square vs Stripe 2026: Fees, POS & Online Comparison",
-  description: "Square vs Stripe comparison for 2026. Compare pricing, POS features, ecommerce capabilities, APIs, and find the best payment processor for your channel mix.",
-  image: "https://www.mypayadvisor.com/og-logo.png",
-  author: {
-    "@type": "Organization",
-    name: "myPayAdvisor",
-    url: "https://www.mypayadvisor.com",
-  },
-  reviewedBy: BARAK_PERSON_SCHEMA,
-  publisher: {
-    "@type": "Organization",
-    name: "myPayAdvisor",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://www.mypayadvisor.com/og-logo.png",
-    },
-  },
-  datePublished: "2025-11-15",
-  dateModified: "2026-05-15",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://www.mypayadvisor.com/comparisons/square-vs-stripe",
   },
 };
 
@@ -102,16 +74,6 @@ const faqStructuredData = {
   ],
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
-    { "@type": "ListItem", position: 2, name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
-    { "@type": "ListItem", position: 3, name: "Square vs Stripe", item: "https://www.mypayadvisor.com/comparisons/square-vs-stripe" },
-  ],
-};
-
 const speakableSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -125,9 +87,18 @@ const speakableSchema = {
 export default function SquareVsStripePage() {
   return (
     <>
-      <JsonLd data={structuredData} />
+      <ComparisonSchema
+        title="Square vs Stripe 2026: Fees, POS & Online Comparison"
+        description="Square vs Stripe comparison for 2026. Compare pricing, POS features, ecommerce capabilities, APIs, and find the best payment processor for your channel mix."
+        slug="square-vs-stripe"
+        datePublished="2025-11-15"
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.mypayadvisor.com" },
+          { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
+          { name: "Square vs Stripe" },
+        ]}
+      />
       <JsonLd data={faqStructuredData} />
-      <JsonLd data={breadcrumbSchema} />
       <JsonLd data={speakableSchema} />
       <SquareVsStripeContent />
     </>

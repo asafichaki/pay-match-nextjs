@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
+import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import PayPalVsSquareContent from "./PayPalVsSquareContent";
 
 export const metadata: Metadata = {
@@ -9,17 +10,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/paypal-vs-square",
   },
-};
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Square vs PayPal: Complete Comparison for Small Businesses (2026)",
-  description: "Complete comparison of Square vs PayPal for 2026. Compare fees, features, hardware, and find which payment processor is best for your small business needs.",
-  image: "https://www.mypayadvisor.com/og-logo.png",
-  author: { "@type": "Organization", name: "myPayAdvisor" },
-  datePublished: "2024-12-01",
-  dateModified: "2025-01-15",
 };
 
 const faqStructuredData = {
@@ -56,7 +46,17 @@ const faqStructuredData = {
 export default function PayPalVsSquarePage() {
   return (
     <>
-      <JsonLd data={structuredData} />
+      <ComparisonSchema
+        title="Square vs PayPal 2026: Complete Comparison for Small Businesses"
+        description="Complete comparison of Square vs PayPal for 2026. Compare fees, features, hardware, and find which payment processor is best for your small business needs."
+        slug="paypal-vs-square"
+        datePublished="2024-12-01"
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.mypayadvisor.com" },
+          { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
+          { name: "Square vs PayPal" },
+        ]}
+      />
       <JsonLd data={faqStructuredData} />
       <PayPalVsSquareContent />
     </>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
+import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import BestPaymentProcessors2026Content from "./BestPaymentProcessors2026Content";
 
 export const metadata: Metadata = {
@@ -26,20 +26,6 @@ export const metadata: Metadata = {
   },
 };
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "15 Best Payment Processors 2026: Ranked by Effective Rate",
-  description: "Expert ranking of the 15 best payment processors for 2026 by effective rate across volume tiers. Stripe, Helcim, Stax, Payment Depot, Leaders Merchant Services and more.",
-  image: "https://www.mypayadvisor.com/og-logo.png",
-  author: { "@type": "Organization", name: "myPayAdvisor", url: "https://www.mypayadvisor.com" },
-  reviewedBy: BARAK_PERSON_SCHEMA,
-  publisher: { "@type": "Organization", name: "myPayAdvisor", logo: { "@type": "ImageObject", url: "https://www.mypayadvisor.com/og-logo.png" } },
-  datePublished: "2026-01-01",
-  dateModified: "2026-05-15",
-  mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.mypayadvisor.com/comparisons/best-payment-processors-2026" },
-};
-
 const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -50,22 +36,21 @@ const faqStructuredData = {
   ],
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mypayadvisor.com" },
-    { "@type": "ListItem", position: 2, name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
-    { "@type": "ListItem", position: 3, name: "Best Payment Processors 2026", item: "https://www.mypayadvisor.com/comparisons/best-payment-processors-2026" },
-  ],
-};
-
 export default function BestPaymentProcessors2026Page() {
   return (
     <>
-      <JsonLd data={structuredData} />
+      <ComparisonSchema
+        title="15 Best Payment Processors 2026: Ranked by Effective Rate"
+        description="Expert ranking of the 15 best payment processors for 2026 by effective rate across volume tiers. Stripe, Helcim, Stax, Payment Depot, Leaders Merchant Services and more."
+        slug="best-payment-processors-2026"
+        datePublished="2026-01-01"
+        breadcrumbItems={[
+          { name: "Home", item: "https://www.mypayadvisor.com" },
+          { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
+          { name: "Best Payment Processors 2026" },
+        ]}
+      />
       <JsonLd data={faqStructuredData} />
-      <JsonLd data={breadcrumbSchema} />
       <BestPaymentProcessors2026Content />
     </>
   );
