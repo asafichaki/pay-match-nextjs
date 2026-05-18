@@ -4,7 +4,7 @@ import { ArrowRight, TrendingUp, Headphones, PlayCircle, Presentation } from "lu
 import { JsonLd } from "@/components/JsonLd";
 import { MatchCTA } from "@/components/MatchCTA";
 import ProcessorComparisonTable from "@/components/ProcessorComparisonTable";
-import { createSupabaseServerClient } from "@/integrations/supabase/server";
+import { createSupabasePublicClient } from "@/integrations/supabase/server-public";
 
 export const revalidate = 3600;
 
@@ -28,7 +28,8 @@ function formatComparisonDate(iso: string): string {
 
 async function fetchDbComparisons(): Promise<Comparison[]> {
   try {
-    const supabase = await createSupabaseServerClient();
+    // Use anonymous (cookie-free) client so this page stays static + bf-cache eligible.
+    const supabase = createSupabasePublicClient();
     const { data } = await (supabase as any)
       .from("blog_articles")
       .select("slug,title,description,meta_description,published_at,updated_at,audio_url,video_url,youtube_id,slide_image_urls")
@@ -302,12 +303,6 @@ export default async function ComparisonsPage() {
             </div>
           </div>
 
-          {/* Mobile background */}
-          <div
-            className="absolute inset-0 lg:hidden bg-contain bg-center bg-no-repeat opacity-25"
-            style={{ backgroundImage: `url(/images/comparisons-hero-new.png)` }}
-            aria-hidden="true"
-          />
         </section>
 
         {/* Above-fold comparison table */}
