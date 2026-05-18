@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { headers } from "next/headers";
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
+import { trackLeadFailure } from "@/lib/leads/track-failure";
 import { routeTrack } from "@/lib/funnel/track-router";
 import {
   PAIN_POINT_SHORT,
@@ -141,8 +142,28 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
     }
 
     if (error) {
-      console.error("[sorting-hat] insert error:", error);
-      return { success: false as const, error: "Failed to save your details. Please try again." };
+      // LAYER 1
+      console.error("[submitSortingHatLead] insert failed", {
+        error,
+        payload_email: data.email,
+      });
+      // LAYER 2: mirror so the lead is not lost
+      await trackLeadFailure({
+        source: "submitSortingHatLead",
+        payload: {
+          full_name: data.fullName,
+          email: data.email,
+          business_type: data.businessType,
+          volume_tier: data.volumeTier,
+          pain_point: data.painPoint,
+          track: route.track,
+          track_variant: route.trackVariant,
+        },
+        error_code: error.code,
+        error_message: error.message,
+      });
+      // LAYER 3
+      return { success: false as const, error: "We couldn't save your details. Please try again." };
     }
 
     // Fire Day 0 email — non-blocking on errors so the form still completes
@@ -164,7 +185,19 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       track: route.track,
     };
   } catch (err) {
-    console.error("[sorting-hat] unexpected error:", err);
+    console.error("[submitSortingHatLead] unexpected error", err);
+    await trackLeadFailure({
+      source: "submitSortingHatLead",
+      payload: {
+        email: typeof input?.email === "string" ? input.email : "unknown",
+        full_name: typeof input?.fullName === "string" ? input.fullName : null,
+        business_type: typeof input?.businessType === "string" ? input.businessType : null,
+        volume_tier: typeof input?.volumeTier === "string" ? input.volumeTier : null,
+        pain_point: typeof input?.painPoint === "string" ? input.painPoint : null,
+      },
+      error_code: "UNEXPECTED",
+      error_message: err instanceof Error ? err.message : String(err),
+    });
     return { success: false as const, error: "Unexpected error. Please try again." };
   }
 }

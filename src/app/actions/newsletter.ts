@@ -1,6 +1,7 @@
 "use server";
 
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
+import { trackLeadFailure } from "@/lib/leads/track-failure";
 import { z } from "zod";
 import { headers } from "next/headers";
 
@@ -57,27 +58,56 @@ export async function subscribeNewsletter(formData: {
     const data = result.data;
     const supabase = await createSupabaseServerClient();
 
-    // Insert (upsert to handle duplicates gracefully)
+    // Plain INSERT — RLS allows anon INSERT but not UPDATE, so upsert is blocked.
+    // Duplicate emails surface as Postgres 23505 (unique violation), treated as
+    // silent success below since the user is already on the list.
     const { error } = await supabase
       .from("newsletter_subscribers")
-      .upsert(
-        {
-          email: data.email.toLowerCase().trim(),
-          source: data.source,
-          active: true,
-          subscribed_at: new Date().toISOString(),
-        },
-        { onConflict: "email" }
-      );
+      .insert({
+        email: data.email.toLowerCase().trim(),
+        source: data.source,
+        active: true,
+        subscribed_at: new Date().toISOString(),
+      });
 
     if (error) {
-      console.error("Newsletter subscribe error:", error);
-      return { success: false, error: "Could not save subscription. Please try again." };
+      // Duplicate email — already subscribed. Treat as success.
+      if (error.code === "23505") {
+        return { success: true };
+      }
+      // LAYER 1: real log line
+      console.error("[subscribeNewsletter] insert failed", {
+        error,
+        payload_email: data.email,
+        source: data.source,
+      });
+      // LAYER 2: mirror to lead_capture_failures so the lead is not lost
+      await trackLeadFailure({
+        source: "subscribeNewsletter",
+        payload: {
+          email: data.email.toLowerCase().trim(),
+          source: data.source,
+        },
+        error_code: error.code,
+        error_message: error.message,
+      });
+      // LAYER 3: honest response to caller
+      return { success: false, error: "We couldn't save your details. Please try again." };
     }
 
     return { success: true };
   } catch (error) {
-    console.error("Newsletter error:", error);
+    console.error("[subscribeNewsletter] unexpected error", error);
+    // Best-effort: still try to mirror what we have
+    await trackLeadFailure({
+      source: "subscribeNewsletter",
+      payload: {
+        email: typeof formData?.email === "string" ? formData.email : "unknown",
+        source: typeof formData?.source === "string" ? formData.source : "homepage",
+      },
+      error_code: "UNEXPECTED",
+      error_message: error instanceof Error ? error.message : String(error),
+    });
     return { success: false, error: "Something went wrong. Please try again." };
   }
 }
