@@ -117,7 +117,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
     ],
   };
 
-  // Augment schema_json with ImageObject if hero exists
+  // Augment schema_json with ImageObject if hero exists, plus Speakable selectors.
   const articleSchema = (() => {
     const base: any = article.schema_json && typeof article.schema_json === "object"
       ? { ...(article.schema_json as object) }
@@ -131,6 +131,13 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
         height: 900,
       };
     }
+    // Speakable: per geo-architect/03-citation-worthy-content.md.
+    // h1 is the article title; [data-speakable='true'] tags the lead paragraph
+    // and any in-body TL;DR blocks.
+    base.speakable = {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "[data-speakable='true']"],
+    };
     return base;
   })();
 
@@ -151,6 +158,29 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
         name: "myPayAdvisor",
         logo: { "@type": "ImageObject", url: `${SITE}/og-logo.png` },
       },
+    };
+  })();
+
+  // AudioObject schema — always render when audio_url present (NotebookLM podcast).
+  // Previously gated on no-video — but multi-modal signals (audio + video both)
+  // are net positive for LLM citation per geo-architect § Multimodal patterns.
+  const audioSchema = (() => {
+    if (!article.audio_url) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "AudioObject",
+      name: `${article.title} — audio overview`,
+      description: article.description,
+      contentUrl: article.audio_url,
+      encodingFormat: "audio/mpeg",
+      uploadDate: article.published_at || article.updated_at,
+      duration: "PT8M",
+      publisher: {
+        "@type": "Organization",
+        name: "myPayAdvisor",
+        logo: { "@type": "ImageObject", url: `${SITE}/og-logo.png` },
+      },
+      isPartOf: { "@id": url },
     };
   })();
 
@@ -197,6 +227,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
       {faqSchema ? <JsonLd data={faqSchema} /> : null}
       {howToSchema ? <JsonLd data={howToSchema} /> : null}
       {videoSchema ? <JsonLd data={videoSchema} /> : null}
+      {audioSchema ? <JsonLd data={audioSchema} /> : null}
 
       <nav className="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-foreground">Home</Link>
@@ -226,7 +257,12 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {article.title}
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl">{article.description}</p>
+          <p
+            data-speakable="true"
+            className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          >
+            {article.description}
+          </p>
           <div className="mt-6 flex items-center gap-3 text-sm">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
               {article.author?.[0] || "M"}
@@ -264,7 +300,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           </figure>
         ) : null}
 
-        {article.audio_url && !article.youtube_id && !article.video_url ? (
+        {article.audio_url ? (
           <section aria-label="Audio overview" className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-4 sm:p-5">
             <div className="mb-2 flex items-center justify-between gap-3">
               <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-primary">

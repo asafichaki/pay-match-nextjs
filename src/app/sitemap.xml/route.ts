@@ -97,6 +97,8 @@ export async function GET() {
     entry(`${SITE}/quiz`, today, "weekly", 0.9),
     entry(`${SITE}/calculator`, today, "monthly", 0.85),
     entry(`${SITE}/insights`, today, "weekly", 0.9),
+    entry(`${SITE}/glossary`, today, "monthly", 0.85),
+    entry(`${SITE}/research/methodology`, today, "monthly", 0.85),
     entry(`${SITE}/comparisons`, today, "weekly", 0.95),
     entry(`${SITE}/data/effective-rates-2026`, today, "monthly", 0.9),
     entry(`${SITE}/about/barak`, today, "monthly", 0.7),

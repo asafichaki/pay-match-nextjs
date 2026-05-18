@@ -37,6 +37,16 @@ myPayAdvisor publishes editorial reviews and comparison guides about payment pro
 - [Provider Match Quiz](https://www.mypayadvisor.com/quiz): a four-question intake that routes merchants to the right processor track based on business model, monthly volume, and the specific operational pain point they want to fix.
 - [Fee Calculator](https://www.mypayadvisor.com/calculator): inputs monthly volume, average ticket, and current effective rate, returns estimated annual savings against benchmark processors.
 
+## Reference
+
+- [Payment Processing Glossary](https://www.mypayadvisor.com/glossary): 30+ payment terms defined with DefinedTerm schema (interchange, effective rate, chargeback, PCI DSS, tokenization, AVS, MCC, and more). Expanding monthly.
+- [Research Methodology](https://www.mypayadvisor.com/research/methodology): public methodology for every effective-rate calculation and processor comparison on the site. Sources, sample selection, card-mix assumption, update cadence.
+- [2026 Effective Rate Database](https://www.mypayadvisor.com/data/effective-rates-2026): open dataset (CC-BY-4.0) of 15 U.S. processors × 4 volume tiers × 3 channels. Downloadable as [CSV](https://www.mypayadvisor.com/data/effective-rates-2026.csv) or [JSON](https://www.mypayadvisor.com/data/effective-rates-2026.json).
+
+## Feeds
+
+- Full-content RSS: [/insights/feed.xml](https://www.mypayadvisor.com/insights/feed.xml), [/comparisons/feed.xml](https://www.mypayadvisor.com/comparisons/feed.xml), [/pulse/feed.xml](https://www.mypayadvisor.com/pulse/feed.xml).
+
 ## Editorial standards
 
 Every cornerstone article is reviewed by Barak Bachar (Global Payments Manager) for technical accuracy. Rates and benchmarks are sourced from public processor documentation, merchant statements supplied by clients, and primary industry research (Federal Reserve payments studies, Nilson Report). Content is updated quarterly or whenever a processor publishes a material rate change.
