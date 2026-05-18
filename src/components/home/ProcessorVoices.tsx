@@ -117,10 +117,12 @@ export default function ProcessorVoices() {
                   &ldquo;{v.quote}&rdquo;
                 </blockquote>
 
-                <footer className="border-t border-border pt-4 text-sm">
-                  <p className="font-medium text-foreground">{v.attribution}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{v.source}</p>
-                </footer>
+                <div className="border-t border-border pt-4 text-sm">
+                  <cite className="not-italic">
+                    <p className="font-medium text-foreground">{v.attribution}</p>
+                    <p className="text-muted-foreground text-xs mt-0.5">{v.source}</p>
+                  </cite>
+                </div>
               </article>
             );
           })}

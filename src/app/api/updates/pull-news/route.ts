@@ -18,11 +18,13 @@ export const maxDuration = 300;
 const JOB_NAME = "updates.pull_news";
 
 function slugify(s: string): string {
-  return s
+  const normalized = s
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 80);
+    .replace(/^-+|-+$/g, "");
+  if (normalized.length <= 80) return normalized;
+  // Truncate at last full word boundary to avoid cutting mid-word.
+  return normalized.slice(0, 80).replace(/-[^-]*$/, "").replace(/-+$/, "");
 }
 
 export async function GET(req: Request) {

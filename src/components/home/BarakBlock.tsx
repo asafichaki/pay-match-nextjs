@@ -43,9 +43,9 @@ export default function BarakBlock() {
 
         <blockquote className="editorial-quote text-lg sm:text-xl md:text-2xl text-foreground leading-snug mb-8 sm:mb-12 border-l-2 border-primary pl-4 sm:pl-5 max-w-3xl mx-auto md:mx-0">
           &ldquo;{QUOTE}&rdquo;
-          <footer className="mt-2 sm:mt-3 text-xs sm:text-sm not-italic text-muted-foreground font-sans">
+          <cite className="block mt-2 sm:mt-3 text-xs sm:text-sm not-italic text-muted-foreground font-sans">
             — From our 2026 rate review
-          </footer>
+          </cite>
         </blockquote>
 
         <div className="grid md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 mb-7 sm:mb-10">

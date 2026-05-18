@@ -54,7 +54,7 @@ const Testimonials = () => {
                     "{testimonial.quote}"
                   </blockquote>
 
-                  <footer className="border-t pt-4">
+                  <div className="border-t pt-4">
                     <cite className="not-italic">
                       <p className="font-semibold text-foreground" itemProp="author">
                         {testimonial.author}
@@ -63,7 +63,7 @@ const Testimonials = () => {
                         {testimonial.role}
                       </p>
                     </cite>
-                  </footer>
+                  </div>
                 </CardContent>
               </Card>
             </article>

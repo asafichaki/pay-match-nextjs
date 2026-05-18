@@ -40,6 +40,15 @@ const nextConfig: NextConfig = {
       // 404 paths surfaced by QA sweep 2026-05-18 (rage-click hotspots in Clarity)
       { source: "/effective-rate-database", destination: "/data/effective-rates-2026", permanent: true },
       { source: "/tools", destination: "/calculator", permanent: true },
+
+      // 6 frequently-typed-or-cited routes that 404 — point each at its closest live equivalent
+      { source: "/about", destination: "/about/barak", permanent: true },
+      { source: "/contact", destination: "/#brief-heading", permanent: true },
+      { source: "/pricing", destination: "/comparisons", permanent: true },
+      { source: "/faq", destination: "/#faq", permanent: true },
+      { source: "/feed", destination: "/pulse/feed.xml", permanent: true },
+      { source: "/rss", destination: "/pulse/feed.xml", permanent: true },
+      { source: "/feed.xml", destination: "/pulse/feed.xml", permanent: true },
     ];
   },
   async headers() {

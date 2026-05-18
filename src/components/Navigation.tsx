@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { openSortingHat } from "./sorting-hat/useSortingHatModal";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -152,6 +152,7 @@ const Navigation = () => {
                 </Button>
               </SheetTrigger>
             <SheetContent side="right" className="w-[280px] sm:w-[320px]" aria-label="Mobile navigation">
+              <SheetTitle className="sr-only">Navigation menu</SheetTitle>
               <nav className="flex flex-col gap-6 mt-8" role="navigation" aria-label="Mobile menu">
                 <Link
                   href="/"
