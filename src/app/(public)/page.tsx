@@ -7,6 +7,7 @@ import LeadCaptureBrief from "@/components/home/LeadCaptureBrief";
 import LatestUpdatesStrip from "@/components/home/LatestUpdatesStrip";
 import RateTable from "@/components/home/RateTable";
 import BarakBlock from "@/components/home/BarakBlock";
+import WhoWeAreVideo from "@/components/home/WhoWeAreVideo";
 import ProcessorVoices from "@/components/home/ProcessorVoices";
 import EditorialPicks from "@/components/home/EditorialPicks";
 import FAQ from "@/components/FAQ";
@@ -151,6 +152,9 @@ export default function HomePage() {
 
       {/* 6. How this is different (operator review process) */}
       <BarakBlock />
+
+      {/* 6b. Who we are — 90-sec founder video */}
+      <WhoWeAreVideo />
 
       {/* 7. Industry voices — processor sentiment */}
       <ProcessorVoices />
