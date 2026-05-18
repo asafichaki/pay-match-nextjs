@@ -147,14 +147,14 @@ export default function HomePage() {
         <EffectiveRateCalculator defaultChannel="online" />
       </div>
 
+      {/* 4b. Who we are — 90-sec founder video */}
+      <WhoWeAreVideo />
+
       {/* 5. Provider rate table — editorial */}
       <RateTable />
 
       {/* 6. How this is different (operator review process) */}
       <BarakBlock />
-
-      {/* 6b. Who we are — 90-sec founder video */}
-      <WhoWeAreVideo />
 
       {/* 7. Industry voices — processor sentiment */}
       <ProcessorVoices />
