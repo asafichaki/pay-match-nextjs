@@ -1,9 +1,56 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { ArrowRight, TrendingUp, Headphones, PlayCircle, Presentation } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { MatchCTA } from "@/components/MatchCTA";
 import ProcessorComparisonTable from "@/components/ProcessorComparisonTable";
+import { createSupabaseServerClient } from "@/integrations/supabase/server";
+
+export const revalidate = 3600;
+
+interface Comparison {
+  title: string;
+  description: string;
+  href: string;
+  date: string;
+  iso?: string;
+  featured?: boolean;
+  hasAudio?: boolean;
+  hasVideo?: boolean;
+  hasSlides?: boolean;
+}
+
+function formatComparisonDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
+async function fetchDbComparisons(): Promise<Comparison[]> {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { data } = await (supabase as any)
+      .from("blog_articles")
+      .select("slug,title,description,meta_description,published_at,updated_at,audio_url,video_url,youtube_id,slide_image_urls")
+      .eq("kind", "comparisons")
+      .eq("published", true)
+      .order("published_at", { ascending: false })
+      .limit(500);
+    if (!data) return [];
+    return (data as any[]).map((row) => ({
+      title: row.title || row.slug,
+      description: row.description || row.meta_description || "",
+      href: `/comparisons/${row.slug}`,
+      date: row.published_at ? formatComparisonDate(row.published_at) : "",
+      iso: row.published_at || row.updated_at || "",
+      hasAudio: !!row.audio_url,
+      hasVideo: !!(row.video_url || row.youtube_id),
+      hasSlides: Array.isArray(row.slide_image_urls) && row.slide_image_urls.length > 0,
+    }));
+  } catch {
+    return [];
+  }
+}
 
 export const metadata: Metadata = {
   title: "15 Payment Processors Compared 2026: Fees & Effective Rates",
@@ -73,56 +120,74 @@ const faqSchema = {
   ]
 };
 
-const comparisons = [
+const staticComparisons: Comparison[] = [
   {
     title: "Best Payment Processing Companies 2026: Complete Guide",
     description: "Expert analysis of Leaders Merchant Services, Worldpay, Clover, Payment Depot, Stax, Stripe, and more. Find the lowest fees and best features for your business.",
     href: "/comparisons/best-payment-processors-2026",
     date: "Jan. 6, 2026",
+    iso: "2026-01-06",
     featured: true
   },
   {
     title: "Square vs Stripe: Which Payment Processor Is Right for You?",
     description: "In-person POS vs online payments. A comprehensive breakdown of fees, features, and best use cases to help you decide which platform suits your business model.",
     href: "/comparisons/square-vs-stripe",
-    date: "Nov. 15, 2025"
+    date: "Nov. 15, 2025",
+    iso: "2025-11-15"
   },
   {
     title: "PayPal vs Square: Complete Comparison for Small Businesses",
     description: "Online payments & international reach vs in-person POS excellence. Compare transaction fees, hardware costs, and features for retail and e-commerce.",
     href: "/comparisons/paypal-vs-square",
-    date: "Nov. 12, 2025"
+    date: "Nov. 12, 2025",
+    iso: "2025-11-12"
   },
   {
     title: "Stripe vs PayPal: Developer Tools vs Consumer Trust",
     description: "Which payment gateway wins for online businesses? We compare APIs, subscription billing, international fees, and merchant experience.",
     href: "/comparisons/stripe-vs-paypal",
-    date: "Nov. 10, 2025"
+    date: "Nov. 10, 2025",
+    iso: "2025-11-10"
   },
   {
     title: "Helcim vs Stripe: Transparent Pricing vs Advanced Features",
     description: "Save 15-25% with Helcim's interchange-plus pricing or get powerful developer tools with Stripe. Find out which processor delivers better value for your business.",
     href: "/comparisons/helcim-vs-stripe",
-    date: "Nov. 8, 2025"
+    date: "Nov. 8, 2025",
+    iso: "2025-11-08"
   },
 ];
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Payment Processor Comparisons",
-  "description": "Side-by-side comparisons of top payment processors to help you choose the best solution for your business.",
-  "url": "https://www.mypayadvisor.com/comparisons",
-  "mainEntity": {
-    "@type": "ItemList",
-    "itemListElement": comparisons.map((comparison, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "url": `https://www.mypayadvisor.com${comparison.href}`,
-      "name": comparison.title
-    }))
-  }
-};
+async function getAllComparisons(): Promise<Comparison[]> {
+  const dbComparisons = await fetchDbComparisons();
+  const byHref = new Map<string, Comparison>();
+  for (const c of staticComparisons) byHref.set(c.href, c);
+  for (const c of dbComparisons) byHref.set(c.href, c);
+  const merged = Array.from(byHref.values());
+  merged.sort((a, b) => (b.iso || "").localeCompare(a.iso || ""));
+  return merged;
+}
+
+function buildStructuredData(comparisons: Comparison[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Payment Processor Comparisons",
+    "description": "Side-by-side comparisons of top payment processors to help you choose the best solution for your business.",
+    "url": "https://www.mypayadvisor.com/comparisons",
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": comparisons.length,
+      "itemListElement": comparisons.map((comparison, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `https://www.mypayadvisor.com${comparison.href}`,
+        "name": comparison.title
+      }))
+    }
+  };
+}
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -161,7 +226,9 @@ function getCurrentMonthYear() {
   return `${months[new Date().getMonth()]} ${new Date().getFullYear()}`;
 }
 
-export default function ComparisonsPage() {
+export default async function ComparisonsPage() {
+  const comparisons = await getAllComparisons();
+  const structuredData = buildStructuredData(comparisons);
   return (
     <>
       <JsonLd data={structuredData} />
@@ -260,10 +327,31 @@ export default function ComparisonsPage() {
                       {comparison.description}
                     </p>
 
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">
-                        {comparison.date}
-                      </span>
+                    <div className="flex items-center justify-between gap-3 flex-wrap">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <span className="text-sm text-muted-foreground">
+                          {comparison.date}
+                        </span>
+                        {(comparison.hasAudio || comparison.hasVideo || comparison.hasSlides) && (
+                          <div className="flex items-center gap-2 flex-wrap">
+                            {comparison.hasAudio && (
+                              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                                <Headphones className="w-3 h-3" /> Listen
+                              </span>
+                            )}
+                            {comparison.hasVideo && (
+                              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                                <PlayCircle className="w-3 h-3" /> Watch
+                              </span>
+                            )}
+                            {comparison.hasSlides && (
+                              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                                <Presentation className="w-3 h-3" /> Slides
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
                       <span className="flex items-center gap-2 text-sm font-medium text-primary">
                         Read comparison
                         <ArrowRight className="w-4 h-4" />

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, BookOpen, Headphones, PlayCircle, Presentation } from "lucide-react";
 
 interface Article {
   id: string;
@@ -9,6 +9,32 @@ interface Article {
   date: string;
   slug: string;
   keywords: string[];
+  hasAudio?: boolean;
+  hasVideo?: boolean;
+  hasSlides?: boolean;
+}
+
+function MediaBadges({ article }: { article: Article }) {
+  if (!article.hasAudio && !article.hasVideo && !article.hasSlides) return null;
+  return (
+    <div className="flex items-center gap-2 flex-wrap">
+      {article.hasAudio && (
+        <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+          <Headphones className="w-3 h-3" /> Listen
+        </span>
+      )}
+      {article.hasVideo && (
+        <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+          <PlayCircle className="w-3 h-3" /> Watch
+        </span>
+      )}
+      {article.hasSlides && (
+        <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+          <Presentation className="w-3 h-3" /> Slides
+        </span>
+      )}
+    </div>
+  );
 }
 
 function ArticleItem({ article }: { article: Article }) {
@@ -21,8 +47,11 @@ function ArticleItem({ article }: { article: Article }) {
         <p className="text-muted-foreground leading-relaxed">
           {article.description}
         </p>
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">{article.date}</span>
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-sm text-muted-foreground">{article.date}</span>
+            <MediaBadges article={article} />
+          </div>
           <span className="flex items-center gap-2 text-sm font-medium text-primary">
             Read article
             <ArrowRight className="w-4 h-4" />

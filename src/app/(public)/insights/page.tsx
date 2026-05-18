@@ -4,6 +4,9 @@ import path from "node:path";
 import { JsonLd } from "@/components/JsonLd";
 import InsightsContent from "./InsightsContent";
 import { REDIRECTED_INSIGHT_SLUGS } from "@/lib/insights/redirected-slugs";
+import { createSupabaseServerClient } from "@/integrations/supabase/server";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Payment Processing Insights & Expert Guides 2026",
@@ -34,6 +37,9 @@ interface Article {
   slug: string;
   keywords: string[];
   iso: string;
+  hasAudio?: boolean;
+  hasVideo?: boolean;
+  hasSlides?: boolean;
 }
 
 function firstMatch(src: string, re: RegExp): string | null {
@@ -56,7 +62,7 @@ function formatDate(iso: string): string {
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-function discoverArticles(): Article[] {
+function discoverStaticArticles(): Article[] {
   const insightsDir = path.join(process.cwd(), "src", "app", "(public)", "insights");
   let entries: string[] = [];
   try {
@@ -100,42 +106,53 @@ function discoverArticles(): Article[] {
       keywords: [],
     });
   }
-
-  articles.sort((a, b) => (b.iso || "").localeCompare(a.iso || ""));
   return articles;
 }
 
-const articles = discoverArticles();
+async function fetchDbArticles(): Promise<Article[]> {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { data } = await (supabase as any)
+      .from("blog_articles")
+      .select("slug,title,description,meta_description,published_at,updated_at,audio_url,video_url,youtube_id,slide_image_urls,tags")
+      .eq("kind", "insights")
+      .eq("published", true)
+      .order("published_at", { ascending: false })
+      .limit(500);
+    if (!data) return [];
+    return (data as any[]).map((row) => ({
+      id: row.slug,
+      title: row.title || row.slug,
+      description: row.description || row.meta_description || "",
+      category: "Insights",
+      date: row.published_at ? formatDate(row.published_at) : "",
+      iso: row.published_at || row.updated_at || "",
+      slug: `/insights/${row.slug}`,
+      keywords: Array.isArray(row.tags) ? row.tags : [],
+      hasAudio: !!row.audio_url,
+      hasVideo: !!(row.video_url || row.youtube_id),
+      hasSlides: Array.isArray(row.slide_image_urls) && row.slide_image_urls.length > 0,
+    }));
+  } catch {
+    return [];
+  }
+}
 
-const collectionPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Payment Processing Insights & Expert Guides 2026",
-  "description": "Expert insights on payment processing, payment gateways, and choosing the right payment provider for your business in 2026.",
-  "url": "https://www.mypayadvisor.com/insights",
-  "mainEntity": {
-    "@type": "ItemList",
-    "name": "Payment Processing Articles",
-    "numberOfItems": articles.length,
-    "itemListElement": articles.map((article, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "Article",
-        "headline": article.title,
-        "description": article.description,
-        "url": `https://www.mypayadvisor.com${article.slug}`,
-        "datePublished": article.iso || undefined,
-        "author": { "@type": "Organization", "name": "myPayAdvisor" },
-        "publisher": {
-          "@type": "Organization",
-          "name": "myPayAdvisor",
-          "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" },
-        },
-      },
-    })),
-  },
-};
+async function getAllArticles(): Promise<Article[]> {
+  const [staticArticles, dbArticles] = await Promise.all([
+    Promise.resolve(discoverStaticArticles()),
+    fetchDbArticles(),
+  ]);
+
+  // DB articles win on slug collision (more recent + has media metadata)
+  const bySlug = new Map<string, Article>();
+  for (const a of staticArticles) bySlug.set(a.slug, a);
+  for (const a of dbArticles) bySlug.set(a.slug, a);
+
+  const merged = Array.from(bySlug.values());
+  merged.sort((a, b) => (b.iso || "").localeCompare(a.iso || ""));
+  return merged;
+}
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -146,7 +163,39 @@ const breadcrumbSchema = {
   ],
 };
 
-export default function InsightsPage() {
+export default async function InsightsPage() {
+  const articles = await getAllArticles();
+
+  const collectionPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Payment Processing Insights & Expert Guides 2026",
+    "description": "Expert insights on payment processing, payment gateways, and choosing the right payment provider for your business in 2026.",
+    "url": "https://www.mypayadvisor.com/insights",
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Payment Processing Articles",
+      "numberOfItems": articles.length,
+      "itemListElement": articles.map((article, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Article",
+          "headline": article.title,
+          "description": article.description,
+          "url": `https://www.mypayadvisor.com${article.slug}`,
+          "datePublished": article.iso || undefined,
+          "author": { "@type": "Organization", "name": "myPayAdvisor" },
+          "publisher": {
+            "@type": "Organization",
+            "name": "myPayAdvisor",
+            "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" },
+          },
+        },
+      })),
+    },
+  };
+
   return (
     <>
       <JsonLd data={collectionPageSchema} />
