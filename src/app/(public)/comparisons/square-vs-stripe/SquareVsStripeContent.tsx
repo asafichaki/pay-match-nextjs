@@ -200,8 +200,17 @@ export default function SquareVsStripeContent() {
             <h2 className="text-2xl font-bold text-foreground mb-6">Pricing Breakdown</h2>
 
             <p className="text-muted-foreground mb-6">
-              Understanding the complete cost structure is crucial for your bottom line.
+              Understanding the complete cost structure is crucial for your bottom line. Before reading the side-by-side fees below, set a benchmark for what a healthy effective rate actually looks like.
             </p>
+
+            <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
+              <blockquote cite="https://www.merchantmaverick.com/the-complete-guide-to-credit-card-processing-rates-and-fees/" className="text-foreground italic leading-relaxed">
+                &ldquo;For a typical, low-risk business, your effective rate should be around 3 to 4%.&rdquo;
+              </blockquote>
+              <figcaption className="mt-2 text-sm text-muted-foreground not-italic">
+                Erica Seppala, Editor &amp; Senior Staff Writer, <a href="https://www.merchantmaverick.com/the-complete-guide-to-credit-card-processing-rates-and-fees/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Merchant Maverick</a>
+              </figcaption>
+            </figure>
 
             <div className="overflow-x-auto -mx-4 px-4 mb-8">
               <table className="w-full text-sm">

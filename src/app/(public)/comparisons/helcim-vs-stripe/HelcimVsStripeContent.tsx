@@ -115,6 +115,16 @@ export default function HelcimVsStripeContent() {
             <p className="text-muted-foreground mb-6">
               This is where Helcim and Stripe differ most. Understanding these <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">pricing models</Link> can save you thousands.
             </p>
+
+            <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
+              <blockquote cite="https://learn.helcim.com/docs/what-is-interchange-plus" className="text-foreground italic leading-relaxed">
+                &ldquo;This transparent breakdown is what sets it apart from other pricing models, where these costs are often bundled together.&rdquo;
+              </blockquote>
+              <figcaption className="mt-2 text-sm text-muted-foreground not-italic">
+                Helcim Editorial, <a href="https://learn.helcim.com/docs/what-is-interchange-plus" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim Learn (What Is Interchange-Plus)</a>
+              </figcaption>
+            </figure>
+
             <h3 className="font-semibold text-foreground mb-4">Real Savings Comparison</h3>
             <div className="overflow-x-auto -mx-4 px-4 mb-8">
               <table className="w-full text-sm">

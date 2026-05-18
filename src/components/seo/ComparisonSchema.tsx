@@ -11,6 +11,42 @@ export type BreadcrumbItem = {
   item?: string;
 };
 
+export type QuotationCreator =
+  | {
+      "@type": "Person";
+      name: string;
+      jobTitle?: string;
+      worksFor?: { "@type": "Organization"; name: string };
+      url?: string;
+    }
+  | {
+      "@type": "Organization";
+      name: string;
+      parentOrganization?: { "@type": "Organization"; name: string };
+      url?: string;
+    };
+
+export type QuotationPayload = {
+  /** Verbatim quote text. */
+  text: string;
+  /** Person or Organization who authored the quote. */
+  creator: QuotationCreator;
+  /** Publishing organization. */
+  publisher: {
+    "@type": "Organization" | "GovernmentOrganization";
+    name: string;
+    url?: string;
+  };
+  /** Canonical source URL where the quote was published. */
+  isBasedOn: string;
+  /** Optional legal/regulatory citation string. */
+  citation?: string;
+  /** Optional anchor suffix on the page (defaults to "expert-quote-1"). */
+  anchor?: string;
+  /** ISO BCP 47 language tag. Defaults to "en-US". */
+  inLanguage?: string;
+};
+
 export type ComparisonSchemaProps = {
   /** Page headline / og title. */
   title: string;
@@ -28,6 +64,8 @@ export type ComparisonSchemaProps = {
   image?: string;
   /** Use WebPage @type instead of Article (for hub-style overviews). Default Article. */
   asWebPage?: boolean;
+  /** Optional expert Quotation node appended to the JSON-LD @graph. */
+  quotation?: QuotationPayload;
 };
 
 function todayIso(): string {
@@ -59,6 +97,7 @@ export function ComparisonSchema({
   breadcrumbItems,
   image = LOGO_URL,
   asWebPage = false,
+  quotation,
 }: ComparisonSchemaProps) {
   const url = `${SITE_URL}/comparisons/${slug}`;
 
@@ -115,9 +154,28 @@ export function ComparisonSchema({
     })),
   };
 
+  const graphNodes: Record<string, unknown>[] = [article, breadcrumb];
+
+  if (quotation) {
+    const anchor = quotation.anchor ?? "expert-quote-1";
+    const quotationNode: Record<string, unknown> = {
+      "@type": "Quotation",
+      "@id": `${url}#${anchor}`,
+      text: quotation.text,
+      creator: quotation.creator,
+      publisher: quotation.publisher,
+      isBasedOn: quotation.isBasedOn,
+      inLanguage: quotation.inLanguage ?? "en-US",
+    };
+    if (quotation.citation) {
+      quotationNode.citation = quotation.citation;
+    }
+    graphNodes.push(quotationNode);
+  }
+
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [article, breadcrumb],
+    "@graph": graphNodes,
   };
 
   return <JsonLd data={graph} />;

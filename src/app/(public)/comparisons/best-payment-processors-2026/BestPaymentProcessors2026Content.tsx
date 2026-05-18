@@ -93,6 +93,18 @@ export default function BestPaymentProcessors2026Content() {
                     <h3 className="text-xl font-semibold text-foreground mb-4">Cash Flow and Business Operations</h3>
                     <p className="text-muted-foreground">Payment timing significantly affects business operations. Traditional processors may hold funds for 2-5 business days, while modern providers offer next-day or even same-day funding.</p>
                   </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-4">Why Fees Vary: Interchange Basics</h3>
+                    <p className="text-muted-foreground mb-4">Card networks and issuing banks set a baseline cost called interchange that every processor pays. Regulation II sets the statutory cap on debit-card interchange in the United States, which is why some providers can offer sub-1% debit rates and others cannot.</p>
+                    <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
+                      <blockquote cite="https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm" className="text-foreground italic leading-relaxed">
+                        &ldquo;an interchange fee that exceeds $0.21 plus 0.05 percent multiplied by the value of the transaction, plus a $0.01 fraud-prevention adjustment&rdquo;
+                      </blockquote>
+                      <figcaption className="mt-2 text-sm text-muted-foreground not-italic">
+                        Board of Governors of the Federal Reserve System, <a href="https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Regulation II (12 CFR Part 235)</a>
+                      </figcaption>
+                    </figure>
+                  </div>
                 </div>
               </section>
 

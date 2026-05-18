@@ -77,6 +77,14 @@ export default function StripeVsPayPalContent() {
 
           <section id="comparison" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6">Quick Comparison</h2>
+            <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
+              <blockquote cite="https://www.nerdwallet.com/business/software/learn/stripe-vs-paypal" className="text-foreground italic leading-relaxed">
+                &ldquo;Stripe can process payments in more than 135 currencies. This can be valuable for small businesses that want to expand overseas.&rdquo;
+              </blockquote>
+              <figcaption className="mt-2 text-sm text-muted-foreground not-italic">
+                Hillary Crawford, Lead Writer &amp; Content Strategist, <a href="https://www.nerdwallet.com/business/software/learn/stripe-vs-paypal" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">NerdWallet</a>
+              </figcaption>
+            </figure>
             <div className="overflow-x-auto -mx-4 px-4">
               <table className="w-full text-sm">
                 <thead>

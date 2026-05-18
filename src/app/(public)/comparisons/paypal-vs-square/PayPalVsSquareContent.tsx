@@ -137,7 +137,16 @@ export default function PayPalVsSquareContent() {
                 <h3 className="text-lg font-semibold mb-4">Point of Sale (POS) Features</h3>
                 <p className="text-muted-foreground mb-4"><strong>Square POS</strong> offers an intuitive interface, comprehensive inventory management with variants, built-in employee time tracking, table management for restaurants, customer directory with purchase history, and crucially - offline mode that processes payments without internet.</p>
                 <p className="text-muted-foreground mb-6"><strong>PayPal Zettle POS</strong> provides a simpler interface with basic inventory tracking, receipt customization, and sales analytics. While functional, it lacks the depth and polish of Square's offering.</p>
-                <p className="mb-8"><strong>Winner: Square.</strong> For any business where in-person POS is primary - retail, restaurants, salons - Square provides a superior experience.</p>
+                <p className="mb-6"><strong>Winner: Square.</strong> For any business where in-person POS is primary - retail, restaurants, salons - Square provides a superior experience.</p>
+
+                <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
+                  <blockquote cite="https://www.nerdwallet.com/business/software/learn/stripe-vs-paypal-vs-square" className="text-foreground italic leading-relaxed">
+                    &ldquo;If you use PayPal POS to accept card payments in-person, you&rsquo;ll get access to some of the lowest flat rates out there.&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-2 text-sm text-muted-foreground not-italic">
+                    Hillary Crawford, Lead Writer &amp; Content Strategist, <a href="https://www.nerdwallet.com/business/software/learn/stripe-vs-paypal-vs-square" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">NerdWallet</a>
+                  </figcaption>
+                </figure>
 
                 <h3 className="text-lg font-semibold mb-4">Payment Methods Accepted</h3>
                 <div className="overflow-x-auto -mx-4 px-4">

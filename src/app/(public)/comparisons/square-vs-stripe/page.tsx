@@ -97,6 +97,23 @@ export default function SquareVsStripePage() {
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
           { name: "Square vs Stripe" },
         ]}
+        quotation={{
+          text: "For a typical, low-risk business, your effective rate should be around 3 to 4%.",
+          creator: {
+            "@type": "Person",
+            name: "Erica Seppala",
+            jobTitle: "Editor & Senior Staff Writer",
+            worksFor: { "@type": "Organization", name: "Merchant Maverick" },
+            url: "https://www.merchantmaverick.com/author/erica-seppala/",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Merchant Maverick",
+            url: "https://www.merchantmaverick.com/",
+          },
+          isBasedOn: "https://www.merchantmaverick.com/the-complete-guide-to-credit-card-processing-rates-and-fees/",
+          inLanguage: "en-US",
+        }}
       />
       <JsonLd data={faqStructuredData} />
       <JsonLd data={speakableSchema} />

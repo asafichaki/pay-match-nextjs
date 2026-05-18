@@ -41,6 +41,23 @@ export default function StripeVsPayPalPage() {
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
           { name: "Stripe vs PayPal" },
         ]}
+        quotation={{
+          text: "Stripe can process payments in more than 135 currencies. This can be valuable for small businesses that want to expand overseas.",
+          creator: {
+            "@type": "Person",
+            name: "Hillary Crawford",
+            jobTitle: "Lead Writer & Content Strategist",
+            worksFor: { "@type": "Organization", name: "NerdWallet" },
+            url: "https://www.nerdwallet.com/blog/author/hcrawford/",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "NerdWallet",
+            url: "https://www.nerdwallet.com/",
+          },
+          isBasedOn: "https://www.nerdwallet.com/business/software/learn/stripe-vs-paypal",
+          inLanguage: "en-US",
+        }}
       />
       <JsonLd data={speakableSchema} />
       <StripeVsPayPalContent />

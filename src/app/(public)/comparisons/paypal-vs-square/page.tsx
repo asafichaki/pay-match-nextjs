@@ -56,6 +56,23 @@ export default function PayPalVsSquarePage() {
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
           { name: "Square vs PayPal" },
         ]}
+        quotation={{
+          text: "If you use PayPal POS to accept card payments in-person, you'll get access to some of the lowest flat rates out there.",
+          creator: {
+            "@type": "Person",
+            name: "Hillary Crawford",
+            jobTitle: "Lead Writer & Content Strategist",
+            worksFor: { "@type": "Organization", name: "NerdWallet" },
+            url: "https://www.nerdwallet.com/blog/author/hcrawford/",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "NerdWallet",
+            url: "https://www.nerdwallet.com/",
+          },
+          isBasedOn: "https://www.nerdwallet.com/business/software/learn/stripe-vs-paypal-vs-square",
+          inLanguage: "en-US",
+        }}
       />
       <JsonLd data={faqStructuredData} />
       <PayPalVsSquareContent />

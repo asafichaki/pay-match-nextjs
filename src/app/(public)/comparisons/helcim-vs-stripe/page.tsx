@@ -34,6 +34,21 @@ export default function HelcimVsStripePage() {
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
           { name: "Helcim vs Stripe" },
         ]}
+        quotation={{
+          text: "This transparent breakdown is what sets it apart from other pricing models, where these costs are often bundled together.",
+          creator: {
+            "@type": "Organization",
+            name: "Helcim Editorial",
+            parentOrganization: { "@type": "Organization", name: "Helcim Inc." },
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Helcim Inc.",
+            url: "https://www.helcim.com/",
+          },
+          isBasedOn: "https://learn.helcim.com/docs/what-is-interchange-plus",
+          inLanguage: "en-US",
+        }}
       />
       <JsonLd data={faqStructuredData} />
       <HelcimVsStripeContent />

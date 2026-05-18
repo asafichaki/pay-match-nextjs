@@ -49,6 +49,22 @@ export default function BestPaymentProcessors2026Page() {
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
           { name: "Best Payment Processors 2026" },
         ]}
+        quotation={{
+          text: "an interchange fee that exceeds $0.21 plus 0.05 percent multiplied by the value of the transaction, plus a $0.01 fraud-prevention adjustment",
+          creator: {
+            "@type": "Organization",
+            name: "Board of Governors of the Federal Reserve System",
+            url: "https://www.federalreserve.gov/",
+          },
+          publisher: {
+            "@type": "GovernmentOrganization",
+            name: "Federal Reserve System",
+            url: "https://www.federalreserve.gov/",
+          },
+          isBasedOn: "https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm",
+          citation: "Regulation II — Debit Card Interchange Fees and Routing (12 CFR Part 235)",
+          inLanguage: "en-US",
+        }}
       />
       <JsonLd data={faqStructuredData} />
       <BestPaymentProcessors2026Content />
