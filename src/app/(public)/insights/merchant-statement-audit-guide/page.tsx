@@ -3,6 +3,8 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { Linkedin, Calculator, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ExpertQuote } from "@/components/article/ExpertQuote";
+import { BARAK_NAME, BARAK_TITLE, BARAK_PERSON_ID } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: "How to Reduce Credit Card Processing Fees: Ultimate 2025 Merchant Statement Audit Guide",
@@ -200,6 +202,15 @@ export default function MerchantStatementAuditGuidePage() {
                 <p className="text-foreground leading-relaxed">
                   This confusion is not accidental; it is a feature, not a bug, of what industry insiders call the <strong>"Obfuscation Economy."</strong>
                 </p>
+
+                <ExpertQuote
+                  quote="Most merchants on a tiered contract pay $400 to $900 a year in flat fees that have nothing to do with card processing — PCI, regulatory product, statement, monthly minimum. Every line is negotiable. The bank earns this revenue because nobody asks in writing for it to be waived. Five minutes and a written request removes most of it."
+                  authorName={BARAK_NAME}
+                  authorRole={`${BARAK_TITLE}, myPayAdvisor`}
+                  authorSlug="barak"
+                  personId={BARAK_PERSON_ID}
+                  articleUrl="https://www.mypayadvisor.com/insights/merchant-statement-audit-guide"
+                />
 
                 <p className="text-foreground leading-relaxed">
                   Credit card processors (ISOs) and acquiring banks rely on a complex web of acronyms, intentionally vague nomenclature, and bundled pricing strategies to mask their true profit margins. Research indicates that <strong>over 90% of U.S. merchants are overpaying for credit card processing</strong>, simply because the invoices are designed to be unreadable.

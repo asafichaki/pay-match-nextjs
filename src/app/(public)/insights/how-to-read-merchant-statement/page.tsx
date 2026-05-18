@@ -58,7 +58,14 @@ export default function HowToReadMerchantStatementPage() {
       "@id": "https://www.mypayadvisor.com/insights/how-to-read-merchant-statement"
     },
     "keywords": ["how to read merchant statement", "merchant statement explained", "credit card processing fees", "effective rate calculation", "interchange fees", "processing fee acronyms", "junk fees merchant statement"],
-    "articleSection": "Financial Education"
+    "articleSection": "Financial Education",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "[data-speakable='true']"]
+    },
+    "citation": [
+      "https://www.mypayadvisor.com/research/methodology"
+    ]
   };
 
   const breadcrumbSchema = {
@@ -134,8 +141,8 @@ export default function HowToReadMerchantStatementPage() {
                   How to Read Your Merchant Statement: The Ultimate 2025 Guide to Decoding Processing Fees
                 </h1>
                 
-                <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                  78% of merchants simply look at the bottom line and pay. This guide is your "Rosetta Stone" to decode the acronyms, understand the fee hierarchy, and spot where you're being overcharged.
+                <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
+                  A merchant statement is a monthly document from your payment processor that itemizes every fee, fund settlement, and chargeback on your account. The five sections to know are: deposits summary, fee summary, transaction detail, chargebacks/disputes, and adjustments. The four hidden flat fees most merchants miss (PCI, statement, regulatory, monthly minimum) typically add $30-$90 per month — see <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for the calculation.
                 </p>
 
                 {/* Author Byline */}

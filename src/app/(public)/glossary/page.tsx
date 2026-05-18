@@ -150,9 +150,9 @@ export default function GlossaryPage() {
               {byCategory.get(c)?.map((term) => (
                 <div key={term.slug} id={term.slug} className="scroll-mt-20">
                   <dt className="text-lg font-semibold text-foreground">
-                    <a href={`#${term.slug}`} className="hover:text-primary">
+                    <Link href={`/glossary/${term.slug}`} className="hover:text-primary">
                       {term.term}
-                    </a>
+                    </Link>
                     {term.alternateNames?.length ? (
                       <span className="ml-3 text-sm font-normal text-muted-foreground">
                         ({term.alternateNames.join(", ")})
@@ -165,6 +165,11 @@ export default function GlossaryPage() {
                   {term.example ? (
                     <p className="mt-2 text-sm italic text-muted-foreground">{term.example}</p>
                   ) : null}
+                  <p className="mt-2 text-sm">
+                    <Link href={`/glossary/${term.slug}`} className="text-primary hover:underline font-medium">
+                      Read more →
+                    </Link>
+                  </p>
                 </div>
               ))}
             </dl>

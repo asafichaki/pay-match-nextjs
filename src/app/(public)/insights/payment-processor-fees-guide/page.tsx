@@ -53,7 +53,15 @@ export default function PaymentProcessorFeesGuidePage() {
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/payment-processor-fees-guide"
-    }
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "[data-speakable='true']"]
+    },
+    "citation": [
+      "https://www.mypayadvisor.com/research/methodology",
+      "https://www.mypayadvisor.com/data/effective-rates-2026"
+    ]
   };
 
   const faqSchema = {
@@ -135,8 +143,8 @@ export default function PaymentProcessorFeesGuidePage() {
                 Payment Processing Fees in 2026: Real Rates from 14 Processors
               </h1>
               
-              <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Everything you need to know about choosing the right payment processor, understanding fees, and optimizing your processing costs to save thousands annually.
+              <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
+                Payment processor fees in 2026 break into three layers: interchange (1.5%-3.5%, paid to the cardholder&apos;s issuing bank), network assessments (0.13%-0.14%, paid to Visa or Mastercard), and processor markup (0.10%-2.00%, paid to your processor). The median U.S. SMB effective rate is 2.65% on flat-rate and 2.30%-2.55% on interchange-plus — see <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
               </p>
 
               {/* Author Byline */}

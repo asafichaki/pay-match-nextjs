@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import { REDIRECTED_INSIGHT_SLUGS } from "@/lib/insights/redirected-slugs";
+import { GLOSSARY } from "@/lib/glossary/terms";
 
 const SITE = "https://www.mypayadvisor.com";
 
@@ -128,10 +129,15 @@ export async function GET() {
     .map((r) => entry(`${SITE}/pulse/week/${r.slug}`, r.published_at.slice(0, 10), "weekly", 0.7))
     .join("");
 
+  // Glossary per-term sub-pages (DefinedTerm + Article + Speakable schema)
+  const glossaryXml = GLOSSARY
+    .map((t) => entry(`${SITE}/glossary/${t.slug}`, today, "monthly", 0.75))
+    .join("");
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">${fixed}${comparisonXml}${insightXml}${roundupXml}${autopilotXml}
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">${fixed}${comparisonXml}${insightXml}${glossaryXml}${roundupXml}${autopilotXml}
 
 </urlset>`;
 

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
-import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN, BARAK_PERSON_ID } from "@/data/personas/barak";
+import { ExpertQuote } from "@/components/article/ExpertQuote";
 
 const URL = "https://www.mypayadvisor.com/insights/payment-processor-negotiation-playbook";
 const TITLE = "Payment Processor Negotiation Playbook: 9 Levers That Actually Move the Number";
@@ -121,6 +122,15 @@ export default function Page() {
               <p className="text-foreground leading-relaxed">
                 Everything else is negotiable. The pricing model is negotiable. The processor markup is negotiable. The reserve is negotiable. The ETF is negotiable. The PCI fee, the monthly minimum, the chargeback fee, the funding window, all negotiable. Treat anyone who tells you otherwise as a salesperson, not a payments operator.
               </p>
+
+              <ExpertQuote
+                quote="The most expensive sentence in payments is 'we don't have room to negotiate on that.' Above $25K monthly volume, every flat fee on the statement is on the table. Above $100K, the markup itself is on the table. The processor never volunteers it — you have to ask, in writing, with a competing quote in the same email."
+                authorName={BARAK_NAME}
+                authorRole={`${BARAK_TITLE}, myPayAdvisor`}
+                authorSlug="barak"
+                personId={BARAK_PERSON_ID}
+                articleUrl="https://www.mypayadvisor.com/insights/payment-processor-negotiation-playbook"
+              />
 
               <h2 id="lever-1" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Lever 1: Switch from blended to IC++

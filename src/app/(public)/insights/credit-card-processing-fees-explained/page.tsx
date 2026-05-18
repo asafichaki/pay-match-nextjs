@@ -52,7 +52,15 @@ export default function CreditCardProcessingFeesExplainedPage() {
       "@id": "https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained"
     },
     "keywords": ["credit card processing fees", "merchant fees", "interchange fees", "payment processing costs", "reduce processing fees"],
-    "articleSection": "Payment Processing"
+    "articleSection": "Payment Processing",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "[data-speakable='true']"]
+    },
+    "citation": [
+      "https://www.mypayadvisor.com/research/methodology",
+      "https://www.mypayadvisor.com/data/effective-rates-2026"
+    ]
   };
 
   const breadcrumbSchema = {
@@ -134,8 +142,8 @@ export default function CreditCardProcessingFeesExplainedPage() {
                 Credit Card Processing Fees in 2026: What You Actually Pay (and How to Cut It)
               </h1>
               
-              <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                The definitive guide to understanding every dollar you pay in credit card fees, and proven strategies to save thousands annually.
+              <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
+                Credit card processing fees in 2026 average 2.65% of card volume for U.S. SMBs on flat-rate processors and 2.30%-2.55% on interchange-plus. The components are interchange (largest, set by Visa/Mastercard), assessments (~0.13%), processor markup (negotiable), and four hidden flat fees that quietly add 0.30-0.45 percentage points. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full breakdown.
               </p>
 
               {/* Author Byline */}
