@@ -86,7 +86,12 @@ export async function submitQuizLead(formData: {
       chargeback_history: null,
       integration_needs: data.priority ? data.priority.join(", ") : null,
       recommended_provider: data.recommendedProvider || null,
-      status: "new",
+      status: "track_a",
+      lead_source: "legacy_quiz",
+      track: "A",
+      track_variant: "default",
+      funnel_state: "day0",
+      volume_tier: data.monthlyVolume || null,
     });
 
     if (error) {

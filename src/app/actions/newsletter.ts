@@ -64,20 +64,15 @@ export async function subscribeNewsletter(formData: {
         {
           email: data.email.toLowerCase().trim(),
           source: data.source,
-          status: "active",
+          active: true,
           subscribed_at: new Date().toISOString(),
         },
         { onConflict: "email" }
       );
 
     if (error) {
-      // If table doesn't exist yet, still show success to user
-      if (error.code === "PGRST205" || error.message?.includes("not found")) {
-        console.warn("Newsletter table not yet created in Supabase. Email captured in logs:", data.email);
-        return { success: true };
-      }
       console.error("Newsletter subscribe error:", error);
-      return { success: true };
+      return { success: false, error: "Could not save subscription. Please try again." };
     }
 
     return { success: true };
