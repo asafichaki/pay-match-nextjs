@@ -36,6 +36,10 @@ const nextConfig: NextConfig = {
 
       // Chargeback duplicates — keep "solutions" (broader), 301 "software"
       { source: "/insights/chargeback-management-software-optimizing-merchant-profitability-in-2026", destination: "/insights/chargeback-management-solutions-a-merchant-s-guide-to-prevention-recovery", permanent: true },
+
+      // 404 paths surfaced by QA sweep 2026-05-18 (rage-click hotspots in Clarity)
+      { source: "/effective-rate-database", destination: "/data/effective-rates-2026", permanent: true },
+      { source: "/tools", destination: "/calculator", permanent: true },
     ];
   },
   async headers() {

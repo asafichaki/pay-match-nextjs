@@ -46,9 +46,9 @@ const Footer = () => {
             <h3 className="font-semibold mb-3 text-sm">Quick Links</h3>
             <ul className="flex flex-col gap-2 text-xs list-none p-0 m-0">
               <li>
-                <a href="#compare" className="text-background/70 hover:text-primary transition-colors">
+                <Link href="/comparisons" className="text-background/70 hover:text-primary transition-colors">
                   Compare Processors
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/quiz" className="text-background/70 hover:text-primary transition-colors">

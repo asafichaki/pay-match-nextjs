@@ -7,7 +7,7 @@ import ReviewerBioBox from "@/components/ReviewerBioBox";
 const URL_CANONICAL = "https://www.mypayadvisor.com/research/methodology";
 
 export const metadata: Metadata = {
-  title: "Research Methodology | myPayAdvisor",
+  title: "Research Methodology",
   description:
     "How myPayAdvisor measures and reports U.S. payment processor effective rates, fees, and operator outcomes. Public methodology, sources, sample selection, and update cadence.",
   keywords:
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: URL_CANONICAL,
-    title: "Research Methodology | myPayAdvisor",
+    title: "Research Methodology",
     description:
       "How we measure effective rates and processor outcomes. Public, reproducible, reviewed by a payments operator.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Research Methodology | myPayAdvisor",
+    title: "Research Methodology",
     description:
       "How we measure payment processor effective rates and fees. Public methodology, sources, sample selection.",
   },

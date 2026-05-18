@@ -6,7 +6,7 @@ import { GLOSSARY, type GlossaryTerm } from "@/lib/glossary/terms";
 const URL_CANONICAL = "https://www.mypayadvisor.com/glossary";
 
 export const metadata: Metadata = {
-  title: "Payment Processing Glossary | myPayAdvisor",
+  title: "Payment Processing Glossary",
   description:
     "Definitions for every payment processing term: interchange, effective rate, chargeback, PCI DSS, tokenization, AVS, MCC, and more. Independent reference for U.S. merchants.",
   keywords:
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: URL_CANONICAL,
-    title: "Payment Processing Glossary | myPayAdvisor",
+    title: "Payment Processing Glossary",
     description:
       "Every payment processing term, defined. Interchange, effective rate, chargeback, PCI DSS, tokenization, and more.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
