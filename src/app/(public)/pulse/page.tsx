@@ -11,7 +11,12 @@ export const metadata: Metadata = {
   title: { absolute: "The Payments Pulse · myPayAdvisor" },
   description:
     "What is moving in payments right now. Rate changes, processor news, outages, and weekly editorial roundups, tracked in near real time.",
-  alternates: { canonical: "https://www.mypayadvisor.com/pulse" },
+  alternates: {
+    canonical: "https://www.mypayadvisor.com/pulse",
+    types: {
+      "application/rss+xml": "https://www.mypayadvisor.com/pulse/feed.xml",
+    },
+  },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",

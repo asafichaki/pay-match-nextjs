@@ -13,7 +13,12 @@ export const metadata: Metadata = {
   description: "Expert insights on payment processing, payment gateways, merchant services, and choosing the right payment provider in 2026. In-depth guides to optimize your business payments and reduce processing costs.",
   keywords: "payment processing guides 2026, payment gateway tutorials, merchant services advice, credit card processing tips, payment processor comparison, fintech insights",
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.mypayadvisor.com/insights" },
+  alternates: {
+    canonical: "https://www.mypayadvisor.com/insights",
+    types: {
+      "application/rss+xml": "https://www.mypayadvisor.com/insights/feed.xml",
+    },
+  },
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/insights",

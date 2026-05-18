@@ -57,7 +57,12 @@ export const metadata: Metadata = {
   description: "Compare 15 payment processors side by side: real 2026 fees, effective rates by volume, hidden costs. Stripe, Square, PayPal, Helcim and 11 more.",
   keywords: "compare payment processors, payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor 2026, merchant services comparison",
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://www.mypayadvisor.com/comparisons" },
+  alternates: {
+    canonical: "https://www.mypayadvisor.com/comparisons",
+    types: {
+      "application/rss+xml": "https://www.mypayadvisor.com/comparisons/feed.xml",
+    },
+  },
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/comparisons",
