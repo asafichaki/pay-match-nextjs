@@ -84,7 +84,7 @@ export function buildRss(channel: RssChannel): string {
   <channel>
     <title>${escapeXml(channel.title)}</title>
     <link>${escapeXml(channel.link)}</link>
-    <atom:link href="${escapeXml(channel.link)}.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="${escapeXml(channel.link)}" rel="self" type="application/rss+xml" />
     <description>${escapeXml(channel.description)}</description>
     <language>${lang}</language>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
