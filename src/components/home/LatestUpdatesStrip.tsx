@@ -1,10 +1,7 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { supabase } from "@/integrations/supabase/client";
+import { createSupabaseServerClient } from "@/integrations/supabase/server";
 import { formatDistanceToNow } from "date-fns";
 
 interface FeedRow {
@@ -35,29 +32,27 @@ function typeBadgeClass(t: FeedRow["type"]) {
   return "bg-muted text-muted-foreground border-border";
 }
 
-export default function LatestUpdatesStrip() {
-  const [items, setItems] = useState<FeedRow[] | null>(null);
+async function fetchLatestUpdates(): Promise<FeedRow[]> {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { data } = await (supabase as any)
+      .from("updates_feed")
+      .select(
+        "id,type,title,slug,source_name,source_url,related_processor,published_at"
+      )
+      .eq("status", "published")
+      .neq("type", "editorial")
+      .order("published_at", { ascending: false })
+      .limit(3);
+    return (data as FeedRow[]) || [];
+  } catch {
+    return [];
+  }
+}
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const { data } = await (supabase as any)
-        .from("updates_feed")
-        .select(
-          "id,type,title,slug,source_name,source_url,related_processor,published_at"
-        )
-        .eq("status", "published")
-        .neq("type", "editorial")
-        .order("published_at", { ascending: false })
-        .limit(3);
-      if (!cancelled) setItems((data as FeedRow[]) || []);
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  if (!items || items.length < 3) return null;
+export default async function LatestUpdatesStrip() {
+  const items = await fetchLatestUpdates();
+  if (items.length < 3) return null;
 
   return (
     <section
