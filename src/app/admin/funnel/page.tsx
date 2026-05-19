@@ -15,8 +15,18 @@ import {
   Search,
   ExternalLink,
   Activity,
+  Send,
+  RotateCw,
+  Eye,
+  MousePointerClick,
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
+import {
+  sendFunnelEmail,
+  resendLastFunnelEmail,
+  markEmailFlag,
+  listFunnelEmailKeys,
+} from "./actions";
 
 interface FunnelLead {
   id: string;
@@ -259,12 +269,15 @@ export default function FunnelDashboard() {
                           {formatDistanceToNow(new Date(l.created_at), { addSuffix: true })}
                         </td>
                         <td className="py-3 text-right">
-                          <Link
-                            href={`/admin/leads/${l.id}`}
-                            className="inline-flex items-center text-xs text-primary hover:underline"
-                          >
-                            Open <ExternalLink className="h-3 w-3 ml-0.5" />
-                          </Link>
+                          <div className="flex items-center justify-end gap-2">
+                            <LeadEmailActions lead={l} />
+                            <Link
+                              href={`/admin/leads/${l.id}`}
+                              className="inline-flex items-center text-xs text-primary hover:underline"
+                            >
+                              Open <ExternalLink className="h-3 w-3 ml-0.5" />
+                            </Link>
+                          </div>
                         </td>
                       </tr>
                     );
@@ -307,6 +320,162 @@ function MetricCard({
         <p className="text-2xl font-semibold text-foreground mt-1">{value}</p>
       </CardContent>
     </Card>
+  );
+}
+
+function LeadEmailActions({ lead }: { lead: FunnelLead }) {
+  const [open, setOpen] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [keys, setKeys] = useState<string[] | null>(null);
+  const [msg, setMsg] = useState<string | null>(null);
+
+  // Find last sent email key from email_state for the Resend / Mark actions.
+  const lastSentKey = useMemo(() => {
+    if (!lead.email_state) return null;
+    let latest: string | null = null;
+    let latestTs = 0;
+    for (const [k, v] of Object.entries(lead.email_state)) {
+      const sa = (v as Record<string, unknown>)?.sent_at;
+      const ts = typeof sa === "string" ? Date.parse(sa) : 0;
+      if (ts && ts > latestTs) {
+        latestTs = ts;
+        latest = k;
+      }
+    }
+    return latest;
+  }, [lead.email_state]);
+
+  async function openPicker() {
+    setOpen((v) => !v);
+    if (!keys) {
+      try {
+        const res = await listFunnelEmailKeys({ leadId: lead.id });
+        setKeys(res.keys);
+      } catch (e) {
+        setMsg(e instanceof Error ? e.message : "Failed to load modules");
+      }
+    }
+  }
+
+  async function doSend(emailKey: string) {
+    if (!confirm(`Send "${emailKey}" to ${lead.email}?`)) return;
+    setBusy(true);
+    setMsg(null);
+    try {
+      const res = await sendFunnelEmail({ leadId: lead.id, emailKey });
+      setMsg(res.ok ? `Queued: ${emailKey}` : `Error: ${res.error}`);
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "Send failed");
+    } finally {
+      setBusy(false);
+      setOpen(false);
+    }
+  }
+
+  async function doResend() {
+    if (!lastSentKey) {
+      setMsg("No prior email to resend");
+      return;
+    }
+    if (!confirm(`Resend "${lastSentKey}" to ${lead.email}?`)) return;
+    setBusy(true);
+    setMsg(null);
+    try {
+      const res = await resendLastFunnelEmail({ leadId: lead.id });
+      setMsg(res.ok ? `Resent: ${lastSentKey}` : `Error: ${res.error}`);
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "Resend failed");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function doMark(flag: "opened" | "clicked") {
+    if (!lastSentKey) {
+      setMsg("No email sent yet to mark");
+      return;
+    }
+    setBusy(true);
+    setMsg(null);
+    try {
+      const res = await markEmailFlag({ leadId: lead.id, emailKey: lastSentKey, flag });
+      setMsg(res.ok ? `Marked ${flag}` : `Error: ${res.error}`);
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : "Mark failed");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="relative inline-flex items-center gap-1">
+      <Button
+        size="sm"
+        variant="outline"
+        className="h-7 px-2 text-xs"
+        disabled={busy}
+        onClick={openPicker}
+        title="Send a funnel email"
+      >
+        <Send className="h-3 w-3 mr-1" /> Send
+      </Button>
+      <Button
+        size="sm"
+        variant="outline"
+        className="h-7 px-2 text-xs"
+        disabled={busy || !lastSentKey}
+        onClick={doResend}
+        title={lastSentKey ? `Resend ${lastSentKey}` : "No prior email to resend"}
+      >
+        <RotateCw className="h-3 w-3 mr-1" /> Resend
+      </Button>
+      <Button
+        size="sm"
+        variant="ghost"
+        className="h-7 px-1 text-xs"
+        disabled={busy || !lastSentKey}
+        onClick={() => doMark("opened")}
+        title="Mark opened (test)"
+      >
+        <Eye className="h-3 w-3" />
+      </Button>
+      <Button
+        size="sm"
+        variant="ghost"
+        className="h-7 px-1 text-xs"
+        disabled={busy || !lastSentKey}
+        onClick={() => doMark("clicked")}
+        title="Mark clicked (test)"
+      >
+        <MousePointerClick className="h-3 w-3" />
+      </Button>
+
+      {open && (
+        <div className="absolute right-0 top-8 z-20 w-64 max-h-64 overflow-y-auto rounded-md border border-border bg-popover shadow-lg p-1 text-left">
+          {!keys ? (
+            <p className="text-xs text-muted-foreground px-2 py-1.5">Loading…</p>
+          ) : keys.length === 0 ? (
+            <p className="text-xs text-muted-foreground px-2 py-1.5">No modules available</p>
+          ) : (
+            keys.map((k) => (
+              <button
+                key={k}
+                onClick={() => doSend(k)}
+                className="w-full text-left text-xs px-2 py-1.5 rounded hover:bg-muted text-foreground"
+              >
+                {k}
+              </button>
+            ))
+          )}
+        </div>
+      )}
+
+      {msg && (
+        <div className="absolute right-0 -bottom-6 text-[10px] text-muted-foreground whitespace-nowrap bg-background/95 px-1.5 py-0.5 rounded border border-border z-10">
+          {msg}
+        </div>
+      )}
+    </div>
   );
 }
 
