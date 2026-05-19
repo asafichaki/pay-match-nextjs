@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Shield } from "lucide-react";
 import { usePermissions } from "@/hooks/usePermissions";
+import { togglePermission } from "./actions";
 
 interface Permission { id: string; role: string; page_name: string; can_access: boolean; }
 
@@ -25,7 +26,15 @@ export default function PermissionsDashboard() {
   useEffect(() => { if (hasAccess) loadPermissions(); }, [hasAccess]);
 
   const loadPermissions = async () => { try { const { data, error } = await supabase.from("role_permissions").select("*").order("role").order("page_name"); if (error) throw error; setPermissions((data || []) as any); } catch { toast.error("Failed to load permissions"); } finally { setLoading(false); } };
-  const handleToggle = async (id: string, current: boolean) => { try { await supabase.from("role_permissions").update({ can_access: !current }).eq("id", id); toast.success("Updated"); loadPermissions(); } catch { toast.error("Failed"); } };
+  const handleToggle = async (id: string, current: boolean) => {
+    const res = await togglePermission({ id, nextValue: !current });
+    if (!res.ok) {
+      toast.error(res.error);
+      return;
+    }
+    toast.success("Updated");
+    loadPermissions();
+  };
   const getRoleBadgeVariant = (role: string) => role === "admin" ? "destructive" as const : role === "moderator" ? "default" as const : "secondary" as const;
 
   if (permissionLoading || !hasAccess) return <div className="flex items-center justify-center min-h-screen"><div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent" /></div>;

@@ -109,8 +109,19 @@ interface AnalyticsEvent {
   referrer: string | null;
   user_agent: string | null;
   session_id: string | null;
+  user_id: string | null;
   metadata: Record<string, unknown> | null;
   created_at: string;
+}
+
+interface AuthUserFunnelRow {
+  user_id: string;
+  email: string | null;
+  sessions: number;
+  pageViews: number;
+  clicks: number;
+  quizCompletions: number;
+  firstSeen: string;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────
@@ -151,6 +162,7 @@ export default function AnalyticsDashboard() {
   const [timeRange, setTimeRange] = useState<"7d" | "30d" | "90d">("7d");
   const [loading, setLoading] = useState(true);
   const [exportDateRange, setExportDateRange] = useState<"7d" | "30d" | "90d" | "all">("30d");
+  const [profilesById, setProfilesById] = useState<Map<string, string | null>>(new Map());
 
   // ─── Data Fetching ─────────────────────────────────────────────────
 
@@ -196,6 +208,28 @@ export default function AnalyticsDashboard() {
         (recentEvents || []).map((e) => e.session_id).filter(Boolean)
       );
       setRecentSessions(uniqueRecentSessions.size);
+
+      // Resolve user_id → email for the authenticated-user funnel.
+      const userIds = Array.from(
+        new Set(
+          ((periodEvents as AnalyticsEvent[]) || [])
+            .map((e) => e.user_id)
+            .filter((v): v is string => Boolean(v))
+        )
+      );
+      if (userIds.length > 0) {
+        const { data: profiles } = await supabase
+          .from("profiles")
+          .select("user_id, email")
+          .in("user_id", userIds);
+        const map = new Map<string, string | null>();
+        (profiles || []).forEach((p: { user_id: string | null; email: string | null }) => {
+          if (p.user_id) map.set(p.user_id, p.email);
+        });
+        setProfilesById(map);
+      } else {
+        setProfilesById(new Map());
+      }
     } catch (error) {
       console.error("Error loading analytics:", error);
     } finally {
@@ -328,6 +362,53 @@ export default function AnalyticsDashboard() {
       .sort((a, b) => a.date.localeCompare(b.date));
   }, [allEvents]);
 
+  // ─── Computed: Authenticated User Funnel ───────────────────────────
+
+  const authUserFunnel: AuthUserFunnelRow[] = useMemo(() => {
+    const rows = new Map<
+      string,
+      {
+        sessions: Set<string>;
+        pageViews: number;
+        clicks: number;
+        quizCompletions: number;
+        firstSeen: string;
+      }
+    >();
+    for (const e of allEvents) {
+      if (!e.user_id) continue;
+      const existing = rows.get(e.user_id);
+      const sessions = existing?.sessions ?? new Set<string>();
+      if (e.session_id) sessions.add(e.session_id);
+      const next = {
+        sessions,
+        pageViews: (existing?.pageViews ?? 0) + (e.event_type === "page_view" ? 1 : 0),
+        clicks: (existing?.clicks ?? 0) + (e.event_type === "provider_click" ? 1 : 0),
+        quizCompletions:
+          (existing?.quizCompletions ?? 0) + (e.event_type === "quiz_completed" ? 1 : 0),
+        firstSeen:
+          existing && existing.firstSeen < e.created_at ? existing.firstSeen : e.created_at,
+      };
+      rows.set(e.user_id, next);
+    }
+    return Array.from(rows.entries())
+      .map(([user_id, v]) => ({
+        user_id,
+        email: profilesById.get(user_id) ?? null,
+        sessions: v.sessions.size,
+        pageViews: v.pageViews,
+        clicks: v.clicks,
+        quizCompletions: v.quizCompletions,
+        firstSeen: v.firstSeen,
+      }))
+      .sort((a, b) => b.pageViews - a.pageViews);
+  }, [allEvents, profilesById]);
+
+  const anonEventCount = useMemo(
+    () => allEvents.filter((e) => !e.user_id).length,
+    [allEvents]
+  );
+
   // ─── Export Handler ────────────────────────────────────────────────
 
   const handleExport = async () => {
@@ -341,7 +422,7 @@ export default function AnalyticsDashboard() {
       const { data } = await query.order("created_at", { ascending: false });
       if (!data || data.length === 0) return;
 
-      const headers = ["id", "event_type", "page_path", "referrer", "session_id", "metadata", "created_at"];
+      const headers = ["id", "event_type", "page_path", "referrer", "session_id", "user_id", "metadata", "created_at"];
       const csvRows = [
         headers.join(","),
         ...data.map((row: Record<string, unknown>) =>
@@ -544,6 +625,68 @@ export default function AnalyticsDashboard() {
           </Card>
         </div>
       </div>
+
+      {/* ─── Authenticated User Funnel ─────────────────────────────────── */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <Users className="h-5 w-5 text-primary" />
+            <CardTitle className="text-xl">Authenticated User Funnel</CardTitle>
+          </div>
+          <CardDescription>
+            Activity per logged-in user (joined via analytics_events.user_id → profiles.email).
+            {anonEventCount > 0 ? (
+              <>
+                {" "}
+                {anonEventCount.toLocaleString()} anonymous events in this period are tracked by session_id only.
+              </>
+            ) : null}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {authUserFunnel.length === 0 ? (
+            <p className="text-muted-foreground text-center py-8">
+              No authenticated user activity in the selected period. All traffic was anonymous.
+            </p>
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>User</TableHead>
+                  <TableHead className="text-right">Sessions</TableHead>
+                  <TableHead className="text-right">Page Views</TableHead>
+                  <TableHead className="text-right">Provider Clicks</TableHead>
+                  <TableHead className="text-right">Quiz Completions</TableHead>
+                  <TableHead className="text-right">First Seen</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {authUserFunnel.slice(0, 50).map((row) => (
+                  <TableRow key={row.user_id}>
+                    <TableCell className="font-medium">
+                      {row.email ?? <span className="text-muted-foreground">(no profile)</span>}
+                      <div className="text-xs text-muted-foreground font-mono">
+                        {row.user_id.slice(0, 8)}…
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-right">{row.sessions}</TableCell>
+                    <TableCell className="text-right">{row.pageViews}</TableCell>
+                    <TableCell className="text-right">{row.clicks}</TableCell>
+                    <TableCell className="text-right">{row.quizCompletions}</TableCell>
+                    <TableCell className="text-right text-muted-foreground text-xs">
+                      {isToday(new Date(row.firstSeen))
+                        ? "Today"
+                        : isYesterday(new Date(row.firstSeen))
+                          ? "Yesterday"
+                          : format(new Date(row.firstSeen), "MMM d")}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
+        </CardContent>
+      </Card>
 
       {/* ─── Partner Click Share (Most Important) ─────────────────────── */}
       <Card className="border-2 border-primary/20">
@@ -880,7 +1023,7 @@ export default function AnalyticsDashboard() {
                   The CSV will include the following columns:
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["id", "event_type", "page_path", "referrer", "session_id", "metadata", "created_at"].map(
+                  {["id", "event_type", "page_path", "referrer", "session_id", "user_id", "metadata", "created_at"].map(
                     (col) => (
                       <Badge key={col} variant="secondary">
                         {col}
