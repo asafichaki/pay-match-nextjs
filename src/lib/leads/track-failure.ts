@@ -3,6 +3,7 @@ import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import { createHash } from "crypto";
 import { headers } from "next/headers";
+import { notifyLeadFailure } from "@/lib/leads/notify-lead-failure";
 
 /**
  * Defensive lead-capture failure tracker.
@@ -87,6 +88,20 @@ export async function trackLeadFailure(args: TrackLeadFailureArgs): Promise<void
         payload_email: (args.payload as { email?: unknown }).email,
       });
     }
+
+    // Always fire the CRITICAL admin email (fire-and-forget, never awaited for
+    // critical-path return). This runs whether or not the failures-row write
+    // succeeded — if the row write failed, the email is the only signal Assaf
+    // gets that a lead is at risk.
+    notifyLeadFailure({
+      source: args.source,
+      payload: args.payload,
+      error_code: args.error_code,
+      error_message: args.error_message,
+      page_url: args.page_url,
+    }).catch((err) => {
+      console.error("[trackLeadFailure] notifyLeadFailure threw (swallowed)", { err });
+    });
   } catch (err) {
     // Absolute last resort. Never let this throw upward.
     console.error("[trackLeadFailure] unexpected exception (swallowed)", {

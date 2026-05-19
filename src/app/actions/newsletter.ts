@@ -2,6 +2,7 @@
 
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
 import { trackLeadFailure } from "@/lib/leads/track-failure";
+import { notifyNewLead, type LeadSource } from "@/lib/leads/notify-new-lead";
 import { z } from "zod";
 import { headers } from "next/headers";
 
@@ -94,6 +95,21 @@ export async function subscribeNewsletter(formData: {
       // LAYER 3: honest response to caller
       return { success: false, error: "We couldn't save your details. Please try again." };
     }
+
+    // Fire-and-forget admin notification — never awaited, never throws
+    const notifySource: LeadSource =
+      data.source === "exit_intent"
+        ? "exit_intent"
+        : data.source === "footer"
+          ? "newsletter"
+          : "newsletter";
+    notifyNewLead({
+      source: notifySource,
+      lead: { email: data.email.toLowerCase().trim() },
+      page_url: headersList.get("referer") || undefined,
+    }).catch((err) => {
+      console.error("[subscribeNewsletter] notify failed (swallowed)", err);
+    });
 
     return { success: true };
   } catch (error) {

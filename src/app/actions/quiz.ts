@@ -2,6 +2,7 @@
 
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
 import { trackLeadFailure } from "@/lib/leads/track-failure";
+import { notifyNewLead } from "@/lib/leads/notify-new-lead";
 import { z } from "zod";
 import { headers } from "next/headers";
 
@@ -122,6 +123,26 @@ export async function submitQuizLead(formData: {
       // LAYER 3: honest response
       return { success: false, error: "We couldn't save your details. Please try again." };
     }
+
+    notifyNewLead({
+      source: "quiz",
+      lead: {
+        email: data.email,
+        name: data.fullName,
+        phone: data.phone || null,
+        monthly_volume: data.monthlyVolume,
+        business_type: data.businessType,
+        industry: data.industry,
+        international_payments: data.internationalPayments,
+        average_transaction: data.averageTransaction,
+        priority: data.priority,
+        recommended_provider: data.recommendedProvider,
+      },
+      funnel: { track: "A", track_variant: "default", volume_tier: data.monthlyVolume, lead_source: "legacy_quiz" },
+      page_url: headersList.get("referer") || undefined,
+    }).catch((err) => {
+      console.error("[submitQuizLead] notify failed (swallowed)", err);
+    });
 
     return { success: true };
   } catch (error) {

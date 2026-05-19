@@ -4,6 +4,7 @@ import { z } from "zod";
 import { headers } from "next/headers";
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
 import { trackLeadFailure } from "@/lib/leads/track-failure";
+import { notifyNewLead } from "@/lib/leads/notify-new-lead";
 import { routeTrack } from "@/lib/funnel/track-router";
 import {
   PAIN_POINT_SHORT,
@@ -165,6 +166,27 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       // LAYER 3
       return { success: false as const, error: "We couldn't save your details. Please try again." };
     }
+
+    // Fire admin notification — fire-and-forget, never awaited
+    notifyNewLead({
+      source: "sorting_hat",
+      lead: {
+        email: data.email,
+        name: data.fullName,
+        business_type: BUSINESS_TYPE_LABELS[data.businessType],
+      },
+      funnel: {
+        track: route.track,
+        track_variant: route.trackVariant,
+        volume_tier: VOLUME_TIER_LABELS[data.volumeTier],
+        pain_point: PAIN_POINT_SHORT[data.painPoint],
+        lead_source: "sorting_hat",
+      },
+      thank_you_slug: route.thankYouSlug,
+      page_url: headersList.get("referer") || undefined,
+    }).catch((err) => {
+      console.error("[submitSortingHatLead] notify failed (swallowed)", err);
+    });
 
     // Fire Day 0 email — non-blocking on errors so the form still completes
     sendDay0Email({
