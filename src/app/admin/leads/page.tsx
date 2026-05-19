@@ -27,6 +27,9 @@ import {
   ArrowDown,
   ChevronDown,
   GripVertical,
+  AlertTriangle,
+  Inbox,
+  Mail,
 } from "lucide-react";
 import {
   Select,
@@ -74,6 +77,14 @@ interface QuizLead {
   tags: string[] | null;
   notes: string | null;
   source: string | null;
+  // Unified-inbox fields
+  lead_source: string | null;
+  funnel_state: string | null;
+  volume_tier: string | null;
+  track: string | null;
+  // Discriminator: which underlying table did this row come from?
+  // "quiz_leads" (default — quiz + sorting-hat) or "newsletter_subscribers"
+  origin_table: "quiz_leads" | "newsletter_subscribers";
 }
 
 type ViewMode = "table" | "kanban";
@@ -143,22 +154,84 @@ export default function LeadsDashboard() {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [dragOverColumn, setDragOverColumn] = useState<string | null>(null);
   const [showLost, setShowLost] = useState(false);
+  const [sourceFilter, setSourceFilter] = useState<string>("all");
+  const [dateFrom, setDateFrom] = useState<string>("");
+  const [dateTo, setDateTo] = useState<string>("");
+  const [funnelFilter, setFunnelFilter] = useState<string>("all");
+  const [failedCount, setFailedCount] = useState<number>(0);
 
   const router = useRouter();
   const { toast } = useToast();
 
   useEffect(() => {
     loadLeads();
+    loadFailedCount();
   }, []);
+
+  const loadFailedCount = async () => {
+    const { count } = await (supabase as any)
+      .from("lead_capture_failures")
+      .select("*", { count: "exact", head: true })
+      .eq("resolved", false);
+    setFailedCount(count || 0);
+  };
 
   const loadLeads = async () => {
     try {
-      const { data, error } = await supabase
-        .from("quiz_leads")
-        .select("*")
-        .order("created_at", { ascending: false });
-      if (error) throw error;
-      setLeads((data || []) as QuizLead[]);
+      // Unified inbox: union quiz_leads + newsletter_subscribers.
+      // sorting-hat lives inside quiz_leads (lead_source='sorting_hat')
+      // so we only need two table reads, merged client-side and sorted.
+      const [quizRes, newsRes] = await Promise.all([
+        supabase
+          .from("quiz_leads")
+          .select("*")
+          .order("created_at", { ascending: false }),
+        supabase
+          .from("newsletter_subscribers")
+          .select("*")
+          .order("subscribed_at", { ascending: false }),
+      ]);
+
+      if (quizRes.error) throw quizRes.error;
+      if (newsRes.error) throw newsRes.error;
+
+      const quizLeads: QuizLead[] = (quizRes.data || []).map((l: any) => ({
+        ...l,
+        origin_table: "quiz_leads" as const,
+      }));
+
+      // Adapt newsletter_subscribers into the QuizLead shape so they render in
+      // the same table. Most fields are null — newsletter rows only have email,
+      // source, subscribed_at, active. They get a "Newsletter" source badge.
+      const newsletterLeads: QuizLead[] = (newsRes.data || []).map((n: any) => ({
+        id: n.id,
+        created_at: n.subscribed_at || new Date().toISOString(),
+        full_name: "",
+        email: n.email,
+        phone: null,
+        monthly_volume: null,
+        business_type: null,
+        industry: null,
+        recommended_provider: null,
+        status: n.active === false ? "lost" : "new",
+        priority: null,
+        deal_value: null,
+        follow_up_date: null,
+        last_contacted: null,
+        tags: null,
+        notes: null,
+        source: n.source || "newsletter",
+        lead_source: "newsletter",
+        funnel_state: null,
+        volume_tier: null,
+        track: null,
+        origin_table: "newsletter_subscribers" as const,
+      }));
+
+      const merged = [...quizLeads, ...newsletterLeads].sort(
+        (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
+      setLeads(merged);
     } catch (error: any) {
       toast({
         title: "Error loading leads",
@@ -173,8 +246,14 @@ export default function LeadsDashboard() {
   const handleDelete = async () => {
     if (!deleteId) return;
     try {
+      // Route delete to the correct origin table
+      const target = leads.find((l) => l.id === deleteId);
+      const table =
+        target?.origin_table === "newsletter_subscribers"
+          ? "newsletter_subscribers"
+          : "quiz_leads";
       const { error } = await supabase
-        .from("quiz_leads")
+        .from(table)
         .delete()
         .eq("id", deleteId);
       if (error) throw error;
@@ -194,6 +273,16 @@ export default function LeadsDashboard() {
   const updateLeadStatus = useCallback(
     async (leadId: string, newStatus: string) => {
       try {
+        // Newsletter rows don't have a status column — status edits are
+        // silently no-op'd on those rows (UI keeps the synthetic value).
+        const target = leads.find((l) => l.id === leadId);
+        if (target?.origin_table === "newsletter_subscribers") {
+          setLeads((prev) =>
+            prev.map((l) => (l.id === leadId ? { ...l, status: newStatus } : l))
+          );
+          toast({ title: "Status (newsletter only — local)" });
+          return;
+        }
         const { error } = await supabase
           .from("quiz_leads")
           .update({ status: newStatus })
@@ -211,13 +300,21 @@ export default function LeadsDashboard() {
         });
       }
     },
-    [toast]
+    [toast, leads]
   );
 
   const bulkUpdateStatus = async (newStatus: string) => {
     if (selectedIds.size === 0) return;
     try {
-      const ids = Array.from(selectedIds);
+      // Only quiz_leads rows have a status column — filter newsletter ids out.
+      const ids = Array.from(selectedIds).filter((id) => {
+        const target = leads.find((l) => l.id === id);
+        return target?.origin_table !== "newsletter_subscribers";
+      });
+      if (ids.length === 0) {
+        toast({ title: "No applicable rows (newsletter rows skipped)" });
+        return;
+      }
       const { error } = await supabase
         .from("quiz_leads")
         .update({ status: newStatus })
@@ -241,18 +338,40 @@ export default function LeadsDashboard() {
   };
 
   const filteredLeads = useMemo(() => {
+    const fromTs = dateFrom ? new Date(dateFrom).getTime() : null;
+    const toTs = dateTo ? new Date(dateTo).getTime() + 24 * 60 * 60 * 1000 : null;
     return leads.filter((lead) => {
       const q = search.toLowerCase();
       const matchesSearch =
-        lead.full_name.toLowerCase().includes(q) ||
+        (lead.full_name || "").toLowerCase().includes(q) ||
         lead.email.toLowerCase().includes(q) ||
         (lead.business_type || "").toLowerCase().includes(q);
       const matchesStatus = statusFilter === "all" || lead.status === statusFilter;
       const matchesPriority =
         priorityFilter === "all" || lead.priority === priorityFilter;
-      return matchesSearch && matchesStatus && matchesPriority;
+      const effectiveSource =
+        lead.origin_table === "newsletter_subscribers"
+          ? "newsletter"
+          : lead.lead_source === "sorting_hat"
+            ? "sorting_hat"
+            : "quiz";
+      const matchesSource = sourceFilter === "all" || effectiveSource === sourceFilter;
+      const created = new Date(lead.created_at).getTime();
+      const matchesFrom = !fromTs || created >= fromTs;
+      const matchesTo = !toTs || created <= toTs;
+      const matchesFunnel =
+        funnelFilter === "all" || (lead.funnel_state || "—") === funnelFilter;
+      return (
+        matchesSearch &&
+        matchesStatus &&
+        matchesPriority &&
+        matchesSource &&
+        matchesFrom &&
+        matchesTo &&
+        matchesFunnel
+      );
     });
-  }, [leads, search, statusFilter, priorityFilter]);
+  }, [leads, search, statusFilter, priorityFilter, sourceFilter, dateFrom, dateTo, funnelFilter]);
 
   const sortedLeads = useMemo(() => {
     const sorted = [...filteredLeads].sort((a, b) => {
@@ -413,6 +532,34 @@ export default function LeadsDashboard() {
     </DropdownMenu>
   );
 
+  const SOURCE_BADGE: Record<string, { label: string; className: string }> = {
+    quiz: {
+      label: "Quiz",
+      className: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300",
+    },
+    newsletter: {
+      label: "Newsletter",
+      className: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
+    },
+    sorting_hat: {
+      label: "Sorting-Hat",
+      className: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-300",
+    },
+  };
+
+  const sourceKey = (lead: QuizLead) =>
+    lead.origin_table === "newsletter_subscribers"
+      ? "newsletter"
+      : lead.lead_source === "sorting_hat"
+        ? "sorting_hat"
+        : "quiz";
+
+  const SourceBadge = ({ lead }: { lead: QuizLead }) => {
+    const key = sourceKey(lead);
+    const cfg = SOURCE_BADGE[key];
+    return <Badge className={cfg.className}>{cfg.label}</Badge>;
+  };
+
   const PriorityDot = ({ priority }: { priority: string | null }) => (
     <div className="flex items-center gap-2">
       <div
@@ -562,6 +709,32 @@ export default function LeadsDashboard() {
             </div>
           </div>
 
+          {/* Tab navigation: All Leads / Failed Captures */}
+          <div className="flex gap-2 border-b">
+            <Link
+              href="/admin/leads"
+              className="px-4 py-2 text-sm font-medium border-b-2 border-primary text-primary flex items-center gap-2"
+            >
+              <Inbox className="h-4 w-4" />
+              All Leads
+              <Badge variant="secondary" className="text-xs">
+                {leads.length}
+              </Badge>
+            </Link>
+            <Link
+              href="/admin/leads/failed"
+              className="px-4 py-2 text-sm font-medium border-b-2 border-transparent text-muted-foreground hover:text-foreground hover:border-muted-foreground/50 transition-colors flex items-center gap-2"
+            >
+              <AlertTriangle className="h-4 w-4" />
+              Failed Captures
+              {failedCount > 0 && (
+                <Badge className="bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300 text-xs">
+                  {failedCount}
+                </Badge>
+              )}
+            </Link>
+          </div>
+
           {/* Status Summary */}
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {STATUSES.map((s) => (
@@ -614,6 +787,45 @@ export default function LeadsDashboard() {
                 <SelectItem value="low">Low</SelectItem>
               </SelectContent>
             </Select>
+            <Select value={sourceFilter} onValueChange={setSourceFilter}>
+              <SelectTrigger className="w-[160px]">
+                <SelectValue placeholder="Source" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Sources</SelectItem>
+                <SelectItem value="quiz">Quiz</SelectItem>
+                <SelectItem value="sorting_hat">Sorting-Hat</SelectItem>
+                <SelectItem value="newsletter">Newsletter</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={funnelFilter} onValueChange={setFunnelFilter}>
+              <SelectTrigger className="w-[140px]">
+                <SelectValue placeholder="Funnel state" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All States</SelectItem>
+                <SelectItem value="day0">day0</SelectItem>
+                <SelectItem value="day3">day3</SelectItem>
+                <SelectItem value="day7">day7</SelectItem>
+                <SelectItem value="day14">day14</SelectItem>
+                <SelectItem value="day17">day17</SelectItem>
+                <SelectItem value="booked">booked</SelectItem>
+              </SelectContent>
+            </Select>
+            <Input
+              type="date"
+              value={dateFrom}
+              onChange={(e) => setDateFrom(e.target.value)}
+              className="w-[150px]"
+              title="From date"
+            />
+            <Input
+              type="date"
+              value={dateTo}
+              onChange={(e) => setDateTo(e.target.value)}
+              className="w-[150px]"
+              title="To date"
+            />
 
             {/* Bulk Actions */}
             {selectedIds.size > 0 && (
@@ -690,6 +902,7 @@ export default function LeadsDashboard() {
                           <SortIcon field="email" />
                         </div>
                       </TableHead>
+                      <TableHead className="hidden md:table-cell">Source</TableHead>
                       <TableHead
                         className="cursor-pointer select-none hidden lg:table-cell"
                         onClick={() => toggleSort("business_type")}
@@ -762,10 +975,16 @@ export default function LeadsDashboard() {
                       return (
                         <TableRow
                           key={lead.id}
-                          className={`hover:bg-muted/30 transition-colors cursor-pointer ${
-                            selectedIds.has(lead.id) ? "bg-primary/5" : ""
-                          }`}
-                          onClick={() => router.push(`/admin/leads/${lead.id}`)}
+                          className={`hover:bg-muted/30 transition-colors ${
+                            lead.origin_table === "newsletter_subscribers"
+                              ? ""
+                              : "cursor-pointer"
+                          } ${selectedIds.has(lead.id) ? "bg-primary/5" : ""}`}
+                          onClick={() => {
+                            if (lead.origin_table !== "newsletter_subscribers") {
+                              router.push(`/admin/leads/${lead.id}`);
+                            }
+                          }}
                         >
                           <TableCell onClick={(e) => e.stopPropagation()}>
                             <Checkbox
@@ -774,10 +993,19 @@ export default function LeadsDashboard() {
                             />
                           </TableCell>
                           <TableCell>
-                            <div className="font-medium">{lead.full_name}</div>
+                            <div className="font-medium">
+                              {lead.full_name || (
+                                <span className="text-muted-foreground italic">
+                                  (newsletter)
+                                </span>
+                              )}
+                            </div>
                           </TableCell>
                           <TableCell className="hidden sm:table-cell text-sm text-muted-foreground">
                             {lead.email}
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            <SourceBadge lead={lead} />
                           </TableCell>
                           <TableCell className="hidden lg:table-cell text-sm">
                             {lead.business_type || "-"}
@@ -814,8 +1042,14 @@ export default function LeadsDashboard() {
                               <Button
                                 size="sm"
                                 variant="ghost"
+                                disabled={lead.origin_table === "newsletter_subscribers"}
                                 onClick={() =>
                                   router.push(`/admin/leads/${lead.id}`)
+                                }
+                                title={
+                                  lead.origin_table === "newsletter_subscribers"
+                                    ? "Newsletter — no detail view"
+                                    : "View details"
                                 }
                               >
                                 <Eye className="h-4 w-4" />
@@ -836,7 +1070,7 @@ export default function LeadsDashboard() {
                     {sortedLeads.length === 0 && (
                       <TableRow>
                         <TableCell
-                          colSpan={11}
+                          colSpan={12}
                           className="text-center py-12 text-muted-foreground"
                         >
                           No leads found.

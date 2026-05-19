@@ -79,6 +79,19 @@ interface Lead {
   integration_needs: string | null;
   international_payments: boolean | null;
   assigned_to: string | null;
+  // Funnel + source enrichment
+  funnel_state: string | null;
+  lead_source: string | null;
+  track: string | null;
+  track_variant: string | null;
+  volume_tier: string | null;
+  pain_point: string | null;
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  referrer: string | null;
+  landing_page_url: string | null;
+  internal_notes: string | null;
 }
 
 interface Activity {
@@ -474,6 +487,116 @@ export default function LeadDetail() {
                       </p>
                       <p className="text-sm font-medium">
                         {format(new Date(lead.created_at), "MMM d, yyyy")}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Funnel & Routing Card */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <TrendingUp className="h-5 w-5" />
+                    Funnel & Routing
+                  </CardTitle>
+                  <CardDescription>
+                    Where this lead sits in the email/track funnel
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-4 sm:grid-cols-3">
+                    <div className="space-y-1">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        Funnel State
+                      </p>
+                      {lead.funnel_state ? (
+                        <Badge variant="outline" className="font-mono">
+                          {lead.funnel_state}
+                        </Badge>
+                      ) : (
+                        <p className="text-sm text-muted-foreground">—</p>
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        Track
+                      </p>
+                      <p className="text-sm font-medium">
+                        {lead.track
+                          ? `${lead.track}${lead.track_variant ? ` / ${lead.track_variant}` : ""}`
+                          : "—"}
+                      </p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        Lead Source
+                      </p>
+                      {lead.lead_source ? (
+                        <Badge variant="secondary">{lead.lead_source}</Badge>
+                      ) : (
+                        <p className="text-sm text-muted-foreground">—</p>
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        Volume Tier
+                      </p>
+                      <p className="text-sm font-medium">{lead.volume_tier || "—"}</p>
+                    </div>
+                    <div className="space-y-1 sm:col-span-2">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        Pain Point
+                      </p>
+                      <p className="text-sm font-medium">{lead.pain_point || "—"}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Attribution / UTM Card */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Globe className="h-5 w-5" />
+                    Attribution
+                  </CardTitle>
+                  <CardDescription>UTMs, referrer, and landing page</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="space-y-1">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        UTM Source
+                      </p>
+                      <p className="text-sm font-medium">{lead.utm_source || "—"}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        UTM Medium
+                      </p>
+                      <p className="text-sm font-medium">{lead.utm_medium || "—"}</p>
+                    </div>
+                    <div className="space-y-1 sm:col-span-2">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        UTM Campaign
+                      </p>
+                      <p className="text-sm font-medium">{lead.utm_campaign || "—"}</p>
+                    </div>
+                    <div className="space-y-1 sm:col-span-2">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        Landing Page
+                      </p>
+                      <p className="text-sm font-medium break-words">
+                        {lead.landing_page_url || "—"}
+                      </p>
+                    </div>
+                    <div className="space-y-1 sm:col-span-2">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                        Referrer
+                      </p>
+                      <p className="text-sm font-medium break-words">
+                        {lead.referrer || "—"}
                       </p>
                     </div>
                   </div>
