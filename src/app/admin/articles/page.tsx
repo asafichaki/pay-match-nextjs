@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -29,17 +29,17 @@ import {
   ExternalLink,
   FileText,
   BookOpen,
-  GitCompare,
-  Star,
-  Tag,
   BarChart3,
   Calendar,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { format } from "date-fns";
 
 interface Article {
   id: string;
   created_at: string;
+  published_at: string | null;
   title: string;
   slug: string;
   description: string;
@@ -47,72 +47,49 @@ interface Article {
   published: boolean;
 }
 
-interface PublishedArticle {
-  title: string;
-  slug: string;
-  type: "Article" | "Guide" | "Comparison" | "Review" | "Reference";
-  path: string;
+const PAGE_SIZE = 20;
+
+function articleStatus(a: Article): "published" | "scheduled" | "draft" {
+  if (a.published) return "published";
+  if (a.published_at && new Date(a.published_at) > new Date()) return "scheduled";
+  return "draft";
 }
 
-const publishedArticles: PublishedArticle[] = [
-  { title: "Online vs In-Store Payments: Key Differences Explained", slug: "online-vs-instore-payments", type: "Article", path: "/insights/online-vs-instore-payments" },
-  { title: "Helcim Review 2026", slug: "helcim-review-2025", type: "Review", path: "/insights/helcim-review-2025" },
-  { title: "Payment Processor Fees Guide", slug: "payment-processor-fees-guide", type: "Guide", path: "/insights/payment-processor-fees-guide" },
-  { title: "Best Payment Gateway for Ecommerce", slug: "best-payment-gateway-ecommerce", type: "Guide", path: "/insights/best-payment-gateway-ecommerce" },
-  { title: "Credit Card Processing Fees Explained", slug: "credit-card-processing-fees-explained", type: "Guide", path: "/insights/credit-card-processing-fees-explained" },
-  { title: "High-Risk Payment Processing Guide", slug: "high-risk-payment-processing-guide", type: "Guide", path: "/insights/high-risk-payment-processing-guide" },
-  { title: "Small Business Credit Card Processing", slug: "small-business-credit-card-processing-guide", type: "Guide", path: "/insights/small-business-credit-card-processing-guide" },
-  { title: "Merchant Statement Audit Guide", slug: "merchant-statement-audit-guide", type: "Guide", path: "/insights/merchant-statement-audit-guide" },
-  { title: "How to Read Your Merchant Statement", slug: "how-to-read-merchant-statement", type: "Guide", path: "/insights/how-to-read-merchant-statement" },
-  { title: "Merchant Services Glossary", slug: "merchant-services-glossary", type: "Reference", path: "/insights/merchant-services-glossary" },
-  { title: "Level 2 & 3 Processing Guide", slug: "level-2-level-3-processing-guide", type: "Guide", path: "/insights/level-2-level-3-processing-guide" },
-  { title: "Merchant Contract Cancellation Guide", slug: "merchant-contract-cancellation-guide", type: "Guide", path: "/insights/merchant-contract-cancellation-guide" },
-  { title: "Square vs Stripe", slug: "square-vs-stripe", type: "Comparison", path: "/comparisons/square-vs-stripe" },
-  { title: "PayPal vs Square", slug: "paypal-vs-square", type: "Comparison", path: "/comparisons/paypal-vs-square" },
-  { title: "Stripe vs PayPal", slug: "stripe-vs-paypal", type: "Comparison", path: "/comparisons/stripe-vs-paypal" },
-  { title: "Helcim vs Stripe", slug: "helcim-vs-stripe", type: "Comparison", path: "/comparisons/helcim-vs-stripe" },
-  { title: "Best Payment Processors 2026", slug: "best-payment-processors-2026", type: "Comparison", path: "/comparisons/best-payment-processors-2026" },
-];
-
-const typeBadgeStyles: Record<PublishedArticle["type"], string> = {
-  Article: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
-  Guide: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
-  Comparison: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
-  Review: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
-  Reference: "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400",
-};
-
-const typeIcons: Record<PublishedArticle["type"], typeof FileText> = {
-  Article: FileText,
-  Guide: BookOpen,
-  Comparison: GitCompare,
-  Review: Star,
-  Reference: Tag,
+const STATUS_STYLES: Record<string, string> = {
+  published: "border-green-500/30 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20",
+  scheduled: "border-blue-500/30 text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20",
+  draft: "border-zinc-400/30 text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-900/20",
 };
 
 export default function ArticlesDashboard() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [pageViews, setPageViews] = useState<Record<string, number>>({});
-  const [activeTab, setActiveTab] = useState("published");
+  const [activeTab, setActiveTab] = useState<"published" | "all">("published");
   const router = useRouter();
   const { toast } = useToast();
 
   useEffect(() => {
     loadArticles();
-    loadPageViews();
   }, []);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search, activeTab]);
 
   const loadArticles = async () => {
     try {
       const { data, error } = await supabase
         .from("blog_articles")
-        .select("id, created_at, title, slug, description, author, published")
-        .order("created_at", { ascending: false });
+        .select("id, created_at, published_at, title, slug, description, author, published")
+        .order("published_at", { ascending: false, nullsFirst: false });
       if (error) throw error;
-      setArticles(data || []);
+      const rows = (data || []) as Article[];
+      setArticles(rows);
+      await loadPageViews(rows);
     } catch (error: any) {
       toast({ title: "Error loading articles", description: error.message, variant: "destructive" });
     } finally {
@@ -120,9 +97,12 @@ export default function ArticlesDashboard() {
     }
   };
 
-  const loadPageViews = async () => {
+  const loadPageViews = async (rows: Article[]) => {
     try {
-      const paths = publishedArticles.map((a) => a.path);
+      const slugs = rows.map((a) => a.slug).filter(Boolean);
+      if (slugs.length === 0) return;
+      // Match common public article paths for these slugs.
+      const paths = slugs.flatMap((s) => [`/insights/${s}`, `/blog/${s}`, `/articles/${s}`, `/comparisons/${s}`]);
       const { data, error } = await supabase
         .from("analytics_events")
         .select("page_path")
@@ -130,14 +110,13 @@ export default function ArticlesDashboard() {
         .in("page_path", paths);
       if (error) throw error;
       const counts: Record<string, number> = {};
-      (data || []).forEach((row) => {
-        if (row.page_path) {
-          counts[row.page_path] = (counts[row.page_path] || 0) + 1;
-        }
+      (data || []).forEach((row: any) => {
+        const slug = row.page_path?.split("/").filter(Boolean).pop();
+        if (slug) counts[slug] = (counts[slug] || 0) + 1;
       });
       setPageViews(counts);
     } catch {
-      // Silently fail - page views are non-critical
+      // Silent; page views are non-critical
     }
   };
 
@@ -169,15 +148,27 @@ export default function ArticlesDashboard() {
     }
   };
 
-  const filteredPublished = publishedArticles.filter(
-    (a) => a.title.toLowerCase().includes(search.toLowerCase()) || a.slug.toLowerCase().includes(search.toLowerCase())
+  const publishedArticles = useMemo(
+    () =>
+      articles
+        .filter((a) => articleStatus(a) === "published")
+        .sort((a, b) => {
+          const at = a.published_at ? new Date(a.published_at).getTime() : 0;
+          const bt = b.published_at ? new Date(b.published_at).getTime() : 0;
+          return bt - at;
+        }),
+    [articles]
   );
 
-  const filteredCMS = articles.filter(
-    (a) => a.title.toLowerCase().includes(search.toLowerCase()) || a.slug.toLowerCase().includes(search.toLowerCase())
-  );
+  const matches = (a: Article) =>
+    a.title.toLowerCase().includes(search.toLowerCase()) ||
+    a.slug.toLowerCase().includes(search.toLowerCase());
 
-  const totalCount = publishedArticles.length + articles.length;
+  const filteredPublished = publishedArticles.filter(matches);
+  const filteredAll = articles.filter(matches);
+
+  const totalPages = Math.max(1, Math.ceil(filteredPublished.length / PAGE_SIZE));
+  const pagedPublished = filteredPublished.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <>
@@ -190,7 +181,7 @@ export default function ArticlesDashboard() {
                 Content Manager
               </h1>
               <p className="text-muted-foreground mt-1">
-                {totalCount} total pieces of content across your site
+                {articles.length} article{articles.length === 1 ? "" : "s"} in CMS — {publishedArticles.length} published
               </p>
             </div>
           </div>
@@ -199,7 +190,7 @@ export default function ArticlesDashboard() {
           <div className="relative max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
-              placeholder="Search all content..."
+              placeholder="Search by title or slug…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="pl-10"
@@ -207,75 +198,127 @@ export default function ArticlesDashboard() {
           </div>
 
           {/* Tabs */}
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "published" | "all")}>
             <TabsList>
               <TabsTrigger value="published" className="gap-2">
                 <FileText className="h-4 w-4" />
-                Published Content ({publishedArticles.length})
+                Published ({publishedArticles.length})
               </TabsTrigger>
-              <TabsTrigger value="cms" className="gap-2">
+              <TabsTrigger value="all" className="gap-2">
                 <BookOpen className="h-4 w-4" />
-                CMS Articles ({articles.length})
+                All CMS ({articles.length})
               </TabsTrigger>
             </TabsList>
 
-            {/* Published Content Tab */}
+            {/* Published tab — real-time from blog_articles */}
             <TabsContent value="published" className="mt-6">
-              <div className="grid gap-3">
-                {filteredPublished.map((article) => {
-                  const Icon = typeIcons[article.type];
-                  const views = pageViews[article.path] || 0;
-                  return (
-                    <Card key={article.slug} className="hover:shadow-md transition-shadow">
-                      <CardContent className="p-4">
-                        <div className="flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-3 min-w-0 flex-1">
-                            <div className="shrink-0 h-10 w-10 rounded-lg bg-muted/50 flex items-center justify-center">
-                              <Icon className="h-5 w-5 text-muted-foreground" />
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <div className="flex items-center gap-2 flex-wrap">
-                                <h3 className="font-semibold text-sm truncate">{article.title}</h3>
-                                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${typeBadgeStyles[article.type]}`}>
-                                  {article.type}
-                                </span>
+              {loading ? (
+                <div className="text-center py-12">
+                  <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent" />
+                </div>
+              ) : (
+                <>
+                  <div className="grid gap-3">
+                    {pagedPublished.map((article) => {
+                      const status = articleStatus(article);
+                      const views = pageViews[article.slug] || 0;
+                      const publicUrl = `/insights/${article.slug}`;
+                      return (
+                        <Card key={article.id} className="hover:shadow-md transition-shadow">
+                          <CardContent className="p-4">
+                            <div className="flex items-center justify-between gap-4">
+                              <div className="flex items-center gap-3 min-w-0 flex-1">
+                                <div className="shrink-0 h-10 w-10 rounded-lg bg-muted/50 flex items-center justify-center">
+                                  <FileText className="h-5 w-5 text-muted-foreground" />
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <h3 className="font-semibold text-sm truncate">{article.title}</h3>
+                                  </div>
+                                  <p className="text-xs text-muted-foreground mt-0.5 font-mono">/{article.slug}</p>
+                                  {article.published_at && (
+                                    <p className="text-xs text-muted-foreground mt-0.5">
+                                      Published {format(new Date(article.published_at), "MMM d, yyyy")}
+                                    </p>
+                                  )}
+                                </div>
                               </div>
-                              <p className="text-xs text-muted-foreground mt-0.5">{article.path}</p>
+                              <div className="flex items-center gap-4 shrink-0">
+                                <div className="flex items-center gap-1.5 text-sm text-muted-foreground" title="Page views (last period)">
+                                  <BarChart3 className="h-4 w-4" />
+                                  <span>{views.toLocaleString()}</span>
+                                </div>
+                                <Badge variant="outline" className={STATUS_STYLES[status]}>
+                                  {status[0].toUpperCase() + status.slice(1)}
+                                </Badge>
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  className="gap-1.5"
+                                  onClick={() => router.push(`/admin/articles/${article.id}/edit`)}
+                                >
+                                  <Pencil className="h-3.5 w-3.5" />
+                                  Edit
+                                </Button>
+                                <a
+                                  href={publicUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-muted-foreground hover:text-primary transition-colors"
+                                  title="View on site"
+                                >
+                                  <ExternalLink className="h-4 w-4" />
+                                </a>
+                              </div>
                             </div>
-                          </div>
-                          <div className="flex items-center gap-4 shrink-0">
-                            <div className="flex items-center gap-1.5 text-sm text-muted-foreground" title="Page views">
-                              <BarChart3 className="h-4 w-4" />
-                              <span>{views.toLocaleString()}</span>
-                            </div>
-                            <Badge variant="outline" className="border-green-500/30 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20">
-                              Published
-                            </Badge>
-                            <a
-                              href={article.path}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-muted-foreground hover:text-primary transition-colors"
-                              title="View on site"
-                            >
-                              <ExternalLink className="h-4 w-4" />
-                            </a>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-                {filteredPublished.length === 0 && (
-                  <div className="text-center py-12 text-muted-foreground">
-                    No published content matches your search.
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                    {filteredPublished.length === 0 && (
+                      <div className="text-center py-12 text-muted-foreground">
+                        {publishedArticles.length === 0
+                          ? "No published articles yet."
+                          : "No published articles match your search."}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
+
+                  {totalPages > 1 && (
+                    <div className="flex items-center justify-between mt-6">
+                      <p className="text-sm text-muted-foreground">
+                        Page {page} of {totalPages} — {filteredPublished.length} total
+                      </p>
+                      <div className="flex gap-2">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          disabled={page <= 1}
+                          onClick={() => setPage((p) => Math.max(1, p - 1))}
+                          className="gap-1"
+                        >
+                          <ChevronLeft className="h-4 w-4" />
+                          Prev
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          disabled={page >= totalPages}
+                          onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                          className="gap-1"
+                        >
+                          Next
+                          <ChevronRight className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
             </TabsContent>
 
-            {/* CMS Articles Tab */}
-            <TabsContent value="cms" className="mt-6 space-y-4">
+            {/* All CMS (drafts + scheduled + published) */}
+            <TabsContent value="all" className="mt-6 space-y-4">
               <div className="flex justify-end">
                 <Button onClick={() => router.push("/admin/articles/new")} className="gap-2">
                   <Plus className="h-4 w-4" />
@@ -289,60 +332,63 @@ export default function ArticlesDashboard() {
                 </div>
               ) : (
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredCMS.map((article) => (
-                    <Card key={article.id} className="hover:shadow-md transition-shadow flex flex-col">
-                      <CardHeader className="pb-3">
-                        <div className="flex items-start justify-between gap-2">
-                          <CardTitle className="text-base leading-tight line-clamp-2">
-                            {article.title}
-                          </CardTitle>
-                          <Badge
-                            variant={article.published ? "default" : "secondary"}
-                            className="shrink-0 cursor-pointer"
-                            onClick={() => togglePublished(article.id, article.published)}
-                          >
-                            {article.published ? (
-                              <><Eye className="h-3 w-3 mr-1" />Published</>
-                            ) : (
-                              <><EyeOff className="h-3 w-3 mr-1" />Draft</>
-                            )}
-                          </Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="flex-1 flex flex-col justify-between gap-4 pt-0">
-                        <div className="space-y-2">
-                          <p className="text-xs text-muted-foreground font-mono">/{article.slug}</p>
-                          {article.author && (
-                            <p className="text-sm text-muted-foreground">By {article.author}</p>
-                          )}
-                          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                            <Calendar className="h-3 w-3" />
-                            {format(new Date(article.created_at), "MMM d, yyyy")}
+                  {filteredAll.map((article) => {
+                    const status = articleStatus(article);
+                    return (
+                      <Card key={article.id} className="hover:shadow-md transition-shadow flex flex-col">
+                        <CardHeader className="pb-3">
+                          <div className="flex items-start justify-between gap-2">
+                            <CardTitle className="text-base leading-tight line-clamp-2">
+                              {article.title}
+                            </CardTitle>
+                            <Badge
+                              variant="outline"
+                              className={`shrink-0 cursor-pointer ${STATUS_STYLES[status]}`}
+                              onClick={() => togglePublished(article.id, article.published)}
+                            >
+                              {article.published ? (
+                                <><Eye className="h-3 w-3 mr-1" />Published</>
+                              ) : (
+                                <><EyeOff className="h-3 w-3 mr-1" />{status === "scheduled" ? "Scheduled" : "Draft"}</>
+                              )}
+                            </Badge>
                           </div>
-                        </div>
-                        <div className="flex gap-2 pt-2 border-t">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="flex-1 gap-1.5"
-                            onClick={() => router.push(`/admin/articles/${article.id}/edit`)}
-                          >
-                            <Pencil className="h-3.5 w-3.5" />
-                            Edit
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30"
-                            onClick={() => setDeleteId(article.id)}
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                  {filteredCMS.length === 0 && (
+                        </CardHeader>
+                        <CardContent className="flex-1 flex flex-col justify-between gap-4 pt-0">
+                          <div className="space-y-2">
+                            <p className="text-xs text-muted-foreground font-mono">/{article.slug}</p>
+                            {article.author && (
+                              <p className="text-sm text-muted-foreground">By {article.author}</p>
+                            )}
+                            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                              <Calendar className="h-3 w-3" />
+                              {format(new Date(article.created_at), "MMM d, yyyy")}
+                            </div>
+                          </div>
+                          <div className="flex gap-2 pt-2 border-t">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="flex-1 gap-1.5"
+                              onClick={() => router.push(`/admin/articles/${article.id}/edit`)}
+                            >
+                              <Pencil className="h-3.5 w-3.5" />
+                              Edit
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30"
+                              onClick={() => setDeleteId(article.id)}
+                            >
+                              <Trash2 className="h-3.5 w-3.5" />
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                  {filteredAll.length === 0 && (
                     <div className="col-span-full text-center py-12 text-muted-foreground">
                       {articles.length === 0
                         ? "No CMS articles yet. Create your first one!"
