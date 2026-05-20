@@ -20,6 +20,10 @@
     {
       "path": "/api/updates/roundup-generate",
       "schedule": "0 9 * * 5"
+    },
+    {
+      "path": "/api/cron/seo-resubmit",
+      "schedule": "30 7 * * *"
     }
   ]
 }
