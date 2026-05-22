@@ -6,8 +6,8 @@ import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalcul
 import { MatchCTA } from "@/components/MatchCTA";
 
 export const metadata: Metadata = {
-  title: "Payment Processing Fees 2026: 14 Processors Compared by Rate",
-  description: "Real 2026 rates from 14 processors. Stripe, Square, Helcim and 11 more, side by side. Hidden fees called out. Negotiation moves that move the rate.",
+  title: "Payment Processing Fees 2026: 1.5%-3.5% Across 14 Processors",
+  description: "May 2026 rates from 14 processors. Interchange 1.5%-3.5%, markup 0.10%-2.00%. Square's flat rate is 2.65% effective. Real merchant statements, not vendor brochures.",
   keywords: "payment processor fees, credit card processing fees, interchange plus pricing, flat rate pricing, reduce processing fees, best payment processor",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
-    title: "Payment Processing Fees 2026: 14 Processors Compared by Rate",
-    description: "Real 2026 rates for Stripe, Square, Helcim, and 11 others. Side-by-side, with hidden fees called out and negotiation moves that actually work.",
+    title: "Payment Processing Fees 2026: 1.5%-3.5% Across 14 Processors",
+    description: "May 2026 rates from 14 processors. Interchange 1.5%-3.5%, markup 0.10%-2.00%. Real merchant statements, not vendor brochures.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Payment Processing Fees 2026: 14 Processors Compared by Rate",
-    description: "Real 2026 rates, hidden fees called out, and negotiation moves that move the number.",
+    title: "Payment Processing Fees 2026: 1.5%-3.5% Across 14 Processors",
+    description: "May 2026: interchange 1.5%-3.5%, markup 0.10%-2.00%, 14 processors compared on real merchant statements.",
   },
 };
 
@@ -32,7 +32,7 @@ export default function PaymentProcessorFeesGuidePage() {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Payment Processing Fees in 2026: Real Rates from 14 Processors",
-    "description": "Real 2026 rates for Stripe, Square, Helcim and 11 other processors. Side-by-side comparison with hidden fees called out and negotiation moves that actually work.",
+    "description": "May 2026 rates from 14 processors. Interchange 1.5%-3.5%, markup 0.10%-2.00%. Real merchant statements, not vendor brochures.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
@@ -49,7 +49,7 @@ export default function PaymentProcessorFeesGuidePage() {
       }
     },
     "datePublished": "2025-01-15",
-    "dateModified": "2026-05-06",
+    "dateModified": "2026-05-22",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/payment-processor-fees-guide"
@@ -144,7 +144,7 @@ export default function PaymentProcessorFeesGuidePage() {
               </h1>
               
               <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Payment processor fees in 2026 break into three layers: interchange (1.5%-3.5%, paid to the cardholder&apos;s issuing bank), network assessments (0.13%-0.14%, paid to Visa or Mastercard), and processor markup (0.10%-2.00%, paid to your processor). The median U.S. SMB effective rate is 2.65% on flat-rate and 2.30%-2.55% on interchange-plus — see <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
+                Updated May 2026. Credit card processing splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat rate is 2.65% effective. Barak Bachar reconciled 14 U.S. processors against live merchant statements for this guide. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
               </p>
 
               {/* Author Byline */}
