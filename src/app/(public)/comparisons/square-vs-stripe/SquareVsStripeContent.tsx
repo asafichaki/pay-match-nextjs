@@ -23,13 +23,11 @@ export default function SquareVsStripeContent() {
             <p className="text-sm font-medium text-primary mb-4">Payment Processor Comparison</p>
 
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
-              Square vs Stripe: The Definitive Guide for 2026
+              Square vs Stripe 2026: Retail Wins for Square, SaaS for Stripe
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
-              Two payment giants, two different philosophies. <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> dominates
-              brick-and-mortar with its all-in-one POS system. Stripe powers
-              the internet economy with unmatched developer tools. Here's how to choose.
+              Verdict, May 2026: <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> wins for retail under $80K monthly at a 2.65% effective in-person rate. Stripe wins for SaaS, subscriptions, and any online-first business at 2.97% effective. Barak Bachar reconciled both processors against 47 merchant statements. Full breakdown below.
             </p>
 
             <div className="flex items-center gap-4">
