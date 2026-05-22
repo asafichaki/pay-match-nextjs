@@ -54,8 +54,8 @@ async function fetchDbComparisons(): Promise<Comparison[]> {
 }
 
 export const metadata: Metadata = {
-  title: "2026 Payment Processor Comparison: 15 Fees Side-by-Side",
-  description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%. Compare 15 processors' effective rates at $10K, $50K, $250K monthly. Updated weekly.",
+  title: "Compare 15 Payment Processors: 2.32%-3.07% Real Rates",
+  description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%, Adyen 2.32%. Side-by-side at $10K, $50K, $250K, $1M monthly. Updated May 2026.",
   keywords: "compare payment processors, payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor 2026, merchant services comparison",
   robots: { index: true, follow: true },
   alternates: {
@@ -67,14 +67,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/comparisons",
-    title: "2026 Payment Processor Comparison: 15 Fees Side-by-Side",
-    description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%. Compare 15 processors' effective rates at $10K, $50K, $250K monthly. Updated weekly.",
+    title: "Compare 15 Payment Processors: 2.32%-3.07% Real Rates",
+    description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%, Adyen 2.32%. Side-by-side at $10K, $50K, $250K, $1M monthly. Updated May 2026.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "2026 Payment Processor Comparison: 15 Fees Side-by-Side",
-    description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%. Compare 15 processors' effective rates at $10K, $50K, $250K monthly. Updated weekly.",
+    title: "Compare 15 Payment Processors: 2.32%-3.07% Real Rates",
+    description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%, Adyen 2.32%. Side-by-side at $10K, $50K, $250K, $1M monthly. Updated May 2026.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
 };
@@ -263,11 +263,11 @@ export default async function ComparisonsPage() {
                     className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight"
                   >
                     Compare Payment Processors:{" "}
-                    <span className="text-primary">Real 2026 Rates for $25K to $5M Merchants</span>
+                    <span className="text-primary">Real 2026 Rates from $10K to $1M Monthly</span>
                   </h1>
 
                   <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-xl hidden md:block">
-                    Stripe, Square, PayPal, Helcim and 11 others. Real interchange-plus rates and hidden fees, side by side. Pick your match in five minutes.
+                    Updated May 2026. Compare 15 U.S. payment processors at real effective rates from 2.32% (Adyen, enterprise) to 3.07% (PayPal). Barak Bachar reconciles every rate against live merchant statements before publishing. Pick by volume tier and transaction mix in under five minutes.
                   </p>
 
                   <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
