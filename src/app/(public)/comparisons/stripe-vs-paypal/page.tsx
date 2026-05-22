@@ -4,14 +4,14 @@ import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import StripeVsPayPalContent from "./StripeVsPayPalContent";
 
 export const metadata: Metadata = {
-  title: "Stripe vs PayPal 2026: 2.97% vs 3.07% Effective Rate",
-  description: "Stripe 2.9% + $0.30 vs PayPal 2.99% + $0.49. PayPal processes 135+ currencies for cross-border sellers, Stripe wins on subscriptions. Effective rates at $10K, $50K, $250K.",
+  title: "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate",
+  description: "Stripe 2.9% + $0.30, PayPal 3.49% + $0.49 commercial rate. Stripe wins on subscriptions and APIs. PayPal wins on 400M+ buyer trust. May 2026 rates.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal",
   },
   openGraph: {
-    title: "Stripe vs PayPal 2026: 2.97% vs 3.07% Effective Rate",
-    description: "Stripe 2.9% + $0.30 vs PayPal 2.99% + $0.49. PayPal processes 135+ currencies for cross-border sellers, Stripe wins on subscriptions. Effective rates at $10K, $50K, $250K.",
+    title: "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate",
+    description: "Stripe 2.9% + $0.30, PayPal 3.49% + $0.49 commercial rate. Stripe wins on subscriptions and APIs. PayPal wins on 400M+ buyer trust. May 2026 rates.",
     url: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
