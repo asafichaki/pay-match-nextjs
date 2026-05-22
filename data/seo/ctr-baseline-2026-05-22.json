@@ -1,0 +1,26 @@
+{
+  "captured_at": "2026-05-22",
+  "window_days": 28,
+  "site": "sc-domain:mypayadvisor.com",
+  "site_totals": {
+    "clicks": 7,
+    "impressions": 21731,
+    "ctr_pct": 0.032,
+    "avg_position": 13.27
+  },
+  "priority_pages": {
+    "/insights/payment-processor-fees-guide": { "impressions": 4829, "clicks": 1, "ctr_pct": 0.021, "position": 15.5 },
+    "/comparisons/best-payment-processors-2026": { "impressions": 4135, "clicks": 0, "ctr_pct": 0.0, "position": 11.0 },
+    "/comparisons": { "impressions": 4264, "clicks": 2, "ctr_pct": 0.047, "position": 9.5 },
+    "/comparisons/square-vs-stripe": { "impressions": 2565, "clicks": 0, "ctr_pct": 0.0, "position": 11.8 },
+    "/comparisons/stripe-vs-paypal": { "impressions": 2479, "clicks": 0, "ctr_pct": 0.0, "position": 18.0 },
+    "/comparisons/best-payment-processors-mobile-and-on-the-go-2026": { "impressions": 543, "clicks": 0, "ctr_pct": 0.0, "position": 6.1 },
+    "/insights/tokenization-for-higher-approval-rates": { "impressions": 453, "clicks": 0, "ctr_pct": 0.0, "position": 6.9 },
+    "/comparisons/square-vs-helcim-2026": { "impressions": 333, "clicks": 0, "ctr_pct": 0.0, "position": 7.2 }
+  },
+  "note": "Pre-rewrite baseline. Used by /api/cron/ctr-monitor to detect regression after batch 1 ship 2026-05-22.",
+  "regression_thresholds": {
+    "position_drop_alert": 5,
+    "impressions_drop_pct_alert": 30
+  }
+}
