@@ -38,7 +38,7 @@ function buildItemListSchema() {
 
 export const metadata: Metadata = {
   title: "15 Best Payment Processors 2026: Ranked by Effective Rate",
-  description: "Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked by effective rate at $10K, $50K, $250K, $1M. Updated weekly.",
+  description: "May 2026: Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked at $10K, $50K, $250K, $1M monthly. Real rates.",
   keywords: ["best payment processors 2026", "payment processing companies", "merchant services", "credit card processing", "Leaders Merchant Services", "Worldpay", "Clover", "Payment Depot", "Stax", "Stripe"],
   robots: { index: true, follow: true },
   alternates: {
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     type: "article",
     url: "https://www.mypayadvisor.com/comparisons/best-payment-processors-2026",
     title: "15 Best Payment Processors 2026: Ranked by Effective Rate",
-    description: "Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked by effective rate at $10K, $50K, $250K, $1M. Updated weekly.",
+    description: "May 2026: Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked at $10K, $50K, $250K, $1M monthly. Real rates.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "15 Best Payment Processors 2026: Ranked by Effective Rate",
-    description: "Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked by effective rate at $10K, $50K, $250K, $1M. Updated weekly.",
+    description: "May 2026: Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked at $10K, $50K, $250K, $1M monthly. Real rates.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   other: {
