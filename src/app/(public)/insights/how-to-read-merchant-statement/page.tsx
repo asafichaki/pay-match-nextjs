@@ -142,7 +142,7 @@ export default function HowToReadMerchantStatementPage() {
                 </h1>
                 
                 <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
-                  A merchant statement is a monthly document from your payment processor that itemizes every fee, fund settlement, and chargeback on your account. The five sections to know are: deposits summary, fee summary, transaction detail, chargebacks/disputes, and adjustments. The four hidden flat fees most merchants miss (PCI, statement, regulatory, monthly minimum) typically add $30-$90 per month — see <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for the calculation.
+                  A merchant statement is a monthly document from your payment processor that itemizes every fee, fund settlement, and chargeback on your account. The five sections to know are: deposits summary, fee summary, transaction detail, chargebacks/disputes, and adjustments. The four hidden flat fees most merchants miss (PCI, statement, regulatory, monthly minimum) typically add $30-$90 per month, see <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for the calculation.
                 </p>
 
                 {/* Author Byline */}
@@ -387,7 +387,7 @@ export default function HowToReadMerchantStatementPage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  Processors use abbreviations to save space—and sometimes to hide fees. Keep this glossary open when reading your bill.
+                  Processors use abbreviations to save space, and sometimes to hide fees. Keep this glossary open when reading your bill.
                 </p>
 
                 <div className="my-8 grid gap-4">

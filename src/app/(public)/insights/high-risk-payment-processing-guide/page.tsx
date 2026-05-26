@@ -686,7 +686,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
 
                 <div className="my-8 p-6 bg-primary/10 rounded-lg border-l-4 border-primary">
                   <p className="font-semibold text-foreground mb-2">Key Takeaway</p>
-                  <p className="text-foreground">Reducing your chargeback ratio from 1.5% to 0.7% isn't just about avoiding VAMP fees—it transforms your entire payment processing relationship, unlocking better rates, lower reserves, and most importantly, business continuity and peace of mind.</p>
+                  <p className="text-foreground">Reducing your chargeback ratio from 1.5% to 0.7% isn't just about avoiding VAMP fees, it transforms your entire payment processing relationship, unlocking better rates, lower reserves, and most importantly, business continuity and peace of mind.</p>
                 </div>
 
                 {/* Related Articles */}

@@ -108,7 +108,7 @@ export default function QuizPage() {
               </p>
             </header>
 
-            {/* Sorting Hat — 4 step intake */}
+            {/* Sorting Hat, 4 step intake */}
             <SortingHat variant="page" />
           </div>
         </div>

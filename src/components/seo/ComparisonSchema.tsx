@@ -86,7 +86,7 @@ function resolveUrl(item: string | undefined, fallback: string): string {
  *
  * Replaces the inline Article/Breadcrumb blocks previously duplicated across
  * /comparisons/* pages. Keep page-local FAQPage / ItemList / Speakable /
- * AudioObject schemas separate — this component does NOT emit those.
+ * AudioObject schemas separate, this component does NOT emit those.
  */
 export function ComparisonSchema({
   title,

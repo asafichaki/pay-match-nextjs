@@ -29,7 +29,7 @@ export default function HelcimReview2025Page() {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Helcim Review 2026: Real Rates, Hidden Fees, Verdict",
-    "description": "Helcim's interchange-plus pricing in 2026 — real rates, what we like, what's missing, and when it beats Stripe and Square.",
+    "description": "Helcim's interchange-plus pricing in 2026, real rates, what we like, what's missing, and when it beats Stripe and Square.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
@@ -89,7 +89,7 @@ export default function HelcimReview2025Page() {
         "name": "Is there a contract with Helcim?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, Helcim operates on a month-to-month basis with no long-term contracts or cancellation fees. That makes it the safest test if you are switching from a tiered or flat-rate processor — you can roll back without penalty."
+          "text": "No, Helcim operates on a month-to-month basis with no long-term contracts or cancellation fees. That makes it the safest test if you are switching from a tiered or flat-rate processor, you can roll back without penalty."
         }
       },
       {
@@ -97,7 +97,7 @@ export default function HelcimReview2025Page() {
         "name": "When does Helcim beat Stripe or Square on price?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Helcim's interchange-plus pricing typically beats Stripe and Square once monthly volume crosses about $20,000 to $25,000, especially on card-present and B2B card mixes. Below that, the volume-based discount tier matters less and Stripe or Square may be equivalent. Above $50,000 monthly, Helcim's automatic volume discounts compound — that is where the $3,000 to $8,000 annual savings figure comes from."
+          "text": "Helcim's interchange-plus pricing typically beats Stripe and Square once monthly volume crosses about $20,000 to $25,000, especially on card-present and B2B card mixes. Below that, the volume-based discount tier matters less and Stripe or Square may be equivalent. Above $50,000 monthly, Helcim's automatic volume discounts compound, that is where the $3,000 to $8,000 annual savings figure comes from."
         }
       }
     ]

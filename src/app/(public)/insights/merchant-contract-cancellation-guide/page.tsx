@@ -780,7 +780,7 @@ export default function MerchantContractCancellationGuidePage() {
 
               {/* Conclusion */}
               <section aria-labelledby="conclusion-heading">
-                <h2 id="conclusion-heading">You're Not Stuck—You Have Options</h2>
+                <h2 id="conclusion-heading">You're Not Stuck, You Have Options</h2>
                 <p>
                   Merchant processing contracts can feel like financial traps, designed to keep you locked in regardless of poor service or uncompetitive rates. But as you've learned in this guide, you have more options than you might have thought.
                 </p>

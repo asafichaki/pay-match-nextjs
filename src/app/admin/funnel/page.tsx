@@ -54,12 +54,12 @@ const TRACK_LABEL: Record<string, string> = {
 };
 
 const STATE_LABEL: Record<string, string> = {
-  day0: "Day 0 — confirmation sent",
-  day1: "Day 1 — shortlist sent",
-  day4: "Day 4 — pain-point sent",
-  day9: "Day 9 — demo questions sent",
-  day13: "Day 13 — follow-up",
-  day17: "Day 17 — decision frame",
+  day0: "Day 0, confirmation sent",
+  day1: "Day 1, shortlist sent",
+  day4: "Day 4, pain-point sent",
+  day9: "Day 9, demo questions sent",
+  day13: "Day 13, follow-up",
+  day17: "Day 17, decision frame",
   complete: "Complete",
   booked: "Booked Calendly",
   unsubscribed: "Unsubscribed",

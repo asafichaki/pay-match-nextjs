@@ -322,7 +322,7 @@ export default function MerchantServicesGlossaryPage() {
                     The security standards for protecting cardholder data, maintained by the <a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PCI Security Standards Council</a>.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> Being "Compliant" isn't just about safety—it's about avoiding "Non-Compliance Fees" that can range from $19.95 to $99.00 per month. Learn how to avoid these fees in our <Link href="/insights/how-to-read-merchant-statement" className="text-primary hover:underline">merchant statement guide</Link>.
+                    <strong>Why it matters:</strong> Being "Compliant" isn't just about safety, it's about avoiding "Non-Compliance Fees" that can range from $19.95 to $99.00 per month. Learn how to avoid these fees in our <Link href="/insights/how-to-read-merchant-statement" className="text-primary hover:underline">merchant statement guide</Link>.
                   </p>
                 </div>
 

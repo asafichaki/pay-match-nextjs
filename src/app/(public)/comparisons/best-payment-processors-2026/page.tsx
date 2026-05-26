@@ -99,7 +99,7 @@ export default function BestPaymentProcessors2026Page() {
             url: "https://www.federalreserve.gov/",
           },
           isBasedOn: "https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm",
-          citation: "Regulation II — Debit Card Interchange Fees and Routing (12 CFR Part 235)",
+          citation: "Regulation II, Debit Card Interchange Fees and Routing (12 CFR Part 235)",
           inLanguage: "en-US",
         }}
       />

@@ -15,7 +15,7 @@ import { faqs } from "@/data/faqs";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "myPayAdvisor — A real payments operator reviews your shortlist",
+    absolute: "myPayAdvisor, A real payments operator reviews your shortlist",
   },
   description:
     "Independently reviewed by people who've operated payment infrastructure at $500M+ annual volume. Real 2026 rates, the questions to ask each processor, no generic CRM.",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com",
-    title: "myPayAdvisor — A real payments operator reviews your shortlist",
+    title: "myPayAdvisor, A real payments operator reviews your shortlist",
     description:
       "Independent review of the major payment processors. Real 2026 rates and the questions to ask before you sign with anyone.",
     images: [
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "myPayAdvisor — A real payments operator reviews your shortlist",
+    title: "myPayAdvisor, A real payments operator reviews your shortlist",
     description:
       "Real 2026 processor rates, independently reviewed. No generic CRM. Personal reply in minutes.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
@@ -92,7 +92,7 @@ const organizationSchema = {
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "myPayAdvisor — A real payments operator reviews your shortlist",
+  name: "myPayAdvisor, A real payments operator reviews your shortlist",
   description:
     "Independently reviewed by experienced payments operators so you stop overpaying on processing.",
   url: "https://www.mypayadvisor.com/",
@@ -130,7 +130,7 @@ export default function HomePage() {
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={serviceSchema} />
 
-      {/* 1. Hero — operator-first */}
+      {/* 1. Hero, operator-first */}
       <Hero />
 
       {/* 2. Inline Sorting Hat Step 1 */}
@@ -139,7 +139,7 @@ export default function HomePage() {
       {/* 2b. Live updates strip (renders only if 3+ items) */}
       <LatestUpdatesStrip />
 
-      {/* 3. Lead capture — The Rate Brief */}
+      {/* 3. Lead capture, The Rate Brief */}
       <LeadCaptureBrief />
 
       {/* 4. Effective Rate Calculator */}
@@ -147,16 +147,16 @@ export default function HomePage() {
         <EffectiveRateCalculator defaultChannel="online" />
       </div>
 
-      {/* 4b. Who we are — 90-sec founder video */}
+      {/* 4b. Who we are, 90-sec founder video */}
       <WhoWeAreVideo />
 
-      {/* 5. Provider rate table — editorial */}
+      {/* 5. Provider rate table, editorial */}
       <RateTable />
 
       {/* 6. How this is different (operator review process) */}
       <BarakBlock />
 
-      {/* 7. Industry voices — processor sentiment */}
+      {/* 7. Industry voices, processor sentiment */}
       <ProcessorVoices />
 
       {/* 8. Editorial picks (3 cornerstones) */}

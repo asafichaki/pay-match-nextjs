@@ -97,7 +97,7 @@ export default function UsersDashboard() {
       return;
     }
     if (!passwordScore.passes) {
-      toast.error("Password too weak — see requirements below the field");
+      toast.error("Password too weak, see requirements below the field");
       return;
     }
     setCreating(true);

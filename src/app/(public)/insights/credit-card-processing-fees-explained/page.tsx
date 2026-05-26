@@ -90,7 +90,7 @@ export default function CreditCardProcessingFeesExplainedPage() {
         "name": "Can I negotiate credit card processing fees?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes — but only the processor markup, which is roughly 10% to 20% of the total. Interchange and assessment fees are set by Visa, Mastercard, Amex, and Discover and are the same across every processor. Above $50,000 monthly volume, a 0.10% to 0.30% markup reduction is realistic."
+          "text": "Yes, but only the processor markup, which is roughly 10% to 20% of the total. Interchange and assessment fees are set by Visa, Mastercard, Amex, and Discover and are the same across every processor. Above $50,000 monthly volume, a 0.10% to 0.30% markup reduction is realistic."
         }
       },
       {

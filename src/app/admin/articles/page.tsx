@@ -181,7 +181,7 @@ export default function ArticlesDashboard() {
                 Content Manager
               </h1>
               <p className="text-muted-foreground mt-1">
-                {articles.length} article{articles.length === 1 ? "" : "s"} in CMS — {publishedArticles.length} published
+                {articles.length} article{articles.length === 1 ? "" : "s"} in CMS, {publishedArticles.length} published
               </p>
             </div>
           </div>
@@ -210,7 +210,7 @@ export default function ArticlesDashboard() {
               </TabsTrigger>
             </TabsList>
 
-            {/* Published tab — real-time from blog_articles */}
+            {/* Published tab, real-time from blog_articles */}
             <TabsContent value="published" className="mt-6">
               {loading ? (
                 <div className="text-center py-12">
@@ -287,7 +287,7 @@ export default function ArticlesDashboard() {
                   {totalPages > 1 && (
                     <div className="flex items-center justify-between mt-6">
                       <p className="text-sm text-muted-foreground">
-                        Page {page} of {totalPages} — {filteredPublished.length} total
+                        Page {page} of {totalPages}, {filteredPublished.length} total
                       </p>
                       <div className="flex gap-2">
                         <Button

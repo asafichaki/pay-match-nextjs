@@ -187,7 +187,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  Many business owners assume these credit card processing fees are set in stone—just like taxes. They aren't.
+                  Many business owners assume these credit card processing fees are set in stone, just like taxes. They aren't.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -233,7 +233,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
 
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <p className="text-foreground">
-                    <strong>The Core Issue:</strong> If your payment processor bundles these three components together—a pricing model often called "Tiered," "Blended," or "Flat Rate"—they can easily hide a massive markup behind the scenes. This is where you're likely overpaying.
+                    <strong>The Core Issue:</strong> If your payment processor bundles these three components together, a pricing model often called "Tiered," "Blended," or "Flat Rate"—they can easily hide a massive markup behind the scenes. This is where you're likely overpaying.
                   </p>
                 </div>
 
@@ -400,7 +400,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
 
                 <ul className="text-foreground space-y-3 ml-6 list-disc">
                   <li><strong>Liquidated Damages:</strong> Look for this phrase in the fine print. It implies that if you cancel early, you owe the processor the profit they would have made had you stayed for the full term. This can cost thousands.</li>
-                  <li><strong>"Qualified / Non-Qualified" Rates:</strong> If a quote offers a low rate for "Qualified" cards but high rates for "Non-Qualified," you are looking at Tiered pricing. Avoid this model—it's designed to hide excessive markups.</li>
+                  <li><strong>"Qualified / Non-Qualified" Rates:</strong> If a quote offers a low rate for "Qualified" cards but high rates for "Non-Qualified," you are looking at Tiered pricing. Avoid this model, it's designed to hide excessive markups.</li>
                   <li><strong>Equipment Leases:</strong> As mentioned above, never lease terminals. Unscrupulous sales agents make huge commissions on these leases while you pay 5-10x the actual equipment cost.</li>
                   <li><strong>PCI Compliance Fees:</strong> While PCI compliance is required, many processors charge excessive monthly "compliance fees" ($10-$50/month) that are pure profit. Look for processors that include basic PCI compliance.</li>
                 </ul>
@@ -522,7 +522,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Can I pass credit card fees to customers?</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  In most US states, yes—but with important restrictions:
+                  In most US states, yes, but with important restrictions:
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
@@ -628,7 +628,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                         </a>
                       </div>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        Barak Bachar is a Global Payments Manager and recognized expert in the payments industry. With a background as a commercial lawyer and extensive experience in the highly regulated iGaming industry, Barak specializes in managing complex payment ecosystems and fraud prevention. He leverages his expertise in high-risk global markets to help businesses of all sizes—from local retailers to digital enterprises—demystify processing fees and optimize their revenue. Through myPayAdvisor.com, Barak has helped hundreds of small businesses save thousands of dollars annually on credit card processing fees.
+                        Barak Bachar is a Global Payments Manager and recognized expert in the payments industry. With a background as a commercial lawyer and extensive experience in the highly regulated iGaming industry, Barak specializes in managing complex payment ecosystems and fraud prevention. He leverages his expertise in high-risk global markets to help businesses of all sizes, from local retailers to digital enterprises, demystify processing fees and optimize their revenue. Through myPayAdvisor.com, Barak has helped hundreds of small businesses save thousands of dollars annually on credit card processing fees.
                       </p>
                     </div>
                   </div>

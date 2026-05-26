@@ -83,7 +83,7 @@ interface QuizLead {
   volume_tier: string | null;
   track: string | null;
   // Discriminator: which underlying table did this row come from?
-  // "quiz_leads" (default — quiz + sorting-hat) or "newsletter_subscribers"
+  // "quiz_leads" (default, quiz + sorting-hat) or "newsletter_subscribers"
   origin_table: "quiz_leads" | "newsletter_subscribers";
 }
 
@@ -201,7 +201,7 @@ export default function LeadsDashboard() {
       }));
 
       // Adapt newsletter_subscribers into the QuizLead shape so they render in
-      // the same table. Most fields are null — newsletter rows only have email,
+      // the same table. Most fields are null, newsletter rows only have email,
       // source, subscribed_at, active. They get a "Newsletter" source badge.
       const newsletterLeads: QuizLead[] = (newsRes.data || []).map((n: any) => ({
         id: n.id,
@@ -273,14 +273,14 @@ export default function LeadsDashboard() {
   const updateLeadStatus = useCallback(
     async (leadId: string, newStatus: string) => {
       try {
-        // Newsletter rows don't have a status column — status edits are
+        // Newsletter rows don't have a status column, status edits are
         // silently no-op'd on those rows (UI keeps the synthetic value).
         const target = leads.find((l) => l.id === leadId);
         if (target?.origin_table === "newsletter_subscribers") {
           setLeads((prev) =>
             prev.map((l) => (l.id === leadId ? { ...l, status: newStatus } : l))
           );
-          toast({ title: "Status (newsletter only — local)" });
+          toast({ title: "Status (newsletter only, local)" });
           return;
         }
         const { error } = await supabase
@@ -306,7 +306,7 @@ export default function LeadsDashboard() {
   const bulkUpdateStatus = async (newStatus: string) => {
     if (selectedIds.size === 0) return;
     try {
-      // Only quiz_leads rows have a status column — filter newsletter ids out.
+      // Only quiz_leads rows have a status column, filter newsletter ids out.
       const ids = Array.from(selectedIds).filter((id) => {
         const target = leads.find((l) => l.id === id);
         return target?.origin_table !== "newsletter_subscribers";
@@ -1048,7 +1048,7 @@ export default function LeadsDashboard() {
                                 }
                                 title={
                                   lead.origin_table === "newsletter_subscribers"
-                                    ? "Newsletter — no detail view"
+                                    ? "Newsletter, no detail view"
                                     : "View details"
                                 }
                               >

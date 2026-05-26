@@ -196,7 +196,7 @@ export default function MerchantStatementAuditGuidePage() {
                 </h2>
 
                 <p className="text-lg text-foreground leading-relaxed">
-                  In today's digital-first economy, accepting credit cards is not optional—it is the lifeblood of commerce. Yet, for millions of business owners across the United States, the monthly merchant statement remains the most baffling financial document they receive. It is often more cryptic than a complex tax filing and more volatile than utility costs.
+                  In today's digital-first economy, accepting credit cards is not optional, it is the lifeblood of commerce. Yet, for millions of business owners across the United States, the monthly merchant statement remains the most baffling financial document they receive. It is often more cryptic than a complex tax filing and more volatile than utility costs.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -204,7 +204,7 @@ export default function MerchantStatementAuditGuidePage() {
                 </p>
 
                 <ExpertQuote
-                  quote="Most merchants on a tiered contract pay $400 to $900 a year in flat fees that have nothing to do with card processing — PCI, regulatory product, statement, monthly minimum. Every line is negotiable. The bank earns this revenue because nobody asks in writing for it to be waived. Five minutes and a written request removes most of it."
+                  quote="Most merchants on a tiered contract pay $400 to $900 a year in flat fees that have nothing to do with card processing, PCI, regulatory product, statement, monthly minimum. Every line is negotiable. The bank earns this revenue because nobody asks in writing for it to be waived. Five minutes and a written request removes most of it."
                   authorName={BARAK_NAME}
                   authorRole={`${BARAK_TITLE}, myPayAdvisor`}
                   authorSlug="barak"
@@ -256,7 +256,7 @@ export default function MerchantStatementAuditGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>What they charge:</strong> Interchange Fees. This is the lion's share of your cost—typically <strong>70% to 90%</strong> of the total fees you pay. The Issuing Bank takes this cut to cover the risk of credit, fraud, and to fund those "cash back" or "airline mile" rewards programs consumers love.
+                  <strong>What they charge:</strong> Interchange Fees. This is the lion's share of your cost, typically <strong>70% to 90%</strong> of the total fees you pay. The Issuing Bank takes this cut to cover the risk of credit, fraud, and to fund those "cash back" or "airline mile" rewards programs consumers love.
                 </p>
 
                 <div className="my-6 p-4 bg-muted/30 rounded-lg">

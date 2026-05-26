@@ -174,7 +174,7 @@ export default async function RateTable() {
       aria-labelledby="rate-table-heading"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-12 sm:py-16 md:py-20">
-        {/* Heading block — single column, no glitchy line-break */}
+        {/* Heading block, single column, no glitchy line-break */}
         <div className="max-w-2xl mb-10 sm:mb-12">
           <p className="text-[11px] uppercase tracking-[0.18em] font-semibold text-primary mb-3">
             The list
@@ -252,7 +252,7 @@ export default async function RateTable() {
                       </div>
                     </div>
 
-                    {/* Effective rate — hero number + caption */}
+                    {/* Effective rate, hero number + caption */}
                     <div className="flex flex-col gap-0.5 min-w-0">
                       <div className="font-mono text-[15px] sm:text-base font-semibold text-foreground tabular-nums leading-tight">
                         {rate.hero || "—"}
@@ -289,7 +289,7 @@ export default async function RateTable() {
             )}
           </div>
 
-          {/* Mobile cards — tight 3-row layout */}
+          {/* Mobile cards, tight 3-row layout */}
           <div className="md:hidden divide-y divide-border">
             {rows.length === 0 ? (
               <div className="py-10 text-center text-sm text-muted-foreground">Loading…</div>

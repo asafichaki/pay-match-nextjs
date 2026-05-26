@@ -53,7 +53,7 @@ export default function InlineStep1() {
           </p>
         </div>
 
-        {/* Cards grid — 2 cols mobile, 3 desktop */}
+        {/* Cards grid, 2 cols mobile, 3 desktop */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3 md:gap-4 max-w-3xl mx-auto">
           {CARDS.map((c, i) => {
             const Icon = c.icon;

@@ -143,7 +143,7 @@ export default function Level2Level3ProcessingGuidePage() {
                 </h1>
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                  If your business primarily sells to other companies (B2B) or government agencies, you're likely dealing with high corporate card interchange rates. What most business owners don't realize is that they're often paying a "lazy tax" on these transactions—sometimes hundreds or even thousands of dollars every month.
+                  If your business primarily sells to other companies (B2B) or government agencies, you're likely dealing with high corporate card interchange rates. What most business owners don't realize is that they're often paying a "lazy tax" on these transactions, sometimes hundreds or even thousands of dollars every month.
                 </p>
 
                 {/* Author Byline */}
@@ -393,7 +393,7 @@ export default function Level2Level3ProcessingGuidePage() {
                     <li className="text-primary font-semibold">Difference: $45 saved on a single invoice</li>
                   </ul>
                   <p className="text-foreground leading-relaxed mt-4">
-                    If your business processes just 20 of these transactions weekly, you're losing <strong>$3,600 monthly—or $43,200 annually</strong>—simply by not capturing the required data fields.
+                    If your business processes just 20 of these transactions weekly, you're losing <strong>$3,600 monthly, or $43,200 annually</strong>—simply by not capturing the required data fields.
                   </p>
                 </div>
 

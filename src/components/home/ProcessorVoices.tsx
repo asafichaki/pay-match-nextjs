@@ -1,4 +1,4 @@
-// Industry sentiment — composite operator voice on the major payment
+// Industry sentiment, composite operator voice on the major payment
 // processors. Sourced from common patterns on Trustpilot, G2, Reddit
 // (r/smallbusiness, r/SaaS), and public operator forums. Each quote is
 // labeled with the processor it's about + the surface it was observed on,
@@ -100,7 +100,7 @@ export default function ProcessorVoices() {
                 key={i}
                 className={`${i >= 3 ? "hidden sm:flex" : "flex"} group relative flex-col rounded-2xl border border-border bg-card p-5 sm:p-6 md:p-7 hover:border-primary/40 hover:shadow-[0_18px_40px_-20px_rgba(0,0,0,0.18)] transition-all`}
               >
-                {/* Top row — processor + tone */}
+                {/* Top row, processor + tone */}
                 <div className="flex items-center justify-between mb-5">
                   <span className="font-display text-base font-semibold text-foreground tracking-tight">
                     {v.processor}

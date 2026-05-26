@@ -5,7 +5,7 @@ const VIDEO_URL = `https://www.youtube.com/watch?v=${VIDEO_ID}`;
 const EMBED_URL = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}`;
 const THUMBNAIL_URL = `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
 
-const VIDEO_NAME = "myPayAdvisor — Who we are";
+const VIDEO_NAME = "myPayAdvisor, Who we are";
 const VIDEO_DESCRIPTION =
   "A short introduction to myPayAdvisor: who runs it, why we review payment processors from the operator side of the table, and how our independent shortlist process actually works for U.S. merchants in 2026.";
 const UPLOAD_DATE = "2025-09-15";

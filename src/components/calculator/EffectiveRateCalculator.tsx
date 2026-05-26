@@ -25,7 +25,7 @@ function targetRate(monthlyVolume: number, channel: "online" | "in_person"): num
 const fmt = (n: number) =>
   new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(n);
 
-// Tween helper — animates a numeric value over duration ms.
+// Tween helper, animates a numeric value over duration ms.
 function useTween(target: number, durationMs = 600) {
   const [value, setValue] = useState(target);
   const fromRef = useRef(target);
@@ -169,7 +169,7 @@ export default function EffectiveRateCalculator({ defaultChannel = "online" }: P
             </div>
           </div>
 
-          {/* Visual bars — current vs benchmark */}
+          {/* Visual bars, current vs benchmark */}
           <div className="rounded-2xl bg-card/60 border border-border p-5 sm:p-6 mb-8 backdrop-blur-sm">
             <div className="flex items-end justify-between mb-3">
               <p className="text-xs uppercase tracking-[0.14em] font-semibold text-muted-foreground">

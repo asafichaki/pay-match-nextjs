@@ -90,7 +90,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
         </div>
       </div>
 
-      {/* Step 1 — Business type */}
+      {/* Step 1, Business type */}
       {step === 1 && (
         <div>
           <h2 className="text-2xl font-semibold text-foreground mb-2">What do you sell?</h2>
@@ -120,7 +120,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
         </div>
       )}
 
-      {/* Step 2 — Volume */}
+      {/* Step 2, Volume */}
       {step === 2 && (
         <div>
           <h2 className="text-2xl font-semibold text-foreground mb-2">Monthly processing volume</h2>
@@ -155,7 +155,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
         </div>
       )}
 
-      {/* Step 3 — Pain point */}
+      {/* Step 3, Pain point */}
       {step === 3 && (
         <div>
           <h2 className="text-2xl font-semibold text-foreground mb-2">
@@ -192,7 +192,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
         </div>
       )}
 
-      {/* Step 4 — Contact */}
+      {/* Step 4, Contact */}
       {step === 4 && (
         <div>
           <h2 className="text-2xl font-semibold text-foreground mb-2">Where should I send your shortlist?</h2>

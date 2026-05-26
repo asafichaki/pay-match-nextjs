@@ -11,7 +11,7 @@ const PILLARS = [
   {
     icon: ShieldCheck,
     title: "Operator-reviewed",
-    body: "Every shortlist is filtered by people who've run payment ops at $500M+ annual volume — not by an algorithm or a generic CRM.",
+    body: "Every shortlist is filtered by people who've run payment ops at $500M+ annual volume, not by an algorithm or a generic CRM.",
   },
   {
     icon: FileSearch,
@@ -21,7 +21,7 @@ const PILLARS = [
   {
     icon: MessagesSquare,
     title: "Questions to ask before you sign",
-    body: "You get the specific contract clauses to push on, plus the exact questions to put to each provider's sales team — IC++, reserve cap, termination, fallback rate.",
+    body: "You get the specific contract clauses to push on, plus the exact questions to put to each provider's sales team, IC++, reserve cap, termination, fallback rate.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function BarakBlock() {
         <blockquote className="editorial-quote text-lg sm:text-xl md:text-2xl text-foreground leading-snug mb-8 sm:mb-12 border-l-2 border-primary pl-4 sm:pl-5 max-w-3xl mx-auto md:mx-0">
           &ldquo;{QUOTE}&rdquo;
           <cite className="block mt-2 sm:mt-3 text-xs sm:text-sm not-italic text-muted-foreground font-sans">
-            — From our 2026 rate review
+           , From our 2026 rate review
           </cite>
         </blockquote>
 

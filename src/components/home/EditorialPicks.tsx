@@ -26,7 +26,7 @@ const PICKS: Pick[] = [
   {
     href: "/insights/reserves-frozen-funds-capped-vs-rolling",
     eyebrow: "Reserves",
-    title: "Capped vs. rolling reserves — and why it is a cashflow question",
+    title: "Capped vs. rolling reserves, and why it is a cashflow question",
     excerpt:
       "A 10% rolling reserve on $500K monthly volume ties up $300K in working capital. That is a margin decision dressed as risk.",
   },

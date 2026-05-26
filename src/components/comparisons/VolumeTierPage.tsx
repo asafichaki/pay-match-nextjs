@@ -1,5 +1,5 @@
 // Shared renderer for /comparisons/best-payment-processors-<volume-tier> pages.
-// Built off the AEO probe finding that Q35/Q36 already cite us — expanding the
+// Built off the AEO probe finding that Q35/Q36 already cite us, expanding the
 // proven format to capture the 5 adjacent volume-tier queries.
 //
 // Schema: Article + Speakable + BreadcrumbList + ItemList of products + Person reviewer.

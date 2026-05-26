@@ -124,7 +124,7 @@ export default function Page() {
               </p>
 
               <ExpertQuote
-                quote="The most expensive sentence in payments is 'we don't have room to negotiate on that.' Above $25K monthly volume, every flat fee on the statement is on the table. Above $100K, the markup itself is on the table. The processor never volunteers it — you have to ask, in writing, with a competing quote in the same email."
+                quote="The most expensive sentence in payments is 'we don't have room to negotiate on that.' Above $25K monthly volume, every flat fee on the statement is on the table. Above $100K, the markup itself is on the table. The processor never volunteers it, you have to ask, in writing, with a competing quote in the same email."
                 authorName={BARAK_NAME}
                 authorRole={`${BARAK_TITLE}, myPayAdvisor`}
                 authorSlug="barak"

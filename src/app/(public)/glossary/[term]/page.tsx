@@ -57,7 +57,7 @@ const CATEGORY_LABEL: Record<GlossaryTerm["category"], string> = {
   fraud: "Fraud & risk",
 };
 
-/** Cornerstone article slugs that deepen on each term — link from term page out. */
+/** Cornerstone article slugs that deepen on each term, link from term page out. */
 const TERM_TO_CORNERSTONES: Record<string, { label: string; href: string }[]> = {
   interchange: [
     { label: "Credit Card Processing Fees Explained", href: "/insights/credit-card-processing-fees-explained" },

@@ -168,7 +168,7 @@ export default function EffectiveRatesDatabasePage() {
                 </li>
                 <li>
                   <strong>PayPal</strong> has the highest sticker fee but typically lifts checkout conversion by{" "}
-                  <strong>5-10%</strong> due to its installed user base — net cost can be lower than Stripe at the same volume.
+                  <strong>5-10%</strong> due to its installed user base, net cost can be lower than Stripe at the same volume.
                 </li>
               </ul>
             </section>
@@ -176,7 +176,7 @@ export default function EffectiveRatesDatabasePage() {
             <MatchCTA
               variant="inline"
               headline="Where does your business land in this table?"
-              subline="Get a 60-second match with the 3 processors that fit your channel mix, volume, and ticket size — with negotiation questions for each."
+              subline="Get a 60-second match with the 3 processors that fit your channel mix, volume, and ticket size, with negotiation questions for each."
             />
 
             <section aria-labelledby="rates-database-heading" className="mt-12 mb-10">
@@ -268,14 +268,14 @@ export default function EffectiveRatesDatabasePage() {
             <section className="mt-12 mb-10">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Sources</h2>
               <ul className="list-disc pl-5 space-y-2 text-muted-foreground text-sm">
-                <li>Stripe pricing — <a href="https://stripe.com/pricing" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">stripe.com/pricing</a></li>
-                <li>Square pricing — <a href="https://squareup.com/us/en/pricing" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">squareup.com/us/en/pricing</a></li>
-                <li>PayPal merchant fees — <a href="https://www.paypal.com/us/webapps/mpp/merchant-fees" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">paypal.com/us/webapps/mpp/merchant-fees</a></li>
-                <li>Helcim pricing — <a href="https://www.helcim.com/pricing/" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">helcim.com/pricing</a></li>
-                <li>Stax pricing — <a href="https://staxpayments.com/pricing/" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">staxpayments.com/pricing</a></li>
-                <li>Payment Depot — <a href="https://paymentdepot.com/pricing/" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">paymentdepot.com/pricing</a></li>
-                <li>Adyen pricing — <a href="https://www.adyen.com/pricing" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">adyen.com/pricing</a></li>
-                <li>Federal Reserve, "Average Debit-Card Interchange Fee by Payment Card Network" — <a href="https://www.federalreserve.gov/paymentsystems/regii-interchange-fee.htm" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">federalreserve.gov</a></li>
+                <li>Stripe pricing, <a href="https://stripe.com/pricing" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">stripe.com/pricing</a></li>
+                <li>Square pricing, <a href="https://squareup.com/us/en/pricing" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">squareup.com/us/en/pricing</a></li>
+                <li>PayPal merchant fees, <a href="https://www.paypal.com/us/webapps/mpp/merchant-fees" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">paypal.com/us/webapps/mpp/merchant-fees</a></li>
+                <li>Helcim pricing, <a href="https://www.helcim.com/pricing/" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">helcim.com/pricing</a></li>
+                <li>Stax pricing, <a href="https://staxpayments.com/pricing/" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">staxpayments.com/pricing</a></li>
+                <li>Payment Depot, <a href="https://paymentdepot.com/pricing/" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">paymentdepot.com/pricing</a></li>
+                <li>Adyen pricing, <a href="https://www.adyen.com/pricing" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">adyen.com/pricing</a></li>
+                <li>Federal Reserve, "Average Debit-Card Interchange Fee by Payment Card Network", <a href="https://www.federalreserve.gov/paymentsystems/regii-interchange-fee.htm" target="_blank" rel="nofollow noopener" className="text-primary hover:underline">federalreserve.gov</a></li>
                 <li>Nilson Report, U.S. Card Payments by Network (2026)</li>
               </ul>
             </section>

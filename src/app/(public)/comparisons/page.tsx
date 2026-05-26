@@ -112,7 +112,7 @@ const faqSchema = {
       "name": "Should I use PayPal or Stripe for online payments?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Stripe wins on developer tooling, subscription billing, and global routing. PayPal wins on consumer trust at checkout — especially for first-time buyers. Many high-converting checkouts run both: Stripe as the primary processor and PayPal as an alternative button."
+        "text": "Stripe wins on developer tooling, subscription billing, and global routing. PayPal wins on consumer trust at checkout, especially for first-time buyers. Many high-converting checkouts run both: Stripe as the primary processor and PayPal as an alternative button."
       }
     },
     {
@@ -120,7 +120,7 @@ const faqSchema = {
       "name": "How long does it take to switch payment processors?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "For an online merchant on a standard processor, switching takes 1 to 3 weeks: underwriting (2 to 7 days), integration testing (3 to 5 days), and DNS or webhook updates. For complex verticals, 2 to 6 weeks is realistic. Most contracts have a termination fee — calculate the breakeven before you start."
+        "text": "For an online merchant on a standard processor, switching takes 1 to 3 weeks: underwriting (2 to 7 days), integration testing (3 to 5 days), and DNS or webhook updates. For complex verticals, 2 to 6 weeks is realistic. Most contracts have a termination fee, calculate the breakeven before you start."
       }
     }
   ]

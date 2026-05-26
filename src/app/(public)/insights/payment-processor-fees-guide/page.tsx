@@ -73,7 +73,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "What is the average payment processing fee in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Effective rates typically run 2.4% to 3.0% all-in for card-not-present and 2.1% to 2.6% for card-present, plus per-transaction fees of $0.10 to $0.30. The exact number depends on your card mix, average ticket, and pricing model — interchange-plus pricing usually beats flat-rate above $25,000 monthly volume."
+          "text": "Effective rates typically run 2.4% to 3.0% all-in for card-not-present and 2.1% to 2.6% for card-present, plus per-transaction fees of $0.10 to $0.30. The exact number depends on your card mix, average ticket, and pricing model, interchange-plus pricing usually beats flat-rate above $25,000 monthly volume."
         }
       },
       {
@@ -105,7 +105,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "Are payment processor fees negotiable?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The processor markup is negotiable. Interchange and assessments are not — those are set by Visa, Mastercard, Amex, and Discover and are the same regardless of who processes for you. Above $50,000 monthly volume, a 0.10% to 0.30% reduction in the markup is realistic with the right contract terms."
+          "text": "The processor markup is negotiable. Interchange and assessments are not, those are set by Visa, Mastercard, Amex, and Discover and are the same regardless of who processes for you. Above $50,000 monthly volume, a 0.10% to 0.30% reduction in the markup is realistic with the right contract terms."
         }
       }
     ]
@@ -176,7 +176,7 @@ export default function PaymentProcessorFeesGuidePage() {
             <MatchCTA
               variant="inline"
               headline="Want the personalized version of this?"
-              subline="Get 3 vetted processors matched to your volume, channel mix, and ticket size — with the negotiation questions to ask each one."
+              subline="Get 3 vetted processors matched to your volume, channel mix, and ticket size, with the negotiation questions to ask each one."
             />
 
             {/* Table of Contents */}
