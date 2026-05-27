@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   other: {
-    "article:published_time": "2024-12-01T00:00:00.000Z",
+    "article:published_time": "2026-03-20T00:00:00.000Z",
     "article:modified_time": new Date().toISOString(),
   },
 };
@@ -67,7 +67,7 @@ export default function PayPalVsSquarePage() {
         title="Square vs PayPal 2026: Complete Comparison for Small Businesses"
         description="Complete comparison of Square vs PayPal for 2026. Compare fees, features, hardware, and find which payment processor is best for your small business needs."
         slug="paypal-vs-square"
-        datePublished="2024-12-01"
+        datePublished="2026-03-20"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
