@@ -42,6 +42,25 @@ interface BlogArticleRow {
 const PLACEHOLDER_RE = /\[INTERNAL_LINK:[^\]]*\]/gi;
 const FALLBACK_INTERNAL_RE = /\(INTERNAL_LINK:[^)]*\)/gi;
 
+/**
+ * Normalize a date-ish value to a strict ISO 8601 string WITH timezone offset,
+ * required by Google Rich Results for VideoObject.uploadDate / AudioObject.uploadDate.
+ *
+ * Returns null when the value is missing, unparseable, or would emit a naked
+ * date / offset-less timestamp. Callers MUST gate schema emission on a non-null
+ * return value — see render-blog-article.tsx VideoObject + AudioObject blocks.
+ *
+ * GSC flagged this on 2026-05-27 (missing timezone + invalid datetime on Videos).
+ * Gate: scripts/seo/check-video-upload-date.mjs (prebuild).
+ */
+function toIsoWithOffset(value: string | null | undefined): string | null {
+  if (!value) return null;
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return null;
+  // Date#toISOString always emits ...Z (UTC) — that satisfies the offset rule.
+  return d.toISOString();
+}
+
 function sanitizeBody(html: string): string {
   if (!html) return html;
   return html
@@ -141,16 +160,19 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
     return base;
   })();
 
-  // VideoObject schema — required for Google Indexing API eligibility on non-job URLs
+  // VideoObject schema — required for Google Indexing API eligibility on non-job URLs.
+  // GATE: uploadDate must be ISO 8601 with timezone offset, else GSC errors.
   const videoSchema = (() => {
     if (!article.video_url) return null;
+    const uploadDate = toIsoWithOffset(article.published_at || article.updated_at);
+    if (!uploadDate) return null; // skip schema rather than emit invalid datetime
     return {
       "@context": "https://schema.org",
       "@type": "VideoObject",
       name: article.title,
       description: article.description,
       thumbnailUrl: article.image_url || `${SITE}/og-logo.png`,
-      uploadDate: article.published_at || article.updated_at,
+      uploadDate,
       contentUrl: article.video_url,
       embedUrl: article.video_url,
       publisher: {
@@ -166,6 +188,8 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
   // are net positive for LLM citation per geo-architect § Multimodal patterns.
   const audioSchema = (() => {
     if (!article.audio_url) return null;
+    const uploadDate = toIsoWithOffset(article.published_at || article.updated_at);
+    if (!uploadDate) return null; // same gate as VideoObject
     return {
       "@context": "https://schema.org",
       "@type": "AudioObject",
@@ -173,7 +197,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
       description: article.description,
       contentUrl: article.audio_url,
       encodingFormat: "audio/mpeg",
-      uploadDate: article.published_at || article.updated_at,
+      uploadDate,
       duration: "PT8M",
       publisher: {
         "@type": "Organization",

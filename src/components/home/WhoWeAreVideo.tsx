@@ -8,7 +8,11 @@ const THUMBNAIL_URL = `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
 const VIDEO_NAME = "myPayAdvisor, Who we are";
 const VIDEO_DESCRIPTION =
   "A short introduction to myPayAdvisor: who runs it, why we review payment processors from the operator side of the table, and how our independent shortlist process actually works for U.S. merchants in 2026.";
-const UPLOAD_DATE = "2025-09-15";
+// ISO 8601 with explicit offset — Google Rich Results requires a timezone on
+// VideoObject.uploadDate. Naked YYYY-MM-DD or YYYY-MM-DDTHH:mm:ss (no offset)
+// triggers GSC "Datetime missing timezone" + "Invalid datetime" warnings.
+// See: ~/.claude/skills/geo-architect/playbooks/mypayadvisor.md (2026-05-27 fix).
+const UPLOAD_DATE = "2025-09-15T12:00:00-07:00";
 
 const TALKING_POINTS = [
   "Who built myPayAdvisor and why we are not a generic lead-gen CRM.",
