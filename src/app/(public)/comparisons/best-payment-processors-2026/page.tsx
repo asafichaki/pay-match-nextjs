@@ -63,6 +63,16 @@ export const metadata: Metadata = {
   },
 };
 
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.mypayadvisor.com/comparisons/best-payment-processors-2026#webpage",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", ".aeo-answer", "[data-speakable]"],
+  },
+};
+
 const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -104,6 +114,7 @@ export default function BestPaymentProcessors2026Page() {
         }}
       />
       <JsonLd data={faqStructuredData} />
+      <JsonLd data={speakableSchema} />
       <JsonLd data={buildItemListSchema()} />
       <BestPaymentProcessors2026Content />
     </>
