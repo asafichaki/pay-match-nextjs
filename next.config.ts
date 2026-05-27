@@ -34,6 +34,14 @@ const nextConfig: NextConfig = {
       // 1 long slug duplicating /insights/high-risk-payment-processing-guide
       { source: "/insights/high-risk-merchant-processing-account-a-2026-guide-to-lowering-fees-thriving", destination: "/insights/high-risk-payment-processing-guide", permanent: true },
 
+      // Slug shortening 2026-05-27 — 79 char autopilot slug → 49 char canonical
+      // for citation odds + UX. Page lived at long slug from 2026-04-25.
+      {
+        source: "/insights/cost-of-payment-processing-solutions-for-small-professional-services-businesses",
+        destination: "/insights/cost-of-payment-processing-professional-services",
+        permanent: true,
+      },
+
       // Chargeback duplicates — keep "solutions" (broader), 301 "software"
       { source: "/insights/chargeback-management-software-optimizing-merchant-profitability-in-2026", destination: "/insights/chargeback-management-solutions-a-merchant-s-guide-to-prevention-recovery", permanent: true },
 
