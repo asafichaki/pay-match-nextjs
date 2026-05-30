@@ -16,14 +16,21 @@ import { getResend } from "@/lib/funnel/resend-client";
  * Uses the same verified `mypayadvisor.com` domain as the funnel email flow.
  */
 
-// Resend sandbox (`onboarding@resend.dev`) only delivers to the verified-account
-// owner address — which is `asafichaki@gmail.com` (no dot). Gmail treats both
-// forms as identical, so Assaf's inbox receives either. When mypayadvisor.com is
-// verified in Resend, this can switch to "assaf.ichaki@gmail.com" or both.
-const ADMIN_TO = process.env.LEADS_NOTIFY_TO_EMAIL || "asafichaki@gmail.com";
+// mypayadvisor.com is verified in Resend (confirmed 2026-05-30), so notifications
+// send from the real domain and deliver to BOTH Assaf and Barak. Every captured
+// lead reaches them directly and Barak follows up with the merchant personally.
+// This is the conversion mechanism (lead handoff), replacing the booking link.
+// Override recipients via LEADS_NOTIFY_TO_EMAIL (comma-separated) if they change.
+const ADMIN_TO = (
+  process.env.LEADS_NOTIFY_TO_EMAIL ||
+  "assaf.ichaki@gmail.com,barak@mypayadvisor.com"
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 const FROM =
   process.env.LEADS_NOTIFY_FROM_EMAIL ||
-  "myPayAdvisor Leads <onboarding@resend.dev>"; // TODO: verify mypayadvisor.com in Resend dashboard, then switch to leads@mypayadvisor.com
+  "myPayAdvisor Leads <leads@mypayadvisor.com>";
 const ADMIN_URL = "https://www.mypayadvisor.com/admin/leads";
 
 export type LeadSource =

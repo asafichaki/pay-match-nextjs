@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CheckCircle2, Calendar, Mail, BookOpen } from "lucide-react";
-import { CALENDLY_URL } from "@/lib/funnel/resend-client";
+import { CheckCircle2, Mail, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "You're in. Barak is on it.",
-  description: "Your shortlist is on the way. While you wait, you can also book a 15-minute call with Barak Bachar.",
+  description: "Your shortlist is on the way. Barak Bachar reviews it personally and emails you directly.",
   robots: { index: false, follow: true },
 };
 
@@ -15,11 +14,11 @@ const COPY = {
     title: "You're in. Barak is on it.",
     sub: "First email lands in minutes. Full shortlist tomorrow morning.",
     body: [
-      "While you wait, you can also book a 15-minute call. Barak takes a limited number of merchant calls per week, mostly to walk through pricing or routing setups before you sign with anyone.",
+      "Barak personally reviews every shortlist before it goes out. He reads your volume, your pain point, and what you're paying now, then builds the list by hand.",
       "If you'd rather just read the comparison guides we've already published, those are linked below.",
     ],
-    bookHeadline: "Book a 15-minute call with Barak",
-    bookSub: "Bring your latest statement and we'll talk through what your effective rate actually is and what to negotiate.",
+    bookHeadline: "What happens next",
+    bookSub: "Barak reviews your details and emails you directly, usually within one business day. Reply with your latest statement and he'll tell you what your effective rate actually is and what to negotiate.",
     readMoreLinks: [
       { href: "/insights/payment-processor-fees-guide", label: "Real 2026 rates from 14 processors" },
       { href: "/insights/credit-card-processing-fees-explained", label: "Credit card fees, hidden costs, what you actually pay" },
@@ -31,10 +30,10 @@ const COPY = {
     sub: "First email lands in minutes. In-person shortlist tomorrow with hardware notes.",
     body: [
       "Most comparison tools are built for online merchants and miss the things that actually matter at the location level. Barak builds your list against real in-person MDR, hardware compatibility, and reconciliation.",
-      "You can also grab a 15-minute call below if you want a second set of eyes on a contract before you sign.",
+      "If you'd rather just read the guides we've already published, those are linked below.",
     ],
-    bookHeadline: "Book a 15-minute call with Barak",
-    bookSub: "We'll walk through your terminal setup, current MDR, and the questions to ask before signing anything.",
+    bookHeadline: "What happens next",
+    bookSub: "Barak reviews your terminal setup and current MDR, then emails you directly, usually within one business day, with the questions to ask before signing anything.",
     readMoreLinks: [
       { href: "/insights/online-vs-instore-payments", label: "The real cost gap between online and in-store" },
       { href: "/insights/helcim-review-2025", label: "Helcim review: real rates and verdict" },
@@ -46,10 +45,10 @@ const COPY = {
     sub: "First email lands in minutes. Shortlist tomorrow with reserve and approval-rate notes.",
     body: [
       "Barak has spent years managing payment operations at the $500M+ annual volume level. He knows which acquirers stay easy to work with six months after you sign, and which ones quietly tighten the screws.",
-      "If you want a second look at terms you've already been offered, the call below is the fastest way.",
+      "If you want a second look at terms you've already been offered, mention it when you reply and he'll go through them.",
     ],
-    bookHeadline: "Book a 15-minute call with Barak",
-    bookSub: "Bring whatever offer or contract you've been quoted. Barak will tell you straight whether it's normal for your category.",
+    bookHeadline: "What happens next",
+    bookSub: "Barak reviews your reserve and approval-rate notes, then emails you directly, usually within one business day. Reply with whatever offer or contract you've been quoted and he'll tell you straight whether it's normal for your category.",
     readMoreLinks: [
       { href: "/insights/payment-processor-fees-guide", label: "Real 2026 processor rates" },
       { href: "/insights/merchant-statement-audit-guide", label: "How to audit your merchant statement" },
@@ -95,20 +94,18 @@ export default async function ThankYouTrackPage({
 
         <section className="bg-primary/5 border border-primary/20 rounded-lg p-6 md:p-8 mb-8">
           <div className="flex items-start gap-4 mb-4">
-            <Calendar className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+            <Mail className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
             <div>
               <h2 className="text-xl font-semibold text-foreground mb-1">
                 {copy.bookHeadline}
               </h2>
               <p className="text-sm text-muted-foreground mb-4">{copy.bookSub}</p>
               <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:barak@mypayadvisor.com?subject=My%20payment%20processor%20shortlist"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
               >
-                Book the call
-                <Calendar className="h-4 w-4" />
+                Email Barak directly
+                <Mail className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -117,7 +114,7 @@ export default async function ThankYouTrackPage({
             <Link href="/about/barak" className="underline hover:text-primary">
               Barak Bachar
             </Link>
-            , Global Payments Manager. He takes 5 to 8 calls per week.
+            , Global Payments Manager. He reviews every shortlist personally.
           </p>
         </section>
 

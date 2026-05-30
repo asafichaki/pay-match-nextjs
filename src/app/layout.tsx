@@ -215,14 +215,6 @@ export default function RootLayout({
         <JsonLd data={professionalServiceSchema} />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-KWVVGK29"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md z-[100]"
@@ -250,13 +242,10 @@ t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 })(window, document, "clarity", "script", "wsoc2oyogw");`}
         </Script>
-        <Script id="gtm" strategy="lazyOnload">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KWVVGK29');`}
-        </Script>
+        {/* GTM container GTM-KWVVGK29 removed 2026-05-30: it only duplicated the
+            GA4 property G-MDTFETTH7E (loaded directly above) and hosted no other
+            tags or dataLayer events, causing double-counted pageviews/events.
+            Single GA4 path now; funnel events fire via gtag() (see lib/analytics/track). */}
       </body>
     </html>
   );

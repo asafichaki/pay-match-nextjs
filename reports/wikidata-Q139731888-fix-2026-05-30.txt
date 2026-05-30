@@ -1,0 +1,35 @@
+Wikidata correction batch for myPayAdvisor (Q139731888)
+Prepared 2026-05-30. Needs a logged-in Wikidata account (no credentials available to the agent).
+
+WHY: The audit found P452 (industry) = Q837171 "software industry", which is wrong.
+myPayAdvisor is an independent payment-processor comparison + advisory service, i.e.
+financial services. This misclassification weakens entity/topic signals for GEO/AEO.
+
+HOW TO APPLY (2 minutes):
+1. Open https://quickstatements.toolforge.org/  and sign in with the Wikidata account.
+2. Click "New batch" -> "Import V1 commands".
+3. Paste the block below exactly.
+4. Run.
+
+--- QuickStatements V1 ---
+-Q139731888	P452	Q837171
+Q139731888	P452	Q1066439
+Q139731888	P571	+2024-00-00T00:00:00Z/9
+-------------------------
+
+Line 1 removes the wrong industry (software).
+Line 2 adds the correct industry: Q1066439 = financial services.
+Line 3 sets/repairs inception (P571) to 2024 (year precision). The current P571
+claim has no value, so this fills it; if a duplicate empty claim remains, delete it
+by hand on the entity page.
+
+VERIFY AFTER RUNNING:
+curl -s "https://www.wikidata.org/wiki/Special:EntityData/Q139731888.json" | grep -o '"P452".*Q1066439'
+Expect a match. P452 should now be Q1066439, not Q837171.
+
+Current confirmed state (2026-05-30):
+  P31  = Q4830453 (business)            OK
+  P452 = Q837171  (software industry)   WRONG -> fix to Q1066439
+  P407 = Q1860    (English)             OK
+  P571 = (no value)                     fix to 2024
+  P973 = https://www.mypayadvisor.com/research/methodology  OK

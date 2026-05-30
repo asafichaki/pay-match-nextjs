@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { track } from "@/lib/analytics/track";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -33,6 +34,18 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
   const [honeypot, setHoneypot] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+  const emailFocusedRef = useRef(false);
+
+  // Funnel opened (fires once on mount).
+  useEffect(() => {
+    track("sh_open", { variant });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Step view (fires for the initial step and on every step change).
+  useEffect(() => {
+    track("sh_step_view", { step });
+  }, [step]);
 
   const next = () => {
     setError(null);
@@ -59,9 +72,13 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
         honeypot,
       });
       if (!result.success) {
+        track("sh_submit_error", { message: result.error || "unknown" });
         setError(result.error || "Something went wrong. Please try again.");
         return;
       }
+      track("sh_submit_success", { track: result.track });
+      // GA4 recommended conversion event (mark as a Key Event in the GA4 UI).
+      track("generate_lead", { lead_source: "sorting_hat", track: result.track });
       try {
         if (typeof window !== "undefined") {
           localStorage.setItem("mpa_lead_submitted", "1");
@@ -219,6 +236,12 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onFocus={() => {
+                  if (!emailFocusedRef.current) {
+                    emailFocusedRef.current = true;
+                    track("sh_email_focus");
+                  }
+                }}
                 placeholder="you@yourcompany.com"
                 autoComplete="email"
                 className="mt-1"
