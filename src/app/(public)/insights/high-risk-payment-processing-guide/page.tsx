@@ -761,8 +761,45 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  For a head-to-head on the two most-searched of these, see our breakdown of <Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">PaymentCloud vs Durango Merchant Services</Link>, covering which one approves your vertical faster and when offshore acquiring is the right call.
+                  For a head-to-head on the two most-searched of these, see our breakdown of <Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">PaymentCloud vs Durango Merchant Services</Link>, covering which one approves your vertical faster and when offshore acquiring is the right call. If you are weighing multi-bank load balancing, compare <Link href="/comparisons/paymentcloud-vs-easy-pay-direct" className="text-primary hover:underline">PaymentCloud vs Easy Pay Direct</Link>. And if a mainstream processor just declined or froze you, start with <Link href="/comparisons/stripe-high-risk-alternatives" className="text-primary hover:underline">the best Stripe alternatives for high-risk businesses</Link>.
                 </p>
+
+                {/* Cluster nav: "Choose your path" links DOWN to industry + pain spokes (no matching entity-first H2 exists in this legacy structure, so the spoke set is concentrated here, right after the processors section). Per content-cluster plan section 3 internal-link concentration. */}
+                <div className="my-10 p-6 bg-muted/30 rounded-lg border border-border">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Choose Your Path: High-Risk Merchant Accounts by Industry and Situation</h3>
+                  <p className="text-foreground leading-relaxed mb-5">
+                    Approval depends on your exact vertical and what just happened to your account. Jump to the guide that matches your situation.
+                  </p>
+
+                  <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">Merchant accounts by industry</p>
+                  <ul className="text-foreground space-y-2 ml-6 list-disc mb-6">
+                    <li>
+                      <Link href="/insights/merchant-account-for-cbd" className="text-primary hover:underline">CBD and hemp merchant accounts</Link>: which processors approve CBD, the compliance documents underwriting wants, and realistic terms.
+                    </li>
+                    <li>
+                      <Link href="/insights/firearms-merchant-account" className="text-primary hover:underline">Firearms and FFL merchant accounts</Link>: who approves gun and ammo sales online and in store, and how to stay live.
+                    </li>
+                    <li>
+                      <Link href="/insights/nutra-supplement-merchant-account" className="text-primary hover:underline">Nutra and supplement merchant accounts</Link>: handling FTC scrutiny, free-trial chargebacks, and high return rates.
+                    </li>
+                    <li>
+                      <Link href="/insights/subscription-merchant-account" className="text-primary hover:underline">Subscription and recurring-billing merchant accounts</Link>: reducing friendly fraud and surviving failed-recurring declines.
+                    </li>
+                    <li>
+                      <Link href="/insights/travel-merchant-account" className="text-primary hover:underline">Travel merchant accounts</Link>: managing the long chargeback liability window on future-delivery bookings.
+                    </li>
+                  </ul>
+
+                  <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">My processor froze me, what now</p>
+                  <ul className="text-foreground space-y-2 ml-6 list-disc">
+                    <li>
+                      <Link href="/insights/funds-frozen-what-to-do" className="text-primary hover:underline">My processor froze my funds: the operator playbook</Link>: the fixed-order response, from written reason to backup MID.
+                    </li>
+                    <li>
+                      <Link href="/insights/high-risk-instant-approval-reality" className="text-primary hover:underline">High-risk instant approval: the reality</Link>: what &ldquo;instant approval&rdquo; and offshore accounts actually mean before you sign.
+                    </li>
+                  </ul>
+                </div>
 
                 {/* Section 8 */}
                 <h2 id="multi-mid" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">

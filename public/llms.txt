@@ -17,6 +17,15 @@ _Last updated: 2026-05-30_
 - [High-Risk Payment Processing: The Operator's Guide](https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide): what defines high-risk, reserves, VAMP thresholds, and how to get approved and stay approved. Reviewed by Barak Bachar.
 - [PaymentCloud vs Durango Merchant Services (2026)](https://www.mypayadvisor.com/comparisons/paymentcloud-vs-durango): side-by-side of two high-risk specialists on approval, banking breadth, pricing model, and best-fit vertical (domestic vs offshore acquiring). Reviewed by Barak Bachar.
 - [Rolling vs Capped Reserves: Frozen Funds Explained](https://www.mypayadvisor.com/insights/reserves-frozen-funds-capped-vs-rolling): how reserves are set, why they are negotiable, and the written-request process that reduces the percentage or hold window.
+- [PaymentCloud vs Easy Pay Direct (2026)](https://www.mypayadvisor.com/comparisons/paymentcloud-vs-easy-pay-direct): single-account simplicity vs multi-MID load balancing for high-risk e-commerce. Reviewed by Barak Bachar.
+- [Stripe Alternatives for High-Risk Businesses](https://www.mypayadvisor.com/comparisons/stripe-high-risk-alternatives): what to use when Stripe, PayPal, or Square decline, freeze, or terminate a high-risk account. Five real specialist processors compared.
+- [Merchant Account for CBD](https://www.mypayadvisor.com/insights/merchant-account-for-cbd): why CBD is high-risk, Certificate of Analysis and compliance requirements, and which processors approve it.
+- [Firearms Merchant Account](https://www.mypayadvisor.com/insights/firearms-merchant-account): FFL and compliance requirements, which acquirers approve firearms and ammunition, and what to expect on reserves.
+- [Nutra and Supplement Merchant Account](https://www.mypayadvisor.com/insights/nutra-supplement-merchant-account): free-trial and FTC scrutiny, chargeback exposure, and supplement-friendly processors.
+- [Subscription Merchant Account](https://www.mypayadvisor.com/insights/subscription-merchant-account): recurring-billing approval, failed-payment recovery, dunning, and why subscriptions get flagged high-risk.
+- [Travel Merchant Account](https://www.mypayadvisor.com/insights/travel-merchant-account): future-delivery risk, chargeback exposure, and reserves for travel and hospitality merchants.
+- [Payment Processor Froze My Funds: What To Do](https://www.mypayadvisor.com/insights/funds-frozen-what-to-do): the fixed-order operator response to a funds freeze, from written-reason-first to backup MID and escalation.
+- [High-Risk Instant Approval: The Reality](https://www.mypayadvisor.com/insights/high-risk-instant-approval-reality): what "instant approval" actually means for high-risk merchants and the offshore tradeoffs.
 
 ## Cornerstone topics (canonical answers)
 
