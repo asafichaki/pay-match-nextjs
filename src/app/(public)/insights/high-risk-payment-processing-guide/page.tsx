@@ -35,9 +35,17 @@ export default function HighRiskPaymentProcessingGuidePage() {
     "description": "Comprehensive 2026 guide to high-risk payment processing. Learn proven strategies to reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable merchant accounts for CBD, gaming, subscription, and e-commerce businesses.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
+      "@type": "Organization",
+      "@id": "https://www.mypayadvisor.com/#organization",
+      "name": "myPayAdvisor"
+    },
+    "reviewedBy": {
       "@type": "Person",
-      "name": "Noah Briggs",
-      "description": "A seasoned reporter focused on the payments ecosystem."
+      "@id": "https://www.mypayadvisor.com/about/barak#person",
+      "name": "Barak Bachar",
+      "jobTitle": "Global Payments Manager",
+      "url": "https://www.mypayadvisor.com/about/barak",
+      "sameAs": ["https://www.linkedin.com/in/barak-bachar/"]
     },
     "publisher": {
       "@type": "Organization",
@@ -100,19 +108,173 @@ export default function HighRiskPaymentProcessingGuidePage() {
         "name": "What is a rolling reserve and how can I reduce it?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Rolling reserves hold 5-20% of transaction volume for 180 days to cover chargebacks. Reduce reserves by maintaining clean processing history, requesting reviews at 3, 6, and 12 months, and demonstrating financial stability with bank statements."
+          "text": "A rolling reserve is a percentage of each batch (commonly 5-15%) that the acquiring bank withholds for a fixed window of 90 to 180 days to cover post-settlement chargebacks. It is negotiable. After three to twelve months of clean processing, a written release request that cites a low chargeback ratio, stable volume, and active fraud tooling typically reduces either the percentage or the hold window. Ask in writing to the risk department, not on a phone call, and ask after you have a track record, not before."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "My processor froze my funds. What are my options?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A funds freeze is a temporary settlement hold while the acquirer investigates chargebacks, fraud signals, or a volume spike. The operator response follows a fixed order. First, get the specific reason in writing. Second, submit every requested document the same day and in full. Third, stand up a backup merchant account at a second acquirer so revenue keeps moving. Fourth, escalate in writing to the risk department. Fifth, if the hold runs past the contract's stated reserve terms, involve bank-card counsel. A freeze is a documentation problem, not a final verdict."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which processors approve CBD, firearms, or nutra businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Domestic high-risk specialists such as PaymentCloud, Soar Payments, and Easy Pay Direct publicly state acceptance of regulated-but-legal verticals including CBD, firearms, nutraceuticals, and supplements. Durango Merchant Services adds offshore acquiring for verticals or volumes that domestic banks decline. Host Merchant Services serves a broad high-risk set with interchange-plus pricing. Approval still depends on your chargeback history, documentation, and product compliance (for example a Certificate of Analysis for CBD), so the right fit is the processor whose acquiring banks already underwrite your exact category."
         }
       }
     ]
   };
 
-  
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "High-Risk Merchant Account Providers That Approve Difficult Verticals (2026)",
+    "itemListOrder": "https://schema.org/ItemListUnordered",
+    "numberOfItems": 5,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "PaymentCloud",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "url": "https://paymentcloudinc.com",
+          "offers": {
+            "@type": "Offer",
+            "category": "High-risk merchant account",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "description": "Interchange-plus and tiered high-risk pricing; rate quoted per merchant on underwriting"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Durango Merchant Services",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "url": "https://www.durangomerchantservices.com",
+          "offers": {
+            "@type": "Offer",
+            "category": "High-risk merchant account",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "description": "Domestic and offshore high-risk pricing; rate quoted per merchant and acquirer"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Easy Pay Direct",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "url": "https://easypaydirect.com",
+          "offers": {
+            "@type": "Offer",
+            "category": "High-risk merchant account",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "description": "High-risk pricing with multi-bank load balancing; rate quoted per merchant"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Soar Payments",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "url": "https://soarpayments.com",
+          "offers": {
+            "@type": "Offer",
+            "category": "High-risk merchant account",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "description": "High-risk pricing; rate quoted per merchant on underwriting"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": "Host Merchant Services",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "url": "https://www.hostmerchantservices.com",
+          "offers": {
+            "@type": "Offer",
+            "category": "High-risk merchant account",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "description": "Interchange-plus high-risk pricing; rate quoted per merchant"
+            }
+          }
+        }
+      }
+    ]
+  };
+
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide#webpage",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".aeo-answer"]
+    }
+  };
+
+  const quotationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Quotation",
+    "@id": "https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide#barak-quote",
+    "text": "Most merchants treat the rolling reserve as fixed, and it is not. The number on your first offer is the acquirer's opening position, not the bank's final answer. When I take a clean six-month processing history back to a risk desk in writing, low chargebacks, fulfillment on time, fraud tooling switched on, the reserve almost always comes down, either in percentage or in hold window. The mistake is asking on a phone call instead of in writing, and asking before you have a track record instead of after.",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://www.mypayadvisor.com/about/barak#person",
+      "name": "Barak Bachar",
+      "jobTitle": "Global Payments Manager",
+      "url": "https://www.mypayadvisor.com/about/barak",
+      "sameAs": ["https://www.linkedin.com/in/barak-bachar/"]
+    },
+    "isBasedOn": "https://www.mypayadvisor.com/about/barak",
+    "inLanguage": "en-US"
+  };
 
   return (
     <>
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
+      <JsonLd data={itemListSchema} />
+      <JsonLd data={speakableSchema} />
+      <JsonLd data={quotationSchema} />
 <div className="container mx-auto px-4 pt-20 pb-16">
           <div className="flex gap-12 justify-center">
             <article className="max-w-3xl flex-1 min-w-0">
@@ -132,19 +294,30 @@ export default function HighRiskPaymentProcessingGuidePage() {
                   Master chargeback management and fraud prevention. Proven strategies to reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable merchant accounts.
                 </p>
 
-                {/* Author Byline */}
+                {/* Reviewed-by byline: real expert only (fabricated author removed per locked portfolio_no_fictional_credentials policy). */}
                 <div className="flex items-center gap-4 pt-6 border-t border-border">
-                  <img 
-                    src="/images/noah-briggs.png" 
-                    alt="Noah Briggs" 
-                    className="w-12 h-12 rounded-full object-cover"
+                  {/* eslint-disable-next-line @next/next/no-img-element -- static monogram SVG */}
+                  <img
+                    src="/images/barak-monogram.svg"
+                    alt="Barak Bachar, Global Payments Manager at myPayAdvisor"
+                    className="w-12 h-12 rounded-full object-cover border border-border bg-card"
                   />
                   <div>
-                    <p className="font-semibold text-foreground">Noah Briggs</p>
-                    <p className="text-sm text-muted-foreground">Payment processing expert covering high-risk merchant services, chargeback management, and fraud prevention technologies.</p>
+                    <p className="font-semibold text-foreground">
+                      Reviewed by{" "}
+                      <a href="/about/barak" className="underline hover:text-primary">Barak Bachar</a>, Global Payments Manager
+                    </p>
+                    <p className="text-sm text-muted-foreground">Covers high-risk merchant services, reserve negotiation, and chargeback management, with hands-on payment operations experience at the $500M+ annual volume level.</p>
                   </div>
                 </div>
               </header>
+
+              {/* AEO lead-answer block: direct 40-60 word answer for AI Overviews / LLM extraction. data-speakable + .aeo-answer targeted by SpeakableSpecification. */}
+              <section className="aeo-answer mb-12 p-6 bg-primary/5 rounded-lg border-l-4 border-primary" data-speakable>
+                <p className="text-lg text-foreground leading-relaxed">
+                  A high-risk merchant account is a payment-processing account priced for businesses that card-acquiring banks judge likelier to generate chargebacks, fraud, or regulatory exposure, such as CBD, firearms, nutraceuticals, subscriptions, travel, or future-delivery sales. You typically pay higher effective rates and a rolling reserve. The trade-off you actually negotiate is reserve size and approval odds, not the headline rate.
+                </p>
+              </section>
 
               {/* Table of Contents */}
               <nav className="mb-12 p-6 bg-muted/30 rounded-lg">
@@ -167,11 +340,11 @@ export default function HighRiskPaymentProcessingGuidePage() {
               {/* Article Content */}
               <div className="prose prose-lg max-w-none">
                 <p className="text-lg text-foreground leading-relaxed">
-                  In 2025, high-risk payment processing has evolved from a niche concern into a critical business infrastructure challenge affecting thousands of legitimate businesses. With chargeback losses projected to exceed <strong>$20.47 billion</strong> in North America alone, and Visa's new VAMP (Visa Acquirer Monitoring Program) tightening scrutiny on acquiring banks, merchants in industries like CBD, gaming, subscription services, travel, and e-commerce face unprecedented pressure to optimize their payment processing strategies.
+                  High-risk classification is a pricing and underwriting decision, not a judgment that your business is illegitimate. Acquiring banks flag certain industries (CBD, gaming, subscriptions, travel, firearms, nutraceuticals) and certain patterns (high chargebacks, future delivery, near-100% card-not-present) as elevated loss exposure, then price for it with higher rates, rolling reserves, and stricter terms. Visa's VAMP (Visa Acquirer Monitoring Program) has made acquiring banks more selective, which is why the lever that matters is approval odds and reserve size, not the headline rate.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  This comprehensive guide reveals insider strategies from payment processing experts who've helped merchants reduce chargeback ratios from 2.5% to under 0.8%, navigate complex regulatory frameworks, and build resilient payment infrastructures that can withstand account freezes, payment processor terminations, and the volatile landscape of high-risk merchant services.
+                  This guide covers what actually drives classification, how reserves and VAMP thresholds work, which processors approve difficult verticals, and the fixed operator playbook for getting approved, lowering a reserve, and recovering frozen funds. Reviewed by Barak Bachar, a working payments operator who negotiates reserves and places merchants in complex high-risk verticals.
                 </p>
 
                 {/* Section 1 */}
@@ -536,16 +709,60 @@ export default function HighRiskPaymentProcessingGuidePage() {
                   </li>
                 </ol>
 
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Top High-Risk Processors in 2025</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">High-Risk Processors That Actually Approve (And Who They Approve)</h3>
 
-                <p className="text-foreground leading-relaxed"><strong>Tier 1 - Full-Service Specialists:</strong></p>
+                <p className="text-foreground leading-relaxed">
+                  These five are current, real U.S. high-risk specialists. Positioning below reflects each provider&rsquo;s publicly stated vertical focus and onboarding model. Rates are quoted per merchant on underwriting, so we do not publish fixed numbers here; treat any &ldquo;guaranteed rate&rdquo; claim from a processor as a starting position to verify in writing.
+                </p>
 
-                <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a>:</strong> 98% approval rate, excellent for startups</li>
-                  <li><strong><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a>:</strong> Strong in travel, international, multi-currency</li>
-                  <li><strong><a href="https://soarpayments.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a>:</strong> Fast approval for firearms, tactical, subscription</li>
-                  <li><strong><a href="https://www.emerchantbroker.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">eMerchantBroker</a>:</strong> CBD, vape, adult categories specialist</li>
-                </ul>
+                <div className="overflow-x-auto my-6">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b-2 border-foreground">
+                        <th className="text-left py-3 pr-4 font-semibold text-foreground">Processor</th>
+                        <th className="text-left py-3 pr-4 font-semibold text-foreground">Best-fit verticals</th>
+                        <th className="text-left py-3 pr-4 font-semibold text-foreground">Acquiring model</th>
+                        <th className="text-left py-3 font-semibold text-foreground">Notable</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-foreground">
+                      <tr className="border-b border-border">
+                        <td className="py-3 pr-4"><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
+                        <td className="py-3 pr-4">CBD, firearms, adult, nutra, e-cig, e-commerce</td>
+                        <td className="py-3 pr-4">U.S. acquirers, month-to-month positioning</td>
+                        <td className="py-3">Broad domestic high-risk acceptance, dedicated account rep</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
+                        <td className="py-3 pr-4">Offshore, adult, travel, high-volume, tech-support</td>
+                        <td className="py-3 pr-4">Domestic and offshore acquiring</td>
+                        <td className="py-3">Offshore options for verticals domestic banks decline</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-3 pr-4"><a href="https://easypaydirect.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Easy Pay Direct</a></td>
+                        <td className="py-3 pr-4">E-commerce, subscription, supplements</td>
+                        <td className="py-3 pr-4">Multi-bank load balancing across MIDs</td>
+                        <td className="py-3">Routes volume across several acquirers for continuity</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-3 pr-4"><a href="https://soarpayments.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
+                        <td className="py-3 pr-4">Firearms, tactical, subscription, nutra</td>
+                        <td className="py-3 pr-4">U.S. acquirers</td>
+                        <td className="py-3">Fast onboarding focus for declined domestic merchants</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-3 pr-4"><a href="https://www.hostmerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Host Merchant Services</a></td>
+                        <td className="py-3 pr-4">Broad high-risk e-commerce and services</td>
+                        <td className="py-3 pr-4">Interchange-plus pricing model</td>
+                        <td className="py-3">Transparent interchange-plus positioning</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p className="text-foreground leading-relaxed">
+                  For a head-to-head on the two most-searched of these, see our breakdown of <Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">PaymentCloud vs Durango Merchant Services</Link>, covering which one approves your vertical faster and when offshore acquiring is the right call.
+                </p>
 
                 {/* Section 8 */}
                 <h2 id="multi-mid" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -608,8 +825,22 @@ export default function HighRiskPaymentProcessingGuidePage() {
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Reserve Reduction Strategies</h3>
 
+                {/* Inline Barak Quotation block: opinion/experience, no fabricated stats. Mirrors quotationSchema JSON-LD above. */}
+                <figure id="barak-quote" className="my-8 border-l-4 border-primary bg-muted/40 px-6 py-5 rounded-r-md not-prose">
+                  <blockquote cite="https://www.mypayadvisor.com/about/barak" className="text-foreground italic leading-relaxed">
+                    &ldquo;Most merchants treat the rolling reserve as fixed, and it is not. The number on your first offer is the acquirer&rsquo;s opening position, not the bank&rsquo;s final answer. When I take a clean six-month processing history back to a risk desk in writing, low chargebacks, fulfillment on time, fraud tooling switched on, the reserve almost always comes down, either in percentage or in hold window. The mistake is asking on a phone call instead of in writing, and asking before you have a track record instead of after.&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-3 text-sm text-muted-foreground not-italic">
+                    <a href="/about/barak" className="text-primary hover:underline font-medium">Barak Bachar</a>, Global Payments Manager, myPayAdvisor
+                  </figcaption>
+                </figure>
+
                 <p className="text-foreground leading-relaxed">
                   Most processors will reduce reserves after demonstrating stability:
+                </p>
+
+                <p className="text-foreground leading-relaxed mt-4">
+                  For the written-request process and the difference between capped and rolling reserves, see our deep dive on <Link href="/insights/reserves-frozen-funds-capped-vs-rolling" className="text-primary hover:underline">capped vs rolling reserves and frozen funds</Link>.
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
@@ -671,7 +902,17 @@ export default function HighRiskPaymentProcessingGuidePage() {
 
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="text-lg font-semibold text-foreground mb-3">What is a rolling reserve and how can I reduce it?</h3>
-                    <p className="text-foreground">Rolling reserves hold 5-20% of transaction volume for 180 days to cover chargebacks. Reduce reserves by maintaining clean processing history, requesting reviews at 3, 6, and 12 months, and demonstrating financial stability.</p>
+                    <p className="text-foreground">A rolling reserve is a percentage of each batch (commonly 5-15%) that the acquiring bank withholds for 90 to 180 days to cover post-settlement chargebacks. It is negotiable. After three to twelve months of clean processing, a written release request that cites a low chargeback ratio, stable volume, and active fraud tooling typically reduces the percentage or the hold window. Ask in writing to the risk department, and ask after you have a track record, not before.</p>
+                  </div>
+
+                  <div className="p-6 bg-muted/30 rounded-lg">
+                    <h3 className="text-lg font-semibold text-foreground mb-3">My processor froze my funds. What are my options?</h3>
+                    <p className="text-foreground">A funds freeze is a temporary settlement hold while the acquirer investigates chargebacks, fraud, or a volume spike. Follow a fixed order: get the specific reason in writing, submit every requested document the same day, stand up a backup account at a second acquirer so revenue keeps moving, escalate in writing to the risk department, and if the hold runs past your contract&rsquo;s stated reserve terms, involve bank-card counsel. A freeze is a documentation problem, not a final verdict.</p>
+                  </div>
+
+                  <div className="p-6 bg-muted/30 rounded-lg">
+                    <h3 className="text-lg font-semibold text-foreground mb-3">Which processors approve CBD, firearms, or nutra businesses?</h3>
+                    <p className="text-foreground">Domestic specialists such as PaymentCloud, Soar Payments, and Easy Pay Direct publicly state acceptance of CBD, firearms, nutraceuticals, and supplements. Durango Merchant Services adds offshore acquiring for verticals or volumes domestic banks decline, and Host Merchant Services serves a broad high-risk set on interchange-plus pricing. Approval still depends on your chargeback history, documentation, and product compliance, so the right fit is the processor whose acquiring banks already underwrite your exact category.</p>
                   </div>
                 </div>
 

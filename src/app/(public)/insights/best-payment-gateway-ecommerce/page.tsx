@@ -78,9 +78,17 @@ export default function BestPaymentGatewayEcommercePage() {
     "description": "Complete guide to choosing the best payment gateway for ecommerce in 2026. Compare features, fees, security, and find the perfect solution for your online store.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
+      "@type": "Organization",
+      "@id": "https://www.mypayadvisor.com/#organization",
+      "name": "myPayAdvisor"
+    },
+    "reviewedBy": {
       "@type": "Person",
-      "name": "Noah Briggs",
-      "description": "A seasoned reporter focused on the payments ecosystem."
+      "@id": "https://www.mypayadvisor.com/about/barak#person",
+      "name": "Barak Bachar",
+      "jobTitle": "Global Payments Manager",
+      "url": "https://www.mypayadvisor.com/about/barak",
+      "sameAs": ["https://www.linkedin.com/in/barak-bachar/"]
     },
     "publisher": {
       "@type": "Organization",
@@ -240,16 +248,20 @@ const integrationTypes = [
                     <div className="text-sm text-muted-foreground">Platforms Covered</div>
                   </div>
                 </div>
-                {/* Author Byline */}
+                {/* Reviewed-by byline: real expert. Fabricated author byline removed per locked portfolio_no_fictional_credentials policy. */}
                 <div className="flex items-center gap-4 pt-6 mt-6 border-t border-border">
-                  <img 
-                    src="/images/noah-briggs.png" 
-                    alt="Noah Briggs" 
-                    className="w-12 h-12 rounded-full object-cover"
+                  {/* eslint-disable-next-line @next/next/no-img-element -- static monogram SVG */}
+                  <img
+                    src="/images/barak-monogram.svg"
+                    alt="Barak Bachar, Global Payments Manager at myPayAdvisor"
+                    className="w-12 h-12 rounded-full object-cover border border-border bg-card"
                   />
                   <div>
-                    <p className="font-semibold text-foreground">Noah Briggs</p>
-                    <p className="text-sm text-muted-foreground">A seasoned reporter focused on the payments ecosystem.</p>
+                    <p className="font-semibold text-foreground">
+                      Reviewed by{" "}
+                      <a href="/about/barak" className="underline hover:text-primary">Barak Bachar</a>, Global Payments Manager
+                    </p>
+                    <p className="text-sm text-muted-foreground">Covers ecommerce payment gateways, checkout conversion, and gateway pricing, with hands-on payment operations experience at the $500M+ annual volume level.</p>
                   </div>
                 </div>
               </header>

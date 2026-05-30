@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
-import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
+import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
 import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
 import { MatchCTA } from "@/components/MatchCTA";
 
@@ -35,9 +35,9 @@ export default function PaymentProcessorFeesGuidePage() {
     "description": "May 2026 rates from 14 processors. Interchange 1.5%-3.5%, markup 0.10%-2.00%. Real merchant statements, not vendor brochures.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
-      "@type": "Person",
-      "name": "Noah Briggs",
-      "description": "A seasoned reporter focused on the payments ecosystem."
+      "@type": "Organization",
+      "@id": "https://www.mypayadvisor.com/#organization",
+      "name": "myPayAdvisor"
     },
     "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": {
@@ -147,28 +147,22 @@ export default function PaymentProcessorFeesGuidePage() {
                 Updated May 2026. Credit card processing splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat rate is 2.65% effective. Barak Bachar reconciled 14 U.S. processors against live merchant statements for this guide. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
               </p>
 
-              {/* Author Byline */}
+              {/* Reviewed-by byline: real expert. Fabricated author byline removed per locked portfolio_no_fictional_credentials policy. */}
               <div className="flex items-center gap-4 pt-6 border-t border-border">
-                <img 
-                  src="/images/noah-briggs.png" 
-                  alt="Noah Briggs" 
-                  className="w-12 h-12 rounded-full object-cover"
+                {/* eslint-disable-next-line @next/next/no-img-element -- static monogram SVG */}
+                <img
+                  src="/images/barak-monogram.svg"
+                  alt="Barak Bachar, Global Payments Manager at myPayAdvisor"
+                  className="w-12 h-12 rounded-full object-cover border border-border bg-card"
                 />
                 <div>
-                  <p className="font-semibold text-foreground">Noah Briggs</p>
-                  <p className="text-sm text-muted-foreground">A seasoned reporter focused on the payments ecosystem. He covers trends in processing, billing systems, card networks, and emerging payment technologies.</p>
+                  <p className="font-semibold text-foreground">
+                    Reviewed by{" "}
+                    <a href="/about/barak" className="underline hover:text-primary">Barak Bachar</a>, Global Payments Manager
+                  </p>
+                  <p className="text-sm text-muted-foreground">Covers payment processor fees, interchange, and markup pricing across U.S. processors, with hands-on payment operations experience at the $500M+ annual volume level.</p>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mt-3">
-                Reviewed for technical accuracy by{" "}
-                <Link href="/about/barak" className="font-medium text-foreground hover:text-primary underline">
-                  {BARAK_NAME}
-                </Link>
-                , {BARAK_TITLE} ·{" "}
-                <a href={BARAK_LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-primary underline">
-                  LinkedIn
-                </a>
-              </p>
             </header>
 
             <EffectiveRateCalculator defaultChannel="online" />
