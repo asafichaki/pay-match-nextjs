@@ -4,11 +4,12 @@ import Link from "next/link";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 
 const URL = "https://www.mypayadvisor.com/insights/reserves-frozen-funds-capped-vs-rolling";
-const TITLE = "Capped vs. Rolling Reserves: A 2026 Guide to Reserve Negotiation";
-const DESC = "What a processor reserve actually is, the difference between rolling and capped reserves, the math on $300K in trapped working capital, the path-to-release language to insist on, and how to push back when offered rolling.";
+const TITLE = "Rolling Reserve vs Capped Reserve: 2026 Merchant Guide";
+const DESC = "A rolling reserve is a percentage of every card deposit your processor withholds for a fixed hold period. Here is how rolling and capped reserves differ, the math on $300K in trapped working capital, the release language to insist on, and how to push back.";
 
 export const metadata: Metadata = {
-  title: TITLE,
+  // absolute: front-load the money query "rolling reserve" and skip the brand suffix so it never truncates.
+  title: { absolute: TITLE },
   description: DESC,
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
@@ -69,10 +70,10 @@ export default function Page() {
                 <span>Published May 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Capped vs Rolling Reserves: How to Negotiate Reserves in 2026
+                Rolling Reserve vs Capped Reserve: What It Is and How to Get It Released
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                A rolling reserve at 10% on $500K monthly volume traps $300,000 of your working capital across 180 days. That is not a risk control. That is a structural problem with the contract. Here is how reserves actually work, what to insist on, and what to do if your funds are already frozen.
+                A rolling reserve is a percentage of every card deposit your processor withholds for a fixed hold period, usually 180 days, as a hedge against future chargebacks. A rolling reserve at 10% on $500K monthly volume traps $300,000 of your working capital across 180 days. That is not a risk control. That is a structural problem with the contract. Here is how reserves actually work, what to insist on, and what to do if your funds are already frozen.
               </p>
               <p className="text-sm text-muted-foreground mt-3">
                 By{" "}
@@ -261,6 +262,13 @@ export default function Page() {
                   <p className="text-foreground leading-relaxed">Yes, after 6 months of clean operation. Email the processor with your chargeback rate (it should be under 1%), your refund rate, and a request to release the reserve or convert from rolling to capped. Most processors will agree because keeping a reserve on a clean account is operational overhead they would rather drop.</p>
                 </div>
               </div>
+
+              <h2 id="related-comparisons" className="text-2xl font-serif font-bold text-foreground mt-12 mb-4">Related guides</h2>
+              <ul className="space-y-2 text-muted-foreground mb-8">
+                <li><Link href="/insights/funds-frozen-what-to-do" className="text-primary hover:underline">Funds frozen: what to do</Link>: the recovery steps when a reserve or hold has already trapped a deposit.</li>
+                <li><Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">High-risk payment processing guide</Link>: which verticals trigger rolling reserves and how to price around them.</li>
+                <li><Link href="/insights/payment-processor-negotiation-playbook" className="text-primary hover:underline">Payment processor negotiation playbook</Link>: the full framework for negotiating reserve, rate, and contract terms.</li>
+              </ul>
 
               <div className="not-prose mt-12 p-6 rounded-lg bg-primary/5 border border-primary/20">
                 <h3 className="text-xl font-semibold text-foreground mb-2">Want a 15-minute call with Barak?</h3>

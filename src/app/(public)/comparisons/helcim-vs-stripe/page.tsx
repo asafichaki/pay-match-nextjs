@@ -4,23 +4,24 @@ import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import HelcimVsStripeContent from "./HelcimVsStripeContent";
 
 export const metadata: Metadata = {
-  title: "Helcim vs Stripe 2026: 2.51% vs 2.97% Effective Rate",
-  description: "Helcim 2.51% interchange-plus vs Stripe 2.97% flat-rate at $10K monthly. Helcim wins above $25K with no monthly fee. Stripe wins on SaaS subscriptions.",
+  // absolute: skip the layout "%s | myPayAdvisor" suffix so the money query "helcim vs stripe" stays front-loaded and un-truncated.
+  title: { absolute: "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly" },
+  description: "Helcim vs Stripe fees in 2026: Helcim's 2.51% interchange-plus beats Stripe's 2.97% flat rate above $25K monthly, with no monthly fee. Stripe wins on SaaS subscriptions.",
   keywords: ["Helcim vs Stripe", "Stripe vs Helcim", "interchange-plus pricing", "payment processor comparison"],
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/helcim-vs-stripe",
   },
   openGraph: {
-    title: "Helcim vs Stripe 2026: 2.51% vs 2.97% Effective Rate",
-    description: "Helcim 2.51% interchange-plus vs Stripe 2.97% flat-rate at $10K monthly. Helcim wins above $25K with no monthly fee. Stripe wins on SaaS subscriptions.",
+    title: "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly",
+    description: "Helcim vs Stripe fees in 2026: Helcim's 2.51% interchange-plus beats Stripe's 2.97% flat rate above $25K monthly, with no monthly fee. Stripe wins on SaaS subscriptions.",
     url: "https://www.mypayadvisor.com/comparisons/helcim-vs-stripe",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Helcim vs Stripe 2026: 2.51% vs 2.97% Effective Rate",
-    description: "Helcim 2.51% interchange-plus vs Stripe 2.97% flat-rate at $10K monthly. Helcim wins above $25K with no monthly fee. Stripe wins on SaaS subscriptions.",
+    title: "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly",
+    description: "Helcim vs Stripe fees in 2026: Helcim's 2.51% interchange-plus beats Stripe's 2.97% flat rate above $25K monthly, with no monthly fee. Stripe wins on SaaS subscriptions.",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   other: {
@@ -69,6 +70,14 @@ export default function HelcimVsStripePage() {
       />
       <JsonLd data={faqStructuredData} />
       <HelcimVsStripeContent />
+      <section aria-labelledby="related-comparisons" className="container mx-auto px-4 pb-16 max-w-3xl">
+        <h2 id="related-comparisons" className="text-2xl font-serif font-bold text-foreground mb-4">Related comparisons</h2>
+        <ul className="space-y-2 text-muted-foreground">
+          <li><a href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline">Square vs Helcim 2026</a>: free next-day funding versus the lowest effective rate.</li>
+          <li><a href="/comparisons/best-no-contract-payment-processors-2026" className="text-primary hover:underline">Best no-contract payment processors 2026</a>: where Helcim lands against Stax, Square, and Payment Depot.</li>
+          <li><a href="/comparisons/best-payment-processors-2026" className="text-primary hover:underline">Best payment processors 2026</a>: 15 processors ranked by effective rate.</li>
+        </ul>
+      </section>
     </>
   );
 }
