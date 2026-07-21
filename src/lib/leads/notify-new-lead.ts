@@ -23,7 +23,7 @@ import { getResend } from "@/lib/funnel/resend-client";
 // Override recipients via LEADS_NOTIFY_TO_EMAIL (comma-separated) if they change.
 const ADMIN_TO = (
   process.env.LEADS_NOTIFY_TO_EMAIL ||
-  "assaf.ichaki@gmail.com,barak@mypayadvisor.com"
+  "assaf.ichaki@gmail.com,barak@mypayadvisor.com,Barak.bachar1@gmail.com"
 )
   .split(",")
   .map((s) => s.trim())
