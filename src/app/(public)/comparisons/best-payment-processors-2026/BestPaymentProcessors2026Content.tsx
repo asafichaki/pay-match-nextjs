@@ -245,6 +245,10 @@ export default function BestPaymentProcessors2026Content() {
                 <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Related Comparisons</h2>
                 <div className="grid md:grid-cols-2 gap-4">
                   <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline text-sm">Square vs Stripe &rarr;</Link>
+                  <Link href="/comparisons/stripe-vs-adyen-2026" className="text-primary hover:underline text-sm">Stripe vs Adyen 2026 &rarr;</Link>
+                  <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline text-sm">Square vs Helcim 2026 &rarr;</Link>
+                  <Link href="/comparisons/square-vs-toast-2026" className="text-primary hover:underline text-sm">Square vs Toast 2026 &rarr;</Link>
+                  <Link href="/comparisons/best-payment-processors-with-same-day-deposit-2026" className="text-primary hover:underline text-sm">Same-Day Deposit Processors &rarr;</Link>
                   <Link href="/comparisons/paypal-vs-square" className="text-primary hover:underline text-sm">PayPal vs Square &rarr;</Link>
                   <Link href="/comparisons/stripe-vs-paypal" className="text-primary hover:underline text-sm">Stripe vs PayPal &rarr;</Link>
                   <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline text-sm">Helcim vs Stripe &rarr;</Link>

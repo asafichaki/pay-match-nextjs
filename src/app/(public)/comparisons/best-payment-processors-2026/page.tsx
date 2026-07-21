@@ -37,7 +37,7 @@ function buildItemListSchema() {
 }
 
 export const metadata: Metadata = {
-  title: "15 Best Payment Processors 2026: Ranked by Effective Rate",
+  title: { absolute: "15 Best Payment Processors 2026, Ranked by Effective Rate" },
   description: "May 2026: Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked at $10K, $50K, $250K, $1M monthly. Real rates.",
   keywords: ["best payment processors 2026", "payment processing companies", "merchant services", "credit card processing", "Leaders Merchant Services", "Worldpay", "Clover", "Payment Depot", "Stax", "Stripe"],
   robots: { index: true, follow: true },

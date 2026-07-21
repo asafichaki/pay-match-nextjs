@@ -499,6 +499,10 @@ export default function SquareVsStripeContent() {
           <section className="py-10 border-t border-border">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Related Comparisons</h2>
             <div className="grid md:grid-cols-2 gap-4">
+              <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline text-sm">Square vs Helcim 2026 &rarr;</Link>
+              <Link href="/comparisons/square-vs-toast-2026" className="text-primary hover:underline text-sm">Square vs Toast 2026 &rarr;</Link>
+              <Link href="/comparisons/stripe-vs-adyen-2026" className="text-primary hover:underline text-sm">Stripe vs Adyen 2026 &rarr;</Link>
+              <Link href="/comparisons/best-payment-processors-2026" className="text-primary hover:underline text-sm">Best Payment Processors 2026 &rarr;</Link>
               <Link href="/comparisons/stripe-vs-paypal" className="text-primary hover:underline text-sm">Stripe vs PayPal &rarr;</Link>
               <Link href="/comparisons/paypal-vs-square" className="text-primary hover:underline text-sm">PayPal vs Square &rarr;</Link>
               <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline text-sm">Helcim vs Stripe &rarr;</Link>

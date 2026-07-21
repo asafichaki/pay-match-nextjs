@@ -4,7 +4,7 @@ import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import SquareVsStripeContent from "./SquareVsStripeContent";
 
 export const metadata: Metadata = {
-  title: "Square vs Stripe 2026: 2.65% In-Person vs 2.97% Online",
+  title: { absolute: "Square vs Stripe 2026: 2.65% In-Person vs 2.97% Online" },
   description: "Square 2.6% + $0.10 in-person, Stripe 2.9% + $0.30 online. Square wins retail under $80K monthly, Stripe wins SaaS and subscriptions. May 2026 rates.",
   keywords: ["Square vs Stripe", "Stripe vs Square", "payment processor comparison", "Square POS", "Stripe API", "best payment processor 2026", "credit card processing", "online payments", "in-person payments"],
   alternates: {
@@ -27,6 +27,22 @@ const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
+    {
+      "@type": "Question",
+      name: "Is Square better than Stripe?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "It depends on your channel mix. Square is better for physical retail and food businesses under roughly $80K monthly, where its 2.65% effective in-person rate and free POS win. Stripe is better for online-first, SaaS, and subscription businesses that need APIs, advanced billing, and international coverage. Neither is universally better, they win different use cases.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the difference between Stripe and Square?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Square is a point-of-sale and in-person payments company with a full POS ecosystem and free hardware, priced at 2.6% + $0.10 in-person. Stripe is a developer-first online payments platform at 2.9% + $0.30, built for websites, apps, marketplaces, and subscriptions. Online card rates are close, but Square owns in-person retail and Stripe owns online and recurring billing.",
+      },
+    },
     {
       "@type": "Question",
       name: "Which is cheaper, Square or Stripe?",

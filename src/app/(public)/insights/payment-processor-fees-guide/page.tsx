@@ -6,8 +6,8 @@ import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalcul
 import { MatchCTA } from "@/components/MatchCTA";
 
 export const metadata: Metadata = {
-  title: "Payment Processing Fees 2026: 1.5%-3.5% Across 14 Processors",
-  description: "May 2026 rates from 14 processors. Interchange 1.5%-3.5%, markup 0.10%-2.00%. Square's flat rate is 2.65% effective. Real merchant statements, not vendor brochures.",
+  title: { absolute: "Average Credit Card Processing Fees 2026: 1.5%-3.5%" },
+  description: "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%. Real rates from 14 processors: interchange 1.5%-3.5%, markup 0.10%-2.00%, Square 2.65% effective.",
   keywords: "payment processor fees, credit card processing fees, interchange plus pricing, flat rate pricing, reduce processing fees, best payment processor",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
@@ -140,11 +140,11 @@ export default function PaymentProcessorFeesGuidePage() {
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Payment Processing Fees in 2026: Real Rates from 14 Processors
+                Credit Card Processing Fees in 2026: Average Rates from 14 Processors
               </h1>
-              
-              <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Updated May 2026. Credit card processing splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat rate is 2.65% effective. Barak Bachar reconciled 14 U.S. processors against live merchant statements for this guide. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
+
+              <p data-speakable="true" className="aeo-answer text-xl text-muted-foreground leading-relaxed mb-6">
+                The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5% of each transaction. Updated May 2026. That cost splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat rate is 2.65% effective. Barak Bachar reconciled 14 U.S. processors against live merchant statements for this guide. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
               </p>
 
               {/* Reviewed-by byline: real expert. Fabricated author byline removed per locked portfolio_no_fictional_credentials policy. */}
