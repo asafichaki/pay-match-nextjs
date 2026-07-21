@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
 import { Suspense, useState } from "react";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
+import { AttributionCapture } from "@/components/AttributionCapture";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -23,6 +24,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <QueryClientProvider client={queryClient}>
         <Suspense fallback={null}>
           <AnalyticsTracker />
+          <AttributionCapture />
         </Suspense>
         {children}
       </QueryClientProvider>

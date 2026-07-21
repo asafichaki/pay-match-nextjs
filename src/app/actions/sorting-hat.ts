@@ -1,8 +1,13 @@
 "use server";
 
 import { z } from "zod";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
+import {
+  ATTRIBUTION_COOKIE,
+  attributionColumns,
+  parseAttributionCookie,
+} from "@/lib/attribution";
 import { trackLeadFailure } from "@/lib/leads/track-failure";
 import { notifyNewLead } from "@/lib/leads/notify-new-lead";
 import { routeTrack } from "@/lib/funnel/track-router";
@@ -89,6 +94,14 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
     const route = routeTrack(data.businessType, data.painPoint);
 
     const supabase = await createSupabaseServerClient();
+
+    // First-touch attribution: where this visitor actually came from.
+    const cookieStore = await cookies();
+    const attribution = attributionColumns(
+      parseAttributionCookie(cookieStore.get(ATTRIBUTION_COOKIE)?.value),
+      headersList.get("referer"),
+    );
+
     // Insert with a JSON-encoded "integration_needs" to carry funnel metadata
     // even before the SQL migration runs. Once migration applies, the
     // dedicated columns also populate and the cron reads them directly.
@@ -119,7 +132,11 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       volume_tier: data.volumeTier,
       pain_point: data.painPoint,
       lead_source: "sorting_hat",
+      // `source` is the canonical attribution column read across the admin UI;
+      // keep it in lockstep with lead_source so it is never null again.
+      source: "sorting_hat",
       funnel_state: "day0",
+      ...attribution,
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

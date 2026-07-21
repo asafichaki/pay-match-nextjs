@@ -4,7 +4,12 @@ import { createSupabaseServerClient } from "@/integrations/supabase/server";
 import { trackLeadFailure } from "@/lib/leads/track-failure";
 import { notifyNewLead } from "@/lib/leads/notify-new-lead";
 import { z } from "zod";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
+import {
+  ATTRIBUTION_COOKIE,
+  attributionColumns,
+  parseAttributionCookie,
+} from "@/lib/attribution";
 
 const quizLeadSchema = z.object({
   fullName: z.string().min(1).max(200),
@@ -76,6 +81,13 @@ export async function submitQuizLead(formData: {
     const data = result.data;
     const supabase = await createSupabaseServerClient();
 
+    // First-touch attribution: where this visitor actually came from.
+    const cookieStore = await cookies();
+    const attribution = attributionColumns(
+      parseAttributionCookie(cookieStore.get(ATTRIBUTION_COOKIE)?.value),
+      headersList.get("referer"),
+    );
+
     const { error } = await supabase.from("quiz_leads").insert({
       full_name: data.fullName,
       email: data.email,
@@ -90,10 +102,13 @@ export async function submitQuizLead(formData: {
       recommended_provider: data.recommendedProvider || null,
       status: "track_a",
       lead_source: "legacy_quiz",
+      // Canonical attribution column — keep populated so it is never null.
+      source: "quiz",
       track: "A",
       track_variant: "default",
       funnel_state: "day0",
       volume_tier: data.monthlyVolume || null,
+      ...attribution,
     });
 
     if (error) {
