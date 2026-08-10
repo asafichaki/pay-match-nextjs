@@ -57,6 +57,9 @@ export interface NotifyNewLeadArgs {
   } | null;
   thank_you_slug?: string;
   page_url?: string;
+  /** Appended to the subject so a follow-up notification about an existing
+   *  lead does not look like a duplicate of the original one. */
+  subject_note?: string;
 }
 
 function escapeHtml(input: unknown): string {
@@ -119,7 +122,8 @@ function buildSubject(args: NotifyNewLeadArgs): string {
   const tag = args.funnel?.track
     ? `track ${args.funnel.track}`
     : args.funnel?.volume_tier || args.source;
-  return `[Lead] ${args.source} · ${args.lead.email} · ${tag}`;
+  const note = args.subject_note ? ` · ${args.subject_note}` : "";
+  return `[Lead] ${args.source} · ${args.lead.email} · ${tag}${note}`;
 }
 
 function buildHtml(args: NotifyNewLeadArgs): string {
@@ -173,7 +177,7 @@ function buildHtml(args: NotifyNewLeadArgs): string {
     <tr><td align="center">
       <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;border:1px solid #e5e7eb;max-width:600px;">
         <tr><td style="padding:24px 28px 8px 28px;">
-          <h2 style="margin:0 0 4px 0;font-size:18px;color:#111827;">New lead · <span style="text-transform:capitalize;">${escapeHtml(args.source)}</span></h2>
+          <h2 style="margin:0 0 4px 0;font-size:18px;color:#111827;">${args.subject_note ? "Lead updated" : "New lead"} · <span style="text-transform:capitalize;">${escapeHtml(args.source)}</span></h2>
           <div style="color:#6b7280;font-size:13px;">${escapeHtml(when)} · Asia/Jerusalem</div>
         </td></tr>
         <tr><td style="padding:8px 28px 4px 28px;">

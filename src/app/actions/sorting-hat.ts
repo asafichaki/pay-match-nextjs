@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { headers, cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
+import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import {
   ATTRIBUTION_COOKIE,
   attributionColumns,
@@ -16,6 +17,7 @@ import {
   VOLUME_TIER_LABELS,
   BUSINESS_TYPE_LABELS,
   type SortingHatPayload,
+  type SortingHatEnrichPayload,
 } from "@/lib/funnel/types";
 import {
   getResend,
@@ -88,7 +90,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
     const data = parsed.data;
     if (data.honeypot) {
       // bot — silently succeed without doing anything destructive
-      return { success: true as const, thankYouSlug: "a" as const };
+      return { success: true as const, thankYouSlug: "a" as const, leadId: null };
     }
 
     const route = routeTrack(data.businessType, data.painPoint);
@@ -139,6 +141,10 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       ...attribution,
     };
 
+    // Bare insert, no RETURNING. `quiz_leads` grants anon INSERT but not
+    // SELECT, so adding .select() here makes Postgres reject the whole write
+    // with 42501 and no lead is captured at all. The id is fetched separately
+    // below, off the critical path.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let { error } = await supabase.from("quiz_leads").insert(insertPayload as any);
 
@@ -222,6 +228,9 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       success: true as const,
       thankYouSlug: route.thankYouSlug,
       track: route.track,
+      // Null if the lookup fails, in which case step 5 simply doesn't appear.
+      // The lead is already saved either way.
+      leadId: await newestLeadId(data.email),
     };
   } catch (err) {
     console.error("[submitSortingHatLead] unexpected error", err);
@@ -238,6 +247,121 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       error_message: err instanceof Error ? err.message : String(err),
     });
     return { success: false as const, error: "Unexpected error. Please try again." };
+  }
+}
+
+/**
+ * Id of the row we just wrote, looked up rather than returned, because the
+ * insert cannot use RETURNING under the anon RLS policy. Service-role read,
+ * narrowed to one email and one column.
+ *
+ * Best effort by contract: the lead is already saved when this runs, so every
+ * failure path just costs us the optional step, never the lead.
+ */
+async function newestLeadId(email: string): Promise<string | null> {
+  try {
+    const { data, error } = await getAdminSupabase()
+      .from("quiz_leads")
+      .select("id")
+      .eq("email", email)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (error || !data) return null;
+    return (data as { id: string }).id;
+  } catch (err) {
+    console.error("[newestLeadId] lookup failed (swallowed)", err);
+    return null;
+  }
+}
+
+const enrichSchema = z.object({
+  leadId: z.string().uuid(),
+  phone: z.string().max(40).optional(),
+  companyName: z.string().max(160).optional(),
+  currentProvider: z.string().max(120).optional(),
+});
+
+/**
+ * Optional step 5. The lead row already exists by the time this runs, so a
+ * failure here is cosmetic: the lead is never at risk and the caller shows no
+ * error, it just moves on to the thank-you page.
+ *
+ * Write-once by design. `enriched_at IS NULL` in the update filter means a
+ * leaked lead id cannot be replayed to overwrite what the merchant told us, and
+ * the one-hour window means an old id is useless even before that.
+ */
+export async function enrichSortingHatLead(input: SortingHatEnrichPayload) {
+  try {
+    const headersList = await headers();
+    const ip = headersList.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    if (!checkRate(`enrich:${ip}`, 10)) {
+      return { success: false as const };
+    }
+
+    const parsed = enrichSchema.safeParse(input);
+    if (!parsed.success) return { success: false as const };
+
+    const phone = parsed.data.phone?.trim() || null;
+    const companyName = parsed.data.companyName?.trim() || null;
+    const currentProvider = parsed.data.currentProvider?.trim() || null;
+    if (!phone && !companyName && !currentProvider) {
+      return { success: false as const };
+    }
+
+    // Service role: anon has an INSERT policy on quiz_leads and nothing else,
+    // so an UPDATE through the request-scoped client is silently a no-op.
+    const cutoff = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+
+    const { data: rows, error } = await getAdminSupabase()
+      .from("quiz_leads")
+      .update({
+        ...(phone ? { phone } : {}),
+        ...(companyName ? { company_name: companyName } : {}),
+        ...(currentProvider ? { current_provider: currentProvider } : {}),
+        enriched_at: new Date().toISOString(),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any)
+      .eq("id", parsed.data.leadId)
+      .is("enriched_at", null)
+      .gte("created_at", cutoff)
+      .select("id, email, full_name, track, volume_tier, pain_point");
+
+    if (error || !rows || rows.length === 0) {
+      if (error) console.error("[enrichSortingHatLead] update failed", error);
+      return { success: false as const };
+    }
+
+    // Second notification, sent only when the merchant actually filled this in.
+    // A phone number and a current provider change how Barak opens the reply,
+    // and that is worth its own email rather than a silent row update.
+    // The generated Supabase types predate the funnel v4.1 columns, which is
+    // why the inserts above also cast. Same workaround, same reason.
+    const lead = rows[0] as unknown as Record<string, unknown>;
+    notifyNewLead({
+      source: "sorting_hat",
+      lead: {
+        email: String(lead.email || ""),
+        name: (lead.full_name as string) || null,
+        phone,
+        company: companyName,
+        current_provider: currentProvider,
+      },
+      subject_note: "details added",
+      funnel: {
+        track: (lead.track as string) || undefined,
+        volume_tier: (lead.volume_tier as string) || undefined,
+        pain_point: (lead.pain_point as string) || undefined,
+        lead_source: "sorting_hat",
+      },
+    }).catch((err) => {
+      console.error("[enrichSortingHatLead] notify failed (swallowed)", err);
+    });
+
+    return { success: true as const };
+  } catch (err) {
+    console.error("[enrichSortingHatLead] unexpected error", err);
+    return { success: false as const };
   }
 }
 

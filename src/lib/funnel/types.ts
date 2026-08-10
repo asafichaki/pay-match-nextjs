@@ -52,6 +52,41 @@ export interface SortingHatPayload {
   honeypot?: string;
 }
 
+/**
+ * Optional step 5. Sent only after the lead row already exists, so every field
+ * here is nice-to-have and abandoning the step costs us nothing.
+ */
+export interface SortingHatEnrichPayload {
+  leadId: string;
+  phone?: string;
+  companyName?: string;
+  currentProvider?: string;
+}
+
+/** Datalist suggestions for "who processes for you today". Free text is still
+ *  accepted — these just save typing and keep the common answers spelled the
+ *  same way in the sheet. */
+export const COMMON_PROVIDERS = [
+  "Stripe",
+  "PayPal",
+  "Square",
+  "Adyen",
+  "Authorize.net",
+  "Braintree",
+  "Clover",
+  "Toast",
+  "Shopify Payments",
+  "Worldpay",
+  "Fiserv / First Data",
+  "Global Payments",
+  "Elavon",
+  "Chase Payment Solutions",
+  "Helcim",
+  "PaymentCloud",
+  "Durango",
+  "Not processing yet",
+] as const;
+
 export interface RouteResult {
   track: Track;
   trackVariant: TrackVariant;

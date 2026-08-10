@@ -5,16 +5,29 @@ myPayAdvisor -> Google Sheet lead export.
 Pulls quiz_leads + newsletter_subscribers from prod Supabase and publishes a
 shareable Google Sheet owned by Assaf.
 
-  python3 scripts/leads-sheet-sync.py create   # first run: build + upload
-  python3 scripts/leads-sheet-sync.py sync     # refresh data, keep manual edits
+  python3 scripts/leads-sheet-sync.py create        # first run: build + upload
+  python3 scripts/leads-sheet-sync.py sync          # refresh data, keep manual edits
+  python3 scripts/leads-sheet-sync.py migrate-cols  # add new DB columns in place
 
 Four tabs: Dashboard, Leads, Newsletter, Legend.
 
-On the Leads tab, columns A-L come from the database and are rewritten on every
-sync. Columns M-P (Status, Owner, Last contacted, Next step) belong to whoever
-is working the sheet: sync reads them back, keys them to the lead id in the
-hidden column Q, and writes them to wherever that lead ended up. Formatting for
+Adding a DB column later? Add it to LEAD_COLS + lead_row_values + build_leads,
+then append it to COLUMN_MIGRATIONS and run `migrate-cols` once. That inserts it
+into the live sheet in place, so the URL Assaf already shared keeps working and
+the manual columns keep their contents. Never re-run `create` for that: it
+uploads a brand new file with a brand new URL.
+
+On the Leads tab the first LEAD_COLS columns come from the database and are
+rewritten on every sync. The LEAD_EDIT_COLS block after them (Status, Owner,
+Last contacted, Next follow-up, What they said) belongs to whoever is working
+the sheet: sync reads it back, keys it to the lead id in the hidden last
+column, and writes it to wherever that lead ended up. Formatting for
 BUFFER_ROWS rows is banked at creation time so new leads land pre-styled.
+
+Two of the DB-owned columns hold formulas rather than values ("Days open" and
+"Do next"). The sync rewrites them with the right row number each run, and they
+keep recalculating in between, which is why they read from the manual columns
+without ever going stale.
 """
 
 import json
@@ -23,6 +36,7 @@ import re
 import sys
 import datetime as dt
 from urllib.parse import urlencode
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 # openpyxl is only needed to BUILD the workbook (create mode). Sync mode talks
@@ -122,8 +136,21 @@ SOURCE_LABELS = {
     "exit_intent": "Newsletter - exit popup",
 }
 
-STATUS_OPTIONS = ["New", "Emailed", "Call booked", "In conversation",
-                  "Proposal sent", "Won", "Lost", "Not a fit"]
+# Ordered the way an outbound day actually runs, so the dropdown reads like a
+# ladder rather than a bag of labels.
+STATUS_OPTIONS = ["New", "Emailed", "Called - no answer", "In conversation",
+                  "Call booked", "Handed to Barak", "Proposal sent",
+                  "Won", "Lost", "Not a fit"]
+
+OWNER_OPTIONS = ["Linoy", "Barak", "Assaf"]
+
+LEADS_TITLE = "myPayAdvisor — Leads"
+LEADS_SUBTITLE = (
+    "Everyone who left their details on mypayadvisor.com, newest first. "
+    "Sort by \"Do next\" and work top down. The yellow columns on the right are "
+    "yours to fill in and a refresh never overwrites them. Everything else is "
+    "rewritten every morning, so don't type there. Full guide on the Legend tab."
+)
 
 TRAFFIC_BUCKETS = ["ChatGPT (AI search)", "Google (organic)", "Perplexity (AI search)",
                    "Gemini (AI search)", "Claude (AI search)", "Direct / unknown"]
@@ -181,8 +208,14 @@ def google_json(token, url, method="GET", payload=None):
     data = json.dumps(payload).encode() if payload is not None else None
     req = Request(url, data=data, method=method, headers={
         "Authorization": f"Bearer {token}", "Content-Type": "application/json"})
-    with urlopen(req) as resp:
-        raw = resp.read()
+    try:
+        with urlopen(req) as resp:
+            raw = resp.read()
+    except HTTPError as err:
+        # The body is where Google says what it actually objected to, and a
+        # bare "HTTP Error 400" tells you nothing.
+        detail = err.read().decode("utf-8", "replace")[:1000]
+        raise SystemExit(f"Google API {err.code} on {method} {url}\n{detail}")
     return json.loads(raw) if raw else {}
 
 
@@ -232,12 +265,17 @@ def build_leads(rows):
         seen[email] = seen.get(email, 0) + 1
         vol = row.get("volume_tier") or row.get("monthly_volume") or ""
         priority, _ = VOLUME_PRIORITY.get(vol, ("4 - Low", 4))
+        utm = " · ".join(v for v in (row.get("utm_source"), row.get("utm_medium"),
+                                     row.get("utm_campaign")) if v)
+        entry = row.get("source") or row.get("lead_source") or ""
         out.append({
             "id": row["id"],
             "received": parse_ts(row.get("created_at")),
             "name": row.get("full_name") or "",
+            "company": row.get("company_name") or "",
             "email": row.get("email") or "",
             "phone": row.get("phone") or "",
+            "provider": row.get("current_provider") or "",
             "business": BUSINESS_TYPE_LABELS.get(row.get("business_type") or "",
                                                  row.get("industry") or ""),
             "volume": VOLUME_TIER_LABELS.get(vol, vol),
@@ -245,7 +283,13 @@ def build_leads(rows):
             "pain": PAIN_POINT_LABELS.get(row.get("pain_point") or "", ""),
             "track": TRACK_LABELS.get(row.get("track") or "", row.get("track") or ""),
             "came_from": traffic_source(row),
+            "entry": SOURCE_LABELS.get(entry, entry),
             "landing": (row.get("landing_page_url") or "").split("?")[0],
+            # Raw attribution, kept alongside the readable "Came from" so
+            # nothing the lead arrived with is hidden.
+            "referrer": row.get("referrer") or "",
+            "utm": utm,
+            "enriched": parse_ts(row.get("enriched_at")),
             "dup": "earlier dup" if seen[email] > 1 else "",
         })
     return out
@@ -262,32 +306,89 @@ def build_newsletter(rows):
     } for row in sorted(rows, key=lambda r: r.get("subscribed_at") or "", reverse=True)]
 
 
-def lead_row_values(lead):
-    return [lead["received"], lead["name"], lead["email"], lead["phone"],
+def lead_row_values(lead, row):
+    return [lead["received"], days_open_formula(row), do_next_formula(row),
+            lead["name"], lead["company"], lead["email"], lead["phone"],
             lead["business"], lead["volume"], lead["priority"], lead["pain"],
-            lead["track"], lead["came_from"], lead["landing"], lead["dup"]]
+            lead["provider"], lead["track"], lead["came_from"], lead["entry"],
+            lead["landing"], lead["referrer"], lead["utm"], lead["enriched"],
+            lead["dup"]]
 
 
-def news_row_values(sub):
+def news_row_values(sub, row=None):
     return [sub["subscribed"], sub["email"], sub["source"], sub["active"]]
 
 
 # ------------------------------------------------------------ sheet building
-LEAD_COLS = [("Received", 17), ("Name", 16), ("Email", 30), ("Phone", 14),
+# Everything the lead actually gave us, left to right in the order you'd want
+# it before picking up the phone. Company / Phone / Processing with today come
+# from the optional step 5, so they are blank for anyone who skipped it.
+# "Days open" and "Do next" are live formulas, not stored data.
+LEAD_COLS = [("Received", 17), ("Days open", 11), ("Do next", 18),
+             ("Name", 16), ("Company", 22), ("Email", 30), ("Phone", 16),
              ("Business", 30), ("Monthly volume", 19), ("Priority", 12),
-             ("What they need help with", 46), ("Track", 22), ("Came from", 20),
-             ("Landing page", 42), ("Flag", 11)]
-LEAD_EDIT_COLS = [("Status", 16), ("Owner", 13), ("Last contacted", 16),
-                  ("Next step / notes", 42)]
+             ("What they need help with", 46), ("Processing with today", 22),
+             ("Track", 22), ("Came from", 20), ("Entry point", 20),
+             ("Landing page", 40), ("Referrer", 30), ("UTM", 24),
+             ("Details added", 15), ("Flag", 11)]
+LEAD_EDIT_COLS = [("Status", 18), ("Owner", 13), ("Last contacted", 16),
+                  ("Next follow-up", 16), ("What they said", 46)]
 NEWS_COLS = [("Subscribed", 17), ("Email", 34), ("Signed up at", 24), ("Active", 14)]
 NEWS_EDIT_COLS = [("Status", 16), ("Notes", 40)]
 
-N_LEAD_DATA = len(LEAD_COLS)                       # A..L
-N_LEAD_TOTAL = N_LEAD_DATA + len(LEAD_EDIT_COLS)   # ..P
-LEAD_ID_COL = N_LEAD_TOTAL + 1                     # Q, hidden
+N_LEAD_DATA = len(LEAD_COLS)                       # A..N
+N_LEAD_TOTAL = N_LEAD_DATA + len(LEAD_EDIT_COLS)   # ..R
+LEAD_ID_COL = N_LEAD_TOTAL + 1                     # S, hidden
 N_NEWS_DATA = len(NEWS_COLS)
 N_NEWS_TOTAL = N_NEWS_DATA + len(NEWS_EDIT_COLS)
 NEWS_ID_COL = N_NEWS_TOTAL + 1
+
+
+ALL_LEAD_HEADERS = [c[0] for c in LEAD_COLS] + [c[0] for c in LEAD_EDIT_COLS]
+
+
+def lead_col(label):
+    """Column letter for any Leads header, data or manual. Every formula goes
+    through this, so moving a column can never silently mis-point one."""
+    return col_letter(1 + ALL_LEAD_HEADERS.index(label))
+
+
+LEAD_STATUS_COL = col_letter(N_LEAD_DATA + 1)
+
+
+def days_open_formula(row):
+    """How long this lead has been sitting, recalculated every time the sheet
+    is opened rather than frozen at the last sync."""
+    return f'=IF($A{row}="","",INT(TODAY()-$A{row}))'
+
+
+def do_next_formula(row):
+    """The one column to work from: turns status, last contact and the
+    follow-up date into a single instruction. Written by the sync as a live
+    formula, so it keeps answering correctly between runs."""
+    st, last = lead_col("Status"), lead_col("Last contacted")
+    nxt = lead_col("Next follow-up")
+    return (
+        f'=IF($A{row}="","",'
+        f'IF(OR(${st}{row}="Won",${st}{row}="Lost",${st}{row}="Not a fit"),"Closed",'
+        f'IF(AND(${nxt}{row}<>"",${nxt}{row}<=TODAY()),"Follow up due",'
+        f'IF(OR(${st}{row}="",${st}{row}="New"),"Contact now",'
+        f'IF(${nxt}{row}<>"","Booked "&TEXT(${nxt}{row},"dd/mm"),'
+        f'IF(AND(${last}{row}<>"",TODAY()-${last}{row}>=4),'
+        f'"Chase, "&INT(TODAY()-${last}{row})&"d silent","Working"))))))'
+    )
+
+# Columns that only the optional step 5 can fill.
+OPTIONAL_LEAD_COLS = ["Company", "Phone", "Processing with today"]
+
+
+def extra_details_formula(lo, hi):
+    """How many leads went past the required fields and told us more."""
+    any_of = "+".join(
+        f'(Leads!${lead_col(c)}${lo}:${lead_col(c)}${hi}<>"")'
+        for c in OPTIONAL_LEAD_COLS)
+    em = lead_col("Email")
+    return f'=SUMPRODUCT((Leads!${em}${lo}:${em}${hi}<>"")*(({any_of})>0))'
 
 
 def style_header(ws, cols, edit_cols, id_col):
@@ -320,23 +421,25 @@ def style_body_cell(ws, r, c, n_data, total, wrap_cols, date_cols, id_col):
 def write_leads_tab(wb, leads):
     ws = wb.create_sheet("Leads")
     ws.sheet_properties.tabColor = NAVY
-    ws["A1"] = "myPayAdvisor — Leads"
+    ws["A1"] = LEADS_TITLE
     ws["A1"].font = TITLE_FONT
-    ws["A2"] = ("Everyone who left their details on mypayadvisor.com, newest first. "
-                "The yellow columns on the right are yours to fill in — a data "
-                "refresh never overwrites them.")
+    ws["A2"] = LEADS_SUBTITLE
     ws["A2"].font = MUTED_FONT
-    ws.merge_cells("A1:H1")
-    ws.merge_cells("A2:L2")
+    # Deliberately not merged: a merge spanning the frozen-column boundary
+    # makes Sheets refuse to freeze at all.
     ws.row_dimensions[2].height = 18
 
     style_header(ws, LEAD_COLS, LEAD_EDIT_COLS, LEAD_ID_COL)
 
-    wrap_cols, date_cols = {5, 8, 11, N_LEAD_TOTAL}, {1, N_LEAD_DATA + 3}
+    wrap_cols = {LEAD_COLS.index(c) + 1 for c in LEAD_COLS
+                 if c[0] in ("Business", "What they need help with", "Landing page")}
+    wrap_cols.add(N_LEAD_TOTAL)
+    date_cols = {ALL_LEAD_HEADERS.index(h) + 1 for h in
+                 ("Received", "Details added", "Last contacted", "Next follow-up")}
     for i in range(LEAD_BUFFER_ROWS):
         r = FIRST_DATA_ROW + i
         lead = leads[i] if i < len(leads) else None
-        values = lead_row_values(lead) if lead else [None] * N_LEAD_DATA
+        values = lead_row_values(lead, r) if lead else [None] * N_LEAD_DATA
         for c in range(1, N_LEAD_TOTAL + 1):
             cell = style_body_cell(ws, r, c, N_LEAD_DATA, N_LEAD_TOTAL,
                                    wrap_cols, date_cols, LEAD_ID_COL)
@@ -351,7 +454,8 @@ def write_leads_tab(wb, leads):
     last = FIRST_DATA_ROW + LEAD_BUFFER_ROWS - 1
     ws.auto_filter.ref = f"A{HEADER_ROW}:{col_letter(N_LEAD_TOTAL)}{last}"
 
-    prio = f"G{FIRST_DATA_ROW}:G{last}"
+    pc = lead_col("Priority")
+    prio = f"{pc}{FIRST_DATA_ROW}:{pc}{last}"
     ws.conditional_formatting.add(prio, CellIsRule(
         operator="equal", formula=['"1 - Hot"'], fill=PatternFill("solid", fgColor=HOT),
         font=Font(bold=True, color="9B1C1C")))
@@ -359,8 +463,7 @@ def write_leads_tab(wb, leads):
         operator="equal", formula=['"2 - High"'], fill=PatternFill("solid", fgColor=WARM),
         font=Font(bold=True, color="8A4B00")))
 
-    status_col = col_letter(N_LEAD_DATA + 1)
-    status_range = f"{status_col}{FIRST_DATA_ROW}:{status_col}{last}"
+    status_range = f"{LEAD_STATUS_COL}{FIRST_DATA_ROW}:{LEAD_STATUS_COL}{last}"
     ws.conditional_formatting.add(status_range, CellIsRule(
         operator="equal", formula=['"Won"'], fill=PatternFill("solid", fgColor=COOL),
         font=Font(bold=True, color="1B5E20")))
@@ -368,15 +471,42 @@ def write_leads_tab(wb, leads):
         operator="equal", formula=['"Lost"'], font=Font(color="9AA5B1", italic=True)))
     ws.conditional_formatting.add(
         f"A{FIRST_DATA_ROW}:{col_letter(N_LEAD_DATA)}{last}",
-        FormulaRule(formula=[f'$L{FIRST_DATA_ROW}="earlier dup"'],
+        FormulaRule(formula=[f'${lead_col("Flag")}{FIRST_DATA_ROW}="earlier dup"'],
                     font=Font(color="9AA5B1", italic=True)))
 
-    dv = DataValidation(type="list", formula1='"' + ",".join(STATUS_OPTIONS) + '"',
-                        allow_blank=True, showDropDown=False)
-    ws.add_data_validation(dv)
-    dv.add(status_range)
+    # Same colour language as refresh_leads_rules applies to the live sheet.
+    dnc = lead_col("Do next")
+    do_next_range = f"{dnc}{FIRST_DATA_ROW}:{dnc}{last}"
+    for value, fill, colour, bold in (
+            ("Contact now", HOT, "9B1C1C", True),
+            ("Follow up due", WARM, "8A4B00", True),
+            ("Closed", "F7F7F7", "99A3AD", False)):
+        ws.conditional_formatting.add(do_next_range, CellIsRule(
+            operator="equal", formula=[f'"{value}"'],
+            fill=PatternFill("solid", fgColor=fill),
+            font=Font(bold=bold, color=colour, italic=value == "Closed")))
+    ws.conditional_formatting.add(do_next_range, FormulaRule(
+        formula=[f'LEFT({dnc}{FIRST_DATA_ROW},5)="Chase"'],
+        fill=PatternFill("solid", fgColor=WARM), font=Font(color="8A4B00")))
 
-    ws.freeze_panes = f"D{FIRST_DATA_ROW}"
+    doc = lead_col("Days open")
+    ws.conditional_formatting.add(
+        f"{doc}{FIRST_DATA_ROW}:{doc}{last}",
+        CellIsRule(operator="greaterThanOrEqual", formula=["7"],
+                   fill=PatternFill("solid", fgColor=HOT),
+                   font=Font(bold=True, color="9B1C1C")))
+
+    for options, rng in ((STATUS_OPTIONS, status_range),
+                         (OWNER_OPTIONS,
+                          f"{lead_col('Owner')}{FIRST_DATA_ROW}:"
+                          f"{lead_col('Owner')}{last}")):
+        dv = DataValidation(type="list", formula1='"' + ",".join(options) + '"',
+                            allow_blank=True, showDropDown=False)
+        ws.add_data_validation(dv)
+        dv.add(rng)
+
+    # Keep Received, Days open, Do next and Name on screen while scrolling right.
+    ws.freeze_panes = f"{lead_col('Company')}{FIRST_DATA_ROW}"
 
 
 def write_newsletter_tab(wb, subs):
@@ -394,7 +524,7 @@ def write_newsletter_tab(wb, subs):
     for i in range(NEWS_BUFFER_ROWS):
         r = FIRST_DATA_ROW + i
         sub = subs[i] if i < len(subs) else None
-        values = news_row_values(sub) if sub else [None] * N_NEWS_DATA
+        values = news_row_values(sub, r) if sub else [None] * N_NEWS_DATA
         for c in range(1, N_NEWS_TOTAL + 1):
             cell = style_body_cell(ws, r, c, N_NEWS_DATA, N_NEWS_TOTAL,
                                    {N_NEWS_TOTAL}, {1}, NEWS_ID_COL)
@@ -421,9 +551,6 @@ def write_dashboard_tab(wb):
     for col, width in [("A", 34), ("B", 14), ("C", 4), ("D", 34), ("E", 14)]:
         ws.column_dimensions[col].width = width
 
-    lo, hi = FIRST_DATA_ROW, FIRST_DATA_ROW + LEAD_BUFFER_ROWS - 1
-    nlo, nhi = FIRST_DATA_ROW, FIRST_DATA_ROW + NEWS_BUFFER_ROWS - 1
-
     def block(lc, vc, start, title, pairs):
         head = ws[f"{lc}{start}"]
         head.value = title
@@ -438,73 +565,97 @@ def write_dashboard_tab(wb):
             cell.font = Font(name="Inter", size=10, bold=True, color=NAVY)
             cell.alignment = Alignment(horizontal="right")
 
-    block("A", "B", 4, "Totals", [
-        ("Leads (full details)", f"=COUNTA(Leads!$C${lo}:$C${hi})"),
-        ("Newsletter signups", f"=COUNTA(Newsletter!$B${nlo}:$B${nhi})"),
-        ("Unique lead emails",
-         f'=SUMPRODUCT((Leads!$L${lo}:$L${hi}<>"earlier dup")*(Leads!$C${lo}:$C${hi}<>""))'),
-        ("Newest lead", f'=IFERROR(TEXT(MAX(Leads!$A${lo}:$A${hi}),"yyyy-mm-dd"),"-")'),
-    ])
-    block("A", "B", 10, "By priority", [
-        (p, f'=COUNTIF(Leads!$G${lo}:$G${hi},"{p}")') for p in PRIORITY_ORDER])
-    block("A", "B", 17, "By status", [
-        (s, f'=COUNTIF(Leads!$M${lo}:$M${hi},"{s}")') for s in STATUS_OPTIONS])
-    block("D", "E", 4, "Where they came from", [
-        (s, f'=COUNTIF(Leads!$J${lo}:$J${hi},"{s}")') for s in TRAFFIC_BUCKETS])
-    block("D", "E", 12, "By track", [
-        (TRACK_LABELS[k], f'=COUNTIF(Leads!$I${lo}:$I${hi},"{TRACK_LABELS[k]}")')
-        for k in ("A", "B", "C")])
-    block("D", "E", 17, "By monthly volume", [
-        (v, f'=COUNTIF(Leads!$F${lo}:$F${hi},"{v}")')
-        for v in VOLUME_TIER_LABELS.values()])
+    # Single source of truth, shared with the migration path so a rebuilt sheet
+    # and a migrated one can never disagree.
+    formula = dashboard_formulas()
+    for lc, vc, start, title, labels in dashboard_layout():
+        block(lc, vc, start, title, [(l, formula[l]) for l in labels])
+
+
+LEGEND_ROWS = [
+    ("", ""),
+    ("SECTION", "Start here"),
+    ("The short version", "Sort or filter the Leads tab by 'Do next'. Work "
+                          "'Contact now' first, then 'Follow up due'. Set Status "
+                          "and Next follow-up when you're done with a lead, and "
+                          "the sheet tells you the rest by itself."),
+    ("Only the yellow columns", "Everything white is written by the site and gets "
+                                "overwritten every morning. Typing there will be "
+                                "lost. The yellow block on the right is yours and "
+                                "is never touched."),
+    ("", ""),
+    ("SECTION", "Tabs"),
+    ("Leads", "Everyone who completed the intake on the site, newest first."),
+    ("Newsletter", "Email-only signups from the footer form or the exit popup. "
+                   "No business details, so treat as colder."),
+    ("Dashboard", "Counts itself. 'Work queue' at the top is today's list."),
+    ("", ""),
+    ("SECTION", "Do next — the column to work from"),
+    ("Contact now", "Nobody has spoken to them yet. Red."),
+    ("Follow up due", "You set a Next follow-up date and it has arrived. Amber."),
+    ("Chase, Nd silent", "You reached out N days ago and nothing came back."),
+    ("Booked dd/mm", "A follow-up is set for the future. Nothing to do today."),
+    ("Working", "In conversation, no date set. Set one so it stops being "
+                "invisible."),
+    ("Closed", "Won, Lost or Not a fit. Greyed out."),
+    ("", ""),
+    ("SECTION", "What the lead told us"),
+    ("Business / Monthly volume / What they need help with",
+     "The four intake answers. Every lead has these, so never open with "
+     "'what do you need' — they already said."),
+    ("Company / Phone / Processing with today",
+     "The optional step after signup. Blank is normal and means they skipped "
+     "it. When Company is blank the email domain is usually the business, and "
+     "a phone number means they'd rather be called than written to."),
+    ("Came from / Entry point / Landing page / Referrer / UTM",
+     "How they found us and what they were reading when they raised a hand. "
+     "A ChatGPT or Perplexity lead found us through an AI answer, which usually "
+     "means they've been comparing for a while."),
+    ("Details added", "Date they filled the optional step. Blank = skipped it."),
+    ("Days open", "Days since they came in. Red past a week."),
+    ("", ""),
+    ("SECTION", "Priority — who to call first"),
+    ("1 - Hot", "Over $1M monthly volume. Biggest residual if they switch."),
+    ("2 - High", "$250K - $1M monthly."),
+    ("3 - Medium", "$50K - $250K monthly."),
+    ("4 - Low", "Under $50K monthly."),
+    ("5 - Early", "Pre-launch, not processing yet. Long game."),
+    ("", ""),
+    ("SECTION", "Track — which funnel routed them"),
+    (TRACK_LABELS["A"], "Online, e-commerce or SaaS. Standard growth advisory."),
+    (TRACK_LABELS["B"], "In-person: retail, restaurant, field services. "
+                        "Hardware and per-location costs matter most."),
+    (TRACK_LABELS["C"], "Complex or high-risk: financial, health, gaming, or "
+                        "anyone with frozen funds, approval or onboarding "
+                        "problems. Usually the highest advisory value."),
+    ("", ""),
+    ("SECTION", "Columns you fill in (yellow)"),
+    ("Status", "Dropdown, in the order a deal actually moves. Drives the "
+               "Dashboard counts."),
+    ("Owner", "Linoy, Barak or Assaf."),
+    ("Last contacted", "Date you last reached out. Feeds the 'Chase' warning."),
+    ("Next follow-up", "Date to come back to them. This is what puts a lead "
+                       "back in the work queue, so always set one."),
+    ("What they said", "Anything worth remembering before the next call."),
+    ("", ""),
+    ("SECTION", "Housekeeping"),
+    ("Flag = earlier dup", "Same email submitted more than once. The earlier "
+                           "attempts are greyed out. The clean row at the top "
+                           "is the current one — work that."),
+    ("Refresh", "Runs every morning at 08:05. New leads land at the top and "
+                "your yellow columns follow their lead to its new row."),
+]
 
 
 def write_legend_tab(wb):
     ws = wb.create_sheet("Legend")
     ws.sheet_properties.tabColor = SLATE
-    ws.column_dimensions["A"].width = 26
-    ws.column_dimensions["B"].width = 82
+    ws.column_dimensions["A"].width = 30
+    ws.column_dimensions["B"].width = 86
     ws["A1"] = "How to read this sheet"
     ws["A1"].font = TITLE_FONT
 
-    rows = [
-        ("", ""),
-        ("SECTION", "Tabs"),
-        ("Leads", "Anyone who completed the Sorting Hat on the site. Name, email, "
-                  "business type, monthly volume and the problem they described."),
-        ("Newsletter", "Email-only signups from the footer form or the exit popup. "
-                       "No business details, so treat as colder."),
-        ("Dashboard", "Auto-calculating counts. Nothing to fill in."),
-        ("", ""),
-        ("SECTION", "Priority — who to call first"),
-        ("1 - Hot", "Over $1M monthly volume. Biggest residual if they switch."),
-        ("2 - High", "$250K - $1M monthly."),
-        ("3 - Medium", "$50K - $250K monthly."),
-        ("4 - Low", "Under $50K monthly."),
-        ("5 - Early", "Pre-launch, not processing yet. Long game."),
-        ("", ""),
-        ("SECTION", "Track — which funnel routed them"),
-        (TRACK_LABELS["A"], "Online, e-commerce or SaaS. Standard growth advisory."),
-        (TRACK_LABELS["B"], "In-person: retail, restaurant, field services. "
-                            "Hardware and per-location costs matter most."),
-        (TRACK_LABELS["C"], "Complex or high-risk: financial, health, gaming, or "
-                            "anyone with frozen funds, approval or onboarding "
-                            "problems. Usually the highest advisory value."),
-        ("", ""),
-        ("SECTION", "Columns you fill in (yellow)"),
-        ("Status", "Dropdown. Drives the Dashboard 'By status' counts."),
-        ("Owner", "Who is handling this lead."),
-        ("Last contacted", "Date of the last outreach."),
-        ("Next step / notes", "Anything worth remembering before the next call."),
-        ("", ""),
-        ("SECTION", "Housekeeping"),
-        ("Flag = earlier dup", "Same email submitted more than once. The earlier "
-                               "attempts are greyed out. The clean row at the top "
-                               "is the current one — work that."),
-        ("Refresh", "New leads are inserted at the top of the Leads tab. The yellow "
-                    "columns follow their lead to the new row and are never lost."),
-    ]
-    for i, (label, text) in enumerate(rows, start=2):
+    for i, (label, text) in enumerate(LEGEND_ROWS, start=2):
         if label == "SECTION":
             cell = ws.cell(row=i, column=1, value=text)
             cell.font = Font(name="Inter", size=11, bold=True, color="FFFFFF")
@@ -513,11 +664,11 @@ def write_legend_tab(wb):
             continue
         a = ws.cell(row=i, column=1, value=label)
         a.font = Font(name="Inter", size=10, bold=True, color=NAVY)
-        a.alignment = Alignment(vertical="top")
+        a.alignment = Alignment(vertical="top", wrap_text=True)
         b = ws.cell(row=i, column=2, value=text)
         b.font = BODY_FONT
         b.alignment = Alignment(vertical="top", wrap_text=True)
-        if text and len(text) > 70:
+        if text and len(text) > 80:
             ws.row_dimensions[i].height = 30
 
 
@@ -587,7 +738,8 @@ def sync_tab(token, sheet_id, tab, items, row_values, n_data, n_total, id_col,
         kept = (kept + [""] * (n_total - n_data))[: n_total - n_data]
         if not kept[0]:
             kept[0] = "New"
-        grid.append([fmt_cell(v) for v in row_values(item)] + kept + [item["id"]])
+        grid.append([fmt_cell(v) for v in row_values(item, FIRST_DATA_ROW + len(grid))]
+                    + kept + [item["id"]])
     # blank out the tail so deleted rows do not linger
     grid += [[""] * id_col for _ in range(buffer_rows - len(items))]
 
@@ -598,6 +750,407 @@ def sync_tab(token, sheet_id, tab, items, row_values, n_data, n_total, id_col,
         method="PUT", payload={"range": rng, "majorDimension": "ROWS", "values": grid},
     )
     return len(items)
+
+
+# ---------------------------------------------------------- column migration
+# Columns added after the sheet was first created. Position comes from the
+# label's index in ALL_LEAD_HEADERS, so entries stay declarative; only the
+# labels matter and order in this list is irrelevant.
+#
+# Inserts are applied LOW index first. That is the direction that works: after
+# inserting a column, every higher target index becomes valid, whereas going
+# high-to-low would aim at positions the earlier inserts have not created yet.
+COLUMN_MIGRATIONS = [
+    {"label": "Company"},
+    {"label": "Processing with today"},
+    {"label": "Days open", "number_format": "0"},
+    {"label": "Do next"},
+    {"label": "Entry point"},
+    {"label": "Referrer"},
+    {"label": "UTM"},
+    {"label": "Details added", "number_format": "yyyy-mm-dd"},
+    {"label": "Next follow-up", "number_format": "yyyy-mm-dd"},
+]
+
+
+def tab_id(token, sheet_id, title):
+    meta = google_json(
+        token, f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}"
+               "?fields=sheets.properties")
+    for sheet in meta.get("sheets", []):
+        props = sheet.get("properties", {})
+        if props.get("title") == title:
+            return props["sheetId"]
+    raise SystemExit(f"tab {title!r} not found in the spreadsheet")
+
+
+def migrate_columns(token, sheet_id):
+    """Insert any missing LEAD_COLS into the live sheet, in place.
+
+    Inserting (rather than rebuilding) is the whole point: the spreadsheet keeps
+    its URL, its manual columns keep their contents, and Google shifts the
+    conditional formatting, data validation and Dashboard formulas along with
+    the data. `inheritFromBefore` makes the new column pick up the borders,
+    fills and fonts of its left-hand neighbour, so it lands pre-styled.
+    """
+    leads_id = tab_id(token, sheet_id, "Leads")
+    header_rng = f"Leads!A{HEADER_ROW}:{col_letter(LEAD_ID_COL)}{HEADER_ROW}"
+    header = google_json(
+        token,
+        f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}/values/{header_rng}"
+    ).get("values", [[]])
+    present = set(header[0] if header else [])
+
+    pending = [m for m in COLUMN_MIGRATIONS if m["label"] not in present]
+    if not pending:
+        print("sheet columns already current, nothing to migrate")
+        return False
+
+    widths = dict(LEAD_COLS + LEAD_EDIT_COLS)
+    pending.sort(key=lambda m: ALL_LEAD_HEADERS.index(m["label"]))
+
+    requests = []
+    for m in pending:
+        at = ALL_LEAD_HEADERS.index(m["label"])
+        span = {"sheetId": leads_id, "dimension": "COLUMNS",
+                "startIndex": at, "endIndex": at + 1}
+        requests.append({"insertDimension": {"range": span,
+                                             "inheritFromBefore": True}})
+        requests.append({"updateDimensionProperties": {
+            "range": span,
+            "properties": {"pixelSize": widths[m["label"]] * 7 + 5},
+            "fields": "pixelSize"}})
+        # inheritFromBefore copies the left neighbour's number format too, which
+        # is wrong for a count next to a timestamp. Set it explicitly.
+        requests.append({"repeatCell": {
+            "range": {"sheetId": leads_id, "startRowIndex": FIRST_DATA_ROW - 1,
+                      "endRowIndex": FIRST_DATA_ROW - 1 + LEAD_BUFFER_ROWS,
+                      "startColumnIndex": at, "endColumnIndex": at + 1},
+            "cell": {"userEnteredFormat": {"numberFormat": (
+                {"type": "DATE" if "y" in m.get("number_format", "") else "NUMBER",
+                 "pattern": m["number_format"]}
+                if m.get("number_format") else {"type": "TEXT"})}},
+            "fields": "userEnteredFormat.numberFormat"}})
+
+    google_json(token,
+                f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}:batchUpdate",
+                method="POST", payload={"requests": requests})
+
+    # Rewrite the whole header row so every label sits over the right column.
+    google_json(
+        token,
+        f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}/values/{header_rng}"
+        "?valueInputOption=RAW", method="PUT",
+        payload={"range": header_rng, "majorDimension": "ROWS",
+                 "values": [[c[0] for c in LEAD_COLS] +
+                            [c[0] for c in LEAD_EDIT_COLS] + ["id"]]})
+
+    print(f"inserted {len(pending)} column(s): "
+          + ", ".join(m["label"] for m in pending))
+    return True
+
+
+def rebuild_legend(token, sheet_id):
+    """Rewrite the Legend from LEGEND_ROWS. Same reasoning as the Dashboard:
+    nothing here is user data, so replacing beats patching."""
+    # A section row carries its title in the second slot; everything else is a
+    # plain label/description pair.
+    values = [["How to read this sheet", ""]]
+    values += [[row[1], ""] if row[0] == "SECTION" else list(row)
+               for row in LEGEND_ROWS]
+    height = max(len(values), 70)
+    rng = f"Legend!A1:B{height}"
+    padded = values + [["", ""]] * (height - len(values))
+    google_json(
+        token,
+        f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}/values/{rng}"
+        "?valueInputOption=RAW", method="PUT",
+        payload={"range": rng, "majorDimension": "ROWS", "values": padded})
+
+    legend_id = tab_id(token, sheet_id, "Legend")
+    requests = [{"updateDimensionProperties": {
+        "range": {"sheetId": legend_id, "dimension": "COLUMNS",
+                  "startIndex": i, "endIndex": i + 1},
+        "properties": {"pixelSize": w}, "fields": "pixelSize"}}
+        for i, w in ((0, 240), (1, 620))]
+    # Reset every row, then re-bold the section headers.
+    requests.append({"repeatCell": {
+        "range": {"sheetId": legend_id, "startRowIndex": 1,
+                  "endRowIndex": len(padded), "startColumnIndex": 0,
+                  "endColumnIndex": 2},
+        "cell": {"userEnteredFormat": {
+            "backgroundColor": {"red": 1, "green": 1, "blue": 1},
+            "wrapStrategy": "WRAP",
+            "verticalAlignment": "TOP",
+            "textFormat": {"bold": False, "foregroundColor": {
+                "red": 0.11, "green": 0.15, "blue": 0.20}}}},
+        "fields": "userEnteredFormat(backgroundColor,wrapStrategy,"
+                  "verticalAlignment,textFormat)"}})
+    for i, row in enumerate(LEGEND_ROWS, start=1):
+        if row[0] != "SECTION":
+            continue
+        requests.append({"repeatCell": {
+            "range": {"sheetId": legend_id, "startRowIndex": i,
+                      "endRowIndex": i + 1, "startColumnIndex": 0,
+                      "endColumnIndex": 2},
+            "cell": {"userEnteredFormat": {
+                "backgroundColor": {"red": 0.06, "green": 0.15, "blue": 0.25},
+                "textFormat": {"bold": True, "foregroundColor": {
+                    "red": 1, "green": 1, "blue": 1}}}},
+            "fields": "userEnteredFormat(backgroundColor,textFormat)"}})
+    google_json(token,
+                f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}:batchUpdate",
+                method="POST", payload={"requests": requests})
+    print(f"legend: rewrote {len(LEGEND_ROWS)} rows")
+
+
+def refresh_leads_rules(token, sheet_id):
+    """Re-apply the dropdowns and the colour coding on the live Leads tab.
+
+    Replaces rather than appends: every rule this sheet should have is defined
+    here, so running it twice leaves exactly one copy of each.
+    """
+    leads_id = tab_id(token, sheet_id, "Leads")
+    first, last = FIRST_DATA_ROW - 1, FIRST_DATA_ROW - 1 + LEAD_BUFFER_ROWS
+
+    def span(label):
+        at = ALL_LEAD_HEADERS.index(label)
+        return {"sheetId": leads_id, "startRowIndex": first, "endRowIndex": last,
+                "startColumnIndex": at, "endColumnIndex": at + 1}
+
+    meta = google_json(
+        token, f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}"
+               "?fields=sheets(properties.sheetId,conditionalFormats)")
+    existing = 0
+    for sheet in meta.get("sheets", []):
+        if sheet.get("properties", {}).get("sheetId") == leads_id:
+            existing = len(sheet.get("conditionalFormats", []))
+
+    requests = [{"deleteConditionalFormatRule": {"sheetId": leads_id, "index": i}}
+                for i in range(existing - 1, -1, -1)]
+
+    for label, options in (("Status", STATUS_OPTIONS), ("Owner", OWNER_OPTIONS)):
+        requests.append({"setDataValidation": {
+            "range": span(label),
+            "rule": {"condition": {
+                "type": "ONE_OF_LIST",
+                "values": [{"userEnteredValue": o} for o in options]},
+                "showCustomUi": True, "strict": False}}})
+
+    def rule(target, condition, values, bg, fg, bold=False, italic=False):
+        requests.append({"addConditionalFormatRule": {"index": 0, "rule": {
+            "ranges": [span(target)],
+            "booleanRule": {
+                "condition": {"type": condition,
+                              "values": [{"userEnteredValue": v} for v in values]},
+                "format": {"backgroundColor": bg,
+                           "textFormat": {"foregroundColor": fg, "bold": bold,
+                                          "italic": italic}}}}}})
+
+    red = {"red": 0.99, "green": 0.91, "blue": 0.91}
+    amber = {"red": 1.0, "green": 0.95, "blue": 0.88}
+    green = {"red": 0.92, "green": 0.96, "blue": 0.93}
+    grey_bg = {"red": 0.97, "green": 0.97, "blue": 0.97}
+    dark_red = {"red": 0.61, "green": 0.11, "blue": 0.11}
+    dark_amber = {"red": 0.54, "green": 0.29, "blue": 0.0}
+    dark_green = {"red": 0.11, "green": 0.37, "blue": 0.13}
+    grey_fg = {"red": 0.6, "green": 0.65, "blue": 0.7}
+
+    # What to do, loudest first.
+    rule("Do next", "TEXT_EQ", ["Contact now"], red, dark_red, bold=True)
+    rule("Do next", "TEXT_EQ", ["Follow up due"], amber, dark_amber, bold=True)
+    rule("Do next", "TEXT_STARTS_WITH", ["Chase"], amber, dark_amber)
+    rule("Do next", "TEXT_EQ", ["Closed"], grey_bg, grey_fg, italic=True)
+    # Who is worth the most.
+    rule("Priority", "TEXT_EQ", ["1 - Hot"], red, dark_red, bold=True)
+    rule("Priority", "TEXT_EQ", ["2 - High"], amber, dark_amber, bold=True)
+    rule("Status", "TEXT_EQ", ["Won"], green, dark_green, bold=True)
+    rule("Status", "TEXT_EQ", ["Lost"], grey_bg, grey_fg, italic=True)
+    # A lead nobody has touched in a week is what actually leaks money.
+    rule("Days open", "NUMBER_GREATER_THAN_EQ", ["7"], red, dark_red, bold=True)
+
+    google_json(token,
+                f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}:batchUpdate",
+                method="POST", payload={"requests": requests})
+    print(f"leads tab: status + owner dropdowns, 9 colour rules "
+          f"(replaced {existing})")
+
+
+def freeze_and_widths(token, sheet_id):
+    """Freeze the identity columns and re-apply every width from LEAD_COLS."""
+    leads_id = tab_id(token, sheet_id, "Leads")
+    frozen = ALL_LEAD_HEADERS.index("Company")
+    # The title and subtitle were merged across the old width, and Sheets
+    # refuses to freeze a column boundary that cuts a merged cell in half.
+    # Unmerged text still spills across empty neighbours, so nothing is lost.
+    requests = [{"unmergeCells": {"range": {
+        "sheetId": leads_id, "startRowIndex": 0, "endRowIndex": HEADER_ROW - 1,
+        "startColumnIndex": 0, "endColumnIndex": LEAD_ID_COL}}}]
+    requests.append({"updateSheetProperties": {
+        "properties": {"sheetId": leads_id,
+                       "gridProperties": {"frozenRowCount": HEADER_ROW,
+                                          "frozenColumnCount": frozen}},
+        "fields": "gridProperties.frozenRowCount,gridProperties.frozenColumnCount"}})
+    for i, (label, width) in enumerate(LEAD_COLS + LEAD_EDIT_COLS):
+        requests.append({"updateDimensionProperties": {
+            "range": {"sheetId": leads_id, "dimension": "COLUMNS",
+                      "startIndex": i, "endIndex": i + 1},
+            "properties": {"pixelSize": width * 7 + 5}, "fields": "pixelSize"}})
+    # The id column stays hidden; it is plumbing, not information.
+    requests.append({"updateDimensionProperties": {
+        "range": {"sheetId": leads_id, "dimension": "COLUMNS",
+                  "startIndex": LEAD_ID_COL - 1, "endIndex": LEAD_ID_COL},
+        "properties": {"hiddenByUser": True}, "fields": "hiddenByUser"}})
+    google_json(token,
+                f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}:batchUpdate",
+                method="POST", payload={"requests": requests})
+
+    google_json(
+        token,
+        f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}/values/"
+        "Leads!A1:A2?valueInputOption=RAW", method="PUT",
+        payload={"range": "Leads!A1:A2", "majorDimension": "ROWS", "values": [
+            [LEADS_TITLE], [LEADS_SUBTITLE]]})
+    print(f"leads tab: froze {frozen} columns, re-applied widths")
+
+
+def dashboard_formulas():
+    """Every Dashboard label mapped to the formula it should hold.
+
+    Derived from ALL_LEAD_HEADERS rather than left to Google's auto-adjust,
+    because auto-adjust gets one case wrong: a reference to the exact column an
+    insert lands on stays put instead of following its data. That silently
+    zeroed the 'By track' counts the first time these columns moved.
+    """
+    lo, hi = FIRST_DATA_ROW, FIRST_DATA_ROW + LEAD_BUFFER_ROWS - 1
+    nlo, nhi = FIRST_DATA_ROW, FIRST_DATA_ROW + NEWS_BUFFER_ROWS - 1
+
+    def count(label, value):
+        c = lead_col(label)
+        return f'=COUNTIF(Leads!${c}${lo}:${c}${hi},"{value}")'
+
+    em, fl = lead_col("Email"), lead_col("Flag")
+    days, st = lead_col("Days open"), lead_col("Status")
+    out = {
+        # COUNTIFS, not SUMPRODUCT: an empty "Days open" cell holds "" and in
+        # Sheets text always ranks above a number, so ""<=>7 would count every
+        # blank row in the 400-row buffer as overdue.
+        "Waiting for a first touch": count("Do next", "Contact now"),
+        "Follow-up due today": count("Do next", "Follow up due"),
+        "Untouched 7+ days":
+            f'=COUNTIFS(Leads!${days}${lo}:${days}${hi},">=7",'
+            f'Leads!${st}${lo}:${st}${hi},"New")',
+        "Leads (full details)": f"=COUNTA(Leads!${em}${lo}:${em}${hi})",
+        "Newsletter signups": f"=COUNTA(Newsletter!$B${nlo}:$B${nhi})",
+        "Unique lead emails":
+            f'=SUMPRODUCT((Leads!${fl}${lo}:${fl}${hi}<>"earlier dup")'
+            f'*(Leads!${em}${lo}:${em}${hi}<>""))',
+        "Newest lead": f'=IFERROR(TEXT(MAX(Leads!$A${lo}:$A${hi}),"yyyy-mm-dd"),"-")',
+        "Added optional details": extra_details_formula(lo, hi),
+    }
+    for p in PRIORITY_ORDER:
+        out[p] = count("Priority", p)
+    for s in STATUS_OPTIONS:
+        out[s] = count("Status", s)
+    for s in TRAFFIC_BUCKETS:
+        out[s] = count("Came from", s)
+    for k in ("A", "B", "C"):
+        out[TRACK_LABELS[k]] = count("Track", TRACK_LABELS[k])
+    for v in VOLUME_TIER_LABELS.values():
+        out[v] = count("Monthly volume", v)
+    return out
+
+
+def dashboard_layout():
+    """Blocks as (label_col, value_col, header_row, title, labels).
+
+    Order is deliberate: the three numbers that decide what Linoy does in the
+    next hour sit top-left, where the eye lands. Everything else is reporting.
+    """
+    return [
+        ("A", "B", 4, "Work queue", ["Waiting for a first touch",
+                                     "Follow-up due today", "Untouched 7+ days"]),
+        ("A", "B", 9, "Totals", ["Leads (full details)", "Newsletter signups",
+                                 "Unique lead emails", "Added optional details",
+                                 "Newest lead"]),
+        ("A", "B", 16, "By status", list(STATUS_OPTIONS)),
+        ("D", "E", 4, "By priority", list(PRIORITY_ORDER)),
+        ("D", "E", 11, "Where they came from", list(TRAFFIC_BUCKETS)),
+        ("D", "E", 19, "By track", [TRACK_LABELS[k] for k in ("A", "B", "C")]),
+        ("D", "E", 24, "By monthly volume", list(VOLUME_TIER_LABELS.values())),
+    ]
+
+
+def rebuild_dashboard(token, sheet_id):
+    """Rewrite the whole Dashboard from dashboard_layout().
+
+    Safe to do wholesale because this tab holds nothing a human typed: it is
+    labels and formulas, every one of them derived from the Leads tab.
+    """
+    formula = dashboard_formulas()
+    grid = [["" for _ in range(5)] for _ in range(40)]
+    grid[0][0] = "Overview"
+    grid[1][0] = ("Live formulas, nothing to fill in. Work queue is what needs "
+                  "doing today.")
+
+    header_cells = []
+    for lc, vc, start, title, labels in dashboard_layout():
+        col = 0 if lc == "A" else 3
+        grid[start - 1][col] = title
+        header_cells.append((start, lc, vc))
+        for i, label in enumerate(labels, start=start):
+            grid[i][col] = label
+            grid[i][col + 1] = formula[label]
+
+    google_json(
+        token,
+        f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}/values/"
+        "Dashboard!A1:E40?valueInputOption=USER_ENTERED", method="PUT",
+        payload={"range": "Dashboard!A1:E40", "majorDimension": "ROWS",
+                 "values": grid})
+
+    dash_id = tab_id(token, sheet_id, "Dashboard")
+    # Wipe formatting first. Blocks have moved rows since this tab was built,
+    # so old header styling would otherwise stay bolded onto whatever label
+    # now sits at that row.
+    requests = [{"repeatCell": {
+        "range": {"sheetId": dash_id, "startRowIndex": 2, "endRowIndex": 40,
+                  "startColumnIndex": 0, "endColumnIndex": 5},
+        "cell": {"userEnteredFormat": {
+            "backgroundColor": {"red": 1, "green": 1, "blue": 1},
+            "horizontalAlignment": "LEFT",
+            "textFormat": {"bold": False, "foregroundColor": {
+                "red": 0.11, "green": 0.15, "blue": 0.20}}}},
+        "fields": "userEnteredFormat(backgroundColor,horizontalAlignment,textFormat)"}}]
+
+    # Values bold and right-aligned so the number, not the label, is what reads.
+    for lc, vc, start, title, labels in dashboard_layout():
+        col = 1 if lc == "A" else 4
+        requests.append({"repeatCell": {
+            "range": {"sheetId": dash_id, "startRowIndex": start,
+                      "endRowIndex": start + len(labels),
+                      "startColumnIndex": col, "endColumnIndex": col + 1},
+            "cell": {"userEnteredFormat": {
+                "horizontalAlignment": "RIGHT",
+                "textFormat": {"bold": True, "foregroundColor": {
+                    "red": 0.06, "green": 0.15, "blue": 0.25}}}},
+            "fields": "userEnteredFormat(horizontalAlignment,textFormat)"}})
+
+    for start, lc, vc in header_cells:
+        col = 0 if lc == "A" else 3
+        requests.append({"repeatCell": {
+            "range": {"sheetId": dash_id, "startRowIndex": start - 1,
+                      "endRowIndex": start, "startColumnIndex": col,
+                      "endColumnIndex": col + 2},
+            "cell": {"userEnteredFormat": {
+                "backgroundColor": {"red": 0.96, "green": 0.97, "blue": 0.98},
+                "textFormat": {"bold": True, "foregroundColor": {
+                    "red": 0.06, "green": 0.15, "blue": 0.25}}}},
+            "fields": "userEnteredFormat(backgroundColor,textFormat)"}})
+    google_json(token,
+                f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}:batchUpdate",
+                method="POST", payload={"requests": requests})
+    print(f"dashboard: rebuilt {len(header_cells)} blocks, work queue on top")
 
 
 def main():
@@ -628,7 +1181,19 @@ def main():
         with open(STATE_FILE) as fh:
             state = json.load(fh)
 
-    if mode == "create" or not state.get("spreadsheet_id"):
+    if mode == "migrate-cols":
+        sid = state.get("spreadsheet_id")
+        if not sid:
+            sys.exit("no spreadsheet to migrate: missing " + STATE_FILE)
+        migrate_columns(token, sid)
+        freeze_and_widths(token, sid)
+        refresh_leads_rules(token, sid)
+        rebuild_dashboard(token, sid)
+        rebuild_legend(token, sid)
+        sync_tab(token, sid, "Leads", leads, lead_row_values,
+                 N_LEAD_DATA, N_LEAD_TOTAL, LEAD_ID_COL, LEAD_BUFFER_ROWS)
+        print(f"migrated {state['url']}")
+    elif mode == "create" or not state.get("spreadsheet_id"):
         build_workbook(leads, subs, XLSX_FILE)
         info = upload_new(token, XLSX_FILE)
         state = {"spreadsheet_id": info["id"],

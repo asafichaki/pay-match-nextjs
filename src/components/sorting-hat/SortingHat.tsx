@@ -7,11 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowRight, ArrowLeft, CheckCircle2, Loader2 } from "lucide-react";
-import { submitSortingHatLead } from "@/app/actions/sorting-hat";
+import { submitSortingHatLead, enrichSortingHatLead } from "@/app/actions/sorting-hat";
 import {
   BUSINESS_TYPE_LABELS,
   VOLUME_TIER_LABELS,
   PAIN_POINT_LABELS,
+  COMMON_PROVIDERS,
   type BusinessType,
   type VolumeTier,
   type PainPoint,
@@ -36,6 +37,14 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
   const [isPending, startTransition] = useTransition();
   const emailFocusedRef = useRef(false);
 
+  // Step 5 state. The lead is already saved by the time any of this is filled,
+  // so everything here is optional and skipping costs us nothing.
+  const [leadId, setLeadId] = useState<string | null>(null);
+  const [thankYouSlug, setThankYouSlug] = useState<string | null>(null);
+  const [phone, setPhone] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [currentProvider, setCurrentProvider] = useState("");
+
   // Funnel opened (fires once on mount).
   useEffect(() => {
     track("sh_open", { variant });
@@ -54,6 +63,12 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
   const back = () => {
     setError(null);
     setStep((s) => Math.max(1, s - 1));
+  };
+
+  /** Leaves the funnel for the thank-you page. Safe to call from step 4 or 5. */
+  const finish = (slug: string) => {
+    onComplete?.();
+    router.push(`/thank-you/${slug}`);
   };
 
   const submit = () => {
@@ -84,19 +99,63 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
           localStorage.setItem("mpa_lead_submitted", "1");
         }
       } catch {}
-      onComplete?.();
-      router.push(`/thank-you/${result.thankYouSlug}`);
+      // The lead is captured. Offer the optional step, and only skip straight
+      // to thank-you if we have no id to attach the extra details to.
+      if (result.leadId) {
+        setLeadId(result.leadId);
+        setThankYouSlug(result.thankYouSlug);
+        setError(null);
+        setStep(5);
+        return;
+      }
+      finish(result.thankYouSlug);
     });
   };
 
-  const progress = (step / 4) * 100;
+  const submitDetails = () => {
+    const slug = thankYouSlug || "a";
+    if (!leadId) {
+      finish(slug);
+      return;
+    }
+    const payload = {
+      leadId,
+      phone: phone.trim(),
+      companyName: companyName.trim(),
+      currentProvider: currentProvider.trim(),
+    };
+    if (!payload.phone && !payload.companyName && !payload.currentProvider) {
+      track("sh_details_skipped", { reason: "empty" });
+      finish(slug);
+      return;
+    }
+    startTransition(async () => {
+      // Deliberately not surfacing a failure: the lead is already saved and
+      // making someone retry optional fields is the wrong trade.
+      const result = await enrichSortingHatLead(payload);
+      track("sh_details_submitted", {
+        ok: result.success,
+        fields: [
+          payload.phone && "phone",
+          payload.companyName && "company",
+          payload.currentProvider && "provider",
+        ]
+          .filter(Boolean)
+          .join(","),
+      });
+      finish(slug);
+    });
+  };
+
+  const totalSteps = step === 5 ? 5 : 4;
+  const progress = (step / totalSteps) * 100;
 
   return (
     <div className={variant === "popup" ? "w-full" : "max-w-xl mx-auto"}>
       {/* Progress bar */}
       <div className="mb-6">
         <div className="flex items-center justify-between text-xs font-medium text-muted-foreground mb-2">
-          <span>Step {step} of 4</span>
+          <span>Step {step} of {totalSteps}</span>
           <span>{Math.round(progress)}%</span>
         </div>
         <div className="h-1.5 bg-muted rounded-full overflow-hidden">
@@ -277,6 +336,96 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
             </div>
             <p className="text-xs text-muted-foreground pt-2">
               We don&apos;t send to a generic CRM. You get a personal reply from Barak. No spam, unsubscribe anytime.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Step 5, optional detail. Reached only after the lead is saved, so
+          every exit from here is a completed signup. */}
+      {step === 5 && (
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+            <h2 className="text-2xl font-semibold text-foreground">
+              You&apos;re in. One optional question.
+            </h2>
+          </div>
+          <p className="text-sm text-muted-foreground mb-6">
+            Your shortlist is on its way either way. Answer these and Barak can
+            skip the discovery questions and come back with something specific.
+          </p>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="sh-provider">Who processes your payments today?</Label>
+              <Input
+                id="sh-provider"
+                type="text"
+                list="sh-provider-options"
+                value={currentProvider}
+                onChange={(e) => setCurrentProvider(e.target.value)}
+                placeholder="Stripe, Square, Clover..."
+                autoComplete="off"
+                className="mt-1"
+              />
+              <datalist id="sh-provider-options">
+                {COMMON_PROVIDERS.map((name) => (
+                  <option key={name} value={name} />
+                ))}
+              </datalist>
+            </div>
+            <div>
+              <Label htmlFor="sh-company">Business name</Label>
+              <Input
+                id="sh-company"
+                type="text"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                placeholder="Your company"
+                autoComplete="organization"
+                className="mt-1"
+              />
+            </div>
+            <div>
+              <Label htmlFor="sh-phone">Phone (only if you&apos;d rather talk)</Label>
+              <Input
+                id="sh-phone"
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+1 555 000 0000"
+                autoComplete="tel"
+                inputMode="tel"
+                className="mt-1"
+              />
+            </div>
+            <div className="flex items-center justify-between pt-2">
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={() => {
+                  track("sh_details_skipped", { reason: "clicked_skip" });
+                  finish(thankYouSlug || "a");
+                }}
+                disabled={isPending}
+              >
+                Skip this
+              </Button>
+              <Button type="button" onClick={submitDetails} disabled={isPending}>
+                {isPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" /> Saving...
+                  </>
+                ) : (
+                  <>
+                    Add to my request <ArrowRight className="h-4 w-4 ml-2" />
+                  </>
+                )}
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground pt-2">
+              Nothing here is required and none of it goes to a call centre. A
+              phone number means Barak can call instead of writing.
             </p>
           </div>
         </div>
