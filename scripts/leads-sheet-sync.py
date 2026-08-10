@@ -25,17 +25,37 @@ import datetime as dt
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-import openpyxl
-from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
-from openpyxl.utils import get_column_letter
-from openpyxl.worksheet.datavalidation import DataValidation
-from openpyxl.formatting.rule import CellIsRule, FormulaRule
+# openpyxl is only needed to BUILD the workbook (create mode). Sync mode talks
+# to the Sheets API over plain HTTP, so the scheduled Hermes run needs no deps.
+try:
+    import openpyxl
+    from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+    from openpyxl.worksheet.datavalidation import DataValidation
+    from openpyxl.formatting.rule import CellIsRule, FormulaRule
+    HAVE_OPENPYXL = True
+except ImportError:
+    HAVE_OPENPYXL = False
+
+
+def col_letter(n):
+    """1 -> A, 27 -> AA. Local so sync mode stays dependency-free."""
+    out = ""
+    while n:
+        n, rem = divmod(n - 1, 26)
+        out = chr(65 + rem) + out
+    return out
+
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ENV_FILE = os.path.join(REPO, ".env.local")
-TOKEN_FILE = os.path.expanduser("~/.credentials/google-sheets-token.json")
-STATE_FILE = os.path.join(REPO, "scripts", ".leads-sheet-state.json")
-XLSX_FILE = os.path.join(REPO, "scripts", ".leads-sheet.xlsx")
+# Overridable so the same file runs from the repo on the Mac and from a flat
+# deploy dir on Hermes.
+ENV_FILE = os.environ.get("MPA_ENV_FILE", os.path.join(REPO, ".env.local"))
+TOKEN_FILE = os.environ.get(
+    "MPA_GOOGLE_TOKEN", os.path.expanduser("~/.credentials/google-sheets-token.json"))
+STATE_FILE = os.environ.get("MPA_STATE_FILE",
+                            os.path.join(REPO, "scripts", ".leads-sheet-state.json"))
+XLSX_FILE = os.environ.get("MPA_XLSX_FILE",
+                           os.path.join(REPO, "scripts", ".leads-sheet.xlsx"))
 SHEET_TITLE = "myPayAdvisor — Leads"
 
 HEADER_ROW = 4
@@ -112,15 +132,16 @@ TRAFFIC_BUCKETS = ["ChatGPT (AI search)", "Google (organic)", "Perplexity (AI se
 NAVY, SLATE, LINE, BAND = "0F2740", "44566C", "D8DEE6", "F5F8FB"
 EDIT_BG, HOT, WARM, COOL = "FFF8E6", "FDE7E7", "FFF3E0", "EAF4EC"
 
-HEAD_FILL = PatternFill("solid", fgColor=NAVY)
-EDIT_HEAD_FILL = PatternFill("solid", fgColor="8A6D1F")
-EDIT_FILL = PatternFill("solid", fgColor=EDIT_BG)
-HEAD_FONT = Font(name="Inter", size=10, bold=True, color="FFFFFF")
-BODY_FONT = Font(name="Inter", size=10, color="1B2733")
-MUTED_FONT = Font(name="Inter", size=10, color=SLATE)
-TITLE_FONT = Font(name="Inter", size=16, bold=True, color=NAVY)
-THIN = Side(style="thin", color=LINE)
-CELL_BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
+if HAVE_OPENPYXL:
+    HEAD_FILL = PatternFill("solid", fgColor=NAVY)
+    EDIT_HEAD_FILL = PatternFill("solid", fgColor="8A6D1F")
+    EDIT_FILL = PatternFill("solid", fgColor=EDIT_BG)
+    HEAD_FONT = Font(name="Inter", size=10, bold=True, color="FFFFFF")
+    BODY_FONT = Font(name="Inter", size=10, color="1B2733")
+    MUTED_FONT = Font(name="Inter", size=10, color=SLATE)
+    TITLE_FONT = Font(name="Inter", size=16, bold=True, color=NAVY)
+    THIN = Side(style="thin", color=LINE)
+    CELL_BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 
 
 # ------------------------------------------------------------------- plumbing
@@ -276,11 +297,11 @@ def style_header(ws, cols, edit_cols, id_col):
         cell.font = HEAD_FONT
         cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
         cell.border = CELL_BORDER
-        ws.column_dimensions[get_column_letter(i)].width = width
+        ws.column_dimensions[col_letter(i)].width = width
     idc = ws.cell(row=HEADER_ROW, column=id_col, value="id")
     idc.fill = HEAD_FILL
     idc.font = HEAD_FONT
-    ws.column_dimensions[get_column_letter(id_col)].hidden = True
+    ws.column_dimensions[col_letter(id_col)].hidden = True
     ws.row_dimensions[HEADER_ROW].height = 30
 
 
@@ -328,7 +349,7 @@ def write_leads_tab(wb, leads):
         ws.row_dimensions[r].height = 30
 
     last = FIRST_DATA_ROW + LEAD_BUFFER_ROWS - 1
-    ws.auto_filter.ref = f"A{HEADER_ROW}:{get_column_letter(N_LEAD_TOTAL)}{last}"
+    ws.auto_filter.ref = f"A{HEADER_ROW}:{col_letter(N_LEAD_TOTAL)}{last}"
 
     prio = f"G{FIRST_DATA_ROW}:G{last}"
     ws.conditional_formatting.add(prio, CellIsRule(
@@ -338,7 +359,7 @@ def write_leads_tab(wb, leads):
         operator="equal", formula=['"2 - High"'], fill=PatternFill("solid", fgColor=WARM),
         font=Font(bold=True, color="8A4B00")))
 
-    status_col = get_column_letter(N_LEAD_DATA + 1)
+    status_col = col_letter(N_LEAD_DATA + 1)
     status_range = f"{status_col}{FIRST_DATA_ROW}:{status_col}{last}"
     ws.conditional_formatting.add(status_range, CellIsRule(
         operator="equal", formula=['"Won"'], fill=PatternFill("solid", fgColor=COOL),
@@ -346,7 +367,7 @@ def write_leads_tab(wb, leads):
     ws.conditional_formatting.add(status_range, CellIsRule(
         operator="equal", formula=['"Lost"'], font=Font(color="9AA5B1", italic=True)))
     ws.conditional_formatting.add(
-        f"A{FIRST_DATA_ROW}:{get_column_letter(N_LEAD_DATA)}{last}",
+        f"A{FIRST_DATA_ROW}:{col_letter(N_LEAD_DATA)}{last}",
         FormulaRule(formula=[f'$L{FIRST_DATA_ROW}="earlier dup"'],
                     font=Font(color="9AA5B1", italic=True)))
 
@@ -386,7 +407,7 @@ def write_newsletter_tab(wb, subs):
         ws.row_dimensions[r].height = 22
 
     last = FIRST_DATA_ROW + NEWS_BUFFER_ROWS - 1
-    ws.auto_filter.ref = f"A{HEADER_ROW}:{get_column_letter(N_NEWS_TOTAL)}{last}"
+    ws.auto_filter.ref = f"A{HEADER_ROW}:{col_letter(N_NEWS_TOTAL)}{last}"
     ws.freeze_panes = f"A{FIRST_DATA_ROW}"
 
 
@@ -544,7 +565,7 @@ def fmt_cell(value):
 def sync_tab(token, sheet_id, tab, items, row_values, n_data, n_total, id_col,
              buffer_rows):
     """Rewrite DB columns, carry manual columns across by row id."""
-    end_col = get_column_letter(id_col)
+    end_col = col_letter(id_col)
     last = FIRST_DATA_ROW + buffer_rows - 1
     rng = f"{tab}!A{FIRST_DATA_ROW}:{end_col}{last}"
     existing = google_json(
@@ -581,8 +602,15 @@ def sync_tab(token, sheet_id, tab, items, row_values, n_data, n_total, id_col,
 
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "sync"
-    env = read_env(ENV_FILE)
-    url, key = env["NEXT_PUBLIC_SUPABASE_URL"], env["SUPABASE_SERVICE_ROLE_KEY"]
+    env = read_env(ENV_FILE) if os.path.exists(ENV_FILE) else {}
+    url = env.get("NEXT_PUBLIC_SUPABASE_URL") or os.environ.get("SUPABASE_URL")
+    key = env.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ.get(
+        "SUPABASE_SERVICE_ROLE_KEY")
+    if not url or not key:
+        sys.exit("missing Supabase config: need .env.local or SUPABASE_URL + "
+                 "SUPABASE_SERVICE_ROLE_KEY in the environment")
+    if mode == "create" and not HAVE_OPENPYXL:
+        sys.exit("create mode needs openpyxl (pip install openpyxl)")
 
     leads = build_leads(supabase_get(url, key, "quiz_leads",
                                      "select=*&order=created_at.desc"))
