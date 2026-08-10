@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# leads sheet export (local state + generated xlsx with lead PII)
+scripts/.leads-sheet-state.json
+scripts/.leads-sheet.xlsx
