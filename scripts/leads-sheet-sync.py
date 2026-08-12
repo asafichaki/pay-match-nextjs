@@ -329,9 +329,11 @@ def build_email_only_leads(rows):
     optional step after signing up, exactly like step 5 on the quiz side, so
     blank there is normal and means they skipped it.
 
-    Note: newsletter_subscribers stores no referrer, utm or landing page, so
-    "Came from" can only ever say Direct / unknown here. The notification email
-    does carry page_url; persisting it would need another column.
+    Attribution comes from the same five columns and the same first-touch
+    cookie as quiz_leads, so traffic_source() reads a row from either table
+    unchanged. Signups written before 2026-08-12 have none of it: the cookie
+    was being collected and then discarded on this path, and that history
+    cannot be reconstructed, so they stay "Direct / unknown".
     """
     out = []
     for row in sorted(rows, key=lambda r: r.get("subscribed_at") or "",
@@ -339,6 +341,8 @@ def build_email_only_leads(rows):
         if row.get("active") is False:
             continue
         src = row.get("source") or ""
+        utm = " · ".join(v for v in (row.get("utm_source"), row.get("utm_medium"),
+                                     row.get("utm_campaign")) if v)
         out.append({
             "id": row["id"],
             "received": parse_ts(row.get("subscribed_at")),
@@ -351,10 +355,12 @@ def build_email_only_leads(rows):
             "provider": row.get("current_provider") or "",
             "enriched": parse_ts(row.get("enriched_at")),
             "priority": EMAIL_ONLY_PRIORITY,
-            "came_from": "Direct / unknown",
+            "came_from": traffic_source(row),
             "entry": EMAIL_ONLY_ENTRY_LABELS.get(
                 src, SOURCE_LABELS.get(src, src or "Email only")),
-            "landing": "", "referrer": "", "utm": "",
+            "landing": (row.get("landing_page_url") or "").split("?")[0],
+            "referrer": row.get("referrer") or "",
+            "utm": utm,
             "dup": "",
         })
     return out

@@ -4,8 +4,13 @@ import { createSupabaseServerClient } from "@/integrations/supabase/server";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import { trackLeadFailure } from "@/lib/leads/track-failure";
 import { notifyNewLead, type LeadSource } from "@/lib/leads/notify-new-lead";
+import {
+  ATTRIBUTION_COOKIE,
+  attributionColumns,
+  parseAttributionCookie,
+} from "@/lib/attribution";
 import { z } from "zod";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 
 const newsletterSchema = z.object({
   email: z.string().email("Please enter a valid email address").max(320),
@@ -63,9 +68,21 @@ export async function subscribeNewsletter(formData: {
     const data = result.data;
     const supabase = await createSupabaseServerClient();
 
+    // First-touch attribution: where this visitor actually came from. The
+    // cookie is written for every visitor on their first page load, so it was
+    // already there on every signup — this path just used to discard it, which
+    // is why these leads read as "Direct / unknown" on the sheet.
+    const cookieStore = await cookies();
+    const attribution = attributionColumns(
+      parseAttributionCookie(cookieStore.get(ATTRIBUTION_COOKIE)?.value),
+      headersList.get("referer"),
+    );
+
     // Plain INSERT — RLS allows anon INSERT but not UPDATE, so upsert is blocked.
     // Duplicate emails surface as Postgres 23505 (unique violation), treated as
     // silent success below since the user is already on the list.
+    // Bare on purpose: no .select(). anon holds INSERT and nothing else here,
+    // so RETURNING would fail the whole write with 42501 and lose the signup.
     const { error } = await supabase
       .from("newsletter_subscribers")
       .insert({
@@ -73,7 +90,9 @@ export async function subscribeNewsletter(formData: {
         source: data.source,
         active: true,
         subscribed_at: new Date().toISOString(),
-      });
+        ...attribution,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any);
 
     if (error) {
       // Duplicate email — already subscribed. Treat as success, and still hand
