@@ -4,7 +4,7 @@ import { useEffect, useState, useTransition } from "react";
 import { X, FileText, ArrowRight, CheckCircle2, Loader2, Lock } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { subscribeNewsletter } from "@/app/actions/newsletter";
+import { subscribeNewsletter, enrichNewsletterLead } from "@/app/actions/newsletter";
 import { openSortingHat } from "./sorting-hat/useSortingHatModal";
 
 const BULLETS = [
@@ -19,6 +19,16 @@ export default function ExitIntentPopup() {
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const [isPending, startTransition] = useTransition();
+
+  // Optional step 2. The signup is already saved before any of this renders, so
+  // every path out of here — filling it, skipping it, closing the tab — keeps
+  // the lead. `subscriberId` is null when the row is not enrichable, and then
+  // we fall straight through to the plain thank-you.
+  const [subscriberId, setSubscriberId] = useState<string | null>(null);
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [provider, setProvider] = useState("");
+  const [detailsSent, setDetailsSent] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -56,6 +66,7 @@ export default function ExitIntentPopup() {
       const result = await subscribeNewsletter({ email: email.trim(), source: "exit_intent" });
       if (result.success) {
         try { localStorage.setItem("rate_brief_subscribed", "1"); } catch {}
+        setSubscriberId(result.subscriberId ?? null);
         setDone(true);
       } else {
         setError(result.error || "Something went wrong. Try again.");
@@ -63,10 +74,33 @@ export default function ExitIntentPopup() {
     });
   };
 
+  const submitDetails = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!subscriberId) return;
+    // Nothing typed is the same as skipping, and skipping is a valid answer.
+    if (!phone.trim() && !company.trim() && !provider.trim()) {
+      setDetailsSent(true);
+      return;
+    }
+    startTransition(async () => {
+      await enrichNewsletterLead({
+        subscriberId,
+        phone: phone.trim() || undefined,
+        companyName: company.trim() || undefined,
+        currentProvider: provider.trim() || undefined,
+      });
+      // Deliberately not branching on the result. The signup is already safe,
+      // and a failed optional step is not the visitor's problem to solve.
+      setDetailsSent(true);
+    });
+  };
+
   const openConsult = () => {
     setShow(false);
     openSortingHat();
   };
+
+  const showDetailsStep = done && subscriberId !== null && !detailsSent;
 
   if (!show) return null;
 
@@ -173,16 +207,94 @@ export default function ExitIntentPopup() {
               </button>
             </div>
           </div>
+        ) : showDetailsStep ? (
+          <div className="p-6 sm:p-8">
+            <p className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] font-bold text-primary mb-3">
+              <CheckCircle2 className="h-3.5 w-3.5" />
+              You&rsquo;re on the list
+            </p>
+            <h3 className="font-display text-2xl sm:text-3xl font-bold leading-[1.1] tracking-tight text-foreground mb-2">
+              Want Barak to read your{" "}
+              <span className="text-primary">actual statement</span>?
+            </h3>
+            <p className="text-sm text-muted-foreground mb-5">
+              He does this all day. Leave a number and he&rsquo;ll tell you what
+              you&rsquo;re really paying, on one call. Optional, and the brief is
+              already on its way either way.
+            </p>
+
+            <form onSubmit={submitDetails} className="space-y-3">
+              <Input
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Phone number"
+                disabled={isPending}
+                className="h-12 text-base"
+                aria-label="Phone number"
+              />
+              <Input
+                type="text"
+                autoComplete="organization"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                placeholder="Company name"
+                disabled={isPending}
+                className="h-12 text-base"
+                aria-label="Company name"
+              />
+              <Input
+                type="text"
+                value={provider}
+                onChange={(e) => setProvider(e.target.value)}
+                placeholder="Who processes for you today?"
+                disabled={isPending}
+                className="h-12 text-base"
+                aria-label="Current payment processor"
+              />
+              <Button
+                type="submit"
+                variant="cta"
+                size="lg"
+                disabled={isPending}
+                className="w-full h-12 text-base"
+              >
+                {isPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Sending…
+                  </>
+                ) : (
+                  <>
+                    Have Barak call me
+                    <ArrowRight className="h-4 w-4 ml-1" />
+                  </>
+                )}
+              </Button>
+            </form>
+
+            <button
+              type="button"
+              onClick={() => setDetailsSent(true)}
+              className="mt-4 w-full text-center text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+            >
+              No thanks, just send the brief
+            </button>
+          </div>
         ) : (
           <div className="p-8 sm:p-10 text-center">
             <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
               <CheckCircle2 className="h-7 w-7" />
             </div>
             <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-              You&rsquo;re on the list.
+              {detailsSent && phone.trim() ? "Barak will call you." : "You’re on the list."}
             </h3>
             <p className="text-sm text-muted-foreground mb-6">
-              The first Rate Brief is on its way. Check your inbox in a minute or two.
+              {detailsSent && phone.trim()
+                ? "Usually within one business day. The first Rate Brief is on its way too."
+                : "The first Rate Brief is on its way. Check your inbox in a minute or two."}
             </p>
             <Button onClick={close} variant="outline" className="w-full">
               Keep reading

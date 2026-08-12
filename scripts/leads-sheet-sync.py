@@ -319,15 +319,19 @@ def build_leads(rows):
 def build_email_only_leads(rows):
     """newsletter_subscribers rows -> the same display shape as build_leads.
 
-    These people raised a hand on the site and only ever got asked for an
-    email, so every intake column is legitimately blank. They still belong on
+    These people raised a hand on the site and were only ever asked for an
+    email, so the intake columns are legitimately blank. They still belong on
     the Leads tab: the sheet is the call list, and an unworked row is the only
     thing that costs money. Unsubscribes are left out; chasing someone who
     opted out is how a domain gets burned.
 
+    Phone / Company / Processing with today arrive only if they filled the
+    optional step after signing up, exactly like step 5 on the quiz side, so
+    blank there is normal and means they skipped it.
+
     Note: newsletter_subscribers stores no referrer, utm or landing page, so
     "Came from" can only ever say Direct / unknown here. The notification email
-    does carry page_url; persisting it would need a column on the table.
+    does carry page_url; persisting it would need another column.
     """
     out = []
     for row in sorted(rows, key=lambda r: r.get("subscribed_at") or "",
@@ -338,14 +342,19 @@ def build_email_only_leads(rows):
         out.append({
             "id": row["id"],
             "received": parse_ts(row.get("subscribed_at")),
-            "name": "", "company": "", "phone": "", "provider": "",
+            "name": "",
             "business": "", "volume": "", "pain": "", "track": "",
             "email": row.get("email") or "",
+            # Populated by the optional second step of the popup.
+            "phone": row.get("phone") or "",
+            "company": row.get("company_name") or "",
+            "provider": row.get("current_provider") or "",
+            "enriched": parse_ts(row.get("enriched_at")),
             "priority": EMAIL_ONLY_PRIORITY,
             "came_from": "Direct / unknown",
             "entry": EMAIL_ONLY_ENTRY_LABELS.get(
                 src, SOURCE_LABELS.get(src, src or "Email only")),
-            "landing": "", "referrer": "", "utm": "", "enriched": None,
+            "landing": "", "referrer": "", "utm": "",
             "dup": "",
         })
     return out
@@ -1149,6 +1158,11 @@ def dashboard_formulas():
             f'*(Leads!${pr}${lo}:${pr}${hi}<>"{EMAIL_ONLY_PRIORITY}"))',
         "Email-only signups": f'=COUNTIF(Leads!${pr}${lo}:${pr}${hi},'
                               f'"{EMAIL_ONLY_PRIORITY}")',
+        # The KPI for the popup's optional second step: an email-only signup
+        # that left a number stopped being email-only and became callable.
+        "…of those, callable":
+            f'=COUNTIFS(Leads!${pr}${lo}:${pr}${hi},"{EMAIL_ONLY_PRIORITY}",'
+            f'Leads!${lead_col("Phone")}${lo}:${lead_col("Phone")}${hi},"<>")',
         "Unique lead emails":
             f'=SUMPRODUCT((Leads!${fl}${lo}:${fl}${hi}<>"earlier dup")'
             f'*(Leads!${em}${lo}:${em}${hi}<>""))',
@@ -1178,8 +1192,8 @@ def dashboard_layout():
         ("A", "B", 4, "Work queue", ["Waiting for a first touch",
                                      "Follow-up due today", "Untouched 7+ days"]),
         ("A", "B", 9, "Totals", ["Leads (full details)", "Email-only signups",
-                                 "Unique lead emails", "Added optional details",
-                                 "Newest lead"]),
+                                 "…of those, callable", "Unique lead emails",
+                                 "Added optional details", "Newest lead"]),
         ("A", "B", 16, "By status", list(STATUS_OPTIONS)),
         ("D", "E", 4, "By priority", list(PRIORITY_ORDER)),
         ("D", "E", 11, "Where they came from", list(TRAFFIC_BUCKETS)),
