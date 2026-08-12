@@ -5,6 +5,11 @@ myPayAdvisor -> Google Sheet lead export.
 Pulls quiz_leads + newsletter_subscribers from prod Supabase and publishes a
 shareable Google Sheet owned by Assaf.
 
+Both tables feed the Leads tab, because the sheet is the call list and a lead
+that only left an email is still a lead. Email-only rows carry the priority
+"6 - Email only" and blank intake columns. The Newsletter tab remains the
+mailing list of record: it keeps unsubscribes, which the call list drops.
+
   python3 scripts/leads-sheet-sync.py create        # first run: build + upload
   python3 scripts/leads-sheet-sync.py sync          # refresh data, keep manual edits
   python3 scripts/leads-sheet-sync.py migrate-cols  # add new DB columns in place
@@ -109,7 +114,12 @@ VOLUME_PRIORITY = {
     "under_50k": ("4 - Low", 4),
     "pre_launch": ("5 - Early", 5),
 }
-PRIORITY_ORDER = ["1 - Hot", "2 - High", "3 - Medium", "4 - Low", "5 - Early"]
+# Its own tier rather than "4 - Low": we don't know this person's volume, we
+# only know nobody asked. Blank would have dropped them out of every Dashboard
+# priority count and made the totals stop adding up.
+EMAIL_ONLY_PRIORITY = "6 - Email only"
+PRIORITY_ORDER = ["1 - Hot", "2 - High", "3 - Medium", "4 - Low", "5 - Early",
+                  EMAIL_ONLY_PRIORITY]
 
 PAIN_POINT_LABELS = {
     "funds_frozen": "Provider is freezing funds / applying reserves",
@@ -136,6 +146,14 @@ SOURCE_LABELS = {
     "exit_intent": "Newsletter - exit popup",
 }
 
+# Same rows, worded for the Leads tab, where the question is "what do I know
+# before I dial" rather than "which list is this".
+EMAIL_ONLY_ENTRY_LABELS = {
+    "exit_intent": "Exit popup - email only",
+    "footer": "Footer form - email only",
+    "newsletter": "Newsletter - email only",
+}
+
 # Ordered the way an outbound day actually runs, so the dropdown reads like a
 # ladder rather than a bag of labels.
 STATUS_OPTIONS = ["New", "Emailed", "Called - no answer", "In conversation",
@@ -146,10 +164,12 @@ OWNER_OPTIONS = ["Linoy", "Barak", "Assaf"]
 
 LEADS_TITLE = "myPayAdvisor — Leads"
 LEADS_SUBTITLE = (
-    "Everyone who left their details on mypayadvisor.com, newest first. "
-    "Sort by \"Do next\" and work top down. The yellow columns on the right are "
-    "yours to fill in and a refresh never overwrites them. Everything else is "
-    "rewritten every morning, so don't type there. Full guide on the Legend tab."
+    "Everyone who left anything on mypayadvisor.com, newest first, including "
+    "the email-only signups from the exit popup and the footer form "
+    "(Priority \"6 - Email only\"). Sort by \"Do next\" and work top down. The "
+    "yellow columns on the right are yours to fill in and a refresh never "
+    "overwrites them. Everything else is rewritten every morning, so don't type "
+    "there. Full guide on the Legend tab."
 )
 
 TRAFFIC_BUCKETS = ["ChatGPT (AI search)", "Google (organic)", "Perplexity (AI search)",
@@ -257,12 +277,13 @@ def parse_ts(value):
 
 
 def build_leads(rows):
-    """DB rows -> display rows, newest first. Newest submission of a repeated
-    email stays clean; the earlier ones get flagged so nobody works a stale row."""
-    seen, out = {}, []
+    """quiz_leads rows -> display rows, newest first.
+
+    Duplicate flagging happens after the merge in build_lead_stream(), not here,
+    so that someone who took the quiz *and* left their email in the popup reads
+    as one person rather than two leads."""
+    out = []
     for row in sorted(rows, key=lambda r: r.get("created_at") or "", reverse=True):
-        email = (row.get("email") or "").strip().lower()
-        seen[email] = seen.get(email, 0) + 1
         vol = row.get("volume_tier") or row.get("monthly_volume") or ""
         priority, _ = VOLUME_PRIORITY.get(vol, ("4 - Low", 4))
         utm = " · ".join(v for v in (row.get("utm_source"), row.get("utm_medium"),
@@ -290,9 +311,64 @@ def build_leads(rows):
             "referrer": row.get("referrer") or "",
             "utm": utm,
             "enriched": parse_ts(row.get("enriched_at")),
-            "dup": "earlier dup" if seen[email] > 1 else "",
+            "dup": "",
         })
     return out
+
+
+def build_email_only_leads(rows):
+    """newsletter_subscribers rows -> the same display shape as build_leads.
+
+    These people raised a hand on the site and only ever got asked for an
+    email, so every intake column is legitimately blank. They still belong on
+    the Leads tab: the sheet is the call list, and an unworked row is the only
+    thing that costs money. Unsubscribes are left out; chasing someone who
+    opted out is how a domain gets burned.
+
+    Note: newsletter_subscribers stores no referrer, utm or landing page, so
+    "Came from" can only ever say Direct / unknown here. The notification email
+    does carry page_url; persisting it would need a column on the table.
+    """
+    out = []
+    for row in sorted(rows, key=lambda r: r.get("subscribed_at") or "",
+                      reverse=True):
+        if row.get("active") is False:
+            continue
+        src = row.get("source") or ""
+        out.append({
+            "id": row["id"],
+            "received": parse_ts(row.get("subscribed_at")),
+            "name": "", "company": "", "phone": "", "provider": "",
+            "business": "", "volume": "", "pain": "", "track": "",
+            "email": row.get("email") or "",
+            "priority": EMAIL_ONLY_PRIORITY,
+            "came_from": "Direct / unknown",
+            "entry": EMAIL_ONLY_ENTRY_LABELS.get(
+                src, SOURCE_LABELS.get(src, src or "Email only")),
+            "landing": "", "referrer": "", "utm": "", "enriched": None,
+            "dup": "",
+        })
+    return out
+
+
+def build_lead_stream(quiz_rows, subscriber_rows):
+    """One call list, newest first, from both capture paths.
+
+    Dedup runs across the union on email: the newest row stays clean and older
+    ones are flagged, so a quiz lead who had already left their email in the
+    popup shows up once as a real lead rather than twice.
+    """
+    merged = build_leads(quiz_rows) + build_email_only_leads(subscriber_rows)
+    merged.sort(key=lambda item: (item["received"] or dt.datetime.min),
+                reverse=True)
+    seen = set()
+    for item in merged:
+        email = (item["email"] or "").strip().lower()
+        if not email:
+            continue
+        item["dup"] = "earlier dup" if email in seen else ""
+        seen.add(email)
+    return merged
 
 
 def build_newsletter(rows):
@@ -333,6 +409,11 @@ LEAD_COLS = [("Received", 17), ("Days open", 11), ("Do next", 18),
              ("Details added", 15), ("Flag", 11)]
 LEAD_EDIT_COLS = [("Status", 18), ("Owner", 13), ("Last contacted", 16),
                   ("Next follow-up", 16), ("What they said", 46)]
+NEWS_TITLE = "Newsletter — mailing list"
+NEWS_SUBTITLE = ("The mailing list, including anyone who unsubscribed. Everyone "
+                 "still active also appears on the Leads tab as \"6 - Email "
+                 "only\" — work them there, this tab is for sending, not calling.")
+
 NEWS_COLS = [("Subscribed", 17), ("Email", 34), ("Signed up at", 24), ("Active", 14)]
 NEWS_EDIT_COLS = [("Status", 16), ("Notes", 40)]
 
@@ -512,10 +593,9 @@ def write_leads_tab(wb, leads):
 def write_newsletter_tab(wb, subs):
     ws = wb.create_sheet("Newsletter")
     ws.sheet_properties.tabColor = "3E6E8E"
-    ws["A1"] = "Newsletter signups"
+    ws["A1"] = NEWS_TITLE
     ws["A1"].font = TITLE_FONT
-    ws["A2"] = ("Email-only signups from the footer form and the exit popup. "
-                "No business details captured, so treat these as colder than Leads.")
+    ws["A2"] = NEWS_SUBTITLE
     ws["A2"].font = MUTED_FONT
     ws.merge_cells("A2:D2")
 
@@ -585,9 +665,10 @@ LEGEND_ROWS = [
                                 "is never touched."),
     ("", ""),
     ("SECTION", "Tabs"),
-    ("Leads", "Everyone who completed the intake on the site, newest first."),
-    ("Newsletter", "Email-only signups from the footer form or the exit popup. "
-                   "No business details, so treat as colder."),
+    ("Leads", "The call list. Everyone who left anything on the site, newest "
+              "first: full intakes and email-only signups together."),
+    ("Newsletter", "The mailing list, unsubscribes included. For sending, not "
+                   "for calling. Everyone active on it is already on Leads."),
     ("Dashboard", "Counts itself. 'Work queue' at the top is today's list."),
     ("", ""),
     ("SECTION", "Do next — the column to work from"),
@@ -601,8 +682,9 @@ LEGEND_ROWS = [
     ("", ""),
     ("SECTION", "What the lead told us"),
     ("Business / Monthly volume / What they need help with",
-     "The four intake answers. Every lead has these, so never open with "
-     "'what do you need' — they already said."),
+     "The intake answers. Anyone who came through the quiz has these, so never "
+     "open with 'what do you need' — they already said. Blank across all three "
+     "means a '6 - Email only' row, where asking is exactly the right opener."),
     ("Company / Phone / Processing with today",
      "The optional step after signup. Blank is normal and means they skipped "
      "it. When Company is blank the email domain is usually the business, and "
@@ -620,6 +702,10 @@ LEGEND_ROWS = [
     ("3 - Medium", "$50K - $250K monthly."),
     ("4 - Low", "Under $50K monthly."),
     ("5 - Early", "Pre-launch, not processing yet. Long game."),
+    (EMAIL_ONLY_PRIORITY,
+     "Left an email in the exit popup or the footer form and was never asked "
+     "anything else, so Business, Volume and Track are blank. Unknown, not "
+     "small: nobody has qualified them yet. Open by asking what they process."),
     ("", ""),
     ("SECTION", "Track — which funnel routed them"),
     (TRACK_LABELS["A"], "Online, e-commerce or SaaS. Standard growth advisory."),
@@ -904,6 +990,21 @@ def rebuild_legend(token, sheet_id):
     print(f"legend: rewrote {len(LEGEND_ROWS)} rows")
 
 
+def refresh_newsletter_header(token, sheet_id):
+    """Rewrite the Newsletter title and subtitle on the live sheet.
+
+    sync_tab only ever touches data rows, so without this the tab keeps
+    whatever wording it was created with, and the wording is what tells whoever
+    opens it that the calling happens on Leads."""
+    google_json(
+        token,
+        f"https://sheets.googleapis.com/v4/spreadsheets/{sheet_id}/values/"
+        "Newsletter!A1:A2?valueInputOption=RAW", method="PUT",
+        payload={"range": "Newsletter!A1:A2", "majorDimension": "ROWS",
+                 "values": [[NEWS_TITLE], [NEWS_SUBTITLE]]})
+    print("newsletter tab: header rewritten")
+
+
 def refresh_leads_rules(token, sheet_id):
     """Re-apply the dropdowns and the colour coding on the live Leads tab.
 
@@ -1023,7 +1124,6 @@ def dashboard_formulas():
     zeroed the 'By track' counts the first time these columns moved.
     """
     lo, hi = FIRST_DATA_ROW, FIRST_DATA_ROW + LEAD_BUFFER_ROWS - 1
-    nlo, nhi = FIRST_DATA_ROW, FIRST_DATA_ROW + NEWS_BUFFER_ROWS - 1
 
     def count(label, value):
         c = lead_col(label)
@@ -1031,6 +1131,7 @@ def dashboard_formulas():
 
     em, fl = lead_col("Email"), lead_col("Flag")
     days, st = lead_col("Days open"), lead_col("Status")
+    pr = lead_col("Priority")
     out = {
         # COUNTIFS, not SUMPRODUCT: an empty "Days open" cell holds "" and in
         # Sheets text always ranks above a number, so ""<=>7 would count every
@@ -1040,8 +1141,14 @@ def dashboard_formulas():
         "Untouched 7+ days":
             f'=COUNTIFS(Leads!${days}${lo}:${days}${hi},">=7",'
             f'Leads!${st}${lo}:${st}${hi},"New")',
-        "Leads (full details)": f"=COUNTA(Leads!${em}${lo}:${em}${hi})",
-        "Newsletter signups": f"=COUNTA(Newsletter!$B${nlo}:$B${nhi})",
+        # Both live on the Leads tab now, so both counts come from it. Splitting
+        # on Priority rather than Entry point keeps this true if the popup copy
+        # or the source strings ever change.
+        "Leads (full details)":
+            f'=SUMPRODUCT((Leads!${em}${lo}:${em}${hi}<>"")'
+            f'*(Leads!${pr}${lo}:${pr}${hi}<>"{EMAIL_ONLY_PRIORITY}"))',
+        "Email-only signups": f'=COUNTIF(Leads!${pr}${lo}:${pr}${hi},'
+                              f'"{EMAIL_ONLY_PRIORITY}")',
         "Unique lead emails":
             f'=SUMPRODUCT((Leads!${fl}${lo}:${fl}${hi}<>"earlier dup")'
             f'*(Leads!${em}${lo}:${em}${hi}<>""))',
@@ -1070,7 +1177,7 @@ def dashboard_layout():
     return [
         ("A", "B", 4, "Work queue", ["Waiting for a first touch",
                                      "Follow-up due today", "Untouched 7+ days"]),
-        ("A", "B", 9, "Totals", ["Leads (full details)", "Newsletter signups",
+        ("A", "B", 9, "Totals", ["Leads (full details)", "Email-only signups",
                                  "Unique lead emails", "Added optional details",
                                  "Newest lead"]),
         ("A", "B", 16, "By status", list(STATUS_OPTIONS)),
@@ -1165,11 +1272,18 @@ def main():
     if mode == "create" and not HAVE_OPENPYXL:
         sys.exit("create mode needs openpyxl (pip install openpyxl)")
 
-    leads = build_leads(supabase_get(url, key, "quiz_leads",
-                                     "select=*&order=created_at.desc"))
-    subs = build_newsletter(supabase_get(url, key, "newsletter_subscribers",
-                                         "select=*&order=subscribed_at.desc"))
-    print(f"pulled {len(leads)} leads, {len(subs)} newsletter signups")
+    quiz_rows = supabase_get(url, key, "quiz_leads",
+                             "select=*&order=created_at.desc")
+    sub_rows = supabase_get(url, key, "newsletter_subscribers",
+                            "select=*&order=subscribed_at.desc")
+    # One call list on the Leads tab. The Newsletter tab stays as the mailing
+    # list of record (it keeps unsubscribes, which the call list drops).
+    leads = build_lead_stream(quiz_rows, sub_rows)
+    subs = build_newsletter(sub_rows)
+    email_only = sum(1 for x in leads if x["priority"] == EMAIL_ONLY_PRIORITY)
+    print(f"pulled {len(leads)} rows for Leads "
+          f"({len(leads) - email_only} full, {email_only} email-only), "
+          f"{len(subs)} on the newsletter list")
 
     if len(leads) > LEAD_BUFFER_ROWS or len(subs) > NEWS_BUFFER_ROWS:
         sys.exit("buffer exceeded — raise LEAD_BUFFER_ROWS / NEWS_BUFFER_ROWS "
@@ -1188,10 +1302,13 @@ def main():
         migrate_columns(token, sid)
         freeze_and_widths(token, sid)
         refresh_leads_rules(token, sid)
+        refresh_newsletter_header(token, sid)
         rebuild_dashboard(token, sid)
         rebuild_legend(token, sid)
         sync_tab(token, sid, "Leads", leads, lead_row_values,
                  N_LEAD_DATA, N_LEAD_TOTAL, LEAD_ID_COL, LEAD_BUFFER_ROWS)
+        sync_tab(token, sid, "Newsletter", subs, news_row_values,
+                 N_NEWS_DATA, N_NEWS_TOTAL, NEWS_ID_COL, NEWS_BUFFER_ROWS)
         print(f"migrated {state['url']}")
     elif mode == "create" or not state.get("spreadsheet_id"):
         build_workbook(leads, subs, XLSX_FILE)
@@ -1210,8 +1327,9 @@ def main():
                  N_NEWS_DATA, N_NEWS_TOTAL, NEWS_ID_COL, NEWS_BUFFER_ROWS)
         print(f"synced {state['url']}")
 
-    print(json.dumps({"leads": len(leads), "newsletter": len(subs),
-                      "url": state.get("url")}, indent=2))
+    print(json.dumps({"leads": len(leads), "email_only": email_only,
+                      "newsletter": len(subs), "url": state.get("url")},
+                     indent=2))
 
 
 if __name__ == "__main__":
