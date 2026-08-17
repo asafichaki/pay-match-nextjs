@@ -116,7 +116,7 @@ export default function FeeCalculatorClient() {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-foreground leading-tight tracking-tight">
-              Payment Processing{" "}
+              Credit Card Processing{" "}
               <span className="relative">
                 <span className="bg-gradient-to-r from-primary via-violet-500 to-emerald-500 bg-clip-text text-transparent">
                   Fee Calculator
@@ -126,7 +126,8 @@ export default function FeeCalculatorClient() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Enter your business details to see estimated processing costs across different pricing models
+              Enter your monthly volume, average ticket and channel mix to see your real effective
+              rate, and what each pricing model would actually cost you.
             </p>
           </header>
 

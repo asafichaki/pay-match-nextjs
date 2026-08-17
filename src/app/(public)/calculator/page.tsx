@@ -3,22 +3,26 @@ import { JsonLd } from "@/components/JsonLd";
 import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
 import FeeCalculatorClient from "./FeeCalculatorClient";
 
+// Title retargeted 2026-08-17. The head term is "credit card processing fee calculator"
+// (1,000/mo, KD 1, rankers at DR 151-293), and the old title targeted "payment processing fee
+// calculator" instead, so the exact term appeared nowhere. The old title was also 60 chars, and
+// layout.tsx appends " | myPayAdvisor" (15 chars), so it truncated in SERPs at ~75. Budget is 45.
 export const metadata: Metadata = {
-  title: "Payment Processing Fee Calculator 2026 | Estimate Real Costs",
-  description: "Estimate your real 2026 payment processing fees. Input monthly volume, ticket size, channel mix. See effective rate vs Stripe, Square, Helcim, Payment Depot.",
-  keywords: "payment processor calculator, credit card processing fee calculator 2026, effective rate calculator, payment processing cost estimator, merchant fee calculator",
+  title: "Credit Card Processing Fee Calculator 2026",
+  description: "Free calculator: enter monthly volume, average ticket and channel mix to see your real effective rate, and what Stripe, Square, Helcim and Payment Depot would each cost you.",
+  keywords: "credit card processing fee calculator, payment processing fee calculator, effective rate calculator, merchant fee calculator, credit card processing cost calculator, processing fee estimator",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://www.mypayadvisor.com/calculator" },
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/calculator",
-    title: "Payment Processing Fee Calculator 2026",
+    title: "Credit Card Processing Fee Calculator 2026",
     description: "Estimate real 2026 processing costs by volume, ticket size, and channel mix. Compare against Stripe, Square, Helcim, Payment Depot.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Payment Processing Fee Calculator 2026",
+    title: "Credit Card Processing Fee Calculator 2026",
     description: "Estimate real 2026 processing costs by volume, ticket size, channel mix.",
   },
 };
