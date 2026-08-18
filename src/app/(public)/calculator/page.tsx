@@ -9,7 +9,7 @@ import FeeCalculatorClient from "./FeeCalculatorClient";
 // layout.tsx appends " | myPayAdvisor" (15 chars), so it truncated in SERPs at ~75. Budget is 45.
 export const metadata: Metadata = {
   title: "Credit Card Processing Fee Calculator 2026",
-  description: "Free calculator: enter monthly volume, average ticket and channel mix to see your real effective rate, and what Stripe, Square, Helcim and Payment Depot would each cost you.",
+  description: "Free calculator: enter monthly volume, average ticket and channel mix to estimate your effective rate across interchange-plus, flat-rate, and premium pricing models.",
   keywords: "credit card processing fee calculator, payment processing fee calculator, effective rate calculator, merchant fee calculator, credit card processing cost calculator, processing fee estimator",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://www.mypayadvisor.com/calculator" },
@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://www.mypayadvisor.com/calculator",
     title: "Credit Card Processing Fee Calculator 2026",
-    description: "Estimate real 2026 processing costs by volume, ticket size, and channel mix. Compare against Stripe, Square, Helcim, Payment Depot.",
+    description: "Estimate 2026 processing costs by volume, ticket size, and channel mix across interchange-plus, flat-rate, and premium pricing models.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Credit Card Processing Fee Calculator 2026",
-    description: "Estimate real 2026 processing costs by volume, ticket size, channel mix.",
+    description: "Estimate 2026 processing costs by volume, ticket size, channel mix.",
   },
 };
 
@@ -76,7 +76,7 @@ const howToSchema = {
       "@type": "HowToStep",
       position: 3,
       name: "Compare against benchmark",
-      text: "Use the calculator to compare your effective rate against interchange-plus benchmarks (Helcim, Payment Depot, Stax) and flat-rate competitors (Stripe, Square, PayPal). A gap of more than 0.30% above benchmark usually means it is worth negotiating or switching.",
+      text: "Use the calculator to compare your effective rate against typical interchange-plus and flat-rate market ranges. A gap of more than 0.30% above the low end of the range usually means it is worth negotiating or switching.",
     },
     {
       "@type": "HowToStep",
@@ -104,7 +104,7 @@ const faqSchema = {
       name: "How accurate is this calculator?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The calculator uses published 2026 rates from Stripe, Square, PayPal, Helcim, Payment Depot, Stax, and other major processors, applied to a standard card-mix assumption (60 percent credit, 40 percent debit, 30 percent rewards cards). Real merchant statements typically come within 5 to 15 percent of the calculator output. For an exact number, use the calculator output plus an audit of your actual statement.",
+        text: "The calculator models three common pricing structures (interchange-plus, flat-rate, and premium or tiered) using representative 2026 rate assumptions for card-present and card-not-present volume. It is a directional estimate of pricing-model impact, not a quote from any named processor, and your actual costs depend on your card mix, business type, and negotiated terms. For an exact number, audit your actual merchant statement.",
       },
     },
     {

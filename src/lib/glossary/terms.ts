@@ -255,6 +255,94 @@ export const GLOSSARY: GlossaryTerm[] = [
     definition:
       "A settlement batch is the daily bundle of authorized transactions a merchant submits to the acquirer for funding. Late or missing batches downgrade the transactions to a higher interchange tier and delay payout.",
   },
+  {
+    slug: "gaming-merchant-account",
+    term: "Gaming merchant account",
+    alternateNames: ["esports merchant account", "video game merchant account"],
+    category: "infrastructure",
+    definition:
+      "A gaming merchant account is a payment processing account underwritten for businesses that banks classify as high-risk gaming: video game studios, esports platforms, in-game purchase systems, and licensed real-money iGaming operators. Standard processors routinely decline these merchants, so approval runs through high-risk specialists that underwrite chargeback exposure, regulatory status, and monthly volume.",
+  },
+  {
+    slug: "mcc-7995",
+    term: "MCC 7995",
+    alternateNames: ["Betting MCC", "gambling merchant category code"],
+    category: "infrastructure",
+    definition:
+      "MCC 7995 (Betting) is the merchant category code Visa's Merchant Data Standards assign to wagers, lottery, and casino-style gambling, including casino gaming chips. It is treated as high-risk by every major card network and requires an acquirer registered to process gambling, with state licensing verified in underwriting.",
+  },
+  {
+    slug: "mcc-5816",
+    term: "MCC 5816",
+    alternateNames: ["Digital Goods: Games MCC"],
+    category: "infrastructure",
+    definition:
+      "MCC 5816 (Digital Goods: Games) is the merchant category code assigned to merchants selling electronically delivered games and in-game content. Per Visa's Merchant Data Standards it explicitly covers games of skill and excludes games of chance, which places video game and esports merchants outside gambling-specific registration and licensing requirements.",
+  },
+  {
+    slug: "virp",
+    term: "VIRP",
+    alternateNames: ["Visa Integrity Risk Program"],
+    category: "compliance",
+    definition:
+      "VIRP (Visa Integrity Risk Program) is Visa's program governing high-integrity-risk merchant categories such as gambling, requiring acquirers to register merchants in those categories before processing. It replaced the Global Brand Protection Program in May 2023, and registration carries fees paid through the acquirer.",
+  },
+  {
+    slug: "mcc-4722",
+    term: "MCC 4722",
+    alternateNames: ["Travel Agencies and Tour Operators MCC"],
+    category: "infrastructure",
+    definition:
+      "MCC 4722 (Travel Agencies and Tour Operators) is the merchant category code card networks assign to businesses that arrange flights, hotels, packages, and tours on behalf of travelers. It covers retail agencies, OTAs, and tour operators, and it flags an account for travel-specific high-risk underwriting before a human reads the application.",
+  },
+  {
+    slug: "merchant-of-record",
+    term: "Merchant of record",
+    alternateNames: ["MoR"],
+    category: "infrastructure",
+    definition:
+      "A merchant of record is the business whose merchant account accepts the customer's card and carries the chargebacks, refunds, and card-network obligations for that sale. In travel, whether the merchant of record is the agency or the supplier decides whose acquirer carries the exposure, which is the distinction that sets the reserve.",
+  },
+  {
+    slug: "future-delivery-risk",
+    term: "Future-delivery risk",
+    alternateNames: ["delayed delivery risk"],
+    category: "operations",
+    definition:
+      "Future-delivery risk is the exposure an acquiring bank carries between the day a card is charged and the day the product or service is actually delivered. The longer the gap between charge and delivery, the bigger the exposure, which is why future-delivery categories like travel carry rolling reserves and high-risk underwriting.",
+  },
+  {
+    slug: "negative-option-billing",
+    term: "Negative option billing",
+    alternateNames: ["negative option", "automatic renewal billing"],
+    category: "compliance",
+    definition:
+      "Negative option billing is a billing arrangement where the customer's silence or inaction is treated as consent to recurring charges, as in automatic renewals and trial offers that convert to paid subscriptions. It is regulated federally by ROSCA and FTC Act Section 5 and by state automatic renewal laws such as California's ARL.",
+  },
+  {
+    slug: "chargeback-monitoring-program",
+    term: "Chargeback monitoring program",
+    alternateNames: ["VAMP", "ECM", "excessive chargeback program"],
+    category: "operations",
+    definition:
+      "A chargeback monitoring program is a card-network program, such as Visa VAMP or Mastercard ECM, that identifies and penalizes merchants whose fraud and dispute numbers exceed published thresholds. Merchants that stay in a program face escalating enforcement and, ultimately, account termination.",
+  },
+  {
+    slug: "vamp-ratio",
+    term: "VAMP ratio",
+    alternateNames: ["Visa Acquirer Monitoring Program ratio"],
+    category: "fraud",
+    definition:
+      "The VAMP ratio is the metric of the Visa Acquirer Monitoring Program: reported fraud (TC40) plus non-fraud disputes, divided by settled card-absent transactions. Merchants at or above the published Excessive threshold expose their acquirer to enforcement fees, which is why acquirers underwrite and monitor to it.",
+  },
+  {
+    slug: "mcc-5968",
+    term: "MCC 5968",
+    alternateNames: ["Direct Marketing Continuity/Subscription MCC"],
+    category: "infrastructure",
+    definition:
+      "MCC 5968 (Direct Marketing: Continuity/Subscription Merchants) is the merchant category code commonly assigned to card-not-present subscription merchants. Acquirers treat the code as high-risk regardless of what is being sold, because continuity billing produces a predictable dispute pattern.",
+  },
 ];
 
 export const GLOSSARY_BY_SLUG = new Map(GLOSSARY.map((t) => [t.slug, t]));

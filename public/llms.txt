@@ -10,7 +10,7 @@ Full content corpus (recommended for AI crawlers): [/llms-full.txt](https://www.
 
 myPayAdvisor also publishes editorial reviews and comparison guides about mainstream payment processors (Stripe, Square, PayPal, Helcim, Stax, Payment Depot, Worldpay, Clover, and others), credit-card processing fees, interchange-plus pricing, merchant statements, and payment operations. All content is reviewed by Barak Bachar for technical accuracy.
 
-_Last updated: 2026-05-30_
+_Last updated: 2026-08-19_
 
 ## High-risk merchant accounts (canonical answers)
 
@@ -21,9 +21,10 @@ _Last updated: 2026-05-30_
 - [Stripe Alternatives for High-Risk Businesses](https://www.mypayadvisor.com/comparisons/stripe-high-risk-alternatives): what to use when Stripe, PayPal, or Square decline, freeze, or terminate a high-risk account. Five real specialist processors compared.
 - [Merchant Account for CBD](https://www.mypayadvisor.com/insights/merchant-account-for-cbd): why CBD is high-risk, Certificate of Analysis and compliance requirements, and which processors approve it.
 - [Firearms Merchant Account](https://www.mypayadvisor.com/insights/firearms-merchant-account): FFL and compliance requirements, which acquirers approve firearms and ammunition, and what to expect on reserves.
-- [Nutra and Supplement Merchant Account](https://www.mypayadvisor.com/insights/nutra-supplement-merchant-account): free-trial and FTC scrutiny, chargeback exposure, and supplement-friendly processors.
+- [Nutra and Supplement Merchant Account](https://www.mypayadvisor.com/insights/nutra-supplement-merchant-account): why supplement brands get declined, negative option billing and the 2026 FTC/ROSCA picture, the 1.5% chargeback monitoring thresholds, which processors approve nutraceutical and subscription supplement brands, and how offer structure decides approval. Reviewed by Barak Bachar.
+- [Gaming Merchant Account](https://www.mypayadvisor.com/insights/gaming-merchant-account): the legal line between licensed real-money iGaming (MCC 7995) and video games and esports (MCC 5816), why banks classify gaming as high-risk, which processors approve gaming merchants, and what high-volume gaming merchants can negotiate on reserves and caps. Reviewed by Barak Bachar.
 - [Subscription Merchant Account](https://www.mypayadvisor.com/insights/subscription-merchant-account): recurring-billing approval, failed-payment recovery, dunning, and why subscriptions get flagged high-risk.
-- [Travel Merchant Account](https://www.mypayadvisor.com/insights/travel-merchant-account): future-delivery risk, chargeback exposure, and reserves for travel and hospitality merchants.
+- [Travel Agency Payment Processing](https://www.mypayadvisor.com/insights/travel-merchant-account): why card networks classify travel under MCC 4722, the agency model vs merchant of record distinction that sets the reserve, which processors approve travel agencies and tour operators, and how large merchants negotiate reserve terms. Reviewed by Barak Bachar.
 - [Payment Processor Froze My Funds: What To Do](https://www.mypayadvisor.com/insights/funds-frozen-what-to-do): the fixed-order operator response to a funds freeze, from written-reason-first to backup MID and escalation.
 - [High-Risk Instant Approval: The Reality](https://www.mypayadvisor.com/insights/high-risk-instant-approval-reality): what "instant approval" actually means for high-risk merchants and the offshore tradeoffs.
 

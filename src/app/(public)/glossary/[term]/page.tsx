@@ -141,6 +141,45 @@ const TERM_TO_CORNERSTONES: Record<string, { label: string; href: string }[]> = 
   mcc: [
     { label: "High-Risk Payment Processing Guide", href: "/insights/high-risk-payment-processing-guide" },
   ],
+  "gaming-merchant-account": [
+    { label: "Gaming Merchant Account", href: "/insights/gaming-merchant-account" },
+    { label: "High-Risk Payment Processing Guide", href: "/insights/high-risk-payment-processing-guide" },
+  ],
+  "mcc-7995": [
+    { label: "Gaming Merchant Account", href: "/insights/gaming-merchant-account" },
+  ],
+  "mcc-5816": [
+    { label: "Gaming Merchant Account", href: "/insights/gaming-merchant-account" },
+  ],
+  virp: [
+    { label: "Gaming Merchant Account", href: "/insights/gaming-merchant-account" },
+  ],
+  "mcc-4722": [
+    { label: "Travel Agency Payment Processing", href: "/insights/travel-merchant-account" },
+  ],
+  "merchant-of-record": [
+    { label: "Travel Agency Payment Processing", href: "/insights/travel-merchant-account" },
+  ],
+  "future-delivery-risk": [
+    { label: "Travel Agency Payment Processing", href: "/insights/travel-merchant-account" },
+    { label: "Reserves & Frozen Funds: Capped vs Rolling", href: "/insights/reserves-frozen-funds-capped-vs-rolling" },
+  ],
+  "negative-option-billing": [
+    { label: "Nutraceutical Merchant Account", href: "/insights/nutra-supplement-merchant-account" },
+    { label: "Subscription Merchant Account", href: "/insights/subscription-merchant-account" },
+  ],
+  "chargeback-monitoring-program": [
+    { label: "Nutraceutical Merchant Account", href: "/insights/nutra-supplement-merchant-account" },
+    { label: "High-Risk Payment Processing Guide", href: "/insights/high-risk-payment-processing-guide" },
+  ],
+  "vamp-ratio": [
+    { label: "Nutraceutical Merchant Account", href: "/insights/nutra-supplement-merchant-account" },
+    { label: "Gaming Merchant Account", href: "/insights/gaming-merchant-account" },
+  ],
+  "mcc-5968": [
+    { label: "Nutraceutical Merchant Account", href: "/insights/nutra-supplement-merchant-account" },
+    { label: "Subscription Merchant Account", href: "/insights/subscription-merchant-account" },
+  ],
 };
 
 export default async function GlossaryTermPage({
