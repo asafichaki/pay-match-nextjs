@@ -148,10 +148,10 @@ export default function NutraSupplementMerchantAccountPage() {
         "@type": "ListItem",
         "position": 1,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "PaymentCloud",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Nutraceutical merchant account",
+          "provider": { "@type": "Organization", "name": "PaymentCloud" },
           "url": "https://paymentcloudinc.com",
           "offers": {
             "@type": "Offer",
@@ -168,10 +168,10 @@ export default function NutraSupplementMerchantAccountPage() {
         "@type": "ListItem",
         "position": 2,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Corepay",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Nutraceutical merchant account",
+          "provider": { "@type": "Organization", "name": "Corepay" },
           "url": "https://corepay.net",
           "offers": {
             "@type": "Offer",
@@ -188,10 +188,10 @@ export default function NutraSupplementMerchantAccountPage() {
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Durango Merchant Services",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Nutraceutical merchant account",
+          "provider": { "@type": "Organization", "name": "Durango Merchant Services" },
           "url": "https://www.durangomerchantservices.com",
           "offers": {
             "@type": "Offer",
@@ -208,10 +208,10 @@ export default function NutraSupplementMerchantAccountPage() {
         "@type": "ListItem",
         "position": 4,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Soar Payments",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Nutraceutical merchant account",
+          "provider": { "@type": "Organization", "name": "Soar Payments" },
           "url": "https://www.soarpay.com",
           "offers": {
             "@type": "Offer",
@@ -415,7 +415,7 @@ export default function NutraSupplementMerchantAccountPage() {
                       <td className="py-3 pr-4">Dedicated supplement/nutraceutical page &ldquo;designed for long-term stability,&rdquo; subscription models supported</td>
                       <td className="py-3 pr-4">Publishes 0%-10% rolling reserve, 5-10% typical, renegotiable with low disputes</td>
                       <td className="py-3 pr-4">3-7 days typical</td>
-                      <td className="py-3">Only provider here publishing full price ranges (1.95%-4.95% all-in); website pre-review before submission</td>
+                      <td className="py-3">Only provider here publishing full rate ranges (1.95%-4.95% published discount rate); website pre-review before submission</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4"><a href="https://www.soarpay.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
@@ -519,7 +519,7 @@ export default function NutraSupplementMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                Which of them fits your volume, your billing model, and your history is the part that benefits from a second pair of eyes. Take the <Link href="/" className="text-primary hover:underline">matching quiz</Link> and Barak will review your shortlist against what you actually sell and how you bill. The same underwriting logic, applied to other flagged verticals, is covered in our guides to <Link href="/insights/gaming-merchant-account" className="text-primary hover:underline">gaming merchant accounts</Link> and <Link href="/insights/travel-merchant-account" className="text-primary hover:underline">travel merchant accounts</Link>.
+                Which of them fits your volume, your billing model, and your history is the part that benefits from a second pair of eyes. Take the <Link href="/quiz" className="text-primary hover:underline">matching quiz</Link> and Barak will review your shortlist against what you actually sell and how you bill. The same underwriting logic, applied to other flagged verticals, is covered in our guides to <Link href="/insights/gaming-merchant-account" className="text-primary hover:underline">gaming merchant accounts</Link> and <Link href="/insights/travel-merchant-account" className="text-primary hover:underline">travel merchant accounts</Link>.
               </p>
 
               {/* FAQ Section */}

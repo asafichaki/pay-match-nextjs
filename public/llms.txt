@@ -57,7 +57,7 @@ _Last updated: 2026-08-19_
 ## Tools
 
 - [Provider Match Quiz](https://www.mypayadvisor.com/quiz): a four-question intake that routes merchants to the right processor track based on business model, monthly volume, and the specific operational pain point they want to fix.
-- [Fee Calculator](https://www.mypayadvisor.com/calculator): inputs monthly volume, average ticket, and current effective rate, returns estimated annual savings against benchmark processors.
+- [Fee Calculator](https://www.mypayadvisor.com/calculator): inputs monthly volume, average transaction size, and in-person vs online channel split, returns three modeled fee scenarios (interchange-plus style, flat-rate style, and premium pricing) as a directional estimate of effective rate.
 
 ## Reference
 

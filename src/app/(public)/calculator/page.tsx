@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
 import FeeCalculatorClient from "./FeeCalculatorClient";
 
 // Title retargeted 2026-08-17. The head term is "credit card processing fee calculator"
@@ -33,7 +32,7 @@ const webAppSchema = {
   name: "myPayAdvisor Payment Processing Fee Calculator",
   url: "https://www.mypayadvisor.com/calculator",
   description:
-    "Free web-based calculator that estimates real 2026 payment processing fees and effective rate from monthly volume, average ticket, and channel mix.",
+    "Free web-based calculator that produces a directional estimate of 2026 payment processing fees and effective-rate ranges from monthly volume, average ticket, and channel mix.",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Any",
   browserRequirements: "Requires JavaScript",
@@ -52,70 +51,34 @@ const webAppSchema = {
   },
 };
 
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "How to calculate your effective payment processing rate",
-  description:
-    "Step-by-step method for computing your real effective payment processing rate from your merchant statement.",
-  totalTime: "PT3M",
-  step: [
-    {
-      "@type": "HowToStep",
-      position: 1,
-      name: "Pull your latest monthly statement",
-      text: "Find the total fees paid and total processing volume on your latest merchant statement. Both numbers usually appear on the statement summary.",
-    },
-    {
-      "@type": "HowToStep",
-      position: 2,
-      name: "Divide fees by volume",
-      text: "Effective rate = (Total Fees Paid / Total Processing Volume) × 100. For example, $1,250 in fees on $50,000 volume = 2.50% effective rate.",
-    },
-    {
-      "@type": "HowToStep",
-      position: 3,
-      name: "Compare against benchmark",
-      text: "Use the calculator to compare your effective rate against typical interchange-plus and flat-rate market ranges. A gap of more than 0.30% above the low end of the range usually means it is worth negotiating or switching.",
-    },
-    {
-      "@type": "HowToStep",
-      position: 4,
-      name: "Identify hidden fees",
-      text: "Subtract obvious card fees from total fees. The remainder is hidden cost (PCI compliance, monthly minimum, batch fee, statement fee, gateway fee). Anything above 0.10% of volume is unusually high.",
-    },
-  ],
-};
+// FAQ content is rendered visibly below the calculator AND emitted as FAQPage
+// JSON-LD from the same source of truth (Google's visible-content requirement).
+const CALCULATOR_FAQS = [
+  {
+    question: "What is an effective payment processing rate?",
+    answer:
+      "Effective rate is the all-in cost of payment processing expressed as a percentage of total processing volume. It captures interchange, assessments, processor markup, and every other fee on your statement. For U.S. merchants in 2026, effective rates typically range from 1.75 percent for high-volume interchange-plus accounts to 3.50 percent for low-volume flat-rate or tiered accounts.",
+  },
+  {
+    question: "How accurate is this calculator?",
+    answer:
+      "The calculator models three common pricing scenarios: a low estimate in the style of interchange-plus pricing, a mid estimate in the style of flat-rate pricing, and a high estimate reflecting premium pricing. Each uses representative 2026 rate assumptions for card-present and card-not-present volume. It is a directional estimate of pricing-model impact, not a quote from any named processor, and your actual costs depend on your card mix, business type, and negotiated terms. For an exact number, audit your actual merchant statement.",
+  },
+  {
+    question: "Is the calculator free?",
+    answer:
+      "Yes. The calculator is free and requires no signup. We provide it because the single biggest factor in choosing a processor is knowing your effective rate, and most processors will not give you that number until you sign.",
+  },
+];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is an effective payment processing rate?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Effective rate is the all-in cost of payment processing expressed as a percentage of total processing volume. It captures interchange, assessments, processor markup, and every other fee on your statement. For U.S. merchants in 2026, effective rates typically range from 1.75 percent for high-volume interchange-plus accounts to 3.50 percent for low-volume flat-rate or tiered accounts.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How accurate is this calculator?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The calculator models three common pricing structures (interchange-plus, flat-rate, and premium or tiered) using representative 2026 rate assumptions for card-present and card-not-present volume. It is a directional estimate of pricing-model impact, not a quote from any named processor, and your actual costs depend on your card mix, business type, and negotiated terms. For an exact number, audit your actual merchant statement.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is the calculator free?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. The calculator is free and requires no signup. We provide it because the single biggest factor in choosing a processor is knowing your real effective rate, and most processors will not give you that number until you sign.",
-      },
-    },
-  ],
+  mainEntity: CALCULATOR_FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
 };
 
 const breadcrumbSchema = {
@@ -131,10 +94,23 @@ export default function CalculatorPage() {
   return (
     <>
       <JsonLd data={webAppSchema} />
-      <JsonLd data={howToSchema} />
       <JsonLd data={faqSchema} />
       <JsonLd data={breadcrumbSchema} />
       <FeeCalculatorClient />
+      {/* Visible FAQ: same Q&A text as the FAQPage JSON-LD above. */}
+      <section className="container mx-auto max-w-3xl px-4 pb-16">
+        <h2 className="text-2xl font-serif font-bold text-foreground mb-6">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-6">
+          {CALCULATOR_FAQS.map((faq) => (
+            <div key={faq.question} className="p-6 bg-muted/30 rounded-lg">
+              <h3 className="text-lg font-semibold text-foreground mb-3">{faq.question}</h3>
+              <p className="text-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }

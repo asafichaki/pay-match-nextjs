@@ -61,6 +61,10 @@ export default function GamingMerchantAccountPage() {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/gaming-merchant-account"
     },
+    "isPartOf": {
+      "@type": "WebPage",
+      "@id": "https://www.mypayadvisor.com/insights"
+    },
     "about": [
       { "@id": "https://www.mypayadvisor.com/glossary#gaming-merchant-account" },
       { "@id": "https://www.mypayadvisor.com/glossary#mcc-7995" },
@@ -144,10 +148,10 @@ export default function GamingMerchantAccountPage() {
         "@type": "ListItem",
         "position": 1,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "PaymentCloud",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Gaming merchant account",
+          "provider": { "@type": "Organization", "name": "PaymentCloud" },
           "url": "https://paymentcloudinc.com",
           "offers": {
             "@type": "Offer",
@@ -164,10 +168,10 @@ export default function GamingMerchantAccountPage() {
         "@type": "ListItem",
         "position": 2,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Corepay",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Gaming merchant account",
+          "provider": { "@type": "Organization", "name": "Corepay" },
           "url": "https://corepay.net",
           "offers": {
             "@type": "Offer",
@@ -184,10 +188,10 @@ export default function GamingMerchantAccountPage() {
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Durango Merchant Services",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Gaming merchant account",
+          "provider": { "@type": "Organization", "name": "Durango Merchant Services" },
           "url": "https://www.durangomerchantservices.com",
           "offers": {
             "@type": "Offer",
@@ -455,7 +459,7 @@ export default function GamingMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Getting a gaming merchant account approved in 2026 comes down to three things: knowing which legal category you are actually in, arriving with the file an underwriter needs to say yes at your volume, and negotiating reserves and caps like the term sheet it is. The processors above are a real starting map, but the right shortlist depends on your vertical, licensing, and volume. If you want a second set of eyes: take our matching quiz at <Link href="/" className="text-primary hover:underline">myPayAdvisor</Link> and Barak will review your shortlist against what you are actually building.
+                Getting a gaming merchant account approved in 2026 comes down to three things: knowing which legal category you are actually in, arriving with the file an underwriter needs to say yes at your volume, and negotiating reserves and caps like the term sheet it is. The processors above are a real starting map, but the right shortlist depends on your vertical, licensing, and volume. If you want a second set of eyes: take our matching quiz at <Link href="/quiz" className="text-primary hover:underline">myPayAdvisor</Link> and Barak will review your shortlist against what you are actually building.
               </p>
 
               {/* FAQ Section */}

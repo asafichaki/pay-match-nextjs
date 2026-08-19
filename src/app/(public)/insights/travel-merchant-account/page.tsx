@@ -61,6 +61,10 @@ export default function TravelMerchantAccountPage() {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/travel-merchant-account"
     },
+    "isPartOf": {
+      "@type": "WebPage",
+      "@id": "https://www.mypayadvisor.com/insights"
+    },
     "about": [
       { "@id": "https://www.mypayadvisor.com/glossary#mcc-4722" },
       { "@id": "https://www.mypayadvisor.com/glossary#merchant-of-record" },
@@ -142,10 +146,10 @@ export default function TravelMerchantAccountPage() {
         "@type": "ListItem",
         "position": 1,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Durango Merchant Services",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Travel merchant account",
+          "provider": { "@type": "Organization", "name": "Durango Merchant Services" },
           "url": "https://www.durangomerchantservices.com",
           "offers": {
             "@type": "Offer",
@@ -162,10 +166,10 @@ export default function TravelMerchantAccountPage() {
         "@type": "ListItem",
         "position": 2,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "PaymentCloud",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Travel merchant account",
+          "provider": { "@type": "Organization", "name": "PaymentCloud" },
           "url": "https://paymentcloudinc.com",
           "offers": {
             "@type": "Offer",
@@ -182,10 +186,10 @@ export default function TravelMerchantAccountPage() {
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Soar Payments",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Travel merchant account",
+          "provider": { "@type": "Organization", "name": "Soar Payments" },
           "url": "https://www.soarpay.com",
           "offers": {
             "@type": "Offer",
@@ -202,10 +206,10 @@ export default function TravelMerchantAccountPage() {
         "@type": "ListItem",
         "position": 4,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "PayCompass",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Travel merchant account",
+          "provider": { "@type": "Organization", "name": "PayCompass" },
           "url": "https://paycompass.com",
           "offers": {
             "@type": "Offer",
@@ -517,7 +521,7 @@ export default function TravelMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>The verdict:</strong> travel is not unbankable, it is mispriced by default. The merchants that get sane terms are the ones that walk in with the exposure math already done: model split documented, delivery horizons proven, dispute ratio in hand. If you want that shortlist built for your specific file instead of a generic one, <Link href="/" className="text-primary hover:underline">take our matching quiz</Link> and Barak will review the shortlist against your volume, ticket size, and model before you apply anywhere.
+                <strong>The verdict:</strong> travel is not unbankable, it is mispriced by default. The merchants that get sane terms are the ones that walk in with the exposure math already done: model split documented, delivery horizons proven, dispute ratio in hand. If you want that shortlist built for your specific file instead of a generic one, <Link href="/quiz" className="text-primary hover:underline">take our matching quiz</Link> and Barak will review the shortlist against your volume, ticket size, and model before you apply anywhere.
               </p>
 
               {/* FAQ Section */}

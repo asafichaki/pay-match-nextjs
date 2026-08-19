@@ -126,8 +126,8 @@ export default function FeeCalculatorClient() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Enter your monthly volume, average ticket and channel mix to see your real effective
-              rate, and what each pricing model would actually cost you.
+              Enter your monthly volume, average ticket and channel mix to get a directional
+              estimate of your effective rate under three common pricing models.
             </p>
           </header>
 
