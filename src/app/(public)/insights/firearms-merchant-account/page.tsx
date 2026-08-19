@@ -125,10 +125,10 @@ export default function FirearmsMerchantAccountPage() {
         "@type": "ListItem",
         "position": 1,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "PaymentCloud",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Firearms merchant account",
+          "provider": { "@type": "Organization", "name": "PaymentCloud" },
           "url": "https://paymentcloudinc.com",
           "offers": {
             "@type": "Offer",
@@ -145,10 +145,10 @@ export default function FirearmsMerchantAccountPage() {
         "@type": "ListItem",
         "position": 2,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Soar Payments",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Firearms merchant account",
+          "provider": { "@type": "Organization", "name": "Soar Payments" },
           "url": "https://soarpayments.com",
           "offers": {
             "@type": "Offer",
@@ -165,10 +165,10 @@ export default function FirearmsMerchantAccountPage() {
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@type": "SoftwareApplication",
+          "@type": "Service",
           "name": "Durango Merchant Services",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
+          "serviceType": "Firearms merchant account",
+          "provider": { "@type": "Organization", "name": "Durango Merchant Services" },
           "url": "https://www.durangomerchantservices.com",
           "offers": {
             "@type": "Offer",

@@ -27,7 +27,7 @@ export async function generateMetadata({
   const term = GLOSSARY_BY_SLUG.get(termSlug);
   if (!term) return {};
   const url = `${SITE}/glossary/${term.slug}`;
-  const title = `${term.term}: Definition + How It Works | myPayAdvisor`;
+  const title = `${term.term}: Definition + How It Works`;
   const description = term.definition.length > 155
     ? term.definition.slice(0, 152) + "..."
     : term.definition;
