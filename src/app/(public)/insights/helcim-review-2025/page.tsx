@@ -531,7 +531,7 @@ export default function HelcimReview2025Page() {
             <div className="mt-12 p-6 bg-muted/20 rounded-lg text-sm text-muted-foreground">
               <p className="font-semibold text-foreground mb-2">Disclosure</p>
               <p>
-                myPayAdvisor may earn a commission when you sign up for services through our links. This does not influence our editorial recommendations. We only recommend products and services we believe will benefit our readers.
+                myPayAdvisor may earn a commission when you sign up for services through our links. Compensation may affect which providers we feature and how prominently they appear. We only recommend products and services we believe will benefit our readers.
               </p>
             </div>
         </article>

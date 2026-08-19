@@ -124,7 +124,7 @@ const Footer = () => {
         {/* Disclaimer */}
         <aside className="text-center border-t border-background/15 pt-6 mb-3">
           <p className="text-[10px] sm:text-xs text-background/40 max-w-5xl mx-auto">
-            <strong>Affiliate Disclosure:</strong> myPayAdvisor may receive compensation from payment providers featured on this site. This does not influence our rankings or recommendations.
+            <strong>Affiliate Disclosure:</strong> myPayAdvisor may receive compensation from payment providers featured on this site. Compensation may affect where and how providers appear. We recommend confirming rates and terms directly with any provider before signing.
           </p>
         </aside>
 
