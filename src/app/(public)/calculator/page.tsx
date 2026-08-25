@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import FeeCalculatorClient from "./FeeCalculatorClient";
+import { RelatedGuides } from "@/components/seo/RelatedGuides";
 
 // Title retargeted 2026-08-17. The head term is "credit card processing fee calculator"
 // (1,000/mo, KD 1, rankers at DR 151-293), and the old title targeted "payment processing fee
@@ -111,6 +112,7 @@ export default function CalculatorPage() {
           ))}
         </div>
       </section>
+      <RelatedGuides heading="Related guides to read with your estimate" />
     </>
   );
 }

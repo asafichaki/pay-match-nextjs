@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/build-lastmod-manifest.mjs && node scripts/seo/check-video-upload-date.mjs && node scripts/seo/check-quotation-schema.mjs",
+    "prebuild": "node scripts/build-lastmod-manifest.mjs && node scripts/seo/check-lastmod-manifest.mjs && node scripts/seo/check-video-upload-date.mjs && node scripts/seo/check-quotation-schema.mjs && node scripts/seo/check-dates.mjs && node scripts/seo/check-image-weight.mjs && node scripts/seo/check-jsonld.mjs --source",
     "build": "next build",
+    "postbuild": "node scripts/seo/check-jsonld.mjs --built",
     "start": "next start",
     "lint": "eslint"
   },
