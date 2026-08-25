@@ -1,0 +1,8 @@
+# myPayAdvisor SEO Phase 0: IndexNow ping + GSC sitemap submit. Daily 06:20 IL.
+# Owner: Assaf. Approved 2026-08-25.
+# Reason: Phase 0 of the SEO autopilot plan, explicit exception to the 2026-07-14 cron shutdown;
+# IndexNow reaches Bing/Copilot only, Google ignores it.
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+CRON_TZ=Asia/Jerusalem
+20 6 * * * root /opt/mypayadvisor-seo/run-ping.sh >> /var/log/mypayadvisor-seo.log 2>&1
