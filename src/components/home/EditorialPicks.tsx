@@ -14,14 +14,14 @@ const PICKS: Pick[] = [
     eyebrow: "Negotiation",
     title: "9 levers that actually move your processing rate",
     excerpt:
-      "The processor markup is negotiable. Above $50K monthly, a 0.10–0.30 percent reduction is realistic with the right contract terms.",
+      "The processor markup is negotiable. Above $50K monthly, a 0.10 to 0.30 percent reduction is realistic with the right contract terms.",
   },
   {
     href: "/insights/free-statement-audit-playbook",
     eyebrow: "Statement audit",
     title: "How to audit your merchant statement in 6 steps",
     excerpt:
-      "The four hidden fees most merchants miss can add 0.20–0.50 percent on top of the rate you think you are paying.",
+      "The four hidden fees most merchants miss can add 0.20 to 0.50 percent on top of the rate you think you are paying.",
   },
   {
     href: "/insights/reserves-frozen-funds-capped-vs-rolling",
@@ -29,6 +29,13 @@ const PICKS: Pick[] = [
     title: "Capped vs. rolling reserves, and why it is a cashflow question",
     excerpt:
       "A 10% rolling reserve on $500K monthly volume ties up $300K in working capital. That is a margin decision dressed as risk.",
+  },
+  {
+    href: "/insights/high-risk-payment-processing-guide",
+    eyebrow: "High-risk",
+    title: "High-risk payment processing guide",
+    excerpt:
+      "CBD, gaming, nutra, firearms, travel, subscriptions: how underwriting classifies you, what reserves and VAMP thresholds cost, and which processors approve.",
   },
 ];
 
@@ -44,11 +51,11 @@ export default function EditorialPicks() {
             id="editorial-picks-heading"
             className="font-display text-3xl md:text-4xl font-bold text-foreground"
           >
-            Three guides every merchant should read first
+            Four guides every merchant should read first
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {PICKS.map((p) => (
             <Link
               key={p.href}

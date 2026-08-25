@@ -50,6 +50,9 @@ export default function BestPaymentProcessors2026Content() {
                     <li>Next-day or same-day funding can <strong className="text-foreground">dramatically improve cash flow</strong></li>
                     <li>Hidden fees can add <strong className="text-foreground">15-30%</strong> to your annual processing costs</li>
                   </ul>
+                  <p className="mt-4 text-sm text-muted-foreground">
+                    For CBD, gaming, nutra, firearms, travel or subscription merchants, the processors above will decline or freeze you; start with our <Link href="/insights/high-risk-payment-processing-guide" className="text-primary font-medium hover:underline">high-risk payment processing guide</Link> instead.
+                  </p>
                 </div>
               </section>
 
@@ -251,7 +254,7 @@ export default function BestPaymentProcessors2026Content() {
                 </div>
               </section>
 
-              <ReviewerBioBox />
+              <ReviewerBioBox linkProfile={false} />
 
               <footer className="py-8 border-t border-border">
                 <p className="text-xs text-muted-foreground">

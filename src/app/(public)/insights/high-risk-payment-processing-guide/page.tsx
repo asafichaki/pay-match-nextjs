@@ -3,7 +3,8 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "High-Risk Payment Processing Guide: Chargeback Management & Fraud Prevention (2026)",
+  // absolute: lead with the money query "high risk payment processing"; 59 chars, no layout suffix.
+  title: { absolute: "High-Risk Payment Processing Guide 2026: Approval, Reserves" },
   description: "Complete 2026 guide to high-risk payment processing. Reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable merchant accounts for CBD, gaming, subscription, and e-commerce businesses.",
   keywords: "high-risk payment processing, chargeback management, fraud prevention, VAMP compliance, high-risk merchant account, CBD payment processing, gaming merchant account, subscription billing",
   alternates: {
@@ -16,7 +17,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide",
-    title: "High-Risk Payment Processing Guide: Chargeback Management & Fraud Prevention (2026)",
+    publishedTime: "2025-12-09T00:00:00.000Z",
+    modifiedTime: "2026-08-25T00:00:00.000Z",
+    title: "High-Risk Payment Processing Guide 2026: Approval, Reserves",
     description: "Proven strategies to reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable high-risk merchant accounts.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
@@ -56,7 +59,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
       }
     },
     "datePublished": "2025-12-09",
-    "dateModified": "2025-12-09",
+    "dateModified": "2026-08-25",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide"
@@ -283,7 +286,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                   <span className="font-medium text-primary">High-Risk Processing</span>
                   <span>•</span>
-                  <span>Updated December 2026</span>
+                  <span>Updated August 2026</span>
                 </div>
                 
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
@@ -319,6 +322,52 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </p>
               </section>
 
+              {/* Providers at a glance: the 5 ItemList providers already in the JSON-LD above, same descriptions, no new claims. Matches the "best high-risk processors" intent Google routes to generic best-of pages. */}
+              <section aria-labelledby="providers-glance-heading" className="mb-12">
+                <h2 id="providers-glance-heading" className="text-xl font-semibold text-foreground mb-3">High-risk processors at a glance (2026)</h2>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Five providers that publicly accept regulated-but-legal verticals. Rates are quoted per merchant on underwriting; the full breakdown is in <a href="#choosing-processor" className="text-primary hover:underline">section 7</a>.
+                </p>
+                <div className="overflow-x-auto -mx-4 px-4">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b-2 border-foreground">
+                        <th className="py-3 text-left font-semibold">Provider</th>
+                        <th className="py-3 text-left font-semibold">Pricing model</th>
+                        <th className="py-3 text-left font-semibold">Compare</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                      <tr>
+                        <td className="py-3 font-medium"><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
+                        <td className="py-3">Interchange-plus and tiered high-risk pricing; rate quoted per merchant on underwriting</td>
+                        <td className="py-3"><Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">vs Durango</Link></td>
+                      </tr>
+                      <tr>
+                        <td className="py-3 font-medium"><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
+                        <td className="py-3">Domestic and offshore high-risk pricing; rate quoted per merchant and acquirer</td>
+                        <td className="py-3"><Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">vs PaymentCloud</Link></td>
+                      </tr>
+                      <tr>
+                        <td className="py-3 font-medium"><a href="https://easypaydirect.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Easy Pay Direct</a></td>
+                        <td className="py-3">High-risk pricing with multi-bank load balancing; rate quoted per merchant</td>
+                        <td className="py-3"><Link href="/comparisons/paymentcloud-vs-easy-pay-direct" className="text-primary hover:underline">vs PaymentCloud</Link></td>
+                      </tr>
+                      <tr>
+                        <td className="py-3 font-medium"><a href="https://soarpayments.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
+                        <td className="py-3">High-risk pricing; rate quoted per merchant on underwriting</td>
+                        <td className="py-3"><Link href="/comparisons/stripe-high-risk-alternatives" className="text-primary hover:underline">Stripe alternatives</Link></td>
+                      </tr>
+                      <tr>
+                        <td className="py-3 font-medium"><a href="https://www.hostmerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Host Merchant Services</a></td>
+                        <td className="py-3">Interchange-plus high-risk pricing; rate quoted per merchant</td>
+                        <td className="py-3"><Link href="/comparisons/stripe-high-risk-alternatives" className="text-primary hover:underline">Stripe alternatives</Link></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
               {/* Table of Contents */}
               <nav className="mb-12 p-6 bg-muted/30 rounded-lg">
                 <h2 className="text-lg font-semibold text-foreground mb-4">Table of Contents</h2>
@@ -337,6 +386,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </ul>
               </nav>
 
+              {/* Check 2 verdict (2026-08-25): not a duplicate fight (max 5-gram Jaccard 1.5% vs the cluster). Cause: a stale quality verdict on the March version (future date, 2025 headings, fabricated author) plus link starvation. PR 1 answer: literal dates, 2026 headings, money-query title, providers table above, links from the homepage tile, the /comparisons hub, the /insights hub pin, best-payment-processors-2026 and the fees guide. */}
               {/* Article Content */}
               <div className="prose prose-lg max-w-none">
                 <p className="text-lg text-foreground leading-relaxed">
@@ -349,7 +399,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
 
                 {/* Section 1 */}
                 <h2 id="understanding" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
-                  1. Understanding High-Risk Payment Processing in 2025
+                  1. Understanding High-Risk Payment Processing in 2026
                 </h2>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">What is High-Risk Payment Processing?</h3>
@@ -373,7 +423,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                   For a detailed breakdown of how processing fees work and strategies to reduce them, see our <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">Complete Guide to Credit Card Processing Fees</Link>.
                 </p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The 2025 Payment Processing Landscape</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The 2026 Payment Processing Landscape</h3>
 
                 <p className="text-foreground leading-relaxed">
                   The payment processing ecosystem has undergone significant transformation following <a href="https://usa.visa.com/support/merchant/library/visa-acquirer-monitoring-program.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa's implementation of VAMP</a> in 2024. This change has made acquiring banks significantly more selective, with underwriters now requiring:
@@ -780,6 +830,9 @@ export default function HighRiskPaymentProcessingGuidePage() {
                       <Link href="/insights/firearms-merchant-account" className="text-primary hover:underline">Firearms and FFL merchant accounts</Link>: who approves gun and ammo sales online and in store, and how to stay live.
                     </li>
                     <li>
+                      <Link href="/insights/gaming-merchant-account" className="text-primary hover:underline">Gaming and esports merchant accounts</Link>: the legal line between licensed iGaming (MCC 7995) and video games (MCC 5816), and who approves each side of it.
+                    </li>
+                    <li>
                       <Link href="/insights/nutra-supplement-merchant-account" className="text-primary hover:underline">Nutra and supplement merchant accounts</Link>: handling FTC scrutiny, free-trial chargebacks, and high return rates.
                     </li>
                     <li>
@@ -868,7 +921,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                     &ldquo;Most merchants treat the rolling reserve as fixed, and it is not. The number on your first offer is the acquirer&rsquo;s opening position, not the bank&rsquo;s final answer. When I take a clean six-month processing history back to a risk desk in writing, low chargebacks, fulfillment on time, fraud tooling switched on, the reserve almost always comes down, either in percentage or in hold window. The mistake is asking on a phone call instead of in writing, and asking before you have a track record instead of after.&rdquo;
                   </blockquote>
                   <figcaption className="mt-3 text-sm text-muted-foreground not-italic">
-                    <a href="/about/barak" className="text-primary hover:underline font-medium">Barak Bachar</a>, Global Payments Manager, myPayAdvisor
+                    <span className="font-medium text-foreground">Barak Bachar</span>, Global Payments Manager, myPayAdvisor
                   </figcaption>
                 </figure>
 
@@ -971,6 +1024,10 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <div className="mt-12 pt-8 border-t border-border">
                   <h3 className="text-xl font-semibold text-foreground mb-6">Related Articles</h3>
                   <div className="grid gap-4">
+                    <Link href="/insights/gaming-merchant-account" className="group p-4 border border-border rounded-lg hover:border-primary transition-colors">
+                      <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">Gaming Merchant Account: 2026 Approval Guide</h4>
+                      <p className="text-sm text-muted-foreground mt-1">iGaming vs video games, which processors approve each, and what large merchants can negotiate</p>
+                    </Link>
                     <Link href="/insights/credit-card-processing-fees-explained" className="group p-4 border border-border rounded-lg hover:border-primary transition-colors">
                       <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">Credit Card Processing Fees Explained</h4>
                       <p className="text-sm text-muted-foreground mt-1">Complete guide to understanding and reducing merchant fees</p>
