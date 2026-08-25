@@ -1,6 +1,17 @@
 import { BARAK_LINKEDIN, BARAK_NAME, BARAK_TITLE } from "@/data/personas/barak";
 
-export default function ReviewerBioBox({ className }: { className?: string }) {
+type Props = {
+  className?: string;
+  /**
+   * Link the reviewer name to /about/barak. Default true. Pass false on pages
+   * that already carry a contextual byline link near the H1 (ArticleByline or
+   * an inline "Reviewed by" line), so each article links /about/barak exactly
+   * once and the rest of the internal equity stays on the cornerstones.
+   */
+  linkProfile?: boolean;
+};
+
+export default function ReviewerBioBox({ className, linkProfile = true }: Props) {
   return (
     <aside
       className={
@@ -23,25 +34,26 @@ export default function ReviewerBioBox({ className }: { className?: string }) {
         />
         <div className="flex-1">
           <p className="font-semibold text-foreground text-lg">
-            <a href="/about/barak" className="hover:underline">
-              {BARAK_NAME}
-            </a>{" "}
-            <span className="font-normal text-muted-foreground">— {BARAK_TITLE}</span>
+            {linkProfile ? (
+              <a href="/about/barak" className="hover:underline">
+                {BARAK_NAME}
+              </a>
+            ) : (
+              <span>{BARAK_NAME}</span>
+            )}{" "}
+            <span className="font-normal text-muted-foreground">, {BARAK_TITLE}</span>
           </p>
           <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
             Hands-on payments operator with experience at the $500M+ annual volume level. Reviews myPayAdvisor editorial for technical accuracy on pricing, acquirer routing, reserves, and approval-rate optimization.
           </p>
           <div className="mt-3 flex flex-wrap gap-3 text-xs">
-            <a href="/about/barak" className="text-primary font-medium hover:underline">
-              Full profile →
-            </a>
             <a
               href={BARAK_LINKEDIN}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground"
             >
-              LinkedIn ↗
+              LinkedIn
             </a>
           </div>
         </div>

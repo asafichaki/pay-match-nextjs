@@ -58,7 +58,9 @@ const failures = [];
 
 for (const file of walk(SRC)) {
   const src = readFileSync(file, "utf8");
-  if (!src.includes("ComparisonSchema")) continue;
+  // ComparisonSchema (comparison shells) and ExpertQuote (insight pages) share
+  // the QuotationPayload shape; both are gated.
+  if (!src.includes("ComparisonSchema") && !src.includes("ExpertQuote")) continue;
   if (!src.includes("quotation=")) continue;
 
   const re = /quotation=\s*\{/g;

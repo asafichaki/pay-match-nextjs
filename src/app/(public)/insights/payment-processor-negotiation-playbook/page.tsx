@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
-import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN, BARAK_PERSON_ID } from "@/data/personas/barak";
+import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 import { ExpertQuote } from "@/components/article/ExpertQuote";
 
 const URL = "https://www.mypayadvisor.com/insights/payment-processor-negotiation-playbook";
@@ -124,12 +124,24 @@ export default function Page() {
               </p>
 
               <ExpertQuote
-                quote="The most expensive sentence in payments is 'we don't have room to negotiate on that.' Above $25K monthly volume, every flat fee on the statement is on the table. Above $100K, the markup itself is on the table. The processor never volunteers it, you have to ask, in writing, with a competing quote in the same email."
-                authorName={BARAK_NAME}
-                authorRole={`${BARAK_TITLE}, myPayAdvisor`}
-                authorSlug="barak"
-                personId={BARAK_PERSON_ID}
-                articleUrl="https://www.mypayadvisor.com/insights/payment-processor-negotiation-playbook"
+                pageUrl="https://www.mypayadvisor.com/insights/payment-processor-negotiation-playbook"
+                quotation={{
+                  text: "The most expensive sentence in payments is 'we don't have room to negotiate on that.' Above $25K monthly volume, every flat fee on the statement is on the table. Above $100K, the markup itself is on the table. The processor never volunteers it, you have to ask, in writing, with a competing quote in the same email.",
+                  creator: {
+                    "@type": "Person",
+                    name: "Barak Bachar",
+                    jobTitle: "Global Payments Manager",
+                    worksFor: { "@type": "Organization", name: "myPayAdvisor" },
+                    url: "https://www.mypayadvisor.com/about/barak",
+                  },
+                  publisher: {
+                    "@type": "Organization",
+                    name: "myPayAdvisor",
+                    url: "https://www.mypayadvisor.com",
+                  },
+                  isBasedOn: "https://www.mypayadvisor.com/about/barak",
+                  inLanguage: "en-US",
+                }}
               />
 
               <h2 id="lever-1" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">

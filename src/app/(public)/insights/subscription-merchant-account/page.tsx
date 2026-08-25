@@ -337,7 +337,7 @@ export default function SubscriptionMerchantAccountPage() {
                   &ldquo;Most subscription businesses obsess over their decline rate and ignore their recovery rate, which is the number that actually pays the bills. When I look at a recurring book, the first thing I check is whether an account updater is even switched on, because a stale card on file is the most preventable churn there is. Get the silent fixes working before you write a single dunning email, and the email you do send lands with a customer who still wants to stay.&rdquo;
                 </blockquote>
                 <figcaption className="mt-3 text-sm text-muted-foreground not-italic">
-                  <a href="/about/barak" className="text-primary hover:underline font-medium">Barak Bachar</a>, Global Payments Manager, myPayAdvisor
+                  <span className="font-medium text-foreground">Barak Bachar</span>, Global Payments Manager, myPayAdvisor
                 </figcaption>
               </figure>
 
