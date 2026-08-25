@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   other: {
     "article:published_time": "2026-01-01T00:00:00.000Z",
-    "article:modified_time": new Date().toISOString(),
+    "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
 
@@ -91,6 +91,7 @@ export default function BestPaymentProcessors2026Page() {
         description="Expert ranking of the 15 best payment processors for 2026 by effective rate across volume tiers. Stripe, Helcim, Stax, Payment Depot, Leaders Merchant Services and more."
         slug="best-payment-processors-2026"
         datePublished="2026-01-01"
+        dateModified="2026-08-25"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

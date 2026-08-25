@@ -56,8 +56,13 @@ export type ComparisonSchemaProps = {
   slug: string;
   /** ISO date when the article first published. */
   datePublished: string;
-  /** ISO date of last meaningful update. Defaults to today. */
-  dateModified?: string;
+  /**
+   * ISO date of last meaningful update. Required and literal on purpose:
+   * a render-time default turned every ISR revalidation into fake freshness
+   * (PR 1, 2026-08-25). Use the file's real git date; scripts/seo/check-dates.mjs
+   * fails the build on new Date() / todayIso() inside metadata or JSON-LD.
+   */
+  dateModified: string;
   /** Override breadcrumb trail. Defaults to Home > Comparisons > {title}. */
   breadcrumbItems?: BreadcrumbItem[];
   /** Override hero image absolute URL. Defaults to og-logo.png. */
@@ -67,10 +72,6 @@ export type ComparisonSchemaProps = {
   /** Optional expert Quotation node appended to the JSON-LD @graph. */
   quotation?: QuotationPayload;
 };
-
-function todayIso(): string {
-  return new Date().toISOString().slice(0, 10);
-}
 
 function resolveUrl(item: string | undefined, fallback: string): string {
   if (!item) return fallback;
@@ -111,7 +112,7 @@ export function ComparisonSchema({
     inLanguage: "en-US",
     image,
     datePublished,
-    dateModified: dateModified ?? todayIso(),
+    dateModified,
     author: {
       "@type": "Organization",
       "@id": ORG_ID,

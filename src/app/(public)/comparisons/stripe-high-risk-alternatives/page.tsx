@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   other: {
     "article:published_time": "2026-05-30T00:00:00.000Z",
-    "article:modified_time": new Date().toISOString(),
+    "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
 
@@ -198,6 +198,7 @@ export default function StripeHighRiskAlternativesPage() {
         description="Real high-risk payment processors that approve merchants Stripe declines, freezes, or terminates: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, Host Merchant Services, reviewed by a payments operator."
         slug="stripe-high-risk-alternatives"
         datePublished="2026-05-30"
+        dateModified="2026-08-25"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

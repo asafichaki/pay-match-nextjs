@@ -247,7 +247,7 @@ export default function StripeVsPayPalContent() {
             </div>
           </section>
 
-          <ReviewerBioBox />
+          <ReviewerBioBox linkProfile={false} />
 
           <footer className="py-8 border-t border-border">
             <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links.</p>
