@@ -51,6 +51,9 @@ export default function SquareVsStripeContent() {
                 Square charges <strong>2.6% + $0.10</strong> in-person and <strong>2.9% + $0.30</strong> online. Stripe charges <strong>2.7% + $0.05</strong> in-person and <strong>2.9% + $0.30</strong> online.
                 For physical retail under $80,000 monthly, Square is usually cheaper because hardware is free and tap-to-pay is built in. For online-only or developer-driven setups, Stripe wins on API depth, subscriptions, and global currency support.
               </p>
+              <p className="text-foreground leading-relaxed">
+                In person, the crossover ticket is exactly <strong>$50</strong>: Stripe&rsquo;s lower fixed fee wins below it, Square&rsquo;s lower percentage wins above it. Square funds next business day for free; Stripe funds in 2 business days, or instantly for 1.5% of the transfer. Above $80,000 monthly, neither flat rate is the cheapest answer: an interchange-plus processor typically saves 0.30 to 0.60 percent.
+              </p>
               <p className="text-foreground">
                 <strong className="text-primary">Choose Square</strong> if you have a physical store and need an all-in-one <Link href="/insights" className="text-primary hover:underline">POS system</Link> with free hardware.
               </p>
@@ -97,6 +100,9 @@ export default function SquareVsStripeContent() {
                     { feature: "Best For", square: "In-person, brick-and-mortar", stripe: "Online, developers, SaaS" },
                     { feature: "In-Person Rate", square: "2.6% + $0.10", stripe: "2.7% + $0.05", squareWins: true },
                     { feature: "Online Rate", square: "2.9% + $0.30", stripe: "2.9% + $0.30" },
+                    { feature: "Standard Payout", square: "Next business day, free", stripe: "2 business days", squareWins: true },
+                    { feature: "Instant Payout", square: "1.75% of transfer", stripe: "1.5% of transfer", stripeWins: true },
+                    { feature: "Monthly, PCI, Statement Fees", square: "$0 on the free plan", stripe: "$0" },
                     { feature: "Free POS System", square: "Yes", stripe: "No", squareWins: true },
                     { feature: "Free Hardware", square: "Yes", stripe: "No", squareWins: true },
                     { feature: "Setup Difficulty", square: "Easy", stripe: "Moderate-Advanced", squareWins: true },
@@ -237,7 +243,7 @@ export default function SquareVsStripeContent() {
             </div>
 
             <p className="text-sm text-muted-foreground mb-8">
-              *Square is technically cheaper for in-person IF transaction is over $0.50. For smaller amounts, Stripe's lower fixed fee wins.
+              *Square is cheaper in person once the ticket is over $50: 2.6% + $0.10 and 2.7% + $0.05 cross at exactly a $50 ticket. Below that, Stripe's lower fixed fee wins.
             </p>
 
             <h3 className="font-semibold text-foreground mb-4">Real-World Cost Examples</h3>
@@ -265,6 +271,40 @@ export default function SquareVsStripeContent() {
                 </p>
               </div>
             </div>
+
+            <h3 className="font-semibold text-foreground mt-10 mb-4">Above $80K a month: when neither flat rate wins</h3>
+            <p className="text-muted-foreground mb-4">
+              Both published rates bake in roughly 0.40 to 0.60 percent of markup over interchange, depending on card mix. Around $80K to $100K in monthly card volume that markup starts costing more than an interchange-plus account. At $250K monthly with a typical retail card mix, an interchange-plus processor with a 0.40 percent markup lands 0.30 to 0.60 percent below either flat rate, roughly $12,000 to $18,000 a year on $3M of annual volume. Stripe offers custom interchange-plus pricing through its sales team above that range; the published 2.9% + $0.30 is the self-serve rate.
+            </p>
+            <div className="overflow-x-auto -mx-4 px-4 mb-4">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b-2 border-foreground">
+                    <th className="py-3 text-left font-semibold">Processor</th>
+                    <th className="py-3 text-center font-semibold">In-Person</th>
+                    <th className="py-3 text-center font-semibold">Online</th>
+                    <th className="py-3 text-center font-semibold">Monthly Fee</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {[
+                    { name: "Square", inPerson: "2.6% + $0.10", online: "2.9% + $0.30", monthly: "$0" },
+                    { name: "Stripe", inPerson: "2.7% + $0.05", online: "2.9% + $0.30", monthly: "$0" },
+                    { name: "Helcim (interchange-plus)", inPerson: "Interchange + 0.40% + $0.08", online: "Interchange + 0.50% + $0.25", monthly: "$0" },
+                  ].map((row, i) => (
+                    <tr key={i}>
+                      <td className="py-3 font-medium">{row.name}</td>
+                      <td className="py-3 text-center">{row.inPerson}</td>
+                      <td className="py-3 text-center">{row.online}</td>
+                      <td className="py-3 text-center">{row.monthly}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              See how the interchange-plus math plays out in <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline">Helcim vs Stripe</Link> and <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline">Square vs Helcim</Link>.
+            </p>
           </section>
 
           <section id="pos" className="py-10 border-b border-border">
@@ -442,6 +482,10 @@ export default function SquareVsStripeContent() {
                 { q: "Do I need a developer for Stripe?", a: "Not necessarily. You don't need a developer if using Stripe with platforms like Shopify/WooCommerce, Stripe Checkout hosted pages, or simple payment links. Developers are helpful for custom checkout design and required for building marketplaces or complex automation." },
                 { q: "Can I accept international payments with Square?", a: "Very limited. Square only operates in 8 countries with no currency conversion or local payment methods. Stripe supports 46 countries, 135+ currencies, and local payment methods - making it the clear choice for international businesses." },
                 { q: "Can I switch from Square to Stripe (or vice versa)?", a: "Yes, and it's straightforward with no cancellation fees from either processor. Timeline is typically 1-3 weeks including account setup, integration, customer data migration, and testing." },
+                { q: "When does it make sense to leave Stripe or Square for interchange-plus?", a: "Around $80K to $100K in monthly card volume, the markup baked into a 2.6 to 2.9 percent flat rate starts costing more than a monthly subscription or a small interchange-plus markup. At $250K monthly volume with an average retail card mix, an interchange-plus processor with a 0.40 percent markup typically lands 0.30 to 0.60 percent below either flat rate. On $3M annual volume that is roughly $12,000 to $18,000 saved per year. The exception is if you have heavy seasonality or unstable volume, where unpredictable monthly fees can hurt more than the percentage savings help." },
+                { q: "Does Square ever charge a monthly fee?", a: "Not on the free plan. Square POS, Square Dashboard, and basic invoicing are free, and you only pay per transaction. Square does charge monthly subscriptions for vertical-specific software: Square for Restaurants Plus is $69 per location per month, Square for Retail Plus is $89 per location per month, Square Appointments Plus is $29 per location per month. Square Online is free with paid plans starting at $29 per month for custom domain and removed Square branding. Hardware is sold separately. PCI compliance, statement fees, and account closure fees are not charged on the standard plan." },
+                { q: "Why is Stripe's published rate higher than what large enterprises pay?", a: "The 2.9 percent plus 30 cents number is Stripe's standard plan, designed for self-serve signups under $80K monthly volume. Stripe offers custom interchange-plus pricing through its sales team for higher-volume merchants, where the markup is typically negotiated as a small percentage and per-transaction fee on top of true interchange. The published rate has to cover Stripe's full cost (interchange, network fees, processing margin, fraud risk, and software) for any account that signs up without a conversation, so it is intentionally above what a $1M+ monthly volume merchant would actually pay after negotiation." },
+                { q: "Can Square hold my money?", a: "Yes. Square's Seller Agreement allows account holds, rolling reserves, and termination at Square's discretion, particularly for merchants in higher-risk categories or those whose volume patterns trigger automated risk filters. Common triggers include a sudden volume spike, high chargeback ratio, or a merchant category code (firearms, supplements, CBD, ticket resale, certain coaching) that Square treats as elevated risk. Funds are typically held for 30 to 90 days. The defensive move for any business in those verticals is to set up a parallel interchange-plus merchant account on day one, so a Square hold does not freeze your operations." },
               ].map((faq, i) => (
                 <div key={i} className="border-b border-border pb-6 last:border-b-0">
                   <h3 className="font-semibold text-foreground mb-2">{faq.q}</h3>
@@ -500,7 +544,7 @@ export default function SquareVsStripeContent() {
             </div>
           </section>
 
-          <ReviewerBioBox />
+          <ReviewerBioBox linkProfile={false} />
 
           <footer className="py-8 border-t border-border">
             <p className="text-xs text-muted-foreground leading-relaxed">

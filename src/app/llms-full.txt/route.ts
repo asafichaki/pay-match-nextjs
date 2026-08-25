@@ -6,6 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
 import { REDIRECTED_INSIGHT_SLUGS } from "@/lib/insights/redirected-slugs";
+import { REDIRECTED_COMPARISON_SLUGS } from "@/lib/comparisons/redirected-slugs";
 
 export const revalidate = 3600;
 export const runtime = "nodejs";
@@ -106,7 +107,8 @@ async function fetchDbEntries(kind: "insights" | "comparisons"): Promise<CorpusE
       .order("published_at", { ascending: false })
       .limit(500);
     if (!data) return [];
-    return (data as any[]).map((row): CorpusEntry => ({
+    const redirected = kind === "insights" ? REDIRECTED_INSIGHT_SLUGS : REDIRECTED_COMPARISON_SLUGS;
+    return (data as any[]).filter((row) => !redirected.has(row.slug)).map((row): CorpusEntry => ({
       kind,
       slug: row.slug,
       title: row.title || row.slug,
