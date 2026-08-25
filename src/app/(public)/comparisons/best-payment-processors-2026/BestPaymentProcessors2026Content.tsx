@@ -27,16 +27,10 @@ export default function BestPaymentProcessors2026Content() {
                 <p className="aeo-answer text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8" data-speakable="true">
                   Updated May 2026. Helcim ranks #1 at 2.51% effective, Adyen 2.32% (enterprise only), Square 2.65%, Stripe 2.97%, PayPal 3.07%. Barak Bachar ranked 15 U.S. processors by effective rate across four merchant volumes from $10K to $1M monthly. Full table below.
                 </p>
-                <div className="flex items-center gap-4">
-                  <img src="/images/hannah-sutton.png" alt="MyPayAdvisor Team" className="w-12 h-12 rounded-full object-cover object-top" />
-                  <div>
-                    <p className="font-semibold text-foreground">MyPayAdvisor Team</p>
-                    <p className="text-sm text-muted-foreground">Payment Processing Experts - January 2026</p>
-                  </div>
-                </div>
                 <ArticleByline
                   author="Reviewed by Barak Bachar"
                   authorUrl="/about/barak"
+                  lastUpdated="2026-08-25"
                   className="mt-4"
                 />
 

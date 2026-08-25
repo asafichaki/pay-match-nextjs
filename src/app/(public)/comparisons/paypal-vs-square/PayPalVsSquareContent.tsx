@@ -26,16 +26,10 @@ export default function PayPalVsSquareContent() {
                 <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                   In-person POS vs online payments excellence. A comprehensive breakdown of fees, features, and best use cases to help you decide which platform suits your business model.
                 </p>
-                <div className="flex items-center gap-4">
-                  <img src="/images/hannah-sutton.png" alt="Hannah Sutton" className="w-12 h-12 rounded-full object-cover object-top" />
-                  <div>
-                    <p className="font-semibold text-foreground">Hannah Sutton</p>
-                    <p className="text-sm text-muted-foreground">Finance & Payments Analyst - Updated January 2026</p>
-                  </div>
-                </div>
                 <ArticleByline
                   author="Reviewed by Barak Bachar"
                   authorUrl="/about/barak"
+                  lastUpdated="2026-08-25"
                   className="mt-4"
                 />
               </header>

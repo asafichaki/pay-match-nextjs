@@ -30,20 +30,10 @@ export default function SquareVsStripeContent() {
               Verdict, May 2026: <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> wins for retail under $80K monthly at a 2.65% effective in-person rate. Stripe wins for SaaS, subscriptions, and any online-first business at 2.97% effective. Barak Bachar reconciled both processors against 47 merchant statements. Full breakdown below.
             </p>
 
-            <div className="flex items-center gap-4">
-              <img
-                src="/images/hannah-sutton.png"
-                alt="Hannah Sutton"
-                className="w-12 h-12 rounded-full object-cover object-top"
-              />
-              <div>
-                <p className="font-semibold text-foreground">Hannah Sutton</p>
-                <p className="text-sm text-muted-foreground">Finance & Payments Analyst - December 2026</p>
-              </div>
-            </div>
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
+              lastUpdated="2026-08-25"
               className="mt-4"
             />
 

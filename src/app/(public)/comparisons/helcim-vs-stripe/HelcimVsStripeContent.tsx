@@ -28,16 +28,10 @@ export default function HelcimVsStripeContent() {
               Stripe leads with best-in-class APIs.
               Which saves you more? Let's find out.
             </p>
-            <div className="flex items-center gap-4">
-              <img src="/images/hannah-sutton.png" alt="Hannah Sutton" className="w-12 h-12 rounded-full object-cover object-top" />
-              <div>
-                <p className="font-semibold text-foreground">Hannah Sutton</p>
-                <p className="text-sm text-muted-foreground">Finance & Payments Analyst - December 2026</p>
-              </div>
-            </div>
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
+              lastUpdated="2026-08-25"
               className="mt-4"
             />
           </header>
