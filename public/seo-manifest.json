@@ -1,0 +1,1796 @@
+{
+  "generated_at": "2026-08-26T10:55:18.604Z",
+  "rules_version": "2026-08-26.1",
+  "counts": {
+    "static": 56,
+    "db": 80,
+    "total": 136
+  },
+  "routes": [
+    {
+      "route": "/",
+      "kind": "pages",
+      "slug": "home",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "myPayAdvisor, A real payments operator reviews your shortlist",
+      "base_description": "Independently reviewed by people who've operated payment infrastructure at $500M+ annual volume. Real 2026 rates, the questions to ask each processor, no generic CRM.",
+      "outline": []
+    },
+    {
+      "route": "/quiz",
+      "kind": "pages",
+      "slug": "quiz",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Find Your Perfect Payment Processor - Free Quiz",
+      "base_description": "Take our free 2-minute quiz to get personalized payment processor recommendations. Compare fees, features, and find the best fit for your business type and volume.",
+      "outline": []
+    },
+    {
+      "route": "/calculator",
+      "kind": "pages",
+      "slug": "calculator",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Credit Card Processing Fee Calculator 2026",
+      "base_description": "Free calculator: enter monthly volume, average ticket and channel mix to estimate your effective rate across interchange-plus, flat-rate, and premium pricing models.",
+      "outline": [
+        "Understanding Payment Processing",
+        "Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights",
+      "kind": "pages",
+      "slug": "insights",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Payment Processing Insights & Expert Guides 2026",
+      "base_description": "Expert insights on payment processing, payment gateways, merchant services, and choosing the right payment provider in 2026. In-depth guides to optimize your business payments and reduce processing costs.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons",
+      "kind": "pages",
+      "slug": "comparisons",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Compare 15 Payment Processors: 2.32%-3.07% Real Rates",
+      "base_description": "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%, Adyen 2.32%. Side-by-side at $10K, $50K, $250K, $1M monthly. Updated May 2026.",
+      "outline": [
+        "Declined, frozen, or flagged as high-risk?"
+      ]
+    },
+    {
+      "route": "/glossary",
+      "kind": "pages",
+      "slug": "glossary",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Payment Processing Glossary",
+      "base_description": "Definitions for every payment processing term: interchange, effective rate, chargeback, PCI DSS, tokenization, AVS, MCC, and more. Independent reference for U.S. merchants.",
+      "outline": []
+    },
+    {
+      "route": "/research/methodology",
+      "kind": "pages",
+      "slug": "research/methodology",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Research Methodology",
+      "base_description": "How myPayAdvisor measures and reports U.S. payment processor effective rates, fees, and operator outcomes. Public methodology, sources, sample selection, and update cadence.",
+      "outline": [
+        "What we measure",
+        "Sample selection",
+        "Card-mix assumption",
+        "Inputs and data sources",
+        "How we calculate effective rate",
+        "What we do not claim",
+        "Reviewer",
+        "Update cadence",
+        "Corrections"
+      ]
+    },
+    {
+      "route": "/data/effective-rates-2026",
+      "kind": "pages",
+      "slug": "data/effective-rates-2026",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "2026 Payment Processor Effective Rate Database (US)",
+      "base_description": "Open dataset of effective rates for 12 US payment processors in 2026, at $10K / $50K / $250K / $1M monthly volume. Stripe, Square, PayPal, Helcim, Stax, Payment Depot and more.",
+      "outline": [
+        "Key 2026 effective-rate findings",
+        "Effective rate by processor × volume × channel",
+        "Methodology",
+        "Sources",
+        "Citing this dataset",
+        "Related"
+      ]
+    },
+    {
+      "route": "/about/barak",
+      "kind": "pages",
+      "slug": "about/barak",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Barak Bachar, Global Payments Manager",
+      "base_description": "Barak Bachar, Global Payments Manager, reviews payment-processing content on myPayAdvisor. Hands-on payments operator with experience at the $500M+ annual volume level.",
+      "outline": [
+        "About",
+        "Areas of focus",
+        "Editorial role"
+      ]
+    },
+    {
+      "route": "/pulse",
+      "kind": "pages",
+      "slug": "pulse",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "The Payments Pulse · myPayAdvisor",
+      "base_description": "What is moving in payments right now. Rate changes, processor news, outages, and weekly editorial roundups, tracked in near real time.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-100k-250k-monthly-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-100k-250k-monthly-2026",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Best Payment Processors for $100K-$250K Monthly Volume (2026)",
+      "base_description": "At $100K-$250K monthly, every basis point is $100-$250/month. Real 2026 IC++ rates, the negotiation leverage you have at this tier, and the four contract clauses to push on.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-10k-25k-monthly-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-10k-25k-monthly-2026",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Best Payment Processors for $10K-$25K Monthly Volume (2026)",
+      "base_description": "Flat-rate vs interchange-plus at $10K-$25K monthly: real 2026 effective rates for Stripe, Square, Helcim, PayPal, Stax. Which wins on $15K monthly volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-2026",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "15 Best Payment Processors 2026, Ranked by Effective Rate",
+      "base_description": "May 2026: Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked at $10K, $50K, $250K, $1M monthly. Real rates.",
+      "outline": [
+        "Key Findings",
+        "In This Guide",
+        "Executive Summary",
+        "Why Payment Processing Matters",
+        "Top Payment Processors Reviewed",
+        "Additional Payment Processors Worth Considering",
+        "Essential Features to Look For",
+        "Cost Analysis",
+        "Frequently Asked Questions",
+        "Not Sure Which Processor Is Right?",
+        "Related Comparisons"
+      ]
+    },
+    {
+      "route": "/comparisons/best-payment-processors-25k-50k-monthly-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-25k-50k-monthly-2026",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Best Payment Processors for $25K-$50K Monthly Volume (2026)",
+      "base_description": "At $25K-$50K monthly, interchange-plus (Helcim, Stax) starts beating flat-rate (Stripe, Square) by 0.30-0.45% on effective rate. Here is the real math.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-500k-1m-monthly-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-500k-1m-monthly-2026",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Best Payment Processors for $500K-$1M Monthly Volume (2026)",
+      "base_description": "$500K-$1M monthly merchants belong on direct acquirer contracts or enterprise IC++ from Adyen, Worldpay, or Global Payments. Real 2026 rates and negotiation leverage.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-50k-100k-monthly-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-50k-100k-monthly-2026",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Best Payment Processors for $50K-$100K Monthly Volume (2026)",
+      "base_description": "$50K-$100K monthly: Helcim, Stax, Payment Depot, and negotiated IC++ from independent ISOs. Real 2026 rates, the four hidden fees to push on, and when to negotiate.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/helcim-vs-stripe",
+      "kind": "comparisons",
+      "slug": "helcim-vs-stripe",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly",
+      "base_description": "Helcim vs Stripe fees in 2026: Helcim's 2.51% interchange-plus beats Stripe's 2.97% flat rate above $25K monthly, with no monthly fee. Stripe wins on SaaS subscriptions.",
+      "outline": [
+        "Quick Verdict",
+        "In This Article",
+        "Quick Comparison",
+        "What Is Helcim?",
+        "What Is Stripe?",
+        "Pricing Deep Dive",
+        "Features Comparison",
+        "When to Choose Each",
+        "Frequently Asked Questions",
+        "Final Verdict",
+        "Not Sure Which Processor Is Right?",
+        "Related Comparisons"
+      ]
+    },
+    {
+      "route": "/comparisons/paymentcloud-vs-durango",
+      "kind": "comparisons",
+      "slug": "paymentcloud-vs-durango",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "PaymentCloud vs Durango 2026: Which High-Risk Processor Approves You Faster",
+      "base_description": "PaymentCloud vs Durango Merchant Services for high-risk merchants. Approved verticals, reserves, approval speed, and offshore options compared. Reviewed by a payments operator.",
+      "outline": [
+        "Quick Verdict",
+        "In This Article",
+        "Side-by-Side Comparison",
+        "PaymentCloud at a Glance",
+        "Durango Merchant Services at a Glance",
+        "Reserves Compared: The Number That Actually Matters",
+        "Which One Fits Your Vertical",
+        "The Operator&rsquo;s Verdict",
+        "Related"
+      ]
+    },
+    {
+      "route": "/comparisons/paymentcloud-vs-easy-pay-direct",
+      "kind": "comparisons",
+      "slug": "paymentcloud-vs-easy-pay-direct",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "PaymentCloud vs Easy Pay Direct 2026: High-Risk Approval and Multi-MID Compared",
+      "base_description": "PaymentCloud vs Easy Pay Direct for high-risk merchants. Approved verticals, reserves, load balancing across multiple MIDs, and approval speed compared. Reviewed by a payments operator.",
+      "outline": [
+        "Quick Verdict",
+        "In This Article",
+        "Side-by-Side Comparison",
+        "PaymentCloud at a Glance",
+        "Easy Pay Direct at a Glance",
+        "Reserves and Multi-MID: The Setup That Actually Matters",
+        "Which One Fits Your Business",
+        "The Operator&rsquo;s Verdict",
+        "Related"
+      ]
+    },
+    {
+      "route": "/comparisons/paypal-vs-square",
+      "kind": "comparisons",
+      "slug": "paypal-vs-square",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate",
+      "base_description": "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
+      "outline": [
+        "In This Article",
+        "Square vs PayPal: Quick Overview",
+        "Pricing & Fees Comparison",
+        "Core Features Head-to-Head",
+        "Hardware & POS Systems",
+        "International Business Support",
+        "Customer Support & Reliability",
+        "Which Is Best for Your Business?",
+        "Final Verdict",
+        "Frequently Asked Questions",
+        "Still Not Sure Which Is Right for You?",
+        "Related Comparisons"
+      ]
+    },
+    {
+      "route": "/comparisons/square-vs-stripe",
+      "kind": "comparisons",
+      "slug": "square-vs-stripe",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Square vs Stripe 2026: 2.65% In-Person vs 2.97% Online",
+      "base_description": "Square 2.6% + $0.10 in-person, Stripe 2.9% + $0.30 online. Square wins retail under $80K monthly, Stripe wins SaaS and subscriptions. May 2026 rates.",
+      "outline": [
+        "Quick Verdict",
+        "In This Article",
+        "Quick Comparison",
+        "What Is Square?",
+        "What Is Stripe?",
+        "Pricing Breakdown",
+        "Point of Sale (POS) Systems",
+        "Features Comparison",
+        "When to Choose Each Processor",
+        "Pros and Cons",
+        "Frequently Asked Questions",
+        "Final Verdict"
+      ]
+    },
+    {
+      "route": "/comparisons/stripe-high-risk-alternatives",
+      "kind": "comparisons",
+      "slug": "stripe-high-risk-alternatives",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Stripe High-Risk Alternatives 2026: Where to Go After a Freeze",
+      "base_description": "Stripe froze your account or holds your funds? Here are real high-risk payment processors that approve merchants Stripe declines: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, and Host Merchant Services. Reviewed by a payments operator.",
+      "outline": [
+        "Quick Answer",
+        "In This Article",
+        "Why Stripe Freezes High-Risk Accounts",
+        "The Five Real Alternatives",
+        "Side-by-Side Comparison",
+        "What to Do About Frozen Funds This Week",
+        "Which One to Choose",
+        "The Operator&rsquo;s Verdict",
+        "Related"
+      ]
+    },
+    {
+      "route": "/comparisons/stripe-vs-paypal",
+      "kind": "comparisons",
+      "slug": "stripe-vs-paypal",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate",
+      "base_description": "Stripe 2.9% + $0.30, PayPal 3.49% + $0.49 commercial rate. Stripe wins on subscriptions and APIs. PayPal wins on 400M+ buyer trust. May 2026 rates.",
+      "outline": [
+        "Quick Verdict",
+        "In This Article",
+        "Quick Comparison",
+        "What Is Stripe?",
+        "What Is PayPal?",
+        "Pricing Comparison",
+        "Features Breakdown",
+        "Best Use Cases",
+        "Final Verdict",
+        "Not Sure Which Is Right?",
+        "Related"
+      ]
+    },
+    {
+      "route": "/insights/approval-rate-recovery-routing-acquirers-3ds",
+      "kind": "insights",
+      "slug": "approval-rate-recovery-routing-acquirers-3ds",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Approval Rate Recovery: Routing, Acquirers, and 3DS2 in 2026",
+      "base_description": "Why approval rate problems are routing problems, not product problems. How interchange routing works, what acquirer-issuer relationships do to your auth rate, how 3DS2 frictionless flow recovers transactions, and a 90-day improvement roadmap.",
+      "outline": [
+        "In this article",
+        "Why approval rate problems are routing problems, not product problems",
+        "How interchange routing actually works",
+        "Acquirer-issuer relationships explained",
+        "3DS2 frictionless flow",
+        "Common config mistakes",
+        "Reading your auth-rate dashboard",
+        "The 90-day improvement roadmap",
+        "Soft declines vs hard declines: the recoverable layer",
+        "The reserves and contract terms that block routing changes",
+        "Frequently asked questions"
+      ]
+    },
+    {
+      "route": "/insights/best-payment-gateway-ecommerce",
+      "kind": "insights",
+      "slug": "best-payment-gateway-ecommerce",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Best Payment Gateway for Ecommerce: Complete 2025 Guide",
+      "base_description": "Complete guide to choosing the best payment gateway for ecommerce in 2025. Compare Stripe, PayPal, Square, Shopify Payments features, fees, and find the perfect solution.",
+      "outline": [
+        "Conclusion: Making the Right Decision",
+        "Related Articles"
+      ]
+    },
+    {
+      "route": "/insights/best-pos-systems-for-small-business-2026-niche-comparison-expert-picks",
+      "kind": "insights",
+      "slug": "best-pos-systems-for-small-business-2026-niche-comparison-expert-picks",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Best POS System by Business Type: 2026 Expert Picks",
+      "base_description": "The best POS system depends on your business type. 2026 expert picks: Square for retail, Toast for restaurants, Vagaro for services, plus Clover, Shopify, and Lightspeed compared by use case.",
+      "outline": [
+        "Top POS Systems for General Small Business Operations in 2026",
+        "Best POS Systems for Mobile and Pop-Up Businesses in 2026",
+        "Best POS Systems for Small Retail Stores in 2026",
+        "Best POS Systems for Small Restaurants and Cafes in 2026",
+        "Best POS Systems for Service-Based Businesses in 2026",
+        "Pricing Structures and Hardware Options Across Leading POS Systems in 2026",
+        "FAQ: Best POS Systems for Small Business 2026",
+        "Conclusion",
+        "Related comparisons"
+      ]
+    },
+    {
+      "route": "/insights/chargeback-management-solutions-a-merchant-s-guide-to-prevention-recovery",
+      "kind": "insights",
+      "slug": "chargeback-management-solutions-a-merchant-s-guide-to-prevention-recovery",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Chargeback Management Solutions: Prevention, Recovery & Costs",
+      "base_description": "Evaluate chargeback management solutions for your business. Learn about pricing, trade-offs, and how to prevent and recover revenue from disputes. Optimize your payment operations.",
+      "outline": [
+        "What are chargeback management solutions and why are they crucial for merchants?",
+        "What are the primary causes of chargebacks and how can merchants prevent them?",
+        "How do chargeback management solutions help merchants recover lost revenue?",
+        "What types of chargeback management solutions are available and how do they compare?",
+        "How should merchants evaluate and choose the best chargeback management solution for their business?",
+        "What are the typical costs and ROI of implementing chargeback management solutions?",
+        "Frequently Asked Questions About Chargeback Management Solutions",
+        "Conclusion"
+      ]
+    },
+    {
+      "route": "/insights/cost-of-payment-processing-professional-services",
+      "kind": "insights",
+      "slug": "cost-of-payment-processing-professional-services",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Cost of Payment Processing Solutions for Small Professional",
+      "base_description": "Small professional services businesses can expect payment processing costs to range from 1.5% to 3.5% per transaction in 2025-2026, plus monthly fees. This guide details fee structures, hidden costs, and strategies for consultants, lawyers, and therapists.",
+      "outline": [
+        "What are the Typical Payment Processing Costs for Small Professional Services Businesses in 2025-2026?",
+        "How Do Different Payment Processing Pricing Models Impact Professional Services Businesses?",
+        "What Specific Cost Implications Arise from Accepting Payments for Recurring Services or Retainers?",
+        "What are the Hidden Costs and Less Obvious Fees Professional Services Businesses Should Be Aware of?",
+        "How Do Payment Processors Integrate with Common Professional Services Software and What are the Cost Implications?",
+        "What are the Compliance Considerations that Impact Payment Processing Choices and Costs for Professional Services?",
+        "How Will New Payment Technologies Affect Processing Costs for Professional Services in 2025-2026?",
+        "What are the Best Strategies for Professional Services Businesses to Minimize Payment Processing Costs and Chargebacks?",
+        "Conclusion: Optimizing Payment Processing for Professional Services in 2025-2026"
+      ]
+    },
+    {
+      "route": "/insights/cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro",
+      "kind": "insights",
+      "slug": "cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "CPACharge vs Stripe 2026: Which Wins for Pro Services",
+      "base_description": "CPACharge vs Stripe in 2026: real rates, IOLTA/trust handling, surcharging, and which one fits law firms, accountants, and other pro services.",
+      "outline": [
+        "Why is Choosing the Right Payment Processor Critical in 2026?",
+        "What is CPACharge, and Who is it For?",
+        "What is Stripe, and Who is it For?",
+        "How Do CPACharge and Stripe Compare for Professional Services in 2026?",
+        "What are the Pros and Cons of CPACharge in 2026?",
+        "What are the Pros and Cons of Stripe in 2026?",
+        "Who Should Choose CPACharge in 2026?"
+      ]
+    },
+    {
+      "route": "/insights/credit-card-processing-fees-explained",
+      "kind": "insights",
+      "slug": "credit-card-processing-fees-explained",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Credit Card Processing Fees 2026: What You Actually Pay",
+      "base_description": "Real 2026 credit card processing rates by industry, the 4 hidden fees most merchants miss, and the negotiation moves that drop your effective rate.",
+      "outline": [
+        "Table of Contents",
+        "What Are Credit Card Processing Fees?",
+        "Complete Fee Breakdown: Every Cost Explained",
+        "Who Gets Your Money? Understanding the Payment Chain",
+        "How to Calculate Your True Processing Costs",
+        "Hidden Fees That Inflate Your Costs",
+        "Why Different Cards Cost Different Amounts",
+        "Pricing Models Decoded: Which Saves You Money?",
+        "15 Proven Strategies to Reduce Processing Fees",
+        "How to Negotiate Better Rates",
+        "Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/firearms-merchant-account",
+      "kind": "insights",
+      "slug": "firearms-merchant-account",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Firearms Merchant Account: Who Approves Gun & FFL Payment Processing (2026)",
+      "base_description": "Can a firearms business get a merchant account, and what does it cost? An operator's guide to firearms and FFL payment processing: who approves guns and ammo, why generalists decline them, reserves, and compliance.",
+      "outline": [
+        "Firearms classification: legal, but high-risk to acquirers",
+        "Processors that approve firearms (and how they underwrite)",
+        "Licensing is the document set that decides it",
+        "Reserves and rates: what firearms pricing turns on",
+        "Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/free-statement-audit-playbook",
+      "kind": "insights",
+      "slug": "free-statement-audit-playbook",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "How to Audit Your Merchant Statement: The 6-Step Playbook",
+      "base_description": "A 6-step audit playbook for merchant statements: pull 90 days, compute your effective rate, classify line items, find the four hidden fees, build the negotiation case, and decide whether to renegotiate or switch.",
+      "outline": [
+        "In this article",
+        "What a statement audit actually is",
+        "Step 1: Pull 90 days of statements",
+        "Step 2: Compute the effective rate",
+        "Step 3: Classify every line item",
+        "Step 4: Spot the four hidden fees",
+        "Step 5: Build the negotiation case",
+        "Step 6: Pick the next move",
+        "What audits typically uncover",
+        "Free DIY vs paid audit",
+        "Frequently asked questions",
+        "Worked example: a 90-day audit on a $180K monthly account"
+      ]
+    },
+    {
+      "route": "/insights/funds-frozen-what-to-do",
+      "kind": "insights",
+      "slug": "funds-frozen-what-to-do",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Stripe Account Frozen? What To Do When a Processor Freezes Your Funds (2026)",
+      "base_description": "Your processor froze your funds or your Stripe account is frozen. Here is the fixed operator response, in order, from a working payments operator: get the reason in writing, submit docs same day, stand up a backup MID, escalate to the risk department, involve counsel if needed.",
+      "outline": [
+        "Table of Contents",
+        "1. A funds freeze is a settlement hold, not a closure",
+        "2. Why Stripe and aggregators freeze accounts in the first place",
+        "3. The fixed operator response, step by step",
+        "4. Why a backup merchant account comes first, not last",
+        "5. What not to do",
+        "6. Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/gaming-merchant-account",
+      "kind": "insights",
+      "slug": "gaming-merchant-account",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Gaming Merchant Account: 2026 Approval Guide",
+      "base_description": "Why banks classify gaming as high-risk, where the legal line between iGaming and video games sits, and how high-volume gaming merchants get approved in 2026.",
+      "outline": [
+        "Gaming merchant accounts: why banks put gaming in the high-risk bucket",
+        "iGaming vs video games and esports: the legal line that decides your application",
+        "Gaming payment processors that actually approve gaming merchants",
+        "Rolling reserves: what they are and what large gaming merchants can negotiate",
+        "Gaming merchant account approval checklist: what underwriters ask for",
+        "How merchant size changes the conversation",
+        "The verdict: match the processor to your side of the line",
+        "FAQ: gaming merchant accounts"
+      ]
+    },
+    {
+      "route": "/insights/helcim-review-2025",
+      "kind": "insights",
+      "slug": "helcim-review-2025",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Helcim Review 2026: Real Rates, Hidden Fees, Verdict",
+      "base_description": "Helcim's interchange-plus pricing in 2026: real rates, what we like, what's missing, and when it beats Stripe and Square. No contracts, no fluff.",
+      "outline": [
+        "Quick Verdict",
+        "Table of Contents",
+        "What is Helcim?",
+        "Pricing Breakdown",
+        "Key Features",
+        "Pros and Cons",
+        "Real Cost Comparisons",
+        "Helcim vs Competitors",
+        "Who Should Choose Helcim?",
+        "Final Verdict",
+        "Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/high-risk-instant-approval-reality",
+      "kind": "insights",
+      "slug": "high-risk-instant-approval-reality",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "High-Risk Merchant Account Instant Approval: The Honest Reality (2026)",
+      "base_description": "Is high-risk merchant account instant approval real, and is an offshore merchant account the answer? A working payments operator on what instant approval actually means, where the trade-offs hide, and when offshore acquiring is the right call.",
+      "outline": [
+        "Table of Contents",
+        "1. What &ldquo;instant approval&rdquo; really means",
+        "2. Why real high-risk approval involves underwriting",
+        "3. Offshore merchant accounts: the honest trade-offs",
+        "4. How to read a fast-approval promise",
+        "5. Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/high-risk-payment-processing-guide",
+      "kind": "insights",
+      "slug": "high-risk-payment-processing-guide",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "High-Risk Payment Processing Guide 2026: Approval, Reserves",
+      "base_description": "Complete 2026 guide to high-risk payment processing. Reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable merchant accounts for CBD, gaming, subscription, and e-commerce businesses.",
+      "outline": [
+        "High-risk processors at a glance (2026)",
+        "Table of Contents",
+        "1. Understanding High-Risk Payment Processing in 2026",
+        "2. What Makes Your Business High-Risk?",
+        "3. The True Cost of Chargebacks: Beyond Transaction Fees",
+        "4. Visa VAMP & Mastercard Excessive Chargeback Programs",
+        "5. Proven Chargeback Management Strategies",
+        "6. Advanced Fraud Prevention Technologies",
+        "7. Selecting the Right High-Risk Payment Processor",
+        "8. Multi-MID Strategy for Business Continuity",
+        "9. Rolling Reserves & Cash Flow Management",
+        "10. Future Trends: AI, Blockchain & Cryptocurrency"
+      ]
+    },
+    {
+      "route": "/insights/how-to-read-merchant-statement",
+      "kind": "insights",
+      "slug": "how-to-read-merchant-statement",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "How to Read Your Merchant Statement: Ultimate 2025 Guide to Decoding Processing Fees",
+      "base_description": "Learn how to decode your merchant statement, understand processing fee acronyms like MTOT and NQUAL, calculate your effective rate, and identify junk fees costing your business thousands.",
+      "outline": [
+        "Table of Contents",
+        "1. Introduction: The Most Confusing Document on Your Desk",
+        "2. The Big Three: Understanding the Fee Hierarchy",
+        "3. Identify Your Pricing Model: The \"Shell Game\"",
+        "4. The \"Effective Rate\" Test: Are You Paying Too Much?",
+        "5. Decoding the Acronyms: A Glossary for Merchants",
+        "6. Red Flags: 5 Fees You Should Never Pay",
+        "7. Step-by-Step: How to Audit Your Statement in 5 Minutes",
+        "8. Conclusion: Transparency is Power",
+        "9. Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/in-person-payments-hardware-lockin-mdr",
+      "kind": "insights",
+      "slug": "in-person-payments-hardware-lockin-mdr",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "In-Person Payments: Hardware Lock-In and Hidden MDR in 2026",
+      "base_description": "How in-person payment economics actually work in 2026. The terminal-pricing trick that buries MDR over 36 months, BYO terminal options, multi-location reconciliation, the tip-adjustment hidden fee, and pricing benchmarks for restaurants, retail, and services.",
+      "outline": [
+        "In this article",
+        "Why in-person economics are different from online",
+        "The terminal-pricing trick: low upfront, high MDR over 36 months",
+        "BYO terminal options",
+        "Multi-location reconciliation",
+        "Tip-adjustment hidden fee",
+        "Restaurant vs retail vs services pricing benchmarks",
+        "Contract clauses to look for before you sign",
+        "Surcharging and cash discount programs",
+        "The point-of-sale lock-in nobody mentions",
+        "Frequently asked questions"
+      ]
+    },
+    {
+      "route": "/insights/level-2-level-3-processing-guide",
+      "kind": "insights",
+      "slug": "level-2-level-3-processing-guide",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Level 2 & 3 Processing Guide: Cut B2B Merchant Fees by 1.5%",
+      "base_description": "Learn how Level 2 and Level 3 credit card processing can reduce B2B merchant fees by up to 1.5% per transaction. Complete guide to implementation, requirements, and savings calculations.",
+      "outline": [
+        "Potential Annual Savings",
+        "Table of Contents",
+        "1. Understanding the Three Levels of Credit Card Processing",
+        "2. Real-World Savings: Breaking Down the Numbers",
+        "3. Why Level 3 Processing Is Critical for B2B Profits",
+        "4. Why Your Current Processor Might Be Hiding This from You",
+        "5. Automating Your B2B Payment Strategy for Maximum Efficiency",
+        "6. Compliance and Best Practices for Level 2 & 3 Processing",
+        "7. Choosing the Right Payment Processor for Level 3 Processing",
+        "8. Frequently Asked Questions",
+        "9. Summary and Action Plan"
+      ]
+    },
+    {
+      "route": "/insights/lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide",
+      "kind": "insights",
+      "slug": "lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Lowest Transaction Fees 2026: 12 Apps Compared",
+      "base_description": "Twelve payment apps compared on real 2026 effective rates, hidden fees, and contract terms. Includes side-by-side savings examples for $50K to $1M monthly.",
+      "outline": [
+        "How do payment app fee structures compare in 2026?",
+        "Which payment apps offer the best value for small businesses in 2026?",
+        "What are the hidden fees to watch out for with merchant payment apps in 2026?",
+        "How can merchants reduce payment app transaction costs in 2026?",
+        "What are the future trends impacting payment app fees for merchants in 2026?",
+        "Frequently Asked Questions About Merchant Payment App Fees in 2026",
+        "Conclusion"
+      ]
+    },
+    {
+      "route": "/insights/merchant-account-for-cbd",
+      "kind": "insights",
+      "slug": "merchant-account-for-cbd",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "CBD Merchant Account: Who Approves CBD Payment Processing in 2026",
+      "base_description": "Can a CBD business get a merchant account, and what does it cost? An operator's guide to CBD payment processing: who approves CBD, the Certificate of Analysis requirement, reserves, and the processors that underwrite hemp and CBD.",
+      "outline": [
+        "CBD classification: why generalists decline it",
+        "Processors that approve CBD (and what they underwrite)",
+        "The Certificate of Analysis is the document that decides it",
+        "Reserves and rates: what CBD pricing really turns on",
+        "Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/merchant-contract-cancellation-guide",
+      "kind": "insights",
+      "slug": "merchant-contract-cancellation-guide",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "How to Cancel Merchant Agreement Without ETF | Complete Guide 2025",
+      "base_description": "Learn 5 proven strategies to cancel your merchant processing contract without paying early termination fees. Escape liquidated damages clauses and save thousands.",
+      "outline": [
+        "In This Guide",
+        "You're Not Stuck, You Have Options"
+      ]
+    },
+    {
+      "route": "/insights/merchant-services-glossary",
+      "kind": "insights",
+      "slug": "merchant-services-glossary",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Merchant Services Glossary: Complete Payment Processing Terms Guide 2025",
+      "base_description": "Master essential payment processing terminology. Learn key terms like Interchange, Effective Rate, Acquirer, Payment Gateway, and more to negotiate better rates and reduce merchant fees.",
+      "outline": [
+        "Table of Contents",
+        "1. The Ecosystem: The Key Players",
+        "2. Costs & Pricing: Managing Your Margins",
+        "3. Operations & Metrics: Daily Workflow",
+        "4. Advanced Pricing Strategies",
+        "5. Security & Risk: Fighting Fraud",
+        "6. Conclusion: Knowledge is Your Competitive Advantage"
+      ]
+    },
+    {
+      "route": "/insights/merchant-statement-audit-guide",
+      "kind": "insights",
+      "slug": "merchant-statement-audit-guide",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "How to Reduce Credit Card Processing Fees: Ultimate 2025 Merchant Statement Audit Guide",
+      "base_description": "Learn how to audit your merchant statement, identify hidden fees, and reduce credit card processing costs by 20-30%. Expert guide to pricing models, junk fees, and effective rate calculations.",
+      "outline": [
+        "Table of Contents",
+        "1. The Billion-Dollar Confusion in Merchant Services",
+        "2. The Anatomy of a Swipe: Who Actually Gets Your Money?",
+        "3. The Three Pricing Models: Are You Being Ripped Off?",
+        "4. The Math: Calculating Your \"Effective Rate\"",
+        "5. Identifying the \"Dirty Dozen\": Junk Fees to Watch For",
+        "6. The \"Walled Garden\" Trap: Toast, Clover, and Integrated POS",
+        "7. Case Studies: The Power of an Audit",
+        "8. How MyPayAdvisor Can Help",
+        "9. Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/nutra-supplement-merchant-account",
+      "kind": "insights",
+      "slug": "nutra-supplement-merchant-account",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Nutraceutical Merchant Account: 2026 Guide",
+      "base_description": "Why supplement brands get declined, who approves nutraceutical merchant accounts in 2026, and how to structure subscription billing so underwriting says yes.",
+      "outline": [
+        "Why Nutraceuticals Are Classified High-Risk",
+        "Negative Option Billing: Where the FTC Rule Stands in 2026",
+        "Chargeback Monitoring Programs: The Numbers That Get Nutra Merchants Terminated",
+        "Nutraceutical Payment Processors That Approve Supplement Brands",
+        "Rolling Reserves: What High-Volume Subscription Merchants Can Negotiate",
+        "Underwriting Checklist: What a Nutra Brand Needs for Approval",
+        "Offer Structure: How Straight Sale, Trial, and Subscription Change Your Approval Odds",
+        "The Verdict: Approval Is an Engineering Problem, Not a Lottery",
+        "Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/online-vs-instore-payments",
+      "kind": "insights",
+      "slug": "online-vs-instore-payments",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Online vs In-Store Payments 2026: The Real Cost Gap",
+      "base_description": "Card-Not-Present runs 0.50 to 1.20 percent higher than Card-Present in 2026. Why, what it costs you per year, and the 4 levers that close the gap.",
+      "outline": [
+        "Table of Contents",
+        "The Great Divide in Payment Processing",
+        "Transaction Mechanics and Customer Experience",
+        "Cost Structure and Interchange Fees",
+        "Security, Compliance, and Fraud Exposure",
+        "The Omnichannel Imperative",
+        "Conclusion: Strategic Implications for Merchants",
+        "Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/payment-advisory-solutions-optimizing-your-merchant-operations",
+      "kind": "insights",
+      "slug": "payment-advisory-solutions-optimizing-your-merchant-operations",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Payment Advisory Solutions: Optimize Merchant Operations & Fees",
+      "base_description": "Unlock significant savings with payment advisory solutions. Optimize processing fees, enhance security, and boost conversion rates. Get expert, unbiased advice for your business.",
+      "outline": [
+        "What are Payment Advisory Solutions and how do they differ from payment processors?",
+        "What specific problems do payment advisory solutions solve for businesses?",
+        "How does the process of engaging a payment advisory solution work?",
+        "What are the specific benefits of payment advisory for different business sizes?",
+        "How do payment advisory solutions address regulatory compliance and risk management?",
+        "What future trends in payment technology do advisory services help businesses prepare for?"
+      ]
+    },
+    {
+      "route": "/insights/payment-gateway-vs-processor-2026-pricing-functions-best-choice",
+      "kind": "insights",
+      "slug": "payment-gateway-vs-processor-2026-pricing-functions-best-choice",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Payment Gateway vs Processor 2026: What You Actually Need",
+      "base_description": "Payment gateway vs processor in 2026: what they actually do, when you need both, and how the pricing splits. With real fee numbers and 2026 examples.",
+      "outline": [
+        "What is a Payment Gateway and What Does it Do?",
+        "What is a Payment Processor and What is Its Core Role?",
+        "How Do Payment Gateways and Processors Work Together?",
+        "2026 Pricing Update: Understanding Costs for Gateways and Processors",
+        "Choosing the Right Solution: Integrated vs. Separate Providers",
+        "FAQ Section",
+        "Conclusion"
+      ]
+    },
+    {
+      "route": "/insights/payment-processor-fees-guide",
+      "kind": "insights",
+      "slug": "payment-processor-fees-guide",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Average Credit Card Processing Fees 2026: 1.5%-3.5%",
+      "base_description": "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%. Real rates from 14 processors: interchange 1.5%-3.5%, markup 0.10%-2.00%, Square 2.65% effective.",
+      "outline": [
+        "Table of Contents",
+        "What Are Payment Processor Fees?",
+        "Understanding Different Pricing Models",
+        "How to Compare Payment Gateway Providers",
+        "How to Reduce Credit Card Processing Fees",
+        "Best Credit Card Processor for Low Volume Businesses",
+        "Best Payment Processor for High Risk Businesses",
+        "Best International Payment Gateway Solutions",
+        "The Difference Between Payment Processor and Gateway",
+        "Frequently Asked Questions",
+        "Conclusion"
+      ]
+    },
+    {
+      "route": "/insights/payment-processor-negotiation-playbook",
+      "kind": "insights",
+      "slug": "payment-processor-negotiation-playbook",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Payment Processor Negotiation Playbook: 9 Levers That Actually Move the Number",
+      "base_description": "Nine levers that actually move the number on a merchant processing contract: pricing model, markup, reserve cap, ETF, assessment pass-through, funding window, monthly minimum, PCI fee, chargeback fee floor. Scripts you can use verbatim.",
+      "outline": [
+        "In this article",
+        "What is actually negotiable (and what is not)",
+        "Lever 1: Switch from blended to IC++",
+        "Lever 2: Drop the markup",
+        "Lever 3: Cap the reserve",
+        "Lever 4: Kill the early termination fee",
+        "Lever 5: Lock the assessment pass-through",
+        "Lever 6: Fix the funding window",
+        "Lever 7: Get rid of the monthly minimum",
+        "Lever 8: PCI fee waiver",
+        "Lever 9: Chargeback fee floor",
+        "Scripts you can use verbatim"
+      ]
+    },
+    {
+      "route": "/insights/reserves-frozen-funds-capped-vs-rolling",
+      "kind": "insights",
+      "slug": "reserves-frozen-funds-capped-vs-rolling",
+      "source": "static",
+      "title_mode": "absolute",
+      "base_title": "Rolling Reserve vs Capped Reserve: 2026 Merchant Guide",
+      "base_description": "A rolling reserve is a percentage of every card deposit your processor withholds for a fixed hold period. Here is how rolling and capped reserves differ, the math on $300K in trapped working capital, the release language to insist on, and how to push back.",
+      "outline": [
+        "In this article",
+        "What a reserve is and why processors hold one",
+        "Rolling reserve mechanics",
+        "Capped reserve mechanics",
+        "Path-to-release language to insist on",
+        "How to push back when offered rolling",
+        "What to do if funds are already frozen",
+        "Upfront reserve: the third structure",
+        "The reserve cost calculation nobody runs",
+        "Frequently asked questions",
+        "Related guides"
+      ]
+    },
+    {
+      "route": "/insights/should-customers-see-the-same-payment-options-online-and-in-store-a-2026-merchan",
+      "kind": "insights",
+      "slug": "should-customers-see-the-same-payment-options-online-and-in-store-a-2026-merchan",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Same Payment Options Online & In-Store? 2026 Merchant Guide",
+      "base_description": "Discover if offering consistent payment options online and in-store is crucial for your business in 2026. Learn best practices, customer expectations, and operational trade-offs.",
+      "outline": [
+        "Why is Payment Option Consistency Crucial for Customer Experience in 2026?",
+        "What Payment Options Are Stable Across Online and In-Store Channels?",
+        "How Do Operational Trade-Offs Impact Payment Consistency?",
+        "What Are the Benefits of a Unified Payment Strategy?",
+        "Are There Any Exceptions to Offering Identical Payment Options?",
+        "Conclusion"
+      ]
+    },
+    {
+      "route": "/insights/small-business-credit-card-processing-guide",
+      "kind": "insights",
+      "slug": "small-business-credit-card-processing-guide",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Stop Overpaying: Small Business Guide to Credit Card Processing Fees",
+      "base_description": "Most small businesses overpay 20-40% on credit card processing fees. Learn exactly how to cut costs and reclaim thousands of dollars annually through smarter payment processing strategies.",
+      "outline": [
+        "Table of Contents",
+        "Where Does Your Money Actually Go? Understanding Credit Card Processing Fees",
+        "The \"Flat Rate\" Trap: Are You Too Big for Square or Stripe?",
+        "Technical Penalties Costing You Money: Online vs. In-Store Payment Processing",
+        "How to Choose a Payment Processor That Won't Rip You Off",
+        "Real-World Strategies: How to Lower Credit Card Processing Fees Starting Today",
+        "Understanding the Numbers: What is a Good Credit Card Processing Rate?",
+        "Common Questions About Credit Card Processing Fees",
+        "Take Control of Your Payment Processing Costs"
+      ]
+    },
+    {
+      "route": "/insights/subscription-merchant-account",
+      "kind": "insights",
+      "slug": "subscription-merchant-account",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Subscription Merchant Account: Recurring Billing, Dunning & Approval (2026)",
+      "base_description": "How subscription merchant accounts work in 2026. Reduce failed recurring payments, recover declines with dunning and account updater, and get approved as a recurring-billing business. Reviewed by a payments operator.",
+      "outline": [
+        "What a subscription merchant account actually is",
+        "Failed recurring payments: where the revenue actually leaks",
+        "Dunning, account updater, and retry logic: the recovery stack",
+        "Approval and reserves for recurring-billing businesses",
+        "Processors that approve subscription and recurring-billing models",
+        "Frequently Asked Questions"
+      ]
+    },
+    {
+      "route": "/insights/travel-merchant-account",
+      "kind": "insights",
+      "slug": "travel-merchant-account",
+      "source": "static",
+      "title_mode": "template",
+      "base_title": "Travel Agency Payment Processing Guide 2026",
+      "base_description": "Why card networks classify travel agencies as high-risk (MCC 4722), which processors actually approve them, and how large merchants negotiate reserves.",
+      "outline": [
+        "Why Travel Agency Payment Processing Is Classified High-Risk",
+        "Agency Model vs. Merchant of Record: The Distinction That Sets Your Reserve",
+        "Travel Merchant Account Providers That Approve Travel",
+        "Rolling Reserves on Travel Merchant Accounts: What Large Merchants Can Negotiate",
+        "Travel Merchant Account Approval Checklist: What Underwriters Ask For",
+        "Merchant Size and Average Ticket: How Volume Changes the Conversation",
+        "FAQ: Travel Agency Payment Processing"
+      ]
+    },
+    {
+      "route": "/comparisons/ai-dispute-management-tools-2026",
+      "kind": "comparisons",
+      "slug": "ai-dispute-management-tools-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "AI Dispute Management Tools 2026: Best by Volume",
+      "base_description": "Compare AI dispute management tools across Stripe, Worldpay, PayPal, Helcim, Stax, and Square. Real pricing, coverage scope, and the winner by volume tier.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/ai-dunning-and-recovery-tools-2026",
+      "kind": "comparisons",
+      "slug": "ai-dunning-and-recovery-tools-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "AI Dunning and Recovery Tools: 2026 Comparison",
+      "base_description": "Compare AI dunning and recovery from Stripe, Helcim, Stax, PayPal, Square, Worldpay. Pricing, ML retries, account updater fit by volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/ai-fraud-detection-tools-for-merchants-2026",
+      "kind": "comparisons",
+      "slug": "ai-fraud-detection-tools-for-merchants-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "AI Fraud Detection Tools for Merchants: 2026",
+      "base_description": "Compare AI fraud detection tools for U.S. merchants in 2026: Stripe Radar, Worldpay FraudSight, PayPal, Square, Clover, Helcim, and Stax priced head to head.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/ai-reconciliation-tools-2026",
+      "kind": "comparisons",
+      "slug": "ai-reconciliation-tools-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "AI Reconciliation Tools 2026: Compared",
+      "base_description": "Stripe, Helcim, Square, Stax, Clover, and PayPal compared on payout traceability, fee transparency, and reconciliation automation for 2026.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/ai-subscription-billing-tools-2026",
+      "kind": "comparisons",
+      "slug": "ai-subscription-billing-tools-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "AI Subscription Billing Tools 2026",
+      "base_description": "Stripe Billing vs Helcim, Stax, Square, PayPal, Payment Depot. Smart Retries, dunning, and effective rate at $25K to $5M monthly recurring volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-fast-funding-payment-processors-2026",
+      "kind": "comparisons",
+      "slug": "best-fast-funding-payment-processors-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Fast-Funding Payment Processors 2026",
+      "base_description": "Square vs Stripe vs PayPal vs Clover vs Helcim on instant transfer fees, same-day cutoffs, and effective rates. 2026 fast-funding processor guide for merchants.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-high-risk-friendly-payment-processors-2026",
+      "kind": "comparisons",
+      "slug": "best-high-risk-friendly-payment-processors-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best High-Risk Payment Processors 2026: Comparison",
+      "base_description": "Compare 8 payment processors for high-risk merchants in 2026. Worldpay leads on underwriting; Stripe, Square, and PayPal prohibit most high-risk MCCs at signup.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-interchange-plus-payment-processors-2026",
+      "kind": "comparisons",
+      "slug": "best-interchange-plus-payment-processors-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Interchange-Plus Processors: 2026 Comparison",
+      "base_description": "Compare Helcim, Stax, Payment Depot, Stripe and Worldpay on effective rate, contract, settlement speed and ETF for $25K to $5M monthly merchants.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-low-fee-payment-processors-2026",
+      "kind": "comparisons",
+      "slug": "best-low-fee-payment-processors-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Low-Fee Payment Processors: 2026 Comparison",
+      "base_description": "Compare seven low-fee payment processors for 2026: Helcim, Stax, Payment Depot, Stripe, Square, Clover, PayPal. Effective rates by volume tier explained.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-multi-acquirer-payment-processors-2026",
+      "kind": "comparisons",
+      "slug": "best-multi-acquirer-payment-processors-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Multi-Acquirer Payment Processors 2026",
+      "base_description": "Compare 7 multi-acquirer payment processors for 2026. Stripe, Worldpay, Braintree and more ranked by routing, pricing, contracts, and settlement.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-no-contract-payment-processors-2026",
+      "kind": "comparisons",
+      "slug": "best-no-contract-payment-processors-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best No-Contract Payment Processors 2026",
+      "base_description": "Helcim, Stripe, Square, Stax, Payment Depot, Clover, PayPal compared on rate, contract, settlement, and hardware lock-in for 2026.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-gateways-for-ecommerce-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-gateways-for-ecommerce-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Gateways for Ecommerce 2026",
+      "base_description": "Helcim wins on price for $25K to $1M ecommerce. Stripe wins on dev tools. Stax above $80K. 8 gateways with cited fees and contract terms.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-automotive-shops-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-automotive-shops-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Automotive Shops 2026",
+      "base_description": "Helcim, Stax, Square, Clover, Stripe and Payment Depot ranked for auto repair, tire, and body shops. Real interchange-plus math at $150K monthly volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-b2b-saas-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-b2b-saas-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for B2B SaaS 2026",
+      "base_description": "Stripe, Helcim, Stax, Worldpay and PayPal compared for B2B SaaS billing in 2026. Effective rates, Level 2/3 support, contract terms, and verdict.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-contractors-and-field-services-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-contractors-and-field-services-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Contractors 2026",
+      "base_description": "Compare 7 payment processors for contractors at $25K to $500K monthly volume. Real fees on $80K, ACH rates, mobile readers, and contracts.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-dental-practices-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-dental-practices-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Dental Practices 2026",
+      "base_description": "Compare the best payment processors for dental practices in 2026. Real rates, PMS integration, contracts, and verdicts by monthly volume tier.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-ecommerce-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-ecommerce-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Ecommerce 2026",
+      "base_description": "Helcim wins ecommerce $25K to $750K monthly with interchange-plus pricing; Stripe under $25K; Stax above $80K. Full 2026 effective-rate comparison.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-for-b2b-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-for-b2b-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors For B2B: 2026 Comparison",
+      "base_description": "B2B payment processors ranked for 2026: Helcim, Stax, Payment Depot, Stripe, Worldpay, PayPal. Effective rates, L2/L3 data, contract terms compared.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-for-nonprofits-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-for-nonprofits-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Nonprofits 2026",
+      "base_description": "PayPal, Helcim, Stripe, Square, and Stax compared for nonprofits in 2026. Real rates by donation tier and where each one wins.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-healthcare-practices-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-healthcare-practices-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Healthcare Practices 2026",
+      "base_description": "Helcim, Stripe, Square, Stax, Payment Depot, Clover compared for medical practices in 2026. Pricing, BAA support, patient billing, EHR fit.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-legal-practices-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-legal-practices-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Legal Practices 2026",
+      "base_description": "Helcim, Stripe, Stax, Payment Depot, Square, PayPal compared for U.S. law firms. Pricing, IOLTA setup, and the volume tier where each provider wins.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-marketplaces-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-marketplaces-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Marketplaces 2026",
+      "base_description": "Stripe Connect wins for marketplaces from $25K to $50M monthly GMV. We rank 8 processors on split payments, sub-merchant KYC, payouts, and effective rates.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-mobile-and-on-the-go-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-mobile-and-on-the-go-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Mobile Payment Processors 2026",
+      "base_description": "May 2026: Square 2.6%+$0.10 mobile, Helcim interchange-plus saves $90-$130 per $25K above $40K volume. 6 mobile processors ranked by total cost.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-professional-services-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-professional-services-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Professional Services 2026",
+      "base_description": "Helcim, Stax, and Payment Depot beat flat-rate processors for law firms, accountants, and consulting practices. Compare rates, contracts, and Level 3 data.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-restaurants-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-restaurants-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Restaurants in 2026",
+      "base_description": "Compare Square, Clover, Stripe, Helcim, Stax, and Payment Depot for restaurants by monthly volume. Real rates, contracts, and hardware lock-in compared.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-subscription-products-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-subscription-products-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Subscription Payment Processors 2026",
+      "base_description": "Subscription billing comparison: Stripe, Helcim, Stax, Square, PayPal, and Worldpay ranked by effective rate, dunning, and account updater coverage.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-with-same-day-deposit-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-with-same-day-deposit-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Same-Day Deposit & Settlement Processors 2026",
+      "base_description": "Same-day deposit on cards costs 1.5 to 1.75 percent. Compare Square, Stripe, PayPal, Clover, and Helcim on payout fees and effective rate.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-payment-processors-yoga-and-fitness-studios-2026",
+      "kind": "comparisons",
+      "slug": "best-payment-processors-yoga-and-fitness-studios-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Payment Processors for Yoga & Fitness Studios 2026",
+      "base_description": "Compare Helcim, Square, Stripe, Stax, Clover, and PayPal for yoga and fitness studios with real effective rates at $25K to $150K monthly volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-pos-systems-for-small-business-2026",
+      "kind": "comparisons",
+      "slug": "best-pos-systems-for-small-business-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best POS Systems for Small Business 2026",
+      "base_description": "Compare Square, Clover, Helcim, Stripe, Stax, and PayPal POS pricing for small business in 2026. Real rates, contracts, and break-even volumes.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-virtual-terminals-2026",
+      "kind": "comparisons",
+      "slug": "best-virtual-terminals-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Virtual Terminals 2026: 7 Providers Compared",
+      "base_description": "Compare keyed rates, monthly fees, and B2B support across the top 7 virtual terminal providers. Find the winner for your monthly volume tier.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/clover-vs-toast-2026",
+      "kind": "comparisons",
+      "slug": "clover-vs-toast-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Clover vs Toast 2026: Which Costs Less for Your Volume",
+      "base_description": "Clover plans start at $14.95/mo with 2.3-2.6% in-person rates. Toast Starter is free with 2.99% + $0.15. See which actually costs less at your volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/helcim-vs-payment-depot-2026",
+      "kind": "comparisons",
+      "slug": "helcim-vs-payment-depot-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Helcim vs Payment Depot 2026: Cost Comparison",
+      "base_description": "Helcim vs Payment Depot 2026: effective rates at $25K, $100K, $250K monthly volume, crossover math, contract terms, hardware lock-in, and verdict by tier.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/paypal-vs-stripe-2026",
+      "kind": "comparisons",
+      "slug": "paypal-vs-stripe-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "PayPal vs Stripe 2026: Which Actually Costs Less",
+      "base_description": "Compare PayPal and Stripe 2026 pricing, effective rates, contracts, and reserve policies. Plus when Helcim or Stax beats both flat-rate plans on volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/square-vs-clover-2026",
+      "kind": "comparisons",
+      "slug": "square-vs-clover-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Square vs Clover 2026: Real Cost Comparison",
+      "base_description": "Square vs Clover 2026: real rates, plan fees, hardware lock-in, and which processor costs less for retail and food service at your monthly volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/square-vs-helcim-2026",
+      "kind": "comparisons",
+      "slug": "square-vs-helcim-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Square vs Helcim 2026: Helcim Saves $90-$130",
+      "base_description": "Verdict May 2026: Helcim beats Square above $10K monthly. Interchange-plus saves $90-$130 per $25K of volume. Square wins only for micro-merchants.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/square-vs-shopify-payments-2026",
+      "kind": "comparisons",
+      "slug": "square-vs-shopify-payments-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Square vs Shopify Payments 2026: Real Cost",
+      "base_description": "Side-by-side fees, plan math, and lock-in for Square vs Shopify Payments at $25K, $100K, and $500K monthly volume. Cited pricing, no fluff.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/square-vs-toast-2026",
+      "kind": "comparisons",
+      "slug": "square-vs-toast-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Square vs Toast 2026: Restaurant POS Compared",
+      "base_description": "Toast wins at $50K+ monthly with KDS depth. Square wins below $50K with no contract. Real effective-rate math at $250K monthly card volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/stripe-vs-adyen-2026",
+      "kind": "comparisons",
+      "slug": "stripe-vs-adyen-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Stripe vs Adyen 2026: Fees & Pricing Compared",
+      "base_description": "Adyen vs Stripe fees compared for 2026. Stripe wins below $1M monthly; Adyen's Interchange++ wins above. See break-even math and effective rates by tier.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/stripe-vs-payment-depot-2026",
+      "kind": "comparisons",
+      "slug": "stripe-vs-payment-depot-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Stripe vs Payment Depot 2026: Fees Compared",
+      "base_description": "Payment Depot beats Stripe above about $30K monthly. Compare 2026 pricing, break-even volume, hidden fees, and effective cost at $50K, $100K, and $250K.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/stripe-vs-stax-2026",
+      "kind": "comparisons",
+      "slug": "stripe-vs-stax-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Stripe vs Stax 2026: Which Costs Less",
+      "base_description": "Stripe vs Stax pricing math at $25K, $50K, and $250K monthly volume. Break-even, contracts, settlement, and which processor wins by tier.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/stripe-vs-worldpay-2026",
+      "kind": "comparisons",
+      "slug": "stripe-vs-worldpay-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Stripe vs Worldpay 2026: Real Cost Compared",
+      "base_description": "Stripe vs Worldpay compared on real effective rates, contracts, and onboarding. The crossover volume where Worldpay IC+ beats Stripe flat-rate, with numbers.",
+      "outline": []
+    },
+    {
+      "route": "/insights/3ds2-fallback-strategies",
+      "kind": "insights",
+      "slug": "3ds2-fallback-strategies",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "3DS2 Fallback Strategies: Cut Approval Loss 5 Percent",
+      "base_description": "3DS2 fallback strategies for US merchants: how risk-based routing, exemptions, and soft-decline retry recover 60 to 80 percent of lost approvals quickly.",
+      "outline": []
+    },
+    {
+      "route": "/insights/acquirer-selection-for-international",
+      "kind": "insights",
+      "slug": "acquirer-selection-for-international",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Acquirer Selection For International (2026)",
+      "base_description": "Cross-border declines run 5 to 15 points higher than domestic. Local acquiring lifts approval 3 to 8 points and trims cross-border fees 0.40 to 1.20 percent.",
+      "outline": []
+    },
+    {
+      "route": "/insights/annual-rate-review-playbook",
+      "kind": "insights",
+      "slug": "annual-rate-review-playbook",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Annual Rate Review Playbook: 7 Steps for 2026",
+      "base_description": "Run an annual rate review on your processor in 90 minutes. Pull statements, calculate effective rate, document drift, send a written repricing request.",
+      "outline": []
+    },
+    {
+      "route": "/insights/approval-rate-optimization",
+      "kind": "insights",
+      "slug": "approval-rate-optimization",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Approval Rate Optimization 2026: 8-12 Point Recovery",
+      "base_description": "U.S. e-commerce approval averages 85 to 92 percent. This guide shows how operators recover 8 to 12 points with network tokens, retries, and updaters.",
+      "outline": []
+    },
+    {
+      "route": "/insights/batch-and-authorization-fees",
+      "kind": "insights",
+      "slug": "batch-and-authorization-fees",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Batch and Authorization Fees: 2026 Operator Guide",
+      "base_description": "Auth fees commonly run 3 to 25 cents per request, batch fees 10 to 35 cents daily on audited statements. How to audit, benchmark, and cut both in 2026.",
+      "outline": []
+    },
+    {
+      "route": "/insights/bin-routing-for-higher-approvals",
+      "kind": "insights",
+      "slug": "bin-routing-for-higher-approvals",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "BIN Routing for Higher Approvals (2026 Guide)",
+      "base_description": "BIN routing lifts CNP approvals 3 to 8 points. Operators at $500K-plus monthly volume recover 1 to 4 percent of revenue. Here is the operator playbook.",
+      "outline": []
+    },
+    {
+      "route": "/insights/capped-vs-rolling-reserves",
+      "kind": "insights",
+      "slug": "capped-vs-rolling-reserves",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Capped vs Rolling Reserves: 2026 Operator Guide",
+      "base_description": "Capped vs rolling reserves: what each structure costs, where the contract bites, and how to renegotiate the trigger before your next renewal cycle.",
+      "outline": []
+    },
+    {
+      "route": "/insights/card-not-present-surcharges",
+      "kind": "insights",
+      "slug": "card-not-present-surcharges",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Card-Not-Present Surcharges: 0.30% Tax in 2026",
+      "base_description": "Card-not-present interchange runs 0.30% above CP. Processors stack 0.40 to 0.80% on top. Audit your statement, fix AVS, save $16K a year on $200K volume.",
+      "outline": []
+    },
+    {
+      "route": "/insights/contactless-and-mobile-wallet-fees",
+      "kind": "insights",
+      "slug": "contactless-and-mobile-wallet-fees",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Contactless and Mobile Wallet Fees: 2026 Guide",
+      "base_description": "Apple Pay, Google Pay and tap cards run on card-present interchange. Here is what they cost, where processors mark them up, and how to fix it.",
+      "outline": []
+    },
+    {
+      "route": "/insights/downgrade-categories-explained",
+      "kind": "insights",
+      "slug": "downgrade-categories-explained",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Downgrade Categories Explained: 5 Costly Patterns",
+      "base_description": "Downgrade categories cost merchants 0.30 to 0.80 percent of monthly card volume. The 5 patterns that trigger them, with the math and the fixes.",
+      "outline": []
+    },
+    {
+      "route": "/insights/emv-and-chip-card-mdr",
+      "kind": "insights",
+      "slug": "emv-and-chip-card-mdr",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "EMV and Chip Card MDR: 2026 Operator Guide",
+      "base_description": "EMV chip cards cut counterfeit fraud but did not cut your MDR. How chip interchange, batch timing, and processor markup actually move card-present rates.",
+      "outline": []
+    },
+    {
+      "route": "/insights/exit-fees-and-contract-cancellation-strategies",
+      "kind": "insights",
+      "slug": "exit-fees-and-contract-cancellation-strategies",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Exit Fees and Contract Cancellation: 2026 Guide",
+      "base_description": "Processor exit fees run $250 to $50,000+. Read liquidated damages clauses, calculate true cancellation cost, and exit your contract on terms.",
+      "outline": []
+    },
+    {
+      "route": "/insights/frozen-funds-recovery-playbook",
+      "kind": "insights",
+      "slug": "frozen-funds-recovery-playbook",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Frozen Funds Recovery Playbook: 2026 Guide",
+      "base_description": "Step-by-step playbook for merchants to recover frozen processor funds. Triggers, contract clauses, dollar examples, and 8 recovery actions.",
+      "outline": []
+    },
+    {
+      "route": "/insights/hardware-lock-in-across-processors",
+      "kind": "insights",
+      "slug": "hardware-lock-in-across-processors",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Hardware Lock-In Across Processors (2026 Guide)",
+      "base_description": "How processors trap merchants with encrypted terminals and 48-month leases, plus the exact playbook to escape stranded hardware costs.",
+      "outline": []
+    },
+    {
+      "route": "/insights/how-to-read-a-merchant-statement",
+      "kind": "insights",
+      "slug": "how-to-read-a-merchant-statement",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "How To Read A Merchant Statement (2026 Guide)",
+      "base_description": "Decode your merchant statement in 30 minutes. Find the markup, spot the four hidden fees, and walk into your next pricing call prepared.",
+      "outline": []
+    },
+    {
+      "route": "/insights/ic-pricing-breakdown",
+      "kind": "insights",
+      "slug": "ic-pricing-breakdown",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "IC++ Pricing Breakdown 2026: Cut Card Fees Fast",
+      "base_description": "IC++ pricing decoded: interchange, assessments, and processor markup explained, with worked math and a 2026 operator playbook to cut card fees.",
+      "outline": []
+    },
+    {
+      "route": "/insights/interchange-explained",
+      "kind": "insights",
+      "slug": "interchange-explained",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Interchange Explained: What You Pay in 2026",
+      "base_description": "Interchange is 70 to 90 percent of merchant card fees, set by Visa and Mastercard. Here is what it costs and how to cut markup in 2026.",
+      "outline": []
+    },
+    {
+      "route": "/insights/international-and-cross-border-interchange",
+      "kind": "insights",
+      "slug": "international-and-cross-border-interchange",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "International Interchange Fees: 2026 Operator Guide",
+      "base_description": "Three fees stack on cross-border cards: international interchange, network cross-border assessment, FX margin. Pull statements and cut 30 to 40 percent off cost.",
+      "outline": []
+    },
+    {
+      "route": "/insights/level-2-and-level-3-processing-data",
+      "kind": "insights",
+      "slug": "level-2-and-level-3-processing-data",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Level 2 and Level 3 Processing Data: 2026 B2B Guide",
+      "base_description": "Level 2 and Level 3 data drop B2B interchange 0.50 to 1.00 percent. How the fields work, where they fail, and the gateway fix that pays back in days.",
+      "outline": []
+    },
+    {
+      "route": "/insights/monthly-minimum-and-statement-fees",
+      "kind": "insights",
+      "slug": "monthly-minimum-and-statement-fees",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Monthly Minimum & Statement Fees: 2026 Guide",
+      "base_description": "How monthly minimums and statement fees work on merchant accounts, where they hide on the statement, and the exact wording to get them waived.",
+      "outline": []
+    },
+    {
+      "route": "/insights/multi-location-reconciliation",
+      "kind": "insights",
+      "slug": "multi-location-reconciliation",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Multi-Location Reconciliation: 5 Leaks to Fix in 2026",
+      "base_description": "Multi-location reconciliation breaks at MID mapping, batch close times, and chargeback allocation. An 8-step audit to recover 0.15 to 0.40 percent.",
+      "outline": []
+    },
+    {
+      "route": "/insights/negotiating-ic-pricing-with-your-processor",
+      "kind": "insights",
+      "slug": "negotiating-ic-pricing-with-your-processor",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Negotiate IC++ Pricing: 2026 Operator Playbook",
+      "base_description": "Pull your statement, calculate processor margin, and counter with three written IC++ quotes. Most retention teams match within 48 hours.",
+      "outline": []
+    },
+    {
+      "route": "/insights/negotiating-reserve-terms",
+      "kind": "insights",
+      "slug": "negotiating-reserve-terms",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Negotiating Reserve Terms: 2026 Operator Guide",
+      "base_description": "Rolling vs upfront reserves, release windows, and the contract clauses that lock 5 to 10 percent of revenue. Tactics that actually move terms.",
+      "outline": []
+    },
+    {
+      "route": "/insights/pci-compliance-fees",
+      "kind": "insights",
+      "slug": "pci-compliance-fees",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "PCI Compliance Fees Explained: 2026 Operator Guide",
+      "base_description": "PCI compliance fees cost merchants $99 to $360 yearly. Learn how processors stack them, what to dispute, and the exact statement lines to pull.",
+      "outline": []
+    },
+    {
+      "route": "/insights/pin-debit-routing",
+      "kind": "insights",
+      "slug": "pin-debit-routing",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "PIN Debit Routing: Cut Debit Cost in 2026",
+      "base_description": "PIN debit routing is the operator's right under Regulation II to pick the cheapest debit network. Done right, it cuts debit cost by 0.15 to 0.35 percent.",
+      "outline": []
+    },
+    {
+      "route": "/insights/pulling-rate-quotes-from-competing-processors",
+      "kind": "insights",
+      "slug": "pulling-rate-quotes-from-competing-processors",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Pulling Rate Quotes From Competing Processors: 2026",
+      "base_description": "Operator playbook for pulling apples-to-apples rate quotes from competing processors. Save 25 to 60 basis points across a 36 month term.",
+      "outline": []
+    },
+    {
+      "route": "/insights/renegotiating-after-the-first-year",
+      "kind": "insights",
+      "slug": "renegotiating-after-the-first-year",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Renegotiating Your Processor After Year One (2026)",
+      "base_description": "Reset your merchant processing rate at month 13. Statement audit, competing quote, and the 7-step playbook to recover 0.20 to 0.45 percent of volume.",
+      "outline": []
+    },
+    {
+      "route": "/insights/reserve-negotiation-for-high-volume-merchants",
+      "kind": "insights",
+      "slug": "reserve-negotiation-for-high-volume-merchants",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "How High-Volume Merchants Cut Reserves in 2026",
+      "base_description": "Reserves freeze $300K+ in working capital at $2M monthly volume. The full negotiation playbook with chargeback math and capped-reserve counter-proposals.",
+      "outline": []
+    },
+    {
+      "route": "/insights/reserve-release-timelines",
+      "kind": "insights",
+      "slug": "reserve-release-timelines",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Reserve Release Timelines: 2026 Operator Guide",
+      "base_description": "Most processors hold 5-10 percent of volume for 180 days. Calculate the locked capital cost and negotiate your rolling reserve down at renewal.",
+      "outline": []
+    },
+    {
+      "route": "/insights/restaurant-specific-pos-setup",
+      "kind": "insights",
+      "slug": "restaurant-specific-pos-setup",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Restaurant POS Setup: 7 Steps to Cut Fees in 2026",
+      "base_description": "Restaurant POS setup decides if your card volume qualifies for Visa CPS/Restaurant interchange. Cut 0.20 to 0.45 percent with 7 fixes that work in 2026.",
+      "outline": []
+    },
+    {
+      "route": "/insights/retail-loss-prevention-through-processor-data",
+      "kind": "insights",
+      "slug": "retail-loss-prevention-through-processor-data",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Retail Loss Prevention: 8 Patterns in Processor Data",
+      "base_description": "How to pull processor data to catch refund fraud, cash drawer skimming, and chargeback clusters. 8 patterns and a worked example at $2M monthly volume.",
+      "outline": []
+    },
+    {
+      "route": "/insights/retry-logic-that-does-not-violate-card-network-rules",
+      "kind": "insights",
+      "slug": "retry-logic-that-does-not-violate-card-network-rules",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Card-Network Retry Rules: 15-Attempt Cap and How to Comply",
+      "base_description": "Visa caps card retries at 15 per 30 days. Mastercard flags merchants over 10 declines per day. Build retry logic that branches on decline code, not the clock.",
+      "outline": []
+    },
+    {
+      "route": "/insights/rewards-card-surcharge",
+      "kind": "insights",
+      "slug": "rewards-card-surcharge",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Rewards Card Surcharge: 2026 Rules and Math",
+      "base_description": "Rewards cards run 0.40 to 0.75 percent over standard interchange. How product surcharging recovers it under 2026 Visa, Mastercard, and U.S. state rules.",
+      "outline": []
+    },
+    {
+      "route": "/insights/soft-declines-vs-hard-declines",
+      "kind": "insights",
+      "slug": "soft-declines-vs-hard-declines",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Soft Declines vs Hard Declines: 2026 Operator Guide",
+      "base_description": "Soft declines are temporary and retryable. Hard declines trigger Visa misuse fees. Operator playbook with response codes, retry cadence, and dollar math.",
+      "outline": []
+    },
+    {
+      "route": "/insights/tipping-fees-on-pos-systems",
+      "kind": "insights",
+      "slug": "tipping-fees-on-pos-systems",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Tipping Fees on POS Systems: 2026 Operator Guide",
+      "base_description": "POS systems charge interchange plus processor markup on every tip dollar. Here is how to audit the cost and cut it for restaurants in 2026.",
+      "outline": []
+    },
+    {
+      "route": "/insights/tokenization-for-higher-approval-rates",
+      "kind": "insights",
+      "slug": "tokenization-for-higher-approval-rates",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Network Tokenization 2026: Why Approvals Rise 2-6%",
+      "base_description": "Network tokenization replaces card numbers with auto-updating tokens. Visa and Mastercard report 2-6% higher approvals. Real fees, real contracts, May 2026.",
+      "outline": []
+    },
+    {
+      "route": "/insights/what-to-ask-before-signing-a-processor-contract",
+      "kind": "insights",
+      "slug": "what-to-ask-before-signing-a-processor-contract",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "12 Questions Before Signing A Processor Contract",
+      "base_description": "Twelve questions to ask before signing a payment processor contract: pricing model, fees, term length, reserves, and termination clauses, explained.",
+      "outline": []
+    },
+    {
+      "route": "/insights/what-triggers-a-reserve-increase",
+      "kind": "insights",
+      "slug": "what-triggers-a-reserve-increase",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "What Triggers A Reserve Increase: 7 Causes in 2026",
+      "base_description": "Why did your processor raise your reserve? 7 triggers underwriters watch in 2026, with chargeback thresholds, dollar math, and a pushback playbook.",
+      "outline": []
+    },
+    {
+      "route": "/insights/working-capital-impact-of-reserves",
+      "kind": "insights",
+      "slug": "working-capital-impact-of-reserves",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Working Capital Impact of Payment Reserves in 2026",
+      "base_description": "How payment reserves lock cash and add 40 to 60 basis points to your processing rate, with a worked example at $400K monthly volume and a negotiation playbook.",
+      "outline": []
+    }
+  ]
+}
