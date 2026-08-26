@@ -3,9 +3,8 @@
 # the daily run pings IndexNow and submits the sitemap itself, so remove the
 # old file when this one lands or Bing gets two pings a day.
 #
-# Times are Israel local. The 08:30 portfolio digest reads
-# /var/lib/mypayadvisor-seo/report-YYYY-MM-DD.json, so daily (06:15) and the
-# report rebuild (07:40) both finish before it.
+# Times are Israel local. daily (06:15) and the report rebuild (07:40) both
+# finish before the 07:50 mail.
 CRON_TZ=Asia/Jerusalem
 SHELL=/bin/bash
 PATH=/usr/local/bin:/usr/bin:/bin
@@ -13,3 +12,8 @@ PATH=/usr/local/bin:/usr/bin:/bin
 15 6 * * *   root  /opt/mypayadvisor-seo/run.sh daily  >> /var/log/mypayadvisor-seo.log 2>&1
 45 6 * * 1   root  /opt/mypayadvisor-seo/run.sh weekly >> /var/log/mypayadvisor-seo.log 2>&1
 40 7 * * *   root  /opt/mypayadvisor-seo/run.sh report >> /var/log/mypayadvisor-seo.log 2>&1
+# The mail is its own, to Assaf only, from seo@mypayadvisor.com. Deliberately
+# NOT a block in the 08:30 portfolio digest: that one covers Renology, Golden
+# Yards and CCC, is sent from a therenology.com address, and also goes to
+# Dror. Different business, different partner.
+50 7 * * *   root  /opt/mypayadvisor-seo/run.sh mail   >> /var/log/mypayadvisor-seo.log 2>&1

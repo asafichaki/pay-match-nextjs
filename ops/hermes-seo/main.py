@@ -36,6 +36,7 @@ import gsc as gsc_mod  # noqa: E402
 import health as health_mod  # noqa: E402
 import indexing  # noqa: E402
 import links as links_mod  # noqa: E402
+import mailer as mailer_mod  # noqa: E402
 import measure as measure_mod  # noqa: E402
 import report as report_mod  # noqa: E402
 import rules as rules_mod  # noqa: E402
@@ -57,7 +58,7 @@ def log(msg: str) -> None:
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     ap = argparse.ArgumentParser(description="myPayAdvisor SEO loop")
-    ap.add_argument("command", choices=["daily", "weekly", "measure", "probe", "health", "report", "import-baseline"])
+    ap.add_argument("command", choices=["daily", "weekly", "measure", "probe", "health", "report", "mail", "import-baseline"])
     ap.add_argument("arg", nargs="?", help="import-baseline: path to the day-0 JSON")
     ap.add_argument("--dry-run", action="store_true", help="no network writes at all")
     ap.add_argument("--limit", type=int, default=None, help="cap candidates per lane")
@@ -408,6 +409,24 @@ def cmd_health(args: argparse.Namespace) -> int:
     return 0 if res["ok"] else 1
 
 
+def cmd_mail(args: argparse.Namespace) -> int:
+    """Send the morning mail. Its own mail, to Assaf only.
+
+    Deliberately not a block inside the 08:30 portfolio digest: that digest
+    covers Renology, Golden Yards and CCC, is sent from a therenology.com
+    address, and goes to Dror as well. myPayAdvisor is a different business
+    with a different partner.
+    """
+    ctx = build_ctx(args, "mail")
+    res = mailer_mod.send(ctx.state, ctx.run_date, ctx.dry_run)
+    log(f"mail: {json.dumps(res)}")
+    if res.get("sent"):
+        return 0
+    if res.get("skipped"):
+        return 0  # nothing to send is not a failure
+    return 1
+
+
 def cmd_report(args: argparse.Namespace) -> int:
     """Rebuild today's report from the database; red line if daily is missing."""
     ctx = build_ctx(args, "report")
@@ -471,7 +490,8 @@ def print_summary(ctx: Ctx, status: str) -> None:
 def main(argv: Optional[List[str]] = None) -> int:
     args = parse_args(argv)
     handlers = {"daily": cmd_daily, "weekly": cmd_weekly, "measure": cmd_measure, "probe": cmd_probe,
-                "health": cmd_health, "report": cmd_report, "import-baseline": cmd_import_baseline}
+                "health": cmd_health, "report": cmd_report, "mail": cmd_mail,
+                "import-baseline": cmd_import_baseline}
     return handlers[args.command](args)
 
 

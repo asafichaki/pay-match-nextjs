@@ -1,0 +1,66 @@
+"""The SEO mail goes to Assaf, from the mypayadvisor domain, and its subject
+tells the truth before the mail is opened."""
+from __future__ import annotations
+
+import datetime as dt
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+import mailer
+
+D = dt.date(2026, 8, 27)
+
+
+def base(**over):
+    r = {"mode": "shadow", "index": {"tracked": 55, "indexed": 39, "newly_indexed": []},
+         "changes": {"applied_today": 0}, "health": {"failures": []}, "red_lines": []}
+    r.update(over)
+    return r
+
+
+class Subject(unittest.TestCase):
+    def test_red_lines_come_first(self) -> None:
+        s = mailer.subject_for(base(red_lines=["daily did not finish"],
+                                    health={"failures": ["sitemap 500"]}), D)
+        self.assertIn("1 red line", s)
+
+    def test_health_failures_beat_good_news(self) -> None:
+        s = mailer.subject_for(base(health={"failures": ["a", "b"]},
+                                    index={"tracked": 55, "indexed": 40, "newly_indexed": ["/x"]}), D)
+        self.assertIn("2 health failures", s)
+
+    def test_newly_indexed_is_the_headline_when_all_is_well(self) -> None:
+        s = mailer.subject_for(base(index={"tracked": 55, "indexed": 41, "newly_indexed": ["/a", "/b"]}), D)
+        self.assertIn("2 newly indexed", s)
+
+    def test_quiet_day_still_says_the_state(self) -> None:
+        s = mailer.subject_for(base(), D)
+        self.assertIn("shadow", s)
+        self.assertIn("39/55 indexed", s)
+
+
+class Recipients(unittest.TestCase):
+    def test_dror_is_not_a_recipient(self) -> None:
+        self.assertEqual(mailer.DEFAULT_TO, ["assaf.ichaki@gmail.com"])
+        self.assertNotIn("drorgigi11@gmail.com", mailer.DEFAULT_TO)
+
+    def test_sends_from_the_mypayadvisor_domain(self) -> None:
+        self.assertIn("@mypayadvisor.com", mailer.DEFAULT_FROM)
+        self.assertNotIn("therenology", mailer.DEFAULT_FROM)
+
+
+class Sending(unittest.TestCase):
+    def test_no_report_means_no_mail(self) -> None:
+        with tempfile.TemporaryDirectory() as d:
+            out = mailer.send(Path(d), D, dry_run=False)
+            self.assertFalse(out["sent"])
+            self.assertIn("no report", out["skipped"])
+
+    def test_dry_run_never_sends(self) -> None:
+        with tempfile.TemporaryDirectory() as d:
+            Path(d, f"report-{D.isoformat()}.json").write_text(json.dumps(base()), encoding="utf-8")
+            out = mailer.send(Path(d), D, dry_run=True)
+            self.assertFalse(out["sent"])
+            self.assertEqual(out["skipped"], "dry-run")
