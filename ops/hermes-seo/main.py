@@ -231,7 +231,22 @@ def step_indexnow(ctx: Ctx, info: Dict[str, Any]) -> None:
     bad = [r for r in results if not r.get("ok")]
     if bad:
         raise RuntimeError(f"IndexNow failed: {bad}")
-    info["note"] = f"{len(urls)} urls, {len(results)} endpoints (Bing/Copilot only)"
+    note = f"{len(urls)} urls, {len(results)} endpoints (Bing/Copilot only)"
+
+    # Google ignores IndexNow, so ask it directly. Priority order: pages that
+    # are not indexed, then whatever changed in the last 7 days. A 200 means
+    # asked, not indexed; only a later URL Inspection verdict counts, and the
+    # report says so.
+    not_indexed = [config.to_url(p) for p, r in ctx.index_status.items()
+                   if not (r.get("coverage_state") or "").lower().startswith("submitted and indexed")]
+    google_urls = list(dict.fromkeys(not_indexed + urls))
+    g = indexing.google_index_push(google_urls, ctx.dry_run)
+    ctx.report_bits["google_index"] = g
+    if g.get("skipped"):
+        note += f"; google: {g['skipped']}"
+    else:
+        note += f"; google asked {g['asked']}" + (f", {g['failed']} failed" if g.get("failed") else "")
+    info["note"] = note
 
 
 def step_titles(ctx: Ctx, info: Dict[str, Any]) -> None:

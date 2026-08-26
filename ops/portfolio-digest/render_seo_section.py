@@ -100,6 +100,17 @@ def render_lines(report: Optional[Dict[str, Any]], now: Optional[dt.datetime] = 
     lines.append(f"Index: tracked {ix.get('tracked', 0)} | indexed {ix.get('indexed', 0)} | "
                  f"not indexed {ix.get('not_indexed', 0)} | unknown {ix.get('unknown', 0)} | "
                  f"Bing indexed {ix.get('bing_indexed') if ix.get('bing_indexed') is not None else 'n/a'}")
+    g = ix.get("google_index") or {}
+    if g.get("asked"):
+        # "asked" is exactly what it says. Google returns 200 for any URL on a
+        # property we own and promises nothing; only a later URL Inspection
+        # verdict means indexed.
+        line = f"Google recrawl asked for {g['asked']} url{'s' if g['asked'] != 1 else ''}"
+        if g.get("failed"):
+            line += f", {g['failed']} failed"
+        lines.append(line)
+    elif g.get("skipped"):
+        lines.append(f"Google recrawl skipped: {g['skipped']}")
     newly = ix.get("newly_indexed") or []
     if newly:
         lines.append(f"Newly indexed: {', '.join(newly[:4])}")

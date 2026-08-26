@@ -181,3 +181,48 @@ class ChangesCounters(unittest.TestCase):
                                    {"proposals": [1, 2, 3], "applied": [1]})
         self.assertEqual(out["proposed_today"], 3)
         self.assertEqual(out["applied_today"], 1)
+
+
+class GoogleIndexLine(unittest.TestCase):
+    """The mail must say "asked", never "indexed".
+
+    Google returns 200 for any URL on a property the service account owns and
+    promises nothing about an article. Only a later URL Inspection verdict
+    means the page is in the index.
+    """
+
+    def _render(self, index_extra):
+        import tempfile, json as _json
+        with tempfile.TemporaryDirectory() as d:
+            payload = {
+                "date": "2026-08-26", "generated_at": "2026-08-26T05:00:00+00:00",
+                "code_version": "test", "mode": "shadow", "spend_mtd": 0.01,
+                "run": {"status": "ok", "steps": {}},
+                "traffic": {"d3": {"date": "2026-08-23", "clicks": 0, "impressions": 1,
+                                   "human_impressions": 1, "ctr": 0.0},
+                            "w7": {"clicks": 0, "human_impressions": 1, "prior": {"clicks": 0, "human_impressions": 1}},
+                            "w28": {"clicks": 0, "human_impressions": 1, "prior": {"clicks": 0, "human_impressions": 1}},
+                            "device_ctr": {"desktop": 0.0, "mobile": 0.0},
+                            "canada": {"clicks": 0, "human_impressions": 0}},
+                "index": {"tracked": 1, "indexed": 0, "not_indexed": 1, "unknown": 0,
+                          "newly_indexed": [], "pillar": {}, "escalation": [], **index_extra},
+                "changes": {"lines": [], "proposed_today": 0, "applied_today": 0,
+                            "verification_pending": 0, "advisory_regressions": 0, "rollbacks": []},
+                "cohort": {}, "citations": {}, "drafts": [], "competitor_changes": [],
+                "health": {"ok": True, "failures": [], "worthiness": {}}, "red_lines": [],
+            }
+            Path(d, "report-2026-08-26.json").write_text(_json.dumps(payload), encoding="utf-8")
+            return render.render_seo_section(d)
+
+    def test_says_asked_not_indexed(self) -> None:
+        html = self._render({"google_index": {"asked": 22, "failed": 0}})
+        self.assertIn("Google recrawl asked for 22 urls", html)
+        self.assertNotIn("Google indexed 22", html)
+
+    def test_reports_the_skip_reason(self) -> None:
+        html = self._render({"google_index": {"asked": 0, "skipped": "no indexing key at /x"}})
+        self.assertIn("Google recrawl skipped: no indexing key at /x", html)
+
+    def test_silent_when_there_is_nothing_to_say(self) -> None:
+        html = self._render({})
+        self.assertNotIn("Google recrawl", html)

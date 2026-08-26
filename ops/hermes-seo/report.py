@@ -115,6 +115,7 @@ def index_block(supa: Supa, sitemap: Dict[str, Optional[str]], run_date: dt.date
         "pillar": {"state": (pillar_row or {}).get("coverage_state"), "last_crawl": (pillar_row or {}).get("last_crawl"),
                    "googlebot_hits_7d": hits.get(config.PILLAR, 0)},
         "bing_indexed": bits.get("bing_indexed", (supa.setting("bing_index", {}) or {}).get("in_index")),
+        "google_index": bits.get("google_index") or {},
         "escalation": (bits.get("escalation_lines") or [])[:4],
         "classes": summary["classes"],
     }
