@@ -129,6 +129,14 @@ def load_shared(ctx: Ctx, with_gsc: bool = True) -> None:
             ctx.idx = {}
     for r in ctx.supa.safe_get("seo_overrides"):
         ctx.overrides[config.path_of(r["kind"], r["slug"])] = r
+    # Work already queued for a page must not be queued a second time. A lane
+    # reads the page or the override row to decide what is missing, and in
+    # shadow mode neither one ever changes, so without this every run
+    # re-proposes the same pages and pays for the same LLM calls again.
+    for r in ctx.supa.safe_get("seo_changes",
+                               {"status": "in.(proposed,verification_pending)",
+                                "select": "kind,slug,field,status"}):
+        ctx.open_changes.add(f"{config.path_of(r['kind'], r['slug'])}|{r['field']}")
     for r in ctx.supa.safe_get("seo_index_status"):
         ctx.index_status[config.to_path(r["url"])] = r
     hold = ctx.supa.setting("holdout", {}) or {}

@@ -47,6 +47,7 @@ class Ctx:
     report_bits: Dict[str, Any] = field(default_factory=dict)
     check1_rewrite_rate: float = 0.0
     citation_lock: Set[str] = field(default_factory=set)
+    open_changes: Set[str] = field(default_factory=set)  # "<path>|<field>" still awaiting an outcome
 
     def cap(self, n: int) -> int:
         """Apply --limit on top of a lane's daily cap."""
@@ -54,6 +55,22 @@ class Ctx:
 
     def override(self, path: str) -> Dict[str, Any]:
         return self.overrides.get(path) or {}
+
+    def has_open_change(self, path: str, field_name: str) -> bool:
+        """Is there already a change for this page and field awaiting an outcome?
+
+        A lane must not re-propose work that is already queued. Every lane
+        decides what to do next from the CURRENT state of the page or the
+        override row, and in shadow mode neither ever changes, so the same
+        page is picked every single run: the first shadow day produced ten
+        `aeo_answer` proposals across only seven pages, three of them drafted
+        twice, each one a paid Gemini call and another line in the digest.
+
+        The same guard matters in apply mode: a change sitting in
+        `verification_pending` has not landed on the live page yet, so the
+        page still looks untouched to the next run.
+        """
+        return f"{path}|{field_name}" in self.open_changes
 
     def locked(self, path: str) -> bool:
         lu = self.override(path).get("locked_until")

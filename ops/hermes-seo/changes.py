@@ -86,6 +86,16 @@ def propose_or_apply(ctx: Ctx, kind: str, slug: str, field: str, old: Any, new: 
     prior = existing_change(ctx, key)
     if prior and prior.get("status") in ACTIVE:
         return "duplicate"
+    # A page and field with work already queued is skipped even when the new
+    # value differs from the queued one. The key above is a hash of the value,
+    # so it only catches an identical re-proposal; anything the model phrases
+    # differently on the next run slips past it. A lane decides what a page
+    # needs from the live page and the override row, and in shadow mode
+    # neither changes, so the same page comes back every run: day one produced
+    # ten aeo_answer proposals over seven pages, three of them drafted and
+    # paid for twice.
+    if ctx.has_open_change(path, field):
+        return "duplicate"
     record = {"kind": kind, "slug": slug, "field": field, "old": old, "new": new,
               "reason": reason, "source": source, "key": key}
     if may_apply and ctx.gates.apply_allowed():
@@ -104,6 +114,7 @@ def propose_or_apply(ctx: Ctx, kind: str, slug: str, field: str, old: Any, new: 
         except (SupaError, TableMissing):
             pass
         _register_verification(ctx, key, kind, slug, field, new)
+        ctx.open_changes.add(f"{path}|{field}")
         record["status"] = "applied"
         ctx.applied.append(record)
         print(f"   APPLIED {field} {path}: {str(new)[:70]}", file=sys.stderr)
@@ -123,6 +134,7 @@ def propose_or_apply(ctx: Ctx, kind: str, slug: str, field: str, old: Any, new: 
         ctx.supa.warn("seo_changes: table missing, proposal kept in the report only")
     except SupaError as exc:
         ctx.supa.warn(f"seo_changes insert: {exc}")
+    ctx.open_changes.add(f"{path}|{field}")
     record["status"] = "proposed"
     ctx.proposals.append(record)
     print(f"   proposed {field} {path}: {str(new)[:70]}", file=sys.stderr)
