@@ -6,6 +6,7 @@ import { MatchCTA } from "@/components/MatchCTA";
 import ProcessorComparisonTable from "@/components/ProcessorComparisonTable";
 import { createSupabasePublicClient } from "@/integrations/supabase/server-public";
 import { REDIRECTED_COMPARISON_SLUGS } from "@/lib/comparisons/redirected-slugs";
+import { VOLUME_TIERS } from "@/lib/comparisons/volume-tiers";
 import {
   SECTION_META,
   SECTION_ORDER,
@@ -173,10 +174,56 @@ const staticComparisons: Comparison[] = [
   },
 ];
 
+/**
+ * The eight static shells the hand-written list above never covered.
+ *
+ * `staticComparisons` listed 5 of the 13 shells, so the hub silently omitted
+ * the five volume-tier pages and the three high-risk shells: 8 of 54
+ * comparisons had no link from the hub that is supposed to be their only
+ * distribution path. Titles, descriptions and dates below are the pages' own
+ * metadata and their ComparisonSchema `datePublished`, nothing invented.
+ */
+const tierComparisons: Comparison[] = VOLUME_TIERS.map((t) => ({
+  title: t.metaTitle,
+  description: t.metaDescription,
+  href: `/comparisons/${t.slug}`,
+  date: "May 18, 2026",
+  iso: "2026-05-18",
+}));
+
+const highRiskShellComparisons: Comparison[] = [
+  {
+    title: "Stripe High-Risk Alternatives 2026: Where to Go After a Freeze",
+    description:
+      "Stripe froze your account or holds your funds? Here are real high-risk payment processors that approve merchants Stripe declines: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, and Host Merchant Services.",
+    href: "/comparisons/stripe-high-risk-alternatives",
+    date: "May 30, 2026",
+    iso: "2026-05-30",
+  },
+  {
+    title: "PaymentCloud vs Durango 2026: Which High-Risk Processor Approves You Faster",
+    description:
+      "PaymentCloud vs Durango Merchant Services for high-risk merchants. Approved verticals, reserves, approval speed, and offshore options compared.",
+    href: "/comparisons/paymentcloud-vs-durango",
+    date: "May 30, 2026",
+    iso: "2026-05-30",
+  },
+  {
+    title: "PaymentCloud vs Easy Pay Direct 2026: High-Risk Approval and Multi-MID Compared",
+    description:
+      "PaymentCloud vs Easy Pay Direct for high-risk merchants. Approved verticals, reserves, load balancing across multiple MIDs, and approval speed compared.",
+    href: "/comparisons/paymentcloud-vs-easy-pay-direct",
+    date: "May 30, 2026",
+    iso: "2026-05-30",
+  },
+];
+
 async function getAllComparisons(): Promise<Comparison[]> {
   const dbComparisons = await fetchDbComparisons();
   const byHref = new Map<string, Comparison>();
   for (const c of staticComparisons) byHref.set(c.href, c);
+  for (const c of tierComparisons) byHref.set(c.href, c);
+  for (const c of highRiskShellComparisons) byHref.set(c.href, c);
   for (const c of dbComparisons) byHref.set(c.href, c);
   const merged = Array.from(byHref.values());
   merged.sort((a, b) => (b.iso || "").localeCompare(a.iso || ""));

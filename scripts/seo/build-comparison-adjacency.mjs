@@ -192,7 +192,9 @@ function byTieBreak(x, y) {
 function sectionOf(slug) {
   if (slug.includes("high-risk") || slug.startsWith("paymentcloud-")) return "high-risk";
   if (slug === CORNERSTONE) return "volume";
-  if (/^best-payment-processors-[\dk-]+monthly-\d{4}$/.test(slug)) return "volume";
+  // [0-9][0-9km-]* covers "10k-25k" and "500k-1m"; an earlier [\dk-]+ dropped
+  // the 500k-1m tier into "use case" because of the "m".
+  if (/^best-payment-processors-[0-9][0-9km-]*-monthly-\d{4}$/.test(slug)) return "volume";
   if (slug.includes("-vs-")) return "brand-duel";
   return "use-case";
 }
