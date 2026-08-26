@@ -243,7 +243,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
 
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <p className="text-foreground">
-                    <strong>The Core Issue:</strong> If your payment processor bundles these three components together, a pricing model often called "Tiered," "Blended," or "Flat Rate"—they can easily hide a massive markup behind the scenes. This is where you're likely overpaying.
+                    <strong>The Core Issue:</strong> If your payment processor bundles these three components together, a pricing model often called "Tiered," "Blended," or "Flat Rate", they can easily hide a massive markup behind the scenes. This is where you're likely overpaying.
                   </p>
                 </div>
 

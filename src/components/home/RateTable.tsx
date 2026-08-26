@@ -50,7 +50,7 @@ async function fetchProviders(): Promise<ProviderRow[]> {
 
 // Funding: one short word for the eye.
 function fmtFunding(n: number | null): { label: string; chipTone: string } {
-  if (n === null || n === undefined) return { label: "—", chipTone: "bg-muted text-muted-foreground" };
+  if (n === null || n === undefined) return { label: "-", chipTone: "bg-muted text-muted-foreground" };
   if (n <= 1) return { label: "Next-day", chipTone: "bg-primary/10 text-primary border border-primary/20" };
   if (n <= 2) return { label: "2 days", chipTone: "bg-foreground/[0.06] text-foreground border border-border" };
   return { label: `${n} days`, chipTone: "bg-foreground/[0.06] text-foreground border border-border" };
@@ -92,13 +92,13 @@ function parseRate(raw: string | null): {
   }
 
   // Fallback: subscription-style ("$99/mo + IC + $0.08") or "1.5% - 2.9%" ranges
-  const rangeRe = /(\d+(?:\.\d+)?%\s*[-–—]\s*\d+(?:\.\d+)?%)/;
+  const rangeRe = /(\d+(?:\.\d+)?%\s*[-–, ]\s*\d+(?:\.\d+)?%)/;
   const rangeMatch = text.match(rangeRe);
   if (rangeMatch) {
     return { hero: rangeMatch[1], channelTag: null, caption: text.replace(rangeMatch[1], "").trim().replace(/^[·|/-]\s*/, "") || null };
   }
 
-  const subRe = /(\$\d+(?:\.\d+)?\s*[-–—]?\s*\$?\d*(?:\.\d+)?\s*\/mo)/i;
+  const subRe = /(\$\d+(?:\.\d+)?\s*[-–, ]?\s*\$?\d*(?:\.\d+)?\s*\/mo)/i;
   const subMatch = text.match(subRe);
   if (subMatch) {
     const remainder = text.replace(subMatch[1], "").replace(/^\s*[+·|/-]\s*/, "").trim();
@@ -110,7 +110,7 @@ function parseRate(raw: string | null): {
 
 // Compress free-text customer_support into structured icon set + label.
 function parseSupport(raw: string | null): { phone: boolean; email: boolean; chat: boolean; note: string } {
-  if (!raw) return { phone: false, email: false, chat: false, note: "—" };
+  if (!raw) return { phone: false, email: false, chat: false, note: "-" };
   const t = raw.toLowerCase();
   const phone = /phone|call/.test(t);
   const email = /email|mail/.test(t);
@@ -122,7 +122,7 @@ function parseSupport(raw: string | null): { phone: boolean; email: boolean; cha
 }
 
 function RatingPill({ rating, label }: { rating: number | null; label: string | null }) {
-  if (rating === null || rating === undefined) return <span className="text-muted-foreground text-sm">—</span>;
+  if (rating === null || rating === undefined) return <span className="text-muted-foreground text-sm">, </span>;
   const tone =
     rating >= 9
       ? "bg-primary/10 text-primary border-primary/20"
@@ -255,7 +255,7 @@ export default async function RateTable() {
                     {/* Effective rate, hero number + caption */}
                     <div className="flex flex-col gap-0.5 min-w-0">
                       <div className="font-mono text-[15px] sm:text-base font-semibold text-foreground tabular-nums leading-tight">
-                        {rate.hero || "—"}
+                        {rate.hero || "-"}
                       </div>
                       <div className="text-[11px] text-muted-foreground leading-snug truncate">
                         {rate.channelTag || ""}
@@ -277,7 +277,7 @@ export default async function RateTable() {
                       <Link
                         href={`/quiz?provider=${encodeURIComponent(p.name.toLowerCase())}`}
                         className="inline-flex items-center gap-1 text-xs font-semibold text-foreground hover:text-primary transition-colors whitespace-nowrap"
-                        aria-label={`See if ${p.name} fits — start match`}
+                        aria-label={`See if ${p.name} fits, start match`}
                       >
                         Details
                         <ArrowRight className="h-3 w-3" />
@@ -327,7 +327,7 @@ export default async function RateTable() {
                         Effective rate
                       </p>
                       <p className="font-mono text-xl font-semibold text-foreground tabular-nums leading-tight">
-                        {rate.hero || "—"}
+                        {rate.hero || "-"}
                       </p>
                       {(rate.channelTag || rate.caption) && (
                         <p className="text-[11px] text-muted-foreground mt-0.5">

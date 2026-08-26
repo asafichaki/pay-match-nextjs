@@ -96,7 +96,7 @@ const Navigation = () => {
               href="/pulse"
               className="relative text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               role="menuitem"
-              aria-label="Live payments pulse — rate moves and industry updates"
+              aria-label="Live payments pulse, rate moves and industry updates"
             >
               Pulse
               {hasHighSeverity && (

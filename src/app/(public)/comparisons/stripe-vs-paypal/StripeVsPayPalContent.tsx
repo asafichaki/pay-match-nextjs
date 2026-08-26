@@ -44,7 +44,7 @@ export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: Conte
 
             <MatchCTA
               variant="inline"
-              headline="Stripe or PayPal — which actually fits you?"
+              headline="Stripe or PayPal: which actually fits you?"
               subline="Get a 60-second personalized match based on your volume, channels, and what you sell. We answer to you, not the processors."
             />
           </header>

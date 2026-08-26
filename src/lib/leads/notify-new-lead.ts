@@ -213,7 +213,7 @@ function buildHtml(args: NotifyNewLeadArgs): string {
 function buildText(args: NotifyNewLeadArgs): string {
   const lead = args.lead;
   const lines = [
-    `New lead — ${args.source}`,
+    `New lead, ${args.source}`,
     `Time: ${formatIL(new Date())} (Asia/Jerusalem)`,
     `Email: ${lead.email}`,
   ];
@@ -236,7 +236,7 @@ function buildText(args: NotifyNewLeadArgs): string {
 export async function notifyNewLead(args: NotifyNewLeadArgs): Promise<void> {
   try {
     if (!process.env.RESEND_API_KEY) {
-      console.error("[notifyNewLead] RESEND_API_KEY not set — skipping", {
+      console.error("[notifyNewLead] RESEND_API_KEY not set, skipping", {
         source: args.source,
       });
       return;

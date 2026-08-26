@@ -46,7 +46,7 @@ export async function trackLeadFailure(args: TrackLeadFailureArgs): Promise<void
     const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     if (!url || !key) {
-      console.error("[trackLeadFailure] missing SUPABASE_URL or SERVICE_ROLE_KEY env — failure NOT persisted", {
+      console.error("[trackLeadFailure] missing SUPABASE_URL or SERVICE_ROLE_KEY env, failure NOT persisted", {
         source: args.source,
       });
       return;
@@ -82,7 +82,7 @@ export async function trackLeadFailure(args: TrackLeadFailureArgs): Promise<void
 
     if (writeErr) {
       // Last-ditch — log only. Do not throw.
-      console.error("[trackLeadFailure] FALLBACK WRITE FAILED — lead may be lost", {
+      console.error("[trackLeadFailure] FALLBACK WRITE FAILED, lead may be lost", {
         source: args.source,
         write_error: writeErr,
         payload_email: (args.payload as { email?: unknown }).email,

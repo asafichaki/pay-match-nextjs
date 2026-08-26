@@ -86,7 +86,7 @@ async function assertCallerIsAdmin(): Promise<string> {
     .select("role")
     .eq("user_id", user.id)
     .single();
-  if (roleRow?.role !== "admin") throw new Error("Forbidden — admin role required");
+  if (roleRow?.role !== "admin") throw new Error("Forbidden: admin role required");
   return user.id;
 }
 

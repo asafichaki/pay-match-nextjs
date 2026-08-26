@@ -15,13 +15,19 @@ const eslintConfig = defineConfig([
   ]),
   // Portfolio rule: em-dash (U+2014) banned in source. Replace with comma, colon, or period.
   // Per memory `feedback_no_em_dashes` (2026-05-02). Applies to .ts/.tsx only.
-  // Severity is `warn` for now because the codebase has 88 files with em-dashes
-  // pending a clean sweep. Promote to `error` after sweep is done.
+  //
+  // Promoted from `warn` to `error` in PR 2 (2026-08-26) once the sweep was done:
+  // 88 reported sites across 32 files, taken to zero. Two places still hold the
+  // character on purpose and carry a disable directive, both in
+  // src/lib/updates/voice-rules.ts: the prompt fragment that tells a model which
+  // character to avoid, and the violation record that reports what it matched.
+  // The sanitizer regexes need no directive; the selectors below cover strings,
+  // template chunks and JSX text, not regex literals.
   {
     files: ["src/**/*.{ts,tsx}"],
     rules: {
       "no-restricted-syntax": [
-        "warn",
+        "error",
         {
           selector: "Literal[value=/\\u2014/]",
           message: "em-dash banned per portfolio rule; replace with comma, colon, or period.",

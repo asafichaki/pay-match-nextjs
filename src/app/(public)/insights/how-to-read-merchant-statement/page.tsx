@@ -237,7 +237,7 @@ export default function HowToReadMerchantStatementPage() {
 
                 <div className="my-6 p-4 bg-muted/30 rounded-lg">
                   <ul className="list-none space-y-2 text-foreground">
-                    <li><strong>Who gets it:</strong> The Issuing Bank (Chase, Capital One, Wells Fargo, etc.—the bank that gave the card to your customer).</li>
+                    <li><strong>Who gets it:</strong> The Issuing Bank (Chase, Capital One, Wells Fargo, etc., the bank that gave the card to your customer).</li>
                     <li><strong>The Cost:</strong> This is the largest portion of your fees (<strong>70-90%</strong>).</li>
                     <li><strong>Negotiability:</strong> Zero. These rates are set by <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a>/<a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>.</li>
                     <li><strong>What it looks like on the bill:</strong> Often listed as "Interchange," "IC Costs," or detailed with codes like "Visa Rewards 1" or "MC World Elite."</li>

@@ -47,7 +47,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
 
             <MatchCTA
               variant="inline"
-              headline="Square or Stripe — which fits your business?"
+              headline="Square or Stripe: which fits your business?"
               subline="Skip the 4,000-word read. Get a 60-second match based on your channel mix, volume, and ticket size."
             />
           </header>

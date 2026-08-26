@@ -73,6 +73,10 @@ function sanitizeBody(html: string): string {
   return html
     .replace(PLACEHOLDER_RE, "")
     .replace(FALLBACK_INTERNAL_RE, "")
+    // The em-dash and en-dash the body sanitizer strips. A regex literal is not
+    // reported by the em-dash rule (it only inspects strings, template chunks and
+    // JSX text), so this needs no disable directive, and adding one would itself
+    // be an unused-directive warning.
     .replace(/[—–]/g, ", ");
 }
 
@@ -265,7 +269,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
     return {
       "@context": "https://schema.org",
       "@type": "AudioObject",
-      name: `${article.title} — audio overview`,
+      name: `${article.title}: audio overview`,
       description: article.description,
       contentUrl: article.audio_url,
       encodingFormat: "audio/mpeg",

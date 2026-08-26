@@ -403,7 +403,7 @@ export default function Level2Level3ProcessingGuidePage() {
                     <li className="text-primary font-semibold">Difference: $45 saved on a single invoice</li>
                   </ul>
                   <p className="text-foreground leading-relaxed mt-4">
-                    If your business processes just 20 of these transactions weekly, you're losing <strong>$3,600 monthly, or $43,200 annually</strong>—simply by not capturing the required data fields.
+                    If your business processes just 20 of these transactions weekly, you're losing <strong>$3,600 monthly, or $43,200 annually</strong>, simply by not capturing the required data fields.
                   </p>
                 </div>
 
@@ -447,7 +447,7 @@ export default function Level2Level3ProcessingGuidePage() {
                     Processors like <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">Square and Stripe</Link> charge a flat rate (typically 2.9% + $0.30). When you process a corporate card that qualifies for Level 3 data, the actual interchange cost drops to 1.80%, but you still pay 2.9%.
                   </p>
                   <p className="text-foreground leading-relaxed mt-2 font-semibold">
-                    The processor pockets the 1.1% difference—$1,100 on every $100,000 you process.
+                    The processor pockets the 1.1% difference, $1,100 on every $100,000 you process.
                   </p>
                 </div>
 

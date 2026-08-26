@@ -236,21 +236,21 @@ export function VolumeTierPage({ tier, aeoAnswer, relatedLinks }: Props) {
           <h2 className="!mt-12">Sources</h2>
           <ol className="not-prose space-y-3 text-sm">
             <li>
-              myPayAdvisor 2026 Payment Processor Effective Rate Database &mdash; open dataset,
+              myPayAdvisor 2026 Payment Processor Effective Rate Database: open dataset,
               CC-BY-4.0.{" "}
               <Link href="/data/effective-rates-2026" className="text-primary hover:underline">
                 View
               </Link>
             </li>
             <li>
-              myPayAdvisor Research Methodology &mdash; card-mix assumption, sample selection,
+              myPayAdvisor Research Methodology: card-mix assumption, sample selection,
               calculation method.{" "}
               <Link href="/research/methodology" className="text-primary hover:underline">
                 View
               </Link>
             </li>
             <li>
-              Federal Reserve Payments Study series &mdash; U.S. SMB card-mix distribution.{" "}
+              Federal Reserve Payments Study series: U.S. SMB card-mix distribution.{" "}
               <a
                 href="https://www.federalreserve.gov/paymentsystems.htm"
                 target="_blank"

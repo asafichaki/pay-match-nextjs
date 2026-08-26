@@ -44,7 +44,7 @@ export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLin
 
                 <MatchCTA
                   variant="inline"
-                  headline="Skip the long list — get your 3 best matches in 60 seconds"
+                  headline="Skip the long list, get your 3 best matches in 60 seconds"
                   subline="Tell us your monthly volume and channel mix. We send back the 3 processors that actually fit, with effective rates and what to ask before signing."
                 />
               </header>

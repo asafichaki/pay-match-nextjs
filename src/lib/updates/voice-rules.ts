@@ -40,6 +40,9 @@ const BANNED = [
   "world-class",
 ];
 
+// The prompt has to show the model the exact character it must not emit, so this
+// is the one string in the codebase that is allowed to contain one.
+// eslint-disable-next-line no-restricted-syntax
 export const VOICE_PROMPT_FRAGMENT = `
 Voice rules (HARD — output will be rejected if violated):
 - No em-dashes (—). Use comma, period, or colon.
@@ -59,6 +62,8 @@ export interface VoiceCheckResult {
   cleaned: string; // text with em-dashes converted; banned words stripped
 }
 
+// The two characters this module strips. A regex literal is not reported by the
+// em-dash rule, which only looks at strings, template chunks and JSX text.
 const EM_DASH_RE = /[—–]/g;
 
 export function voiceCheck(input: string, opts?: { minScore?: number }): VoiceCheckResult {
@@ -69,6 +74,7 @@ export function voiceCheck(input: string, opts?: { minScore?: number }): VoiceCh
   // Em-dashes -> ", "
   if (EM_DASH_RE.test(cleaned)) {
     const matches = cleaned.match(EM_DASH_RE) || [];
+    // eslint-disable-next-line no-restricted-syntax
     matches.forEach(() => violations.push({ kind: "em_dash", match: "—" }));
     cleaned = cleaned.replace(EM_DASH_RE, ", ");
   }

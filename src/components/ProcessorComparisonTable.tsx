@@ -111,11 +111,11 @@ export default function ProcessorComparisonTable() {
           id="rates-table-heading"
           className="font-display text-2xl sm:text-3xl font-bold text-foreground tracking-tight"
         >
-          12 Payment Processors at a Glance — 2026 Real Rates
+          12 Payment Processors at a Glance: 2026 Real Rates
         </h2>
         <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-3xl">
           Published 2026 rates for the U.S. market. <strong className="text-foreground">IC</strong> = interchange (the
-          card-network fee, typically 1.3-2.3% — passed through). For your effective rate, use the{" "}
+          card-network fee, typically 1.3-2.3%, passed through). For your effective rate, use the{" "}
           <Link href="/calculator" className="text-primary hover:underline font-medium">
             fee calculator
           </Link>

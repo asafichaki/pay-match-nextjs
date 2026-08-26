@@ -354,7 +354,7 @@ export default function PaymentProcessorFeesGuidePage() {
                   <Link href="/comparisons" className="text-primary font-medium hover:underline">
                     15 Payment Processors Compared 2026
                   </Link>
-                  {" "}— effective rate at $10K / $50K / $250K / $1M monthly volume, hardware costs, and contract red flags. Updated quarterly.
+                  {" "}covering effective rate at $10K / $50K / $250K / $1M monthly volume, hardware costs, and contract red flags. Updated quarterly.
                 </p>
               </div>
 

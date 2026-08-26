@@ -136,30 +136,30 @@ export default function MethodologyPage() {
           <h2>Inputs and data sources</h2>
           <ul>
             <li>
-              <strong>Processor public pricing</strong> &mdash; Stripe pricing pages, Square
+              <strong>Processor public pricing</strong>: Stripe pricing pages, Square
               pricing pages, PayPal Business fees, Helcim pricing, Stax, Payment Depot, Adyen,
               Clover (via Fiserv), Worldpay, Shopify Payments, Authorize.net, Braintree.
               Captured at quarterly snapshots. Last full capture: 2026-04-30.
             </li>
             <li>
-              <strong>Card network interchange schedules</strong> &mdash; published Visa and
+              <strong>Card network interchange schedules</strong>: published Visa and
               Mastercard interchange tables (U.S.), accessed via official network sites.
             </li>
             <li>
-              <strong>Federal Reserve payments studies</strong> &mdash; H.3 release and the
+              <strong>Federal Reserve payments studies</strong>: H.3 release and the
               triennial Federal Reserve Payments Study series.
             </li>
             <li>
-              <strong>Nilson Report</strong> &mdash; market-share estimates and merchant counts;
+              <strong>Nilson Report</strong>: market-share estimates and merchant counts;
               public excerpts only.
             </li>
             <li>
-              <strong>ETA Trends and Insights</strong> &mdash; Electronic Transactions
+              <strong>ETA Trends and Insights</strong>: Electronic Transactions
               Association industry data on U.S. processor consolidation, ISO economics, and
               merchant churn rates.
             </li>
             <li>
-              <strong>Reviewer-confirmed merchant statements</strong> &mdash; statements
+              <strong>Reviewer-confirmed merchant statements</strong>: statements
               submitted by readers to the free statement audit tool. Used only in aggregate,
               fully anonymized, with explicit consent. As of 2026-05-18, the aggregated set is
               not yet large enough to release as a public dataset; we plan first release Q3 2026.
@@ -242,19 +242,19 @@ export default function MethodologyPage() {
           <h2>Update cadence</h2>
           <ul>
             <li>
-              <strong>Headline pricing</strong> &mdash; quarterly snapshot from processor public
+              <strong>Headline pricing</strong>: quarterly snapshot from processor public
               pages.
             </li>
             <li>
-              <strong>Interchange schedules</strong> &mdash; biannual (Visa/Mastercard publish
+              <strong>Interchange schedules</strong>: biannual (Visa/Mastercard publish
               in April and October).
             </li>
             <li>
-              <strong>Federal Reserve studies</strong> &mdash; triennial, with annual H.3
+              <strong>Federal Reserve studies</strong>: triennial, with annual H.3
               release updates.
             </li>
             <li>
-              <strong>Aggregated reader statements</strong> &mdash; planned annual release once
+              <strong>Aggregated reader statements</strong>: planned annual release once
               sample exceeds 1,000 statements.
             </li>
           </ul>

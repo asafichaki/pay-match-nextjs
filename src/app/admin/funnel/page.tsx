@@ -243,12 +243,12 @@ export default function FunnelDashboard() {
                     return (
                       <tr key={l.id} className="border-b border-border/50 hover:bg-muted/30">
                         <td className="py-3 pr-4">
-                          <div className="font-medium text-foreground">{l.full_name || "—"}</div>
+                          <div className="font-medium text-foreground">{l.full_name || "-"}</div>
                           <div className="text-xs text-muted-foreground">{l.email}</div>
                         </td>
                         <td className="py-3 pr-4">
                           <Badge className={trackBadgeClass(l.track) + " border"} variant="outline">
-                            {l.track ? TRACK_LABEL[l.track] || `Track ${l.track}` : "—"}
+                            {l.track ? TRACK_LABEL[l.track] || `Track ${l.track}` : "-"}
                           </Badge>
                         </td>
                         <td className="py-3 pr-4">
@@ -257,9 +257,9 @@ export default function FunnelDashboard() {
                           </span>
                         </td>
                         <td className="py-3 pr-4 text-xs text-muted-foreground max-w-[160px] truncate">
-                          {l.pain_point || "—"}
+                          {l.pain_point || "-"}
                         </td>
-                        <td className="py-3 pr-4 text-xs text-muted-foreground">{l.volume_tier || "—"}</td>
+                        <td className="py-3 pr-4 text-xs text-muted-foreground">{l.volume_tier || "-"}</td>
                         <td className="py-3 pr-4 text-xs">
                           <span className="text-muted-foreground">
                             sent {t.sent} · opened {t.opened} · clicked {t.clicked}
