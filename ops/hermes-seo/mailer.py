@@ -5,12 +5,14 @@ That digest covers Renology, Golden Yards and CCC, it is sent from
 hello@therenology.com, and it goes to Assaf AND to Dror. myPayAdvisor is a
 different business with a different partner, so its SEO internals, its
 traffic and its lead-adjacent numbers have no business landing in Dror's
-inbox. The one-morning-mail rule is about not flooding Assaf with engine
-noise; it was never a reason to mix audiences.
+inbox. Barak is on it because it is his business too.
+
+The one-morning-mail rule is about not flooding Assaf with engine noise; it
+was never a reason to mix audiences.
 
 From `seo@mypayadvisor.com` (the domain is verified in Resend), to Assaf
-only, at 07:50 IL so it lands with the morning batch. Same HTML block the
-digest renderer produces, wrapped in a minimal shell.
+and Barak, at 07:50 IL so it lands with the morning batch. Same HTML block
+the digest renderer produces, wrapped in a minimal shell.
 
 Never raises: a mail failure must not fail the run, it is reported instead.
 """
@@ -28,7 +30,12 @@ import config
 
 RESEND_ENDPOINT = "https://api.resend.com/emails"
 DEFAULT_FROM = "myPayAdvisor SEO <seo@mypayadvisor.com>"
-DEFAULT_TO = ["assaf.ichaki@gmail.com"]
+# Assaf and Barak. Barak on the company mailbox, not a personal Gmail, per
+# `renology_company_mailboxes_for_internal_copies`; it is also the address
+# that already receives lead notifications on this project. Dror is
+# deliberately absent: he is a Renology and Golden Yards partner and this is
+# a different business.
+DEFAULT_TO = ["assaf.ichaki@gmail.com", "barak@mypayadvisor.com"]
 
 
 def _renderer():

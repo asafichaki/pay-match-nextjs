@@ -42,8 +42,18 @@ class Subject(unittest.TestCase):
 
 
 class Recipients(unittest.TestCase):
+    def test_assaf_and_barak(self) -> None:
+        self.assertEqual(mailer.DEFAULT_TO,
+                         ["assaf.ichaki@gmail.com", "barak@mypayadvisor.com"])
+
+    def test_barak_is_on_the_company_mailbox_not_a_personal_gmail(self) -> None:
+        barak = [t for t in mailer.DEFAULT_TO if "barak" in t.lower()]
+        self.assertEqual(barak, ["barak@mypayadvisor.com"])
+        self.assertFalse([t for t in mailer.DEFAULT_TO
+                          if "barak" in t.lower() and t.lower().endswith("gmail.com")])
+
     def test_dror_is_not_a_recipient(self) -> None:
-        self.assertEqual(mailer.DEFAULT_TO, ["assaf.ichaki@gmail.com"])
+        # He is a Renology and Golden Yards partner. This is a different business.
         self.assertNotIn("drorgigi11@gmail.com", mailer.DEFAULT_TO)
 
     def test_sends_from_the_mypayadvisor_domain(self) -> None:
