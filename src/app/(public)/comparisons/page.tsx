@@ -6,6 +6,14 @@ import { MatchCTA } from "@/components/MatchCTA";
 import ProcessorComparisonTable from "@/components/ProcessorComparisonTable";
 import { createSupabasePublicClient } from "@/integrations/supabase/server-public";
 import { REDIRECTED_COMPARISON_SLUGS } from "@/lib/comparisons/redirected-slugs";
+import { VOLUME_TIERS } from "@/lib/comparisons/volume-tiers";
+import {
+  SECTION_META,
+  SECTION_ORDER,
+  sectionOfHref,
+  splitIntro,
+  type ComparisonSection,
+} from "@/lib/comparisons/sections";
 
 export const revalidate = 3600;
 
@@ -166,10 +174,56 @@ const staticComparisons: Comparison[] = [
   },
 ];
 
+/**
+ * The eight static shells the hand-written list above never covered.
+ *
+ * `staticComparisons` listed 5 of the 13 shells, so the hub silently omitted
+ * the five volume-tier pages and the three high-risk shells: 8 of 54
+ * comparisons had no link from the hub that is supposed to be their only
+ * distribution path. Titles, descriptions and dates below are the pages' own
+ * metadata and their ComparisonSchema `datePublished`, nothing invented.
+ */
+const tierComparisons: Comparison[] = VOLUME_TIERS.map((t) => ({
+  title: t.metaTitle,
+  description: t.metaDescription,
+  href: `/comparisons/${t.slug}`,
+  date: "May 18, 2026",
+  iso: "2026-05-18",
+}));
+
+const highRiskShellComparisons: Comparison[] = [
+  {
+    title: "Stripe High-Risk Alternatives 2026: Where to Go After a Freeze",
+    description:
+      "Stripe froze your account or holds your funds? Here are real high-risk payment processors that approve merchants Stripe declines: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, and Host Merchant Services.",
+    href: "/comparisons/stripe-high-risk-alternatives",
+    date: "May 30, 2026",
+    iso: "2026-05-30",
+  },
+  {
+    title: "PaymentCloud vs Durango 2026: Which High-Risk Processor Approves You Faster",
+    description:
+      "PaymentCloud vs Durango Merchant Services for high-risk merchants. Approved verticals, reserves, approval speed, and offshore options compared.",
+    href: "/comparisons/paymentcloud-vs-durango",
+    date: "May 30, 2026",
+    iso: "2026-05-30",
+  },
+  {
+    title: "PaymentCloud vs Easy Pay Direct 2026: High-Risk Approval and Multi-MID Compared",
+    description:
+      "PaymentCloud vs Easy Pay Direct for high-risk merchants. Approved verticals, reserves, load balancing across multiple MIDs, and approval speed compared.",
+    href: "/comparisons/paymentcloud-vs-easy-pay-direct",
+    date: "May 30, 2026",
+    iso: "2026-05-30",
+  },
+];
+
 async function getAllComparisons(): Promise<Comparison[]> {
   const dbComparisons = await fetchDbComparisons();
   const byHref = new Map<string, Comparison>();
   for (const c of staticComparisons) byHref.set(c.href, c);
+  for (const c of tierComparisons) byHref.set(c.href, c);
+  for (const c of highRiskShellComparisons) byHref.set(c.href, c);
   for (const c of dbComparisons) byHref.set(c.href, c);
   const merged = Array.from(byHref.values());
   merged.sort((a, b) => (b.iso || "").localeCompare(a.iso || ""));
@@ -194,6 +248,45 @@ function buildStructuredData(comparisons: Comparison[]) {
       }))
     }
   };
+}
+
+/**
+ * One ItemList per section, alongside the existing CollectionPage.
+ *
+ * The CollectionPage keeps its own mainEntity ItemList of every comparison, so
+ * nothing that validated before this change stops validating. These four are
+ * additive and give each section an addressable @id, which is what lets an
+ * answer engine quote "the high-risk comparisons on myPayAdvisor" as a set.
+ */
+function buildSectionItemLists(grouped: Map<ComparisonSection, Comparison[]>) {
+  return SECTION_ORDER.filter((s) => (grouped.get(s)?.length ?? 0) > 0).map((s) => {
+    const meta = SECTION_META[s];
+    const items = grouped.get(s) as Comparison[];
+    return {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": `https://www.mypayadvisor.com/comparisons#${meta.id}`,
+      "name": meta.heading,
+      "description": meta.intro,
+      "numberOfItems": items.length,
+      "itemListOrder": "https://schema.org/ItemListUnordered",
+      "itemListElement": items.map((c, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "url": `https://www.mypayadvisor.com${c.href}`,
+        "name": c.title,
+      })),
+    };
+  });
+}
+
+function groupBySection(comparisons: Comparison[]): Map<ComparisonSection, Comparison[]> {
+  const grouped = new Map<ComparisonSection, Comparison[]>();
+  for (const s of SECTION_ORDER) grouped.set(s, []);
+  for (const c of comparisons) {
+    (grouped.get(sectionOfHref(c.href)) as Comparison[]).push(c);
+  }
+  return grouped;
 }
 
 const breadcrumbSchema = {
@@ -233,12 +326,18 @@ const LAST_REVIEWED = "August 2026";
 export default async function ComparisonsPage() {
   const comparisons = await getAllComparisons();
   const structuredData = buildStructuredData(comparisons);
+  const grouped = groupBySection(comparisons);
+  const sections = SECTION_ORDER.filter((s) => (grouped.get(s)?.length ?? 0) > 0);
+  const sectionItemLists = buildSectionItemLists(grouped);
   return (
     <>
       <JsonLd data={structuredData} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
       <JsonLd data={speakableSchema} />
+      {sectionItemLists.map((data) => (
+        <JsonLd key={data["@id"]} data={data} />
+      ))}
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
@@ -306,75 +405,129 @@ export default async function ComparisonsPage() {
         {/* Above-fold comparison table */}
         <ProcessorComparisonTable />
 
-        {/* High-risk row: the hub had no link to the pillar (Check 2, 2026-08-25). Server-rendered. */}
+        {/* High-risk row: the hub had no link to the pillar (Check 2, 2026-08-25). Server-rendered.
+            The three high-risk comparisons it used to list now have their own cards in the
+            "High-risk merchants" section below, so this row carries the pillar link only. */}
         <section aria-labelledby="high-risk-row-heading" className="border-y border-border bg-muted/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-6">
             <p className="text-[11px] uppercase tracking-wider font-semibold text-primary mb-1">High-risk merchants</p>
             <h2 id="high-risk-row-heading" className="text-lg font-bold text-foreground mb-2">Declined, frozen, or flagged as high-risk?</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Start with the{" "}
+              The rates below assume a processor will take you. Before you compare them, read the{" "}
               <Link href="/insights/high-risk-payment-processing-guide" className="text-primary font-medium hover:underline">high-risk payment processing guide</Link>
-              {" "}for reserves, VAMP thresholds and the processors that approve CBD, gaming, nutra, firearms, travel and subscription merchants. Then compare{" "}
-              <Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">PaymentCloud vs Durango</Link>,{" "}
-              <Link href="/comparisons/paymentcloud-vs-easy-pay-direct" className="text-primary hover:underline">PaymentCloud vs Easy Pay Direct</Link>{" "}and the{" "}
-              <Link href="/comparisons/stripe-high-risk-alternatives" className="text-primary hover:underline">Stripe alternatives for high-risk businesses</Link>.
+              {" "}for reserves, VAMP thresholds and the processors that approve CBD, gaming, nutra, firearms, travel and subscription merchants.
             </p>
           </div>
         </section>
 
-        {/* Comparisons List */}
+        {/* Comparisons List, split into four sections. */}
         <section className="py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <div className="divide-y divide-border">
-              {comparisons.map((comparison) => (
-                <Link
-                  key={comparison.href}
-                  href={comparison.href}
-                  className="group block py-8 first:pt-4"
+            <nav aria-label="Comparison sections" className="mb-8 flex flex-wrap gap-2">
+              {sections.map((s) => (
+                <a
+                  key={s}
+                  href={`#${SECTION_META[s].id}`}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
                 >
-                  <article className="flex flex-col gap-4">
-                    <h2 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
-                      {comparison.title}
-                    </h2>
-
-                    <p className="text-muted-foreground leading-relaxed">
-                      {comparison.description}
-                    </p>
-
-                    <div className="flex items-center justify-between gap-3 flex-wrap">
-                      <div className="flex items-center gap-3 flex-wrap">
-                        <span className="text-sm text-muted-foreground">
-                          {comparison.date}
-                        </span>
-                        {(comparison.hasAudio || comparison.hasVideo || comparison.hasSlides) && (
-                          <div className="flex items-center gap-2 flex-wrap">
-                            {comparison.hasAudio && (
-                              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
-                                <Headphones className="w-3 h-3" /> Listen
-                              </span>
-                            )}
-                            {comparison.hasVideo && (
-                              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
-                                <PlayCircle className="w-3 h-3" /> Watch
-                              </span>
-                            )}
-                            {comparison.hasSlides && (
-                              <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
-                                <Presentation className="w-3 h-3" /> Slides
-                              </span>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                      <span className="flex items-center gap-2 text-sm font-medium text-primary">
-                        Read comparison
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </article>
-                </Link>
+                  {SECTION_META[s].heading}
+                  <span className="text-xs tabular-nums text-muted-foreground">
+                    {grouped.get(s)?.length ?? 0}
+                  </span>
+                </a>
               ))}
-            </div>
+            </nav>
+
+            {sections.map((s, sectionIndex) => {
+              const meta = SECTION_META[s];
+              const items = grouped.get(s) as Comparison[];
+              const parts = splitIntro(meta);
+              return (
+                <section
+                  key={s}
+                  id={meta.id}
+                  aria-labelledby={`${meta.id}-heading`}
+                  className={`mb-4 scroll-mt-24 ${sectionIndex === 0 ? "" : "border-t border-border pt-8"}`}
+                >
+                  <p className="text-[11px] uppercase tracking-wider font-semibold text-primary mb-1">
+                    {meta.eyebrow}
+                  </p>
+                  <h2
+                    id={`${meta.id}-heading`}
+                    className="text-2xl sm:text-3xl font-bold text-foreground mb-3"
+                  >
+                    {meta.heading}
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed max-w-2xl">
+                    {parts && meta.link ? (
+                      <>
+                        {parts[0]}
+                        <Link
+                          href={meta.link.href}
+                          className="text-primary font-medium hover:underline"
+                        >
+                          {parts[1]}
+                        </Link>
+                        {parts[2]}
+                      </>
+                    ) : (
+                      meta.intro
+                    )}
+                  </p>
+
+                  <div className="divide-y divide-border">
+                    {items.map((comparison) => (
+                      <Link
+                        key={comparison.href}
+                        href={comparison.href}
+                        className="group block py-8"
+                      >
+                        <article className="flex flex-col gap-4">
+                          <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
+                            {comparison.title}
+                          </h3>
+
+                          <p className="text-muted-foreground leading-relaxed">
+                            {comparison.description}
+                          </p>
+
+                          <div className="flex items-center justify-between gap-3 flex-wrap">
+                            <div className="flex items-center gap-3 flex-wrap">
+                              <span className="text-sm text-muted-foreground">
+                                {comparison.date}
+                              </span>
+                              {(comparison.hasAudio || comparison.hasVideo || comparison.hasSlides) && (
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  {comparison.hasAudio && (
+                                    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                                      <Headphones className="w-3 h-3" /> Listen
+                                    </span>
+                                  )}
+                                  {comparison.hasVideo && (
+                                    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                                      <PlayCircle className="w-3 h-3" /> Watch
+                                    </span>
+                                  )}
+                                  {comparison.hasSlides && (
+                                    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                                      <Presentation className="w-3 h-3" /> Slides
+                                    </span>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                            <span className="flex items-center gap-2 text-sm font-medium text-primary">
+                              Read comparison
+                              <ArrowRight className="w-4 h-4" />
+                            </span>
+                          </div>
+                        </article>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
 
             {/* Quiz CTA */}
             <div className="mt-12 pt-8 border-t border-border">

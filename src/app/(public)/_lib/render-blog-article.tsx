@@ -7,9 +7,14 @@ import { JsonLd } from "@/components/JsonLd";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import type { RelatedLink } from "@/lib/seo/overrides";
+import { autoLinkGlossary } from "@/lib/glossary/autolink";
+import { rewriteRetiredLinks } from "@/lib/seo/retired-links";
+import { REDIRECTED_INSIGHT_SLUGS } from "@/lib/insights/redirected-slugs";
+import { REDIRECTED_COMPARISON_SLUGS } from "@/lib/comparisons/redirected-slugs";
 
 type Kind = "insights" | "comparisons";
 
@@ -70,14 +75,16 @@ function toIsoWithOffset(value: string | null | undefined): string | null {
 
 function sanitizeBody(html: string): string {
   if (!html) return html;
-  return html
-    .replace(PLACEHOLDER_RE, "")
-    .replace(FALLBACK_INTERNAL_RE, "")
-    // The em-dash and en-dash the body sanitizer strips. A regex literal is not
-    // reported by the em-dash rule (it only inspects strings, template chunks and
-    // JSX text), so this needs no disable directive, and adding one would itself
-    // be an unused-directive warning.
-    .replace(/[—–]/g, ", ");
+  return rewriteRetiredLinks(
+    html
+      .replace(PLACEHOLDER_RE, "")
+      .replace(FALLBACK_INTERNAL_RE, "")
+      // The em-dash and en-dash the body sanitizer strips. A regex literal is not
+      // reported by the em-dash rule (it only inspects strings, template chunks and
+      // JSX text), so this needs no disable directive, and adding one would itself
+      // be an unused-directive warning.
+      .replace(/[—–]/g, ", "),
+  );
 }
 
 const SELECT =
@@ -158,6 +165,39 @@ const fetchInternalLinkTitles = cache(
   },
 );
 
+/**
+ * Published slugs for one kind, for `generateStaticParams` on the `[slug]`
+ * routes. Playbook fix #5, never shipped until PR 3: without it both DB routes
+ * build as `ƒ` and every crawl of a DB article is a cold server render plus a
+ * Supabase round trip, which is the worst shape to be in for the 80 pages that
+ * carry the site's long tail.
+ *
+ * Redirected slugs are excluded, so the build never prerenders a URL that 308s.
+ * A failed read returns an empty list: the route still works through
+ * `dynamicParams`, it just is not prerendered, and the production preflight
+ * gate catches an unreachable Supabase before the build gets here.
+ */
+export async function publishedSlugs(kind: Kind): Promise<string[]> {
+  const redirected = kind === "insights" ? REDIRECTED_INSIGHT_SLUGS : REDIRECTED_COMPARISON_SLUGS;
+  try {
+    const supabase = getAdminSupabase();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, error } = await (supabase as any)
+      .from("blog_articles")
+      .select("slug")
+      .eq("kind", kind)
+      .eq("published", true)
+      .limit(1000);
+    if (error || !data) return [];
+    return (data as Array<{ slug: string }>)
+      .map((r) => r.slug)
+      .filter((s) => typeof s === "string" && s.length > 0 && !redirected.has(s))
+      .sort();
+  } catch {
+    return [];
+  }
+}
+
 export async function buildBlogArticleMetadata(kind: Kind, slug: string): Promise<Metadata> {
   const article = await fetchArticle(kind, slug);
   if (!article) return { title: "Not found" };
@@ -200,6 +240,9 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
   const eyebrow = article.eyebrow || (kind === "insights" ? "Deep Dive" : "Comparison");
   const minutes = readingMinutes(article.body_html || article.content);
   const cleanBody = sanitizeBody(article.body_html || article.content);
+  // Glossary terms linked on first mention only, capped at 4, never inside an
+  // existing anchor, a heading or an answer block. See lib/glossary/autolink.
+  const linkedBody = autoLinkGlossary(cleanBody);
   const fallbackLinks = await fetchInternalLinkTitles(kind, article.internal_links ?? []);
 
   const breadcrumbSchema = {
@@ -448,7 +491,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           </nav>
         ) : null}
 
-        <div className="article-body" dangerouslySetInnerHTML={{ __html: cleanBody }} />
+        <div className="article-body" dangerouslySetInnerHTML={{ __html: linkedBody }} />
 
         {article.slide_image_urls && article.slide_image_urls.length ? (
           <section className="mt-12 border-t border-border pt-8">
@@ -505,6 +548,15 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           of the article where it would push the answer below the fold.
         */}
         <RelatedLinks kind={kind} slug={article.slug} fallback={fallbackLinks} bodyHtml={cleanBody} />
+
+        {/*
+          "Compare more" is the static adjacency grid, not an override. It drops
+          any URL the related-links block above already shows, so a page that
+          renders both never repeats a link between them.
+        */}
+        {kind === "comparisons" ? (
+          <CompareMore slug={article.slug} bodyHtml={cleanBody} contained={false} />
+        ) : null}
 
         <ReviewerBioBox linkProfile={false} />
       </article>

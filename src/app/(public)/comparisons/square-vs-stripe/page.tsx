@@ -5,6 +5,7 @@ import SquareVsStripeContent from "./SquareVsStripeContent";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 const baseMetadata: Metadata = {
   title: { absolute: "Square vs Stripe 2026: 2.65% In-Person vs 2.97% Online" },
@@ -183,6 +184,7 @@ export default function SquareVsStripePage() {
         aeoAnswer={<AeoAnswer kind="comparisons" slug="square-vs-stripe" />}
         relatedLinks={<RelatedLinks kind="comparisons" slug="square-vs-stripe" />}
       />
+      <CompareMore slug="square-vs-stripe" />
     </>
   );
 }

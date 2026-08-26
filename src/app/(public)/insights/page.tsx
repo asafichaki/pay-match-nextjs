@@ -156,12 +156,25 @@ async function getAllArticles(): Promise<Article[]> {
 
   const merged = Array.from(bySlug.values());
   merged.sort((a, b) => (b.iso || "").localeCompare(a.iso || ""));
-  // Pin the high-risk pillar to the top: it sat at rank 55 of 72 (Check 2, 2026-08-25)
-  // and the hub is one of only two referrers Google records for it.
-  const PINNED = "/insights/high-risk-payment-processing-guide";
-  const pinIdx = merged.findIndex((a) => a.slug === PINNED);
-  if (pinIdx > 0) merged.unshift(...merged.splice(pinIdx, 1));
-  return merged;
+  // Pin the pillar and the two cornerstones to the top, in this order.
+  //
+  // The hub is the only inbound link most of these pages have, and a
+  // date-sorted list buried the pillar at rank 55 of 72 (Check 2, 2026-08-25).
+  // Order matters: link position on the source page is a ranking input, and the
+  // pillar has been "Crawled, currently not indexed" since 2026-05-16 while the
+  // two cornerstones carry the most impressions on the site (fees guide 3,596,
+  // gateway guide 3,800 over 28 days).
+  const PINNED = [
+    "/insights/high-risk-payment-processing-guide",
+    "/insights/payment-processor-fees-guide",
+    "/insights/best-payment-gateway-ecommerce",
+  ];
+  const pinned: Article[] = [];
+  for (const slug of PINNED) {
+    const idx = merged.findIndex((a) => a.slug === slug);
+    if (idx >= 0) pinned.push(...merged.splice(idx, 1));
+  }
+  return [...pinned, ...merged];
 }
 
 const breadcrumbSchema = {

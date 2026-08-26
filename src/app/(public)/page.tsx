@@ -6,6 +6,7 @@ import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalcul
 import LeadCaptureBrief from "@/components/home/LeadCaptureBrief";
 import LatestUpdatesStrip from "@/components/home/LatestUpdatesStrip";
 import RateTable from "@/components/home/RateTable";
+import HighRiskEntry from "@/components/home/HighRiskEntry";
 import BarakBlock from "@/components/home/BarakBlock";
 import WhoWeAreVideo from "@/components/home/WhoWeAreVideo";
 import ProcessorVoices from "@/components/home/ProcessorVoices";
@@ -152,6 +153,9 @@ export default function HomePage() {
 
       {/* 5. Provider rate table, editorial */}
       <RateTable />
+
+      {/* 5b. High-risk tile: the rates above do not apply if underwriting flags you */}
+      <HighRiskEntry />
 
       {/* 6. How this is different (operator review process) */}
       <BarakBlock />

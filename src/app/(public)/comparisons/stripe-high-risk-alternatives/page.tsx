@@ -5,6 +5,7 @@ import StripeHighRiskAlternativesContent from "./StripeHighRiskAlternativesConte
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 const URL = "https://www.mypayadvisor.com/comparisons/stripe-high-risk-alternatives";
 
@@ -238,6 +239,7 @@ export default function StripeHighRiskAlternativesPage() {
         aeoAnswer={<AeoAnswer kind="comparisons" slug="stripe-high-risk-alternatives" />}
         relatedLinks={<RelatedLinks kind="comparisons" slug="stripe-high-risk-alternatives" />}
       />
+      <CompareMore slug="stripe-high-risk-alternatives" />
     </>
   );
 }
