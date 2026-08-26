@@ -239,7 +239,7 @@ export default function AutomationsClient({ initialAutomations, initialRuns, loa
                         </TableCell>
                         <TableCell>{row.run_count}</TableCell>
                         <TableCell className="text-xs text-muted-foreground">
-                          {row.last_run_at ? new Date(row.last_run_at).toLocaleString() : "—"}
+                          {row.last_run_at ? new Date(row.last_run_at).toLocaleString() : "-"}
                         </TableCell>
                         <TableCell>
                           <Switch
@@ -322,7 +322,7 @@ export default function AutomationsClient({ initialAutomations, initialRuns, loa
                                 {r.lead_id.slice(0, 8)}…
                               </a>
                             ) : (
-                              "—"
+                              "-"
                             )}
                           </TableCell>
                           <TableCell>

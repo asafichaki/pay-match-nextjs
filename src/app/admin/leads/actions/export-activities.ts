@@ -60,7 +60,7 @@ export async function exportLeadActivities(): Promise<string> {
 
   for (const row of (data || []) as any[]) {
     const lead = Array.isArray(row.quiz_leads) ? row.quiz_leads[0] : row.quiz_leads;
-    const notes = [row.title, row.description].filter(Boolean).join(" — ");
+    const notes = [row.title, row.description].filter(Boolean).join(" - ");
     lines.push(
       [
         row.lead_id,

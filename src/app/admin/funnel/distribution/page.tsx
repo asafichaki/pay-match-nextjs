@@ -347,7 +347,7 @@ export default function DistributionPage() {
                               CSV digest
                             </span>
                           ) : (
-                            <span className="text-muted-foreground">—</span>
+                            <span className="text-muted-foreground">, </span>
                           )}
                         </td>
                         <td className="py-3 pr-4 text-xs text-muted-foreground">
@@ -405,7 +405,7 @@ export default function DistributionPage() {
                         <Badge variant="outline">{d.delivery_status}</Badge>
                       </td>
                       <td className="py-2 pr-4 text-xs text-muted-foreground">
-                        {d.agent_outcome || "—"}
+                        {d.agent_outcome || "-"}
                       </td>
                       <td className="py-2 pr-4">${Number(d.price || 0).toFixed(0)}</td>
                       <td className="py-2">

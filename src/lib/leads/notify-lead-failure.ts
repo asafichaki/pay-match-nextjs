@@ -63,7 +63,7 @@ export async function notifyLeadFailure(
 ): Promise<void> {
   try {
     if (!process.env.RESEND_API_KEY) {
-      console.error("[notifyLeadFailure] RESEND_API_KEY not set — skipping", {
+      console.error("[notifyLeadFailure] RESEND_API_KEY not set, skipping", {
         source: args.source,
       });
       return;

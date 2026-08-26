@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const URL = "https://www.mypayadvisor.com/insights/free-statement-audit-playbook";
 const TITLE = "How to Audit Your Merchant Statement: The 6-Step Playbook";
 const DESC = "A 6-step audit playbook for merchant statements: pull 90 days, compute your effective rate, classify line items, find the four hidden fees, build the negotiation case, and decide whether to renegotiate or switch.";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: TITLE,
   description: DESC,
   alternates: { canonical: URL },
@@ -15,6 +18,12 @@ export const metadata: Metadata = {
   openGraph: { type: "article", url: URL, title: TITLE, description: DESC, images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }] },
   twitter: { card: "summary_large_image", title: TITLE, description: DESC },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "free-statement-audit-playbook", baseMetadata);
+}
 
 export default function Page() {
   const articleSchema = {
@@ -71,6 +80,7 @@ export default function Page() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 How to Audit Your Merchant Statement (and Find What You&apos;re Overpaying)
               </h1>
+              <AeoAnswer kind="insights" slug="free-statement-audit-playbook" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 A 6-step playbook to read your statement the way a payments operator does. Pull 90 days, compute your effective rate, classify the line items, find the four fees that are almost always hiding, then decide whether to renegotiate or switch.
               </p>
@@ -321,6 +331,7 @@ export default function Page() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="free-statement-audit-playbook" />
     </>
   );
 }

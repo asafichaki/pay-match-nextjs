@@ -3,6 +3,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import { EFFECTIVE_RATES_2026 } from "@/lib/data/effective-rates-2026";
 import BestPaymentProcessors2026Content from "./BestPaymentProcessors2026Content";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 function parseRate(rate: string): number {
   return parseFloat(rate.replace("%", ""));
@@ -36,7 +39,7 @@ function buildItemListSchema() {
   };
 }
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: { absolute: "15 Best Payment Processors 2026, Ranked by Effective Rate" },
   description: "May 2026: Helcim 2.51%, Adyen 2.32%, Square 2.65%, Stripe 2.97%, PayPal 3.07%. 15 processors ranked at $10K, $50K, $250K, $1M monthly. Real rates.",
   keywords: ["best payment processors 2026", "payment processing companies", "merchant services", "credit card processing", "Leaders Merchant Services", "Worldpay", "Clover", "Payment Depot", "Stax", "Stripe"],
@@ -62,6 +65,12 @@ export const metadata: Metadata = {
     "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("comparisons", "best-payment-processors-2026", baseMetadata);
+}
 
 const speakableSchema = {
   "@context": "https://schema.org",
@@ -117,7 +126,10 @@ export default function BestPaymentProcessors2026Page() {
       <JsonLd data={faqStructuredData} />
       <JsonLd data={speakableSchema} />
       <JsonLd data={buildItemListSchema()} />
-      <BestPaymentProcessors2026Content />
+      <BestPaymentProcessors2026Content
+        aeoAnswer={<AeoAnswer kind="comparisons" slug="best-payment-processors-2026" />}
+        relatedLinks={<RelatedLinks kind="comparisons" slug="best-payment-processors-2026" />}
+      />
     </>
   );
 }

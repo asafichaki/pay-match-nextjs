@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { ExpertQuote } from "@/components/article/ExpertQuote";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Travel Agency Payment Processing Guide 2026",
   description: "Why card networks classify travel agencies as high-risk (MCC 4722), which processors actually approve them, and how large merchants negotiate reserves.",
   keywords: "travel agency payment processing, travel merchant account, tour operator merchant account, high risk travel merchant, payment processing for travel agencies",
@@ -27,6 +30,12 @@ export const metadata: Metadata = {
     description: "MCC 4722, the agency model vs merchant of record distinction, and how large travel merchants negotiate reserves.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "travel-merchant-account", baseMetadata);
+}
 
 export default function TravelMerchantAccountPage() {
   const articleSchema = {
@@ -257,6 +266,7 @@ export default function TravelMerchantAccountPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Travel Agency Payment Processing: How High-Volume Travel Merchants Get Approved
               </h1>
+              <AeoAnswer kind="insights" slug="travel-merchant-account" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Why card networks classify travel agencies as high-risk (MCC 4722), which processors actually approve them, and how large merchants negotiate reserves.
@@ -605,6 +615,7 @@ export default function TravelMerchantAccountPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="travel-merchant-account" />
     </>
   );
 }

@@ -29,7 +29,7 @@ const Insights = () => {
             </p>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6">
-              <strong className="text-foreground">Low-fee payment platforms</strong> are increasingly popular among small and medium-sized businesses looking to maximize profitability. While transaction fees typically range from 1.5% to 3.5%, the best processors offer transparent interchange-plus pricing with no hidden charges, monthly fees, or setup costs. Our comparison highlights providers that deliver exceptional value—combining affordable pricing with enterprise-grade features like advanced fraud protection, PCI compliance, and 24/7 support to help your business thrive in today's competitive landscape.
+              <strong className="text-foreground">Low-fee payment platforms</strong> are increasingly popular among small and medium-sized businesses looking to maximize profitability. While transaction fees typically range from 1.5% to 3.5%, the best processors offer transparent interchange-plus pricing with no hidden charges, monthly fees, or setup costs. Our comparison highlights providers that deliver exceptional value, combining affordable pricing with enterprise-grade features like advanced fraud protection, PCI compliance, and 24/7 support to help your business thrive in today's competitive landscape.
             </p>
 
             <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-foreground mb-3 sm:mb-4 mt-6 sm:mt-8 text-center lg:text-left">

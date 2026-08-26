@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import StripeHighRiskAlternativesContent from "./StripeHighRiskAlternativesContent";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const URL = "https://www.mypayadvisor.com/comparisons/stripe-high-risk-alternatives";
 
-export const metadata: Metadata = {
-  title: "Stripe High-Risk Alternatives 2026: Where to Go After a Freeze",
+const baseMetadata: Metadata = {
+  title: { absolute: "Stripe High-Risk Alternatives 2026: Where to Go After a Freeze" },
   description:
     "Stripe froze your account or holds your funds? Here are real high-risk payment processors that approve merchants Stripe declines: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, and Host Merchant Services. Reviewed by a payments operator.",
   alternates: {
@@ -25,6 +28,12 @@ export const metadata: Metadata = {
     "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("comparisons", "stripe-high-risk-alternatives", baseMetadata);
+}
 
 const speakableSchema = {
   "@context": "https://schema.org",
@@ -225,7 +234,10 @@ export default function StripeHighRiskAlternativesPage() {
       <JsonLd data={speakableSchema} />
       <JsonLd data={itemListSchema} />
       <JsonLd data={faqSchema} />
-      <StripeHighRiskAlternativesContent />
+      <StripeHighRiskAlternativesContent
+        aeoAnswer={<AeoAnswer kind="comparisons" slug="stripe-high-risk-alternatives" />}
+        relatedLinks={<RelatedLinks kind="comparisons" slug="stripe-high-risk-alternatives" />}
+      />
     </>
   );
 }

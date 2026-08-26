@@ -62,12 +62,12 @@ function dateHeIL(iso: string) {
 }
 
 function emailFromPayload(payload: Record<string, any> | null): string {
-  if (!payload) return "—";
+  if (!payload) return "-";
   return (
     payload.email ||
     payload.full_name ||
     payload.fullName ||
-    "—"
+    "-"
   );
 }
 
@@ -239,7 +239,7 @@ export default function FailedLeadsPage() {
                       </TableCell>
                       <TableCell className="text-sm">{emailFromPayload(row.payload)}</TableCell>
                       <TableCell className="text-sm max-w-[280px]">
-                        <div className="font-mono text-xs">{row.error_code || "—"}</div>
+                        <div className="font-mono text-xs">{row.error_code || "-"}</div>
                         <div className="text-xs text-muted-foreground truncate">
                           {row.error_message || ""}
                         </div>
@@ -327,7 +327,7 @@ export default function FailedLeadsPage() {
                 </div>
                 <div>
                   <div className="text-xs text-muted-foreground uppercase">Error Code</div>
-                  <div className="font-mono">{viewPayload.error_code || "—"}</div>
+                  <div className="font-mono">{viewPayload.error_code || "-"}</div>
                 </div>
                 <div>
                   <div className="text-xs text-muted-foreground uppercase">Retries</div>
@@ -335,7 +335,7 @@ export default function FailedLeadsPage() {
                 </div>
                 <div className="col-span-2">
                   <div className="text-xs text-muted-foreground uppercase">Error Message</div>
-                  <div className="text-xs break-words">{viewPayload.error_message || "—"}</div>
+                  <div className="text-xs break-words">{viewPayload.error_message || "-"}</div>
                 </div>
                 {viewPayload.page_url && (
                   <div className="col-span-2">
@@ -349,7 +349,7 @@ export default function FailedLeadsPage() {
                       Resolved
                     </div>
                     <div className="text-xs">
-                      {viewPayload.resolved_at ? dateHeIL(viewPayload.resolved_at) : ""} —{" "}
+                      {viewPayload.resolved_at ? dateHeIL(viewPayload.resolved_at) : ""} -{" "}
                       {viewPayload.resolved_note || ""}
                     </div>
                   </div>

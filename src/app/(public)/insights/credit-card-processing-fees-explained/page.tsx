@@ -3,9 +3,12 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
 import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
-  title: "Credit Card Processing Fees 2026: What You Actually Pay",
+const baseMetadata: Metadata = {
+  title: { absolute: "Credit Card Processing Fees 2026: What You Actually Pay" },
   description: "Real 2026 credit card processing rates by industry, the 4 hidden fees most merchants miss, and the negotiation moves that drop your effective rate.",
   keywords: "credit card processing fees, merchant fees, interchange fees, payment processing costs, reduce processing fees, effective rate, tiered pricing, interchange-plus",
   alternates: { canonical: "https://www.mypayadvisor.com/insights/credit-card-processing-fees-explained" },
@@ -23,6 +26,12 @@ export const metadata: Metadata = {
     description: "Real 2026 rates by industry, the hidden fees most merchants miss, and the moves that drop your effective rate.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "credit-card-processing-fees-explained", baseMetadata);
+}
 
 export default function CreditCardProcessingFeesExplainedPage() {
   const articleSchema = {
@@ -141,6 +150,7 @@ export default function CreditCardProcessingFeesExplainedPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Credit Card Processing Fees in 2026: What You Actually Pay (and How to Cut It)
               </h1>
+              <AeoAnswer kind="insights" slug="credit-card-processing-fees-explained" />
               
               <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Credit card processing fees in 2026 average 2.65% of card volume for U.S. SMBs on flat-rate processors and 2.30%-2.55% on interchange-plus. The components are interchange (largest, set by Visa/Mastercard), assessments (~0.13%), processor markup (negotiable), and four hidden flat fees that quietly add 0.30-0.45 percentage points. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full breakdown.
@@ -936,6 +946,7 @@ export default function CreditCardProcessingFeesExplainedPage() {
             </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="credit-card-processing-fees-explained" />
     </>
   );
 }

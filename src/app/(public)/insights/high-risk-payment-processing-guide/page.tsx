@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   // absolute: lead with the money query "high risk payment processing"; 59 chars, no layout suffix.
   title: { absolute: "High-Risk Payment Processing Guide 2026: Approval, Reserves" },
   description: "Complete 2026 guide to high-risk payment processing. Reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable merchant accounts for CBD, gaming, subscription, and e-commerce businesses.",
@@ -29,6 +32,12 @@ export const metadata: Metadata = {
     description: "Complete guide to chargeback management and fraud prevention for high-risk merchants.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "high-risk-payment-processing-guide", baseMetadata);
+}
 
 export default function HighRiskPaymentProcessingGuidePage() {
   const articleSchema = {
@@ -292,6 +301,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                   The Complete Guide to High-Risk Payment Processing in 2026
                 </h1>
+                <AeoAnswer kind="insights" slug="high-risk-payment-processing-guide" />
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                   Master chargeback management and fraud prevention. Proven strategies to reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable merchant accounts.
@@ -1055,6 +1065,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
             </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="high-risk-payment-processing-guide" />
     </>
   );
 }

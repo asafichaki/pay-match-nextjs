@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { ExpertQuote } from "@/components/article/ExpertQuote";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Nutraceutical Merchant Account: 2026 Guide",
   description: "Why supplement brands get declined, who approves nutraceutical merchant accounts in 2026, and how to structure subscription billing so underwriting says yes.",
   keywords: "nutraceutical merchant account, supplement merchant account, nutra payment processing, subscription merchant account for supplements, continuity billing merchant account",
@@ -27,6 +30,12 @@ export const metadata: Metadata = {
     description: "Who approves supplement brands, the 2026 negative-option picture, and how offer structure decides approval.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "nutra-supplement-merchant-account", baseMetadata);
+}
 
 export default function NutraSupplementMerchantAccountPage() {
   const articleSchema = {
@@ -259,6 +268,7 @@ export default function NutraSupplementMerchantAccountPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Nutraceutical Merchant Accounts: How Supplement Brands Get Approved in 2026
               </h1>
+              <AeoAnswer kind="insights" slug="nutra-supplement-merchant-account" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Why supplement brands get declined, who approves nutraceutical merchant accounts in 2026, and how to structure subscription billing so underwriting says yes.
@@ -617,6 +627,7 @@ export default function NutraSupplementMerchantAccountPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="nutra-supplement-merchant-account" />
     </>
   );
 }

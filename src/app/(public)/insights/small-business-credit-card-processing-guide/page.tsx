@@ -3,8 +3,11 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { ExternalLink, Linkedin, Calculator, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Stop Overpaying: Small Business Guide to Credit Card Processing Fees",
   description: "Most small businesses overpay 20-40% on credit card processing fees. Learn exactly how to cut costs and reclaim thousands of dollars annually through smarter payment processing strategies.",
   keywords: "credit card processing fees small business, reduce processing fees, interchange-plus pricing, flat rate vs interchange plus, payment processor comparison, merchant account fees, how to lower credit card fees",
@@ -28,6 +31,12 @@ export const metadata: Metadata = {
     description: "Learn how to reduce your credit card processing fees by 20-40% with proven strategies.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "small-business-credit-card-processing-guide", baseMetadata);
+}
 
 export default function SmallBusinessCreditCardProcessingGuidePage() {
   const articleSchema = {
@@ -138,6 +147,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                   Stop Overpaying: A Small Business Guide to Credit Card Processing Fees
                 </h1>
+                <AeoAnswer kind="insights" slug="small-business-credit-card-processing-guide" />
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                   Most small businesses overpay 20-40% on credit card processing fees without realizing it. This guide shows you exactly how to cut costs and reclaim thousands of dollars annually through smarter payment processing strategies.
@@ -233,7 +243,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
 
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <p className="text-foreground">
-                    <strong>The Core Issue:</strong> If your payment processor bundles these three components together, a pricing model often called "Tiered," "Blended," or "Flat Rate"—they can easily hide a massive markup behind the scenes. This is where you're likely overpaying.
+                    <strong>The Core Issue:</strong> If your payment processor bundles these three components together, a pricing model often called "Tiered," "Blended," or "Flat Rate", they can easily hide a massive markup behind the scenes. This is where you're likely overpaying.
                   </p>
                 </div>
 
@@ -669,6 +679,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
             </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="small-business-credit-card-processing-guide" />
     </>
   );
 }

@@ -9,7 +9,14 @@ import ArticleSidebar from "@/components/ArticleSidebar";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
 
-export default function HelcimVsStripeContent() {
+interface ContentSlots {
+  /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
+}
+
+export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
 
   return (
@@ -23,6 +30,7 @@ export default function HelcimVsStripeContent() {
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
               Helcim vs Stripe: Transparent Pricing vs Advanced Features
             </h1>
+            {aeoAnswer}
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
               <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> is known for radically transparent <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">interchange-plus pricing</Link>.
               Stripe leads with best-in-class APIs.
@@ -267,6 +275,7 @@ export default function HelcimVsStripeContent() {
         <ArticleSidebar currentSlug="/comparisons/helcim-vs-stripe" />
           </div>
         </div>
+      {relatedLinks}
       </main>
       <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </>

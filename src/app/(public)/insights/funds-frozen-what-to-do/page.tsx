@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Stripe Account Frozen? What To Do When a Processor Freezes Your Funds (2026)",
   description: "Your processor froze your funds or your Stripe account is frozen. Here is the fixed operator response, in order, from a working payments operator: get the reason in writing, submit docs same day, stand up a backup MID, escalate to the risk department, involve counsel if needed.",
   keywords: "stripe account frozen, why did stripe freeze my account, funds frozen merchant account, processor froze my funds, merchant account hold, payment processor reserve",
@@ -26,6 +29,12 @@ export const metadata: Metadata = {
     description: "The fixed, in-order operator response to a funds freeze, reviewed by a working payments operator.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "funds-frozen-what-to-do", baseMetadata);
+}
 
 export default function FundsFrozenWhatToDoPage() {
   const articleSchema = {
@@ -170,6 +179,7 @@ export default function FundsFrozenWhatToDoPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Your Processor Froze Your Funds. Here Is What To Do, In Order
               </h1>
+              <AeoAnswer kind="insights" slug="funds-frozen-what-to-do" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 A frozen Stripe account or a sudden settlement hold feels like the end. It usually is not. There is a fixed operator response, and the order matters more than the speed.
@@ -371,6 +381,7 @@ export default function FundsFrozenWhatToDoPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="funds-frozen-what-to-do" />
     </>
   );
 }

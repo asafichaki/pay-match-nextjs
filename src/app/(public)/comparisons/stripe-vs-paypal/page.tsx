@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import StripeVsPayPalContent from "./StripeVsPayPalContent";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
-  title: "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate",
+const baseMetadata: Metadata = {
+  title: { absolute: "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate" },
   description: "Stripe 2.9% + $0.30, PayPal 3.49% + $0.49 commercial rate. Stripe wins on subscriptions and APIs. PayPal wins on 400M+ buyer trust. May 2026 rates.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal",
@@ -21,6 +24,12 @@ export const metadata: Metadata = {
     "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("comparisons", "stripe-vs-paypal", baseMetadata);
+}
 
 const speakableSchema = {
   "@context": "https://schema.org",
@@ -76,7 +85,10 @@ export default function StripeVsPayPalPage() {
       />
       <JsonLd data={speakableSchema} />
       <JsonLd data={faqStructuredData} />
-      <StripeVsPayPalContent />
+      <StripeVsPayPalContent
+        aeoAnswer={<AeoAnswer kind="comparisons" slug="stripe-vs-paypal" />}
+        relatedLinks={<RelatedLinks kind="comparisons" slug="stripe-vs-paypal" />}
+      />
     </>
   );
 }

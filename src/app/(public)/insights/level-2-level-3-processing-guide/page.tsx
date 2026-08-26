@@ -3,8 +3,11 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { Linkedin, Calculator, ArrowRight, Building2, DollarSign, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Level 2 & 3 Processing Guide: Cut B2B Merchant Fees by 1.5%",
   description: "Learn how Level 2 and Level 3 credit card processing can reduce B2B merchant fees by up to 1.5% per transaction. Complete guide to implementation, requirements, and savings calculations.",
   keywords: "level 2 processing, level 3 processing, B2B payment processing, corporate card processing, interchange fees, purchasing card, merchant fees, government card processing, interchange-plus pricing",
@@ -28,6 +31,12 @@ export const metadata: Metadata = {
     description: "Complete guide to reducing B2B payment processing fees through Level 2 and Level 3 data optimization.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "level-2-level-3-processing-guide", baseMetadata);
+}
 
 export default function Level2Level3ProcessingGuidePage() {
   const articleSchema = {
@@ -141,6 +150,7 @@ export default function Level2Level3ProcessingGuidePage() {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                   B2B Merchants: How Level 2 & 3 Processing Can Slash Your Merchant Fees by Up to 1.5%
                 </h1>
+                <AeoAnswer kind="insights" slug="level-2-level-3-processing-guide" />
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                   If your business primarily sells to other companies (B2B) or government agencies, you're likely dealing with high corporate card interchange rates. What most business owners don't realize is that they're often paying a "lazy tax" on these transactions, sometimes hundreds or even thousands of dollars every month.
@@ -393,7 +403,7 @@ export default function Level2Level3ProcessingGuidePage() {
                     <li className="text-primary font-semibold">Difference: $45 saved on a single invoice</li>
                   </ul>
                   <p className="text-foreground leading-relaxed mt-4">
-                    If your business processes just 20 of these transactions weekly, you're losing <strong>$3,600 monthly, or $43,200 annually</strong>—simply by not capturing the required data fields.
+                    If your business processes just 20 of these transactions weekly, you're losing <strong>$3,600 monthly, or $43,200 annually</strong>, simply by not capturing the required data fields.
                   </p>
                 </div>
 
@@ -437,7 +447,7 @@ export default function Level2Level3ProcessingGuidePage() {
                     Processors like <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">Square and Stripe</Link> charge a flat rate (typically 2.9% + $0.30). When you process a corporate card that qualifies for Level 3 data, the actual interchange cost drops to 1.80%, but you still pay 2.9%.
                   </p>
                   <p className="text-foreground leading-relaxed mt-2 font-semibold">
-                    The processor pockets the 1.1% difference—$1,100 on every $100,000 you process.
+                    The processor pockets the 1.1% difference, $1,100 on every $100,000 you process.
                   </p>
                 </div>
 
@@ -750,6 +760,7 @@ export default function Level2Level3ProcessingGuidePage() {
             </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="level-2-level-3-processing-guide" />
     </>
   );
 }

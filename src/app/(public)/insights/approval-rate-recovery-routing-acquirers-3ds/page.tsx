@@ -2,19 +2,28 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const URL = "https://www.mypayadvisor.com/insights/approval-rate-recovery-routing-acquirers-3ds";
 const TITLE = "Approval Rate Recovery: Routing, Acquirers, and 3DS2 in 2026";
 const DESC = "Why approval rate problems are routing problems, not product problems. How interchange routing works, what acquirer-issuer relationships do to your auth rate, how 3DS2 frictionless flow recovers transactions, and a 90-day improvement roadmap.";
 
-export const metadata: Metadata = {
-  title: TITLE,
+const baseMetadata: Metadata = {
+  title: { absolute: TITLE },
   description: DESC,
   alternates: { canonical: URL },
   robots: { index: true, follow: true },
   openGraph: { type: "article", url: URL, title: TITLE, description: DESC, images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }] },
   twitter: { card: "summary_large_image", title: TITLE, description: DESC },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "approval-rate-recovery-routing-acquirers-3ds", baseMetadata);
+}
 
 export default function Page() {
   const articleSchema = {
@@ -71,6 +80,7 @@ export default function Page() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Approval Rate Recovery in 2026: Routing, Acquirers, and 3DS2
               </h1>
+              <AeoAnswer kind="insights" slug="approval-rate-recovery-routing-acquirers-3ds" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Approval rate problems are routing problems, not product problems. Here is how interchange routing actually works, what acquirer-issuer relationships do to your auth rate, how 3DS2 frictionless flow recovers transactions you are losing today, and a 90-day roadmap to lift auth rates 2 to 5 points.
               </p>
@@ -275,6 +285,7 @@ export default function Page() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="approval-rate-recovery-routing-acquirers-3ds" />
     </>
   );
 }

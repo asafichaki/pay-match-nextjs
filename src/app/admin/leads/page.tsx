@@ -360,7 +360,7 @@ export default function LeadsDashboard() {
       const matchesFrom = !fromTs || created >= fromTs;
       const matchesTo = !toTs || created <= toTs;
       const matchesFunnel =
-        funnelFilter === "all" || (lead.funnel_state || "—") === funnelFilter;
+        funnelFilter === "all" || (lead.funnel_state || "-") === funnelFilter;
       return (
         matchesSearch &&
         matchesStatus &&

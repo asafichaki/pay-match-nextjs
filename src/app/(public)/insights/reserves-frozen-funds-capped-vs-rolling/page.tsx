@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const URL = "https://www.mypayadvisor.com/insights/reserves-frozen-funds-capped-vs-rolling";
 const TITLE = "Rolling Reserve vs Capped Reserve: 2026 Merchant Guide";
 const DESC = "A rolling reserve is a percentage of every card deposit your processor withholds for a fixed hold period. Here is how rolling and capped reserves differ, the math on $300K in trapped working capital, the release language to insist on, and how to push back.";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   // absolute: front-load the money query "rolling reserve" and skip the brand suffix so it never truncates.
   title: { absolute: TITLE },
   description: DESC,
@@ -16,6 +19,12 @@ export const metadata: Metadata = {
   openGraph: { type: "article", url: URL, title: TITLE, description: DESC, images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }] },
   twitter: { card: "summary_large_image", title: TITLE, description: DESC },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "reserves-frozen-funds-capped-vs-rolling", baseMetadata);
+}
 
 export default function Page() {
   const articleSchema = {
@@ -72,6 +81,7 @@ export default function Page() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Rolling Reserve vs Capped Reserve: What It Is and How to Get It Released
               </h1>
+              <AeoAnswer kind="insights" slug="reserves-frozen-funds-capped-vs-rolling" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 A rolling reserve is a percentage of every card deposit your processor withholds for a fixed hold period, usually 180 days, as a hedge against future chargebacks. A rolling reserve at 10% on $500K monthly volume traps $300,000 of your working capital across 180 days. That is not a risk control. That is a structural problem with the contract. Here is how reserves actually work, what to insist on, and what to do if your funds are already frozen.
               </p>
@@ -279,6 +289,7 @@ export default function Page() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="reserves-frozen-funds-capped-vs-rolling" />
     </>
   );
 }

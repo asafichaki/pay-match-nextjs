@@ -515,7 +515,7 @@ export default function LeadDetail() {
                           {lead.funnel_state}
                         </Badge>
                       ) : (
-                        <p className="text-sm text-muted-foreground">—</p>
+                        <p className="text-sm text-muted-foreground">, </p>
                       )}
                     </div>
                     <div className="space-y-1">
@@ -525,7 +525,7 @@ export default function LeadDetail() {
                       <p className="text-sm font-medium">
                         {lead.track
                           ? `${lead.track}${lead.track_variant ? ` / ${lead.track_variant}` : ""}`
-                          : "—"}
+                          : "-"}
                       </p>
                     </div>
                     <div className="space-y-1">
@@ -535,20 +535,20 @@ export default function LeadDetail() {
                       {lead.lead_source ? (
                         <Badge variant="secondary">{lead.lead_source}</Badge>
                       ) : (
-                        <p className="text-sm text-muted-foreground">—</p>
+                        <p className="text-sm text-muted-foreground">, </p>
                       )}
                     </div>
                     <div className="space-y-1">
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         Volume Tier
                       </p>
-                      <p className="text-sm font-medium">{lead.volume_tier || "—"}</p>
+                      <p className="text-sm font-medium">{lead.volume_tier || "-"}</p>
                     </div>
                     <div className="space-y-1 sm:col-span-2">
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         Pain Point
                       </p>
-                      <p className="text-sm font-medium">{lead.pain_point || "—"}</p>
+                      <p className="text-sm font-medium">{lead.pain_point || "-"}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -569,26 +569,26 @@ export default function LeadDetail() {
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         UTM Source
                       </p>
-                      <p className="text-sm font-medium">{lead.utm_source || "—"}</p>
+                      <p className="text-sm font-medium">{lead.utm_source || "-"}</p>
                     </div>
                     <div className="space-y-1">
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         UTM Medium
                       </p>
-                      <p className="text-sm font-medium">{lead.utm_medium || "—"}</p>
+                      <p className="text-sm font-medium">{lead.utm_medium || "-"}</p>
                     </div>
                     <div className="space-y-1 sm:col-span-2">
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         UTM Campaign
                       </p>
-                      <p className="text-sm font-medium">{lead.utm_campaign || "—"}</p>
+                      <p className="text-sm font-medium">{lead.utm_campaign || "-"}</p>
                     </div>
                     <div className="space-y-1 sm:col-span-2">
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                         Landing Page
                       </p>
                       <p className="text-sm font-medium break-words">
-                        {lead.landing_page_url || "—"}
+                        {lead.landing_page_url || "-"}
                       </p>
                     </div>
                     <div className="space-y-1 sm:col-span-2">
@@ -596,7 +596,7 @@ export default function LeadDetail() {
                         Referrer
                       </p>
                       <p className="text-sm font-medium break-words">
-                        {lead.referrer || "—"}
+                        {lead.referrer || "-"}
                       </p>
                     </div>
                   </div>

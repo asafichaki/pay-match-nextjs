@@ -25,7 +25,7 @@ export async function GET() {
   }));
 
   const xml = buildRss({
-    title: `${BRAND_NAME} — Comparisons`,
+    title: `${BRAND_NAME}: Comparisons`,
     link: `${SITE_URL}/comparisons/feed.xml`,
     description: "Side-by-side payment processor comparisons with real 2026 rates.",
     items,

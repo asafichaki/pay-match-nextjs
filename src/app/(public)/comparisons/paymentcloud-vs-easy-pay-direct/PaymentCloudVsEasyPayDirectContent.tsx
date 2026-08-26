@@ -22,7 +22,14 @@ const FAQ = [
   },
 ];
 
-export default function PaymentCloudVsEasyPayDirectContent() {
+interface ContentSlots {
+  /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
+}
+
+export default function PaymentCloudVsEasyPayDirectContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   return (
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,6 +40,7 @@ export default function PaymentCloudVsEasyPayDirectContent() {
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
                 PaymentCloud vs Easy Pay Direct: High-Risk Approval, Reserves, and Multi-MID Fit (2026)
               </h1>
+              {aeoAnswer}
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
                 Both are real U.S. high-risk specialists that approve merchants the big processors decline. PaymentCloud is the simpler domestic default; Easy Pay Direct leans on load balancing across multiple MIDs, which matters most for high-volume subscription and e-commerce merchants.
               </p>
@@ -220,6 +228,7 @@ export default function PaymentCloudVsEasyPayDirectContent() {
           </article>
         </div>
       </div>
+    {relatedLinks}
     </main>
   );
 }

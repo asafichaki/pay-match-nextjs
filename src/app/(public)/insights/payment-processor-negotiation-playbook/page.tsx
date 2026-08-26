@@ -3,12 +3,15 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
 import { ExpertQuote } from "@/components/article/ExpertQuote";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const URL = "https://www.mypayadvisor.com/insights/payment-processor-negotiation-playbook";
 const TITLE = "Payment Processor Negotiation Playbook: 9 Levers That Actually Move the Number";
 const DESC = "Nine levers that actually move the number on a merchant processing contract: pricing model, markup, reserve cap, ETF, assessment pass-through, funding window, monthly minimum, PCI fee, chargeback fee floor. Scripts you can use verbatim.";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: TITLE,
   description: DESC,
   alternates: { canonical: URL },
@@ -16,6 +19,12 @@ export const metadata: Metadata = {
   openGraph: { type: "article", url: URL, title: TITLE, description: DESC, images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }] },
   twitter: { card: "summary_large_image", title: TITLE, description: DESC },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "payment-processor-negotiation-playbook", baseMetadata);
+}
 
 export default function Page() {
   const articleSchema = {
@@ -72,6 +81,7 @@ export default function Page() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Payment Processor Negotiation Playbook (9 Levers That Actually Move the Number)
               </h1>
+              <AeoAnswer kind="insights" slug="payment-processor-negotiation-playbook" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Nine specific levers, in priority order, that move a merchant processing contract from above market to at or below it. Scripts you can read out loud. The two situations where you should walk instead of negotiate.
               </p>
@@ -339,6 +349,7 @@ export default function Page() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="payment-processor-negotiation-playbook" />
     </>
   );
 }

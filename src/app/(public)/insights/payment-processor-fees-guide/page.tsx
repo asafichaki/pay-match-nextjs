@@ -4,8 +4,11 @@ import Link from "next/link";
 import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
 import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalculator";
 import { MatchCTA } from "@/components/MatchCTA";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: { absolute: "Average Credit Card Processing Fees 2026: 1.5%-3.5%" },
   description: "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%. Real rates from 14 processors: interchange 1.5%-3.5%, markup 0.10%-2.00%, Square 2.65% effective.",
   keywords: "payment processor fees, credit card processing fees, interchange plus pricing, flat rate pricing, reduce processing fees, best payment processor",
@@ -26,6 +29,12 @@ export const metadata: Metadata = {
     description: "May 2026: interchange 1.5%-3.5%, markup 0.10%-2.00%, 14 processors compared on real merchant statements.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "payment-processor-fees-guide", baseMetadata);
+}
 
 export default function PaymentProcessorFeesGuidePage() {
   const articleSchema = {
@@ -142,6 +151,7 @@ export default function PaymentProcessorFeesGuidePage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Credit Card Processing Fees in 2026: Average Rates from 14 Processors
               </h1>
+              <AeoAnswer kind="insights" slug="payment-processor-fees-guide" />
 
               <p data-speakable="true" className="aeo-answer text-xl text-muted-foreground leading-relaxed mb-6">
                 The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5% of each transaction. Updated May 2026. That cost splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat rate is 2.65% effective. Barak Bachar reconciled 14 U.S. processors against live merchant statements for this guide. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
@@ -344,7 +354,7 @@ export default function PaymentProcessorFeesGuidePage() {
                   <Link href="/comparisons" className="text-primary font-medium hover:underline">
                     15 Payment Processors Compared 2026
                   </Link>
-                  {" "}— effective rate at $10K / $50K / $250K / $1M monthly volume, hardware costs, and contract red flags. Updated quarterly.
+                  {" "}covering effective rate at $10K / $50K / $250K / $1M monthly volume, hardware costs, and contract red flags. Updated quarterly.
                 </p>
               </div>
 
@@ -710,6 +720,7 @@ export default function PaymentProcessorFeesGuidePage() {
         </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="payment-processor-fees-guide" />
     </>
   );
 }

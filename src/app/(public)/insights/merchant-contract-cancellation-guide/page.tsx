@@ -4,8 +4,11 @@ import Link from "next/link";
 import { ArrowRight, FileText, AlertTriangle, Calculator, Shield, Clock, CheckCircle, XCircle, Phone, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "How to Cancel Merchant Agreement Without ETF | Complete Guide 2025",
   description: "Learn 5 proven strategies to cancel your merchant processing contract without paying early termination fees. Escape liquidated damages clauses and save thousands.",
   keywords: "cancel merchant agreement, early termination fee, ETF waiver, liquidated damages, merchant contract cancellation, switch payment processor, escape processing contract",
@@ -29,6 +32,12 @@ export const metadata: Metadata = {
     description: "Learn how to escape merchant contracts without paying early termination fees.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "merchant-contract-cancellation-guide", baseMetadata);
+}
 
 export default function MerchantContractCancellationGuidePage() {
   const breadcrumbItems = [
@@ -144,6 +153,7 @@ export default function MerchantContractCancellationGuidePage() {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
                   How to Cancel Your Merchant Agreement Without Paying Early Termination Fees
                 </h1>
+                <AeoAnswer kind="insights" slug="merchant-contract-cancellation-guide" />
                 <p className="text-xl text-muted-foreground leading-relaxed">
                   The complete guide to escaping merchant processing contracts legally and saving thousands of dollars.
                 </p>
@@ -834,6 +844,7 @@ export default function MerchantContractCancellationGuidePage() {
 
           </div>
         </main>
+    <RelatedLinks kind="insights" slug="merchant-contract-cancellation-guide" />
     </>
   );
 }

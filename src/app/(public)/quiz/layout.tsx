@@ -40,7 +40,7 @@ export default function QuizLayout({
   return (
     <>
       {children}
-      <RelatedGuides heading="Related guides while you wait for your match" />
+      <RelatedGuides slug="quiz" heading="Related guides while you wait for your match" />
     </>
   );
 }

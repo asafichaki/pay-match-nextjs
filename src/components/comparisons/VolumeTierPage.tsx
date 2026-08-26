@@ -19,9 +19,13 @@ const SITE = "https://www.mypayadvisor.com";
 
 interface Props {
   tier: VolumeTier;
+  /** <AeoAnswer> from the shell. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from the shell. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
 }
 
-export function VolumeTierPage({ tier }: Props) {
+export function VolumeTierPage({ tier, aeoAnswer, relatedLinks }: Props) {
   const url = `${SITE}/comparisons/${tier.slug}`;
 
   const articleSchema = {
@@ -108,6 +112,7 @@ export function VolumeTierPage({ tier }: Props) {
         <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           {tier.heroH1}
         </h1>
+        {aeoAnswer}
         <p
           data-speakable="true"
           className="mt-5 text-lg leading-relaxed text-foreground sm:text-xl"
@@ -231,21 +236,21 @@ export function VolumeTierPage({ tier }: Props) {
           <h2 className="!mt-12">Sources</h2>
           <ol className="not-prose space-y-3 text-sm">
             <li>
-              myPayAdvisor 2026 Payment Processor Effective Rate Database &mdash; open dataset,
+              myPayAdvisor 2026 Payment Processor Effective Rate Database: open dataset,
               CC-BY-4.0.{" "}
               <Link href="/data/effective-rates-2026" className="text-primary hover:underline">
                 View
               </Link>
             </li>
             <li>
-              myPayAdvisor Research Methodology &mdash; card-mix assumption, sample selection,
+              myPayAdvisor Research Methodology: card-mix assumption, sample selection,
               calculation method.{" "}
               <Link href="/research/methodology" className="text-primary hover:underline">
                 View
               </Link>
             </li>
             <li>
-              Federal Reserve Payments Study series &mdash; U.S. SMB card-mix distribution.{" "}
+              Federal Reserve Payments Study series: U.S. SMB card-mix distribution.{" "}
               <a
                 href="https://www.federalreserve.gov/paymentsystems.htm"
                 target="_blank"
@@ -283,6 +288,8 @@ export function VolumeTierPage({ tier }: Props) {
           </ul>
         </section>
       </article>
+
+      {relatedLinks}
 
       <div className="mt-12 border-t border-border pt-8">
         <ReviewerBioBox />

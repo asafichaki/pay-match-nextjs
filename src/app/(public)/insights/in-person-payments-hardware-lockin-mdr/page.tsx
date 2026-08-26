@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA, BARAK_NAME, BARAK_TITLE, BARAK_LINKEDIN } from "@/data/personas/barak";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const URL = "https://www.mypayadvisor.com/insights/in-person-payments-hardware-lockin-mdr";
 const TITLE = "In-Person Payments: Hardware Lock-In and Hidden MDR in 2026";
 const DESC = "How in-person payment economics actually work in 2026. The terminal-pricing trick that buries MDR over 36 months, BYO terminal options, multi-location reconciliation, the tip-adjustment hidden fee, and pricing benchmarks for restaurants, retail, and services.";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: TITLE,
   description: DESC,
   alternates: { canonical: URL },
@@ -15,6 +18,12 @@ export const metadata: Metadata = {
   openGraph: { type: "article", url: URL, title: TITLE, description: DESC, images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }] },
   twitter: { card: "summary_large_image", title: TITLE, description: DESC },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "in-person-payments-hardware-lockin-mdr", baseMetadata);
+}
 
 export default function Page() {
   const articleSchema = {
@@ -71,6 +80,7 @@ export default function Page() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 In-Person Payments in 2026: Hardware Lock-In, Hidden MDR, and How Operators Get Burned
               </h1>
+              <AeoAnswer kind="insights" slug="in-person-payments-hardware-lockin-mdr" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 In-person payments have lower interchange than online but more places for the processor to bury margin. Terminal pricing tricks, multi-location reconciliation, the tip-adjustment fee nobody mentions, and the contract clauses that turn a 36-month commitment into a five-figure mistake.
               </p>
@@ -283,6 +293,7 @@ export default function Page() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="in-person-payments-hardware-lockin-mdr" />
     </>
   );
 }

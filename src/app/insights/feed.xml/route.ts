@@ -25,7 +25,7 @@ export async function GET() {
   }));
 
   const xml = buildRss({
-    title: `${BRAND_NAME} — Insights`,
+    title: `${BRAND_NAME}: Insights`,
     link: `${SITE_URL}/insights/feed.xml`,
     description: "Editorial analysis of U.S. payment processing: fees, contracts, comparisons.",
     items,

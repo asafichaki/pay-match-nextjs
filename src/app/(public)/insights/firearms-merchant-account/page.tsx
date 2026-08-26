@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Firearms Merchant Account: Who Approves Gun & FFL Payment Processing (2026)",
   description: "Can a firearms business get a merchant account, and what does it cost? An operator's guide to firearms and FFL payment processing: who approves guns and ammo, why generalists decline them, reserves, and compliance.",
   keywords: "firearms merchant account, gun merchant account, ffl payment processing, firearms payment processor, high-risk merchant account, second amendment friendly processor",
@@ -26,6 +29,12 @@ export const metadata: Metadata = {
     description: "Who approves firearms businesses, what it costs, and the compliance you need.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "firearms-merchant-account", baseMetadata);
+}
 
 export default function FirearmsMerchantAccountPage() {
   const articleSchema = {
@@ -215,6 +224,7 @@ export default function FirearmsMerchantAccountPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Firearms Merchant Account: Who Approves Gun and FFL Payment Processing
               </h1>
+              <AeoAnswer kind="insights" slug="firearms-merchant-account" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Selling firearms is legal for licensed dealers, but generalist processors decline it. Here is who approves firearms and ammo, what it costs, and the licensing underwriters expect to see.
@@ -394,6 +404,7 @@ export default function FirearmsMerchantAccountPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="firearms-merchant-account" />
     </>
   );
 }

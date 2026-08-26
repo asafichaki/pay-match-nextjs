@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import PaymentCloudVsEasyPayDirectContent from "./PaymentCloudVsEasyPayDirectContent";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const URL = "https://www.mypayadvisor.com/comparisons/paymentcloud-vs-easy-pay-direct";
 
-export const metadata: Metadata = {
-  title: "PaymentCloud vs Easy Pay Direct 2026: High-Risk Approval and Multi-MID Compared",
+const baseMetadata: Metadata = {
+  title: { absolute: "PaymentCloud vs Easy Pay Direct 2026: High-Risk Approval and Multi-MID Compared" },
   description:
     "PaymentCloud vs Easy Pay Direct for high-risk merchants. Approved verticals, reserves, load balancing across multiple MIDs, and approval speed compared. Reviewed by a payments operator.",
   alternates: {
@@ -25,6 +28,12 @@ export const metadata: Metadata = {
     "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("comparisons", "paymentcloud-vs-easy-pay-direct", baseMetadata);
+}
 
 const speakableSchema = {
   "@context": "https://schema.org",
@@ -162,7 +171,10 @@ export default function PaymentCloudVsEasyPayDirectPage() {
       <JsonLd data={speakableSchema} />
       <JsonLd data={itemListSchema} />
       <JsonLd data={faqSchema} />
-      <PaymentCloudVsEasyPayDirectContent />
+      <PaymentCloudVsEasyPayDirectContent
+        aeoAnswer={<AeoAnswer kind="comparisons" slug="paymentcloud-vs-easy-pay-direct" />}
+        relatedLinks={<RelatedLinks kind="comparisons" slug="paymentcloud-vs-easy-pay-direct" />}
+      />
     </>
   );
 }

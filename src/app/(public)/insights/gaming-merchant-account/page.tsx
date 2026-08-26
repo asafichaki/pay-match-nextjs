@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { ExpertQuote } from "@/components/article/ExpertQuote";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Gaming Merchant Account: 2026 Approval Guide",
   description: "Why banks classify gaming as high-risk, where the legal line between iGaming and video games sits, and how high-volume gaming merchants get approved in 2026.",
   keywords: "gaming merchant account, esports merchant account, iGaming payment processing, video game merchant account, gaming payment processor, high risk gaming merchant",
@@ -27,6 +30,12 @@ export const metadata: Metadata = {
     description: "The legal line between iGaming and video games, who approves gaming merchants, and what large merchants can negotiate.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "gaming-merchant-account", baseMetadata);
+}
 
 export default function GamingMerchantAccountPage() {
   const articleSchema = {
@@ -239,6 +248,7 @@ export default function GamingMerchantAccountPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Gaming Merchant Account: How High-Volume Gaming Businesses Get Approved in 2026
               </h1>
+              <AeoAnswer kind="insights" slug="gaming-merchant-account" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Why banks classify gaming as high-risk, where the legal line between iGaming and video games sits, and how high-volume gaming merchants get approved in 2026.
@@ -549,6 +559,7 @@ export default function GamingMerchantAccountPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="gaming-merchant-account" />
     </>
   );
 }

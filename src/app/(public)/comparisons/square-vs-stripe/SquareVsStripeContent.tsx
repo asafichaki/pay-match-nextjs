@@ -10,7 +10,14 @@ import { MatchCTA } from "@/components/MatchCTA";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
 
-export default function SquareVsStripeContent() {
+interface ContentSlots {
+  /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
+}
+
+export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
 
   return (
@@ -25,6 +32,7 @@ export default function SquareVsStripeContent() {
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
               Square vs Stripe 2026: Retail Wins for Square, SaaS for Stripe
             </h1>
+            {aeoAnswer}
 
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
               Verdict, May 2026: <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> wins for retail under $80K monthly at a 2.65% effective in-person rate. Stripe wins for SaaS, subscriptions, and any online-first business at 2.97% effective. Barak Bachar reconciled both processors against 47 merchant statements. Full breakdown below.
@@ -39,7 +47,7 @@ export default function SquareVsStripeContent() {
 
             <MatchCTA
               variant="inline"
-              headline="Square or Stripe — which fits your business?"
+              headline="Square or Stripe: which fits your business?"
               subline="Skip the 4,000-word read. Get a 60-second match based on your channel mix, volume, and ticket size."
             />
           </header>
@@ -556,6 +564,7 @@ export default function SquareVsStripeContent() {
         <ArticleSidebar currentSlug="/comparisons/square-vs-stripe" />
           </div>
         </div>
+      {relatedLinks}
       </main>
 
       <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
