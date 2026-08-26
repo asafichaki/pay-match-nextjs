@@ -1,0 +1,62 @@
+{
+  "rules_version": "2026-08-26.1",
+  "title": {
+    "body_max": 45,
+    "absolute_max": 60,
+    "mobile_guide": 52,
+    "suffix": " | myPayAdvisor"
+  },
+  "meta": {
+    "max": 155,
+    "min": 70
+  },
+  "answer": {
+    "min_words": 40,
+    "max_words": 60
+  },
+  "forbidden_chars": ["\u2014", "\u2013", "!"],
+  "banned_bylines": ["Hannah Sutton", "Noah Briggs", "David Feldman", "Alex Chen", "Alex Johnson"],
+  "banned_image_names": ["hannah-sutton", "noah-briggs"],
+  "forbidden_claims": [
+    "guaranteed",
+    "always cheapest",
+    "best rate",
+    "approval odds",
+    "100% approval",
+    "instant approval guaranteed",
+    "lowest fees guaranteed"
+  ],
+  "banned_words": [
+    "delve",
+    "leverage",
+    "robust",
+    "seamless",
+    "navigate",
+    "cutting-edge",
+    "revolutionary",
+    "paradigm",
+    "harness",
+    "synergize",
+    "synergy",
+    "in today's landscape",
+    "in today's world",
+    "in the world of",
+    "the world of",
+    "ever-evolving",
+    "evolving landscape",
+    "rapidly evolving",
+    "game-changer",
+    "game changer",
+    "groundbreaking",
+    "transformative",
+    "elevate",
+    "unlock",
+    "empower",
+    "unleash",
+    "thoughtfully designed",
+    "crafted",
+    "bespoke",
+    "tailor-made",
+    "world-class"
+  ]
+}

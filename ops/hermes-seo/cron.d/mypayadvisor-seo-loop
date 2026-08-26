@@ -1,0 +1,15 @@
+# myPayAdvisor SEO loop (Hermes). Install: cp to /etc/cron.d/mypayadvisor-seo-loop
+# Replaces the Phase 0 file /etc/cron.d/mypayadvisor-seo (ping.py at 06:20):
+# the daily run pings IndexNow and submits the sitemap itself, so remove the
+# old file when this one lands or Bing gets two pings a day.
+#
+# Times are Israel local. The 08:30 portfolio digest reads
+# /var/lib/mypayadvisor-seo/report-YYYY-MM-DD.json, so daily (06:15) and the
+# report rebuild (07:40) both finish before it.
+CRON_TZ=Asia/Jerusalem
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+
+15 6 * * *   root  /opt/mypayadvisor-seo/run.sh daily  >> /var/log/mypayadvisor-seo.log 2>&1
+45 6 * * 1   root  /opt/mypayadvisor-seo/run.sh weekly >> /var/log/mypayadvisor-seo.log 2>&1
+40 7 * * *   root  /opt/mypayadvisor-seo/run.sh report >> /var/log/mypayadvisor-seo.log 2>&1

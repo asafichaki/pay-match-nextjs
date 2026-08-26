@@ -1,0 +1,21 @@
+{
+  "version": "2026-08-26.1",
+  "source": "authority-serp lane, avi-swarm-20260825-160233, live SERP US desktop 2026-08-25",
+  "note": "The 14 money queries the status research measured. The brand term is included so the competitor watch notices if the brand SERP changes; it is never part of the ranking headline.",
+  "queries": [
+    {"query": "stripe vs square", "page": "/comparisons/square-vs-stripe", "kind": "comparison"},
+    {"query": "stripe vs paypal", "page": "/comparisons/stripe-vs-paypal", "kind": "comparison"},
+    {"query": "best payment processors 2026", "page": "/comparisons/best-payment-processors-2026", "kind": "comparison"},
+    {"query": "credit card processing fee calculator", "page": "/calculator", "kind": "fees"},
+    {"query": "high risk merchant account", "page": "/insights/high-risk-payment-processing-guide", "kind": "high-risk"},
+    {"query": "high risk payment processing", "page": "/insights/high-risk-payment-processing-guide", "kind": "high-risk"},
+    {"query": "which mcc codes are high risk", "page": "/insights/high-risk-payment-processing-guide", "kind": "high-risk"},
+    {"query": "kratom merchant account", "page": null, "kind": "high-risk"},
+    {"query": "nutraceutical merchant account", "page": "/insights/nutra-supplement-merchant-account", "kind": "high-risk"},
+    {"query": "cbd merchant account", "page": "/insights/cbd-merchant-account", "kind": "high-risk"},
+    {"query": "gaming merchant account", "page": "/insights/gaming-merchant-account", "kind": "high-risk"},
+    {"query": "travel agency merchant account", "page": "/insights/travel-merchant-account", "kind": "high-risk"},
+    {"query": "credit repair merchant account", "page": null, "kind": "high-risk"},
+    {"query": "mypayadvisor", "page": "/", "kind": "brand"}
+  ]
+}

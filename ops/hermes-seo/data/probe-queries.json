@@ -1,0 +1,31 @@
+{
+  "version": "2026-08-26.1",
+  "source": "aeo-probe-log.md, 2026-08-25 round, reweighted 8 comparison / 6 fees / 6 high-risk / 4 brand",
+  "note": "Brand is reported separately and never in the headline. Query ids keep the 50-set reference where one exists.",
+  "queries": [
+    {"id": "C1", "bucket": "comparison", "query": "Stripe vs Square fees 2026", "ref": "Q16"},
+    {"id": "C2", "bucket": "comparison", "query": "Stripe vs PayPal for online business", "ref": "Q17"},
+    {"id": "C3", "bucket": "comparison", "query": "Helcim vs Stripe pricing", "ref": "Q19"},
+    {"id": "C4", "bucket": "comparison", "query": "Square vs Helcim 2026", "ref": "Q21"},
+    {"id": "C5", "bucket": "comparison", "query": "best payment processors for B2B SaaS 2026", "ref": "Q22"},
+    {"id": "C6", "bucket": "comparison", "query": "best payment processors for contractors and field services", "ref": "Q26"},
+    {"id": "C7", "bucket": "comparison", "query": "Square vs Stripe for in-person payments", "ref": "Q18"},
+    {"id": "C8", "bucket": "comparison", "query": "PayPal vs Square fees small business", "ref": "Q20"},
+    {"id": "F1", "bucket": "fees", "query": "what is interchange-plus pricing", "ref": "Q1"},
+    {"id": "F2", "bucket": "fees", "query": "how to reduce credit card processing fees small business", "ref": "Q45"},
+    {"id": "F3", "bucket": "fees", "query": "credit card processing fee calculator", "ref": null},
+    {"id": "F4", "bucket": "fees", "query": "cheapest credit card processor for low volume", "ref": "Q32"},
+    {"id": "F5", "bucket": "fees", "query": "what is the effective rate on credit card processing", "ref": "Q3"},
+    {"id": "F6", "bucket": "fees", "query": "how to negotiate credit card processing fees", "ref": "Q43"},
+    {"id": "H1", "bucket": "high-risk", "query": "best high risk merchant account provider", "ref": null},
+    {"id": "H2", "bucket": "high-risk", "query": "best high-risk friendly payment processors 2026", "ref": "Q28"},
+    {"id": "H3", "bucket": "high-risk", "query": "gaming merchant account", "ref": null},
+    {"id": "H5", "bucket": "high-risk", "query": "nutra supplement merchant account", "ref": null},
+    {"id": "H7", "bucket": "high-risk", "query": "kratom merchant account", "ref": null},
+    {"id": "H8", "bucket": "high-risk", "query": "which MCC codes are high risk", "ref": null},
+    {"id": "E1", "bucket": "brand", "query": "who is Barak Bachar payments expert", "ref": null},
+    {"id": "E2", "bucket": "brand", "query": "mypayadvisor review", "ref": null},
+    {"id": "E3", "bucket": "brand", "query": "is mypayadvisor legit", "ref": null},
+    {"id": "E4", "bucket": "brand", "query": "independent payment processor advisor for merchants", "ref": null}
+  ]
+}
