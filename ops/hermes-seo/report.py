@@ -108,10 +108,35 @@ def index_block(supa: Supa, sitemap: Dict[str, Optional[str]], run_date: dt.date
 
 
 def drafts_block(supa: Supa) -> List[Dict[str, str]]:
-    rows = supa.safe_get("blog_articles", {"published": "eq.false", "is_autopilot": "eq.true",
-                                           "select": "slug,title,kind", "order": "created_at.desc"}, limit=5)
-    return [{"title": r.get("title") or r.get("slug"), "admin_url": f"{config.SITE_BASE}/admin/articles"}
-            for r in rows]
+    """Drafts this loop wrote and is asking a human to publish.
+
+    Two guards, both learned the hard way on 2026-08-26, when the first real
+    digest offered a one-click publish on `stripe-vs-square-2026` and
+    `stripe-vs-helcim-2026`: the two duplicate rows that had been merged into
+    their winners and 308-redirected hours earlier. Publishing either would
+    have resurrected the cannibalisation and put a live page behind a
+    redirect.
+
+    1. A retired slug is never offered. `config.RETIRED_SLUGS` mirrors the
+       redirect registries in the repo.
+    2. `is_autopilot` is not enough: the engine that was closed on 2026-07-13
+       left its own unpublished rows behind and they carry that flag too. A
+       draft only counts when it was created after the loop went live.
+    """
+    rows = supa.safe_get("blog_articles",
+                         {"published": "eq.false", "is_autopilot": "eq.true",
+                          "created_at": f"gte.{config.LOOP_EPOCH}",
+                          "select": "slug,title,kind,created_at",
+                          "order": "created_at.desc"}, limit=10)
+    out: List[Dict[str, str]] = []
+    for r in rows:
+        if (r.get("slug") or "") in config.RETIRED_SLUGS:
+            continue
+        out.append({"title": r.get("title") or r.get("slug"),
+                    "admin_url": f"{config.SITE_BASE}/admin/articles"})
+        if len(out) == 5:
+            break
+    return out
 
 
 def build(supa: Supa, run_date: dt.date, run_summary: Optional[Dict[str, Any]], mode: str,

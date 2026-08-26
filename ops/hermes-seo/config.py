@@ -119,7 +119,20 @@ STALE_REPORT_HOURS = 36
 DAY0 = dt.date(2026, 8, 26)
 LLM_TITLES_FROM = dt.date(2026, 9, 9)
 
+# Only a draft created on or after the loop went live counts as ours. The
+# content engine closed on 2026-07-13 left unpublished rows behind that also
+# carry `is_autopilot`, and one of them is a page we deliberately retired.
+LOOP_EPOCH = "2026-08-26T00:00:00Z"
+
 # ---------------------------------------------------------- fixed lists
+# Slugs that 308 to a winner. Mirrors src/lib/comparisons/redirected-slugs.ts
+# and src/lib/insights/redirected-slugs.ts. Never link one, never offer one as
+# a draft, never propose an override for one.
+RETIRED_SLUGS = {
+    "stripe-vs-square-2026",
+    "stripe-vs-helcim-2026",
+}
+
 PILLAR = "/insights/high-risk-payment-processing-guide"
 CORNERSTONES: List[str] = [
     "/insights/high-risk-payment-processing-guide",

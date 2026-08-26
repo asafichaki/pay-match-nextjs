@@ -8,6 +8,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import report
+
 PKG = Path(__file__).resolve().parent.parent
 RENDER = PKG.parent / "portfolio-digest" / "render_seo_section.py"
 spec = importlib.util.spec_from_file_location("render_seo_section", RENDER)
@@ -102,3 +104,42 @@ class Render(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class DraftsBlock(unittest.TestCase):
+    """A retired page must never be offered for a one-click publish.
+
+    On 2026-08-26 the first real digest listed `stripe-vs-square-2026` and
+    `stripe-vs-helcim-2026`, the two duplicates that had been merged into
+    their winners and 308-redirected that morning. Both carry `is_autopilot`
+    because the engine closed on 2026-07-13 created them.
+    """
+
+    class FakeSupa:
+        def __init__(self, rows):
+            self.rows = rows
+            self.params = None
+
+        def safe_get(self, table, params, limit=None):
+            self.params = params
+            return self.rows
+
+    def test_retired_slugs_are_never_offered(self) -> None:
+        supa = self.FakeSupa([
+            {"slug": "stripe-vs-square-2026", "title": "Stripe vs Square 2026", "kind": "comparisons"},
+            {"slug": "stripe-vs-helcim-2026", "title": "Stripe vs Helcim 2026", "kind": "comparisons"},
+            {"slug": "stax-vs-helcim-2026", "title": "Stax vs Helcim 2026", "kind": "comparisons"},
+        ])
+        out = report.drafts_block(supa)
+        self.assertEqual([d["title"] for d in out], ["Stax vs Helcim 2026"])
+
+    def test_query_is_scoped_to_this_loop(self) -> None:
+        supa = self.FakeSupa([])
+        report.drafts_block(supa)
+        self.assertEqual(supa.params["published"], "eq.false")
+        self.assertEqual(supa.params["is_autopilot"], "eq.true")
+        self.assertTrue(supa.params["created_at"].startswith("gte.2026-08-26"))
+
+    def test_caps_at_five(self) -> None:
+        supa = self.FakeSupa([{"slug": f"s{i}", "title": f"T{i}", "kind": "comparisons"} for i in range(9)])
+        self.assertEqual(len(report.drafts_block(supa)), 5)
