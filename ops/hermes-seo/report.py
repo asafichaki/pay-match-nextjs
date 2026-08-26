@@ -100,6 +100,17 @@ def changes_block(supa: Supa, run_date: dt.date, bits: Dict[str, Any]) -> Dict[s
             "applied_today": max(len(bits.get("applied") or []), len(db_applied))}
 
 
+def _google_index_today(supa: Supa, run_date: dt.date) -> Dict[str, Any]:
+    """The Google push from today's daily run, or nothing.
+
+    `report` is its own cron 85 minutes after `daily`, so the in-process
+    value is gone. A stale value from a previous day must never be shown as
+    if it happened this morning.
+    """
+    saved = supa.setting("google_index_last", {}) or {}
+    return saved if saved.get("date") == run_date.isoformat() else {}
+
+
 def index_block(supa: Supa, sitemap: Dict[str, Optional[str]], run_date: dt.date,
                 bits: Dict[str, Any]) -> Dict[str, Any]:
     rows = {r["url"]: r for r in supa.safe_get("seo_index_status")}
@@ -115,7 +126,7 @@ def index_block(supa: Supa, sitemap: Dict[str, Optional[str]], run_date: dt.date
         "pillar": {"state": (pillar_row or {}).get("coverage_state"), "last_crawl": (pillar_row or {}).get("last_crawl"),
                    "googlebot_hits_7d": hits.get(config.PILLAR, 0)},
         "bing_indexed": bits.get("bing_indexed", (supa.setting("bing_index", {}) or {}).get("in_index")),
-        "google_index": bits.get("google_index") or {},
+        "google_index": bits.get("google_index") or _google_index_today(supa, run_date),
         "escalation": (bits.get("escalation_lines") or [])[:4],
         "classes": summary["classes"],
     }

@@ -242,6 +242,11 @@ def step_indexnow(ctx: Ctx, info: Dict[str, Any]) -> None:
     google_urls = list(dict.fromkeys(not_indexed + urls))
     g = indexing.google_index_push(google_urls, ctx.dry_run)
     ctx.report_bits["google_index"] = g
+    # `report` runs at 07:40 in its own process, so anything kept only in
+    # report_bits is invisible to the morning mail. Persist it the way
+    # bing_index already is.
+    if not ctx.dry_run:
+        ctx.supa.set_setting("google_index_last", {**g, "date": ctx.run_date.isoformat()})
     if g.get("skipped"):
         note += f"; google: {g['skipped']}"
     else:

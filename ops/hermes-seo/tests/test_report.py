@@ -226,3 +226,33 @@ class GoogleIndexLine(unittest.TestCase):
     def test_silent_when_there_is_nothing_to_say(self) -> None:
         html = self._render({})
         self.assertNotIn("Google recrawl", html)
+
+
+class GoogleIndexPersistence(unittest.TestCase):
+    """`report` is its own cron 85 minutes after `daily`.
+
+    Anything kept only in memory is invisible to the morning mail, and a
+    value saved on a previous day must never be shown as if it happened
+    this morning.
+    """
+
+    class FakeSupa:
+        def __init__(self, saved): self.saved = saved
+        def safe_get(self, *a, **k): return []
+        def setting(self, key, default=None):
+            return self.saved if key == "google_index_last" else default
+
+    def test_todays_saved_push_is_used(self) -> None:
+        supa = self.FakeSupa({"asked": 22, "failed": 0, "date": "2026-08-26"})
+        out = report.index_block(supa, {}, dt.date(2026, 8, 26), {})
+        self.assertEqual(out["google_index"]["asked"], 22)
+
+    def test_yesterdays_push_is_not_shown_as_todays(self) -> None:
+        supa = self.FakeSupa({"asked": 22, "failed": 0, "date": "2026-08-25"})
+        out = report.index_block(supa, {}, dt.date(2026, 8, 26), {})
+        self.assertEqual(out["google_index"], {})
+
+    def test_in_process_value_wins(self) -> None:
+        supa = self.FakeSupa({"asked": 1, "date": "2026-08-26"})
+        out = report.index_block(supa, {}, dt.date(2026, 8, 26), {"google_index": {"asked": 60}})
+        self.assertEqual(out["google_index"]["asked"], 60)
