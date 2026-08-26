@@ -5,6 +5,7 @@ import StripeVsPayPalContent from "./StripeVsPayPalContent";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 const baseMetadata: Metadata = {
   title: { absolute: "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate" },
@@ -89,6 +90,7 @@ export default function StripeVsPayPalPage() {
         aeoAnswer={<AeoAnswer kind="comparisons" slug="stripe-vs-paypal" />}
         relatedLinks={<RelatedLinks kind="comparisons" slug="stripe-vs-paypal" />}
       />
+      <CompareMore slug="stripe-vs-paypal" />
     </>
   );
 }

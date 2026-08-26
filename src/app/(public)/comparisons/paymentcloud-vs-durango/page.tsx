@@ -5,6 +5,7 @@ import PaymentCloudVsDurangoContent from "./PaymentCloudVsDurangoContent";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 const URL = "https://www.mypayadvisor.com/comparisons/paymentcloud-vs-durango";
 
@@ -175,6 +176,7 @@ export default function PaymentCloudVsDurangoPage() {
         aeoAnswer={<AeoAnswer kind="comparisons" slug="paymentcloud-vs-durango" />}
         relatedLinks={<RelatedLinks kind="comparisons" slug="paymentcloud-vs-durango" />}
       />
+      <CompareMore slug="paymentcloud-vs-durango" />
     </>
   );
 }

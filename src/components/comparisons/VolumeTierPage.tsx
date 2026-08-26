@@ -14,6 +14,7 @@ import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { MatchCTA } from "@/components/MatchCTA";
 import type { VolumeTier } from "@/lib/comparisons/volume-tiers";
 import { VOLUME_TIERS_BY_SLUG } from "@/lib/comparisons/volume-tiers";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 const SITE = "https://www.mypayadvisor.com";
 
@@ -290,6 +291,20 @@ export function VolumeTierPage({ tier, aeoAnswer, relatedLinks }: Props) {
       </article>
 
       {relatedLinks}
+
+      {/*
+        The static adjacency grid. The "Other volume tiers" list above already
+        carries the sibling tiers and the all-tiers cornerstone, so those are
+        excluded here and the grid backfills with genuinely new comparisons.
+      */}
+      <CompareMore
+        slug={tier.slug}
+        contained={false}
+        exclude={[
+          ...relatedTiers.map((rt) => `/comparisons/${rt.slug}`),
+          "/comparisons/best-payment-processors-2026",
+        ]}
+      />
 
       <div className="mt-12 border-t border-border pt-8">
         <ReviewerBioBox />

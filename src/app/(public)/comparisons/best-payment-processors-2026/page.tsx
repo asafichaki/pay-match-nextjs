@@ -6,6 +6,7 @@ import BestPaymentProcessors2026Content from "./BestPaymentProcessors2026Content
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 function parseRate(rate: string): number {
   return parseFloat(rate.replace("%", ""));
@@ -130,6 +131,7 @@ export default function BestPaymentProcessors2026Page() {
         aeoAnswer={<AeoAnswer kind="comparisons" slug="best-payment-processors-2026" />}
         relatedLinks={<RelatedLinks kind="comparisons" slug="best-payment-processors-2026" />}
       />
+      <CompareMore slug="best-payment-processors-2026" />
     </>
   );
 }

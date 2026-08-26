@@ -5,6 +5,7 @@ import PayPalVsSquareContent from "./PayPalVsSquareContent";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 const baseMetadata: Metadata = {
   title: { absolute: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate" },
@@ -106,6 +107,7 @@ export default function PayPalVsSquarePage() {
         aeoAnswer={<AeoAnswer kind="comparisons" slug="paypal-vs-square" />}
         relatedLinks={<RelatedLinks kind="comparisons" slug="paypal-vs-square" />}
       />
+      <CompareMore slug="paypal-vs-square" />
     </>
   );
 }

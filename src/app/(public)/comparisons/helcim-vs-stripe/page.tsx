@@ -5,6 +5,7 @@ import HelcimVsStripeContent from "./HelcimVsStripeContent";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 const baseMetadata: Metadata = {
   // absolute: skip the layout "%s | myPayAdvisor" suffix so the money query "helcim vs stripe" stays front-loaded and un-truncated.
@@ -109,6 +110,15 @@ export default function HelcimVsStripePage() {
           <li><a href="/comparisons/best-payment-processors-2026" className="text-primary hover:underline">Best payment processors 2026</a>: 15 processors ranked by effective rate.</li>
         </ul>
       </section>
+      {/* The three hand-written links above are excluded so the grid never repeats them. */}
+      <CompareMore
+        slug="helcim-vs-stripe"
+        exclude={[
+          "/comparisons/square-vs-helcim-2026",
+          "/comparisons/best-no-contract-payment-processors-2026",
+          "/comparisons/best-payment-processors-2026",
+        ]}
+      />
     </>
   );
 }

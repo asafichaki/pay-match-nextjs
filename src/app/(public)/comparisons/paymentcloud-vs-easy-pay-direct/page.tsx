@@ -5,6 +5,7 @@ import PaymentCloudVsEasyPayDirectContent from "./PaymentCloudVsEasyPayDirectCon
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { CompareMore } from "@/components/comparisons/CompareMore";
 
 const URL = "https://www.mypayadvisor.com/comparisons/paymentcloud-vs-easy-pay-direct";
 
@@ -175,6 +176,7 @@ export default function PaymentCloudVsEasyPayDirectPage() {
         aeoAnswer={<AeoAnswer kind="comparisons" slug="paymentcloud-vs-easy-pay-direct" />}
         relatedLinks={<RelatedLinks kind="comparisons" slug="paymentcloud-vs-easy-pay-direct" />}
       />
+      <CompareMore slug="paymentcloud-vs-easy-pay-direct" />
     </>
   );
 }
