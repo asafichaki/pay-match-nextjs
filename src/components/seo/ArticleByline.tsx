@@ -44,7 +44,8 @@ export function ArticleByline({
       className={`text-sm text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1 ${className}`}
     >
       <span>
-        By{" "}
+        {/* Callers pass "Reviewed by Barak Bachar"; only prepend "By" for a plain author name. */}
+        {/^reviewed by/i.test(author) ? null : "By "}
         <Link
           href={authorUrl}
           className="font-medium text-foreground hover:text-primary underline-offset-4 hover:underline"
