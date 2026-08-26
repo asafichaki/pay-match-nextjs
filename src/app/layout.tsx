@@ -61,9 +61,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  alternates: {
-    canonical: "https://www.mypayadvisor.com",
-  },
+  // No global alternates.canonical here: a root default made every route that
+  // did not override it (e.g. /privacy, /terms) canonicalize to the homepage.
+  // Each page sets its own canonical; the homepage does in (public)/page.tsx.
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
     other: {

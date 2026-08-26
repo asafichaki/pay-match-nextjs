@@ -27,16 +27,10 @@ export default function StripeVsPayPalContent() {
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
               Verdict, May 2026: Stripe costs less. Stripe charges 2.9% + $0.30 (2.97% effective at $50K monthly). <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a> Commercial Transactions charges 3.49% + $0.49 (3.58% effective). PayPal earns its premium on 400M+ buyer trust. Barak Bachar pulled live rates May 2026.
             </p>
-            <div className="flex items-center gap-4">
-              <img src="/images/hannah-sutton.png" alt="Hannah Sutton" className="w-12 h-12 rounded-full object-cover object-top" />
-              <div>
-                <p className="font-semibold text-foreground">Hannah Sutton</p>
-                <p className="text-sm text-muted-foreground">Finance & Payments Analyst - December 2026</p>
-              </div>
-            </div>
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
+              lastUpdated="2026-08-25"
               className="mt-4"
             />
 
@@ -253,7 +247,7 @@ export default function StripeVsPayPalContent() {
             </div>
           </section>
 
-          <ReviewerBioBox />
+          <ReviewerBioBox linkProfile={false} />
 
           <footer className="py-8 border-t border-border">
             <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links.</p>

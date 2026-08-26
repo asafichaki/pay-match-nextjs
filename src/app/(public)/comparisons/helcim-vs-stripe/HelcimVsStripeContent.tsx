@@ -28,23 +28,20 @@ export default function HelcimVsStripeContent() {
               Stripe leads with best-in-class APIs.
               Which saves you more? Let's find out.
             </p>
-            <div className="flex items-center gap-4">
-              <img src="/images/hannah-sutton.png" alt="Hannah Sutton" className="w-12 h-12 rounded-full object-cover object-top" />
-              <div>
-                <p className="font-semibold text-foreground">Hannah Sutton</p>
-                <p className="text-sm text-muted-foreground">Finance & Payments Analyst - December 2026</p>
-              </div>
-            </div>
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
+              lastUpdated="2026-08-25"
               className="mt-4"
             />
           </header>
 
-          <section className="py-10 border-b border-border">
+          <section className="py-10 border-b border-border aeo-answer">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Quick Verdict</h2>
             <div className="space-y-4">
+              <p className="text-lg text-foreground leading-relaxed">
+                Helcim wins for most U.S. merchants above <strong>$25K</strong> in monthly card volume. Stripe&rsquo;s flat <strong>2.9% + $0.30</strong> online rate is easy to budget but stops being competitive once interchange averages run below 1.8 percent. Helcim&rsquo;s interchange-plus model passes through the wholesale cost and adds <strong>0.50% + $0.25</strong> online, with automatic volume discounts at $50K, $100K, and $250K monthly tiers. Stripe wins on developer tooling and global card support.
+              </p>
               <p className="text-foreground"><strong className="text-primary">Choose Helcim</strong> if you want the lowest fees, transparent pricing, and excellent 24/7 support.</p>
               <p className="text-foreground"><strong className="text-primary">Choose Stripe</strong> if you need advanced features, customization, and have developers.</p>
             </div>
@@ -84,9 +81,13 @@ export default function HelcimVsStripeContent() {
                   {[
                     { feature: "Best For", helcim: "Transparency, savings, SMBs", stripe: "Developers, SaaS, customization" },
                     { feature: "Pricing Model", helcim: "Interchange-plus", stripe: "Flat-rate", helcimWins: true },
-                    { feature: "Online Rate", helcim: "Interchange + 0.40% + $0.08", stripe: "2.9% + $0.30", helcimWins: true },
-                    { feature: "In-Person Rate", helcim: "Interchange + 0.30% + $0.08", stripe: "2.7% + $0.05", helcimWins: true },
-                    { feature: "Volume Discounts", helcim: "Automatic", stripe: "Custom ($1M+)", helcimWins: true },
+                    { feature: "Online Rate", helcim: "Interchange + 0.50% + $0.25", stripe: "2.9% + $0.30", helcimWins: true },
+                    { feature: "In-Person Rate", helcim: "Interchange + 0.40% + $0.08", stripe: "2.7% + $0.05", helcimWins: true },
+                    { feature: "Monthly Fee", helcim: "$0", stripe: "$0" },
+                    { feature: "Volume Discounts", helcim: "Automatic at $25K, $50K, $100K, $250K", stripe: "Custom ($1M+)", helcimWins: true },
+                    { feature: "Settlement", helcim: "2 business days", stripe: "2 business days" },
+                    { feature: "Level 2 / Level 3 Data", helcim: "Supported on the hosted gateway", stripe: "Level 2 via API, level 3 limited", helcimWins: true },
+                    { feature: "International Cards", helcim: "USD and CAD only", stripe: "+1.5%, plus 1% currency conversion", stripeWins: true },
                     { feature: "Customer Support", helcim: "24/7 Phone/Chat/Email", stripe: "Email/Chat only", helcimWins: true },
                     { feature: "API Quality", helcim: "Good", stripe: "Best-in-class", stripeWins: true },
                     { feature: "Currencies", helcim: "USD, CAD only", stripe: "135+", stripeWins: true },
@@ -130,6 +131,11 @@ export default function HelcimVsStripeContent() {
                 Helcim Editorial, <a href="https://learn.helcim.com/docs/what-is-interchange-plus" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim Learn (What Is Interchange-Plus)</a>
               </figcaption>
             </figure>
+
+            <h3 className="font-semibold text-foreground mb-4">Effective rate math at $250K a month</h3>
+            <p className="text-muted-foreground mb-4">
+              Per <a href="https://www.federalreserve.gov/paymentsystems.htm" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Federal Reserve payments studies</a>, U.S. card interchange has averaged near a 1.7 to 1.9 percent weighted rate across recent reporting cycles. At a 1.8 percent average interchange, a merchant processing $250K monthly pays roughly 2.30% + $0.25 per transaction on Helcim versus 2.90% + $0.30 on Stripe. On 2,500 transactions averaging $100, that gap is about $1,500 a month before Helcim&rsquo;s automatic volume discount. Stripe&rsquo;s flat rate covers interchange, the network assessments, and its own markup; on a typical U.S. consumer card mix that markup is 0.90 to 1.40 percent above wholesale, and there is no volume discount until a custom contract above roughly $1M monthly.
+            </p>
 
             <h3 className="font-semibold text-foreground mb-4">Real Savings Comparison</h3>
             <div className="overflow-x-auto -mx-4 px-4 mb-8">
@@ -210,7 +216,12 @@ export default function HelcimVsStripeContent() {
             <div className="space-y-6">
               {[
                 { q: "Is Helcim cheaper than Stripe?", a: "For most businesses processing $10K+/month, yes. Helcim's interchange-plus pricing typically saves 15-25%." },
-                { q: "Does Helcim work in the US?", a: "Yes! Despite being Canadian-based, Helcim fully supports US businesses with USD processing." },
+                { q: "When does Helcim become cheaper than Stripe?", a: "Helcim is usually cheaper than Stripe once monthly card volume passes $25K and the merchant accepts at least 60 percent in-person or low-risk online cards. On a 1.8 percent average interchange mix, Helcim's interchange plus 0.50 percent plus $0.25 online rate works out to roughly 2.30 percent versus Stripe's 2.90 percent. On $100K monthly volume, that gap is around $600 per month, before any of Helcim's automatic volume discount kicks in. Below $25K, the savings are usually too small to justify the time spent switching integrations." },
+                { q: "Does Stripe negotiate below 2.9 percent?", a: "Stripe offers custom pricing for merchants above roughly $1 million in monthly processing volume, per its public pricing page. The custom rate is interchange-plus and can drop the effective markup by 0.30 to 0.60 percent depending on card mix. For volumes between $250K and $1M, Stripe sometimes offers volume discounts on a case-by-case basis, but the published flat rate is the default. Merchants in that range should price-check Helcim, Stax, or a tier-one acquirer before signing any Stripe custom contract because the comparison points strengthen the negotiation." },
+                { q: "Are there any monthly fees with Stripe or Helcim?", a: "Neither company charges a base monthly fee on its standard plan. Stripe's pricing is purely per transaction at 2.9 percent plus $0.30 online, with no monthly fee, no PCI fee, and no statement fee. Helcim charges no monthly fee, no setup fee, and no PCI compliance fee. Both companies operate month-to-month with no early termination fee. Add-on Stripe products like Radar for fraud, Sigma for reporting, and Atlas for incorporation carry their own pricing, which is published separately on the Stripe pricing page." },
+                { q: "Which is better for B2B card-not-present?", a: "Helcim is the stronger choice for B2B card-not-present merchants in most cases. Interchange-plus pricing combined with level 2 and level 3 data support qualifies commercial, purchasing, and government cards for lower interchange categories, which can drop the effective rate by 0.50 to 1.00 percent versus a flat rate. Stripe supports level 2 data on its API, but level 3 support is limited unless the merchant builds it into the integration. For B2B operators with average tickets above $500, the rate difference compounds quickly into five-figure annual savings." },
+                { q: "Can I switch from Stripe to Helcim mid-contract?", a: "Yes. Stripe runs a month-to-month standard agreement with no early termination fee, per its public terms. A merchant can stop processing through Stripe at any time and switch to Helcim without paying a penalty. The practical work involves repointing the payment integration, migrating saved card tokens (Stripe will migrate tokens to a compliant processor on request), and updating recurring billing schedules. For ecommerce merchants, plan for one to two engineering weeks if recurring billing or saved cards are in scope. Run both processors in parallel for a week to validate." },
+                { q: "Does Helcim work in the US?", a: "Yes. Despite being Canadian-based, Helcim fully supports US businesses with USD processing." },
                 { q: "Which has better support?", a: "Helcim wins with 24/7 phone, email, and chat. Stripe offers email and chat only." },
               ].map((faq, i) => (
                 <div key={i} className="border-b border-border pb-6 last:border-b-0">
@@ -246,7 +257,7 @@ export default function HelcimVsStripeContent() {
             </div>
           </section>
 
-          <ReviewerBioBox />
+          <ReviewerBioBox linkProfile={false} />
 
           <footer className="py-8 border-t border-border">
             <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links.</p>

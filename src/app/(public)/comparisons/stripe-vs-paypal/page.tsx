@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   other: {
     "article:published_time": "2025-11-15T00:00:00.000Z",
-    "article:modified_time": new Date().toISOString(),
+    "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
 
@@ -50,6 +50,7 @@ export default function StripeVsPayPalPage() {
         description="Stripe vs PayPal comparison for 2026. Fees, FX cost, conversion lift, APIs, and subscriptions, side by side."
         slug="stripe-vs-paypal"
         datePublished="2025-11-15"
+        dateModified="2026-08-25"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

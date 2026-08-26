@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   other: {
     "article:published_time": "2026-05-30T00:00:00.000Z",
-    "article:modified_time": new Date().toISOString(),
+    "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
 
@@ -135,6 +135,7 @@ export default function PaymentCloudVsEasyPayDirectPage() {
         description="PaymentCloud vs Easy Pay Direct for high-risk merchants. Approved verticals, reserves, load balancing across multiple MIDs, and approval speed compared, reviewed by a payments operator."
         slug="paymentcloud-vs-easy-pay-direct"
         datePublished="2026-05-30"
+        dateModified="2026-08-25"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

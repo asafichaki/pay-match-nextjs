@@ -277,7 +277,7 @@ export default function FundsFrozenWhatToDoPage() {
                   &ldquo;A freeze feels like an accusation, so merchants react emotionally, and that is the mistake. The acquirer is not your adversary in that moment, they are a risk desk waiting on paperwork. Get the reason in writing, send every document they ask for the same day, and at the same time open a second merchant account so your revenue does not stop. The merchants who recover fastest treat the freeze as a documentation problem to solve in order, not a fight to win.&rdquo;
                 </blockquote>
                 <figcaption className="mt-3 text-sm text-muted-foreground not-italic">
-                  <a href="/about/barak" className="text-primary hover:underline font-medium">Barak Bachar</a>, Global Payments Manager, myPayAdvisor
+                  <span className="font-medium text-foreground">Barak Bachar</span>, Global Payments Manager, myPayAdvisor
                 </figcaption>
               </figure>
 

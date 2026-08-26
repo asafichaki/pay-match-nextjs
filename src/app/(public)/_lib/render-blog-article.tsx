@@ -420,7 +420,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           </section>
         ) : null}
 
-        <ReviewerBioBox />
+        <ReviewerBioBox linkProfile={false} />
       </article>
     </main>
   );

@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MatchCTA } from "@/components/MatchCTA";
 import ProcessorComparisonTable from "@/components/ProcessorComparisonTable";
 import { createSupabasePublicClient } from "@/integrations/supabase/server-public";
+import { REDIRECTED_COMPARISON_SLUGS } from "@/lib/comparisons/redirected-slugs";
 
 export const revalidate = 3600;
 
@@ -38,7 +39,7 @@ async function fetchDbComparisons(): Promise<Comparison[]> {
       .order("published_at", { ascending: false })
       .limit(500);
     if (!data) return [];
-    return (data as any[]).map((row) => ({
+    return (data as any[]).filter((row) => !REDIRECTED_COMPARISON_SLUGS.has(row.slug)).map((row) => ({
       title: row.title || row.slug,
       description: row.description || row.meta_description || "",
       href: `/comparisons/${row.slug}`,
@@ -224,13 +225,10 @@ const speakableSchema = {
   }
 };
 
-function getCurrentMonthYear() {
-  const months = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  return `${months[new Date().getMonth()]} ${new Date().getFullYear()}`;
-}
+// Literal on purpose: the old new Date() version re-stamped the hub as "updated this
+// month" on every render (check-dates.mjs now fails the build on render-time dates).
+// Update it when the rate table or the list actually changes.
+const LAST_REVIEWED = "August 2026";
 
 export default async function ComparisonsPage() {
   const comparisons = await getAllComparisons();
@@ -272,7 +270,7 @@ export default async function ComparisonsPage() {
 
                   <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
                     <TrendingUp className="h-4 w-4" aria-hidden="true" />
-                    <span>Updated {getCurrentMonthYear()}</span>
+                    <span>Updated {LAST_REVIEWED}</span>
                   </div>
 
                   <MatchCTA variant="inline" className="max-w-xl !my-5" />
@@ -307,6 +305,22 @@ export default async function ComparisonsPage() {
 
         {/* Above-fold comparison table */}
         <ProcessorComparisonTable />
+
+        {/* High-risk row: the hub had no link to the pillar (Check 2, 2026-08-25). Server-rendered. */}
+        <section aria-labelledby="high-risk-row-heading" className="border-y border-border bg-muted/30">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-6">
+            <p className="text-[11px] uppercase tracking-wider font-semibold text-primary mb-1">High-risk merchants</p>
+            <h2 id="high-risk-row-heading" className="text-lg font-bold text-foreground mb-2">Declined, frozen, or flagged as high-risk?</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Start with the{" "}
+              <Link href="/insights/high-risk-payment-processing-guide" className="text-primary font-medium hover:underline">high-risk payment processing guide</Link>
+              {" "}for reserves, VAMP thresholds and the processors that approve CBD, gaming, nutra, firearms, travel and subscription merchants. Then compare{" "}
+              <Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">PaymentCloud vs Durango</Link>,{" "}
+              <Link href="/comparisons/paymentcloud-vs-easy-pay-direct" className="text-primary hover:underline">PaymentCloud vs Easy Pay Direct</Link>{" "}and the{" "}
+              <Link href="/comparisons/stripe-high-risk-alternatives" className="text-primary hover:underline">Stripe alternatives for high-risk businesses</Link>.
+            </p>
+          </div>
+        </section>
 
         {/* Comparisons List */}
         <section className="py-8">

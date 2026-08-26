@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   other: {
     "article:published_time": "2025-11-15T00:00:00.000Z",
-    "article:modified_time": new Date().toISOString(),
+    "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
 
@@ -91,6 +91,38 @@ const faqStructuredData = {
         text: "Yes, switching is straightforward with no cancellation fees from either processor. Timeline is typically 1-3 weeks including account setup, integration, customer data migration, and testing.",
       },
     },
+    {
+      "@type": "Question",
+      name: "When does it make sense to leave Stripe or Square for interchange-plus?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Around $80K to $100K in monthly card volume, the markup baked into a 2.6 to 2.9 percent flat rate starts costing more than a monthly subscription or a small interchange-plus markup. At $250K monthly volume with an average retail card mix, an interchange-plus processor with a 0.40 percent markup typically lands 0.30 to 0.60 percent below either flat rate. On $3M annual volume that is roughly $12,000 to $18,000 saved per year. The exception is if you have heavy seasonality or unstable volume, where unpredictable monthly fees can hurt more than the percentage savings help.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Square ever charge a monthly fee?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Not on the free plan. Square POS, Square Dashboard, and basic invoicing are free, and you only pay per transaction. Square does charge monthly subscriptions for vertical-specific software: Square for Restaurants Plus is $69 per location per month, Square for Retail Plus is $89 per location per month, Square Appointments Plus is $29 per location per month. Square Online is free with paid plans starting at $29 per month for custom domain and removed Square branding. Hardware is sold separately. PCI compliance, statement fees, and account closure fees are not charged on the standard plan.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why is Stripe's published rate higher than what large enterprises pay?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The 2.9 percent plus 30 cents number is Stripe's standard plan, designed for self-serve signups under $80K monthly volume. Stripe offers custom interchange-plus pricing through its sales team for higher-volume merchants, where the markup is typically negotiated as a small percentage and per-transaction fee on top of true interchange. The published rate has to cover Stripe's full cost (interchange, network fees, processing margin, fraud risk, and software) for any account that signs up without a conversation, so it is intentionally above what a $1M+ monthly volume merchant would actually pay after negotiation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can Square hold my money?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Square's Seller Agreement allows account holds, rolling reserves, and termination at Square's discretion, particularly for merchants in higher-risk categories or those whose volume patterns trigger automated risk filters. Common triggers include a sudden volume spike, high chargeback ratio, or a merchant category code (firearms, supplements, CBD, ticket resale, certain coaching) that Square treats as elevated risk. Funds are typically held for 30 to 90 days. The defensive move for any business in those verticals is to set up a parallel interchange-plus merchant account on day one, so a Square hold does not freeze your operations.",
+      },
+    },
   ],
 };
 
@@ -112,6 +144,7 @@ export default function SquareVsStripePage() {
         description="Square vs Stripe comparison for 2026. Compare pricing, POS features, ecommerce capabilities, APIs, and find the best payment processor for your channel mix."
         slug="square-vs-stripe"
         datePublished="2025-11-15"
+        dateModified="2026-08-25"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

@@ -120,9 +120,12 @@ export default function GlossaryPage() {
           data-speakable="true"
           className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl"
         >
-          Every payment processing term U.S. merchants encounter on a merchant statement,
-          processor pitch, or compliance form &mdash; defined in plain language.{" "}
-          {GLOSSARY.length} terms so far, expanding monthly.
+          Every payment processing term U.S. merchants meet on a merchant statement, a processor
+          pitch, or a compliance form, defined in plain language with the number that matters:
+          interchange and assessments, effective rate, tiered versus interchange-plus pricing,
+          rolling reserves, chargeback ratios and the VAMP thresholds, MCC codes for high-risk
+          verticals, and settlement terms. Each entry links to the guide or comparison where the
+          term does real work. {GLOSSARY.length} terms so far, expanding monthly.
         </p>
       </header>
 

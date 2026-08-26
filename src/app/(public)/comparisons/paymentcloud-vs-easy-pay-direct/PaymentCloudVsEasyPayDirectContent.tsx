@@ -39,6 +39,7 @@ export default function PaymentCloudVsEasyPayDirectContent() {
               <ArticleByline
                 author="Reviewed by Barak Bachar"
                 authorUrl="/about/barak"
+                lastUpdated="2026-08-25"
               />
               <MatchCTA
                 variant="inline"
@@ -211,7 +212,7 @@ export default function PaymentCloudVsEasyPayDirectContent() {
               </div>
             </section>
 
-            <ReviewerBioBox />
+            <ReviewerBioBox linkProfile={false} />
 
             <footer className="py-8 border-t border-border">
               <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links. Rates and terms are quoted per merchant by each provider and should be verified in writing.</p>

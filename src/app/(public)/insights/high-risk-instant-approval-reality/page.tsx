@@ -254,7 +254,7 @@ export default function HighRiskInstantApprovalRealityPage() {
                   &ldquo;Instant approval sells because it answers fear with a promise, but a real acquirer underwrites, because the acquirer carries the chargeback liability. When I see a guaranteed yes with no underwriting, I read it as either an aggregator that can reverse the decision later, or a pitch that left out the conditions. The speed worth chasing is not the fastest yes, it is the right acquirer for your vertical who gets you live and keeps you live.&rdquo;
                 </blockquote>
                 <figcaption className="mt-3 text-sm text-muted-foreground not-italic">
-                  <a href="/about/barak" className="text-primary hover:underline font-medium">Barak Bachar</a>, Global Payments Manager, myPayAdvisor
+                  <span className="font-medium text-foreground">Barak Bachar</span>, Global Payments Manager, myPayAdvisor
                 </figcaption>
               </figure>
 

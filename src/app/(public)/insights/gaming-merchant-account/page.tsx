@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { ExpertQuote } from "@/components/article/ExpertQuote";
 
 export const metadata: Metadata = {
   title: "Gaming Merchant Account: 2026 Approval Guide",
@@ -448,6 +449,29 @@ export default function GamingMerchantAccountPage() {
                 <li><strong>Direct acquirer access.</strong> At scale, some ISOs will introduce you directly to the acquiring bank. That conversation gets you real underwriting flexibility (custom reserve structures, negotiated caps, named risk contacts) that a boarding portal never will.</li>
                 <li><strong>Settlement and geography.</strong> Multi-state iGaming operators need per-jurisdiction volume reporting; global video-game merchants need multi-currency settlement. Both are underwriting topics, raise them before boarding, not after.</li>
               </ul>
+
+              {/* Sourced Barak quote (also on /comparisons/paymentcloud-vs-durango), rendered with Quotation JSON-LD by ExpertQuote (PR 1). */}
+              <ExpertQuote
+                pageUrl="https://www.mypayadvisor.com/insights/gaming-merchant-account"
+                quotation={{
+                  text: "In high-risk, the highest published approval rate is not the metric that matters. What matters is how many acquiring banks sit behind the processor, because a single-bank setup is one underwriting decision away from another freeze. I would rather place a merchant with a provider that routes across several banks at a slightly higher rate than win on price and watch the account get shut off in ninety days. Stability is the product. The rate is secondary.",
+                  anchor: "barak-quote",
+                  creator: {
+                    "@type": "Person",
+                    name: "Barak Bachar",
+                    jobTitle: "Global Payments Manager",
+                    worksFor: { "@type": "Organization", name: "myPayAdvisor" },
+                    url: "https://www.mypayadvisor.com/about/barak",
+                  },
+                  publisher: {
+                    "@type": "Organization",
+                    name: "myPayAdvisor",
+                    url: "https://www.mypayadvisor.com",
+                  },
+                  isBasedOn: "https://www.mypayadvisor.com/about/barak",
+                  inLanguage: "en-US",
+                }}
+              />
 
               <p className="text-foreground leading-relaxed">
                 The same size-changes-everything dynamic plays out in other flagged verticals; see how it works for <Link href="/insights/travel-merchant-account" className="text-primary hover:underline">travel agencies</Link> and <Link href="/insights/nutra-supplement-merchant-account" className="text-primary hover:underline">nutraceutical brands</Link>, where the risk drivers differ but the negotiation logic is identical.

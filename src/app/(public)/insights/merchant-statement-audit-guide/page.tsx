@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Linkedin, Calculator, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ExpertQuote } from "@/components/article/ExpertQuote";
-import { BARAK_NAME, BARAK_TITLE, BARAK_PERSON_ID } from "@/data/personas/barak";
+import { BARAK_NAME, BARAK_TITLE } from "@/data/personas/barak";
 
 export const metadata: Metadata = {
   title: "How to Reduce Credit Card Processing Fees: Ultimate 2025 Merchant Statement Audit Guide",
@@ -204,12 +204,24 @@ export default function MerchantStatementAuditGuidePage() {
                 </p>
 
                 <ExpertQuote
-                  quote="Most merchants on a tiered contract pay $400 to $900 a year in flat fees that have nothing to do with card processing, PCI, regulatory product, statement, monthly minimum. Every line is negotiable. The bank earns this revenue because nobody asks in writing for it to be waived. Five minutes and a written request removes most of it."
-                  authorName={BARAK_NAME}
-                  authorRole={`${BARAK_TITLE}, myPayAdvisor`}
-                  authorSlug="barak"
-                  personId={BARAK_PERSON_ID}
-                  articleUrl="https://www.mypayadvisor.com/insights/merchant-statement-audit-guide"
+                  pageUrl="https://www.mypayadvisor.com/insights/merchant-statement-audit-guide"
+                  quotation={{
+                    text: "Most merchants on a tiered contract pay $400 to $900 a year in flat fees that have nothing to do with card processing, PCI, regulatory product, statement, monthly minimum. Every line is negotiable. The bank earns this revenue because nobody asks in writing for it to be waived. Five minutes and a written request removes most of it.",
+                    creator: {
+                      "@type": "Person",
+                      name: "Barak Bachar",
+                      jobTitle: "Global Payments Manager",
+                      worksFor: { "@type": "Organization", name: "myPayAdvisor" },
+                      url: "https://www.mypayadvisor.com/about/barak",
+                    },
+                    publisher: {
+                      "@type": "Organization",
+                      name: "myPayAdvisor",
+                      url: "https://www.mypayadvisor.com",
+                    },
+                    isBasedOn: "https://www.mypayadvisor.com/about/barak",
+                    inLanguage: "en-US",
+                  }}
                 />
 
                 <p className="text-foreground leading-relaxed">

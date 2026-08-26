@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { ExpertQuote } from "@/components/article/ExpertQuote";
 
 export const metadata: Metadata = {
   title: "Nutraceutical Merchant Account: 2026 Guide",
@@ -459,6 +460,29 @@ export default function NutraSupplementMerchantAccountPage() {
               <p className="text-foreground leading-relaxed">
                 Reasonable asks with that file in hand: a lower reserve percentage, a shorter rolling window, a capped reserve (the hold stops growing at a fixed amount), or a scheduled review that releases the reserve after a defined clean period. What you cannot negotiate away is the bank&rsquo;s need to see the file first. New nutra accounts asking for zero reserve on day one read as inexperienced. That is not the bank being predatory; it is the bank pricing a category whose loss curve it has seen before.
               </p>
+
+              {/* Sourced Barak quote (also on /comparisons/paymentcloud-vs-easy-pay-direct), rendered with Quotation JSON-LD by ExpertQuote (PR 1). */}
+              <ExpertQuote
+                pageUrl="https://www.mypayadvisor.com/insights/nutra-supplement-merchant-account"
+                quotation={{
+                  text: "High-volume high-risk merchants get burned when everything rides on one account. The day that single MID gets a chargeback spike or a volume cap, the whole business stops processing. Spreading volume across several MIDs and acquirers is not a growth hack, it is survival engineering. I would rather a scaling subscription merchant accept slightly more setup work to route across multiple banks than win on simplicity and discover the hard limit at the worst possible moment.",
+                  anchor: "barak-quote",
+                  creator: {
+                    "@type": "Person",
+                    name: "Barak Bachar",
+                    jobTitle: "Global Payments Manager",
+                    worksFor: { "@type": "Organization", name: "myPayAdvisor" },
+                    url: "https://www.mypayadvisor.com/about/barak",
+                  },
+                  publisher: {
+                    "@type": "Organization",
+                    name: "myPayAdvisor",
+                    url: "https://www.mypayadvisor.com",
+                  },
+                  isBasedOn: "https://www.mypayadvisor.com/about/barak",
+                  inLanguage: "en-US",
+                }}
+              />
 
               {/* Section 6 */}
               <h2 className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">

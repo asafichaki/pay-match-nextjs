@@ -68,7 +68,7 @@ const TERM_TO_CORNERSTONES: Record<string, { label: string; href: string }[]> = 
     { label: "Helcim Review 2026", href: "/insights/helcim-review-2025" },
   ],
   "flat-rate-pricing": [
-    { label: "Stripe vs Square 2026", href: "/comparisons/stripe-vs-square-2026" },
+    { label: "Square vs Stripe 2026", href: "/comparisons/square-vs-stripe" },
     { label: "Payment Processor Fees Guide", href: "/insights/payment-processor-fees-guide" },
   ],
   "tiered-pricing": [

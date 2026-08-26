@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { RelatedGuides } from "@/components/seo/RelatedGuides";
 
 export const metadata: Metadata = {
   title: "Find Your Perfect Payment Processor - Free Quiz",
@@ -34,5 +35,12 @@ export default function QuizLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  // The quiz itself is a client component; the guides block below is server-rendered
+  // so crawlers get real internal links from /quiz without running the app.
+  return (
+    <>
+      {children}
+      <RelatedGuides heading="Related guides while you wait for your match" />
+    </>
+  );
 }

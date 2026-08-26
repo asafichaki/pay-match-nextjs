@@ -156,6 +156,11 @@ async function getAllArticles(): Promise<Article[]> {
 
   const merged = Array.from(bySlug.values());
   merged.sort((a, b) => (b.iso || "").localeCompare(a.iso || ""));
+  // Pin the high-risk pillar to the top: it sat at rank 55 of 72 (Check 2, 2026-08-25)
+  // and the hub is one of only two referrers Google records for it.
+  const PINNED = "/insights/high-risk-payment-processing-guide";
+  const pinIdx = merged.findIndex((a) => a.slug === PINNED);
+  if (pinIdx > 0) merged.unshift(...merged.splice(pinIdx, 1));
   return merged;
 }
 

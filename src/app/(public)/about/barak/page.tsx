@@ -11,16 +11,30 @@ import {
   BARAK_PERSON_SCHEMA,
 } from "@/data/personas/barak";
 
+const OG_IMAGE = {
+  url: "https://www.mypayadvisor.com/og-barak.png",
+  width: 1200,
+  height: 630,
+  alt: `${BARAK_NAME}, ${BARAK_TITLE} at myPayAdvisor`,
+};
+
 export const metadata: Metadata = {
-  title: `${BARAK_NAME} — ${BARAK_TITLE}`,
+  title: `${BARAK_NAME}, ${BARAK_TITLE}`,
   description: `${BARAK_NAME}, ${BARAK_TITLE}, reviews payment-processing content on myPayAdvisor. Hands-on payments operator with experience at the $500M+ annual volume level.`,
   alternates: { canonical: "https://www.mypayadvisor.com/about/barak" },
   robots: { index: true, follow: true },
   openGraph: {
     type: "profile",
     url: "https://www.mypayadvisor.com/about/barak",
-    title: `${BARAK_NAME} — ${BARAK_TITLE}`,
+    title: `${BARAK_NAME}, ${BARAK_TITLE}`,
     description: BARAK_BIO_SHORT,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${BARAK_NAME}, ${BARAK_TITLE}`,
+    description: BARAK_BIO_SHORT,
+    images: [OG_IMAGE.url],
   },
 };
 

@@ -5,8 +5,11 @@ export interface ArticleBylineProps {
   author: string;
   /** Profile URL (e.g. /about/barak). */
   authorUrl: string;
-  /** ISO date string of last meaningful update. Defaults to today. */
-  lastUpdated?: string;
+  /**
+   * ISO date string of last meaningful update. Required and literal: the old
+   * "defaults to today" made every render claim a same-day update (PR 1).
+   */
+  lastUpdated: string;
   /** Optional extra Tailwind classes for the wrapper. */
   className?: string;
 }
@@ -35,13 +38,14 @@ export function ArticleByline({
   lastUpdated,
   className = "",
 }: ArticleBylineProps) {
-  const iso = lastUpdated ?? new Date().toISOString().slice(0, 10);
+  const iso = lastUpdated;
   return (
     <p
       className={`text-sm text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1 ${className}`}
     >
       <span>
-        By{" "}
+        {/* Callers pass "Reviewed by Barak Bachar"; only prepend "By" for a plain author name. */}
+        {/^reviewed by/i.test(author) ? null : "By "}
         <Link
           href={authorUrl}
           className="font-medium text-foreground hover:text-primary underline-offset-4 hover:underline"

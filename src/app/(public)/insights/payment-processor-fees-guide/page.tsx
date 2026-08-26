@@ -508,6 +508,9 @@ export default function PaymentProcessorFeesGuidePage() {
               <p className="text-foreground leading-relaxed mt-4">
                 Specialized high-risk processors include <a href="https://paymentcloudinc.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a>, Durango Merchant Services, and processors partnered with high-risk acquiring banks. Expect to pay 3.5-5% plus higher monthly fees, but these processors provide stability that mainstream options can't offer.
               </p>
+              <p className="text-foreground leading-relaxed mt-4">
+                For CBD, gaming, nutra, firearms, travel or subscription merchants, start with our <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">high-risk payment processing guide</Link>: it covers reserves, VAMP thresholds, multi-MID setups and which processors approve each vertical.
+              </p>
 
               <div className="my-8 p-6 bg-orange-50 dark:bg-orange-950/20 rounded-lg border-l-4 border-orange-500">
                 <p className="text-foreground">

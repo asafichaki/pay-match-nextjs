@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { ExpertQuote } from "@/components/article/ExpertQuote";
 
 export const metadata: Metadata = {
   title: "Travel Agency Payment Processing Guide 2026",
@@ -448,15 +449,28 @@ export default function TravelMerchantAccountPage() {
                 A rolling reserve is a percentage of every settlement the acquirer holds back for a defined window to cover potential future chargebacks and merchant default, released on a rolling schedule as the window ages out. (Full definition at our <Link href="/glossary#reserve" className="text-primary hover:underline">glossary entry on reserves</Link>.) In travel it exists to cover the bank&rsquo;s future-delivery exposure: if you fail before the trips deliver, the reserve absorbs the chargebacks. Among the providers that publish numbers, Durango states travel reserves run from 0% to 10% and typically shrink or disappear as processing history stabilizes. Reserves also come in two other shapes: a capped reserve (holdbacks stop once a fixed dollar amount is reached) and an upfront reserve (a fixed deposit before processing begins).
               </p>
 
-              {/* Inline Barak Quotation block: opinion/experience, no fabricated stats. */}
-              <figure className="my-8 border-l-4 border-primary bg-muted/40 px-6 py-5 rounded-r-md not-prose">
-                <blockquote cite="https://www.mypayadvisor.com/about/barak" className="text-foreground italic leading-relaxed">
-                  &ldquo;With travel, the reserve is the whole negotiation. The bank is not worried about today&rsquo;s sale, it is worried about the trip that has not happened yet, so it holds back cash to cover it. What moves that number is evidence: a clean dispute history, real supplier contracts, proof you deliver, and documented refunds when a trip falls through. Bring that to a risk desk in writing after you have a track record, and the reserve comes down. Ask before you have the history, and it will not.&rdquo;
-                </blockquote>
-                <figcaption className="mt-3 text-sm text-muted-foreground not-italic">
-                  <a href="/about/barak" className="text-primary hover:underline font-medium">Barak Bachar</a>, Global Payments Manager, myPayAdvisor
-                </figcaption>
-              </figure>
+              {/* Sourced Barak quote, rendered with Quotation JSON-LD by ExpertQuote (PR 1). Verbatim, opinion/experience, no fabricated stats. */}
+              <ExpertQuote
+                pageUrl="https://www.mypayadvisor.com/insights/travel-merchant-account"
+                quotation={{
+                  text: "With travel, the reserve is the whole negotiation. The bank is not worried about today's sale, it is worried about the trip that has not happened yet, so it holds back cash to cover it. What moves that number is evidence: a clean dispute history, real supplier contracts, proof you deliver, and documented refunds when a trip falls through. Bring that to a risk desk in writing after you have a track record, and the reserve comes down. Ask before you have the history, and it will not.",
+                  anchor: "barak-quote",
+                  creator: {
+                    "@type": "Person",
+                    name: "Barak Bachar",
+                    jobTitle: "Global Payments Manager",
+                    worksFor: { "@type": "Organization", name: "myPayAdvisor" },
+                    url: "https://www.mypayadvisor.com/about/barak",
+                  },
+                  publisher: {
+                    "@type": "Organization",
+                    name: "myPayAdvisor",
+                    url: "https://www.mypayadvisor.com",
+                  },
+                  isBasedOn: "https://www.mypayadvisor.com/about/barak",
+                  inLanguage: "en-US",
+                }}
+              />
 
               <p className="text-foreground leading-relaxed">
                 Here is the frame that makes reserve negotiation rational instead of emotional. The acquirer is estimating one number:

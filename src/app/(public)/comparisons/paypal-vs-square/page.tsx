@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   other: {
     "article:published_time": "2026-03-20T00:00:00.000Z",
-    "article:modified_time": new Date().toISOString(),
+    "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
 
@@ -68,6 +68,7 @@ export default function PayPalVsSquarePage() {
         description="Complete comparison of Square vs PayPal for 2026. Compare fees, features, hardware, and find which payment processor is best for your small business needs."
         slug="paypal-vs-square"
         datePublished="2026-03-20"
+        dateModified="2026-08-25"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

@@ -275,7 +275,7 @@ export default function MethodologyPage() {
       </article>
 
       <div className="mt-12 border-t border-border pt-8">
-        <ReviewerBioBox />
+        <ReviewerBioBox linkProfile={false} />
       </div>
     </main>
   );
