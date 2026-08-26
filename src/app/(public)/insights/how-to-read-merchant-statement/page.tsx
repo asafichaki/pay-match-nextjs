@@ -3,8 +3,11 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { Linkedin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "How to Read Your Merchant Statement: Ultimate 2025 Guide to Decoding Processing Fees",
   description: "Learn how to decode your merchant statement, understand processing fee acronyms like MTOT and NQUAL, calculate your effective rate, and identify junk fees costing your business thousands.",
   keywords: "how to read merchant statement, merchant statement explained, credit card processing fees, effective rate calculation, interchange fees, assessment fees, processor markup, tiered pricing, interchange-plus pricing, PCI compliance fee",
@@ -28,6 +31,12 @@ export const metadata: Metadata = {
     description: "Learn to decode merchant statement acronyms and identify hidden processing fees.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "how-to-read-merchant-statement", baseMetadata);
+}
 
 export default function HowToReadMerchantStatementPage() {
   const articleSchema = {
@@ -140,6 +149,7 @@ export default function HowToReadMerchantStatementPage() {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                   How to Read Your Merchant Statement: The Ultimate 2025 Guide to Decoding Processing Fees
                 </h1>
+                <AeoAnswer kind="insights" slug="how-to-read-merchant-statement" />
                 
                 <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
                   A merchant statement is a monthly document from your payment processor that itemizes every fee, fund settlement, and chargeback on your account. The five sections to know are: deposits summary, fee summary, transaction detail, chargebacks/disputes, and adjustments. The four hidden flat fees most merchants miss (PCI, statement, regulatory, monthly minimum) typically add $30-$90 per month, see <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for the calculation.
@@ -591,6 +601,7 @@ export default function HowToReadMerchantStatementPage() {
             </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="how-to-read-merchant-statement" />
     </>
   );
 }

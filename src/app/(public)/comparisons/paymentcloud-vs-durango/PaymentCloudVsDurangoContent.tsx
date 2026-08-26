@@ -22,7 +22,14 @@ const FAQ = [
   },
 ];
 
-export default function PaymentCloudVsDurangoContent() {
+interface ContentSlots {
+  /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
+}
+
+export default function PaymentCloudVsDurangoContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   return (
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,6 +40,7 @@ export default function PaymentCloudVsDurangoContent() {
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
                 PaymentCloud vs Durango Merchant Services: High-Risk Approval, Reserves, and Fit (2026)
               </h1>
+              {aeoAnswer}
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
                 Both are real U.S. high-risk specialists that approve merchants the big processors decline. PaymentCloud is the stronger domestic default for fast onboarding; Durango is the better call when you need offshore acquiring or a domestic bank has already said no.
               </p>
@@ -219,6 +227,7 @@ export default function PaymentCloudVsDurangoContent() {
           </article>
         </div>
       </div>
+    {relatedLinks}
     </main>
   );
 }

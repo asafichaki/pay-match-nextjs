@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { VolumeTierPage } from "@/components/comparisons/VolumeTierPage";
 import { VOLUME_TIERS_BY_SLUG } from "@/lib/comparisons/volume-tiers";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const SLUG = "best-payment-processors-25k-50k-monthly-2026";
 const tier = VOLUME_TIERS_BY_SLUG.get(SLUG)!;
 
-export const metadata: Metadata = {
-  title: tier.metaTitle,
+const baseMetadata: Metadata = {
+  title: { absolute: tier.metaTitle },
   description: tier.metaDescription,
   alternates: { canonical: `https://www.mypayadvisor.com/comparisons/${SLUG}` },
   robots: { index: true, follow: true },
@@ -24,6 +27,16 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("comparisons", "best-payment-processors-25k-50k-monthly-2026", baseMetadata);
+}
+
 export default function Page() {
-  return <VolumeTierPage tier={tier} />;
+  return <VolumeTierPage
+    tier={tier}
+    aeoAnswer={<AeoAnswer kind="comparisons" slug="best-payment-processors-25k-50k-monthly-2026" />}
+    relatedLinks={<RelatedLinks kind="comparisons" slug="best-payment-processors-25k-50k-monthly-2026" />}
+  />;
 }

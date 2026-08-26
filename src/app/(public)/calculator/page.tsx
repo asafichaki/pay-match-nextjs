@@ -112,7 +112,7 @@ export default function CalculatorPage() {
           ))}
         </div>
       </section>
-      <RelatedGuides heading="Related guides to read with your estimate" />
+      <RelatedGuides slug="calculator" heading="Related guides to read with your estimate" />
     </>
   );
 }

@@ -3,8 +3,11 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { Linkedin, Calculator, ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Merchant Services Glossary: Complete Payment Processing Terms Guide 2025",
   description: "Master essential payment processing terminology. Learn key terms like Interchange, Effective Rate, Acquirer, Payment Gateway, and more to negotiate better rates and reduce merchant fees.",
   keywords: "merchant services glossary, payment processing terms, interchange fee, effective rate, acquirer, payment gateway, chargeback, PCI compliance, basis points, MCC code, surcharge, cash discount",
@@ -28,6 +31,12 @@ export const metadata: Metadata = {
     description: "Master essential payment processing terminology to reduce fees and negotiate better rates.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "merchant-services-glossary", baseMetadata);
+}
 
 export default function MerchantServicesGlossaryPage() {
   const articleSchema = {
@@ -133,6 +142,7 @@ export default function MerchantServicesGlossaryPage() {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                   The Complete Merchant Services Glossary: Decode Your Processing Fees
                 </h1>
+                <AeoAnswer kind="insights" slug="merchant-services-glossary" />
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                   Navigating the world of credit card processing for small businesses can feel like walking through a minefield of jargon. At myPayAdvisor, we believe that transparency is the best way to reduce your merchant fees. This guide breaks down the essential terms you'll encounter on your <Link href="/insights/how-to-read-merchant-statement" className="text-primary hover:underline">merchant statements</Link> and contracts.
@@ -418,6 +428,7 @@ export default function MerchantServicesGlossaryPage() {
             </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="merchant-services-glossary" />
     </>
   );
 }

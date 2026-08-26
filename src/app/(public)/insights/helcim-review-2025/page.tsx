@@ -3,8 +3,11 @@ import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { Star, CheckCircle2, XCircle } from "lucide-react";
 import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Helcim Review 2026: Real Rates, Hidden Fees, Verdict",
   description: "Helcim's interchange-plus pricing in 2026: real rates, what we like, what's missing, and when it beats Stripe and Square. No contracts, no fluff.",
   keywords: "Helcim review, Helcim pricing, best payment processor, interchange-plus pricing, low-fee payment processor, Helcim vs Square, Helcim vs Stripe",
@@ -23,6 +26,12 @@ export const metadata: Metadata = {
     description: "Real 2026 rates, when Helcim beats Stripe and Square, and what it doesn't do well.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "helcim-review-2025", baseMetadata);
+}
 
 export default function HelcimReview2025Page() {
   const articleSchema = {
@@ -124,6 +133,7 @@ export default function HelcimReview2025Page() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Helcim Review 2026: Real Rates, Hidden Fees, Verdict
               </h1>
+              <AeoAnswer kind="insights" slug="helcim-review-2025" />
               
               <div className="flex items-center gap-4 text-lg mb-6">
                 <div className="flex items-center gap-1">
@@ -537,6 +547,7 @@ export default function HelcimReview2025Page() {
         </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="helcim-review-2025" />
     </>
   );
 }

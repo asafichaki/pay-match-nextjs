@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   // absolute + use-case angle: this page owns "best POS by business type"; the pricing head term
   // "best pos systems for small business 2026" is owned by /comparisons/best-pos-systems-for-small-business-2026 (avoids cannibalization).
   title: { absolute: "Best POS System by Business Type: 2026 Expert Picks" },
@@ -15,6 +18,12 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "best-pos-systems-for-small-business-2026-niche-comparison-expert-picks", baseMetadata);
+}
 
 const html = `<figure style="margin:0 0 24px;"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1400&q=80" alt="POS terminal handling in-store card transactions" style="width:100%;height:auto;border-radius:12px;" loading="lazy" /><figcaption style="font-size:12px;color:#64748b;margin-top:8px;">POS terminal handling in-store card transactions</figcaption></figure>
 <p><strong>The best POS system depends on your business type:</strong> Square for general retail and mobile, Toast for restaurants, Vagaro for appointment-based services, Lightspeed for inventory-heavy retail, and Shopify POS for omnichannel sellers.</p>
@@ -157,6 +166,7 @@ export default function InsightPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Best POS System by Business Type in 2026: Square for Retail, Toast for Restaurants, Vagaro for Services
               </h1>
+              <AeoAnswer kind="insights" slug="best-pos-systems-for-small-business-2026-niche-comparison-expert-picks" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 The best POS system depends on your business type. These are the 2026 expert picks by use case, from retail and restaurants to mobile and appointment-based services, with the pricing and hardware trade-offs that decide each one.
               </p>
@@ -170,6 +180,7 @@ export default function InsightPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="best-pos-systems-for-small-business-2026-niche-comparison-expert-picks" />
     </>
   );
 }

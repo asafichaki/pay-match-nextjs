@@ -22,7 +22,14 @@ const FAQ = [
   },
 ];
 
-export default function StripeHighRiskAlternativesContent() {
+interface ContentSlots {
+  /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
+}
+
+export default function StripeHighRiskAlternativesContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   return (
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,6 +40,7 @@ export default function StripeHighRiskAlternativesContent() {
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
                 Stripe High-Risk Alternatives: Where to Go After a Freeze (2026)
               </h1>
+              {aeoAnswer}
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
                 Stripe froze your account or is holding your funds because it is an aggregator that acts fast on elevated risk. The fix is a processor whose acquiring banks actually underwrite your category. Here are five real high-risk specialists that approve merchants Stripe declines.
               </p>
@@ -233,6 +241,7 @@ export default function StripeHighRiskAlternativesContent() {
           </article>
         </div>
       </div>
+    {relatedLinks}
     </main>
   );
 }

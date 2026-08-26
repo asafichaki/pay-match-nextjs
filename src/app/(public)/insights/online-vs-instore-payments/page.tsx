@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import { BARAK_PERSON_SCHEMA } from "@/data/personas/barak";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Online vs In-Store Payments 2026: The Real Cost Gap",
   description: "Card-Not-Present runs 0.50 to 1.20 percent higher than Card-Present in 2026. Why, what it costs you per year, and the 4 levers that close the gap.",
   keywords: "online payments, in-store payments, card-present, card-not-present, payment processing costs, omnichannel payments, PCI compliance",
@@ -22,6 +25,12 @@ export const metadata: Metadata = {
     description: "CNP runs 0.50 to 1.20 percent higher than CP. What it costs and how to close it.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "online-vs-instore-payments", baseMetadata);
+}
 
 export default function OnlineVsInStorePaymentsPage() {
   const articleSchema = {
@@ -122,6 +131,7 @@ export default function OnlineVsInStorePaymentsPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Online vs In-Store Payments in 2026: The Real Cost Gap (and How to Close It)
               </h1>
+              <AeoAnswer kind="insights" slug="online-vs-instore-payments" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Card-Not-Present runs 0.50% to 1.20% higher than Card-Present in 2026. Here is exactly why, what it costs your business per year, and the four levers that actually close the gap.
@@ -448,6 +458,7 @@ export default function OnlineVsInStorePaymentsPage() {
         </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="online-vs-instore-payments" />
     </>
   );
 }

@@ -10,7 +10,14 @@ import { MatchCTA } from "@/components/MatchCTA";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
 
-export default function StripeVsPayPalContent() {
+interface ContentSlots {
+  /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
+}
+
+export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
 
   return (
@@ -24,6 +31,7 @@ export default function StripeVsPayPalContent() {
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
               Stripe vs PayPal 2026: 2.97% Effective vs 3.58% Effective
             </h1>
+            {aeoAnswer}
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
               Verdict, May 2026: Stripe costs less. Stripe charges 2.9% + $0.30 (2.97% effective at $50K monthly). <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a> Commercial Transactions charges 3.49% + $0.49 (3.58% effective). PayPal earns its premium on 400M+ buyer trust. Barak Bachar pulled live rates May 2026.
             </p>
@@ -257,6 +265,7 @@ export default function StripeVsPayPalContent() {
         <ArticleSidebar currentSlug="/comparisons/stripe-vs-paypal" />
           </div>
         </div>
+      {relatedLinks}
       </main>
       <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </>

@@ -19,9 +19,13 @@ const SITE = "https://www.mypayadvisor.com";
 
 interface Props {
   tier: VolumeTier;
+  /** <AeoAnswer> from the shell. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from the shell. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
 }
 
-export function VolumeTierPage({ tier }: Props) {
+export function VolumeTierPage({ tier, aeoAnswer, relatedLinks }: Props) {
   const url = `${SITE}/comparisons/${tier.slug}`;
 
   const articleSchema = {
@@ -108,6 +112,7 @@ export function VolumeTierPage({ tier }: Props) {
         <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           {tier.heroH1}
         </h1>
+        {aeoAnswer}
         <p
           data-speakable="true"
           className="mt-5 text-lg leading-relaxed text-foreground sm:text-xl"
@@ -283,6 +288,8 @@ export function VolumeTierPage({ tier }: Props) {
           </ul>
         </section>
       </article>
+
+      {relatedLinks}
 
       <div className="mt-12 border-t border-border pt-8">
         <ReviewerBioBox />

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
-  title: "Cost of Payment Processing Solutions for Small Professional",
+const baseMetadata: Metadata = {
+  title: { absolute: "Cost of Payment Processing Solutions for Small Professional" },
   description: "Small professional services businesses can expect payment processing costs to range from 1.5% to 3.5% per transaction in 2025-2026, plus monthly fees. This guide details fee structures, hidden costs, and strategies for consultants, lawyers, and therapists.",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/cost-of-payment-processing-professional-services",
@@ -13,6 +16,12 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "cost-of-payment-processing-professional-services", baseMetadata);
+}
 
 const html = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cost of Payment Processing Solutions for Small Professional","description":"Small professional services businesses can expect payment processing costs to range from 1.5% to 3.5% per transaction in 2025-2026, plus monthly fees. This guide details fee structures, hidden costs, and strategies for consultants, lawyers, and therapists.","url":"https://www.mypayadvisor.com/insights/cost-of-payment-processing-professional-services","datePublished":"2026-04-25T04:30:29.146Z","dateModified":"2026-04-25T04:30:29.146Z","author":{"@type":"Organization","@id":"https://www.mypayadvisor.com/#organization","name":"myPayAdvisor"},"reviewedBy":{"@type":"Person","@id":"https://www.mypayadvisor.com/about/barak#person","name":"Barak Bachar","jobTitle":"Global Payments Manager","url":"https://www.mypayadvisor.com/about/barak","sameAs":["https://www.linkedin.com/in/barak-bachar/"]},"publisher":{"@type":"Organization","name":"MyPayAdvisor","url":"https://www.mypayadvisor.com","logo":{"@type":"ImageObject","url":"https://www.mypayadvisor.com/logo.png"},"description":"Independent payment-processor advisory covering merchant fees, gateway comparisons, POS systems, and chargeback management."},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.mypayadvisor.com/insights/cost-of-payment-processing-professional-services"},"image":{"@type":"ImageObject","url":"https://bydwilwxiczwfarolhuu.supabase.co/storage/v1/object/public/article-images/477d713d-8ef1-432b-a7c6-c97ec83e04d5/cost-of-payment-processing-solutions-for-small-professional-services-b-hero.png","caption":"A professional services business client tapping a smartphone on a Square card reader, illustrating the cost of payment processing solutions for small professional services business","width":1200,"height":675},"wordCount":3169,"articleSection":"cost","inLanguage":"en-US","isAccessibleForFree":true,"copyrightHolder":{"@type":"Organization","name":"MyPayAdvisor","url":"https://www.mypayadvisor.com","logo":{"@type":"ImageObject","url":"https://www.mypayadvisor.com/logo.png"},"description":"Independent payment-processor advisory covering merchant fees, gateway comparisons, POS systems, and chargeback management."},"copyrightYear":2026,"keywords":"cost of payment processing solutions for small professional services businesses 2025 2026, payment processing fees professional services, credit card processing costs 2026, small business payment processing, professional services payment solutions, interchange plus pricing 2026, recurring billing costs, ACH processing fees","citation":["https://bydwilwxiczwfarolhuu.supabase.co/storage/v1/object/public/article-images/477d713d-8ef1-432b-a7c6-c97ec83e04d5/cost-of-payment-processing-professional-services-2026-2.jpg","https://bydwilwxiczwfarolhuu.supabase.co/storage/v1/object/public/article-images/477d713d-8ef1-432b-a7c6-c97ec83e04d5/cost-of-payment-processing-professional-services-2026-1.jpg","https://bydwilwxiczwfarolhuu.supabase.co/storage/v1/object/public/article-images/477d713d-8ef1-432b-a7c6-c97ec83e04d5/cost-of-payment-processing-professional-services-2026-3.jpg"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.mypayadvisor.com/insights/cost-of-payment-processing-professional-services#speakable","url":"https://www.mypayadvisor.com/insights/cost-of-payment-processing-professional-services","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1","h2","h3","[data-speakable]",".article-summary"],"xpath":["/html/head/title","/html/head/meta[@name='description']/@content"]}}</script>
@@ -160,6 +169,7 @@ export default function InsightPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Cost of Payment Processing Solutions for Small Professional
               </h1>
+              <AeoAnswer kind="insights" slug="cost-of-payment-processing-professional-services" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Small professional services businesses can expect payment processing costs to range from 1.5% to 3.5% per transaction in 2025-2026, plus monthly fees. This guide details fee structures, hidden costs, and strategies for consultants, lawyers, and therapists.
               </p>
@@ -173,6 +183,7 @@ export default function InsightPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="cost-of-payment-processing-professional-services" />
     </>
   );
 }

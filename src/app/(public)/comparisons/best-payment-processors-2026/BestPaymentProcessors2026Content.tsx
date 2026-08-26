@@ -10,7 +10,14 @@ import { MatchCTA } from "@/components/MatchCTA";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
 
-export default function BestPaymentProcessors2026Content() {
+interface ContentSlots {
+  /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
+}
+
+export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
 
   return (
@@ -24,6 +31,7 @@ export default function BestPaymentProcessors2026Content() {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
                   15 Best Payment Processors of 2026, Ranked by Effective Rate
                 </h1>
+                {aeoAnswer}
                 <p className="aeo-answer text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8" data-speakable="true">
                   Updated May 2026. Helcim ranks #1 at 2.51% effective, Adyen 2.32% (enterprise only), Square 2.65%, Stripe 2.97%, PayPal 3.07%. Barak Bachar ranked 15 U.S. processors by effective rate across four merchant volumes from $10K to $1M monthly. Full table below.
                 </p>
@@ -267,6 +275,7 @@ export default function BestPaymentProcessors2026Content() {
             <ArticleSidebar currentSlug="/comparisons/best-payment-processors-2026" />
           </div>
         </div>
+      {relatedLinks}
       </main>
       <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </>

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "CBD Merchant Account: Who Approves CBD Payment Processing in 2026",
   description: "Can a CBD business get a merchant account, and what does it cost? An operator's guide to CBD payment processing: who approves CBD, the Certificate of Analysis requirement, reserves, and the processors that underwrite hemp and CBD.",
   keywords: "cbd merchant account, cbd payment processing, cbd payment processor, hemp merchant account, high-risk merchant account, certificate of analysis",
@@ -26,6 +29,12 @@ export const metadata: Metadata = {
     description: "Who approves CBD businesses, what it costs, and the compliance documents you need.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "merchant-account-for-cbd", baseMetadata);
+}
 
 export default function CbdMerchantAccountPage() {
   const articleSchema = {
@@ -235,6 +244,7 @@ export default function CbdMerchantAccountPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 CBD Merchant Account: Who Approves CBD Payment Processing in 2026
               </h1>
+              <AeoAnswer kind="insights" slug="merchant-account-for-cbd" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Generalist processors ban CBD. High-risk specialists underwrite it. Here is who approves CBD and hemp, what it costs, and the one compliance document that decides most applications.
@@ -420,6 +430,7 @@ export default function CbdMerchantAccountPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="merchant-account-for-cbd" />
     </>
   );
 }

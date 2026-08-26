@@ -5,8 +5,11 @@ import { Linkedin, Calculator, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ExpertQuote } from "@/components/article/ExpertQuote";
 import { BARAK_NAME, BARAK_TITLE } from "@/data/personas/barak";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "How to Reduce Credit Card Processing Fees: Ultimate 2025 Merchant Statement Audit Guide",
   description: "Learn how to audit your merchant statement, identify hidden fees, and reduce credit card processing costs by 20-30%. Expert guide to pricing models, junk fees, and effective rate calculations.",
   keywords: "merchant statement audit, reduce credit card processing fees, interchange-plus pricing, effective rate calculation, hidden processing fees, junk fees, payment processor markup, tiered pricing, flat rate pricing",
@@ -30,6 +33,12 @@ export const metadata: Metadata = {
     description: "Learn how to audit your merchant statement and reduce processing fees by 20-30%.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "merchant-statement-audit-guide", baseMetadata);
+}
 
 export default function MerchantStatementAuditGuidePage() {
   const articleSchema = {
@@ -143,6 +152,7 @@ export default function MerchantStatementAuditGuidePage() {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                   How to Reduce Credit Card Processing Fees: The Ultimate 2025 Guide to Merchant Statement Audits
                 </h1>
+                <AeoAnswer kind="insights" slug="merchant-statement-audit-guide" />
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                   Over 90% of U.S. merchants are overpaying for credit card processing. This guide teaches you how to audit your merchant statement, identify hidden fees, and reclaim your bottom line through transparency and smarter pricing strategies.
@@ -663,6 +673,7 @@ export default function MerchantStatementAuditGuidePage() {
             </article>
           </div>
         </div>
+    <RelatedLinks kind="insights" slug="merchant-statement-audit-guide" />
     </>
   );
 }

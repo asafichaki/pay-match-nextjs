@@ -1,9 +1,15 @@
+import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
-import { createSupabaseServerClient } from "@/integrations/supabase/server";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
+import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import type { RelatedLink } from "@/lib/seo/overrides";
 
 type Kind = "insights" | "comparisons";
 
@@ -28,6 +34,7 @@ interface BlogArticleRow {
   faq_json: { question: string; answer: string }[] | null;
   sources_json: { name: string; url: string }[] | null;
   key_findings: string[] | null;
+  internal_links: string[] | null;
   toc: { id: string; label: string }[] | null;
   eyebrow: string | null;
   audio_url: string | null;
@@ -69,13 +76,19 @@ function sanitizeBody(html: string): string {
     .replace(/[—–]/g, ", ");
 }
 
-async function fetchArticle(kind: Kind, slug: string): Promise<BlogArticleRow | null> {
-  const supabase = await createSupabaseServerClient();
+const SELECT =
+  "slug,kind,title,description,body_html,content,image_url,meta_title,meta_description,canonical_url,og_title,og_description,og_image,tags,schema_json,faq_json,sources_json,key_findings,internal_links,toc,eyebrow,audio_url,video_url,youtube_id,slide_image_urls,author,published_at,updated_at";
+
+export function articleTag(kind: Kind, slug: string): string {
+  return `blog-article:${kind}:${slug}`;
+}
+
+async function readArticle(kind: Kind, slug: string): Promise<BlogArticleRow | null> {
+  const supabase = getAdminSupabase();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, error } = await (supabase as any)
     .from("blog_articles")
-    .select(
-      "slug,kind,title,description,body_html,content,image_url,meta_title,meta_description,canonical_url,og_title,og_description,og_image,tags,schema_json,faq_json,sources_json,key_findings,toc,eyebrow,audio_url,video_url,youtube_id,slide_image_urls,author,published_at,updated_at",
-    )
+    .select(SELECT)
     .eq("kind", kind)
     .eq("slug", slug)
     .eq("published", true)
@@ -84,6 +97,63 @@ async function fetchArticle(kind: Kind, slug: string): Promise<BlogArticleRow | 
   return data as BlogArticleRow;
 }
 
+/**
+ * Cookie-free, cached read of one published article.
+ *
+ * This used to call `createSupabaseServerClient()`, which calls `cookies()`.
+ * One `cookies()` call opts the whole route into dynamic rendering, so the
+ * `export const revalidate = 3600` that both `[slug]` routes have carried
+ * since May never took effect: `next build` on main lists
+ * `ƒ /insights/[slug]` and `ƒ /comparisons/[slug]` under "server-rendered on
+ * demand", not `○`. The row is public, published data read with the service
+ * role and filtered to `published = true`, so no session was ever needed.
+ *
+ * `unstable_cache` gives the revalidate route a tag to purge on publish;
+ * React `cache()` keeps generateMetadata and the page body to one round trip.
+ */
+const fetchArticle = cache(async (kind: Kind, slug: string): Promise<BlogArticleRow | null> => {
+  try {
+    const load = unstable_cache(() => readArticle(kind, slug), ["blog-article", kind, slug], {
+      tags: [articleTag(kind, slug)],
+      revalidate: 3600,
+    });
+    return await load();
+  } catch {
+    return null;
+  }
+});
+
+/** Titles for the row's own `internal_links` slugs, used as the RelatedLinks fallback. */
+const fetchInternalLinkTitles = cache(
+  async (kind: Kind, slugs: string[]): Promise<RelatedLink[]> => {
+    if (!slugs.length) return [];
+    try {
+      const load = unstable_cache(
+        async () => {
+          const supabase = getAdminSupabase();
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const { data } = await (supabase as any)
+            .from("blog_articles")
+            .select("slug,title")
+            .eq("kind", kind)
+            .eq("published", true)
+            .in("slug", slugs);
+          return (data as Array<{ slug: string; title: string }> | null) ?? [];
+        },
+        ["internal-link-titles", kind, slugs.join(",")],
+        { tags: [`internal-links:${kind}`], revalidate: 3600 },
+      );
+      const rows = await load();
+      const bySlug = new Map(rows.map((r) => [r.slug, r.title]));
+      return slugs
+        .filter((s) => bySlug.has(s))
+        .map((s) => ({ href: `/${kind}/${s}`, title: bySlug.get(s) as string }));
+    } catch {
+      return [];
+    }
+  },
+);
+
 export async function buildBlogArticleMetadata(kind: Kind, slug: string): Promise<Metadata> {
   const article = await fetchArticle(kind, slug);
   if (!article) return { title: "Not found" };
@@ -91,7 +161,7 @@ export async function buildBlogArticleMetadata(kind: Kind, slug: string): Promis
   const title = article.meta_title || article.title;
   const description = article.meta_description || article.description;
   const image = article.og_image || article.image_url || `${SITE}/og-logo.png`;
-  return {
+  const base: Metadata = {
     title,
     description,
     alternates: { canonical: url },
@@ -105,6 +175,7 @@ export async function buildBlogArticleMetadata(kind: Kind, slug: string): Promis
     },
     twitter: { card: "summary_large_image", title, description, images: [image] },
   };
+  return withSeoOverride(kind, slug, base);
 }
 
 function readingMinutes(body: string): number {
@@ -125,6 +196,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
   const eyebrow = article.eyebrow || (kind === "insights" ? "Deep Dive" : "Comparison");
   const minutes = readingMinutes(article.body_html || article.content);
   const cleanBody = sanitizeBody(article.body_html || article.content);
+  const fallbackLinks = await fetchInternalLinkTitles(kind, article.internal_links ?? []);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -281,6 +353,8 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             {article.title}
           </h1>
+          {/* Answer block directly under the H1. Renders only when the override row has one. */}
+          <AeoAnswer kind={kind} slug={article.slug} url={url} />
           <p
             data-speakable="true"
             className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl"
@@ -419,6 +493,14 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
             </ul>
           </section>
         ) : null}
+
+        {/*
+          Related links sit after the body, the FAQ and the sources, and before
+          the reviewer box. Rendered as a sibling of the body, never injected
+          into it, so the list can never land inside the first 1,200 characters
+          of the article where it would push the answer below the fold.
+        */}
+        <RelatedLinks kind={kind} slug={article.slug} fallback={fallbackLinks} bodyHtml={cleanBody} />
 
         <ReviewerBioBox linkProfile={false} />
       </article>

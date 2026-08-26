@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Subscription Merchant Account: Recurring Billing, Dunning & Approval (2026)",
   description: "How subscription merchant accounts work in 2026. Reduce failed recurring payments, recover declines with dunning and account updater, and get approved as a recurring-billing business. Reviewed by a payments operator.",
   keywords: "subscription merchant account, recurring billing, failed recurring payments, dunning, account updater, involuntary churn, high-risk subscription processing",
@@ -26,6 +29,12 @@ export const metadata: Metadata = {
     description: "Recurring billing, failed-payment recovery, and approval for subscription businesses.",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("insights", "subscription-merchant-account", baseMetadata);
+}
 
 export default function SubscriptionMerchantAccountPage() {
   const articleSchema = {
@@ -243,6 +252,7 @@ export default function SubscriptionMerchantAccountPage() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 Subscription Merchant Account: Recurring Billing, Failed Payments, and Approval
               </h1>
+              <AeoAnswer kind="insights" slug="subscription-merchant-account" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 Why recurring payments fail, how dunning and account updater recover them, and how to get a recurring-billing business approved without losing customers to a card problem.
@@ -472,6 +482,7 @@ export default function SubscriptionMerchantAccountPage() {
           </article>
         </div>
       </div>
+    <RelatedLinks kind="insights" slug="subscription-merchant-account" />
     </>
   );
 }

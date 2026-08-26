@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import PayPalVsSquareContent from "./PayPalVsSquareContent";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
-  title: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate",
+const baseMetadata: Metadata = {
+  title: { absolute: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate" },
   description: "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
   keywords: ["Square vs PayPal", "PayPal vs Square", "payment processor comparison", "small business payments", "POS comparison"],
   alternates: {
@@ -28,6 +31,12 @@ export const metadata: Metadata = {
     "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("comparisons", "paypal-vs-square", baseMetadata);
+}
 
 const faqStructuredData = {
   "@context": "https://schema.org",
@@ -93,7 +102,10 @@ export default function PayPalVsSquarePage() {
         }}
       />
       <JsonLd data={faqStructuredData} />
-      <PayPalVsSquareContent />
+      <PayPalVsSquareContent
+        aeoAnswer={<AeoAnswer kind="comparisons" slug="paypal-vs-square" />}
+        relatedLinks={<RelatedLinks kind="comparisons" slug="paypal-vs-square" />}
+      />
     </>
   );
 }

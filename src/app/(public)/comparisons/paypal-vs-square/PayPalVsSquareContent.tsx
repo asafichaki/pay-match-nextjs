@@ -9,7 +9,14 @@ import ArticleSidebar from "@/components/ArticleSidebar";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
 
-export default function PayPalVsSquareContent() {
+interface ContentSlots {
+  /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
+  aeoAnswer?: React.ReactNode;
+  /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
+  relatedLinks?: React.ReactNode;
+}
+
+export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
 
   return (
@@ -23,6 +30,7 @@ export default function PayPalVsSquareContent() {
                 <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
                   Square vs PayPal: Complete Comparison for Small Businesses (2026)
                 </h1>
+                {aeoAnswer}
                 <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                   In-person POS vs online payments excellence. A comprehensive breakdown of fees, features, and best use cases to help you decide which platform suits your business model.
                 </p>
@@ -289,6 +297,7 @@ export default function PayPalVsSquareContent() {
             <ArticleSidebar currentSlug="/comparisons/paypal-vs-square" />
           </div>
         </div>
+      {relatedLinks}
       </main>
       <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </>

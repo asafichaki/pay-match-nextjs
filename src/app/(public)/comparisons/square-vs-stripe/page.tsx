@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import SquareVsStripeContent from "./SquareVsStripeContent";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: { absolute: "Square vs Stripe 2026: 2.65% In-Person vs 2.97% Online" },
   description: "Square 2.6% + $0.10 in-person, Stripe 2.9% + $0.30 online. Square wins retail under $80K monthly, Stripe wins SaaS and subscriptions. May 2026 rates.",
   keywords: ["Square vs Stripe", "Stripe vs Square", "payment processor comparison", "Square POS", "Stripe API", "best payment processor 2026", "credit card processing", "online payments", "in-person payments"],
@@ -22,6 +25,12 @@ export const metadata: Metadata = {
     "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("comparisons", "square-vs-stripe", baseMetadata);
+}
 
 const faqStructuredData = {
   "@context": "https://schema.org",
@@ -170,7 +179,10 @@ export default function SquareVsStripePage() {
       />
       <JsonLd data={faqStructuredData} />
       <JsonLd data={speakableSchema} />
-      <SquareVsStripeContent />
+      <SquareVsStripeContent
+        aeoAnswer={<AeoAnswer kind="comparisons" slug="square-vs-stripe" />}
+        relatedLinks={<RelatedLinks kind="comparisons" slug="square-vs-stripe" />}
+      />
     </>
   );
 }

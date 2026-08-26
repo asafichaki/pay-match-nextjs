@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { ComparisonSchema } from "@/components/seo/ComparisonSchema";
 import HelcimVsStripeContent from "./HelcimVsStripeContent";
+import { withSeoOverride } from "@/lib/seo/overrides";
+import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   // absolute: skip the layout "%s | myPayAdvisor" suffix so the money query "helcim vs stripe" stays front-loaded and un-truncated.
   title: { absolute: "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly" },
   description: "Helcim vs Stripe fees in 2026: Helcim's 2.51% interchange-plus beats Stripe's 2.97% flat rate above $25K monthly, with no monthly fee. Stripe wins on SaaS subscriptions.",
@@ -29,6 +32,12 @@ export const metadata: Metadata = {
     "article:modified_time": "2026-08-25T00:00:00.000Z",
   },
 };
+
+export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeoOverride("comparisons", "helcim-vs-stripe", baseMetadata);
+}
 
 // Same Q&A text as the visible FAQ in HelcimVsStripeContent.tsx (Google's visible-content requirement).
 const faqStructuredData = {
@@ -88,7 +97,10 @@ export default function HelcimVsStripePage() {
       />
       <JsonLd data={faqStructuredData} />
       <JsonLd data={speakableSchema} />
-      <HelcimVsStripeContent />
+      <HelcimVsStripeContent
+        aeoAnswer={<AeoAnswer kind="comparisons" slug="helcim-vs-stripe" />}
+        relatedLinks={<RelatedLinks kind="comparisons" slug="helcim-vs-stripe" />}
+      />
       <section aria-labelledby="related-comparisons" className="container mx-auto px-4 pb-16 max-w-3xl">
         <h2 id="related-comparisons" className="text-2xl font-serif font-bold text-foreground mb-4">Related comparisons</h2>
         <ul className="space-y-2 text-muted-foreground">
