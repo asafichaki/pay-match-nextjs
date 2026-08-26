@@ -27,8 +27,17 @@ export type OverrideKind = "insights" | "comparisons" | "pages";
 
 export const OVERRIDE_KINDS: readonly OverrideKind[] = ["insights", "comparisons", "pages"] as const;
 
-/** Slugs the loop and the revalidate route accept. Mirrors the DB check. */
-export const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+/**
+ * Slugs the loop and the revalidate route accept.
+ *
+ * Mirrors `seo_overrides_slug_check` in the migration character for character,
+ * including the nested form. That matters for `kind = "pages"`: the top-level
+ * routes the loop can override include `about/barak`, `research/methodology`
+ * and `data/effective-rates-2026`, and a single-segment pattern would have
+ * made the revalidate route reject three of the ten page routes the build
+ * manifest lists while the database accepted the row.
+ */
+export const SLUG_RE = /^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)*$/;
 
 export interface RelatedLink {
   href: string;
