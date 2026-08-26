@@ -10,6 +10,7 @@ import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import type { RelatedLink } from "@/lib/seo/overrides";
+import { rewriteRetiredLinks } from "@/lib/seo/retired-links";
 
 type Kind = "insights" | "comparisons";
 
@@ -70,14 +71,16 @@ function toIsoWithOffset(value: string | null | undefined): string | null {
 
 function sanitizeBody(html: string): string {
   if (!html) return html;
-  return html
-    .replace(PLACEHOLDER_RE, "")
-    .replace(FALLBACK_INTERNAL_RE, "")
-    // The em-dash and en-dash the body sanitizer strips. A regex literal is not
-    // reported by the em-dash rule (it only inspects strings, template chunks and
-    // JSX text), so this needs no disable directive, and adding one would itself
-    // be an unused-directive warning.
-    .replace(/[—–]/g, ", ");
+  return rewriteRetiredLinks(
+    html
+      .replace(PLACEHOLDER_RE, "")
+      .replace(FALLBACK_INTERNAL_RE, "")
+      // The em-dash and en-dash the body sanitizer strips. A regex literal is not
+      // reported by the em-dash rule (it only inspects strings, template chunks and
+      // JSX text), so this needs no disable directive, and adding one would itself
+      // be an unused-directive warning.
+      .replace(/[—–]/g, ", "),
+  );
 }
 
 const SELECT =
