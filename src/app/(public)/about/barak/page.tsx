@@ -38,14 +38,16 @@ export const metadata: Metadata = {
   },
 };
 
+// `BARAK_PERSON_SCHEMA` already carries `worksFor` with the Organization's
+// `@id`, which is what joins this Person to the Organization node the root
+// layout emits at https://www.mypayadvisor.com/#organization. This file used to
+// spread a second `worksFor` after it, without an `@id`, so the property that
+// survived into the rendered JSON-LD was the anonymous one and the Person
+// floated free of the Organization on the one page that is meant to establish
+// the entity. Do not reintroduce a local override here: change the const.
 const personSchema = {
   "@context": "https://schema.org",
   ...BARAK_PERSON_SCHEMA,
-  worksFor: {
-    "@type": "Organization",
-    name: "myPayAdvisor",
-    url: "https://www.mypayadvisor.com",
-  },
 };
 
 const breadcrumbSchema = {

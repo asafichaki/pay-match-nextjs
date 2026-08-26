@@ -24,19 +24,49 @@ export const BARAK_AREAS = [
   "Effective rate computation",
 ];
 
+/**
+ * Entity disambiguation.
+ *
+ * Two collisions, both confirmed live on 2026-08-26. "Barak Bachar" resolves
+ * first to the Israeli association-football manager, and the LinkedIn profile
+ * our `sameAs` points at is titled "Barak Bachar, 888holdings", not
+ * myPayAdvisor. Until the profile headline is updated, a consumer of this
+ * graph has two reasons to bind the node to the wrong person.
+ *
+ * `disambiguatingDescription` is schema.org's property for exactly this: a
+ * short statement used only to tell same-name entities apart. Kept factual and
+ * kept short, because it is read by machines, not by readers.
+ */
+export const BARAK_DISAMBIGUATION =
+  "Payments professional specialising in merchant acquiring and high-risk underwriting. Not the association-football manager of the same name.";
+
+/** The occupation node, so the Person carries an occupation, not just a title. */
+export const BARAK_OCCUPATION = {
+  "@type": "Occupation",
+  "name": "Payments Manager",
+  // BLS SOC 13-2099, Financial Specialists, All Other. The closest published
+  // code for a payments operations role; there is no dedicated SOC entry.
+  "occupationalCategory": "13-2099",
+  "skills": BARAK_AREAS,
+} as const;
+
+export const BARAK_ORGANIZATION_ID = "https://www.mypayadvisor.com/#organization";
+
 export const BARAK_PERSON_SCHEMA = {
   "@type": "Person",
   "@id": BARAK_PERSON_ID,
   "name": BARAK_NAME,
   "jobTitle": BARAK_TITLE,
   "description": BARAK_BIO_SHORT,
+  "disambiguatingDescription": BARAK_DISAMBIGUATION,
   "url": BARAK_PROFILE_URL,
   "image": BARAK_IMAGE,
   "sameAs": [BARAK_LINKEDIN],
   "knowsAbout": BARAK_AREAS,
+  "hasOccupation": BARAK_OCCUPATION,
   "worksFor": {
     "@type": "Organization",
-    "@id": "https://www.mypayadvisor.com/#organization",
+    "@id": BARAK_ORGANIZATION_ID,
     "name": "myPayAdvisor",
     "url": "https://www.mypayadvisor.com",
   },
