@@ -1,0 +1,230 @@
+{
+  "__generated": "2026-08-26",
+  "__note": "Rendered title length per route at the moment this was written. check-titles.mjs fails a build whose title grew past max(baseline, rules cap). Regenerate only on a deliberate, reviewed change.",
+  "routes": {
+    "/": {
+      "title_length": 61,
+      "title_mode": "absolute"
+    },
+    "/about/barak": {
+      "title_length": 52,
+      "title_mode": "template"
+    },
+    "/calculator": {
+      "title_length": 57,
+      "title_mode": "template"
+    },
+    "/comparisons": {
+      "title_length": 68,
+      "title_mode": "template"
+    },
+    "/comparisons/best-payment-processors-100k-250k-monthly-2026": {
+      "title_length": 61,
+      "title_mode": "absolute"
+    },
+    "/comparisons/best-payment-processors-10k-25k-monthly-2026": {
+      "title_length": 59,
+      "title_mode": "absolute"
+    },
+    "/comparisons/best-payment-processors-2026": {
+      "title_length": 57,
+      "title_mode": "absolute"
+    },
+    "/comparisons/best-payment-processors-25k-50k-monthly-2026": {
+      "title_length": 59,
+      "title_mode": "absolute"
+    },
+    "/comparisons/best-payment-processors-500k-1m-monthly-2026": {
+      "title_length": 59,
+      "title_mode": "absolute"
+    },
+    "/comparisons/best-payment-processors-50k-100k-monthly-2026": {
+      "title_length": 60,
+      "title_mode": "absolute"
+    },
+    "/comparisons/helcim-vs-stripe": {
+      "title_length": 53,
+      "title_mode": "absolute"
+    },
+    "/comparisons/paymentcloud-vs-durango": {
+      "title_length": 75,
+      "title_mode": "absolute"
+    },
+    "/comparisons/paymentcloud-vs-easy-pay-direct": {
+      "title_length": 79,
+      "title_mode": "absolute"
+    },
+    "/comparisons/paypal-vs-square": {
+      "title_length": 52,
+      "title_mode": "absolute"
+    },
+    "/comparisons/square-vs-stripe": {
+      "title_length": 54,
+      "title_mode": "absolute"
+    },
+    "/comparisons/stripe-high-risk-alternatives": {
+      "title_length": 62,
+      "title_mode": "absolute"
+    },
+    "/comparisons/stripe-vs-paypal": {
+      "title_length": 55,
+      "title_mode": "absolute"
+    },
+    "/data/effective-rates-2026": {
+      "title_length": 66,
+      "title_mode": "template"
+    },
+    "/glossary": {
+      "title_length": 42,
+      "title_mode": "template"
+    },
+    "/insights": {
+      "title_length": 63,
+      "title_mode": "template"
+    },
+    "/insights/approval-rate-recovery-routing-acquirers-3ds": {
+      "title_length": 60,
+      "title_mode": "absolute"
+    },
+    "/insights/best-payment-gateway-ecommerce": {
+      "title_length": 70,
+      "title_mode": "template"
+    },
+    "/insights/best-pos-systems-for-small-business-2026-niche-comparison-expert-picks": {
+      "title_length": 51,
+      "title_mode": "absolute"
+    },
+    "/insights/chargeback-management-solutions-a-merchant-s-guide-to-prevention-recovery": {
+      "title_length": 76,
+      "title_mode": "template"
+    },
+    "/insights/cost-of-payment-processing-professional-services": {
+      "title_length": 59,
+      "title_mode": "absolute"
+    },
+    "/insights/cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro": {
+      "title_length": 68,
+      "title_mode": "template"
+    },
+    "/insights/credit-card-processing-fees-explained": {
+      "title_length": 55,
+      "title_mode": "absolute"
+    },
+    "/insights/firearms-merchant-account": {
+      "title_length": 90,
+      "title_mode": "template"
+    },
+    "/insights/free-statement-audit-playbook": {
+      "title_length": 72,
+      "title_mode": "template"
+    },
+    "/insights/funds-frozen-what-to-do": {
+      "title_length": 91,
+      "title_mode": "template"
+    },
+    "/insights/gaming-merchant-account": {
+      "title_length": 59,
+      "title_mode": "template"
+    },
+    "/insights/helcim-review-2025": {
+      "title_length": 67,
+      "title_mode": "template"
+    },
+    "/insights/high-risk-instant-approval-reality": {
+      "title_length": 85,
+      "title_mode": "template"
+    },
+    "/insights/high-risk-payment-processing-guide": {
+      "title_length": 59,
+      "title_mode": "absolute"
+    },
+    "/insights/how-to-read-merchant-statement": {
+      "title_length": 99,
+      "title_mode": "template"
+    },
+    "/insights/in-person-payments-hardware-lockin-mdr": {
+      "title_length": 74,
+      "title_mode": "template"
+    },
+    "/insights/level-2-level-3-processing-guide": {
+      "title_length": 74,
+      "title_mode": "template"
+    },
+    "/insights/lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide": {
+      "title_length": 46,
+      "title_mode": "absolute"
+    },
+    "/insights/merchant-account-for-cbd": {
+      "title_length": 80,
+      "title_mode": "template"
+    },
+    "/insights/merchant-contract-cancellation-guide": {
+      "title_length": 81,
+      "title_mode": "template"
+    },
+    "/insights/merchant-services-glossary": {
+      "title_length": 87,
+      "title_mode": "template"
+    },
+    "/insights/merchant-statement-audit-guide": {
+      "title_length": 102,
+      "title_mode": "template"
+    },
+    "/insights/nutra-supplement-merchant-account": {
+      "title_length": 57,
+      "title_mode": "template"
+    },
+    "/insights/online-vs-instore-payments": {
+      "title_length": 66,
+      "title_mode": "template"
+    },
+    "/insights/payment-advisory-solutions-optimizing-your-merchant-operations": {
+      "title_length": 78,
+      "title_mode": "template"
+    },
+    "/insights/payment-gateway-vs-processor-2026-pricing-functions-best-choice": {
+      "title_length": 57,
+      "title_mode": "absolute"
+    },
+    "/insights/payment-processor-fees-guide": {
+      "title_length": 51,
+      "title_mode": "absolute"
+    },
+    "/insights/payment-processor-negotiation-playbook": {
+      "title_length": 93,
+      "title_mode": "template"
+    },
+    "/insights/reserves-frozen-funds-capped-vs-rolling": {
+      "title_length": 54,
+      "title_mode": "absolute"
+    },
+    "/insights/should-customers-see-the-same-payment-options-online-and-in-store-a-2026-merchan": {
+      "title_length": 74,
+      "title_mode": "template"
+    },
+    "/insights/small-business-credit-card-processing-guide": {
+      "title_length": 83,
+      "title_mode": "template"
+    },
+    "/insights/subscription-merchant-account": {
+      "title_length": 90,
+      "title_mode": "template"
+    },
+    "/insights/travel-merchant-account": {
+      "title_length": 58,
+      "title_mode": "template"
+    },
+    "/pulse": {
+      "title_length": 33,
+      "title_mode": "absolute"
+    },
+    "/quiz": {
+      "title_length": 62,
+      "title_mode": "template"
+    },
+    "/research/methodology": {
+      "title_length": 35,
+      "title_mode": "template"
+    }
+  }
+}
