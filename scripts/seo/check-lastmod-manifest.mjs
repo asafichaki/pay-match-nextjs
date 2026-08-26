@@ -8,7 +8,13 @@
  *   2. more than MAX_CLUSTER routes share one lastmod AND that date is not
  *      provably real:
  *        - shallow clone: the date equals a boundary-commit date (the exact
- *          artifact that stamped 91 live URLs with 2026-08-10);
+ *          artifact that stamped 91 live URLs with 2026-08-10) AND the routes
+ *          do not carry that same date in the committed manifest. The committed
+ *          manifest is generated on a full clone, so when it already says the
+ *          date, the value is full-history-derived and a real batch edit, not
+ *          the shallow artifact. Without that second condition a genuine bulk
+ *          edit fails the gate purely because its own commits sit inside the
+ *          clone depth;
  *        - full clone: any route in the cluster has a different real git date.
  *      A genuine same-day batch edit (the 05-30 pillar upgrade touched 17 files)
  *      passes because every route in it verifies against git.
@@ -46,13 +52,33 @@ const shallow = isShallowRepo() || process.env.VERCEL === "1";
 const boundaries = shallow ? boundaryDates() : new Set();
 const sourcesByRoute = new Map(routeSources());
 
+// The manifest as committed to git, which is always generated on a full clone.
+// In a shallow build it is the only trustworthy reference for what a date means.
+let committed = {};
+if (shallow) {
+  try {
+    committed = JSON.parse(git("show HEAD:public/lastmod-manifest.json"));
+  } catch {
+    failures.push("cannot read the committed manifest from git (HEAD:public/lastmod-manifest.json)");
+  }
+}
+
 for (const [date, count] of distribution(manifest)) {
   if (count <= MAX_CLUSTER) continue;
   const routes = Object.entries(manifest).filter(([r, d]) => !r.startsWith("__") && d === date).map(([r]) => r);
   if (shallow) {
-    if (boundaries.has(date)) {
-      failures.push(`${count} routes share ${date}, which is a shallow-clone boundary date (artifact). Refresh the manifest on a full clone and commit it.`);
-    }
+    if (!boundaries.has(date)) continue;
+    // The date is a boundary date, so it *could* be the shallow artifact. It is
+    // only real if the committed manifest (built on a full clone) already says
+    // the same thing for these routes.
+    const fromCommitted = routes.filter((r) => committed[r] === date).length;
+    if (fromCommitted === routes.length) continue;
+    const invented = routes.filter((r) => committed[r] !== date);
+    failures.push(
+      `${count} routes share ${date}, a shallow-clone boundary date, and ${invented.length} of them do not carry it in the committed manifest: ` +
+        `${invented.slice(0, 5).join(", ")}${invented.length > 5 ? ", ..." : ""}. ` +
+        "Refresh the manifest on a full clone and commit it."
+    );
     continue;
   }
   // Full history: verify each route against git.
