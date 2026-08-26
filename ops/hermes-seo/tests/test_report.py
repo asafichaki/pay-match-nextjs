@@ -143,3 +143,41 @@ class DraftsBlock(unittest.TestCase):
     def test_caps_at_five(self) -> None:
         supa = self.FakeSupa([{"slug": f"s{i}", "title": f"T{i}", "kind": "comparisons"} for i in range(9)])
         self.assertEqual(len(report.drafts_block(supa)), 5)
+
+
+class ChangesCounters(unittest.TestCase):
+    """`report` runs as its own cron 85 minutes after `daily`.
+
+    The counters must come from the database, or every single morning the
+    summary reads "proposed today 0" directly above a list of that morning's
+    proposals.
+    """
+
+    class FakeSupa:
+        def __init__(self, proposed=0, applied=0):
+            self.proposed, self.applied = proposed, applied
+
+        def safe_get(self, table, params=None, limit=None):
+            p = params or {}
+            if p.get("status") == "eq.proposed":
+                return [{"change_id": i} for i in range(self.proposed)]
+            if str(p.get("status", "")).startswith("in.(applied"):
+                return [{"change_id": i} for i in range(self.applied)]
+            if p.get("status") == "eq.advisory_regression":
+                return []
+            return []
+
+        def setting(self, key, default=None): return default
+
+    def test_counts_come_from_the_db_when_the_process_is_fresh(self) -> None:
+        supa = self.FakeSupa(proposed=5, applied=2)
+        out = report.changes_block(supa, dt.date(2026, 8, 26), {})
+        self.assertEqual(out["proposed_today"], 5)
+        self.assertEqual(out["applied_today"], 2)
+
+    def test_in_memory_wins_when_larger(self) -> None:
+        supa = self.FakeSupa(proposed=0, applied=0)
+        out = report.changes_block(supa, dt.date(2026, 8, 26),
+                                   {"proposals": [1, 2, 3], "applied": [1]})
+        self.assertEqual(out["proposed_today"], 3)
+        self.assertEqual(out["applied_today"], 1)

@@ -81,10 +81,23 @@ def changes_block(supa: Supa, run_date: dt.date, bits: Dict[str, Any]) -> Dict[s
             break
     pending = supa.setting("verification", {}) or {}
     advisory = supa.safe_get("seo_changes", {"status": "eq.advisory_regression", "select": "slug"})
+    # Count from the database, not from this process. `report` runs at 07:40 as
+    # its own cron, an hour and a half after `daily`, so the in-memory lists are
+    # empty and the summary line would read "proposed today 0" directly above a
+    # list of five proposals from that morning. The in-memory count still wins
+    # when it is larger, which is the case inside a single `daily` run where the
+    # rows may not be readable back yet.
+    day = run_date.isoformat()
+    db_proposed = supa.safe_get("seo_changes", {"created_at": f"gte.{day}T00:00:00Z",
+                                                "status": "eq.proposed", "select": "change_id"})
+    db_applied = supa.safe_get("seo_changes", {"applied_at": f"gte.{day}T00:00:00Z",
+                                               "status": "in.(applied,verification_pending,verified)",
+                                               "select": "change_id"})
     return {"lines": lines, "verification_pending": len(pending),
             "advisory_regressions": len(bits.get("advisory_flags") or advisory),
             "rollbacks": bits.get("rollbacks") or [],
-            "proposed_today": len(bits.get("proposals") or []), "applied_today": len(bits.get("applied") or [])}
+            "proposed_today": max(len(bits.get("proposals") or []), len(db_proposed)),
+            "applied_today": max(len(bits.get("applied") or []), len(db_applied))}
 
 
 def index_block(supa: Supa, sitemap: Dict[str, Optional[str]], run_date: dt.date,
