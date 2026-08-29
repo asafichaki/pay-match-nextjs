@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition, useEffect, useRef } from "react";
+import { isValidPhone, PHONE_INVALID_MESSAGE } from "@/lib/phone";
 import { useRouter } from "next/navigation";
 import { track } from "@/lib/analytics/track";
 import { Button } from "@/components/ui/button";
@@ -77,10 +78,18 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       setError("Please add your name and email.");
       return;
     }
+    // Checked here so the message lands next to the field instead of after a
+    // round trip. The server checks it again; this is only for the typing.
+    if (!isValidPhone(phone)) {
+      setError(PHONE_INVALID_MESSAGE);
+      track("sh_submit_error", { message: "phone_invalid" });
+      return;
+    }
     startTransition(async () => {
       const result = await submitSortingHatLead({
         fullName: fullName.trim(),
         email: email.trim(),
+        phone: phone.trim(),
         businessType,
         volumeTier,
         painPoint,
@@ -120,11 +129,10 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
     }
     const payload = {
       leadId,
-      phone: phone.trim(),
       companyName: companyName.trim(),
       currentProvider: currentProvider.trim(),
     };
-    if (!payload.phone && !payload.companyName && !payload.currentProvider) {
+    if (!payload.companyName && !payload.currentProvider) {
       track("sh_details_skipped", { reason: "empty" });
       finish(slug);
       return;
@@ -136,7 +144,6 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       track("sh_details_submitted", {
         ok: result.success,
         fields: [
-          payload.phone && "phone",
           payload.companyName && "company",
           payload.currentProvider && "provider",
         ]
@@ -306,6 +313,30 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
                 className="mt-1"
               />
             </div>
+            <div>
+              <Label htmlFor="sh-phone">Mobile number</Label>
+              <Input
+                id="sh-phone"
+                type="tel"
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                  if (error === PHONE_INVALID_MESSAGE) setError(null);
+                }}
+                placeholder="(415) 555-0134"
+                autoComplete="tel"
+                inputMode="tel"
+                required
+                aria-describedby="sh-phone-why"
+                className="mt-1"
+              />
+              <p id="sh-phone-why" className="text-xs text-muted-foreground mt-1.5">
+                Barak reads the shortlist before he sends it, and the questions
+                that matter (your reserve, your approval odds) take two minutes
+                on the phone and four emails in writing. He calls once. No call
+                centre, and no one else gets this number.
+              </p>
+            </div>
             {/* Honeypot */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
               <input
@@ -386,19 +417,6 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
                 className="mt-1"
               />
             </div>
-            <div>
-              <Label htmlFor="sh-phone">Phone (only if you&apos;d rather talk)</Label>
-              <Input
-                id="sh-phone"
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="+1 555 000 0000"
-                autoComplete="tel"
-                inputMode="tel"
-                className="mt-1"
-              />
-            </div>
             <div className="flex items-center justify-between pt-2">
               <Button
                 type="button"
@@ -424,8 +442,8 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
               </Button>
             </div>
             <p className="text-xs text-muted-foreground pt-2">
-              Nothing here is required and none of it goes to a call centre. A
-              phone number means Barak can call instead of writing.
+              Both optional. Knowing who you process with today is what lets
+              Barak open with a number instead of a question.
             </p>
           </div>
         </div>

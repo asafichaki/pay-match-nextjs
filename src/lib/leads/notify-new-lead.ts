@@ -134,7 +134,16 @@ function buildSubject(args: NotifyNewLeadArgs): string {
     ? `track ${args.funnel.track}`
     : args.funnel?.volume_tier || args.source;
   const note = args.subject_note ? ` · ${args.subject_note}` : "";
-  return `[Lead] ${args.source} · ${args.lead.email} · ${tag}${note}`;
+  // The phone number goes in the SUBJECT, not just the body.
+  //
+  // This is an advisory business whose one job on a new lead is to call. Barak
+  // reads these on a phone, in a list, and a subject that carries the number
+  // is the difference between acting from the notification and opening a mail
+  // client first. Twelve leads went uncontacted for between six and ninety
+  // eight days; every gram of friction between the alert and the call is worth
+  // removing. Phone before email, because the call is the action.
+  const phone = args.lead.phone ? ` · ${args.lead.phone}` : "";
+  return `[Lead] ${args.source}${phone} · ${args.lead.email} · ${tag}${note}`;
 }
 
 function buildHtml(args: NotifyNewLeadArgs): string {

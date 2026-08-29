@@ -46,6 +46,8 @@ export type FunnelState =
 export interface SortingHatPayload {
   fullName: string;
   email: string;
+  /** Required since 2026-08-29. See the schema in actions/sorting-hat.ts. */
+  phone: string;
   businessType: BusinessType;
   volumeTier: VolumeTier;
   painPoint: PainPoint;

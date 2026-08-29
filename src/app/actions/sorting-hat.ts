@@ -27,10 +27,21 @@ import {
   SHORTLIST_URL_BASE,
 } from "@/lib/funnel/resend-client";
 import { getEmail } from "@/lib/funnel/email-registry";
+import { isValidPhone, normalizePhone, PHONE_INVALID_MESSAGE } from "@/lib/phone";
 
 const schema = z.object({
   fullName: z.string().min(1).max(120),
   email: z.string().email().max(320),
+  // Required since 2026-08-29. It used to be collected on an optional step
+  // AFTER the lead was saved, under the label "only if you'd rather talk",
+  // and the result was 9 leads with 0 phone numbers. Validated here and not
+  // only in the browser, because a client-side check is a suggestion to
+  // anyone posting to the action directly.
+  phone: z
+    .string()
+    .min(1)
+    .max(40)
+    .refine(isValidPhone, { message: PHONE_INVALID_MESSAGE }),
   businessType: z.enum([
     "physical_goods",
     "saas_digital",
@@ -123,6 +134,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
     const insertPayload: Record<string, unknown> = {
       full_name: data.fullName,
       email: data.email,
+      phone: normalizePhone(data.phone),
       monthly_volume: data.volumeTier,
       business_type: data.businessType,
       industry: BUSINESS_TYPE_LABELS[data.businessType],
@@ -154,6 +166,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       const legacyPayload: Record<string, unknown> = {
         full_name: data.fullName,
         email: data.email,
+        phone: normalizePhone(data.phone),
         monthly_volume: data.volumeTier,
         business_type: data.businessType,
         industry: BUSINESS_TYPE_LABELS[data.businessType],

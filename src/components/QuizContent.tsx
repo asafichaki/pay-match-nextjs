@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { isValidPhone } from "@/lib/phone";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -236,7 +237,7 @@ const QuizContent = ({ onComplete, showBackButton = true }: QuizContentProps) =>
   const currentQuestion = quizQuestions[currentStep];
   const currentAnswer = currentQuestion ? answers[currentQuestion.id as keyof QuizAnswers] : undefined;
   const canProceed = isContactStep 
-    ? (answers.fullName && answers.email) 
+    ? (answers.fullName && answers.email && isValidPhone(answers.phone || "")) 
     : currentQuestion?.multiSelect 
       ? Array.isArray(currentAnswer) && currentAnswer.length > 0
       : currentAnswer;
@@ -504,15 +505,23 @@ const QuizContent = ({ onComplete, showBackButton = true }: QuizContentProps) =>
                 />
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="phone" className="text-sm font-medium">Phone <span className="text-muted-foreground font-normal">(Optional)</span></Label>
+                <Label htmlFor="phone" className="text-sm font-medium">Mobile number</Label>
                 <Input
                   id="phone"
                   type="tel"
                   value={answers.phone || ""}
                   onChange={(e) => handleAnswer("phone", e.target.value)}
+                  required
+                  inputMode="tel"
+                  autoComplete="tel"
+                  aria-describedby="quiz-phone-why"
                   className="h-11 bg-background"
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="(415) 555-0134"
                 />
+                <p id="quiz-phone-why" className="text-xs text-muted-foreground">
+                  So Barak can call once with the answer instead of trading four
+                  emails. No call centre, and no one else gets this number.
+                </p>
               </div>
             </div>
 
