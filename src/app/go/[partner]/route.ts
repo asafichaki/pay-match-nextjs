@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { after, NextResponse, type NextRequest } from "next/server";
 import { classifyBot } from "@/lib/seo/crawl-log";
 import { parseAttributionCookie, ATTRIBUTION_COOKIE } from "@/lib/attribution";
 import { classifyChannel } from "@/lib/partners/channel";
@@ -78,9 +78,21 @@ export async function GET(
     variant === "quote" ? (partner.quote_url ?? partner.destination_url) : partner.destination_url;
   const destination = withOurTag(target, partner.program_status);
 
-  // Never awaited. The visitor is already on their way.
+  // Handed to `after()`, which is the whole reason this is not a bare
+  // fire-and-forget call.
+  //
+  // On Vercel the function can be frozen the instant the 302 is returned, and
+  // an un-awaited fetch is killed with it. That is not theoretical: the first
+  // production deploy of this route redirected correctly every time and wrote
+  // a row only when an instance happened to stay warm, so the log silently
+  // under-counted. A measurement layer that quietly loses clicks is worse than
+  // none, because it would have made the ChatGPT channel look small, which is
+  // the exact conclusion this table exists to prevent.
+  //
+  // `after()` keeps the runtime alive for the callback without the visitor
+  // waiting on it, so the redirect stays as fast as it was.
   try {
-    logOutboundClick({
+    after(() => logOutboundClick({
       partner_slug: partner.slug,
       from_path: fromPath,
       channel,
@@ -93,7 +105,7 @@ export async function GET(
       variant,
       ua,
       is_bot: isBot,
-    });
+    }));
   } catch {
     // A logging row is never worth a 500 on the way out.
   }
