@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ChevronRight, Star } from "lucide-react";
 import { providers } from "@/data/providers";
+import { AffiliateLink } from "@/components/AffiliateLink";
 
 interface RelatedArticle {
   title: string;
@@ -27,7 +28,15 @@ const comparisonArticles: RelatedArticle[] = [
 ];
 
 const ArticleSidebar = ({ currentSlug }: ArticleSidebarProps) => {
-  const topProviders = providers.slice(0, 5);
+  // Ranked by the rating this site publishes next to each name, which the
+  // hand-ordered array did not do: Worldpay (8.6) sat above Clover (8.8) and
+  // Stax (9.0), so the "ranking" contradicted its own numbers on every page.
+  // `sidebarExclude` drops a provider from this list without deleting its row.
+  const topProviders = providers
+    .filter((p) => !p.sidebarExclude)
+    .slice()
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 5);
   
   // Filter out current article from related articles
   const filteredInsights = insightArticles.filter(a => a.href !== currentSlug).slice(0, 3);
@@ -44,11 +53,11 @@ const ArticleSidebar = ({ currentSlug }: ArticleSidebarProps) => {
           
           <div className="divide-y divide-border">
             {topProviders.map((provider, index) => (
-              <a
+              <AffiliateLink
                 key={provider.id}
-                href={provider.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                partner={provider.partnerSlug}
+                from={currentSlug}
+                title={`Visit ${provider.name}`}
                 className="flex items-center gap-4 py-4 first:pt-0 last:pb-0 group cursor-pointer hover:bg-muted/30 -mx-2 px-2 rounded-lg transition-all duration-200"
               >
                 <span className="text-lg font-bold text-muted-foreground/60 w-6">
@@ -77,7 +86,7 @@ const ArticleSidebar = ({ currentSlug }: ArticleSidebarProps) => {
                   </div>
                 </div>
                 <ChevronRight className="w-5 h-5 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-1 transition-all duration-200" />
-              </a>
+              </AffiliateLink>
             ))}
           </div>
           
