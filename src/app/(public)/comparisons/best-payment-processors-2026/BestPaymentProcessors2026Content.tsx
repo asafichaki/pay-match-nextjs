@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { AffiliateLink, AffiliateDisclosure } from "@/components/AffiliateLink";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -120,13 +121,14 @@ export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLin
 
               <section id="top-providers" className="py-10 border-b border-border">
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Top Payment Processors Reviewed</h2>
+                <AffiliateDisclosure className="text-xs text-muted-foreground border-l-2 border-border pl-3 mb-8 -mt-4" />
 
                 {[
-                  { name: "Leaders Merchant Services", logo: "/images/lms-logo-official.png", rating: "9.1", tagline: "Best Overall Payment Solution for Growing Businesses", desc: "Leaders Merchant Services stands out for growing businesses through competitive pricing, zero monthly fees for qualifying accounts, and exceptional customer support.", url: "https://www.leadersmerchantservices.com", quoteUrl: "https://www.leadersmerchantservices.com/contact" },
-                  { name: "Worldpay", logo: "/images/worldpay-logo.png", rating: "8.6", tagline: "Trusted by Over 1 Million Merchants Globally", desc: "Worldpay provides enterprise-grade reliability and global reach for established businesses with international operations.", url: "https://www.worldpay.com", quoteUrl: "https://www.worldpay.com/en-us/contact" },
-                  { name: "Clover", logo: "/images/clover-logo.png", rating: "8.8", tagline: "All-in-One Payment System Solution", desc: "Clover transforms payment processing into comprehensive business management through elegant integrated hardware and software.", url: "https://www.clover.com", quoteUrl: "https://www.clover.com/get-demo" },
-                  { name: "Payment Depot", logo: "/images/payment-depot-logo.png", rating: "8.2", tagline: "Best for High-Revenue Businesses", desc: "Payment Depot disrupts traditional pricing through transparent interchange-plus models that dramatically reduce costs for high-volume businesses.", url: "https://www.paymentdepot.com", quoteUrl: "https://www.paymentdepot.com/contact" },
-                  { name: "Stax", logo: "/images/stax-logo.png", rating: "8.5", tagline: "Best for High-Volume Businesses", desc: "Stax pioneers 0% markup processing that rewards growth rather than penalizing it.", url: "https://staxpayments.com", quoteUrl: "https://staxpayments.com/contact" },
+                  { name: "Leaders Merchant Services", partnerSlug: "leaders-merchant-services", logo: "/images/lms-logo-official.png", rating: "9.1", tagline: "Best Overall Payment Solution for Growing Businesses", desc: "Leaders Merchant Services stands out for growing businesses through competitive pricing, zero monthly fees for qualifying accounts, and exceptional customer support.", url: "https://www.leadersmerchantservices.com", quoteUrl: "https://www.leadersmerchantservices.com/contact" },
+                  { name: "Worldpay", partnerSlug: "worldpay", logo: "/images/worldpay-logo.png", rating: "8.6", tagline: "Trusted by Over 1 Million Merchants Globally", desc: "Worldpay provides enterprise-grade reliability and global reach for established businesses with international operations.", url: "https://www.worldpay.com", quoteUrl: "https://www.worldpay.com/en-us/contact" },
+                  { name: "Clover", partnerSlug: "clover", logo: "/images/clover-logo.png", rating: "8.8", tagline: "All-in-One Payment System Solution", desc: "Clover transforms payment processing into comprehensive business management through elegant integrated hardware and software.", url: "https://www.clover.com", quoteUrl: "https://www.clover.com/get-demo" },
+                  { name: "Payment Depot", partnerSlug: "payment-depot", logo: "/images/payment-depot-logo.png", rating: "8.2", tagline: "Best for High-Revenue Businesses", desc: "Payment Depot disrupts traditional pricing through transparent interchange-plus models that dramatically reduce costs for high-volume businesses.", url: "https://www.paymentdepot.com", quoteUrl: "https://www.paymentdepot.com/contact" },
+                  { name: "Stax", partnerSlug: "stax", logo: "/images/stax-logo.png", rating: "8.5", tagline: "Best for High-Volume Businesses", desc: "Stax pioneers 0% markup processing that rewards growth rather than penalizing it.", url: "https://staxpayments.com", quoteUrl: "https://staxpayments.com/contact" },
                 ].map((provider, idx) => (
                   <div key={provider.name} className={`mb-12 ${idx < 4 ? 'pb-12 border-b border-border' : ''}`}>
                     <div className="flex items-start gap-6 mb-6">
@@ -144,12 +146,12 @@ export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLin
                     </div>
                     <p className="text-muted-foreground mb-6">{provider.desc}</p>
                     <div className="flex flex-wrap gap-3">
-                      <a href={provider.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                      <AffiliateLink partner={provider.partnerSlug} from="/comparisons/best-payment-processors-2026" title={`Visit ${provider.name}`} className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
                         Visit Site <ArrowRight className="h-4 w-4" />
-                      </a>
-                      <a href={provider.quoteUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/5 transition-colors">
+                      </AffiliateLink>
+                      <AffiliateLink partner={provider.partnerSlug} variant="quote" from="/comparisons/best-payment-processors-2026" title={`Request a quote from ${provider.name}`} className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/5 transition-colors">
                         Get a Free Quote
-                      </a>
+                      </AffiliateLink>
                     </div>
                   </div>
                 ))}

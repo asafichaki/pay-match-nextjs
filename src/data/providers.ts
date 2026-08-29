@@ -7,7 +7,15 @@ export interface Provider {
   features: string[];
   rating: number;
   ratingLabel: string;
+  /**
+   * Kept for reference and for anything that needs the bare domain. It is NOT
+   * what the UI links to any more: this list is a ranked commercial list shown
+   * in the sidebar of every article, so it goes out through /go/<partnerSlug>
+   * to carry rel="sponsored nofollow" and to be counted.
+   */
   url: string;
+  /** `partners.slug`. The link target is resolved from the database. */
+  partnerSlug: string;
   isTopPick?: boolean;
   transactionFees: string;
   setupSpeed: string;
@@ -36,6 +44,7 @@ export const providers: Provider[] = [
     rating: 9.1,
     ratingLabel: "Excellent",
     url: "https://www.leadersmerchantservices.com/",
+    partnerSlug: "leaders-merchant-services",
     isTopPick: true,
     transactionFees: "1.5% - 2.9%",
     setupSpeed: "Same day",
@@ -62,6 +71,7 @@ export const providers: Provider[] = [
     rating: 8.8,
     ratingLabel: "Very Good",
     url: "https://www.paysafe.com/en/",
+    partnerSlug: "paysafe",
     transactionFees: "2.29% - 2.9%",
     setupSpeed: "1-2 days",
     customerSupport: "24/7 Phone",
@@ -87,6 +97,7 @@ export const providers: Provider[] = [
     rating: 8.6,
     ratingLabel: "Very Good",
     url: "https://www.worldpay.com/en",
+    partnerSlug: "worldpay",
     transactionFees: "2.4% - 3.5%",
     setupSpeed: "2-3 days",
     customerSupport: "Business hours",
@@ -112,6 +123,7 @@ export const providers: Provider[] = [
     rating: 8.8,
     ratingLabel: "Very Good",
     url: "https://www.clover.com/pos-systems/accept-payments",
+    partnerSlug: "clover",
     transactionFees: "2.3% - 3.5%",
     setupSpeed: "Same day",
     customerSupport: "24/7 Chat",
@@ -137,6 +149,7 @@ export const providers: Provider[] = [
     rating: 9.0,
     ratingLabel: "Excellent",
     url: "https://www.staxpayments.com/",
+    partnerSlug: "stax",
     isTopPick: false,
     transactionFees: "Subscription + Interchange",
     setupSpeed: "1-2 days",

@@ -8,6 +8,7 @@ import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
+import ProviderCTA from "@/components/ProviderCTA";
 
 interface ContentSlots {
   /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
@@ -246,6 +247,14 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               <strong>Bottom Line:</strong> If you're an SMB in North America and cost matters, <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> will save you thousands. If you're building a tech product, <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe's</a> features may justify the cost.
             </p>
           </section>
+
+          <ProviderCTA
+            from="/comparisons/helcim-vs-stripe"
+            items={[
+              { partner: "helcim", name: "Helcim", note: "Interchange-plus, volume discounts" },
+              { partner: "stripe", name: "Stripe", note: "Developer tooling and APIs" },
+            ]}
+          />
 
           <section className="py-12 text-center">
             <h2 className="text-2xl font-bold text-foreground mb-4">Not Sure Which Processor Is Right?</h2>
