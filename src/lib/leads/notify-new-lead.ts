@@ -20,10 +20,21 @@ import { getResend } from "@/lib/funnel/resend-client";
 // send from the real domain and deliver to BOTH Assaf and Barak. Every captured
 // lead reaches them directly and Barak follows up with the merchant personally.
 // This is the conversion mechanism (lead handoff), replacing the booking link.
-// Override recipients via LEADS_NOTIFY_TO_EMAIL (comma-separated) if they change.
+// The recipient list lives HERE and only here.
+//
+// It used to be a Vercel env var with this same list duplicated as the code
+// fallback, which is exactly how a list like this drifts: the two disagree and
+// nobody can tell which one is live, because a Vercel value cannot be read
+// back once stored. In git it is one line, reviewable, and it deploys with the
+// commit that changes it.
+//
+// mypayadvisor@gmail.com added 2026-08-29: it was never on the list, so the
+// shared mailbox saw no lead feed at all. Note that barak@mypayadvisor.com
+// forwards to Barak.bachar1@gmail.com, so Barak gets each alert twice; that is
+// left alone deliberately until the forwarding is untangled, because a
+// duplicate alert is a nuisance and a missing one is a lost lead.
 const ADMIN_TO = (
-  process.env.LEADS_NOTIFY_TO_EMAIL ||
-  "assaf.ichaki@gmail.com,barak@mypayadvisor.com,Barak.bachar1@gmail.com"
+  "assaf.ichaki@gmail.com,barak@mypayadvisor.com,Barak.bachar1@gmail.com,mypayadvisor@gmail.com"
 )
   .split(",")
   .map((s) => s.trim())
