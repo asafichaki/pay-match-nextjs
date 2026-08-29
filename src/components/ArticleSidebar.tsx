@@ -28,7 +28,15 @@ const comparisonArticles: RelatedArticle[] = [
 ];
 
 const ArticleSidebar = ({ currentSlug }: ArticleSidebarProps) => {
-  const topProviders = providers.slice(0, 5);
+  // Ranked by the rating this site publishes next to each name, which the
+  // hand-ordered array did not do: Worldpay (8.6) sat above Clover (8.8) and
+  // Stax (9.0), so the "ranking" contradicted its own numbers on every page.
+  // `sidebarExclude` drops a provider from this list without deleting its row.
+  const topProviders = providers
+    .filter((p) => !p.sidebarExclude)
+    .slice()
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 5);
   
   // Filter out current article from related articles
   const filteredInsights = insightArticles.filter(a => a.href !== currentSlug).slice(0, 3);

@@ -16,6 +16,19 @@ export interface Provider {
   url: string;
   /** `partners.slug`. The link target is resolved from the database. */
   partnerSlug: string;
+  /**
+   * Keep this provider out of the sidebar's ranked list.
+   *
+   * Set on Leaders Merchant Services 2026-08-29. It held slot 1 on every
+   * article on the site, and it is the one provider here with nothing to pay:
+   * what it calls a referral program is a $250 statement credit available only
+   * to an existing Leaders merchant, not an affiliate program. Giving the most
+   * valuable slot on the site to the only partner that pays nothing was the
+   * cheapest mistake in the whole funnel. The row is kept rather than deleted
+   * so restoring it is one flag, and because the provider is still referenced
+   * by the best-of index, which needs the same decision made deliberately.
+   */
+  sidebarExclude?: boolean;
   isTopPick?: boolean;
   transactionFees: string;
   setupSpeed: string;
@@ -45,6 +58,7 @@ export const providers: Provider[] = [
     ratingLabel: "Excellent",
     url: "https://www.leadersmerchantservices.com/",
     partnerSlug: "leaders-merchant-services",
+    sidebarExclude: true,
     isTopPick: true,
     transactionFees: "1.5% - 2.9%",
     setupSpeed: "Same day",
