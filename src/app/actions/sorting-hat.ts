@@ -190,6 +190,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
         payload: {
           full_name: data.fullName,
           email: data.email,
+          phone: normalizePhone(data.phone),
           business_type: data.businessType,
           volume_tier: data.volumeTier,
           pain_point: data.painPoint,
@@ -209,6 +210,11 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       lead: {
         email: data.email,
         name: data.fullName,
+        // The whole point of making this field required on 2026-08-29 was that
+        // Barak reads the alert and calls. It was saved to the row but never
+        // handed to the notifier, so the subject and the tel: link stayed
+        // empty and the first lead with a number looked like the nine without.
+        phone: normalizePhone(data.phone),
         business_type: BUSINESS_TYPE_LABELS[data.businessType],
       },
       funnel: {
@@ -252,6 +258,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       payload: {
         email: typeof input?.email === "string" ? input.email : "unknown",
         full_name: typeof input?.fullName === "string" ? input.fullName : null,
+        phone: typeof input?.phone === "string" ? input.phone : null,
         business_type: typeof input?.businessType === "string" ? input.businessType : null,
         volume_tier: typeof input?.volumeTier === "string" ? input.volumeTier : null,
         pain_point: typeof input?.painPoint === "string" ? input.painPoint : null,

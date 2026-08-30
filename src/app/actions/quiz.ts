@@ -10,11 +10,16 @@ import {
   attributionColumns,
   parseAttributionCookie,
 } from "@/lib/attribution";
+import { isValidPhone, normalizePhone, PHONE_INVALID_MESSAGE } from "@/lib/phone";
 
 const quizLeadSchema = z.object({
   fullName: z.string().min(1).max(200),
   email: z.string().email().max(320),
-  phone: z.string().max(30).optional().default(""),
+  phone: z
+    .string()
+    .min(1)
+    .max(40)
+    .refine(isValidPhone, { message: PHONE_INVALID_MESSAGE }),
   monthlyVolume: z.string().max(50).optional(),
   businessType: z.string().max(50).optional(),
   industry: z.string().max(100).optional(),
@@ -48,7 +53,7 @@ function checkRateLimit(ip: string, maxRequests = 5, windowMs = 60000): boolean 
 export async function submitQuizLead(formData: {
   fullName: string;
   email: string;
-  phone?: string;
+  phone: string;
   monthlyVolume?: string;
   businessType?: string;
   industry?: string;
@@ -91,7 +96,7 @@ export async function submitQuizLead(formData: {
     const { error } = await supabase.from("quiz_leads").insert({
       full_name: data.fullName,
       email: data.email,
-      phone: data.phone || null,
+      phone: normalizePhone(data.phone),
       monthly_volume: data.monthlyVolume || null,
       business_type: data.businessType || null,
       industry: data.industry || null,
@@ -123,7 +128,7 @@ export async function submitQuizLead(formData: {
         payload: {
           full_name: data.fullName,
           email: data.email,
-          phone: data.phone,
+          phone: normalizePhone(data.phone),
           monthly_volume: data.monthlyVolume,
           business_type: data.businessType,
           industry: data.industry,
@@ -144,7 +149,7 @@ export async function submitQuizLead(formData: {
       lead: {
         email: data.email,
         name: data.fullName,
-        phone: data.phone || null,
+        phone: normalizePhone(data.phone),
         monthly_volume: data.monthlyVolume,
         business_type: data.businessType,
         industry: data.industry,

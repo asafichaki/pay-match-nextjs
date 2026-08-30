@@ -104,6 +104,7 @@ export async function retryFailedCapture(
     const insertPayload: Record<string, unknown> = {
       full_name: payload.full_name || payload.fullName || "Unknown",
       email: payload.email,
+      phone: payload.phone || null,
       monthly_volume: payload.volume_tier || payload.volumeTier || null,
       business_type: payload.business_type || payload.businessType || null,
       industry: payload.industry || null,
