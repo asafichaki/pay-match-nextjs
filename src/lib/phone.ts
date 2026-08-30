@@ -30,17 +30,46 @@ export function isValidPhone(raw: string): boolean {
   const international = (raw || "").trim().startsWith("+");
   if (international) return d.length >= 8 && d.length <= 15;
   if (d.length === 10) return !/^[01]/.test(d);        // NANP area code never starts 0 or 1
-  if (d.length === 11) return d.startsWith("1");
+  // Eleven digits is either NANP with its 1, or an international number typed
+  // without its plus (a Dutch mobile is 31612345678). Only a leading zero is
+  // refused, because that is a national trunk prefix we cannot turn into a
+  // dialable number and the message below tells the merchant exactly that.
+  if (d.length === 11) return !d.startsWith("0");
   return d.length >= 8 && d.length <= 15;
 }
 
-/** E.164 where we can be sure, otherwise the trimmed original. */
+/**
+ * E.164 where we can be sure, otherwise the trimmed original.
+ *
+ * The stored string is what the alert turns into a `tel:` link, so "sure
+ * enough to store" means "sure enough for Barak to tap and reach the
+ * merchant". A number that keeps its country code but loses the plus dials as
+ * nonsense from an Israeli handset, which is how the first real lead with a
+ * phone (972545771413, 2026-08-30) arrived.
+ */
 export function normalizePhone(raw: string): string {
   const t = (raw || "").trim();
-  const d = digitsOf(t);
+  let d = digitsOf(t);
   if (t.startsWith("+")) return `+${d}`;
+
+  // An international dial-out prefix typed instead of a plus: 011 from the US
+  // and Canada, 00 almost everywhere else. Neither can be the start of a real
+  // number here, because no country code begins with a zero and no NANP
+  // number is this long.
+  if (d.length >= 13 && d.startsWith("011")) d = d.slice(3);
+  else if (d.length >= 10 && d.startsWith("00")) d = d.slice(2);
+
   if (d.length === 10 && !/^[01]/.test(d)) return `+1${d}`;
   if (d.length === 11 && d.startsWith("1")) return `+${d}`;
+  // Longer than any NANP number, so it already carries its own country code
+  // and the only thing missing is the plus. A leading zero is excluded: no
+  // country code starts with one, so that is a national trunk prefix and
+  // prefixing it would produce a plausible looking number that dials nowhere.
+  if (d.length >= 11 && d.length <= 15 && !d.startsWith("0")) return `+${d}`;
+  // Anything else, a short local number or a 10-digit national format with a
+  // trunk zero, keeps the shape the merchant typed. Guessing a country code
+  // for it would be inventing data, and the form already tells them to lead
+  // with a + if they are outside the US.
   return t;
 }
 
