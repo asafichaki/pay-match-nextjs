@@ -339,17 +339,28 @@ def batch1(ctx: Ctx, info: Dict[str, Any]) -> None:
         if ctx.locked(p) or p in ctx.citation_lock:
             continue
         wave = "A" if p in waves["A"]["pages"] else "B"
-        new = trim_title(c["title"], c["money_query"], c["brand"], c["max_len"])
+        # Batch 1 is the length lane, so it makes the smallest change that
+        # fixes the length. When the text already fits and only the appended
+        # suffix pushes it over, the text is left exactly as it is and the
+        # suffix comes off through `title_absolute`. Rewriting those titles
+        # for the money query is batch 2's job, with query scoring and a
+        # judge behind it; doing it here cut a 47-char title to 34 to satisfy
+        # a rule about length that it was not breaking.
+        base_fits = len(c["title"]) <= c["max_len"]
+        new = c["title"] if base_fits else trim_title(c["title"], c["money_query"],
+                                                      c["brand"], c["max_len"])
         if not new:
             print(f"   no honest trim for {p}", file=sys.stderr)
             continue
         res = rules_mod.validate_title(ctx.rules, new, absolute=True, mobile_share=c["mobile_share"])
         if not res.ok:
-            print(f"   trim rejected for {p}: {res.reasons}", file=sys.stderr)
+            print(f"   {'suffix drop' if base_fits else 'trim'} rejected for {p}: {res.reasons}",
+                  file=sys.stderr)
             continue
         may_apply = wave_may_apply(ctx, wave, waves)
         reason = (f"batch1 wave {wave}: rendered {c['rendered_len']} > {c['max_len']} chars, "
-                  f"money query '{c['money_query']}' kept first")
+                  + ("the text already fits, only the suffix comes off" if base_fits
+                     else f"money query '{c['money_query']}' kept first"))
         # The RPC takes one field per call, so the bundle is up to three calls
         # back to back under the same reason; a composite field would need a
         # signature change (noted in the README). The bundle is assembled by
@@ -362,7 +373,9 @@ def batch1(ctx: Ctx, info: Dict[str, Any]) -> None:
             bundle.append(("meta_title", c["title"], new))
         if c["suffix_on"]:
             bundle.append(("title_absolute", "false", "true"))
-        if c.get("h1_move"):
+        # The H1 moves WITH the title. If the title text is not changing
+        # there is nothing for it to move to.
+        if not base_fits and c.get("h1_move"):
             bundle.append(("h1_override", c.get("h1") or None, new))
         if not bundle:
             continue

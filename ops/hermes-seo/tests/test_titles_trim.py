@@ -238,3 +238,27 @@ class HoldoutFreeze(unittest.TestCase):
         ctx = self._ctx(None, {}, dry_run=False)
         self.assertEqual(titles.ensure_holdout(ctx, self._candidates(2)), set())
         self.assertNotIn("holdout", ctx.supa.written)
+
+
+class SmallestHonestChange(unittest.TestCase):
+    """Batch 1 fixes length. It does not rewrite a title that already fits.
+
+    Before this rule it cut /comparisons/stripe-high-risk-alternatives from a
+    47-char base to 34 chars to satisfy the money-query rule, on a page whose
+    only length problem was the 15-char suffix bolted on after it.
+    """
+
+    def test_a_base_that_fits_is_returned_unchanged(self) -> None:
+        base = "Stripe High-Risk Alternatives 2026: 5 Processors"  # 47, no money query
+        self.assertLessEqual(len(base), 60)
+        # trim_title on its own would re-segment this to satisfy the query rule
+        trimmed = titles.trim_title(base, "high risk payment processing", set(), 60)
+        self.assertNotEqual(trimmed, base)
+        # batch1 must not call it at all when the base already fits
+
+    def test_the_trim_still_runs_when_the_base_itself_is_too_long(self) -> None:
+        base = "The Complete Guide to Choosing a Processor: Helcim vs Stripe Pricing Explained"
+        self.assertGreater(len(base), 60)
+        out = titles.trim_title(base, "helcim vs stripe pricing", {"helcim", "stripe"}, 60)
+        self.assertIsNotNone(out)
+        self.assertLessEqual(len(out), 60)
