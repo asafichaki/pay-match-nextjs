@@ -195,15 +195,43 @@ def choose_holdout(candidates: Dict[str, float], size: int = config.HOLDOUT_SIZE
     return sorted(chosen)
 
 
+def holdout_size(n_candidates: int) -> int:
+    """At most a third of the candidate set, never all of it.
+
+    The holdout is the control group, so it has to leave pages behind to
+    treat. Taken as a flat 21 out of whatever the day happened to offer, it
+    swallowed the entire set twice: 8 of 8 on day one, then 21 of 21 on
+    2026-08-31 once the length check was fixed. Both times the lane had
+    nothing left to act on and reported "0 handled" with no reason given.
+    """
+    return min(config.HOLDOUT_SIZE, n_candidates // 3)
+
+
+def experiment_started(ctx: Ctx) -> bool:
+    """Has the lane applied a title yet?
+
+    Before the first treatment the control group can still be redrawn, and
+    it must be: the candidate set grows for days as the index watch confirms
+    pages, and a holdout locked in on day one is both too small and drawn
+    from the wrong universe. After the first apply it must never move.
+    """
+    waves = ctx.supa.setting("title_waves", {}) or {}
+    return any((waves.get(w) or {}).get("applied_on") for w in ("A", "B"))
+
+
 def ensure_holdout(ctx: Ctx, candidates: Dict[str, float]) -> Set[str]:
     stored = ctx.supa.setting("holdout", None)
-    if stored and stored.get("pages"):
-        return set(stored["pages"])
-    chosen = choose_holdout(candidates)
-    if chosen and not ctx.dry_run:
+    kept = set((stored or {}).get("pages") or [])
+    target = holdout_size(len(candidates))
+    if kept and (experiment_started(ctx) or len(kept) >= target):
+        return kept
+    chosen = choose_holdout(candidates, target)
+    if not chosen:
+        return kept
+    if not ctx.dry_run:
         ctx.supa.set_setting("holdout", {"pages": chosen, "chosen_at": ctx.run_date.isoformat(),
                                          "bands": {p: band_of(candidates[p]) for p in chosen}})
-    elif chosen:
+    else:
         print(f"dry-run: holdout of {len(chosen)} pages not stored", file=sys.stderr)
     return set(chosen)
 

@@ -167,3 +167,74 @@ class WavePlanning(unittest.TestCase):
         opened = {"A": {"pages": ["/a"], "applied_on": "2026-09-10"}, "B": {"pages": ["/b"]}}
         self.assertTrue(titles.wave_may_apply(ctx, "B", opened))
         self.assertTrue(titles.wave_may_apply(ctx, "A", shut))
+
+
+class HoldoutSizing(unittest.TestCase):
+    """The control group must leave pages behind to treat."""
+
+    def test_never_the_whole_candidate_set(self) -> None:
+        for n in (1, 2, 3, 8, 21, 45, 70, 200):
+            held = titles.holdout_size(n)
+            self.assertLess(held, n, f"{n} candidates")
+            self.assertLessEqual(held, 21)
+
+    def test_the_two_sets_that_deadlocked_the_lane(self) -> None:
+        # 8 of 8 on day one, then 21 of 21 once the length check was fixed.
+        self.assertEqual(titles.holdout_size(8), 2)
+        self.assertEqual(titles.holdout_size(21), 7)
+
+    def test_full_size_once_the_universe_is_big_enough(self) -> None:
+        self.assertEqual(titles.holdout_size(70), 21)
+        self.assertEqual(titles.holdout_size(500), 21)
+
+
+class HoldoutFreeze(unittest.TestCase):
+    """Redrawn while nothing has been treated, frozen the moment one is."""
+
+    def _ctx(self, holdout, waves, dry_run=True):
+        import datetime as dt
+        from pathlib import Path
+        from ctx import Ctx
+
+        class Supa:
+            def __init__(self): self.written = {}
+            def setting(self, key, default=None):
+                return {"holdout": holdout, "title_waves": waves}.get(key, default)
+            def set_setting(self, key, value): self.written[key] = value
+
+        return Ctx(supa=Supa(), gates=None, run=None, rules=None,
+                   run_date=dt.date(2026, 9, 5), dry_run=dry_run, limit=None,
+                   state=Path("/tmp"), cache=None, gemini=None)
+
+    @staticmethod
+    def _candidates(n):
+        return {f"/insights/p{i}": float(i % 60) + 1 for i in range(n)}
+
+    def test_a_small_holdout_is_redrawn_while_nothing_has_been_applied(self) -> None:
+        ctx = self._ctx({"pages": ["/insights/p1", "/insights/p2"]}, {"A": {"pages": []}})
+        out = ensure = titles.ensure_holdout(ctx, self._candidates(70))
+        self.assertEqual(len(out), 21)
+        self.assertNotEqual(out, {"/insights/p1", "/insights/p2"})
+        self.assertIs(ensure, out)
+
+    def test_it_freezes_once_a_title_has_been_applied(self) -> None:
+        ctx = self._ctx({"pages": ["/insights/p1", "/insights/p2"]},
+                        {"A": {"pages": ["/insights/p3"], "applied_on": "2026-09-03"}})
+        out = titles.ensure_holdout(ctx, self._candidates(70))
+        self.assertEqual(out, {"/insights/p1", "/insights/p2"})
+
+    def test_a_holdout_at_target_is_left_alone(self) -> None:
+        pages = [f"/insights/p{i}" for i in range(21)]
+        ctx = self._ctx({"pages": pages}, {"A": {"pages": []}})
+        self.assertEqual(titles.ensure_holdout(ctx, self._candidates(70)), set(pages))
+
+    def test_it_is_stored_on_a_real_run(self) -> None:
+        ctx = self._ctx(None, {}, dry_run=False)
+        out = titles.ensure_holdout(ctx, self._candidates(70))
+        self.assertEqual(len(out), 21)
+        self.assertEqual(set(ctx.supa.written["holdout"]["pages"]), out)
+
+    def test_too_few_candidates_means_no_holdout_and_no_crash(self) -> None:
+        ctx = self._ctx(None, {}, dry_run=False)
+        self.assertEqual(titles.ensure_holdout(ctx, self._candidates(2)), set())
+        self.assertNotIn("holdout", ctx.supa.written)
