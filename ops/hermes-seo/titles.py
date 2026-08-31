@@ -330,7 +330,7 @@ def batch1(ctx: Ctx, info: Dict[str, Any]) -> None:
     # between 2026-08-26 and 2026-08-31.
     if not (waves.get("A") or {}).get("pages"):
         waves = {"A": {"pages": plan["A"]}, "B": {"pages": plan["B"]}}
-    done = proposed = 0
+    done = proposed = waiting = 0
     budget = ctx.cap(config.CAP_TITLES_PER_DAY)
     for c in live:
         if done >= budget:
@@ -358,6 +358,17 @@ def batch1(ctx: Ctx, info: Dict[str, Any]) -> None:
                   file=sys.stderr)
             continue
         may_apply = wave_may_apply(ctx, wave, waves)
+        if not may_apply and ctx.gates.apply_allowed():
+            # In apply mode a proposal written now would block the apply
+            # later. `changes.propose_or_apply` asks its duplicate guard
+            # BEFORE it asks whether it may apply, so a page carrying an open
+            # `proposed` row is answered "duplicate" on every later run and
+            # the RPC is never called. Reported separately; the guard belongs
+            # in changes.py and it affects every lane. Until then a lane that
+            # could apply but whose wave is shut waits, instead of queueing
+            # work it will never be allowed to finish.
+            waiting += 1
+            continue
         reason = (f"batch1 wave {wave}: rendered {c['rendered_len']} > {c['max_len']} chars, "
                   + ("the text already fits, only the suffix comes off" if base_fits
                      else f"money query '{c['money_query']}' kept first"))
@@ -393,7 +404,8 @@ def batch1(ctx: Ctx, info: Dict[str, Any]) -> None:
     if not ctx.dry_run:
         ctx.supa.set_setting("title_waves", waves)
     info["proposals"] = proposed + len([a for a in ctx.applied if a["source"] == "loop:titles_b1"])
-    info["note"] = f"{len(cands)} over-length, holdout {len(ctx.holdout)}, {done} handled today"
+    info["note"] = (f"{len(cands)} over-length, holdout {len(ctx.holdout)}, {done} handled today"
+                    + (f", {waiting} waiting for their wave" if waiting else ""))
 
 
 # ------------------------------------------------------------ batch 2
