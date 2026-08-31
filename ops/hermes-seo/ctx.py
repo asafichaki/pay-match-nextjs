@@ -41,7 +41,10 @@ class Ctx:
     holdout: Set[str] = field(default_factory=set)
     overrides: Dict[str, Dict[str, Any]] = field(default_factory=dict)  # path -> row
     index_status: Dict[str, Dict[str, Any]] = field(default_factory=dict)  # path -> row
-    titles: Dict[str, str] = field(default_factory=dict)  # path -> current title
+    titles: Dict[str, str] = field(default_factory=dict)  # path -> base title, no suffix
+    # path -> does the root layout still append " | myPayAdvisor"? The
+    # rendered title is what Google truncates, so length checks need both.
+    suffix_on: Dict[str, bool] = field(default_factory=dict)
     proposals: List[Dict[str, Any]] = field(default_factory=list)
     applied: List[Dict[str, Any]] = field(default_factory=list)
     report_bits: Dict[str, Any] = field(default_factory=dict)

@@ -256,7 +256,7 @@ def step_indexnow(ctx: Ctx, info: Dict[str, Any]) -> None:
 
 
 def step_titles(ctx: Ctx, info: Dict[str, Any]) -> None:
-    ctx.titles = titles_mod.current_titles(ctx, ctx.article_paths())
+    ctx.titles, ctx.suffix_on = titles_mod.current_titles(ctx, ctx.article_paths())
     titles_mod.batch1(ctx, info)
 
 

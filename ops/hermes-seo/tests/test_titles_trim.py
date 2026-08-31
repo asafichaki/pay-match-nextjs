@@ -84,3 +84,86 @@ class P90(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RenderedLength(unittest.TestCase):
+    """The lane must measure the string Google truncates.
+
+    The manifest hands out `base_title`, the text before the root layout
+    appends " | myPayAdvisor". Comparing that against 60 made the lane blind
+    to 55 of the 73 article pages whose live title was actually over the
+    limit on 2026-08-31, and it wrote nothing at all for six days.
+    """
+
+    def setUp(self) -> None:
+        import datetime as dt
+        from pathlib import Path
+        from ctx import Ctx
+        import rules as rules_mod
+        self.rules = rules_mod.load_rules()
+        self.ctx = Ctx(supa=None, gates=None, run=None, rules=self.rules,
+                       run_date=dt.date(2026, 8, 31), dry_run=True, limit=None,
+                       state=Path("/tmp"), cache=None, gemini=None)
+
+    def test_the_suffix_counts_when_the_layout_still_appends_it(self) -> None:
+        base = "Best Payment Processors for Healthcare Practices 2026"   # 53
+        self.ctx.suffix_on = {"/p": True}
+        self.assertEqual(titles.rendered_length(self.ctx, "/p", base), len(base) + 15)
+        self.assertGreater(titles.rendered_length(self.ctx, "/p", base), 60)
+
+    def test_an_absolute_page_is_measured_bare(self) -> None:
+        base = "Best Payment Processors for Healthcare Practices 2026"
+        self.ctx.suffix_on = {"/p": False}
+        self.assertEqual(titles.rendered_length(self.ctx, "/p", base), len(base))
+        self.assertLessEqual(titles.rendered_length(self.ctx, "/p", base), 60)
+
+    def test_an_unknown_page_is_assumed_to_carry_the_suffix(self) -> None:
+        self.ctx.suffix_on = {}
+        self.assertEqual(titles.rendered_length(self.ctx, "/unknown", "A title"), len("A title") + 15)
+
+
+class WavePlanning(unittest.TestCase):
+    """Wave A must be re-planned while it is empty.
+
+    `title_waves` was stored on day one as {"A": {"pages": []}, ...} because
+    there were no live candidates yet. The old guard tested the key, which is
+    truthy for that dict, so the plan was discarded on every later run, every
+    candidate fell to wave B, and wave B only opens three days after wave A
+    applies. Nothing could reach wave A, so the lane deadlocked.
+    """
+
+    @staticmethod
+    def replan(stored, plan):
+        # Mirrors the guard in batch1.
+        waves = dict(stored)
+        if not (waves.get("A") or {}).get("pages"):
+            waves = {"A": {"pages": plan["A"]}, "B": {"pages": plan["B"]}}
+        return waves
+
+    def test_an_empty_wave_a_is_replanned(self) -> None:
+        out = self.replan({"A": {"pages": []}, "B": {"pages": []}},
+                          {"A": ["/a"], "B": ["/b"]})
+        self.assertEqual(out["A"]["pages"], ["/a"])
+
+    def test_a_planned_wave_a_is_left_alone(self) -> None:
+        out = self.replan({"A": {"pages": ["/old"], "applied_on": "2026-09-01"}, "B": {"pages": []}},
+                          {"A": ["/new"], "B": []})
+        self.assertEqual(out["A"]["pages"], ["/old"])
+        self.assertEqual(out["A"]["applied_on"], "2026-09-01")
+
+    def test_wave_b_stays_shut_until_wave_a_has_applied(self) -> None:
+        import datetime as dt
+        from pathlib import Path
+        from ctx import Ctx
+
+        class Supa:
+            def setting(self, key, default=None): return default
+
+        ctx = Ctx(supa=Supa(), gates=None, run=None, rules=None,
+                  run_date=dt.date(2026, 9, 20), dry_run=True, limit=None,
+                  state=Path("/tmp"), cache=None, gemini=None)
+        shut = {"A": {"pages": ["/a"]}, "B": {"pages": ["/b"]}}
+        self.assertFalse(titles.wave_may_apply(ctx, "B", shut))
+        opened = {"A": {"pages": ["/a"], "applied_on": "2026-09-10"}, "B": {"pages": ["/b"]}}
+        self.assertTrue(titles.wave_may_apply(ctx, "B", opened))
+        self.assertTrue(titles.wave_may_apply(ctx, "A", shut))

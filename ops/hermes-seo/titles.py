@@ -7,6 +7,14 @@ brand tokens on vs pages. Two waves three days apart, a 21-page holdout
 matched on position band that no lane touches. Skipped entirely when
 Check 1 found Google already rewrites >= 70% of them.
 
+Length is measured on the RENDERED title, the one Google truncates. The
+manifest hands out `base_title`, the text before the root layout appends
+" | myPayAdvisor", and comparing that against 60 made the lane blind: on
+2026-08-31, 73 of 126 article pages rendered a title over 60 while only 18
+had a base over 60, and the lane had written nothing in six days. The
+suffix comes off through `title_absolute`, so for most pages the fix is
+that field alone and the text does not change at all.
+
 Batch 2 (LLM, from week 3): query x page scoring with site-derived p90 CTR
 targets, Gemini Flash proposes 3, Gemini Pro judges, rules.py validates,
 the RPC applies, then async verification.
@@ -109,9 +117,18 @@ def trim_title(title: str, money_query: str, brand_tokens: Set[str], max_len: in
 
 
 # ------------------------------------------------------------ current titles
-def current_titles(ctx: Ctx, paths: List[str]) -> Dict[str, str]:
-    """path -> current title from the build manifest or the live page."""
+def current_titles(ctx: Ctx, paths: List[str]) -> Tuple[Dict[str, str], Dict[str, bool]]:
+    """(path -> base title, path -> is the suffix still appended).
+
+    Both maps are needed because they answer different questions. The base
+    title is what a trim rewrites and what the links lane uses as anchor
+    text; the suffix flag is what turns that base into the string Google
+    truncates. The manifest is a build artifact, so a page the loop has
+    already switched to absolute still reads `template` there until the next
+    deploy: the override row wins.
+    """
     out: Dict[str, str] = {}
+    suffix_on: Dict[str, bool] = {}
     manifest = pages.fetch(f"{config.SITE_BASE}/seo-manifest.json")
     if manifest.ok:
         try:
@@ -121,16 +138,28 @@ def current_titles(ctx: Ctx, paths: List[str]) -> Dict[str, str]:
                 route = entry.get("route") or entry.get("path")
                 title = entry.get("base_title") or entry.get("title")
                 if route and title:
-                    out[config.to_path(route)] = title
+                    path = config.to_path(route)
+                    out[path] = strip_suffix(title)
+                    suffix_on[path] = entry.get("title_mode", "template") != "absolute"
         except ValueError:
             pass
     for p in paths:
-        if p in out:
-            continue
-        got = ctx.cache.get(p)
-        if got.ok:
-            out[p] = pages.Page(got.text, p).title
-    return out
+        if p not in out:
+            got = ctx.cache.get(p)
+            if got.ok:
+                live = pages.Page(got.text, p).title
+                out[p] = strip_suffix(live)
+                suffix_on[p] = live.strip() != strip_suffix(live)
+        # The override layer changes the live page without a rebuild, so it
+        # is the only source that is never stale.
+        if ctx.override(p).get("title_absolute") is True:
+            suffix_on[p] = False
+    return out, suffix_on
+
+
+def rendered_length(ctx: Ctx, path: str, base: str) -> int:
+    """The length of the <title> a crawler sees today."""
+    return rules_mod.rendered_title_length(ctx.rules, base, absolute=not ctx.suffix_on.get(path, True))
 
 
 # ------------------------------------------------------------ holdout
@@ -206,7 +235,8 @@ def overlength_candidates(ctx: Ctx, paths: List[str]) -> List[Dict[str, Any]]:
         pm = ctx.page_metrics(p)
         st = page_stats(ctx.idx, p)
         max_len = 52 if pm["mobile_share"] > config.MOBILE_SHARE_GUIDE else 60
-        if len(title) <= max_len:
+        rendered = rendered_length(ctx, p, title)
+        if rendered <= max_len:
             continue
         if not ctx.is_indexed(p):
             unconfirmed.append(p)
@@ -218,6 +248,7 @@ def overlength_candidates(ctx: Ctx, paths: List[str]) -> List[Dict[str, Any]]:
         if got.ok:
             h1 = pages.Page(got.text, p).h1
         out.append({"path": p, "kind": kind, "slug": slug, "title": title, "max_len": max_len,
+                    "rendered_len": rendered, "suffix_on": ctx.suffix_on.get(p, True),
                     "mobile_share": pm["mobile_share"], "money_query": st["money_query"],
                     "human_impr": st["human_impr"], "position": st["position"] or pm["position"],
                     "brand": brand, "h1": h1, "h1_move": h1_needs_move(h1, st["money_query"])})
@@ -262,7 +293,14 @@ def batch1(ctx: Ctx, info: Dict[str, Any]) -> None:
     half = (len(live) + 1) // 2
     waves = wave_state(ctx)
     plan = {"A": [c["path"] for c in live[:half]], "B": [c["path"] for c in live[half:]]}
-    if not waves.get("A"):
+    # The guard is on the page list, not on the key. Day one had no live
+    # candidates, so `{"A": {"pages": []}, "B": {"pages": []}}` was stored and
+    # written back on every run after it; `waves.get("A")` is truthy for that
+    # dict, so the plan was thrown away, every candidate fell to wave B, and
+    # wave B only opens three days after wave A applies something. Nothing
+    # could ever reach wave A, so the lane deadlocked and wrote nothing at all
+    # between 2026-08-26 and 2026-08-31.
+    if not (waves.get("A") or {}).get("pages"):
         waves = {"A": {"pages": plan["A"]}, "B": {"pages": plan["B"]}}
     done = proposed = 0
     budget = ctx.cap(config.CAP_TITLES_PER_DAY)
@@ -282,25 +320,33 @@ def batch1(ctx: Ctx, info: Dict[str, Any]) -> None:
             print(f"   trim rejected for {p}: {res.reasons}", file=sys.stderr)
             continue
         may_apply = wave_may_apply(ctx, wave, waves)
-        reason = (f"batch1 trim wave {wave}: {len(c['title'])} > {c['max_len']} chars, "
+        reason = (f"batch1 wave {wave}: rendered {c['rendered_len']} > {c['max_len']} chars, "
                   f"money query '{c['money_query']}' kept first")
-        status = changes.propose_or_apply(
-            ctx, c["kind"], c["slug"], "meta_title", c["title"], new, reason,
-            "loop:titles_b1", may_apply=may_apply)
-        if status in ("applied", "proposed"):
-            # The RPC takes one field per call, so the bundle is three calls
-            # back to back under the same reason; a composite field would need
-            # a signature change (noted in the README).
-            changes.propose_or_apply(ctx, c["kind"], c["slug"], "title_absolute", "false", "true",
-                                     reason + " (suffix dropped)", "loop:titles_b1", may_apply=may_apply)
-            if c.get("h1_move"):
-                changes.propose_or_apply(ctx, c["kind"], c["slug"], "h1_override", c.get("h1") or None, new,
-                                         reason + " (H1 moves with the title)", "loop:titles_b1",
-                                         may_apply=may_apply)
-        if status == "applied":
-            waves[wave].setdefault("applied_on", ctx.run_date.isoformat())
+        # The RPC takes one field per call, so the bundle is up to three calls
+        # back to back under the same reason; a composite field would need a
+        # signature change (noted in the README). The bundle is assembled by
+        # what the page needs, not chained off the title rewrite: on most
+        # pages the text already fits and the whole fix is dropping the
+        # suffix, and hanging the other two calls off a meta_title change that
+        # never happens is how those pages stayed broken.
+        bundle: List[Tuple[str, Any, Any]] = []
+        if new != c["title"]:
+            bundle.append(("meta_title", c["title"], new))
+        if c["suffix_on"]:
+            bundle.append(("title_absolute", "false", "true"))
+        if c.get("h1_move"):
+            bundle.append(("h1_override", c.get("h1") or None, new))
+        if not bundle:
+            continue
+        suffixes = {"title_absolute": " (suffix dropped)", "h1_override": " (H1 moves with the title)"}
+        statuses = [changes.propose_or_apply(ctx, c["kind"], c["slug"], field, old_value, value,
+                                             reason + suffixes.get(field, ""), "loop:titles_b1",
+                                             may_apply=may_apply)
+                    for field, old_value, value in bundle]
+        if "applied" in statuses:
+            waves.setdefault(wave, {}).setdefault("applied_on", ctx.run_date.isoformat())
             done += 1
-        elif status == "proposed":
+        elif "proposed" in statuses:
             proposed += 1
             done += 1
     if not ctx.dry_run:
