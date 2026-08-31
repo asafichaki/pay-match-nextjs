@@ -34,8 +34,8 @@ def candidates(ctx: Ctx, limit: int) -> List[Dict[str, Any]]:
         if p in ctx.holdout or p in config.LOSER_PATHS or ctx.locked(p):
             continue
         forced = p in ordered
-        if not forced and ctx.has_open_change(p, "aeo_answer"):
-            continue  # already queued, do not draft and pay for it twice
+        if not forced and ctx.work_is_blocked(p, "aeo_answer", ctx.gates.apply_allowed()):
+            continue  # already queued and going nowhere, do not pay for it twice
         if not forced and ctx.override(p).get("aeo_answer"):
             continue
         got = ctx.cache.get(p)

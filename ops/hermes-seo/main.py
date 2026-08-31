@@ -137,7 +137,12 @@ def load_shared(ctx: Ctx, with_gsc: bool = True) -> None:
     for r in ctx.supa.safe_get("seo_changes",
                                {"status": "in.(proposed,verification_pending)",
                                 "select": "kind,slug,field,status"}):
-        ctx.open_changes.add(f"{config.path_of(r['kind'], r['slug'])}|{r['field']}")
+        marker = f"{config.path_of(r['kind'], r['slug'])}|{r['field']}"
+        ctx.open_changes.add(marker)
+        if r.get("status") == "verification_pending":
+            # Written to the override row, not yet seen on the live page.
+            # That one blocks everything; a proposal only blocks a proposal.
+            ctx.in_flight.add(marker)
     for r in ctx.supa.safe_get("seo_index_status"):
         ctx.index_status[config.to_path(r["url"])] = r
     hold = ctx.supa.setting("holdout", {}) or {}

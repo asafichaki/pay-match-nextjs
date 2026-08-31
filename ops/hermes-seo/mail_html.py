@@ -61,6 +61,7 @@ STATUS_TONE = {
     "verified": (GREEN, GREEN_BG),
     "verification_pending": (AMBER, AMBER_BG),
     "proposed": (SOFT, SLATE_BG),
+    "superseded": (MUTED, SLATE_BG),
     "advisory_regression": (RED, RED_BG),
     "rolled_back": (RED, RED_BG),
 }

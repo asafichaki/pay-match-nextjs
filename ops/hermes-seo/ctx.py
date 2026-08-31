@@ -50,7 +50,8 @@ class Ctx:
     report_bits: Dict[str, Any] = field(default_factory=dict)
     check1_rewrite_rate: float = 0.0
     citation_lock: Set[str] = field(default_factory=set)
-    open_changes: Set[str] = field(default_factory=set)  # "<path>|<field>" still awaiting an outcome
+    open_changes: Set[str] = field(default_factory=set)  # "<path>|<field>" proposed or in flight
+    in_flight: Set[str] = field(default_factory=set)  # "<path>|<field>" applied, not seen live yet
 
     def cap(self, n: int) -> int:
         """Apply --limit on top of a lane's daily cap."""
@@ -74,6 +75,33 @@ class Ctx:
         page still looks untouched to the next run.
         """
         return f"{path}|{field_name}" in self.open_changes
+
+    def change_in_flight(self, path: str, field_name: str) -> bool:
+        """Applied but not yet observed on the live page."""
+        return f"{path}|{field_name}" in self.in_flight
+
+    def work_is_blocked(self, path: str, field_name: str, can_apply: bool) -> bool:
+        """Is queued work standing in the way of doing this now?
+
+        Two very different states used to be one check, and conflating them
+        cost the loop 35 pages.
+
+        `verification_pending` always blocks: the value is in the override
+        row but has not been seen on the live page, so the page still looks
+        untouched and any lane would redo it.
+
+        `proposed` blocks a second PROPOSAL, which is the whole reason the
+        guard exists: day one drafted ten answer blocks over seven pages and
+        paid Gemini twice for three of them. It must never block an APPLY.
+        The guard used to sit in front of the apply branch, so a page
+        proposed while its wave was shut, or during the shadow days, was
+        answered "duplicate" on every later run and the RPC was never
+        called. Nothing promotes a proposal on its own, so those pages were
+        stuck for good.
+        """
+        if self.change_in_flight(path, field_name):
+            return True
+        return not can_apply and self.has_open_change(path, field_name)
 
     def locked(self, path: str) -> bool:
         lu = self.override(path).get("locked_until")

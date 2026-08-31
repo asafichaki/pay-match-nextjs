@@ -262,31 +262,3 @@ class SmallestHonestChange(unittest.TestCase):
         out = titles.trim_title(base, "helcim vs stripe pricing", {"helcim", "stripe"}, 60)
         self.assertIsNotNone(out)
         self.assertLessEqual(len(out), 60)
-
-
-class NoPoisonedProposals(unittest.TestCase):
-    """In apply mode, a shut wave waits instead of queueing.
-
-    `changes.propose_or_apply` asks its duplicate guard before it asks
-    whether it may apply, so a page carrying an open `proposed` row is
-    answered "duplicate" on every later run and the RPC is never called. A
-    proposal written while wave A is shut would therefore block the very
-    apply it was queued for. Shadow and dry-run still propose: that is what
-    they are for, and neither can apply anything anyway.
-    """
-
-    @staticmethod
-    def guard(may_apply: bool, apply_allowed: bool) -> bool:
-        """True when the lane should skip. Mirrors the guard in batch1."""
-        return not may_apply and apply_allowed
-
-    def test_apply_mode_with_a_shut_wave_waits(self) -> None:
-        self.assertTrue(self.guard(may_apply=False, apply_allowed=True))
-
-    def test_an_open_wave_goes_through(self) -> None:
-        self.assertFalse(self.guard(may_apply=True, apply_allowed=True))
-
-    def test_shadow_and_dry_run_still_propose(self) -> None:
-        # apply_allowed() is False in both, so nothing is skipped there.
-        self.assertFalse(self.guard(may_apply=False, apply_allowed=False))
-        self.assertFalse(self.guard(may_apply=True, apply_allowed=False))

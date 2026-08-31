@@ -47,6 +47,25 @@ def existing_change(ctx: Ctx, key: str) -> Optional[Dict[str, Any]]:
     return None
 
 
+def _supersede_proposals(ctx: Ctx, kind: str, slug: str, field: str) -> None:
+    """Close any `proposed` row this apply just answered.
+
+    The apply writes its own row under the real key, so a proposal left at
+    `proposed` would keep (path, field) in the open set on every later run.
+    That no longer blocks an apply, which is the point of the fix, but it
+    would then let a lane re-apply the same field run after run with a
+    slightly reworded value: exactly the waste the open-change guard was
+    added to stop. `superseded` says what happened. It is deliberately not
+    one of the statuses the sitemap treats as landed.
+    """
+    try:
+        ctx.supa.patch("seo_changes",
+                       {"kind": kind, "slug": slug, "field": field, "status": "proposed"},
+                       {"status": "superseded"})
+    except (SupaError, TableMissing) as exc:
+        ctx.supa.warn(f"supersede {field} {kind}/{slug}: {exc}")
+
+
 def revalidate_lean(kind: str, slug: str, dry_run: bool, extra_paths: Optional[List[str]] = None) -> Dict[str, Any]:
     """POST {SITE_BASE}/api/autopilot/revalidate with lean:true."""
     secret = config.env("AUTOPILOT_SECRET")
@@ -94,11 +113,18 @@ def propose_or_apply(ctx: Ctx, kind: str, slug: str, field: str, old: Any, new: 
     # neither changes, so the same page comes back every run: day one produced
     # ten aeo_answer proposals over seven pages, three of them drafted and
     # paid for twice.
-    if ctx.has_open_change(path, field):
+    #
+    # The question is asked AFTER working out whether this call may apply,
+    # because a proposal must not block the apply it was queued for. Asking
+    # first is what left 35 shadow-day proposals unreachable: nothing
+    # promotes a proposal on its own, so those pages answered "duplicate"
+    # every run and the RPC was never called.
+    can_apply = bool(may_apply and ctx.gates.apply_allowed())
+    if ctx.work_is_blocked(path, field, can_apply):
         return "duplicate"
     record = {"kind": kind, "slug": slug, "field": field, "old": old, "new": new,
               "reason": reason, "source": source, "key": key}
-    if may_apply and ctx.gates.apply_allowed():
+    if can_apply:
         try:
             ctx.supa.apply_change(key, kind, slug, field, new, reason, source)
         except (SupaError, TableMissing) as exc:
@@ -114,7 +140,9 @@ def propose_or_apply(ctx: Ctx, kind: str, slug: str, field: str, old: Any, new: 
         except (SupaError, TableMissing):
             pass
         _register_verification(ctx, key, kind, slug, field, new)
+        _supersede_proposals(ctx, kind, slug, field)
         ctx.open_changes.add(f"{path}|{field}")
+        ctx.in_flight.add(f"{path}|{field}")
         record["status"] = "applied"
         ctx.applied.append(record)
         print(f"   APPLIED {field} {path}: {str(new)[:70]}", file=sys.stderr)
