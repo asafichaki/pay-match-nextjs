@@ -11,8 +11,12 @@ The one-morning-mail rule is about not flooding Assaf with engine noise; it
 was never a reason to mix audiences.
 
 From `seo@mypayadvisor.com` (the domain is verified in Resend), to Assaf
-and Barak, at 07:50 IL so it lands with the morning batch. Same HTML block
-the digest renderer produces, wrapped in a minimal shell.
+and Barak, at 07:50 IL so it lands with the morning batch.
+
+The body is `mail_html.render(report)`: the same report JSON, laid out as
+cards instead of the 25 flat lines the portfolio digest needs. If that
+renderer returns nothing the mail falls back to the digest block, so a
+morning is never lost to a presentation bug.
 
 Never raises: a mail failure must not fail the run, it is reported instead.
 """
@@ -27,6 +31,7 @@ from typing import Any, Dict, List, Optional
 import requests
 
 import config
+import mail_html
 
 RESEND_ENDPOINT = "https://api.resend.com/emails"
 DEFAULT_FROM = "myPayAdvisor SEO <seo@mypayadvisor.com>"
@@ -74,7 +79,8 @@ def subject_for(report: Dict[str, Any], run_date: dt.date) -> str:
     return f"myPayAdvisor SEO {day}: {mode}, {idx.get('indexed', 0)}/{idx.get('tracked', 0)} indexed"
 
 
-def build_html(state_dir: Path) -> Optional[str]:
+def legacy_html(state_dir: Path) -> Optional[str]:
+    """The portfolio-digest block in a minimal shell. Fallback only."""
     mod = _renderer()
     if mod is None:
         return None
@@ -93,6 +99,16 @@ def build_html(state_dir: Path) -> Optional[str]:
     )
 
 
+def build_html(state_dir: Path, report: Optional[Dict[str, Any]] = None) -> Optional[str]:
+    """The designed mail, with the digest block as the safety net."""
+    try:
+        html = mail_html.render(report)
+    except Exception as exc:  # noqa: BLE001  presentation must never kill the mail
+        print(f"warn: mail_html failed, falling back to the digest block: {exc}", file=sys.stderr)
+        html = None
+    return html or legacy_html(state_dir)
+
+
 def send(state_dir: Path, run_date: dt.date, dry_run: bool) -> Dict[str, Any]:
     """Send the morning mail. Returns a result dict, never raises."""
     out: Dict[str, Any] = {"sent": False}
@@ -105,7 +121,7 @@ def send(state_dir: Path, run_date: dt.date, dry_run: bool) -> Dict[str, Any]:
     except ValueError as exc:
         out["skipped"] = f"unreadable report: {exc}"
         return out
-    html = build_html(state_dir)
+    html = build_html(state_dir, report)
     if not html:
         out["skipped"] = "renderer unavailable or empty block"
         return out

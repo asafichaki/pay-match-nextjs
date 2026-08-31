@@ -212,7 +212,11 @@ class GoogleIndexLine(unittest.TestCase):
                 "health": {"ok": True, "failures": [], "worthiness": {}}, "red_lines": [],
             }
             Path(d, "report-2026-08-26.json").write_text(_json.dumps(payload), encoding="utf-8")
-            return render.render_seo_section(d)
+            # `now` is pinned to the report's own day. Without it the renderer
+            # would call the fixture stale from 2026-08-29 onwards and these
+            # assertions would start failing on a calendar date, not on a code
+            # change. That is exactly what happened.
+            return render.render_seo_section(d, now=dt.datetime(2026, 8, 26, 6, 0, tzinfo=dt.timezone.utc))
 
     def test_says_asked_not_indexed(self) -> None:
         html = self._render({"google_index": {"asked": 22, "failed": 0}})

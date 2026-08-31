@@ -74,3 +74,28 @@ class Sending(unittest.TestCase):
             out = mailer.send(Path(d), D, dry_run=True)
             self.assertFalse(out["sent"])
             self.assertEqual(out["skipped"], "dry-run")
+
+class Body(unittest.TestCase):
+    """The designed mail is the body; the digest block is only the safety net."""
+
+    def test_the_designed_renderer_is_the_body(self) -> None:
+        with tempfile.TemporaryDirectory() as d:
+            html = mailer.build_html(Path(d), base(date="2026-08-27", red_lines=["sitemap 500"]))
+            self.assertIn("Needs a human", html)
+            self.assertIn("sitemap 500", html)
+
+    def test_a_broken_renderer_falls_back_instead_of_losing_the_morning(self) -> None:
+        import mail_html
+
+        original = mail_html.render
+        mail_html.render = lambda report: (_ for _ in ()).throw(RuntimeError("boom"))
+        try:
+            with tempfile.TemporaryDirectory() as d:
+                html = mailer.build_html(Path(d), base())
+        finally:
+            mail_html.render = original
+        # No report file in the state dir, so the fallback reports the outage
+        # rather than pretending the loop ran.
+        self.assertIsNotNone(html)
+        self.assertIn("myPayAdvisor SEO", html)
+
