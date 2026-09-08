@@ -314,3 +314,27 @@ class TrafficSource(unittest.TestCase):
         block = report.traffic_block([], self.RUN, self.totals())
         self.assertEqual(block["canada"]["clicks"], 1)
         self.assertEqual(block["device_ctr"]["mobile"], 0.01)
+
+
+class DisabledSteps(unittest.TestCase):
+    """A lane switched off must say so, not look like a lane that found nothing."""
+
+    def test_off_marks_the_step_skipped_with_the_reason(self) -> None:
+        import main
+        from ctx import Ctx
+
+        ctx = Ctx.__new__(Ctx)
+        ctx.steps_disabled = {"titles_b1": "Google CTR work stopped 2026-09-08"}
+        info: dict = {}
+        self.assertTrue(main.disabled(ctx, "titles_b1", info))
+        self.assertIn("Google CTR work stopped", info["skip"])
+
+    def test_a_lane_that_is_on_is_left_alone(self) -> None:
+        import main
+        from ctx import Ctx
+
+        ctx = Ctx.__new__(Ctx)
+        ctx.steps_disabled = {"titles_b1": "off"}
+        info: dict = {}
+        self.assertFalse(main.disabled(ctx, "aeo", info))
+        self.assertNotIn("skip", info)

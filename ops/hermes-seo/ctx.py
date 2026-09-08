@@ -50,6 +50,7 @@ class Ctx:
     report_bits: Dict[str, Any] = field(default_factory=dict)
     check1_rewrite_rate: float = 0.0
     citation_lock: Set[str] = field(default_factory=set)
+    steps_disabled: Dict[str, str] = field(default_factory=dict)
     open_changes: Set[str] = field(default_factory=set)  # "<path>|<field>" proposed or in flight
     in_flight: Set[str] = field(default_factory=set)  # "<path>|<field>" applied, not seen live yet
 

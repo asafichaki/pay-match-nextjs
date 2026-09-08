@@ -150,6 +150,22 @@ def load_shared(ctx: Ctx, with_gsc: bool = True) -> None:
     lock = ctx.supa.setting("citation_lock", {}) or {}
     ctx.citation_lock = set(lock.get("pages", []))
     ctx.check1_rewrite_rate = float(ctx.supa.setting("check1_rewrite_rate", 0.0) or 0.0)
+    # `seo_settings['steps_disabled']` = {"steps": ["titles_b1"], "reason": "..."}.
+    # A lane the business has stopped paying for should stop running without a
+    # deploy, and should say in the mail that it was turned off rather than
+    # quietly producing nothing. Reversible by clearing the row.
+    off = ctx.supa.setting("steps_disabled", {}) or {}
+    reason = str(off.get("reason") or "disabled in seo_settings.steps_disabled")
+    ctx.steps_disabled = {str(n): reason for n in (off.get("steps") or [])}
+
+
+def disabled(ctx: Ctx, name: str, info: Dict[str, Any]) -> bool:
+    """True when this lane is switched off, and marks the step skipped."""
+    reason = ctx.steps_disabled.get(name)
+    if reason:
+        info["skip"] = f"off: {reason}"
+        return True
+    return False
 
 
 # ---------------------------------------------------------------- steps
@@ -333,17 +349,21 @@ def cmd_daily(args: argparse.Namespace) -> int:
     with ctx.run.step("indexnow") as info:
         step_indexnow(ctx, info)
     with ctx.run.step("titles_b1") as info:
-        step_titles(ctx, info)
+        if not disabled(ctx, "titles_b1", info):
+            step_titles(ctx, info)
     with ctx.run.step("titles_llm") as info:
-        titles_mod.batch2(ctx, info)
+        if not disabled(ctx, "titles_llm", info):
+            titles_mod.batch2(ctx, info)
     with ctx.run.step("verify") as info:
         res = changes.verify_pending(ctx)
         ctx.report_bits["verification"] = res
         info["note"] = f"{res['pending']} pending, {len(res['verified'])} verified, {len(res['stalled'])} stalled"
     with ctx.run.step("links") as info:
-        step_links(ctx, info)
+        if not disabled(ctx, "links", info):
+            step_links(ctx, info)
     with ctx.run.step("aeo") as info:
-        aeo.run(ctx, info)
+        if not disabled(ctx, "aeo", info):
+            aeo.run(ctx, info)
     with ctx.run.step("measure") as info:
         measure_mod.run(ctx, info)
     with ctx.run.step("health") as info:
