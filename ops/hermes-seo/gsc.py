@@ -100,11 +100,32 @@ class Gsc:
     def pull_page_device_country(self, start: dt.date, end: dt.date) -> List[Dict[str, Any]]:
         return self.search_analytics(start, end, ["date", "page", "device", "country"])
 
+    def pull_date_device_country(self, start: dt.date, end: dt.date) -> List[Dict[str, Any]]:
+        """Site totals. The `page` dimension is deliberately absent.
+
+        Search Console drops a row entirely when it cannot show the query
+        behind it, and on this property that is most of the traffic. Measured
+        over 2026-08-09..09-05, the same window returns:
+
+            date                        80 clicks   38,635 impressions
+            date + device               80 clicks   38,635 impressions
+            date + device + country     80 clicks   38,635 impressions
+            date + page + device + country   7 clicks   20,457 impressions
+
+        So `page` is the dimension that costs 91% of the clicks, and every
+        grain without it is exact. `seo_metrics` is page-grained by necessity
+        and stays that way for per-page work; the site totals the report and
+        the mail quote come from here instead, and they match what Search
+        Console shows on screen.
+        """
+        return self.search_analytics(start, end, ["date", "device", "country"])
+
     def pull_date_page_query(self, start: dt.date, end: dt.date) -> List[Dict[str, Any]]:
         return self.search_analytics(start, end, ["date", "page", "query"])
 
     def pull_query_page(self, start: dt.date, end: dt.date) -> List[Dict[str, Any]]:
         return self.search_analytics(start, end, ["query", "page"])
+
 
     # ------------------------------------------------------ inspection
     def inspect(self, url: str) -> Dict[str, Any]:
@@ -244,3 +265,41 @@ def page_stats(idx: Dict[str, List[Dict[str, Any]]], path: str) -> Dict[str, Any
 
 def slugify_query(q: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", q.lower()).strip("-")
+
+
+def traffic_totals(rows: List[Dict[str, Any]], start: dt.date, end: dt.date,
+                   run_date: dt.date, bot_share: Optional[float] = None) -> Dict[str, Any]:
+    """Compact `seo_settings['traffic_totals']` payload.
+
+    Countries collapse to `can` and `oth` because Canada is the only one the
+    report names, and keeping all of them turns a 300 row blob into a 17,000
+    row one for nothing.
+    """
+    agg: Dict[Tuple[str, str, str], List[int]] = {}
+    for r in rows:
+        country = (r.get("country") or "").lower()
+        key = (str(r.get("date"))[:10], (r.get("device") or "").lower(),
+               country if country == "can" else "oth")
+        cell = agg.setdefault(key, [0, 0])
+        cell[0] += int(r.get("clicks") or 0)
+        cell[1] += int(r.get("impressions") or 0)
+    return {
+        "pulled_at": run_date.isoformat(),
+        "start": start.isoformat(),
+        "end": end.isoformat(),
+        "grain": "date+device+country",
+        "bot_share_28d": round(bot_share, 4) if bot_share is not None else None,
+        "rows": [[d, dev, c, v[0], v[1]] for (d, dev, c), v in sorted(agg.items())],
+    }
+
+
+def totals_rows(setting: Optional[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """`traffic_totals` back into the row shape `report._sum` already reads."""
+    out: List[Dict[str, Any]] = []
+    for row in (setting or {}).get("rows", []) or []:
+        if not isinstance(row, (list, tuple)) or len(row) < 5:
+            continue
+        out.append({"date": row[0], "device": row[1], "country": row[2],
+                    "clicks": int(row[3] or 0), "impressions": int(row[4] or 0),
+                    "bot_impressions": 0})
+    return out

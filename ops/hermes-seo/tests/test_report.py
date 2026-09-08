@@ -260,3 +260,57 @@ class GoogleIndexPersistence(unittest.TestCase):
         supa = self.FakeSupa({"asked": 1, "date": "2026-08-26"})
         out = report.index_block(supa, {}, dt.date(2026, 8, 26), {"google_index": {"asked": 60}})
         self.assertEqual(out["google_index"]["asked"], 60)
+
+
+class TrafficSource(unittest.TestCase):
+    """The traffic block must quote Search Console, not the page grain.
+
+    `seo_metrics` is keyed by page, and Search Console drops a page row whenever
+    it will not name the query behind it. On this property that is most of the
+    traffic: the window 2026-08-09..09-05 returns 80 clicks at the date grain
+    and 7 at the date+page+device+country grain. The mail quoted the second one
+    for two weeks and read as if the site had died.
+    """
+
+    RUN = dt.date(2026, 9, 8)
+
+    def totals(self) -> dict:
+        # d3 is 09-05; two days inside the 7d window, one outside it.
+        return {"rows": [
+            ["2026-09-05", "desktop", "oth", 3, 400],
+            ["2026-09-05", "mobile", "can", 1, 100],
+            ["2026-09-04", "desktop", "oth", 2, 500],
+            ["2026-08-01", "desktop", "oth", 40, 9000],
+        ], "bot_share_28d": 0.48}
+
+    def test_site_totals_win_over_the_page_grain(self) -> None:
+        metrics = [{"date": "2026-09-05", "page": "/a", "device": "desktop", "country": "usa",
+                    "clicks": 0, "impressions": 12, "bot_impressions": 0}]
+        block = report.traffic_block(metrics, self.RUN, self.totals())
+        self.assertEqual(block["source"], "site_totals")
+        self.assertEqual(block["d3"]["clicks"], 4)
+        self.assertEqual(block["d3"]["impressions"], 500)
+        self.assertEqual(block["w7"]["clicks"], 6)
+        self.assertEqual(block["bot_share_28d"], 0.48)
+
+    def test_falls_back_and_says_so(self) -> None:
+        metrics = [{"date": "2026-09-05", "page": "/a", "device": "desktop", "country": "usa",
+                    "clicks": 1, "impressions": 12, "bot_impressions": 0}]
+        block = report.traffic_block(metrics, self.RUN, None)
+        self.assertEqual(block["source"], "page_metrics")
+        self.assertEqual(block["d3"]["clicks"], 1)
+
+    def test_ctr_divides_by_impressions_not_by_the_human_subset(self) -> None:
+        rows = [{"date": "2026-09-05", "device": "desktop", "country": "usa",
+                 "clicks": 1, "impressions": 1000, "bot_impressions": 900}]
+        block = report.traffic_block([], self.RUN, {"rows": [["2026-09-05", "desktop", "oth", 1, 1000]]})
+        self.assertEqual(block["d3"]["ctr"], 0.001)
+        # and the same on the fallback path, where bot_impressions exist
+        legacy = report.traffic_block(rows, self.RUN, None)
+        self.assertEqual(legacy["d3"]["ctr"], 0.001)
+        self.assertEqual(legacy["d3"]["human_impressions"], 100)
+
+    def test_canada_and_device_still_filter(self) -> None:
+        block = report.traffic_block([], self.RUN, self.totals())
+        self.assertEqual(block["canada"]["clicks"], 1)
+        self.assertEqual(block["device_ctr"]["mobile"], 0.01)

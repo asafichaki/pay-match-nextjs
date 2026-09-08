@@ -46,20 +46,49 @@ def _sum(rows: List[Dict[str, Any]], a: dt.date, b: dt.date, country: Optional[s
         impr += int(r.get("impressions") or 0)
         bots += int(r.get("bot_impressions") or 0)
     human = max(0, impr - bots)
+    # CTR divides by impressions, full stop. It used to divide by the
+    # bot-filtered subset, which inflated the figure against the one Search
+    # Console shows and made the two impossible to reconcile.
     return {"clicks": clicks, "impressions": impr, "human_impressions": human,
-            "ctr": round(clicks / human, 4) if human else 0.0}
+            "ctr": round(clicks / impr, 4) if impr else 0.0}
 
 
-def traffic_block(metrics: List[Dict[str, Any]], run_date: dt.date) -> Dict[str, Any]:
+def traffic_block(metrics: List[Dict[str, Any]], run_date: dt.date,
+                  totals: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """Site traffic for the report and the mail.
+
+    Reads `seo_settings['traffic_totals']` when the daily run has stored it.
+    Those rows come from a Search Console pull with no `page` dimension and
+    are exact; the `seo_metrics` fallback is page-grained, and on this
+    property that grain is missing about 91% of the clicks to query
+    anonymisation. The fallback only exists so a run before the first totals
+    pull still renders, and `source` says which one produced the numbers.
+    """
+    rows = gsc_mod.totals_rows(totals)
+    source = "site_totals"
+    if not rows:
+        rows, source = metrics, "page_metrics"
     w = gsc_mod.windows(run_date)
     d3 = run_date - dt.timedelta(days=3)
+
+    def win(*args, **kw) -> Dict[str, Any]:
+        out = _sum(rows, *args, **kw)
+        if source == "site_totals":
+            # No query grain here, so there is no bot split to report. Leaving
+            # the key at impressions-minus-nothing would read as a filtered
+            # number that nothing filtered.
+            out["human_impressions"] = None
+        return out
+
     return {
-        "d3": {"date": d3.isoformat(), **_sum(metrics, d3, d3)},
-        "w7": {**_sum(metrics, *w["7d"]), "prior": _sum(metrics, *w["prior7d"])},
-        "w28": {**_sum(metrics, *w["28d"]), "prior": _sum(metrics, *w["prior28d"])},
-        "device_ctr": {"desktop": _sum(metrics, *w["7d"], device="desktop")["ctr"],
-                       "mobile": _sum(metrics, *w["7d"], device="mobile")["ctr"]},
-        "canada": _sum(metrics, *w["28d"], country="can"),
+        "source": source,
+        "bot_share_28d": (totals or {}).get("bot_share_28d"),
+        "d3": {"date": d3.isoformat(), **win(d3, d3)},
+        "w7": {**win(*w["7d"]), "prior": win(*w["prior7d"])},
+        "w28": {**win(*w["28d"]), "prior": win(*w["prior28d"])},
+        "device_ctr": {"desktop": win(*w["7d"], device="desktop")["ctr"],
+                       "mobile": win(*w["7d"], device="mobile")["ctr"]},
+        "canada": win(*w["28d"], country="can"),
     }
 
 
@@ -188,7 +217,8 @@ def build(supa: Supa, run_date: dt.date, run_summary: Optional[Dict[str, Any]], 
         "run": {"status": run_summary.get("status"), "steps": {n: s.get("status") for n, s in (run_summary.get("steps") or {}).items()},
                 "spend_usd": run_summary.get("spend_usd"), "started_at": run_summary.get("started_at"),
                 "finished_at": run_summary.get("finished_at"), "notes": run_summary.get("notes", [])},
-        "traffic": traffic_block(metrics, run_date),
+        "traffic": traffic_block(metrics, run_date,
+                                 bits.get("traffic_totals") or supa.setting("traffic_totals", {})),
         "index": index_block(supa, sitemap, run_date, bits),
         "changes": changes_block(supa, run_date, bits),
         "cohort": bits.get("cohort") or {"available": False, "reason": "no measurement this run"},

@@ -301,26 +301,36 @@ def traffic_block(report: Dict[str, Any]) -> str:
     prior7 = w7.get("prior") or {}
     dev, ca = t.get("device_ctr") or {}, t.get("canada") or {}
     clicks_delta, clicks_colour = delta(w7.get("clicks"), prior7.get("clicks"))
-    impr_delta, impr_colour = delta(w7.get("human_impressions"), prior7.get("human_impressions"))
+    impr_delta, impr_colour = delta(w7.get("impressions"), prior7.get("impressions"))
     ctr_delta, ctr_colour = delta(w7.get("ctr"), prior7.get("ctr"))
     body = kpis([
         ("clicks 7d", num(w7.get("clicks")), clicks_delta, clicks_colour),
-        ("impressions 7d", num(w7.get("human_impressions")), impr_delta, impr_colour),
+        ("impressions 7d", num(w7.get("impressions")), impr_delta, impr_colour),
         ("CTR 7d", pct(w7.get("ctr")), ctr_delta, ctr_colour),
     ])
     body += '<div style="height:16px;line-height:16px;font-size:0;">&nbsp;</div>'
     body += facts([
         (f"Last final day ({short_date(d3.get('date'))})",
-         f"{num(d3.get('clicks'))} clicks, {num(d3.get('human_impressions'))} impressions, "
+         f"{num(d3.get('clicks'))} clicks, {num(d3.get('impressions'))} impressions, "
          f"CTR {pct(d3.get('ctr'))}"),
         ("28 days",
-         f"{num(w28.get('clicks'))} clicks, {num(w28.get('human_impressions'))} impressions, "
+         f"{num(w28.get('clicks'))} clicks, {num(w28.get('impressions'))} impressions, "
          f"CTR {pct(w28.get('ctr'))}"),
         ("CTR by device", f"desktop {pct(dev.get('desktop'))}, mobile {pct(dev.get('mobile'))}"),
         ("Canada, 28d", f"{num(ca.get('clicks'))} clicks, {num(ca.get('impressions'))} impressions"),
     ])
-    body += note("Human impressions are Search Console impressions minus the queries the loop "
-                 "classifies as bot traffic, so they read lower than the Search Console screen.")
+    bot = t.get("bot_share_28d")
+    if t.get("source") == "page_metrics":
+        body += note("Fallback numbers: the site totals were not pulled this run, so these come "
+                     "from the per-page grain, which Search Console withholds most of. Treat them "
+                     "as a floor, not a reading.")
+    else:
+        tail = ""
+        if isinstance(bot, (int, float)):
+            tail = (f" Of the queries Search Console will name, {pct(bot)} look like scrapers, "
+                    "which is a share of the visible subset and not of the total.")
+        body += note("These are Search Console's own clicks, impressions and CTR, so they match "
+                     "the screen and the monthly Google mail." + tail)
     return section("Traffic", body, note="Search Console, final data to D-3")
 
 

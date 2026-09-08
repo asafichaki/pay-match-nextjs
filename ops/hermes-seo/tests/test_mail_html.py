@@ -19,14 +19,19 @@ def report(**over):
         "run": {"status": "ok", "steps": {"gsc": "ok", "titles_llm": "skip"},
                 "spend_usd": 0.0072, "started_at": "2026-08-31T03:15:03+00:00",
                 "finished_at": "2026-08-31T03:22:56+00:00", "notes": []},
-        "traffic": {"d3": {"date": "2026-08-28", "clicks": 0, "impressions": 579,
-                           "human_impressions": 333, "ctr": 0.0},
-                    "w7": {"clicks": 1, "human_impressions": 2628, "ctr": 0.0004,
-                           "prior": {"clicks": 3, "human_impressions": 2205, "ctr": 0.0014}},
-                    "w28": {"clicks": 4, "human_impressions": 4833, "ctr": 0.0008,
-                            "prior": {"clicks": 0, "human_impressions": 0}},
-                    "device_ctr": {"desktop": 0.0, "mobile": 0.0023},
-                    "canada": {"clicks": 2, "impressions": 373}},
+        "traffic": {"source": "site_totals", "bot_share_28d": 0.4826,
+                    "d3": {"date": "2026-08-28", "clicks": 0, "impressions": 1148,
+                           "human_impressions": 594, "ctr": 0.0},
+                    "w7": {"clicks": 26, "impressions": 8561, "human_impressions": 4430,
+                           "ctr": 0.003,
+                           "prior": {"clicks": 26, "impressions": 8759,
+                                     "human_impressions": 4532, "ctr": 0.003}},
+                    "w28": {"clicks": 93, "impressions": 41756, "human_impressions": 21605,
+                            "ctr": 0.0022,
+                            "prior": {"clicks": 79, "impressions": 31131,
+                                      "human_impressions": 16108, "ctr": 0.0025}},
+                    "device_ctr": {"desktop": 0.0028, "mobile": 0.0042},
+                    "canada": {"clicks": 9, "impressions": 1851}},
         "index": {"tracked": 55, "indexed": 39, "not_indexed": 16, "unknown": 0,
                   "newly_indexed": [], "pillar": {"state": "Crawled - currently not indexed",
                                                   "last_crawl": "2026-05-16T08:09:59+00:00",
@@ -63,7 +68,7 @@ class Renders(unittest.TestCase):
 
     def test_the_numbers_reach_the_page(self) -> None:
         html = mail_html.render(report())
-        for needle in ("Monday, 31 August 2026", "2,628", "39", "4,833", "1d874b9",
+        for needle in ("Monday, 31 August 2026", "8,561", "39", "41,756", "1d874b9",
                        "glossary/vamp-ratio", "11 of 60"):
             self.assertIn(needle, html, needle)
 

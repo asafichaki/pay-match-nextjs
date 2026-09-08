@@ -183,8 +183,24 @@ def step_gsc(ctx: Ctx, info: Dict[str, Any]) -> None:
     fresh = {(r["date"], r["page"], r["device"], r["country"]): r for r in rows}
     ctx.metrics = [m for m in ctx.metrics if (m["date"], m["page"], m["device"], m["country"]) not in fresh] + rows
     human = gsc_mod.human_impr(qp_rows, ctx.bot_queries)
+    # Site totals, pulled without the `page` dimension because that is the one
+    # that makes Search Console withhold most of the rows. The window covers
+    # the widest one the report quotes (prior28d) so the mail never depends on
+    # what previous runs happened to accumulate in seo_metrics.
+    total_impr = sum(int(r.get("impressions") or 0) for r in qp_rows) or 0
+    bot_share = (1 - human / total_impr) if total_impr else None
+    tot_start, tot_end = w["prior28d"][0], w["28d"][1]
+    tot_rows = client.pull_date_device_country(tot_start, tot_end)
+    totals = gsc_mod.traffic_totals(tot_rows, tot_start, tot_end, ctx.run_date, bot_share)
+    if not ctx.dry_run:
+        ctx.supa.set_setting("traffic_totals", totals)
+    else:
+        log(f"dry-run: traffic_totals of {len(totals['rows'])} rows not stored")
+    ctx.report_bits["traffic_totals"] = totals
+    site_clicks = sum(r[3] for r in totals["rows"])
     info["note"] = (f"{len(page_rows)} page-day rows, {len(qp_rows)} query-page rows, {len(ctx.bot_queries)} bot queries, "
-                    f"human impr 28d {human}, {client.calls} calls, {written} rows written")
+                    f"human impr 28d {human}, site clicks {site_clicks} over {len(totals['rows'])} total rows, "
+                    f"{client.calls} calls, {written} rows written")
     client.submit_sitemap(dry_run=ctx.dry_run)
 
 
