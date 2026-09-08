@@ -32,16 +32,22 @@ import { isValidPhone, normalizePhone, PHONE_INVALID_MESSAGE } from "@/lib/phone
 const schema = z.object({
   fullName: z.string().min(1).max(120),
   email: z.string().email().max(320),
-  // Required since 2026-08-29. It used to be collected on an optional step
-  // AFTER the lead was saved, under the label "only if you'd rather talk",
-  // and the result was 9 leads with 0 phone numbers. Validated here and not
-  // only in the browser, because a client-side check is a suggestion to
-  // anyone posting to the action directly.
+  // Optional again since 2026-09-08, and no longer collected on this step at
+  // all. History worth keeping, because both ends of it were wrong:
+  //   - until 2026-08-29 it sat on the optional step under the label "only if
+  //     you'd rather talk", and produced 9 leads with 0 phone numbers;
+  //   - from 2026-08-29 it was required here, before the row was written, and
+  //     produced 0 leads in 9 days.
+  // A merchant who will not type a number is still a merchant with an email.
+  // The ask now lives on step 5 (enrichSortingHatLead), which runs after the
+  // insert, so the worst case is a lead without a phone rather than no lead.
+  // Anything that does arrive here is still validated, because a client-side
+  // check is a suggestion to anyone posting to the action directly.
   phone: z
     .string()
-    .min(1)
     .max(40)
-    .refine(isValidPhone, { message: PHONE_INVALID_MESSAGE }),
+    .refine((v) => !v || isValidPhone(v), { message: PHONE_INVALID_MESSAGE })
+    .optional(),
   businessType: z.enum([
     "physical_goods",
     "saas_digital",
@@ -134,7 +140,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
     const insertPayload: Record<string, unknown> = {
       full_name: data.fullName,
       email: data.email,
-      phone: normalizePhone(data.phone),
+      phone: data.phone ? normalizePhone(data.phone) : null,
       monthly_volume: data.volumeTier,
       business_type: data.businessType,
       industry: BUSINESS_TYPE_LABELS[data.businessType],
@@ -166,7 +172,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       const legacyPayload: Record<string, unknown> = {
         full_name: data.fullName,
         email: data.email,
-        phone: normalizePhone(data.phone),
+        phone: data.phone ? normalizePhone(data.phone) : null,
         monthly_volume: data.volumeTier,
         business_type: data.businessType,
         industry: BUSINESS_TYPE_LABELS[data.businessType],
@@ -190,7 +196,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
         payload: {
           full_name: data.fullName,
           email: data.email,
-          phone: normalizePhone(data.phone),
+          phone: data.phone ? normalizePhone(data.phone) : null,
           business_type: data.businessType,
           volume_tier: data.volumeTier,
           pain_point: data.painPoint,
@@ -210,11 +216,11 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       lead: {
         email: data.email,
         name: data.fullName,
-        // The whole point of making this field required on 2026-08-29 was that
-        // Barak reads the alert and calls. It was saved to the row but never
-        // handed to the notifier, so the subject and the tel: link stayed
-        // empty and the first lead with a number looked like the nine without.
-        phone: normalizePhone(data.phone),
+        // Usually null now that the number is asked on step 5: the enrich
+        // action sends its own alert once it arrives. Still passed, because a
+        // number posted directly to this action must reach the subject line
+        // and the tel: link the same way.
+        phone: data.phone ? normalizePhone(data.phone) : null,
         business_type: BUSINESS_TYPE_LABELS[data.businessType],
       },
       funnel: {
@@ -297,6 +303,8 @@ async function newestLeadId(email: string): Promise<string | null> {
 
 const enrichSchema = z.object({
   leadId: z.string().uuid(),
+  // Validated in the body rather than here, so a malformed number costs the
+  // number and still lets the company name and provider through.
   phone: z.string().max(40).optional(),
   companyName: z.string().max(160).optional(),
   currentProvider: z.string().max(120).optional(),
@@ -322,7 +330,11 @@ export async function enrichSortingHatLead(input: SortingHatEnrichPayload) {
     const parsed = enrichSchema.safeParse(input);
     if (!parsed.success) return { success: false as const };
 
-    const phone = parsed.data.phone?.trim() || null;
+    // Normalised here for the same reason the insert does it: this string is
+    // what the alert turns into a tel: link. An unusable number is dropped
+    // rather than stored, so the sheet never shows a number nobody can dial.
+    const rawPhone = parsed.data.phone?.trim() || "";
+    const phone = rawPhone && isValidPhone(rawPhone) ? normalizePhone(rawPhone) : null;
     const companyName = parsed.data.companyName?.trim() || null;
     const currentProvider = parsed.data.currentProvider?.trim() || null;
     if (!phone && !companyName && !currentProvider) {

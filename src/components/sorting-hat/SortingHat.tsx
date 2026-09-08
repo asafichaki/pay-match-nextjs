@@ -39,7 +39,8 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
   const emailFocusedRef = useRef(false);
 
   // Step 5 state. The lead is already saved by the time any of this is filled,
-  // so everything here is optional and skipping costs us nothing.
+  // so everything here is optional and skipping costs us nothing. The phone
+  // lives here on purpose: see the note on `submit` below.
   const [leadId, setLeadId] = useState<string | null>(null);
   const [thankYouSlug, setThankYouSlug] = useState<string | null>(null);
   const [phone, setPhone] = useState("");
@@ -78,18 +79,17 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       setError("Please add your name and email.");
       return;
     }
-    // Checked here so the message lands next to the field instead of after a
-    // round trip. The server checks it again; this is only for the typing.
-    if (!isValidPhone(phone)) {
-      setError(PHONE_INVALID_MESSAGE);
-      track("sh_submit_error", { message: "phone_invalid" });
-      return;
-    }
+    // The phone is NOT collected here and NOT required to save the lead.
+    // It was required on this step between 2026-08-29 and 2026-09-08, which
+    // meant anyone unwilling to type a number was never written to the
+    // database at all, not even their email. Zero leads landed in the nine
+    // days that gate was live. It is asked on step 5 instead, which runs
+    // after the row exists, so refusing it now costs a phone number rather
+    // than the whole lead.
     startTransition(async () => {
       const result = await submitSortingHatLead({
         fullName: fullName.trim(),
         email: email.trim(),
-        phone: phone.trim(),
         businessType,
         volumeTier,
         painPoint,
@@ -127,12 +127,19 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       finish(slug);
       return;
     }
+    // Only blocks on a number that was actually typed and cannot be dialled.
+    // An empty box is a valid answer here and falls through to finish().
+    if (phone.trim() && !isValidPhone(phone)) {
+      setError(PHONE_INVALID_MESSAGE);
+      return;
+    }
     const payload = {
       leadId,
+      phone: phone.trim(),
       companyName: companyName.trim(),
       currentProvider: currentProvider.trim(),
     };
-    if (!payload.companyName && !payload.currentProvider) {
+    if (!payload.phone && !payload.companyName && !payload.currentProvider) {
       track("sh_details_skipped", { reason: "empty" });
       finish(slug);
       return;
@@ -144,6 +151,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       track("sh_details_submitted", {
         ok: result.success,
         fields: [
+          payload.phone && "phone",
           payload.companyName && "company",
           payload.currentProvider && "provider",
         ]
@@ -313,30 +321,6 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
                 className="mt-1"
               />
             </div>
-            <div>
-              <Label htmlFor="sh-phone">Mobile number</Label>
-              <Input
-                id="sh-phone"
-                type="tel"
-                value={phone}
-                onChange={(e) => {
-                  setPhone(e.target.value);
-                  if (error === PHONE_INVALID_MESSAGE) setError(null);
-                }}
-                placeholder="(415) 555-0134"
-                autoComplete="tel"
-                inputMode="tel"
-                required
-                aria-describedby="sh-phone-why"
-                className="mt-1"
-              />
-              <p id="sh-phone-why" className="text-xs text-muted-foreground mt-1.5">
-                Barak reads the shortlist before he sends it, and the questions
-                that matter (your reserve, your approval odds) take two minutes
-                on the phone and four emails in writing. He calls once. No call
-                centre, and no one else gets this number.
-              </p>
-            </div>
             {/* Honeypot */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
               <input
@@ -379,14 +363,36 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
           <div className="flex items-center gap-2 mb-2">
             <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
             <h2 className="text-2xl font-semibold text-foreground">
-              You&apos;re in. One optional question.
+              You&apos;re in. Want Barak to just call you?
             </h2>
           </div>
           <p className="text-sm text-muted-foreground mb-6">
-            Your shortlist is on its way either way. Answer these and Barak can
-            skip the discovery questions and come back with something specific.
+            Your shortlist is on its way either way. These are optional, and
+            they are what let Barak open with an answer instead of a question.
           </p>
           <div className="space-y-4">
+            <div>
+              <Label htmlFor="sh-phone">Mobile number</Label>
+              <Input
+                id="sh-phone"
+                type="tel"
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                  if (error === PHONE_INVALID_MESSAGE) setError(null);
+                }}
+                placeholder="(415) 555-0134"
+                autoComplete="tel"
+                inputMode="tel"
+                aria-describedby="sh-phone-why"
+                className="mt-1"
+              />
+              <p id="sh-phone-why" className="text-xs text-muted-foreground mt-1.5">
+                The questions that matter (your reserve, your approval odds)
+                take two minutes on the phone and four emails in writing. He
+                calls once. No call centre, and no one else gets this number.
+              </p>
+            </div>
             <div>
               <Label htmlFor="sh-provider">Who processes your payments today?</Label>
               <Input
@@ -417,6 +423,9 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
                 className="mt-1"
               />
             </div>
+            {error && (
+              <p className="text-sm text-destructive">{error}</p>
+            )}
             <div className="flex items-center justify-between pt-2">
               <Button
                 type="button"
@@ -442,8 +451,8 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
               </Button>
             </div>
             <p className="text-xs text-muted-foreground pt-2">
-              Both optional. Knowing who you process with today is what lets
-              Barak open with a number instead of a question.
+              All optional. A number gets you a two minute call instead of a
+              four email thread, and nothing here is shared with anyone else.
             </p>
           </div>
         </div>

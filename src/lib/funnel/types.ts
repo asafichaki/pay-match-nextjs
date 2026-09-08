@@ -46,8 +46,12 @@ export type FunnelState =
 export interface SortingHatPayload {
   fullName: string;
   email: string;
-  /** Required since 2026-08-29. See the schema in actions/sorting-hat.ts. */
-  phone: string;
+  /**
+   * Optional. Asked on step 5 (SortingHatEnrichPayload), after the row exists.
+   * Required on this payload between 2026-08-29 and 2026-09-08, which cost
+   * every lead that would not type one. See the schema in actions/sorting-hat.ts.
+   */
+  phone?: string;
   businessType: BusinessType;
   volumeTier: VolumeTier;
   painPoint: PainPoint;
