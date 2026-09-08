@@ -1,5 +1,6 @@
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import { REDIRECTED_INSIGHT_SLUGS } from "@/lib/insights/redirected-slugs";
+import { noindexedKeys } from "@/lib/seo/overrides";
 import { REDIRECTED_COMPARISON_SLUGS } from "@/lib/comparisons/redirected-slugs";
 import { GLOSSARY } from "@/lib/glossary/terms";
 import { LASTMOD_BUILD_DATE, routeLastmod } from "@/lib/seo/lastmod";
@@ -182,6 +183,13 @@ export async function GET() {
   if (!comparisonSlugs.length || !insightSlugs.length) {
     return unavailable("seo manifest missing or empty");
   }
+  // Pages the override layer takes out of the index. Listing a noindex URL
+  // asks Google to fetch it and then tells it to ignore what it fetched.
+  // Empty when the read fails, so a Supabase blip cannot silently shrink the
+  // sitemap; the check below still guards a wholesale collapse.
+  const noindexed = await noindexedKeys();
+  const liveComparisons = comparisonSlugs.filter((s) => !noindexed.has(`comparisons/${s}`));
+  const liveInsights = insightSlugs.filter((s) => !noindexed.has(`insights/${s}`));
 
   let roundups: Awaited<ReturnType<typeof fetchRecentWeekRoundups>>;
   let autopilotArticles: Awaited<ReturnType<typeof fetchAutopilotArticles>>;
@@ -231,10 +239,10 @@ export async function GET() {
   add(`${SITE}/pulse`, page("/pulse", "pulse"), "daily", 0.85);
 
   // Static comparison + insight shells (per-file git lastmod)
-  for (const s of comparisonSlugs) {
+  for (const s of liveComparisons) {
     add(`${SITE}/comparisons/${s}`, lastmodFor(routeLastmod(`/comparisons/${s}`), "comparisons", s), "monthly", SLUG_PRIORITY[s] ?? 0.85);
   }
-  for (const s of insightSlugs) {
+  for (const s of liveInsights) {
     add(`${SITE}/insights/${s}`, lastmodFor(routeLastmod(`/insights/${s}`), "insights", s), "monthly", SLUG_PRIORITY[s] ?? 0.8);
   }
 
@@ -253,6 +261,7 @@ export async function GET() {
   // DB-driven autopilot articles (skipping any slug that now 308s)
   for (const a of autopilotArticles) {
     if (a.kind === "insights" && REDIRECTED_INSIGHT_SLUGS.has(a.slug)) continue;
+    if (noindexed.has(`${a.kind}/${a.slug}`)) continue;
     if (a.kind === "comparisons" && REDIRECTED_COMPARISON_SLUGS.has(a.slug)) continue;
     add(
       `${SITE}/${a.kind}/${a.slug}`,

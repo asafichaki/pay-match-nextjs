@@ -120,6 +120,36 @@ export const getSeoOverride = cache(
   },
 );
 
+/**
+ * Every `kind/slug` the override layer marks noindex.
+ *
+ * The page itself already drops `index` from its metadata through
+ * `withSeoOverride`, but a URL that is noindex and still listed in the
+ * sitemap is a URL we are asking Google to fetch and then told to ignore.
+ * The sitemap and the hub listings read this so the row stays the only
+ * place a page is taken out of the index.
+ *
+ * Empty on any failure, which keeps a page in the sitemap rather than
+ * silently shrinking it when Supabase is unreachable.
+ */
+export const noindexedKeys = cache(async (): Promise<Set<string>> => {
+  try {
+    const sb = getAdminSupabase();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, error } = await (sb as any)
+      .from("seo_overrides")
+      .select("kind,slug,noindex")
+      .eq("noindex", true)
+      .limit(2000);
+    if (error || !data) return new Set<string>();
+    return new Set(
+      (data as { kind: string; slug: string }[]).map((r) => `${r.kind}/${r.slug}`),
+    );
+  } catch {
+    return new Set<string>();
+  }
+});
+
 type TitleShape = NonNullable<Metadata["title"]>;
 
 /** The plain-text value of whatever title shape a page declared. */
