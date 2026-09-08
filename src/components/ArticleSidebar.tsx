@@ -13,8 +13,7 @@ interface ArticleSidebarProps {
 }
 
 const insightArticles: RelatedArticle[] = [
-  { title: "Credit Card Processing Fees Explained", href: "/insights/credit-card-processing-fees-explained" },
-  { title: "Payment Processor Fees Guide 2025", href: "/insights/payment-processor-fees-guide" },
+  { title: "Payment Processor Fees Guide", href: "/insights/payment-processor-fees-guide" },
   { title: "Best Payment Gateway for Ecommerce", href: "/insights/best-payment-gateway-ecommerce" },
   { title: "Helcim Review 2025", href: "/insights/helcim-review-2025" },
   { title: "Online vs In-Store Payments", href: "/insights/online-vs-instore-payments" },

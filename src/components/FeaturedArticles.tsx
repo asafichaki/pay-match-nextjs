@@ -12,7 +12,7 @@ const FeaturedArticles = () => {
     {
       title: "How Credit Card Processing Fees Work",
       description: "Demystify the complex world of credit card processing with our detailed breakdown.",
-      link: "/insights/credit-card-processing-fees-explained",
+      link: "/insights/payment-processor-fees-guide",
     },
     {
       title: "Best Payment Processors for 2026",

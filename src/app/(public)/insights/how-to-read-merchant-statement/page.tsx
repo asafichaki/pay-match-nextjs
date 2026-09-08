@@ -226,7 +226,7 @@ export default function HowToReadMerchantStatementPage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  Before you dive into the line items, you must understand the ecosystem. Every time you accept a credit card payment, the money you pay in fees is split between three distinct parties. As we explain in our comprehensive <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">guide to credit card processing fees</Link>, understanding this hierarchy is essential.
+                  Before you dive into the line items, you must understand the ecosystem. Every time you accept a credit card payment, the money you pay in fees is split between three distinct parties. As we explain in our comprehensive <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">guide to credit card processing fees</Link>, understanding this hierarchy is essential.
                 </p>
 
                 <p className="text-foreground leading-relaxed font-semibold">
@@ -586,7 +586,7 @@ export default function HowToReadMerchantStatementPage() {
                       <p className="font-medium text-foreground">How to Reduce Credit Card Processing Fees: Merchant Statement Audit Guide</p>
                       <p className="text-sm text-muted-foreground mt-1">Learn to audit your statement and reduce costs by 20-30%.</p>
                     </Link>
-                    <Link href="/insights/credit-card-processing-fees-explained" className="block p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
+                    <Link href="/insights/payment-processor-fees-guide" className="block p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
                       <p className="font-medium text-foreground">Credit Card Processing Fees Explained: Complete Guide (2025)</p>
                       <p className="text-sm text-muted-foreground mt-1">Deep dive into interchange, assessments, and processor markups.</p>
                     </Link>

@@ -33,7 +33,7 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
             </h1>
             {aeoAnswer}
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
-              <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> is known for radically transparent <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">interchange-plus pricing</Link>.
+              <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> is known for radically transparent <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">interchange-plus pricing</Link>.
               Stripe leads with best-in-class APIs.
               Which saves you more? Let's find out.
             </p>

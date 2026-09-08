@@ -430,7 +430,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  For a detailed breakdown of how processing fees work and strategies to reduce them, see our <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">Complete Guide to Credit Card Processing Fees</Link>.
+                  For a detailed breakdown of how processing fees work and strategies to reduce them, see our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">Complete Guide to Credit Card Processing Fees</Link>.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The 2026 Payment Processing Landscape</h3>
@@ -1037,10 +1037,6 @@ export default function HighRiskPaymentProcessingGuidePage() {
                     <Link href="/insights/gaming-merchant-account" className="group p-4 border border-border rounded-lg hover:border-primary transition-colors">
                       <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">Gaming Merchant Account: 2026 Approval Guide</h4>
                       <p className="text-sm text-muted-foreground mt-1">iGaming vs video games, which processors approve each, and what large merchants can negotiate</p>
-                    </Link>
-                    <Link href="/insights/credit-card-processing-fees-explained" className="group p-4 border border-border rounded-lg hover:border-primary transition-colors">
-                      <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">Credit Card Processing Fees Explained</h4>
-                      <p className="text-sm text-muted-foreground mt-1">Complete guide to understanding and reducing merchant fees</p>
                     </Link>
                     <Link href="/insights/payment-processor-fees-guide" className="group p-4 border border-border rounded-lg hover:border-primary transition-colors">
                       <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">Payment Processor Fees Guide</h4>

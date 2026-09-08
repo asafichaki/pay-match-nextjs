@@ -1024,7 +1024,6 @@ const integrationTypes = [
                 {[
                   { title: "Payment Processor Fees Guide", url: "/insights/payment-processor-fees-guide", desc: "Complete guide to understanding and reducing costs" },
                   { title: "Small Business Processing Guide", url: "/insights/small-business-credit-card-processing-guide", desc: "Guide to credit card processing for small businesses" },
-                  { title: "Credit Card Processing Fees Explained", url: "/insights/credit-card-processing-fees-explained", desc: "Everything about credit card processing fees" }
                 ].map((article) => (
                   <Link key={article.url} href={article.url}>
                     <Card className="p-4 h-full hover:shadow-lg transition-shadow">

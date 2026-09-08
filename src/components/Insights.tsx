@@ -85,9 +85,6 @@ const Insights = () => {
                 Explore More Resources
               </h3>
               <div className="grid sm:grid-cols-2 gap-3">
-                <Link href="/insights/credit-card-processing-fees-explained" className="text-sm text-primary hover:underline">
-                  Credit Card Processing Fees Explained
-                </Link>
                 <Link href="/insights/payment-processor-fees-guide" className="text-sm text-primary hover:underline">
                   Complete Payment Processor Fees Guide
                 </Link>

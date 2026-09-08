@@ -124,7 +124,6 @@ export default function MerchantContractCancellationGuidePage() {
   
   const relatedArticles = [
     { title: "How to Read Your Merchant Statement", href: "/insights/how-to-read-merchant-statement" },
-    { title: "Credit Card Processing Fees Explained", href: "/insights/credit-card-processing-fees-explained" },
     { title: "Merchant Statement Audit Guide", href: "/insights/merchant-statement-audit-guide" },
     { title: "Payment Processor Fees Guide", href: "/insights/payment-processor-fees-guide" },
   ];
@@ -298,7 +297,7 @@ export default function MerchantContractCancellationGuidePage() {
                 </p>
                 <ul>
                   <li>Increase your monthly statement fee from $15 to $25</li>
-                  <li>Raise your <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">interchange-plus markup</Link> from 0.25% to 0.35%</li>
+                  <li>Raise your <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">interchange-plus markup</Link> from 0.25% to 0.35%</li>
                   <li>Add a new "PCI compliance fee"</li>
                   <li>Implement a "batch processing charge"</li>
                 </ul>
@@ -560,7 +559,7 @@ export default function MerchantContractCancellationGuidePage() {
                 <p><strong>Days 5-7: Calculate the numbers</strong></p>
                 <ul>
                   <li>Determine your exact termination fee amount</li>
-                  <li>Calculate your <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">current processing costs</Link> (total fees ÷ processing volume = effective rate)</li>
+                  <li>Calculate your <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">current processing costs</Link> (total fees ÷ processing volume = effective rate)</li>
                   <li>Estimate potential savings with a better processor</li>
                   <li>Determine if paying the ETF makes financial sense</li>
                 </ul>

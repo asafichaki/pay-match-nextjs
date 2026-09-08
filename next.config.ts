@@ -31,6 +31,16 @@ const nextConfig: NextConfig = {
       { source: "/insights/lowering-merchant-account-fees-2026-pricing-cost-reduction-strategies", destination: "/insights/payment-processor-negotiation-playbook", permanent: true },
       { source: "/insights/reduce-merchant-account-fees-expert-strategies-pricing-insights-for-2026", destination: "/insights/payment-processor-negotiation-playbook", permanent: true },
 
+      // Fees consolidation 2026-09-08. Two pages carried the same H1
+      // ("Credit Card Processing Fees in 2026") and split 111 shared queries.
+      // On "credit card processing fees" Google ranked the explainer 74th with
+      // 196 impressions and the guide 3.5th with 2; on three more variants the
+      // guide ranked 1st when it was picked at all. The explainer's unique
+      // sections (fee breakdown, payment chain, card types, effective rate,
+      // hidden fees, negotiation) were merged into the guide first, so nothing
+      // is lost by sending the URL there.
+      { source: "/insights/credit-card-processing-fees-explained", destination: "/insights/payment-processor-fees-guide", permanent: true },
+
       // 1 long slug duplicating /insights/high-risk-payment-processing-guide
       { source: "/insights/high-risk-merchant-processing-account-a-2026-guide-to-lowering-fees-thriving", destination: "/insights/high-risk-payment-processing-guide", permanent: true },
 

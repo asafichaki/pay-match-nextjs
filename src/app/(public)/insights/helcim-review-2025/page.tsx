@@ -236,7 +236,7 @@ export default function HelcimReview2025Page() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Helcim uses <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">interchange-plus pricing</Link>, which means you pay the interchange rate (set by <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a>/<a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>, typically 1.5-2.5%) plus card brand fees (0.13-0.15%) plus Helcim's markup.
+                Helcim uses <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">interchange-plus pricing</Link>, which means you pay the interchange rate (set by <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a>/<a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>, typically 1.5-2.5%) plus card brand fees (0.13-0.15%) plus Helcim's markup.
               </p>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Helcim's Volume-Based Markup</h3>
@@ -526,10 +526,6 @@ export default function HelcimReview2025Page() {
             <div className="mt-16 pt-8 border-t border-border">
               <h3 className="text-xl font-semibold text-foreground mb-6">Related Articles</h3>
               <div className="grid sm:grid-cols-2 gap-4">
-                <Link href="/insights/credit-card-processing-fees-explained" className="p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
-                  <p className="font-medium text-foreground mb-1">Credit Card Processing Fees Explained</p>
-                  <p className="text-sm text-muted-foreground">Complete guide to understanding every fee you pay</p>
-                </Link>
                 <Link href="/insights/payment-processor-fees-guide" className="p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
                   <p className="font-medium text-foreground mb-1">Payment Processor Fees Guide 2025</p>
                   <p className="text-sm text-muted-foreground">How to reduce costs and choose the right processor</p>

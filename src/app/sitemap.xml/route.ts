@@ -61,7 +61,6 @@ function escapeXml(s: string): string {
 const SLUG_PRIORITY: Record<string, number> = {
   // cornerstones
   "payment-processor-fees-guide": 0.9,
-  "credit-card-processing-fees-explained": 0.9,
   "helcim-review-2025": 0.85,
   "online-vs-instore-payments": 0.85,
   "merchant-statement-audit-guide": 0.9,

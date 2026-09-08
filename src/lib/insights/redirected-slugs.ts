@@ -11,4 +11,6 @@ export const REDIRECTED_INSIGHT_SLUGS = new Set([
   "reduce-merchant-account-fees-expert-strategies-pricing-insights-for-2026",
   "high-risk-merchant-processing-account-a-2026-guide-to-lowering-fees-thriving",
   "chargeback-management-software-optimizing-merchant-profitability-in-2026",
+  // Merged into payment-processor-fees-guide 2026-09-08, see next.config.ts.
+  "credit-card-processing-fees-explained",
 ]);

@@ -103,7 +103,7 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
               <section id="pricing" className="py-10 border-b border-border">
                 <h2 className="text-2xl font-bold text-foreground mb-4">Pricing & Fees Comparison</h2>
                 <p className="text-muted-foreground mb-6">
-                  Both Square and PayPal use flat-rate pricing, making costs predictable. However, rates differ significantly between in-person and online transactions. Understanding <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">credit card processing fees</Link> is crucial.
+                  Both Square and PayPal use flat-rate pricing, making costs predictable. However, rates differ significantly between in-person and online transactions. Understanding <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">credit card processing fees</Link> is crucial.
                 </p>
                 <h3 className="text-lg font-semibold mb-4">Transaction Fees</h3>
                 <div className="overflow-x-auto -mx-4 px-4 mb-8">

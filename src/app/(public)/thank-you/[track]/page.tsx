@@ -20,8 +20,7 @@ const COPY = {
     bookHeadline: "What happens next",
     bookSub: "Barak reviews your details and emails you directly, usually within one business day. Reply with your latest statement and he'll tell you what your effective rate actually is and what to negotiate.",
     readMoreLinks: [
-      { href: "/insights/payment-processor-fees-guide", label: "Real 2026 rates from 14 processors" },
-      { href: "/insights/credit-card-processing-fees-explained", label: "Credit card fees, hidden costs, what you actually pay" },
+      { href: "/insights/payment-processor-fees-guide", label: "Real 2026 rates, hidden costs, what you actually pay" },
       { href: "/comparisons", label: "Side-by-side processor comparisons" },
     ],
   },

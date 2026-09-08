@@ -136,7 +136,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
 
             <p className="text-muted-foreground mb-6 leading-relaxed">
               <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Square</a> launched in 2009
-              and revolutionized <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">payment processing</Link> with its iconic white card reader. Today, Square (now part of <a href="https://block.xyz" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Block, Inc.</a>)
+              and revolutionized <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">payment processing</Link> with its iconic white card reader. Today, Square (now part of <a href="https://block.xyz" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Block, Inc.</a>)
               is a comprehensive business platform serving 4+ million merchants.
             </p>
 

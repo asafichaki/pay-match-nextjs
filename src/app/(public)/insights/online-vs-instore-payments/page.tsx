@@ -282,7 +282,7 @@ export default function OnlineVsInStorePaymentsPage() {
               <div className="my-8 p-6 bg-muted/30 rounded-lg border-l-4 border-primary">
                 <p className="font-semibold text-foreground mb-2">Key Takeaway for Merchants</p>
                 <p className="text-foreground">
-                  Merchants must optimize their processing to be classified as Card-Present whenever possible, even in mobile POS situations, to qualify for lower interchange rates. For a detailed breakdown of all processing costs, see our comprehensive guide on <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">credit card processing fees explained</Link>.
+                  Merchants must optimize their processing to be classified as Card-Present whenever possible, even in mobile POS situations, to qualify for lower interchange rates. For a detailed breakdown of all processing costs, see our comprehensive guide on <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">credit card processing fees explained</Link>.
                 </p>
               </div>
 
@@ -427,7 +427,7 @@ export default function OnlineVsInStorePaymentsPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Can I reduce interchange fees on online transactions?</h3>
                   <p className="text-foreground leading-relaxed">
-                    While interchange fees are set by card networks, you can qualify for lower rates by providing additional data (Level 2/3 processing), implementing strong fraud prevention tools, and using 3D Secure authentication. See our <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">complete guide to processing fees</Link> for more strategies.
+                    While interchange fees are set by card networks, you can qualify for lower rates by providing additional data (Level 2/3 processing), implementing strong fraud prevention tools, and using 3D Secure authentication. See our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">complete guide to processing fees</Link> for more strategies.
                   </p>
                 </div>
               </div>
@@ -437,10 +437,6 @@ export default function OnlineVsInStorePaymentsPage() {
             <div className="mt-16 pt-8 border-t border-border">
               <h3 className="text-xl font-semibold text-foreground mb-6">Related Articles</h3>
               <div className="grid sm:grid-cols-2 gap-4">
-                <Link href="/insights/credit-card-processing-fees-explained" className="p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
-                  <p className="font-medium text-foreground mb-1">Credit Card Processing Fees Explained</p>
-                  <p className="text-sm text-muted-foreground">Complete guide to understanding every fee you pay</p>
-                </Link>
                 <Link href="/insights/payment-processor-fees-guide" className="p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
                   <p className="font-medium text-foreground mb-1">Payment Processor Fees Guide 2025</p>
                   <p className="text-sm text-muted-foreground">How to reduce costs and choose the right processor</p>

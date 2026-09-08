@@ -226,7 +226,7 @@ export default function Level2Level3ProcessingGuidePage() {
                 </h2>
 
                 <p className="text-lg text-foreground leading-relaxed">
-                  The card networks (<a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> and <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>) want to encourage security and transparency in commercial transactions. To incentivize businesses to provide detailed transaction information, they offer significantly lower <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">interchange rates</Link> for transactions that include comprehensive invoice data.
+                  The card networks (<a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> and <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>) want to encourage security and transparency in commercial transactions. To incentivize businesses to provide detailed transaction information, they offer significantly lower <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">interchange rates</Link> for transactions that include comprehensive invoice data.
                 </p>
 
                 <div className="my-8 p-6 bg-red-50 dark:bg-red-950/30 rounded-lg border-l-4 border-red-500">
@@ -733,7 +733,7 @@ export default function Level2Level3ProcessingGuidePage() {
                         Learn how to audit your statement and reduce fees by 20-30%.
                       </p>
                     </Link>
-                    <Link href="/insights/credit-card-processing-fees-explained" 
+                    <Link href="/insights/payment-processor-fees-guide" 
                       className="p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors group"
                     >
                       <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">

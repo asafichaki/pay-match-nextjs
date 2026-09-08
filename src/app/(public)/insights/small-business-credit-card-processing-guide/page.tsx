@@ -226,7 +226,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  To cut costs, you first need to understand the fee structure. As explained in our <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">complete guide on credit card processing fees</Link>, every transaction fee is split into three buckets:
+                  To cut costs, you first need to understand the fee structure. As explained in our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">complete guide on credit card processing fees</Link>, every transaction fee is split into three buckets:
                 </p>
 
                 <div className="my-8 p-6 bg-muted/30 rounded-lg">
@@ -648,11 +648,6 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 <div className="mt-12 pt-8 border-t border-border">
                   <h3 className="text-lg font-semibold text-foreground mb-4">Related Resources</h3>
                   <ul className="space-y-3">
-                    <li>
-                      <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">
-                        Credit Card Processing Fees Explained: Complete Guide
-                      </Link>
-                    </li>
                     <li>
                       <Link href="/insights/best-payment-gateway-ecommerce" className="text-primary hover:underline">
                         Complete Guide to Choosing a Payment Gateway

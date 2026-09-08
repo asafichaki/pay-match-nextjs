@@ -654,10 +654,6 @@ export default function MerchantStatementAuditGuidePage() {
                 <div className="mt-12 pt-8 border-t border-border">
                   <h3 className="text-xl font-semibold text-foreground mb-6">Related Articles</h3>
                   <div className="grid gap-4">
-                    <Link href="/insights/credit-card-processing-fees-explained" className="block p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
-                      <p className="font-medium text-foreground">Credit Card Processing Fees Explained: Complete Guide (2025)</p>
-                      <p className="text-sm text-muted-foreground mt-1">Deep dive into interchange, assessments, and processor markups.</p>
-                    </Link>
                     <Link href="/insights/small-business-credit-card-processing-guide" className="block p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
                       <p className="font-medium text-foreground">Stop Overpaying: A Small Business Guide to Processing Fees</p>
                       <p className="text-sm text-muted-foreground mt-1">Practical strategies for small business owners to cut costs.</p>

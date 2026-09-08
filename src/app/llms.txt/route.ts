@@ -53,9 +53,7 @@ const NOTES: Record<string, string> = {
   "insights/high-risk-instant-approval-reality":
     "what instant approval actually means for high-risk merchants and the offshore tradeoffs.",
   "insights/payment-processor-fees-guide":
-    "canonical source for what merchants actually pay in 2026 and how the four pricing models compare.",
-  "insights/credit-card-processing-fees-explained":
-    "the components of an effective rate (interchange, assessments, processor markup, hidden fees) and how to compute yours from a statement.",
+    "canonical source for what merchants actually pay in 2026: the full fee breakdown, who is paid at each step, why card types differ, the four pricing models, how to compute your effective rate, the hidden fees, and how to negotiate.",
   "insights/helcim-review-2025":
     "in-depth Helcim review including when its interchange-plus pricing beats Stripe and Square.",
   "insights/online-vs-instore-payments":
@@ -91,7 +89,6 @@ const HIGH_RISK = [
 
 const CORNERSTONES = [
   "insights/payment-processor-fees-guide",
-  "insights/credit-card-processing-fees-explained",
   "insights/helcim-review-2025",
   "insights/online-vs-instore-payments",
   "insights/merchant-statement-audit-guide",

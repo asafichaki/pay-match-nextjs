@@ -60,7 +60,6 @@ const CATEGORY_LABEL: Record<GlossaryTerm["category"], string> = {
 /** Cornerstone article slugs that deepen on each term, link from term page out. */
 const TERM_TO_CORNERSTONES: Record<string, { label: string; href: string }[]> = {
   interchange: [
-    { label: "Credit Card Processing Fees Explained", href: "/insights/credit-card-processing-fees-explained" },
     { label: "Payment Processor Fees Guide", href: "/insights/payment-processor-fees-guide" },
   ],
   "interchange-plus": [

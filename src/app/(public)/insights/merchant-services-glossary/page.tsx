@@ -227,7 +227,7 @@ export default function MerchantServicesGlossaryPage() {
                     The base fee set by <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> and <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a> and paid to the card-issuing bank.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> This is the largest portion of your bill. Since these are non-negotiable, your goal should be to move to an Interchange-Plus pricing model to ensure you aren't paying hidden markups on top of these base rates. Read our <Link href="/insights/credit-card-processing-fees-explained" className="text-primary hover:underline">complete guide to credit card processing fees</Link> for more details.
+                    <strong>Why it matters:</strong> This is the largest portion of your bill. Since these are non-negotiable, your goal should be to move to an Interchange-Plus pricing model to ensure you aren't paying hidden markups on top of these base rates. Read our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">complete guide to credit card processing fees</Link> for more details.
                   </p>
                 </div>
 
@@ -411,7 +411,7 @@ export default function MerchantServicesGlossaryPage() {
                         Learn how to audit your statement and reduce fees by 20-30%.
                       </p>
                     </Link>
-                    <Link href="/insights/credit-card-processing-fees-explained" 
+                    <Link href="/insights/payment-processor-fees-guide" 
                       className="p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors group"
                     >
                       <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
