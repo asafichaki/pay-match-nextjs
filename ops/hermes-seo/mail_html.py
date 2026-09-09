@@ -295,6 +295,19 @@ def alerts_block(report: Dict[str, Any]) -> str:
     )
 
 
+def lead_goal_block(report: Dict[str, Any]) -> str:
+    goal = report.get("lead_goal")
+    if not goal:
+        return ""
+    if not goal.get("available"):
+        return section("Monthly lead goal", note("Lead data unavailable; progress is unknown."))
+    return section("Monthly lead goal", facts([
+        (str(goal.get("month")), f"{num(goal.get('new_unique_requests'))} / {num(goal.get('target'))} new merchant requests"),
+        ("Remaining this month", num(goal.get("remaining"))),
+        ("Last 30 days", num(goal.get("trailing_30_days"))),
+    ]) + note("Unique form-valid business requests. Tests, marked spam, duplicates and newsletter signups excluded. Contact quality still needs review. Month uses UTC."))
+
+
 def traffic_block(report: Dict[str, Any]) -> str:
     t = report.get("traffic") or {}
     d3, w7, w28 = t.get("d3") or {}, t.get("w7") or {}, t.get("w28") or {}
@@ -327,8 +340,8 @@ def traffic_block(report: Dict[str, Any]) -> str:
     else:
         tail = ""
         if isinstance(bot, (int, float)):
-            tail = (f" Of the queries Search Console will name, {pct(bot)} look like scrapers, "
-                    "which is a share of the visible subset and not of the total.")
+            tail = (f" The query-length/quote heuristic flags {pct(bot)} of the named-query subset. "
+                    "This is not a verified bot share; long questions can be real searches.")
         body += note("These are Search Console's own clicks, impressions and CTR, so they match "
                      "the screen and the monthly Google mail." + tail)
     return section("Traffic", body, note="Search Console, final data to D-3")
@@ -615,6 +628,7 @@ def render(report: Optional[Dict[str, Any]]) -> Optional[str]:
     blocks: List[str] = [head_block(report), alerts_block(report)]
     if (report.get("run") or {}).get("status") != "missing":
         blocks += [
+            lead_goal_block(report),
             traffic_block(report),
             index_block(report),
             changes_block(report),
