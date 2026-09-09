@@ -9,6 +9,7 @@ import ThemeToggle from "./ThemeToggle";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { openSortingHat } from "./sorting-hat/useSortingHatModal";
 import { supabase } from "@/integrations/supabase/client";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 const Navigation = () => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const Navigation = () => {
     let cancelled = false;
     (async () => {
       const since = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
-      const { data } = await (supabase as any)
+      const { data } = await (supabase as SupabaseClient)
         .from("updates_feed")
         .select("id")
         .eq("status", "published")
@@ -56,14 +57,14 @@ const Navigation = () => {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-16 items-center justify-between gap-2 sm:gap-4">
           <Link 
             href="/" 
             className="flex items-center gap-2 flex-shrink-0"
             aria-label="myPayAdvisor - Home"
           >
             <CreditCard className="h-6 w-6 text-primary" aria-hidden="true" />
-            <span className="text-2xl font-display font-bold text-foreground tracking-tight">myPayAdvisor</span>
+            <span className="text-lg sm:text-2xl font-display font-bold text-foreground tracking-tight">myPayAdvisor</span>
           </Link>
           
           {/* Desktop Menu */}
@@ -129,12 +130,12 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Quiz Button + Menu */}
-          <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2 md:hidden">
+            <div className="hidden sm:block"><ThemeToggle /></div>
             <Button
               variant="cta"
               size="sm"
-              className="font-semibold text-sm"
+              className="hidden min-[375px]:inline-flex font-semibold text-sm"
               onClick={handleGetOffers}
             >
               Find Match
@@ -154,6 +155,7 @@ const Navigation = () => {
             <SheetContent side="right" className="w-[280px] sm:w-[320px]" aria-label="Mobile navigation">
               <SheetTitle className="sr-only">Navigation menu</SheetTitle>
               <nav className="flex flex-col gap-6 mt-8" role="navigation" aria-label="Mobile menu">
+                <div className="sm:hidden"><ThemeToggle /></div>
                 <Link
                   href="/"
                   className="text-lg font-medium text-foreground hover:text-primary transition-colors"
