@@ -229,7 +229,7 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-MDTFETTH7E"
           strategy="lazyOnload"
         />
-        <Script id="gtag-init" strategy="lazyOnload">
+        <Script id="gtag-init" strategy="beforeInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());

@@ -4,7 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
-import crypto from "crypto";
+import { getResend } from "@/lib/funnel/resend-client";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -16,22 +16,24 @@ interface ResendEvent {
     headers?: Array<{ name: string; value: string }>;
     to?: string[];
     subject?: string;
+    tags?: Record<string, string>;
   };
 }
 
-function verifySignature(payload: string, signature: string | null): boolean {
+function verifySignature(payload: string, headers: Headers): boolean {
   const secret = process.env.RESEND_WEBHOOK_SECRET;
-  if (!secret) return true; // skip verify if not configured (dev)
-  if (!signature) return false;
-  const expected = crypto
-    .createHmac("sha256", secret)
-    .update(payload)
-    .digest("hex");
+  if (!secret) return false;
   try {
-    return crypto.timingSafeEqual(
-      Buffer.from(expected),
-      Buffer.from(signature.replace(/^sha256=/, ""))
-    );
+    getResend().webhooks.verify({
+      payload,
+      webhookSecret: secret,
+      headers: {
+        id: headers.get("svix-id") || "",
+        timestamp: headers.get("svix-timestamp") || "",
+        signature: headers.get("svix-signature") || "",
+      },
+    });
+    return true;
   } catch {
     return false;
   }
@@ -39,8 +41,10 @@ function verifySignature(payload: string, signature: string | null): boolean {
 
 export async function POST(req: NextRequest) {
   const raw = await req.text();
-  const sig = req.headers.get("svix-signature") || req.headers.get("resend-signature");
-  if (!verifySignature(raw, sig)) {
+  if (!process.env.RESEND_WEBHOOK_SECRET) {
+    return NextResponse.json({ error: "webhook not configured" }, { status: 503 });
+  }
+  if (!verifySignature(raw, req.headers)) {
     return NextResponse.json({ error: "invalid signature" }, { status: 401 });
   }
 
@@ -59,8 +63,8 @@ export async function POST(req: NextRequest) {
   const stateHeader = headers.find(
     (h) => h.name.toLowerCase() === "x-funnel-state"
   );
-  const leadId = leadIdHeader?.value;
-  const state = stateHeader?.value || "unknown";
+  const leadId = event.data?.tags?.lead_id || leadIdHeader?.value;
+  const state = event.data?.tags?.funnel_state || stateHeader?.value || "unknown";
 
   if (!leadId) {
     return NextResponse.json({ ok: true, ignored: "no lead id" });
@@ -93,11 +97,15 @@ export async function POST(req: NextRequest) {
     [action]: true,
   };
 
-  await supabase
+  const { error: updateError } = await supabase
     .from("quiz_leads")
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .update({ email_state: current } as any)
     .eq("id", leadId);
+
+  if (updateError) {
+    return NextResponse.json({ error: "delivery state could not be saved" }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true, leadId, state, action });
 }

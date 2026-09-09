@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { after } from "next/server";
 import { headers, cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/integrations/supabase/server";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
@@ -210,7 +211,9 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       return { success: false as const, error: "We couldn't save your details. Please try again." };
     }
 
-    // Fire admin notification — fire-and-forget, never awaited
+    const capturedLeadId = await newestLeadId(data.email);
+
+    // Schedule the admin notification without delaying the form.
     notifyNewLead({
       source: "sorting_hat",
       lead: {
@@ -237,16 +240,19 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
     });
 
     // Fire Day 0 email — non-blocking on errors so the form still completes
-    sendDay0Email({
-      track: route.track,
-      trackVariant: route.trackVariant,
-      name: data.fullName.split(" ")[0],
-      email: data.email,
-      businessType: BUSINESS_TYPE_LABELS[data.businessType],
-      volumeTier: VOLUME_TIER_LABELS[data.volumeTier],
-      painPointShort: PAIN_POINT_SHORT[data.painPoint],
-    }).catch((err) => {
-      console.error("[sorting-hat] Day 0 email error:", err);
+    after(async () => {
+      await sendDay0Email({
+        leadId: capturedLeadId,
+        track: route.track,
+        trackVariant: route.trackVariant,
+        name: data.fullName.split(" ")[0],
+        email: data.email,
+        businessType: BUSINESS_TYPE_LABELS[data.businessType],
+        volumeTier: VOLUME_TIER_LABELS[data.volumeTier],
+        painPointShort: PAIN_POINT_SHORT[data.painPoint],
+      }).catch((err) => {
+        console.error("[sorting-hat] Day 0 email error:", err);
+      });
     });
 
     return {
@@ -255,7 +261,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       track: route.track,
       // Null if the lookup fails, in which case step 5 simply doesn't appear.
       // The lead is already saved either way.
-      leadId: await newestLeadId(data.email),
+      leadId: capturedLeadId,
     };
   } catch (err) {
     console.error("[submitSortingHatLead] unexpected error", err);
@@ -398,6 +404,7 @@ export async function enrichSortingHatLead(input: SortingHatEnrichPayload) {
 }
 
 interface Day0Args {
+  leadId: string | null;
   track: "A" | "B" | "C" | "MANUAL";
   trackVariant: "default" | "subscriptions";
   name: string;
@@ -426,15 +433,23 @@ async function sendDay0Email(args: Day0Args) {
   const subject = mod.subject(sharedProps);
   const react = mod.default(sharedProps);
 
-  await resend.emails.send({
+  const result = await resend.emails.send({
     from: FUNNEL_FROM,
     replyTo: FUNNEL_REPLY_TO,
     to: args.email,
     subject,
     react,
+    tags: [
+      { name: "funnel_state", value: "day0" },
+      ...(args.leadId ? [{ name: "lead_id", value: args.leadId }] : []),
+    ],
     headers: {
+      ...(args.leadId ? { "X-Funnel-Lead-Id": args.leadId } : {}),
       "X-Funnel-Track": args.track,
       "X-Funnel-State": "day0",
     },
   });
+  if (result.error) {
+    throw new Error(`Day 0 email rejected: ${result.error.message}`);
+  }
 }

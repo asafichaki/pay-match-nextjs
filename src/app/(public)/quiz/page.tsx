@@ -30,7 +30,7 @@ const howToSchema = {
       "@type": "HowToStep",
       "position": 1,
       "name": "Select Your Business Type",
-      "text": "Choose whether you operate online, in-store, or both to help us understand your payment acceptance needs."
+      "text": "Choose what your business sells so we can match providers to your category."
     },
     {
       "@type": "HowToStep",
@@ -41,20 +41,14 @@ const howToSchema = {
     {
       "@type": "HowToStep",
       "position": 3,
-      "name": "Specify Your Industry",
-      "text": "Select your business industry to ensure we recommend processors experienced with your type of transactions."
+      "name": "Choose Your Payment Challenge",
+      "text": "Tell us whether you need help with reserves, approval rates, onboarding, recurring payments, new markets, or in-person costs."
     },
     {
       "@type": "HowToStep",
       "position": 4,
-      "name": "Choose Your Priorities",
-      "text": "Tell us what matters most: low fees, fast funding, specific integrations, or customer support quality."
-    },
-    {
-      "@type": "HowToStep",
-      "position": 5,
-      "name": "Get Personalized Recommendations",
-      "text": "Receive a curated list of payment processors that match your specific business requirements and goals."
+      "name": "Request Your Shortlist",
+      "text": "Enter your first name and email to request a personally reviewed shortlist. After your request is saved, you can optionally add a phone number, company name, and current provider."
     }
   ]
 };
