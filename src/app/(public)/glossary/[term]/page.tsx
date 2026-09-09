@@ -272,7 +272,7 @@ export default async function GlossaryTermPage({
         ) : null}
         <p
           data-speakable="true"
-          className="mt-6 text-lg leading-relaxed text-foreground sm:text-xl"
+          className="aeo-answer mt-6 text-lg leading-relaxed text-foreground sm:text-xl"
         >
           {term.definition}
         </p>

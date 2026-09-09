@@ -1,4 +1,5 @@
 import "server-only";
+import { after } from "next/server";
 
 import { getResend } from "@/lib/funnel/resend-client";
 
@@ -7,9 +8,8 @@ import { getResend } from "@/lib/funnel/resend-client";
  *
  * Hard contract:
  *   - This function MUST NEVER throw. Any error is swallowed + console.error'd.
- *   - It is intentionally fire-and-forget: callers should NOT `await` it on the
- *     critical user-response path. Use `.catch()` if you want belt-and-suspenders
- *     logging, otherwise just call without await.
+ *   - Schedules delivery with Next.js after(), so the serverless invocation
+ *     stays alive until the notification finishes, without delaying the form.
  *   - Failure here must not block the lead from being saved or the user from
  *     seeing a success state.
  *
@@ -254,6 +254,10 @@ function buildText(args: NotifyNewLeadArgs): string {
 }
 
 export async function notifyNewLead(args: NotifyNewLeadArgs): Promise<void> {
+  after(() => deliverNewLead(args));
+}
+
+async function deliverNewLead(args: NotifyNewLeadArgs): Promise<void> {
   try {
     if (!process.env.RESEND_API_KEY) {
       console.error("[notifyNewLead] RESEND_API_KEY not set, skipping", {

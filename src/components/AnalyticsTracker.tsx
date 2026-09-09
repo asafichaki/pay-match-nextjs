@@ -3,16 +3,7 @@
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { supabase } from "@/integrations/supabase/client";
-
-const getSessionId = () => {
-  if (typeof window === "undefined") return "";
-  let sessionId = sessionStorage.getItem("analytics_session_id");
-  if (!sessionId) {
-    sessionId = crypto.randomUUID();
-    sessionStorage.setItem("analytics_session_id", sessionId);
-  }
-  return sessionId;
-};
+import { getAnalyticsSessionId } from "@/lib/analytics/funnel";
 
 export function AnalyticsTracker() {
   const pathname = usePathname();
@@ -30,11 +21,11 @@ export function AnalyticsTracker() {
           page_path: pathname,
           referrer: document.referrer || null,
           user_agent: navigator.userAgent,
-          session_id: getSessionId(),
+          session_id: getAnalyticsSessionId(),
           user_id: user?.id || null,
           metadata: {
             search: searchParams?.toString() || "",
-          } as any,
+          },
         });
       } catch (error) {
         console.error("Analytics tracking error:", error);

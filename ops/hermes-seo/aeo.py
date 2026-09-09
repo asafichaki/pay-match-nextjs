@@ -20,6 +20,11 @@ import rules as rules_mod
 from ctx import Ctx
 
 
+def supports_answer_override(path: str) -> bool:
+    """Glossary answers are source-managed definitions, not DB override slots."""
+    return path != "/glossary" and not path.startswith("/glossary/")
+
+
 def candidates(ctx: Ctx, limit: int) -> List[Dict[str, Any]]:
     """Pages without `.aeo-answer`, comparisons + pricing first, refresh queue first of all."""
     queue = ctx.supa.setting("aeo_refresh_queue", []) or []
@@ -29,6 +34,8 @@ def candidates(ctx: Ctx, limit: int) -> List[Dict[str, Any]]:
                              -ctx.page_metrics(p)["impressions"], p))
     out: List[Dict[str, Any]] = []
     for p in ordered + rest:
+        if not supports_answer_override(p):
+            continue
         if len(out) >= limit:
             break
         if p in ctx.holdout or p in config.LOSER_PATHS or ctx.locked(p):
@@ -145,6 +152,8 @@ def run(ctx: Ctx, info: Dict[str, Any]) -> None:
 
 def queue_refresh(ctx: Ctx, path: str, reason: str) -> None:
     """Put a page at the head of the answer-refresh queue (weekly + escalation)."""
+    if not supports_answer_override(path):
+        return
     queue = ctx.supa.setting("aeo_refresh_queue", []) or []
     if any(isinstance(q, dict) and q.get("path") == path for q in queue):
         return

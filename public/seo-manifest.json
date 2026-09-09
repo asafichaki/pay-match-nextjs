@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-30T07:21:24.510Z",
+  "generated_at": "2026-09-09T17:53:30.290Z",
   "rules_version": "2026-08-26.1",
   "counts": {
-    "static": 56,
+    "static": 55,
     "db": 80,
-    "total": 136
+    "total": 135
   },
   "routes": [
     {
@@ -469,28 +469,6 @@
       ]
     },
     {
-      "route": "/insights/credit-card-processing-fees-explained",
-      "kind": "insights",
-      "slug": "credit-card-processing-fees-explained",
-      "source": "static",
-      "title_mode": "absolute",
-      "base_title": "Credit Card Processing Fees 2026: What You Actually Pay",
-      "base_description": "Real 2026 credit card processing rates by industry, the 4 hidden fees most merchants miss, and the negotiation moves that drop your effective rate.",
-      "outline": [
-        "Table of Contents",
-        "What Are Credit Card Processing Fees?",
-        "Complete Fee Breakdown: Every Cost Explained",
-        "Who Gets Your Money? Understanding the Payment Chain",
-        "How to Calculate Your True Processing Costs",
-        "Hidden Fees That Inflate Your Costs",
-        "Why Different Cards Cost Different Amounts",
-        "Pricing Models Decoded: Which Saves You Money?",
-        "15 Proven Strategies to Reduce Processing Fees",
-        "How to Negotiate Better Rates",
-        "Frequently Asked Questions"
-      ]
-    },
-    {
       "route": "/insights/firearms-merchant-account",
       "kind": "insights",
       "slug": "firearms-merchant-account",
@@ -612,7 +590,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "High-Risk Payment Processing Guide 2026: Approval, Reserves",
-      "base_description": "Complete 2026 guide to high-risk payment processing. Reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable merchant accounts for CBD, gaming, subscription, and e-commerce businesses.",
+      "base_description": "Compare high-risk merchant accounts, underwriting requirements, rolling reserves and chargeback controls. A practical guide to preparing your application.",
       "outline": [
         "High-risk processors at a glance (2026)",
         "Table of Contents",
@@ -864,15 +842,16 @@
       "outline": [
         "Table of Contents",
         "What Are Payment Processor Fees?",
+        "Complete Fee Breakdown: Every Cost Explained",
+        "Who Gets Your Money? Understanding the Payment Chain",
+        "Why Different Cards Cost Different Amounts",
         "Understanding Different Pricing Models",
+        "How to Calculate Your True Processing Costs",
         "How to Compare Payment Gateway Providers",
         "How to Reduce Credit Card Processing Fees",
-        "Best Credit Card Processor for Low Volume Businesses",
-        "Best Payment Processor for High Risk Businesses",
-        "Best International Payment Gateway Solutions",
-        "The Difference Between Payment Processor and Gateway",
-        "Frequently Asked Questions",
-        "Conclusion"
+        "Hidden Fees That Inflate Your Costs",
+        "How to Negotiate Better Rates",
+        "Best Credit Card Processor for Low Volume Businesses"
       ]
     },
     {
@@ -1258,8 +1237,8 @@
       "slug": "best-payment-processors-with-same-day-deposit-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Same-Day Deposit & Settlement Processors 2026",
-      "base_description": "Same-day deposit on cards costs 1.5 to 1.75 percent. Compare Square, Stripe, PayPal, Clover, and Helcim on payout fees and effective rate.",
+      "base_title": "Same-Day & Next-Day Payment Processors: Fees Compared (2026)",
+      "base_description": "Compare same-day, instant and next-day deposits: payout fees, eligibility, bank cutoffs and the real monthly cost for Square, Stripe, PayPal, Clover and Helcim.",
       "outline": []
     },
     {
