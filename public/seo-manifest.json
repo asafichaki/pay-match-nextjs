@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T16:51:00.268Z",
+  "generated_at": "2026-09-09T17:13:23.699Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 55,
@@ -590,7 +590,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "High-Risk Payment Processing Guide 2026: Approval, Reserves",
-      "base_description": "Complete 2026 guide to high-risk payment processing. Reduce chargebacks by 60%, navigate VAMP compliance, and secure reliable merchant accounts for CBD, gaming, subscription, and e-commerce businesses.",
+      "base_description": "Compare high-risk merchant accounts, underwriting requirements, rolling reserves and chargeback controls. A practical guide to preparing your application.",
       "outline": [
         "High-risk processors at a glance (2026)",
         "Table of Contents",
@@ -1237,8 +1237,8 @@
       "slug": "best-payment-processors-with-same-day-deposit-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Same-Day Deposit & Settlement Processors 2026",
-      "base_description": "Same-day deposit on cards costs 1.5 to 1.75 percent. Compare Square, Stripe, PayPal, Clover, and Helcim on payout fees and effective rate.",
+      "base_title": "Same-Day & Next-Day Payment Processors: Fees Compared (2026)",
+      "base_description": "Compare same-day, instant and next-day deposits: payout fees, eligibility, bank cutoffs and the real monthly cost for Square, Stripe, PayPal, Clover and Helcim.",
       "outline": []
     },
     {

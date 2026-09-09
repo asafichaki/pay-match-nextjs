@@ -54,7 +54,7 @@
   "/comparisons/stripe-high-risk-alternatives": "2026-08-26",
   "/comparisons/stripe-vs-paypal": "2026-08-26",
   "/": "2026-08-26",
-  "/quiz": "2026-08-26",
+  "/quiz": "2026-09-09",
   "/calculator": "2026-08-26",
   "/insights": "2026-08-26",
   "/glossary": "2026-08-25",
@@ -66,5 +66,5 @@
   "/glossary/_terms": "2026-09-08",
   "__generated": "2026-09-09",
   "__source": "git-full-history",
-  "__head": "d4be1ea"
+  "__head": "e9e6df1"
 }

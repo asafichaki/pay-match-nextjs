@@ -118,7 +118,7 @@ export default function GlossaryPage() {
         </h1>
         <p
           data-speakable="true"
-          className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          className="aeo-answer mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl"
         >
           Every payment processing term U.S. merchants meet on a merchant statement, a processor
           pitch, or a compliance form, defined in plain language with the number that matters:

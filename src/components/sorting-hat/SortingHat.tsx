@@ -82,8 +82,8 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
     // The phone is NOT collected here and NOT required to save the lead.
     // It was required on this step between 2026-08-29 and 2026-09-08, which
     // meant anyone unwilling to type a number was never written to the
-    // database at all, not even their email. Zero leads landed in the nine
-    // days that gate was live. It is asked on step 5 instead, which runs
+    // database at all, not even their email. This gate may have increased
+    // abandonment; its causal impact is unmeasured. Step 5 runs
     // after the row exists, so refusing it now costs a phone number rather
     // than the whole lead.
     startTransition(async () => {

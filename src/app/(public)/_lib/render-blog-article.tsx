@@ -8,6 +8,7 @@ import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { CompareMore } from "@/components/comparisons/CompareMore";
+import { MatchCTA } from "@/components/MatchCTA";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import type { RelatedLink } from "@/lib/seo/overrides";
@@ -257,7 +258,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
 
   // Augment schema_json with ImageObject if hero exists, plus Speakable selectors.
   const articleSchema = (() => {
-    const base: any = article.schema_json && typeof article.schema_json === "object"
+    const base: Record<string, unknown> | null = article.schema_json && typeof article.schema_json === "object"
       ? { ...(article.schema_json as object) }
       : null;
     if (!base) return null;
@@ -423,6 +424,14 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
             </div>
           </div>
         </header>
+
+        {kind === "comparisons" && article.slug === "best-payment-processors-with-same-day-deposit-2026" ? (
+          <MatchCTA
+            headline="Need faster deposits without paying more than you need to?"
+            subline="Tell us what you sell and your monthly volume. Ask Barak to compare funding terms for your business. Phone number optional."
+            ctaLabel="Compare my funding options"
+          />
+        ) : null}
 
         {article.youtube_id ? (
           <div className="mb-8 overflow-hidden rounded-xl border bg-muted">

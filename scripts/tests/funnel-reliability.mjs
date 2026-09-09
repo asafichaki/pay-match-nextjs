@@ -13,7 +13,8 @@ function load(path, globals = {}, imports = {}) {
   return exports;
 }
 const window = {};
-const {track} = load('src/lib/analytics/track.ts',{window});
+const funnelImport={'./funnel':{recordFunnelEvent:()=>{}}};
+const {track} = load('src/lib/analytics/track.ts',{window},funnelImport);
 track('sh_open',{variant:'page'});
 track('sh_step_view',{step:1});
 assert.deepEqual(Array.from(window.dataLayer,args=>Array.from(args).slice(0,2)),[['event','sh_open'],['event','sh_step_view']]);
@@ -23,7 +24,7 @@ window.gtag=function(){window.dataLayer.push(arguments);};
 track('sh_step_view',{step:2});
 assert.equal(earlyQueue,window.dataLayer);
 assert.equal(window.dataLayer.length,3);
-assert.doesNotThrow(()=>load('src/lib/analytics/track.ts').track('server'));
+assert.doesNotThrow(()=>load('src/lib/analytics/track.ts',{},funnelImport).track('server'));
 window.gtag=()=>{throw new Error('blocked analytics');};
 assert.doesNotThrow(()=>track('sh_open'));
 
@@ -70,3 +71,17 @@ delete process.env.RESEND_WEBHOOK_SECRET;
 assert.equal((await route.POST({text:async()=>payload,headers:signedHeaders})).status,503);
 if(secretBefore!==undefined) process.env.RESEND_WEBHOOK_SECRET=secretBefore;
 console.log('PASS: early GA4 events survive deferred load; notifications wait for after(); webhook signatures reject tampering.');
+
+const requests=[];
+const analyticsEnv={env:{NEXT_PUBLIC_SUPABASE_URL:'https://analytics.example.invalid',NEXT_PUBLIC_SUPABASE_ANON_KEY:'public-test-key'}};
+const funnel=load('src/lib/analytics/funnel.ts',{window:{location:{pathname:'/quiz'}},process:analyticsEnv,crypto:{randomUUID:()=> 'test-session'},sessionStorage:{getItem:()=>{throw Error('blocked');}},fetch:async(url,options)=>{requests.push({url,...options});return {ok:true};}});
+funnel.recordFunnelEvent('sh_step_view',{step:1,email:'private@example.invalid',message:'private error',variant:'page'});
+funnel.recordFunnelEvent('sh_submit_success',{track:'A'});
+funnel.recordFunnelEvent('unrelated',{email:'private@example.invalid'});
+assert.equal(requests.length,2);
+const first=JSON.parse(requests[0].body);
+assert.deepEqual(first.metadata,{step:1,variant:'page'});
+assert.equal(first.session_id,JSON.parse(requests[1].body).session_id);
+assert.equal(requests[0].keepalive,true);
+assert.doesNotThrow(()=>load('src/lib/analytics/funnel.ts').recordFunnelEvent('sh_open',{}));
+console.log('PASS: first-party funnel excludes contact details and tolerates unavailable browser storage.');

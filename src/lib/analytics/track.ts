@@ -6,8 +6,11 @@
  * Analytics MUST NEVER break UX, so every path is wrapped in try/catch and
  * no-ops on the server.
  */
+import { recordFunnelEvent } from "./funnel";
+
 export function track(event: string, params: Record<string, unknown> = {}): void {
   if (typeof window === "undefined") return;
+  recordFunnelEvent(event, params);
   try {
     const w = window as unknown as {
       gtag?: (...args: unknown[]) => void;

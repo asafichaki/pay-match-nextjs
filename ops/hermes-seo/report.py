@@ -26,6 +26,7 @@ from typing import Any, Dict, List, Optional
 import config
 import gsc as gsc_mod
 import indexing
+import lead_goal
 from supa import Supa
 
 BLANK_RUN = {"status": "missing", "steps": {}, "spend_usd": 0.0, "started_at": None, "finished_at": None}
@@ -214,6 +215,7 @@ def build(supa: Supa, run_date: dt.date, run_summary: Optional[Dict[str, Any]], 
         "code_version": config.code_version(),
         "mode": mode,
         "spend_mtd": round(spend_mtd, 3),
+        "lead_goal": lead_goal.read(supa),
         "run": {"status": run_summary.get("status"), "steps": {n: s.get("status") for n, s in (run_summary.get("steps") or {}).items()},
                 "spend_usd": run_summary.get("spend_usd"), "started_at": run_summary.get("started_at"),
                 "finished_at": run_summary.get("finished_at"), "notes": run_summary.get("notes", [])},
