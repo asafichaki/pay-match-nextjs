@@ -96,6 +96,10 @@ def propose_or_apply(ctx: Ctx, kind: str, slug: str, field: str, old: Any, new: 
                      reason: str, source: str, may_apply: bool = True,
                      extra_revalidate: Optional[List[str]] = None) -> str:
     """Returns 'applied' | 'proposed' | 'duplicate' | 'blocked'."""
+    # The live override layer does not read h1_override. Preserve editorial
+    # H1s instead of writing changes that no template can render.
+    if field == "h1_override":
+        return "blocked"
     path = config.path_of(kind, slug)
     if path in config.LOSER_PATHS:
         return "blocked"
@@ -180,8 +184,8 @@ def observe(field: str, page: pages.Page, expected: Any) -> bool:
     if field == "meta_description":
         return page.meta_description.strip() == str(expected).strip()
     if field == "aeo_answer":
-        head = " ".join(str(expected).split()[:8])
-        return page.has_aeo and head in page.aeo_text
+        answer = " ".join(str(expected).split())
+        return bool(answer) and page.has_aeo and answer in " ".join(page.aeo_text.split())
     if field == "related_links":
         try:
             want = expected if isinstance(expected, list) else json.loads(expected)
