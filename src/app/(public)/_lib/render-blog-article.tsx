@@ -21,6 +21,26 @@ type Kind = "insights" | "comparisons";
 
 const SITE = "https://www.mypayadvisor.com";
 
+// Prioritized from pages with lost search clicks in the September lead audit.
+const COMPARISON_INTAKE: Record<string, { headline: string; ctaLabel: string }> = {
+  "best-no-contract-payment-processors-2026": {
+    headline: "Compare payment options before signing a contract",
+    ctaLabel: "Compare my contract options",
+  },
+  "square-vs-helcim-2026": {
+    headline: "Which pricing model fits your sales?",
+    ctaLabel: "Compare options for my sales",
+  },
+  "square-vs-toast-2026": {
+    headline: "Compare POS options for your restaurant",
+    ctaLabel: "Compare my restaurant options",
+  },
+  "best-interchange-plus-payment-processors-2026": {
+    headline: "Compare processing terms for your business",
+    ctaLabel: "Compare my processing options",
+  },
+};
+
 interface BlogArticleRow {
   slug: string;
   kind: Kind;
@@ -245,6 +265,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
   // existing anchor, a heading or an answer block. See lib/glossary/autolink.
   const linkedBody = autoLinkGlossary(cleanBody);
   const fallbackLinks = await fetchInternalLinkTitles(kind, article.internal_links ?? []);
+  const intake = kind === "comparisons" ? COMPARISON_INTAKE[article.slug] : undefined;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -431,6 +452,9 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
             subline="Tell us what you sell and your monthly volume. Ask Barak to compare funding terms for your business. Phone number optional."
             ctaLabel="Compare my funding options"
           />
+        ) : intake ? (
+          <MatchCTA {...intake}
+            subline="Tell us what you sell and your monthly volume. Request a comparison for your business. Phone number optional." />
         ) : null}
 
         {article.youtube_id ? (

@@ -242,8 +242,22 @@ function declaredConstants(src) {
  * imports from `@/...`. `/about/barak` writes its title as
  * `${BARAK_NAME}, ${BARAK_TITLE}`, and those two live in a data module.
  */
+function jsonImports(src) {
+  const imports = [];
+  for (const match of src.matchAll(/import\s+(\w+)\s+from\s*["']@\/([^"']+\.json)["']/g)) {
+    const file = path.join(ROOT, "src", match[2]);
+    if (existsSync(file)) imports.push([match[1], JSON.parse(readFileSync(file, "utf8"))]);
+  }
+  return imports;
+}
+
 function constantsFor(src) {
   const consts = declaredConstants(src);
+  for (const [name, data] of jsonImports(src)) {
+    for (const [key, value] of Object.entries(data)) {
+      if (typeof value === "string") consts.set(`${name}.${key}`, value);
+    }
+  }
   for (const m of src.matchAll(/import\s*\{([^}]+)\}\s*from\s*["']@\/([^"']+)["']/g)) {
     const names = m[1].split(",").map((n) => n.trim().split(/\s+as\s+/)[0].trim()).filter(Boolean);
     if (!names.length) continue;
@@ -299,6 +313,10 @@ function headings(dir) {
   for (const f of files) {
     let src = "";
     try { src = readFileSync(path.join(dir, f), "utf8"); } catch { continue; }
+    const importedBodies = jsonImports(src)
+      .filter(([name, data]) => src.includes(`${name}.body_html`) && typeof data.body_html === "string")
+      .map(([, data]) => data.body_html);
+    src = [...importedBodies, src].join("\n");
     for (const m of src.matchAll(/<h2[^>]*>([^<{]+)<\/h2>/g)) {
       const text = m[1].replace(/\s+/g, " ").trim();
       if (text && text.length > 3 && !out.includes(text) && out.length < 12) out.push(text);

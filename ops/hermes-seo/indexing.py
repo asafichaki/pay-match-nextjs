@@ -4,14 +4,11 @@ submit, index watch, escalation ladder, and the day-0 baseline import.
 Two channels, and the report never conflates them:
 
 * IndexNow reaches Bing and Copilot. Google ignores it entirely.
-* The Google Indexing API (`urlNotifications:publish`) is a real crawl
-  request to Google. Google documents it for JobPosting and BroadcastEvent
-  and does not promise anything for an article, but it returns 200 for any
-  URL on a property the service account owns and it is the only direct
-  signal we have. Treat a 200 as "asked", never as "indexed": only a later
-  URL Inspection verdict counts.
+* Google discovery uses the Search Console sitemap submission. The Indexing
+  API supports JobPosting and livestream BroadcastEvent pages, not articles.
+  Only a later URL Inspection verdict establishes indexed status.
 
-Beyond the two pings the ladder escalates through what Google actually
+Beyond sitemap discovery and IndexNow the ladder escalates through what Google actually
 reacts to: links from recently crawled pages, then a content-class change
 (answer block plus a lastmod bump), then a human decision with the
 diagnosis attached.
@@ -73,46 +70,15 @@ def changed_urls_7d(sitemap: Dict[str, Optional[str]], supa: Supa, run_date: dt.
 
 # ------------------------------------------------------------ indexnow
 def google_index_push(urls: List[str], dry_run: bool, limit: int = 60) -> Dict[str, Any]:
-    """Ask Google to recrawl each URL. One call per URL, quota 200/day.
+    """Articles are ineligible for Google's JobPosting/BroadcastEvent API.
 
-    Uses the ONE service account that has the Indexing API enabled,
-    `sentinel-gsc@sentinel-seo-dashboard`, which must be an OWNER of the
-    Search Console property. The other two portfolio service accounts look
-    interchangeable and are not: see memory `google_indexing_api_working_sa`.
-
-    Never raises. A failure here must not cost the run its other steps.
+    Keep the report interface, but do not issue unsupported notifications.
+    Discovery uses the existing Search Console sitemap submission; index
+    status comes only from URL Inspection.
+    https://developers.google.com/search/apis/indexing-api/v3/using-api
     """
-    key_path = config.env("GOOGLE_INDEXING_SA_JSON", "/root/.credentials/sentinel-gsc-indexing.json")
-    urls = [u for u in urls if config.SITE_HOST in u][:limit]
-    out: Dict[str, Any] = {"asked": 0, "failed": 0, "skipped": None, "urls": []}
-    if not urls:
-        out["skipped"] = "nothing to push"
-        return out
-    if dry_run:
-        out["skipped"] = f"dry-run, would push {len(urls)}"
-        return out
-    if not Path(key_path).exists():
-        out["skipped"] = f"no indexing key at {key_path}"
-        return out
-    try:
-        from google.oauth2 import service_account  # type: ignore
-        from googleapiclient.discovery import build  # type: ignore
-        creds = service_account.Credentials.from_service_account_file(
-            key_path, scopes=["https://www.googleapis.com/auth/indexing"])
-        svc = build("indexing", "v3", credentials=creds, cache_discovery=False)
-    except Exception as exc:  # noqa: BLE001 - a broken client must not kill the run
-        out["skipped"] = f"indexing client unavailable: {str(exc)[:120]}"
-        return out
-    for u in urls:
-        try:
-            svc.urlNotifications().publish(body={"url": u, "type": "URL_UPDATED"}).execute()
-            out["asked"] += 1
-            out["urls"].append(u)
-        except Exception as exc:  # noqa: BLE001
-            out["failed"] += 1
-            if out.get("error") is None:
-                out["error"] = str(exc)[:160]
-    return out
+    return {"asked": 0, "failed": 0, "urls": [],
+            "skipped": "article pages are not eligible for the Google Indexing API; sitemap discovery is used"}
 
 
 def indexnow_batch(urls: List[str], dry_run: bool) -> List[Dict[str, Any]]:

@@ -5,8 +5,8 @@
 // section is worse than no section, so nothing is rendered when there is
 // nothing to say.
 //
-// Skip rule: a body that already ships its own `id="related-comparisons"`
-// block gets no second list. Pass `bodyHtml` and this returns null.
+// A body with its own related block keeps that block. Explicit overrides may
+// add missing destinations, but never repeat links already present in the body.
 //
 // Placement rule (PR 2): this belongs at the END of an article, after the body
 // and before the reviewer box. It is never injected into the body HTML, so it
@@ -21,7 +21,7 @@ interface Props {
   slug: string;
   /** Used only when the override row has no `related_links`. */
   fallback?: RelatedLink[];
-  /** Article body. When it already carries `id="related-comparisons"`, render nothing. */
+  /** Article body, used to avoid repeating links in an existing related block. */
   bodyHtml?: string | null;
   heading?: string;
   /**
@@ -42,12 +42,24 @@ export async function RelatedLinks({
   heading = "Keep reading",
   contained = true,
 }: Props) {
-  if (bodyHtml && bodyHtml.includes(RELATED_MARKER)) return null;
-
   const override = await getSeoOverride(kind, slug);
-  const links: RelatedLink[] = override?.related_links?.length
+  let links: RelatedLink[] = override?.related_links?.length
     ? override.related_links
     : (fallback ?? []);
+  if (bodyHtml && /\bid\s*=\s*["']related-comparisons["']/i.test(bodyHtml)) {
+    if (!override?.related_links?.length) return null;
+    const existing = new Set(
+      Array.from(bodyHtml.matchAll(/\bhref\s*=\s*["']([^"']+)["']/gi), ([, href]) => {
+        try {
+          const url = new URL(href, "https://www.mypayadvisor.com");
+          return url.origin === "https://www.mypayadvisor.com" ? url.pathname : href;
+        } catch {
+          return href;
+        }
+      }),
+    );
+    links = links.filter((link) => !existing.has(link.href.split(/[?#]/)[0]));
+  }
   if (!links.length) return null;
 
   return (

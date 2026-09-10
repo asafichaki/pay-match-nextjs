@@ -1,0 +1,43 @@
+{
+  "slug": "cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro",
+  "kind": "insights",
+  "description": "Compare CPACharge and Stripe for accounting firms: published US card and ACH fees, monthly charges, integrations, and questions to ask before switching.",
+  "aeo_answer": "CPACharge fits accounting firms that want payment collection and reconciliation in their practice workflow. Stripe fits firms that need a configurable online payment flow. Compare monthly charges, card mix, ACH caps and software add-ons before choosing. CPACharge and LawPay are different products; do not assume that a CPACharge account includes LawPay’s trust-account features.",
+  "faq_json": [
+    {
+      "question": "Does CPACharge charge a monthly fee?",
+      "answer": "Yes. Its published US plan has a $10 monthly program fee. The pricing page also lists a $7.99 monthly card-brand pass-through allocation and other applicable network fees. Ask which charges apply to your account."
+    },
+    {
+      "question": "Which is cheaper for a $1,000 ACH payment?",
+      "answer": "Using the published standard transaction rates alone, CPACharge eCheck costs $10 and Stripe ACH Direct Debit costs $5. This excludes monthly, verification, return, invoicing and other applicable charges."
+    },
+    {
+      "question": "Is CPACharge the same as LawPay for trust accounts?",
+      "answer": "No. These are separate products. LawPay explicitly advertises trust-account protection and IOLTA features. Confirm the exact account setup, fee debits and requirements with the provider before accepting client trust funds."
+    }
+  ],
+  "sources_json": [
+    {
+      "name": "CPACharge US pricing",
+      "url": "https://www.cpacharge.com/pricing/"
+    },
+    {
+      "name": "CPACharge payment workflow",
+      "url": "https://www.cpacharge.com/features/how-it-works/"
+    },
+    {
+      "name": "Stripe US pricing",
+      "url": "https://stripe.com/us/pricing"
+    },
+    {
+      "name": "Stripe ACH Direct Debit pricing",
+      "url": "https://stripe.com/pricing/local-payment-methods"
+    },
+    {
+      "name": "LawPay product and trust-account features",
+      "url": "https://www.lawpay.com/pricing/"
+    }
+  ],
+  "body_html": "<h2>Which payment workflow does your firm need?</h2>\n<p>Start with the work your team needs to complete: sending an invoice, collecting a payment, matching the deposit and recording the fee. Our comparison favors CPACharge when an accounting firm wants a dedicated collection workflow; it favors Stripe when the firm needs to configure an online checkout or integrate payments into its own application. Those are workflow recommendations, not a claim that one provider is cheapest for every firm.</p>\n<h2>CPACharge vs Stripe: published US fees</h2>\n<p>Pricing checked September 10, 2026. These are standard published terms, not a personalized quote. International cards, currency conversion, disputes and optional software can change the total.</p>\n<div role=\"region\" aria-label=\"CPACharge and Stripe fee comparison\" tabindex=\"0\" style=\"overflow-x:auto\"><table style=\"min-width:560px\">\n<thead><tr><th scope=\"col\">Charge</th><th scope=\"col\">CPACharge</th><th scope=\"col\">Stripe</th></tr></thead>\n<tbody>\n<tr><th scope=\"row\">Standard online cards</th><td>Visa, Mastercard and Discover: 2.99% + $0.30</td><td>Domestic cards: 2.9% + $0.30</td></tr>\n<tr><th scope=\"row\">American Express</th><td>3.90% + $0.30</td><td>Included in the standard domestic-card rate</td></tr>\n<tr><th scope=\"row\">Bank debit</th><td>eCheck: 1%, capped at $10</td><td>ACH Direct Debit: 0.8%, capped at $5</td></tr>\n<tr><th scope=\"row\">Monthly program charge</th><td>$10; the pricing page also lists a $7.99 card-brand allocation and other pass-through fees</td><td>No monthly fee for standard Payments; additional products have their own pricing</td></tr>\n</tbody></table></div>\n<p>Sources: <a href=\"https://www.cpacharge.com/pricing/\">CPACharge pricing</a>, <a href=\"https://stripe.com/us/pricing\">Stripe US pricing</a> and <a href=\"https://stripe.com/pricing/local-payment-methods\">Stripe bank-payment pricing</a>. Compare an itemized quote rather than treating a headline rate as your effective cost.</p>\n<h2>Worked example: 50 invoices of $1,000</h2>\n<p>Assume $50,000 of domestic Visa, Mastercard or Discover online payments, split into 50 transactions. CPACharge’s transaction subtotal is $1,510: $50,000 × 2.99% + 50 × $0.30. Stripe’s is $1,465: $50,000 × 2.9% + 50 × $0.30. The $45 difference excludes every monthly, pass-through and additional-product charge. It is an illustration, not a complete bill or savings forecast.</p>\n<p>If all 50 invoices instead use bank debit, the stated caps give transaction subtotals of $500 for CPACharge and $250 for Stripe. Do not substitute those numbers for a full quote: payment failures, verification, software and operating costs still need checking. Use your actual card mix and invoice sizes in our <a href=\"/calculator\">processing-fee calculator</a>.</p>\n<h2>How do collection and reconciliation differ?</h2>\n<p>CPACharge describes a workflow in which payment amounts are deposited and processing fees are billed separately later, helping a firm match payments to invoices. Confirm that its integration supports your exact accounting-software edition and the reports your bookkeeper uses. See <a href=\"https://www.cpacharge.com/features/how-it-works/\">the provider’s workflow description</a>.</p>\n<p>Stripe offers hosted payment links and checkout alongside APIs for custom integrations. Its Invoicing and Billing products have separate pricing. In a demonstration, trace one paid invoice, one refund and one failed payment into your ledger. A feature list alone does not establish how much manual work your team will retain.</p>\n<h2>Do not confuse CPACharge with LawPay</h2>\n<p>CPACharge is positioned for accounting firms. <a href=\"https://www.lawpay.com/pricing/\">LawPay separately advertises trust-account protection and IOLTA features</a>. Shared ownership does not establish that both products have the same banking configuration. This comparison does not establish either provider’s suitability for your client trust funds. Get the required account and fee-debit arrangements confirmed before collecting those payments.</p>\n<h2>What should you ask before signing?</h2>\n<ol><li>Which recurring charges and network assessments appear outside the quoted transaction rate?</li><li>Does the integration reconcile payments, fees, refunds and failed bank debits in your software?</li><li>Which account receives deposits, and which account is debited for fees or disputes?</li><li>What are the bank-payment limits, settlement schedule and return charges for your account?</li><li>What data can you export if you change providers?</li></ol>\n<p>Bring a recent statement and your invoice-size distribution to the comparison. Our <a href=\"/insights/payment-processor-fees-guide\">processing-fees guide</a> explains the cost categories, and the <a href=\"/insights/what-to-ask-before-signing-a-processor-contract\">contract questions checklist</a> helps structure the quote review.</p>"
+}

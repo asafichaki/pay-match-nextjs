@@ -82,7 +82,24 @@ export function routeSources() {
       ],
     ],
   ];
-  return routes.concat(fixed);
+  return routes.concat(fixed).map(([route, sources]) => {
+    // Reviewed article bodies can live in imported JSON. Changes to that
+    // content must advance this route's lastmod in full and shallow clones.
+    const dependencies = [];
+    for (const source of sources) {
+      if (!existsSync(source)) continue;
+      const files = statSync(source).isDirectory()
+        ? readdirSync(source).filter((name) => name.endsWith(".tsx")).map((name) => path.join(source, name))
+        : [source];
+      for (const file of files) {
+        for (const match of readFileSync(file, "utf8").matchAll(/import\s+\w+\s+from\s*["']@\/([^"']+\.json)["']/g)) {
+          const dependency = path.join(ROOT, "src", match[1]);
+          if (existsSync(dependency)) dependencies.push(dependency);
+        }
+      }
+    }
+    return [route, [...new Set([...sources, ...dependencies])]];
+  });
 }
 
 function gitLastMod(target) {

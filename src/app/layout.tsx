@@ -208,7 +208,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${sourceSerif.variable} ${inter.className}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${plusJakarta.variable} ${sourceSerif.variable} ${inter.className}`}>
       <head>
         <JsonLd data={websiteSchema} />
         <JsonLd data={organizationSchema} />

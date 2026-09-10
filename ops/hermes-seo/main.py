@@ -271,10 +271,9 @@ def step_indexnow(ctx: Ctx, info: Dict[str, Any]) -> None:
         raise RuntimeError(f"IndexNow failed: {bad}")
     note = f"{len(urls)} urls, {len(results)} endpoints (Bing/Copilot only)"
 
-    # Google ignores IndexNow, so ask it directly. Priority order: pages that
-    # are not indexed, then whatever changed in the last 7 days. A 200 means
-    # asked, not indexed; only a later URL Inspection verdict counts, and the
-    # report says so.
+    # Retain an explicit report entry explaining why article pages are not
+    # submitted to Google's restricted Indexing API. Sitemap submission runs
+    # in step_gsc; URL Inspection supplies the index verdict.
     not_indexed = [config.to_url(p) for p, r in ctx.index_status.items()
                    if not (r.get("coverage_state") or "").lower().startswith("submitted and indexed")]
     google_urls = list(dict.fromkeys(not_indexed + urls))

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T13:53:20.062Z",
+  "generated_at": "2026-09-10T15:13:30.427Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 55,
@@ -398,17 +398,15 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Best POS System by Business Type: 2026 Expert Picks",
-      "base_description": "The best POS system depends on your business type. 2026 expert picks: Square for retail, Toast for restaurants, Vagaro for services, plus Clover, Shopify, and Lightspeed compared by use case.",
+      "base_description": "Choose a POS by business type: compare retail inventory, restaurant service, mobile selling and appointment workflows, then check the full cost and hardware.",
       "outline": [
-        "Top POS Systems for General Small Business Operations in 2026",
-        "Best POS Systems for Mobile and Pop-Up Businesses in 2026",
-        "Best POS Systems for Small Retail Stores in 2026",
-        "Best POS Systems for Small Restaurants and Cafes in 2026",
-        "Best POS Systems for Service-Based Businesses in 2026",
-        "Pricing Structures and Hardware Options Across Leading POS Systems in 2026",
-        "FAQ: Best POS Systems for Small Business 2026",
-        "Conclusion",
-        "Related comparisons"
+        "General retail and mobile selling: start with Square",
+        "A Shopify store selling in person: compare Shopify POS",
+        "Restaurants and cafes: compare Toast around service flow",
+        "Salons and appointment-based services: compare Vagaro",
+        "Complex retail inventory: include Lightspeed",
+        "Compare total cost using your own sales",
+        "Frequently asked questions"
       ]
     },
     {
@@ -457,15 +455,15 @@
       "source": "static",
       "title_mode": "template",
       "base_title": "CPACharge vs Stripe 2026: Which Wins for Pro Services",
-      "base_description": "CPACharge vs Stripe in 2026: real rates, IOLTA/trust handling, surcharging, and which one fits law firms, accountants, and other pro services.",
+      "base_description": "Compare CPACharge and Stripe for accounting firms: published US card and ACH fees, monthly charges, integrations, and questions to ask before switching.",
       "outline": [
-        "Why is Choosing the Right Payment Processor Critical in 2026?",
-        "What is CPACharge, and Who is it For?",
-        "What is Stripe, and Who is it For?",
-        "How Do CPACharge and Stripe Compare for Professional Services in 2026?",
-        "What are the Pros and Cons of CPACharge in 2026?",
-        "What are the Pros and Cons of Stripe in 2026?",
-        "Who Should Choose CPACharge in 2026?"
+        "Which payment workflow does your firm need?",
+        "CPACharge vs Stripe: published US fees",
+        "Worked example: 50 invoices of $1,000",
+        "How do collection and reconciliation differ?",
+        "Do not confuse CPACharge with LawPay",
+        "What should you ask before signing?",
+        "Frequently asked questions"
       ]
     },
     {
