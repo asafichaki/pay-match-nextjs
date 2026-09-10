@@ -11,7 +11,7 @@ const baseMetadata: Metadata = {
   // absolute + use-case angle: this page owns "best POS by business type"; the pricing head term
   // "best pos systems for small business 2026" is owned by /comparisons/best-pos-systems-for-small-business-2026 (avoids cannibalization).
   title: { absolute: "Best POS System by Business Type: 2026 Expert Picks" },
-  description: "The best POS system depends on your business type. 2026 expert picks: Square for retail, Toast for restaurants, Vagaro for services, plus Clover, Shopify, and Lightspeed compared by use case.",
+  description: content.description,
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/best-pos-systems-for-small-business-2026-niche-comparison-expert-picks",
   },
@@ -33,7 +33,7 @@ const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Best POS System by Business Type: 2026 Expert Picks",
-  description: "The best POS system depends on your business type. 2026 expert picks: Square for retail, Toast for restaurants, Vagaro for services, plus Clover, Shopify, and Lightspeed compared by use case.",
+  description: content.description,
   datePublished: "2026-04-15T17:35:15.531Z",
   dateModified: "2026-09-10",
   mainEntityOfPage: {
@@ -86,7 +86,7 @@ export default function InsightPage() {
               </h1>
               <AeoAnswer kind="insights" slug="best-pos-systems-for-small-business-2026-niche-comparison-expert-picks" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                The best POS system depends on your business type. These are the 2026 expert picks by use case, from retail and restaurants to mobile and appointment-based services, with the pricing and hardware trade-offs that decide each one.
+                {content.description}
               </p>
               <div className="pt-4 border-t border-border">
                 <Link href="/insights" className="text-sm text-primary hover:underline">
