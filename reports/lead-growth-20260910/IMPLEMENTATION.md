@@ -22,3 +22,5 @@ Source-reviewed comparisons are editorial judgments, not claims of new hands-on 
 ## Live verification
 
 Deployment, pending-check closure and discovery-request evidence are recorded in `/Users/user/Desktop/mypayadvisor-audit-2026-09-09/` after deployment. Old overrides are backed up before updates. Superseded changes are not called verified.
+
+The build inventory now resolves imported article JSON for metadata and H2 outlines, and the lastmod source list includes those content files. This keeps `/llms.txt`, `/llms-full.txt` and sitemap dates usable after future content-only changes. A regression check verifies both article routes retain descriptions, outlines and content dependencies.
