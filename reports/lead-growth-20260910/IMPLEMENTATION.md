@@ -24,3 +24,7 @@ Source-reviewed comparisons are editorial judgments, not claims of new hands-on 
 Deployment, pending-check closure and discovery-request evidence are recorded in `/Users/user/Desktop/mypayadvisor-audit-2026-09-09/` after deployment. Old overrides are backed up before updates. Superseded changes are not called verified.
 
 The build inventory now resolves imported article JSON for metadata and H2 outlines, and the lastmod source list includes those content files. This keeps `/llms.txt`, `/llms-full.txt` and sitemap dates usable after future content-only changes. A regression check verifies both article routes retain descriptions, outlines and content dependencies.
+
+Live validation found a remaining fake link inside a malformed image alt attribute on Square/Shopify and 260px of mobile table overflow on Square/Helcim. The image attribute was backed up and repaired with an updated-at guard. Related-link discovery now parses real anchor tags, excluding attributes and comments. Uncontained DB article tables receive focusable scroll regions without rewriting their HTML; already contained or nested tables are skipped. Mobile and desktop checks show no document overflow. The existing htmlparser2 version is now a direct pinned dependency.
+
+The broad rendering fix does not validate the financial claims in every affected table. In particular, the existing Square/Helcim body still uses older Square rates and savings assumptions and needs a separate content correction; do not describe that article as source-reviewed by this batch.

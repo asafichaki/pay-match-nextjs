@@ -14,6 +14,7 @@
 // it would push the answer down the page.
 
 import Link from "next/link";
+import { Parser } from "htmlparser2";
 import { getSeoOverride, type OverrideKind, type RelatedLink } from "@/lib/seo/overrides";
 
 interface Props {
@@ -48,16 +49,19 @@ export async function RelatedLinks({
     : (fallback ?? []);
   if (bodyHtml && /\bid\s*=\s*["']related-comparisons["']/i.test(bodyHtml)) {
     if (!override?.related_links?.length) return null;
-    const existing = new Set(
-      Array.from(bodyHtml.matchAll(/\bhref\s*=\s*["']([^"']+)["']/gi), ([, href]) => {
+    const existing = new Set<string>();
+    const parser = new Parser({
+      onopentag(name, attributes) {
+        if (name !== "a" || !attributes.href) return;
         try {
-          const url = new URL(href, "https://www.mypayadvisor.com");
-          return url.origin === "https://www.mypayadvisor.com" ? url.pathname : href;
+          const url = new URL(attributes.href, "https://www.mypayadvisor.com");
+          if (url.origin === "https://www.mypayadvisor.com") existing.add(url.pathname);
         } catch {
-          return href;
+          // Invalid URLs do not establish a crawlable internal link.
         }
-      }),
-    );
+      },
+    });
+    parser.end(bodyHtml);
     links = links.filter((link) => !existing.has(link.href.split(/[?#]/)[0]));
   }
   if (!links.length) return null;

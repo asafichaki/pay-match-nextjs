@@ -3,9 +3,10 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
 import * as jsx from 'react/jsx-runtime';
+import * as htmlparser2 from 'htmlparser2';
 import {renderToStaticMarkup} from 'react-dom/server';
 let override=null;
-const imports={'react/jsx-runtime':jsx,'next/link':{default:props=>jsx.jsx('a',props)},'@/lib/seo/overrides':{getSeoOverride:async()=>override}};
+const imports={'htmlparser2':htmlparser2,'react/jsx-runtime':jsx,'next/link':{default:props=>jsx.jsx('a',props)},'@/lib/seo/overrides':{getSeoOverride:async()=>override}};
 const exports={};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync('src/components/seo/RelatedLinks.tsx','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText,{exports,URL,require:name=>{assert.ok(name in imports,name);return imports[name];}});
 const props={kind:'comparisons',slug:'fixture',bodyHtml:`<h2 id='related-comparisons'>Related</h2><a href="https://www.mypayadvisor.com/comparisons/existing?source=body">Existing</a>`};
@@ -18,3 +19,16 @@ assert.match(renderToStaticMarkup(await exports.RelatedLinks({...props,bodyHtml:
 override={related_links:[{href:'/comparisons/existing',title:'Existing'}]};
 assert.equal(await exports.RelatedLinks(props),null);
 console.log('PASS: explicit related links add missing destinations without repeating embedded links or fallback blocks.');
+
+override={related_links:[{href:'/comparisons/missing',title:'Missing'}]};
+const malformed=`<h2 id="related-comparisons">Related</h2><img alt="Caption <a href="/comparisons/missing">text</a> end"><!-- <a href="/comparisons/missing">comment</a> -->`;
+assert.match(renderToStaticMarkup(await exports.RelatedLinks({...props,bodyHtml:malformed})),/href="\/comparisons\/missing"/,'text inside attributes/comments must not hide a real link');
+const tableExports={};
+vm.runInNewContext(ts.transpileModule(fs.readFileSync('src/lib/seo/scrollable-tables.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{exports:tableExports,require:()=>htmlparser2});
+const table='<table><tr><th>Heading</th></tr><tr><td>Cell</td></tr></table>';
+const wrapped=tableExports.containArticleTables('<p>Before</p>'+table+'<p>After</p>');
+assert.ok(wrapped.includes(table),'table bytes and semantics must be preserved');
+assert.match(wrapped,/tabindex="0"/);assert.ok(wrapped.endsWith('</div><p>After</p>'));
+assert.equal(tableExports.containArticleTables(wrapped),wrapped,'existing scroll regions must not be nested');
+assert.equal(tableExports.containArticleTables('<p>No table</p>'),'<p>No table</p>');
+console.log('PASS: quoted fake links are ignored; table regions preserve HTML and are not nested.');
