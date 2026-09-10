@@ -85,3 +85,43 @@ assert.equal(first.session_id,JSON.parse(requests[1].body).session_id);
 assert.equal(requests[0].keepalive,true);
 assert.doesNotThrow(()=>load('src/lib/analytics/funnel.ts').recordFunnelEvent('sh_open',{}));
 console.log('PASS: first-party funnel excludes contact details and tolerates unavailable browser storage.');
+
+// Exercise the scheduled route without any network calls or real recipients.
+const tickEnv={env:{FUNNEL_CRON_SECRET:'test-cron-secret',RESEND_API_KEY:'test-placeholder'}};
+let tickSends=[],tickWrites=[],tickDbError=null,tickAdvanced=[{id:'test-lead'}];
+let tickDelivery={data:{id:'email-test'},error:null};
+let tickLeads=[{id:'test-lead',email:'test@example.invalid',full_name:'Fixture',track:'A',funnel_state:'day1',created_at:'2020-01-01T00:00:00Z',email_state:{day1:{delivered:true}},tags:[]}];
+const tick=load('src/app/api/funnel/tick/route.ts',{Headers,process:tickEnv,console:{...console,error:()=>{}}},{
+  'next/server':{NextResponse:{json:(body,init)=>({body,status:init?.status||200})}},
+  'resend':{Resend:class{emails={send:async(payload,options)=>{tickSends.push({payload,options});return tickDelivery;}};}},
+  '@/lib/funnel/admin-supabase':{getAdminSupabase:()=>({from:()=>({
+    select:()=>{const query={not:()=>query,limit:async()=>({data:tickLeads,error:null})};return query;},
+    update:value=>{tickWrites.push(value);const query={eq:()=>query,select:async()=>({data:tickAdvanced,error:tickDbError})};return query;}
+  })})},
+  '@/lib/funnel/email-dispatch':{expectedStateForAge:()=> 'complete',chooseEmail:()=>({emailKey:'fixture',nextState:'day4',props:{}})},
+  '@/lib/funnel/email-registry':{getEmail:()=>({subject:()=> 'Fixture',default:()=> null})},
+  '@/lib/funnel/resend-client':{FUNNEL_FROM:'test@example.invalid',FUNNEL_REPLY_TO:'test@example.invalid'}
+});
+const tickRequest={headers:new Headers({authorization:'Bearer test-cron-secret'})};
+assert.equal((await tick.GET({headers:new Headers({'x-vercel-cron':'1'})})).status,401);
+assert.equal(tickSends.length,0,'a caller-supplied cron header must not authorize sending');
+tickDelivery={data:null,error:{message:'provider rejected'}};
+assert.equal((await tick.GET(tickRequest)).status,500);
+assert.equal(tickWrites.length,0,'provider rejection must leave the lead retryable');
+tickDelivery={data:null,error:null};
+assert.equal((await tick.GET(tickRequest)).status,500);
+assert.equal(tickWrites.length,0,'missing acceptance ID must not advance the lead');
+tickDelivery={data:{id:'email-test'},error:null};
+assert.equal((await tick.GET(tickRequest)).status,200);
+assert.deepEqual(JSON.parse(JSON.stringify(tickWrites)),[{funnel_state:'day4'}],'tick must not overwrite webhook engagement');
+assert.equal(tickSends.at(-1).options.idempotencyKey,tickSends[0].options.idempotencyKey);
+assert.equal(tickSends.at(-1).payload.tags[0].value,'test-lead');
+tickDbError={message:'database unavailable'};
+assert.equal((await tick.GET(tickRequest)).body.results[0].action,'state_update_failed');
+tickDbError=null;tickAdvanced=[];
+assert.equal((await tick.GET(tickRequest)).status,500,'concurrent state changes must not be reported as advancement');
+tickLeads=[{...tickLeads[0],tags:['TEST']}];
+const sendsBeforeExcluded=tickSends.length;
+assert.equal((await tick.GET(tickRequest)).body.results[0].action,'excluded');
+assert.equal(tickSends.length,sendsBeforeExcluded);
+console.log('PASS: scheduled emails require authentication, exclude test contacts, preserve state on failure, and retain webhook engagement.');

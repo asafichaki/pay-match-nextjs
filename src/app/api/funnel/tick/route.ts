@@ -1,7 +1,7 @@
-// Funnel v4.1 tick — runs every 15 minutes (Vercel cron) and advances leads
+// Funnel v4.1 tick — advances leads when an authorized scheduler invokes it
 // through the email sequence based on (track, current_state, age, engagement).
 //
-// Auth: Bearer token from `FUNNEL_CRON_SECRET` env var, OR Vercel cron header.
+// Auth: Bearer token from `FUNNEL_CRON_SECRET` env var.
 
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
@@ -44,16 +44,15 @@ interface LeadRow {
   email_state: Record<string, unknown> | null;
   calendly_booked_at: string | null;
   created_at: string;
+  status: string | null;
+  tags: string[] | null;
 }
 
 function authorized(req: NextRequest): boolean {
   const secret = process.env.FUNNEL_CRON_SECRET;
   if (!secret) return false;
   const auth = req.headers.get("authorization");
-  if (auth === `Bearer ${secret}`) return true;
-  // Vercel cron sets this header
-  if (req.headers.get("x-vercel-cron") === "1") return true;
-  return false;
+  return auth === `Bearer ${secret}`;
 }
 
 export async function GET(req: NextRequest) {
@@ -77,7 +76,7 @@ export async function GET(req: NextRequest) {
   const { data: leads, error } = await (supabase as any)
     .from("quiz_leads")
     .select(
-      "id, email, full_name, track, track_variant, pain_point, volume_tier, business_type, funnel_state, email_state, calendly_booked_at, created_at"
+      "id, email, full_name, track, track_variant, pain_point, volume_tier, business_type, funnel_state, email_state, calendly_booked_at, created_at, status, tags"
     )
     .not("track", "is", null)
     .not("funnel_state", "in", "(complete,unsubscribed,booked)")
@@ -91,6 +90,12 @@ export async function GET(req: NextRequest) {
 
   for (const lead of (leads || []) as unknown as LeadRow[]) {
     try {
+      const excluded = [lead.status, ...(Array.isArray(lead.tags) ? lead.tags : [])]
+        .some((value) => ["test", "spam", "invalid"].includes(String(value).toLowerCase()));
+      if (excluded) {
+        results.push({ id: lead.id, action: "excluded" });
+        continue;
+      }
       const created = new Date(lead.created_at).getTime();
       const ageDays = (Date.now() - created) / (1000 * 60 * 60 * 24);
       const expectedState = expectedStateForAge(ageDays);
@@ -157,34 +162,43 @@ export async function GET(req: NextRequest) {
       const subject = mod.subject(choice.props);
       const react = mod.default(choice.props);
 
-      await resend.emails.send({
+      const delivery = await resend.emails.send({
         from: FUNNEL_FROM,
         replyTo: FUNNEL_REPLY_TO,
         to: lead.email,
         subject,
         react,
+        tags: [
+          { name: "lead_id", value: lead.id },
+          { name: "funnel_state", value: currentState },
+        ],
         headers: {
           "X-Funnel-Track": lead.track || "",
           "X-Funnel-State": currentState,
           "X-Funnel-Lead-Id": lead.id,
         },
-      });
+      }, { idempotencyKey: `funnel/${lead.id}/${currentState}` });
+      if (delivery.error || !delivery.data?.id) {
+        throw new Error(`Email not accepted: ${delivery.error?.message || "missing email id"}`);
+      }
 
-      // Advance state
+      // Advance only after provider acceptance. The signed webhook owns
+      // email_state so this stale snapshot cannot erase delivery/click events.
       const newState = choice.nextState;
-      const updatedEngagement: Record<string, unknown> = {
-        ...(lead.email_state || {}),
-        [currentState]: { sent_at: new Date().toISOString() },
-      };
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      await (supabase as any)
+      const { data: advanced, error: advanceError } = await (supabase as any)
         .from("quiz_leads")
         .update({
           funnel_state: newState,
-          email_state: updatedEngagement,
         })
-        .eq("id", lead.id);
+        .eq("id", lead.id)
+        .eq("funnel_state", currentState)
+        .select("id");
+      if (advanceError || !advanced?.length) {
+        results.push({ id: lead.id, action: "state_update_failed", detail: "Email accepted; state not advanced" });
+        continue;
+      }
 
       results.push({ id: lead.id, action: "sent", detail: `${currentState} -> ${newState}` });
     } catch (err) {
@@ -193,7 +207,8 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  return NextResponse.json({ ok: true, processed: results.length, results });
+  const ok = !results.some((result) => ["error", "state_update_failed"].includes(result.action));
+  return NextResponse.json({ ok, processed: results.length, results }, { status: ok ? 200 : 500 });
 }
 
 function stateOrder(s: FunnelState): number {
