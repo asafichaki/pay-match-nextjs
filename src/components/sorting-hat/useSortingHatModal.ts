@@ -12,8 +12,15 @@ interface State {
   initialBusinessType: BusinessType | null;
 }
 
-let state: State = { open: false, initialBusinessType: null };
+// React requires the server snapshot to keep the same identity between reads.
+const SERVER_STATE: State = { open: false, initialBusinessType: null };
+let state: State = SERVER_STATE;
 const listeners = new Set<() => void>();
+
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  return () => listeners.delete(callback);
+}
 
 function emit() {
   for (const l of listeners) l();
@@ -35,12 +42,9 @@ export function useSortingHatModal(): State & {
   setOpen: (next: boolean) => void;
 } {
   const snap = useSyncExternalStore(
-    (cb) => {
-      listeners.add(cb);
-      return () => listeners.delete(cb);
-    },
+    subscribe,
     () => state,
-    () => ({ open: false, initialBusinessType: null }),
+    () => SERVER_STATE,
   );
   return {
     ...snap,

@@ -125,3 +125,18 @@ const sendsBeforeExcluded=tickSends.length;
 assert.equal((await tick.GET(tickRequest)).body.results[0].action,'excluded');
 assert.equal(tickSends.length,sendsBeforeExcluded);
 console.log('PASS: scheduled emails require authentication, exclude test contacts, preserve state on failure, and retain webhook engagement.');
+
+let modalStore;
+const modal=load('src/components/sorting-hat/useSortingHatModal.ts',{}, {'react':{useSyncExternalStore:(subscribe,getSnapshot,getServerSnapshot)=>{modalStore={subscribe,getSnapshot,getServerSnapshot};return getSnapshot();}}});
+modal.useSortingHatModal();
+const initialServerSnapshot=modalStore.getServerSnapshot();
+assert.equal(initialServerSnapshot,modalStore.getServerSnapshot(),'server snapshots must keep their identity during hydration');
+let modalNotifications=0;const unsubscribe=modalStore.subscribe(()=>modalNotifications++);
+modal.openSortingHat({initialBusinessType:'physical_goods'});
+assert.equal(modalStore.getSnapshot().open,true);
+assert.equal(modalStore.getSnapshot().initialBusinessType,'physical_goods');
+assert.equal(modalStore.getServerSnapshot(),initialServerSnapshot);
+assert.equal(modalStore.getServerSnapshot().open,false,'server state must not leak an open client modal');
+modal.closeSortingHat();assert.equal(modalStore.getSnapshot().open,false);
+assert.equal(modalNotifications,2);unsubscribe();modal.openSortingHat();assert.equal(modalNotifications,2);modal.closeSortingHat();
+console.log('PASS: quiz modal has a stable server snapshot and notifies subscribers on open/close.');
