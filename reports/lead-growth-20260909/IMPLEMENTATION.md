@@ -37,3 +37,11 @@ The ecommerce insight's noindex is an intentional prior consolidation decision a
 GA4 measurement ID is G-MDTFETTH7E. Available service-account properties do not include myPayAdvisor; both local user tokens lack Analytics Admin scopes, and the browser requires login. No authenticated GA4 property report or key-event configuration was verified.
 
 After the next scheduled run, verify `seo_reports.json.lead_goal` and deployed code version. The existing `run.sh` pulls main on each run; no independent recurring job was created. Recheck GSC after 14 complete days (with D-3 final-data lag), review indexation weekly, and assess September's actual merchant inquiries at month end. Ten requests remains a business target, not a guaranteed result.
+
+## September 10: scheduled-email failure handling
+
+The scheduled endpoint previously advanced leads even when Resend returned an error and overwrote webhook engagement with a stale snapshot. It now requires an accepted email ID, reports provider/database failures, leaves engagement writes to the signed webhook, uses a stable per-lead/state provider idempotency key, and conditionally advances the expected state. Marked test/spam/invalid contacts are excluded. A caller-supplied cron header no longer bypasses the configured bearer secret.
+
+Network-free route tests exercise rejected/missing acceptance, database failure, concurrent state change, excluded test contacts, and forged cron headers. TypeScript and focused ESLint also pass. This does not activate the email sequence: no cron or historical-lead sends were added. Sequence timing and enrollment still need review before activation; provider idempotency is not a permanent send ledger.
+
+Read-only recheck at 2026-09-10 13:50 UTC: September 0 eligible new requests; trailing 30 days 4; last eligible request August 30. GA4 account enumeration succeeds but still lists only four unrelated properties. The business goal is not achieved.
