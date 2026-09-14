@@ -14,6 +14,7 @@ import { withSeoOverride } from "@/lib/seo/overrides";
 import type { RelatedLink } from "@/lib/seo/overrides";
 import { autoLinkGlossary } from "@/lib/glossary/autolink";
 import { rewriteRetiredLinks } from "@/lib/seo/retired-links";
+import { containArticleTables } from "@/lib/seo/scrollable-tables";
 import { REDIRECTED_INSIGHT_SLUGS } from "@/lib/insights/redirected-slugs";
 import { REDIRECTED_COMPARISON_SLUGS } from "@/lib/comparisons/redirected-slugs";
 
@@ -263,7 +264,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
   const cleanBody = sanitizeBody(article.body_html || article.content);
   // Glossary terms linked on first mention only, capped at 4, never inside an
   // existing anchor, a heading or an answer block. See lib/glossary/autolink.
-  const linkedBody = autoLinkGlossary(cleanBody);
+  const linkedBody = containArticleTables(autoLinkGlossary(cleanBody));
   const fallbackLinks = await fetchInternalLinkTitles(kind, article.internal_links ?? []);
   const intake = kind === "comparisons" ? COMPARISON_INTAKE[article.slug] : undefined;
 
