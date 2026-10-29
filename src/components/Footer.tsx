@@ -21,11 +21,11 @@ const Footer = () => {
               <span className="text-lg font-display font-bold">myPayAdvisor</span>
             </Link>
             <p className="text-sm text-background/70 max-w-md mb-4">
-              We help businesses find the payment processor that fits their needs. Our independent comparison platform analyzes pricing, features, and support to match you with the right solution - completely free.
+              We help businesses compare payment processors on what they actually cost: effective rate, contract terms and funding speed. Free to use. We are not owned by any processor.
             </p>
             <div className="flex items-center gap-4 text-xs text-background/50">
-              <span className="flex items-center gap-1"><Shield className="h-3 w-3" /> Free & Unbiased</span>
-              <span className="flex items-center gap-1"><Lock className="h-3 w-3" /> Bank-Level Security</span>
+              <span className="flex items-center gap-1"><Shield className="h-3 w-3" /> Free to use</span>
+              <Link href="/how-we-make-money" className="flex items-center gap-1 hover:text-primary"><Lock className="h-3 w-3" /> How we make money</Link>
             </div>
           </div>
 
@@ -124,7 +124,7 @@ const Footer = () => {
         {/* Disclaimer */}
         <aside className="text-center border-t border-background/15 pt-6 mb-3">
           <p className="text-[10px] sm:text-xs text-background/40 max-w-5xl mx-auto">
-            <strong>Affiliate Disclosure:</strong> myPayAdvisor may receive compensation from payment providers featured on this site. Compensation may affect where and how providers appear. We recommend confirming rates and terms directly with any provider before signing.
+            <strong>Affiliate Disclosure:</strong> We earn a commission from some providers when you sign up through our links. It never changes our scores or the order of our rankings, and it doesn&apos;t change your price. <a href="/how-we-make-money" className="underline">How we make money</a>. We recommend confirming rates and terms directly with any provider before signing.
           </p>
         </aside>
 

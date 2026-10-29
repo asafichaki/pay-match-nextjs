@@ -328,3 +328,15 @@
 .dark {
   --border: 220 13% 28%;
 }
+
+/* Wide tables in database articles scroll inside their own box on phones
+   instead of pushing the whole page sideways (stripe-vs-worldpay was 730px
+   wide on a 430px screen). Desktop layout is unchanged. */
+@media (max-width: 767px) {
+  .article-body table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

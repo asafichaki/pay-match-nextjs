@@ -46,15 +46,10 @@ export default function TermsPage() {
                 <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg p-6 space-y-3">
                   <h3 className="text-lg font-semibold text-foreground">Important Disclosure</h3>
                   <p className="text-muted-foreground">
-                    myPayAdvisor may receive compensation from payment providers featured on our website. This compensation may influence:
+                    We earn a commission from some providers when you sign up through our links. It never changes our scores or the order of our rankings, and it doesn&apos;t change your price, which follow the published method on our <a href="/how-we-make-money" className="underline">How we make money</a> page.
                   </p>
-                  <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                    <li>The order in which providers appear on our website</li>
-                    <li>The prominence given to certain providers</li>
-                    <li>The recommendations made through our quiz and comparison tools</li>
-                  </ul>
                   <p className="text-muted-foreground">
-                    We strive to provide accurate and unbiased information, but our commercial relationships may affect our content. We recommend that you conduct your own research and due diligence before selecting a payment provider.
+                    If we ever sell a placement for a flat fee, that slot is labelled &quot;Sponsored&quot; on the page itself. We recommend that you confirm rates and terms directly with any provider before signing.
                   </p>
                 </div>
               </section>

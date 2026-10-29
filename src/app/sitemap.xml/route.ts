@@ -235,6 +235,7 @@ export async function GET() {
   add(`${SITE}/comparisons`, page("/comparisons", "comparisons"), "weekly", 0.95);
   add(`${SITE}/data/effective-rates-2026`, page("/data/effective-rates-2026", "data/effective-rates-2026"), "monthly", 0.9);
   add(`${SITE}/about/barak`, page("/about/barak", "about/barak"), "monthly", 0.7);
+  add(`${SITE}/how-we-make-money`, page("/how-we-make-money", "how-we-make-money"), "monthly", 0.5);
   add(`${SITE}/pulse`, page("/pulse", "pulse"), "daily", 0.85);
 
   // Static comparison + insight shells (per-file git lastmod)

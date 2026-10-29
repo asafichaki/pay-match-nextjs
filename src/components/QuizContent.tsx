@@ -471,7 +471,7 @@ const QuizContent = ({ onComplete, showBackButton = true }: QuizContentProps) =>
           )}
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="animate-fade-in">
+        <form data-clarity-mask="true" onSubmit={handleSubmit} className="animate-fade-in">
           <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-6 border border-border">
             <div className="text-center mb-5">
               <h3 className="text-xl sm:text-2xl font-bold text-foreground">
@@ -520,21 +520,15 @@ const QuizContent = ({ onComplete, showBackButton = true }: QuizContentProps) =>
                 />
                 <p id="quiz-phone-why" className="text-xs text-muted-foreground">
                   So Barak can call once with the answer instead of trading four
-                  emails. No call centre, and no one else gets this number.
+                  emails. No call centre. We never sell your number, and we only pass it to a
+                  provider if you ask us to introduce you.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-2 mt-5 pt-4 border-t border-border/50">
-              <div className="flex -space-x-2">
-                <div className="w-7 h-7 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center text-xs font-medium text-primary">J</div>
-                <div className="w-7 h-7 rounded-full bg-green-500/20 border-2 border-background flex items-center justify-center text-xs font-medium text-green-600">M</div>
-                <div className="w-7 h-7 rounded-full bg-orange-500/20 border-2 border-background flex items-center justify-center text-xs font-medium text-orange-600">S</div>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-semibold text-foreground">500+</span> businesses found their perfect match
-              </p>
-            </div>
+            <p className="text-xs text-muted-foreground text-center mt-5 pt-4 border-t border-border/50">
+              We may be paid if you sign up with a provider we recommend. <a href="/how-we-make-money" className="underline">How we make money</a>.
+            </p>
           </div>
         </form>
       )}

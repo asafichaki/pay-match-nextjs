@@ -147,7 +147,7 @@ export default function ExitIntentPopup() {
               ))}
             </ul>
 
-            <form onSubmit={submit} className="space-y-3">
+            <form data-clarity-mask="true" onSubmit={submit} className="space-y-3">
               <input
                 type="text"
                 name="website"
@@ -223,7 +223,7 @@ export default function ExitIntentPopup() {
               already on its way either way.
             </p>
 
-            <form onSubmit={submitDetails} className="space-y-3">
+            <form data-clarity-mask="true" onSubmit={submitDetails} className="space-y-3">
               <Input
                 type="tel"
                 inputMode="tel"

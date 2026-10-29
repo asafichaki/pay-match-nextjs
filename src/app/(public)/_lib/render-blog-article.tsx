@@ -1,4 +1,7 @@
 import { cache } from "react";
+import { ARTICLE_OFFERS, ARTICLE_VS } from "@/lib/data/article-offers";
+import { VsPicksBox } from "@/components/mix/VsPicksBox";
+import { ArticleOffersBox } from "@/components/mix/ArticleOffersBox";
 import { unstable_cache } from "next/cache";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -445,6 +448,12 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
             </div>
           </div>
         </header>
+
+        {ARTICLE_OFFERS[article.slug] ? (
+          <ArticleOffersBox offers={ARTICLE_OFFERS[article.slug]} from={`/${kind}/${article.slug}`} />
+        ) : ARTICLE_VS[article.slug] ? (
+          <VsPicksBox a={ARTICLE_VS[article.slug][0]} b={ARTICLE_VS[article.slug][1]} from={`/${kind}/${article.slug}`} />
+        ) : null}
 
         {kind === "comparisons" && article.slug === "best-payment-processors-with-same-day-deposit-2026" ? (
           <MatchCTA

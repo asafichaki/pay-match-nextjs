@@ -4,9 +4,7 @@ import { useEffect } from "react";
 import { CreditCard } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import SortingHat from "@/components/sorting-hat/SortingHat";
-import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import WhyChoose from "@/components/WhyChoose";
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 // HowTo Schema for the quiz process
@@ -98,7 +96,7 @@ export default function QuizPage() {
                 </h1>
               </div>
               <p className="text-sm sm:text-base text-muted-foreground">
-                Four questions. Barak (Global Payments Manager) sends your matched shortlist personally.
+                Four questions. Your matched shortlist arrives by email in minutes.
               </p>
             </header>
 
@@ -109,8 +107,6 @@ export default function QuizPage() {
       </div>
 
       {/* Additional Content from Home Page */}
-      <WhyChoose />
-      <Testimonials />
       <FAQ />
     </>
   );

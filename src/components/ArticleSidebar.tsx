@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Star } from "lucide-react";
-import { providers } from "@/data/providers";
-import { AffiliateLink } from "@/components/AffiliateLink";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import { formatRate, rankAt, RATES_CHECKED } from "@/lib/data/ranking-2026";
+import { ProviderButton } from "@/components/mix/ProviderButton";
 
 interface RelatedArticle {
   title: string;
@@ -27,15 +27,10 @@ const comparisonArticles: RelatedArticle[] = [
 ];
 
 const ArticleSidebar = ({ currentSlug }: ArticleSidebarProps) => {
-  // Ranked by the rating this site publishes next to each name, which the
-  // hand-ordered array did not do: Worldpay (8.6) sat above Clover (8.8) and
-  // Stax (9.0), so the "ranking" contradicted its own numbers on every page.
-  // `sidebarExclude` drops a provider from this list without deleting its row.
-  const topProviders = providers
-    .filter((p) => !p.sidebarExclude)
-    .slice()
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 5);
+  // Same ranking as the best-of page and its schema (src/lib/data/ranking-2026),
+  // so the sidebar on every article can no longer contradict the body. The old
+  // hand-set 9.1 / 9.0 / 8.8 ratings had no method behind them.
+  const topProviders = rankAt(0).slice(0, 5);
   
   // Filter out current article from related articles
   const filteredInsights = insightArticles.filter(a => a.href !== currentSlug).slice(0, 3);
@@ -46,54 +41,45 @@ const ArticleSidebar = ({ currentSlug }: ArticleSidebarProps) => {
       <div className="sticky top-24 space-y-8">
         {/* Top Providers */}
         <div className="border border-border rounded-xl p-6 bg-background shadow-sm">
-          <h3 className="text-xl font-bold text-foreground mb-6">
-            Best Payment Processors
+          <h3 className="text-xl font-bold text-foreground mb-1">
+            Lowest cost at $10K/mo
           </h3>
+          <p className="text-xs text-muted-foreground mb-5">
+            Effective rate, fees included. Checked {RATES_CHECKED}. We may earn a commission; it never changes the order.{" "}
+            <a href="/how-we-make-money" className="underline">How</a>
+          </p>
           
           <div className="divide-y divide-border">
-            {topProviders.map((provider, index) => (
-              <AffiliateLink
-                key={provider.id}
-                partner={provider.partnerSlug}
-                from={currentSlug}
-                title={`Visit ${provider.name}`}
+            {topProviders.map((provider) => (
+              <ProviderButton
+                key={provider.processor}
+                partnerSlug={provider.partnerSlug}
+                pricingUrl={provider.pricingUrl}
+                from={currentSlug ?? ""}
+                label={`Visit ${provider.name}`}
                 className="flex items-center gap-4 py-4 first:pt-0 last:pb-0 group cursor-pointer hover:bg-muted/30 -mx-2 px-2 rounded-lg transition-all duration-200"
               >
                 <span className="text-lg font-bold text-muted-foreground/60 w-6">
-                  {index + 1}.
+                  {provider.rank}.
                 </span>
-                {provider.logo ? (
-                  <div className="w-12 h-12 rounded-lg bg-muted/30 flex items-center justify-center p-1.5 group-hover:bg-muted/50 transition-colors">
-                    <img 
-                      src={provider.logo} 
-                      alt={provider.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary text-sm font-bold group-hover:bg-primary/20 transition-colors">
-                    {provider.name.charAt(0)}
-                  </div>
-                )}
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-foreground group-hover:text-primary transition-colors">
                     {provider.name}
                   </p>
-                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground mt-0.5">
-                    <Star className="w-4 h-4 fill-primary text-primary" />
-                    <span className="font-medium">{provider.rating}</span>
-                  </div>
+                  <p className="text-sm text-muted-foreground mt-0.5 tabular-nums">
+                    {formatRate(provider.score)} effective
+                  </p>
                 </div>
                 <ChevronRight className="w-5 h-5 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-1 transition-all duration-200" />
-              </AffiliateLink>
+              </ProviderButton>
             ))}
           </div>
           
           <Link 
-            href="/"
+            href="/comparisons/best-payment-processors-2026"
             className="flex items-center justify-center gap-2 mt-6 py-3 px-4 bg-primary text-primary-foreground rounded-xl text-sm font-semibold hover:bg-primary/90 transition-all duration-200 hover:shadow-lg"
           >
-            Compare All Processors
+            See the full ranking
           </Link>
         </div>
 

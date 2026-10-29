@@ -1,15 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { AffiliateLink, AffiliateDisclosure } from "@/components/AffiliateLink";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, BadgeCheck, CalendarCheck, Scale, TrendingDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
-import ArticleSidebar from "@/components/ArticleSidebar";
 import { MatchCTA } from "@/components/MatchCTA";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
-import { ArticleByline } from "@/components/seo/ArticleByline";
+import { MainRankingTable } from "@/components/mix/MainRankingTable";
+import { ProviderReview } from "@/components/mix/ProviderReview";
+import { ASSUMPTIONS, cheapestPerTier, formatRate, mainTable, monthlyCost, NOT_RANKED, rankAt, RATES_CHECKED, TIER_LABELS } from "@/lib/data/ranking-2026";
+import { PROVIDER_REVIEWS } from "@/lib/data/provider-reviews-2026";
+import { BEST_OF_FAQ } from "./faq";
+import { HowToChoose } from "./HowToChoose";
 
 interface ContentSlots {
   /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
@@ -18,267 +21,214 @@ interface ContentSlots {
   relatedLinks?: React.ReactNode;
 }
 
+const FROM = "/comparisons/best-payment-processors-2026";
+
 export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
+  const at10k = rankAt(0);
+  const at250k = rankAt(2);
+  const rows = mainTable();
+  const cheapest = cheapestPerTier(rows);
 
   return (
     <>
       <main className="min-h-screen bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-12 justify-center">
-            <article className="max-w-4xl flex-1 min-w-0">
-              <header className="pt-16 pb-10 border-b border-border">
-                <p className="text-sm font-medium text-primary mb-4">Expert Analysis & Comprehensive Comparison</p>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
-                  15 Best Payment Processors of 2026, Ranked by Effective Rate
-                </h1>
-                {aeoAnswer}
-                <p className="aeo-answer text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8" data-speakable="true">
-                  Updated May 2026. Helcim ranks #1 at 2.51% effective, Adyen 2.32% (enterprise only), Square 2.65%, Stripe 2.97%, PayPal 3.07%. Barak Bachar ranked 15 U.S. processors by effective rate across four merchant volumes from $10K to $1M monthly. Full table below.
-                </p>
-                <ArticleByline
-                  author="Reviewed by Barak Bachar"
-                  authorUrl="/about/barak"
-                  lastUpdated="2026-08-25"
-                  className="mt-4"
-                />
-
-                <MatchCTA
-                  variant="inline"
-                  headline="Skip the long list, get your 3 best matches in 60 seconds"
-                  subline="Tell us your monthly volume and channel mix. We send back the 3 processors that actually fit, with effective rates and what to ask before signing."
-                />
-              </header>
-
-              <section className="py-10 border-b border-border">
-                <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 md:p-8">
-                  <h2 className="text-lg font-bold text-foreground mb-4">Key Findings</h2>
-                  <ul className="space-y-2 text-muted-foreground list-disc list-inside" data-speakable="true">
-                    <li>Payment processing fees typically range from <strong className="text-foreground">1.5% to 3.5%</strong> per transaction</li>
-                    <li><strong className="text-foreground">Interchange-plus pricing</strong> models offer the most transparency and often the lowest costs</li>
-                    <li>Next-day or same-day funding can <strong className="text-foreground">dramatically improve cash flow</strong></li>
-                    <li>Hidden fees can add <strong className="text-foreground">15-30%</strong> to your annual processing costs</li>
-                  </ul>
-                  <p className="mt-4 text-sm text-muted-foreground">
-                    For CBD, gaming, nutra, firearms, travel or subscription merchants, the processors above will decline or freeze you; start with our <Link href="/insights/high-risk-payment-processing-guide" className="text-primary font-medium hover:underline">high-risk payment processing guide</Link> instead.
-                  </p>
-                </div>
-              </section>
-
-              <nav className="py-10 border-b border-border">
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">In This Guide</h2>
-                <ol className="grid md:grid-cols-2 gap-2 text-sm list-decimal list-inside">
-                  {[
-                    { href: "#executive-summary", label: "Executive Summary" },
-                    { href: "#why-payment-processing-matters", label: "Why Payment Processing Matters" },
-                    { href: "#top-providers", label: "Top Payment Processors Reviewed" },
-                    { href: "#additional-providers", label: "Additional Providers" },
-                    { href: "#essential-features", label: "Essential Features" },
-                    { href: "#implementation-guide", label: "Implementation Guide" },
-                    { href: "#cost-analysis", label: "Cost Analysis" },
-                    { href: "#faq", label: "FAQ" },
-                  ].map((item) => (
-                    <li key={item.href} className="text-muted-foreground">
-                      <a href={item.href} className="text-primary hover:underline">{item.label}</a>
-                    </li>
-                  ))}
-                </ol>
+          <article className="mx-auto max-w-5xl pb-16">
+            <header className="pt-6 sm:pt-12 pb-2">
+              <nav aria-label="Breadcrumb" className="mb-4 text-xs text-muted-foreground">
+                <Link href="/" className="hover:text-foreground">Home</Link>
+                <span className="mx-1.5">/</span>
+                <Link href="/comparisons" className="hover:text-foreground">Comparisons</Link>
+                <span className="mx-1.5">/</span>
+                <span className="text-foreground">Best payment processors</span>
               </nav>
+              <p className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                <CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" /> Prices checked {RATES_CHECKED}<span className="hidden sm:inline">&nbsp;on each provider&apos;s own pricing page</span>
+              </p>
+              <h1 className="text-[1.85rem]/[1.15] sm:text-4xl/[1.15] lg:text-[3.25rem]/[1.1] font-bold text-foreground mb-4 tracking-tight text-balance">
+                Best Payment Processors of 2026, Ranked by What You&apos;d Actually Pay
+              </h1>
+              {aeoAnswer}
+              <p className="aeo-answer max-w-3xl text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed" data-speakable="true">
+                At {TIER_LABELS[0]} a month, {at10k[0].name} costs the least at {formatRate(at10k[0].score)} effective
+                (about {monthlyCost(at10k[0].score, 0)} a month), ahead of {at10k[1].name} ({formatRate(at10k[1].score)}) and {at10k[2].name} ({formatRate(at10k[2].score)}).
+                At {TIER_LABELS[2]} and above, {at250k[0].name} leads at {formatRate(at250k[0].score)}. The table shows all four volumes; full reviews follow.
+              </p>
 
-              <section id="executive-summary" className="py-10 border-b border-border">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Executive Summary</h2>
-                <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
-                  <p>After conducting extensive research, testing multiple platforms, and analyzing hundreds of pricing structures, we've identified the leading payment processing companies that deliver the best combination of competitive rates, reliable service, and valuable features for businesses of all sizes.</p>
-                  <p>Whether you're a startup accepting your first payment, a growing business seeking better rates, or an established enterprise requiring sophisticated payment infrastructure, this guide provides the insights you need to make an informed decision.</p>
+              <div className="mt-4 sm:mt-5 flex items-center gap-3">
+                <span aria-hidden="true" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">BB</span>
+                <div className="text-sm leading-tight">
+                  <p className="text-foreground">Reviewed by <Link href="/about/barak" className="font-semibold hover:text-primary">Barak Bachar</Link>, payments manager</p>
+                  <p className="text-muted-foreground">Updated Oct 29, 2026<span className="hidden sm:inline"> · {at10k.length} providers ranked</span></p>
                 </div>
-              </section>
+              </div>
 
-              <section id="why-payment-processing-matters" className="py-10 border-b border-border">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Why Payment Processing Matters</h2>
-                <div className="space-y-8">
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-4">Direct Cost Impact on Profitability</h3>
-                    <p className="text-muted-foreground mb-4">Payment processing fees represent one of your largest operating expenses. For a business processing $500,000 annually, the difference between a 2.9% and 2.2% effective rate equals <strong className="text-foreground">$3,500 in annual savings</strong>.</p>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-4">Cash Flow and Business Operations</h3>
-                    <p className="text-muted-foreground">Payment timing significantly affects business operations. Traditional processors may hold funds for 2-5 business days, while modern providers offer next-day or even same-day funding.</p>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-4">Why Fees Vary: Interchange Basics</h3>
-                    <p className="text-muted-foreground mb-4">Card networks and issuing banks set a baseline cost called interchange that every processor pays. Regulation II sets the statutory cap on debit-card interchange in the United States, which is why some providers can offer sub-1% debit rates and others cannot.</p>
-                    <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
-                      <blockquote cite="https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm" className="text-foreground italic leading-relaxed">
-                        &ldquo;an interchange fee that exceeds $0.21 plus 0.05 percent multiplied by the value of the transaction, plus a $0.01 fraud-prevention adjustment&rdquo;
-                      </blockquote>
-                      <figcaption className="mt-2 text-sm text-muted-foreground not-italic">
-                        Board of Governors of the Federal Reserve System, <a href="https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Regulation II (12 CFR Part 235)</a>
-                      </figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </section>
+              <ul className="mt-6 hidden gap-3 sm:grid sm:grid-cols-3 list-none p-0">
+                <li className="rounded-2xl border border-border bg-background p-4 shadow-sm">
+                  <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground"><TrendingDown className="h-4 w-4 text-success" aria-hidden="true" /> Cheapest under $50K/mo</p>
+                  <p className="mt-1 text-lg font-bold text-foreground">{at10k[0].name} <span className="tabular-nums">{formatRate(at10k[0].score)}</span></p>
+                  <p className="text-xs text-muted-foreground">Interchange-plus, no monthly fee</p>
+                </li>
+                <li className="rounded-2xl border border-border bg-background p-4 shadow-sm">
+                  <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground"><Scale className="h-4 w-4 text-primary" aria-hidden="true" /> Cheapest from $250K/mo</p>
+                  <p className="mt-1 text-lg font-bold text-foreground">{at250k[0].name} <span className="tabular-nums">{formatRate(at250k[0].score)}</span></p>
+                  <p className="text-xs text-muted-foreground">Subscription, interchange at cost</p>
+                </li>
+                <li className="rounded-2xl border border-border bg-background p-4 shadow-sm">
+                  <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground"><BadgeCheck className="h-4 w-4 text-primary" aria-hidden="true" /> How we rank</p>
+                  <p className="mt-1 text-lg font-bold text-foreground">Real cost, not list rate</p>
+                  <p className="text-xs text-muted-foreground">Fixed fees and monthly fees included. <a href="#method" className="underline">Method</a></p>
+                </li>
+              </ul>
+            </header>
 
-              <section id="top-providers" className="py-10 border-b border-border">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Top Payment Processors Reviewed</h2>
-                <AffiliateDisclosure className="text-xs text-muted-foreground border-l-2 border-border pl-3 mb-8 -mt-4" />
+            <MainRankingTable from={FROM} />
 
-                {[
-                  { name: "Leaders Merchant Services", partnerSlug: "leaders-merchant-services", logo: "/images/lms-logo-official.png", rating: "9.1", tagline: "Best Overall Payment Solution for Growing Businesses", desc: "Leaders Merchant Services stands out for growing businesses through competitive pricing, zero monthly fees for qualifying accounts, and exceptional customer support.", url: "https://www.leadersmerchantservices.com", quoteUrl: "https://www.leadersmerchantservices.com/contact" },
-                  { name: "Worldpay", partnerSlug: "worldpay", logo: "/images/worldpay-logo.png", rating: "8.6", tagline: "Trusted by Over 1 Million Merchants Globally", desc: "Worldpay provides enterprise-grade reliability and global reach for established businesses with international operations.", url: "https://www.worldpay.com", quoteUrl: "https://www.worldpay.com/en-us/contact" },
-                  { name: "Clover", partnerSlug: "clover", logo: "/images/clover-logo.png", rating: "8.8", tagline: "All-in-One Payment System Solution", desc: "Clover transforms payment processing into comprehensive business management through elegant integrated hardware and software.", url: "https://www.clover.com", quoteUrl: "https://www.clover.com/get-demo" },
-                  { name: "Payment Depot", partnerSlug: "payment-depot", logo: "/images/payment-depot-logo.png", rating: "8.2", tagline: "Best for High-Revenue Businesses", desc: "Payment Depot disrupts traditional pricing through transparent interchange-plus models that dramatically reduce costs for high-volume businesses.", url: "https://www.paymentdepot.com", quoteUrl: "https://www.paymentdepot.com/contact" },
-                  { name: "Stax", partnerSlug: "stax", logo: "/images/stax-logo.png", rating: "8.5", tagline: "Best for High-Volume Businesses", desc: "Stax pioneers 0% markup processing that rewards growth rather than penalizing it.", url: "https://staxpayments.com", quoteUrl: "https://staxpayments.com/contact" },
-                ].map((provider, idx) => (
-                  <div key={provider.name} className={`mb-12 ${idx < 4 ? 'pb-12 border-b border-border' : ''}`}>
-                    <div className="flex items-start gap-6 mb-6">
-                      <img src={provider.logo} alt={provider.name} className="w-20 h-20 object-contain rounded-lg bg-white p-2 border border-border" />
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between flex-wrap gap-2">
-                          <h3 className="text-xl md:text-2xl font-bold text-foreground">{idx + 1}. {provider.name}</h3>
-                          <div className="flex items-center gap-1 bg-primary/10 px-3 py-1 rounded-full">
-                            <Star className="h-4 w-4 text-primary fill-primary" />
-                            <span className="font-bold text-primary">{provider.rating}</span>
-                          </div>
-                        </div>
-                        <p className="text-primary font-medium mt-1">{provider.tagline}</p>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground mb-6">{provider.desc}</p>
-                    <div className="flex flex-wrap gap-3">
-                      <AffiliateLink partner={provider.partnerSlug} from="/comparisons/best-payment-processors-2026" title={`Visit ${provider.name}`} className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                        Visit Site <ArrowRight className="h-4 w-4" />
-                      </AffiliateLink>
-                      <AffiliateLink partner={provider.partnerSlug} variant="quote" from="/comparisons/best-payment-processors-2026" title={`Request a quote from ${provider.name}`} className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/5 transition-colors">
-                        Get a Free Quote
-                      </AffiliateLink>
-                    </div>
+            <MatchCTA
+              variant="inline"
+              headline="Not sure which row is you?"
+              subline="Answer four questions and get the 3 processors that fit your card mix, ticket size and industry, with what to ask each one before signing."
+            />
+
+            <nav aria-label="Reviews in this guide" className="my-10 rounded-2xl border border-border bg-muted/40 p-5">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Jump to a review</p>
+              <ol className="flex flex-wrap gap-2 list-none p-0 m-0">
+                {rows.map((r) => (
+                  <li key={r.processor}>
+                    <a href={`#${r.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-sm text-foreground hover:border-primary hover:text-primary transition-colors">
+                      <span className="text-xs font-bold text-muted-foreground tabular-nums">{r.rank}</span> {r.name}
+                    </a>
+                  </li>
+                ))}
+                {[["#how-to-choose", "How to choose"], ["#method", "How we rank"], ["#faq", "FAQ"]].map(([h, l]) => (
+                  <li key={h}>
+                    <a href={h} className="inline-flex rounded-full px-3 py-1.5 text-sm text-primary hover:underline">{l}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+
+            <section aria-labelledby="reviews-heading">
+              <h2 id="reviews-heading" className="text-2xl md:text-3xl font-bold text-foreground">
+                The {rows.length} providers, reviewed
+              </h2>
+              <p className="mt-2 text-muted-foreground leading-relaxed">
+                Each review lists the fees from the provider&apos;s own pricing page, checked {RATES_CHECKED}, what they mean in practice, and who should pick it. Ranked in the order of the table above.
+              </p>
+              {rows.map((r) =>
+                PROVIDER_REVIEWS[r.processor] ? (
+                  <ProviderReview key={r.processor} row={r} review={PROVIDER_REVIEWS[r.processor]} from={FROM} cheapest={cheapest} />
+                ) : null,
+              )}
+            </section>
+
+            <section className="mt-10 rounded-2xl border border-border p-5 sm:p-6">
+              <h2 className="text-xl font-bold text-foreground mb-2">Not ranked, and why</h2>
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                {NOT_RANKED.map((n) => (
+                  <li key={n.name}><strong className="text-foreground">{n.name}:</strong> {n.reason}.</li>
+                ))}
+              </ul>
+              <p className="mt-3 text-sm text-muted-foreground">
+                For CBD, gaming, nutra, firearms, travel or subscription businesses, most providers above may decline you; start with the <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">high-risk payment processing guide</Link>.
+              </p>
+            </section>
+
+            <HowToChoose />
+
+            <section id="method" className="py-10 border-t border-border">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">How we rank</h2>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>
+                  Every provider gets the same test, built only from its own published prices. The effective rate is:
+                </p>
+                <p className="rounded-lg bg-muted/60 px-4 py-3 font-mono text-sm text-foreground">
+                  percentage + (fixed fee ÷ ${ASSUMPTIONS.averageSale}) + (monthly fee ÷ monthly volume)
+                </p>
+                <p>
+                  We assume a ${ASSUMPTIONS.averageSale} average sale and a {ASSUMPTIONS.cardMix} card mix. For interchange-plus providers (Helcim, Stax, Adyen) we add an estimate of the card networks&apos; own cost: {ASSUMPTIONS.interchangeInPerson.toFixed(2)}% in person and {ASSUMPTIONS.interchangeOnline.toFixed(2)}% online. That estimate blends typical Visa and Mastercard credit interchange with the federal cap on large-bank debit interchange (Regulation II), plus network assessments. Your real number moves with your card mix.
+                </p>
+                <p>
+                  Where a provider has plans, we use the cheapest plan at each volume. Each provider is scored on the cheaper of its in-person or online rate, and the table is ordered at $10K a month. Shopify&apos;s store plan fee is left out because you pay it for the store, not for processing.
+                </p>
+                <p>
+                  Commissions never enter the sort. Some providers pay us when you sign up through a Visit button; the ones that don&apos;t still get a button and keep their place. Barak Bachar reviews the method and the rankings.
+                </p>
+              </div>
+              <h3 className="mt-6 font-semibold text-foreground">Changelog</h3>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                <li>Oct 29, 2026: every price re-read from the provider&apos;s own pricing page. Square&apos;s in-person fixed fee is now 15¢ and its free-plan online rate 3.3% + 30¢; Helcim&apos;s volume tiers updated; Braintree corrected to its published 2.89% + 29¢. Rankings recomputed with the formula above. Payment Depot removed because its membership fee is no longer published.</li>
+                <li>Oct 28, 2026: one ranking for the whole page and its sidebar.</li>
+              </ul>
+            </section>
+
+            <section id="why-payment-processing-matters" className="py-8 border-t border-border">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Why the advertised rate is not what you pay</h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>For a business processing $500,000 a year, the difference between a 2.9% and a 2.2% effective rate is <strong className="text-foreground">$3,500 a year</strong>. Most of that gap hides in fixed fees per sale, monthly fees and markup on top of interchange, which is why we rank on effective rate instead of the headline percentage.</p>
+                <p>Card networks and issuing banks set a baseline cost called interchange that every processor pays. Regulation II caps debit-card interchange for large issuers in the United States:</p>
+                <figure className="my-4 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
+                  <blockquote cite="https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm" className="text-foreground italic leading-relaxed">
+                    &ldquo;an interchange fee that exceeds $0.21 plus 0.05 percent multiplied by the value of the transaction, plus a $0.01 fraud-prevention adjustment&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-2 text-sm text-muted-foreground not-italic">
+                    Board of Governors of the Federal Reserve System, <a href="https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm" target="_blank" rel="noopener" className="text-primary hover:underline">Regulation II (12 CFR Part 235)</a>
+                  </figcaption>
+                </figure>
+                <p>More on each line of a statement in the <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">payment processor fees guide</Link>.</p>
+              </div>
+            </section>
+
+            <section id="faq" className="py-8 border-t border-border">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Frequently asked questions</h2>
+              <div className="space-y-6">
+                {BEST_OF_FAQ.map((faq) => (
+                  <div key={faq.q}>
+                    <h3 className="font-semibold mb-2 text-foreground">{faq.q}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
                   </div>
                 ))}
-              </section>
+              </div>
+            </section>
 
-              <section id="additional-providers" className="py-10 border-b border-border">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Additional Payment Processors Worth Considering</h2>
-                <div className="space-y-8">
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">Stripe - Best for Developers</h3>
-                    <p className="text-muted-foreground mb-2">
-                      <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a> excels with best-in-class APIs. Standard pricing is 2.9% + $0.30.
-                      See our <Link href="/comparisons/stripe-vs-paypal" className="text-primary hover:underline">Stripe vs PayPal comparison</Link>.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">Square - Best for Small Retail</h3>
-                    <p className="text-muted-foreground mb-2">
-                      <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> offers a free POS system with 2.6% + $0.10 for in-person.
-                      Read our <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">Square vs Stripe comparison</Link>.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">PayPal - Best for Consumer Trust</h3>
-                    <p className="text-muted-foreground mb-2">
-                      <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a> provides instant consumer trust with 400M+ active accounts.
-                      Check our <Link href="/comparisons/paypal-vs-square" className="text-primary hover:underline">PayPal vs Square comparison</Link>.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">Helcim - Best for Transparent Pricing</h3>
-                    <p className="text-muted-foreground mb-2">
-                      <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> offers interchange-plus pricing with automatic volume discounts.
-                      See our <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline">Helcim vs Stripe comparison</Link>.
-                    </p>
-                  </div>
-                </div>
-              </section>
+            <section className="py-10 text-center border-t border-border">
+              <h2 className="text-2xl font-bold mb-3 text-foreground">Want the 3 that fit your business?</h2>
+              <p className="text-muted-foreground mb-6">Four questions, two minutes. You get a shortlist by email.</p>
+              <Button size="lg" onClick={() => setQuizOpen(true)}>
+                Match me <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </section>
 
-              <section id="essential-features" className="py-10 border-b border-border">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Essential Features to Look For</h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-3">Core Processing Features</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-                      <li><strong>Multiple Payment Methods:</strong> Accept cards, digital wallets, ACH</li>
-                      <li><strong>Fast Funding:</strong> Next-day or same-day deposits</li>
-                      <li><strong>Chargeback Protection:</strong> Dispute management tools</li>
-                      <li><strong>Reporting & Analytics:</strong> Real-time transaction insights</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-3">Security & Compliance</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-                      <li><strong>PCI Compliance:</strong> Built-in security standards</li>
-                      <li><strong>Fraud Detection:</strong> AI-powered protection</li>
-                      <li><strong>Encryption:</strong> End-to-end data protection</li>
-                      <li><strong>Tokenization:</strong> Secure card storage</li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
+            {relatedLinks}
 
-              <section id="cost-analysis" className="py-10 border-b border-border">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Cost Analysis</h2>
-                <p className="text-muted-foreground mb-6">
-                  Understanding the total cost of ownership requires looking beyond monthly subscription fees.
-                  Learn more in our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">complete guide to payment processor fees</Link>.
-                </p>
-              </section>
+            <section className="py-8 border-t border-border">
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Related comparisons</h2>
+              <div className="grid md:grid-cols-2 gap-3">
+                <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline text-sm">Square vs Stripe &rarr;</Link>
+                <Link href="/comparisons/stripe-vs-adyen-2026" className="text-primary hover:underline text-sm">Stripe vs Adyen 2026 &rarr;</Link>
+                <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline text-sm">Square vs Helcim 2026 &rarr;</Link>
+                <Link href="/comparisons/square-vs-toast-2026" className="text-primary hover:underline text-sm">Square vs Toast 2026 &rarr;</Link>
+                <Link href="/comparisons/best-payment-processors-with-same-day-deposit-2026" className="text-primary hover:underline text-sm">Same-day deposit processors &rarr;</Link>
+                <Link href="/comparisons/paypal-vs-square" className="text-primary hover:underline text-sm">PayPal vs Square &rarr;</Link>
+                <Link href="/comparisons/stripe-vs-paypal" className="text-primary hover:underline text-sm">Stripe vs PayPal &rarr;</Link>
+                <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline text-sm">Helcim vs Stripe &rarr;</Link>
+                <Link href="/comparisons/stripe-vs-worldpay-2026" className="text-primary hover:underline text-sm">Stripe vs Worldpay 2026 &rarr;</Link>
+                <Link href="/comparisons" className="text-primary hover:underline text-sm">All comparisons &rarr;</Link>
+              </div>
+            </section>
 
-              <section id="faq" className="py-10 border-b border-border">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Frequently Asked Questions</h2>
-                <div className="space-y-6">
-                  {[
-                    { q: "What is interchange and why does it matter?", a: "Interchange is the fee charged by card-issuing banks for processing transactions. These fees typically range from 1.3% to 3.3% plus a fixed fee." },
-                    { q: "How can I reduce my payment processing fees?", a: "Switch to interchange-plus pricing for transparency, negotiate better rates based on volume, encourage debit card usage, and implement fraud protection." },
-                    { q: "Can I negotiate payment processing rates?", a: "Yes, especially if you process substantial volume. Businesses processing over $100,000 monthly should always negotiate." },
-                    { q: "What's the best processor for my small business?", a: "For businesses processing under $10,000 monthly, Square or PayPal offer simplicity. For $10,000-$100,000, interchange-plus processors like Payment Depot or Stax typically deliver better value." },
-                  ].map((faq, i) => (
-                    <div key={i} className="pb-6 last:pb-0">
-                      <h3 className="font-semibold mb-2 text-foreground">{faq.q}</h3>
-                      <p className="text-muted-foreground">{faq.a}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
+            <ReviewerBioBox linkProfile={false} />
 
-              <section className="py-12 text-center">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">Not Sure Which Processor Is Right?</h2>
-                <p className="text-muted-foreground mb-6">Take our free 2-minute assessment for a personalized recommendation.</p>
-                <Button size="lg" onClick={() => setQuizOpen(true)}>
-                  Get Your Recommendation <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </section>
-
-              <section className="py-10 border-t border-border">
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Related Comparisons</h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline text-sm">Square vs Stripe &rarr;</Link>
-                  <Link href="/comparisons/stripe-vs-adyen-2026" className="text-primary hover:underline text-sm">Stripe vs Adyen 2026 &rarr;</Link>
-                  <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline text-sm">Square vs Helcim 2026 &rarr;</Link>
-                  <Link href="/comparisons/square-vs-toast-2026" className="text-primary hover:underline text-sm">Square vs Toast 2026 &rarr;</Link>
-                  <Link href="/comparisons/best-payment-processors-with-same-day-deposit-2026" className="text-primary hover:underline text-sm">Same-Day Deposit Processors &rarr;</Link>
-                  <Link href="/comparisons/paypal-vs-square" className="text-primary hover:underline text-sm">PayPal vs Square &rarr;</Link>
-                  <Link href="/comparisons/stripe-vs-paypal" className="text-primary hover:underline text-sm">Stripe vs PayPal &rarr;</Link>
-                  <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline text-sm">Helcim vs Stripe &rarr;</Link>
-                  <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline text-sm">Payment Processor Fees Guide &rarr;</Link>
-                  <Link href="/comparisons" className="text-primary hover:underline text-sm">All Comparisons &rarr;</Link>
-                </div>
-              </section>
-
-              <ReviewerBioBox linkProfile={false} />
-
-              <footer className="py-8 border-t border-border">
-                <p className="text-xs text-muted-foreground">
-                  <strong>About MyPayAdvisor.com:</strong> We're an independent payment processing advisory service. We may earn commissions from featured processors, but this never influences our editorial integrity or recommendations.
-                </p>
-                <p className="text-xs text-muted-foreground mt-4">Last updated: January 2026</p>
-              </footer>
-            </article>
-
-            <ArticleSidebar currentSlug="/comparisons/best-payment-processors-2026" />
-          </div>
+            <footer className="py-8 border-t border-border">
+              <p className="text-xs text-muted-foreground">
+                <strong>How we make money:</strong> We earn a commission from some providers when you sign up through our links. It never changes our scores or the order of our rankings, and it doesn&apos;t change your price. <a href="/how-we-make-money" className="underline">Details</a>.
+              </p>
+            </footer>
+          </article>
         </div>
-      {relatedLinks}
       </main>
+
       <PaymentQuiz open={quizOpen} onOpenChange={setQuizOpen} />
     </>
   );

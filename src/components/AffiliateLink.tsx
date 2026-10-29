@@ -46,7 +46,7 @@ export function AffiliateLink({
     <a
       href={href}
       target="_blank"
-      rel="sponsored nofollow noopener noreferrer"
+      rel="sponsored nofollow noopener"
       className={className}
       title={title}
       data-partner={partner}
@@ -64,6 +64,15 @@ export function AffiliateLink({
  * it before acting, and a line in the footer of a 4,000 word comparison is
  * not that. This is the same statement placed where the decision is made.
  */
+/**
+ * The one disclosure sentence used everywhere on the site. It has to stay true
+ * of the shipped design: scores and order come from the published method in
+ * src/lib/data/ranking-2026.ts, and every ranked provider gets a Visit button
+ * whether or not it pays.
+ */
+export const DISCLOSURE_TEXT =
+  "We earn a commission from some providers when you sign up through our links. It never changes our scores or the order of our rankings, and it doesn't change your price.";
+
 export function AffiliateDisclosure({ className }: { className?: string }) {
   return (
     <p
@@ -72,10 +81,11 @@ export function AffiliateDisclosure({ className }: { className?: string }) {
         "text-xs text-muted-foreground border-l-2 border-border pl-3 my-6"
       }
     >
-      <strong className="font-medium">Disclosure:</strong> myPayAdvisor may be
-      compensated when you sign up with a provider through links on this page.
-      It does not change what we recommend, and it does not change your price.
-      Confirm rates and terms with the provider before signing.
+      <strong className="font-medium">Disclosure:</strong> {DISCLOSURE_TEXT}{" "}
+      <a href="/how-we-make-money" className="underline hover:text-primary">
+        How we make money
+      </a>
+      . Confirm rates and terms with the provider before signing.
     </p>
   );
 }
