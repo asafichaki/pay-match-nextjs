@@ -79,7 +79,7 @@ export default function LeadCaptureBrief() {
             <div className="relative">
               <div className="rounded-3xl border border-border bg-background/95 backdrop-blur p-6 md:p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_30px_70px_-30px_rgba(0,0,0,0.18)]">
                 {!done ? (
-                  <form onSubmit={submit} className="space-y-4">
+                  <form data-clarity-mask="true" onSubmit={submit} className="space-y-4">
                     <div className="flex items-center gap-3 mb-1">
                       <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
                         <Mail className="h-5 w-5" />

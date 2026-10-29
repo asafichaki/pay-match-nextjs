@@ -166,7 +166,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
   const progress = (step / totalSteps) * 100;
 
   return (
-    <div className={variant === "popup" ? "w-full" : "max-w-xl mx-auto"}>
+    <div data-clarity-mask="true" className={variant === "popup" ? "w-full" : "max-w-xl mx-auto"}>
       {/* Progress bar */}
       <div className="mb-6">
         <div className="flex items-center justify-between text-xs font-medium text-muted-foreground mb-2">
@@ -288,7 +288,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
         <div>
           <h2 className="text-2xl font-semibold text-foreground mb-2">Where should I send your shortlist?</h2>
           <p className="text-sm text-muted-foreground mb-6">
-            Barak (Global Payments Manager) reviews every shortlist personally. First email arrives in minutes.
+            Your shortlist arrives by email in minutes. If your case needs a human, Barak (Global Payments Manager) follows up.
           </p>
           <div className="space-y-4">
             <div>
@@ -390,7 +390,8 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
               <p id="sh-phone-why" className="text-xs text-muted-foreground mt-1.5">
                 The questions that matter (your reserve, your approval odds)
                 take two minutes on the phone and four emails in writing. He
-                calls once. No call centre, and no one else gets this number.
+                calls once. No call centre. We never sell your number, and we only pass it
+                to a provider if you ask us to introduce you.
               </p>
             </div>
             <div>

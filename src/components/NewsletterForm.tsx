@@ -48,7 +48,7 @@ export default function NewsletterForm({
 
   if (variant === "compact") {
     return (
-      <form onSubmit={handleSubmit} className={`flex gap-2 ${className}`}>
+      <form data-clarity-mask="true" onSubmit={handleSubmit} className={`flex gap-2 ${className}`}>
         {/* Honeypot */}
         <input
           type="text"
@@ -78,7 +78,7 @@ export default function NewsletterForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className={className}>
+    <form data-clarity-mask="true" onSubmit={handleSubmit} className={className}>
       {/* Honeypot */}
       <input
         type="text"

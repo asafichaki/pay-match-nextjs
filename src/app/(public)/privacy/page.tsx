@@ -61,16 +61,12 @@ export default function PrivacyPage() {
                 <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 space-y-3">
                   <h3 className="text-lg font-semibold text-foreground">Third-Party Sharing</h3>
                   <p className="text-muted-foreground">
-                    When you submit information through our quiz or contact forms, we may share your information with:
+                    We never sell your information. When you submit the quiz or a contact form, we share it only with:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                    <li><strong>Payment Providers:</strong> We share your information with payment providers you express interest in</li>
-                    <li><strong>Service Providers:</strong> Third-party services that help us operate our website</li>
-                    <li><strong>Marketing Partners:</strong> Companies that may contact you about relevant services</li>
+                    <li><strong>A payment provider you ask us to introduce you to.</strong> We pass your details to a provider only after you tell us which one, and only to that provider.</li>
+                    <li><strong>Service providers that run the site for us:</strong> hosting (Vercel), our database (Supabase), email delivery (Resend) and the analytics tools listed in section 4. They process data on our behalf and may not use it for their own marketing.</li>
                   </ul>
-                  <p className="text-muted-foreground">
-                    By using our service, you consent to this information sharing.
-                  </p>
                 </div>
               </section>
 
@@ -85,6 +81,9 @@ export default function PrivacyPage() {
                   <li>Improve our services and user experience</li>
                   <li>Track referrals and affiliate relationships</li>
                 </ul>
+                <p className="text-muted-foreground">
+                  The tools we use: <strong>Google Analytics 4</strong> (aggregate traffic and events) and <strong>Microsoft Clarity</strong> (heatmaps and anonymised session replay, to see where pages confuse people). Every form field on the site is masked, so what you type is never recorded, and Clarity is not started on the quiz or thank-you pages. When you click a link to a provider we log the click (page, time, provider, and the site you came from) so we can see which pages help readers.
+                </p>
                 <p className="text-muted-foreground">
                   You can control cookies through your browser settings, but some features of our website may not function properly if cookies are disabled.
                 </p>

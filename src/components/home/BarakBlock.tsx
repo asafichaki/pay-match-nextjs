@@ -18,7 +18,7 @@ const PILLARS = [
   {
     icon: ShieldCheck,
     title: "Operator-reviewed",
-    body: "Every shortlist is filtered personally by Barak Bachar, who's run payment ops at $500M+ annual volume, not by an algorithm or a generic CRM.",
+    body: "The matching rules and every page are reviewed by Barak Bachar, who runs payment operations at $500M+ annual volume. Complex cases get a call from him, not from a call centre.",
   },
   {
     icon: FileSearch,

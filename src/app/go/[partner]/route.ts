@@ -1,5 +1,5 @@
 import { after, NextResponse, type NextRequest } from "next/server";
-import { classifyBot } from "@/lib/seo/crawl-log";
+import { isAutomatedClick } from "@/lib/partners/click-bot";
 import { parseAttributionCookie, ATTRIBUTION_COOKIE } from "@/lib/attribution";
 import { classifyChannel } from "@/lib/partners/channel";
 import { getPartner } from "@/lib/partners/registry";
@@ -46,7 +46,7 @@ export async function GET(
   }
 
   const ua = request.headers.get("user-agent");
-  const isBot = classifyBot(ua) !== null;
+  const isBot = isAutomatedClick(request.headers);
 
   const first = parseAttributionCookie(request.cookies.get(ATTRIBUTION_COOKIE)?.value);
   const clickReferrer = request.headers.get("referer");
@@ -76,6 +76,18 @@ export async function GET(
   const variant = request.nextUrl.searchParams.get("v") === "quote" ? "quote" : "visit";
   const target =
     variant === "quote" ? (partner.quote_url ?? partner.destination_url) : partner.destination_url;
+  // A detected bot never reaches a live tracking URL: a stream of clicks with
+  // no sales is the first thing an affiliate network's fraud review flags.
+  if (isBot && partner.program_status === "active") {
+    try {
+      after(() => logOutboundClick({
+        partner_slug: partner.slug, from_path: fromPath, channel, click_referrer: clickReferrer,
+        first_referrer: first.referrer, utm_source: first.utm_source, utm_medium: first.utm_medium,
+        utm_campaign: first.utm_campaign, destination_url: FALLBACK, variant, ua, is_bot: true,
+      }));
+    } catch { /* never block the redirect */ }
+    return NextResponse.redirect(new URL(FALLBACK, origin), 302);
+  }
   const destination = withOurTag(target, partner.program_status);
 
   // Handed to `after()`, which is the whole reason this is not a bare

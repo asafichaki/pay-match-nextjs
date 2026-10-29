@@ -35,7 +35,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
             {aeoAnswer}
 
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
-              Verdict, May 2026: <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> wins for retail under $80K monthly at a 2.65% effective in-person rate. Stripe wins for SaaS, subscriptions, and any online-first business at 2.97% effective. Barak Bachar reconciled both processors against 47 merchant statements. Full breakdown below.
+              Verdict, May 2026: <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> wins for retail under $80K monthly at a 2.65% effective in-person rate. Stripe wins for SaaS, subscriptions, and any online-first business at 2.97% effective. Rates come from each provider's published 2026 pricing on a standard U.S. card mix, fees included. Full breakdown below.
             </p>
 
             <ArticleByline
@@ -556,7 +556,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
 
           <footer className="py-8 border-t border-border">
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Disclosure: This review is based on our independent analysis and testing. We may earn a commission if you sign up through our links, at no extra cost to you. This helps us keep our content free and unbiased.
+              Disclosure: This comparison is based on each provider's published pricing and terms, checked on the dates shown. We earn a commission from some providers when you sign up through our links, at no extra cost to you. It never changes our scores or the order of our rankings, and it doesn't change your price. <a href="/how-we-make-money" className="underline">How we make money</a>.
             </p>
           </footer>
         </article>

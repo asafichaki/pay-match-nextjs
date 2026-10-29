@@ -8,7 +8,7 @@ interface TrustBadgesProps {
 const badges = [
   { icon: Shield, label: "Free Forever" },
   { icon: Lock, label: "No Credit Card Required" },
-  { icon: CreditCard, label: "Unbiased Reviews" },
+  { icon: CreditCard, label: "Effective-rate math" },
   { icon: Clock, label: "Results in 90 Seconds" },
 ];
 

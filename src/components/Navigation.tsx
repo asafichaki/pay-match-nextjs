@@ -68,7 +68,7 @@ const Navigation = () => {
           </Link>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-6 ml-auto mr-6" role="menubar">
+          <div className="hidden lg:flex items-center gap-6 ml-auto mr-6" role="menubar">
             <Link
               href="/"
               className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -117,7 +117,7 @@ const Navigation = () => {
             </button>
           </div>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <ThemeToggle />
             <Button
               variant="cta"
@@ -130,7 +130,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Quiz Button + Menu */}
-          <div className="flex shrink-0 items-center gap-1 sm:gap-2 md:hidden">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
             <div className="hidden sm:block"><ThemeToggle /></div>
             <Button
               variant="cta"

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import ClarityLoader from "@/components/ClarityLoader";
 import { Inter, Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -235,13 +236,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-MDTFETTH7E');`}
         </Script>
-        <Script id="ms-clarity" strategy="lazyOnload">
-          {`(function(c,l,a,r,i,t,y){
-c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "wsoc2oyogw");`}
-        </Script>
+        <ClarityLoader />
         {/* GTM container GTM-KWVVGK29 removed 2026-05-30: it only duplicated the
             GA4 property G-MDTFETTH7E (loaded directly above) and hosted no other
             tags or dataLayer events, causing double-counted pageviews/events.

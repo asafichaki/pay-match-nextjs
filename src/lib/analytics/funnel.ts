@@ -2,6 +2,9 @@
 const EVENTS = new Set([
   "sh_open", "sh_step_view", "sh_email_focus", "sh_submit_error",
   "sh_submit_success", "generate_lead", "sh_details_skipped", "sh_details_submitted",
+  // Fired by a real browser when a reader clicks a provider button. The /go/
+  // log counts every fetch of the redirect, bots included; this counts people.
+  "affiliate_click",
 ]);
 
 let fallbackSession: string | undefined;
@@ -38,6 +41,11 @@ export function recordFunnelEvent(event: string, params: Record<string, unknown>
       if (typeof params[name] === "string" && values.includes(params[name])) metadata[name] = params[name];
     }
     if (typeof params.ok === "boolean") metadata.ok = params.ok;
+    // Provider slugs and placement names only: short, lowercase, no free text.
+    for (const name of ["partner", "placement"]) {
+      const v = params[name];
+      if (typeof v === "string" && /^[a-z0-9-]{1,40}$/.test(v)) metadata[name] = v;
+    }
     void fetch(`${url}/rest/v1/analytics_events`, {
       method: "POST",
       headers: { "Content-Type": "application/json", apikey: key, Authorization: `Bearer ${key}`, Prefer: "return=minimal" },
