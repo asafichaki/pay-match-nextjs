@@ -293,3 +293,29 @@ export function channelRates(m: ProviderMeta, tier: TierIndex): { inPerson: numb
   const on = bestPlan(m, "Online", v);
   return { inPerson: ip ? round2(ip.rate) : null, online: on ? round2(on.rate) : null };
 }
+
+/** The four monthly volumes the table uses, in dollars, in TIER_LABELS order. */
+export const TIER_VOLUMES: readonly number[] = TIER_DOLLARS;
+
+export type RateChannel = Channel;
+
+/**
+ * One provider's effective rate on one channel at ANY monthly volume, with the
+ * plan that produces it. The same formula and the same cheapest-plan rule as
+ * the ranking, so at $10K/$50K/$250K/$1M it returns exactly what the table
+ * shows. Helcim's volume steps and Stax's subscription bands are already
+ * functions of volume, so nothing is interpolated. Null when the provider does
+ * not publish a price for that channel. Used by /data/effective-rates-2026 and
+ * the cost-at-your-volume widget.
+ */
+export function quoteAtVolume(
+  m: ProviderMeta,
+  channel: RateChannel,
+  monthlyVolume: number,
+): { rate: number; plan: string; monthlyFee: number } | null {
+  if (!(monthlyVolume > 0)) return null;
+  const best = bestPlan(m, channel, monthlyVolume);
+  if (!best) return null;
+  const rate = round2(best.rate);
+  return { rate, plan: best.plan.label, monthlyFee: Math.round((rate / 100) * monthlyVolume) };
+}

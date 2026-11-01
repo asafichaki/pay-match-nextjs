@@ -2,6 +2,8 @@ import { cache } from "react";
 import { ARTICLE_OFFERS, ARTICLE_VS } from "@/lib/data/article-offers";
 import { VsPicksBox } from "@/components/mix/VsPicksBox";
 import { ArticleOffersBox } from "@/components/mix/ArticleOffersBox";
+import { CostAtVolume } from "@/components/rates/CostAtVolume";
+import { COST_WIDGET_PLACEMENTS } from "@/lib/data/cost-widget-placements";
 import { unstable_cache } from "next/cache";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -427,6 +429,10 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           </h1>
           {/* Answer block directly under the H1. Renders only when the override row has one. */}
           <AeoAnswer kind={kind} slug={article.slug} url={url} />
+          {/* Cost-at-your-volume widget, first screen on mobile. Per-slug allowlist in cost-widget-placements.ts. */}
+          {kind === "comparisons" && COST_WIDGET_PLACEMENTS[article.slug] ? (
+            <CostAtVolume from={`/${kind}/${article.slug}`} className="mt-6" {...COST_WIDGET_PLACEMENTS[article.slug]} />
+          ) : null}
           <p
             data-speakable="true"
             className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl"
