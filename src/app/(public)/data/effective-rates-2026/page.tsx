@@ -40,7 +40,9 @@ const ip1m = spread("In-person", 3);
 const on1m = spread("Online", 3);
 const providerCount = new Set(rows.map((r) => r.name)).size;
 
-const DESCRIPTION = `Effective rate and monthly cost for ${providerCount} US card processors at $10K, $50K, $250K and $1M a month, in person and online. Computed from published prices. CSV and JSON.`;
+// A plain literal on purpose: scripts/seo/build-seo-manifest.mjs reads it statically for the title/meta gate.
+const DESCRIPTION =
+  "Effective rate and monthly cost for US card processors at $10K, $50K, $250K and $1M a month, in person and online. From published prices. CSV and JSON.";
 
 export const metadata: Metadata = {
   title: "Payment Processor Effective Rates, 2026 Data",
