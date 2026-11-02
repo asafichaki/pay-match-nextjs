@@ -1,0 +1,105 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-for-nonprofits-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Stax's fee depends on annual volume; above $100K a month it is the $199+ tier (staxpayments.com/pricing)",
+      "from": "competitive above roughly $100K monthly when the $99 subscription is dwarfed",
+      "to": "competitive above roughly $100K monthly when the subscription is dwarfed"
+    },
+    {
+      "field": "body_html",
+      "why": "prices were not all re-checked since May; the date is dropped rather than restated",
+      "from": "Rates and terms come from each provider's public pricing page as of May 2026.",
+      "to": "Rates and terms come from each provider's public pricing page."
+    },
+    {
+      "field": "body_html",
+      "why": "at $50K a month ($600K a year) Stax charges $199+, not $99 (staxpayments.com/pricing)",
+      "from": "The $450 monthly difference covers the $99 Stax subscription almost five times over.",
+      "to": "The $450 monthly difference covers a $199 Stax subscription, the tier for that volume, more than twice over."
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person 2.6% + 15c on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans (squareup.com/us/en/pricing, 2026-10-29)",
+      "from": "<td>2.6% + $0.10 in-person, 2.9% + $0.30 online</td>",
+      "to": "<td>2.6% + $0.15 in-person, 3.3% + $0.30 online on the Free plan (2.9% + $0.30 on paid plans)</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business day (helcim.com/pricing)",
+      "from": "<td>IC + 0.50% + $0.25 online, IC + 0.40% + $0.08 in-person</td><td>None</td><td>2 business days</td>",
+      "to": "<td>IC + 0.50% + $0.25 online, IC + 0.40% + $0.08 in-person</td><td>None</td><td>Next business morning</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99 to $199+ by annual volume, 15c online, next business day funding, contract length not published (staxpayments.com/pricing)",
+      "from": "<td>$99/mo + IC + $0.08 in-person, + $0.18 online</td><td>Month-to-month</td><td>2 business days</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.08 in-person, + $0.15 online</td><td>No cancellation fee; length not published</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on the Free plan",
+      "from": "Square charges 2.6 percent plus $0.10 per dipped or tapped card,",
+      "to": "Square charges 2.6 percent plus $0.15 per dipped or tapped card on its Free plan,"
+    },
+    {
+      "field": "body_html",
+      "why": "Square online and invoice payments are 3.3% + 30c on Free, 2.9% + 30c on Plus and Premium",
+      "from": "Online donations through Square Online or Square Checkout sit at 2.9 percent plus $0.30.",
+      "to": "Online donations through Square Online or Square Checkout sit at 3.3 percent plus $0.30 on the Free plan, or 2.9 percent plus $0.30 on a paid plan."
+    },
+    {
+      "field": "body_html",
+      "why": "Square's pricing page lists hardware starting at $59, no $49 reader",
+      "from": "The Square Reader runs $49 for chip and tap.",
+      "to": "Square hardware starts at $59."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99 up to $150K a year, $139 to $250K, $199+ above; 15c online (staxpayments.com/pricing)",
+      "from": "Stax charges a flat <a href=\"https://staxpayments.com/pricing/\">$99 monthly subscription</a> plus interchange plus $0.08 per in-person transaction or $0.18 per online transaction.",
+      "to": "Stax charges a <a href=\"https://staxpayments.com/pricing/\">monthly subscription</a> of $99 up to $150,000 a year in volume, $139 from $150,000 to $250,000 and $199 or more above that, plus interchange plus $0.08 per in-person transaction or $0.15 per online transaction."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax vs Stripe at $250K online: engine figures (Stax 2.08%, Stripe 3.50%, $5,200 vs $8,750 a month)",
+      "from": "At $250K monthly, the savings versus Stripe standard pricing typically clear $9,000 to $14,000 per year, before any negotiated nonprofit discount.",
+      "to": "At $250K monthly online, our published method puts Stax at about 2.08 percent against 3.50 percent for Stripe standard pricing, a gap of about $3,550 a month, before any negotiated nonprofit discount.",
+      "derived": [{"value": "3550", "calc": "250000*0.035-250000*0.0208"}]
+    },
+    {
+      "field": "body_html",
+      "why": "Stax's fee is set by annual volume, at least $99 a month",
+      "from": "the $99 fee is fixed regardless of volume, so a slow quarter",
+      "to": "the subscription, at least $99 a month, does not shrink in a slow month, so a slow quarter"
+    },
+    {
+      "field": "body_html",
+      "why": "above $100K a month Stax is on its $199+ tier",
+      "from": "competitive above $100K monthly when the $99 subscription is dwarfed",
+      "to": "competitive above $100K monthly when the subscription is dwarfed"
+    },
+    {
+      "field": "key_findings",
+      "why": "Stax subscription runs $99 to $199+ by annual volume",
+      "from": "Stax subscription at $99 monthly plus interchange",
+      "to": "Stax subscription at $99 to $199+ monthly plus interchange"
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Helcim deposits next business day (helcim.com/pricing)",
+      "from": "IC + 0.50% + $0.25 online pricing and 2 business day settlement.",
+      "to": "IC + 0.50% + $0.25 online pricing and next-business-morning settlement."
+    }
+  ],
+  "not_fixed": [
+    {"text": "PayPal confirmed charity rate 1.99% + $0.49", "reason": "not in provider-facts.json (only Braintree's 2.19% + 29c charity rate); unverified, not in this sweep's list"},
+    {"text": "Stripe two business day settlement", "reason": "legit"},
+    {"text": "Stax phone support 24/7", "reason": "unverified claim, not a price; left"},
+    {"text": "Example: flat 2.9% + $0.30 at $50K ~$1,650 vs IC + 0.40% ~$1,200", "reason": "the article's own assumptions, not a stale published price; left"}
+  ]
+}

@@ -8,6 +8,12 @@ import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
+import { VsCostTable } from "@/components/mix/VsCostTable";
+import { FEES, RATES_CHECKED, engineRate, feeLabel, flatEffective } from "@/lib/data/vs-pages-2026";
+import { ANSWER, FAQ } from "./data";
+
+const sq = FEES.square;
+const pp = FEES.paypal;
 
 interface ContentSlots {
   /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
@@ -26,19 +32,39 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
           <div className="flex gap-12 justify-center">
             <article className="max-w-3xl flex-1 min-w-0">
               <header className="pt-16 pb-10 border-b border-border">
-                <p className="text-sm font-medium text-primary mb-4">Payment Processor Comparison</p>
+                <p className="text-sm font-medium text-primary mb-4">PayPal vs Square fees, prices checked {RATES_CHECKED}</p>
                 <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
                   Square vs PayPal: Complete Comparison for Small Businesses (2026)
                 </h1>
                 {aeoAnswer}
-                <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                  In-person POS vs online payments excellence. A comprehensive breakdown of fees, features, and best use cases to help you decide which platform suits your business model.
-                </p>
                 <ArticleByline
                   author="Reviewed by Barak Bachar"
                   authorUrl="/about/barak"
-                  lastUpdated="2026-08-25"
-                  className="mt-4"
+                  lastUpdated="2026-11-02"
+                  className="mt-2 mb-6"
+                />
+                <p className="aeo-answer text-lg md:text-xl text-foreground leading-relaxed" data-speakable="true">
+                  {ANSWER}
+                </p>
+                <VsCostTable
+                  groups={[
+                    {
+                      title: "In person (card present)",
+                      options: [
+                        { label: "Square", note: `${feeLabel(sq.inPersonFree)} Free; cheapest plan`, rate: (t) => engineRate("Square", "In-person", t) },
+                        { label: "PayPal POS", note: feeLabel(pp.pos), rate: (t) => engineRate("PayPal", "In-person", t) },
+                      ],
+                    },
+                    {
+                      title: "Online card payments",
+                      options: [
+                        { label: "Square", note: `${feeLabel(sq.onlinePaidOrApi)}, paid plans or API`, rate: (t) => engineRate("Square", "Online", t) },
+                        { label: "Square Free", note: feeLabel(sq.onlineFree), rate: () => flatEffective(sq.onlineFree) },
+                        { label: "PayPal button", note: `${feeLabel(pp.checkout)}, Checkout`, rate: () => flatEffective(pp.checkout) },
+                      ],
+                    },
+                  ]}
+                  footnote={<>Square in person uses its cheapest plan at each volume: Free ({feeLabel(sq.inPersonFree)}) at $10K, and Premium ({feeLabel(sq.inPersonPremium)} plus ${sq.planPremium} a month) once that costs less. PayPal&apos;s Advanced Credit and Debit ({feeLabel(pp.advancedCard)}) needs PayPal&apos;s approval and is not shown.</>}
                 />
               </header>
 
@@ -71,7 +97,7 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
                   <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Square</a> has built its reputation on elegant, user-friendly point-of-sale systems perfect for in-person retail and restaurants. <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">PayPal</a> dominates online payments with unmatched brand recognition and customer trust.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  But the lines have blurred - Square now offers robust online payment tools, while PayPal has entered the in-person POS market with Zettle. So which one truly fits your business best? After testing both platforms extensively, this guide provides an unbiased comparison.
+                  The lines have blurred: Square now sells online too, and PayPal sells in person through PayPal POS. This guide compares them on fees first, using each provider&apos;s own pricing page, then on features.
                 </p>
               </section>
 
@@ -90,20 +116,20 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
                       <tr><td className="py-3 font-medium">Founded</td><td className="py-3 text-center">2009</td><td className="py-3 text-center">1998</td></tr>
                       <tr><td className="py-3 font-medium">Best Known For</td><td className="py-3 text-center">POS Hardware & Retail</td><td className="py-3 text-center">Online Payments</td></tr>
                       <tr><td className="py-3 font-medium">Ideal Customer</td><td className="py-3 text-center">Brick & Mortar, Restaurants</td><td className="py-3 text-center">Ecommerce, International</td></tr>
-                      <tr><td className="py-3 font-medium">Countries</td><td className="py-3 text-center">8</td><td className="py-3 text-center">200+</td></tr>
-                      <tr><td className="py-3 font-medium">Annual Volume</td><td className="py-3 text-center">$200B+</td><td className="py-3 text-center">$1.4T+</td></tr>
+                      <tr><td className="py-3 font-medium">In-person rate</td><td className="py-3 text-center">{feeLabel(sq.inPersonFree)} (Free plan)</td><td className="py-3 text-center">{feeLabel(pp.pos)}</td></tr>
+                      <tr><td className="py-3 font-medium">Monthly fee</td><td className="py-3 text-center">$0 Free, ${sq.planPlus} Plus, ${sq.planPremium} Premium</td><td className="py-3 text-center">$0 for POS and Advanced</td></tr>
                     </tbody>
                   </table>
                 </div>
                 <h3 className="text-lg font-semibold mb-4">Quick Verdict</h3>
                 <p className="mb-4"><strong>Choose Square if:</strong> You need in-person payment processing, want great POS hardware, run a retail store or restaurant, value integrated inventory management, or operate both physical and online stores.</p>
-                <p><strong>Choose PayPal if:</strong> You're primarily online, your customers prefer PayPal checkout, you sell internationally, you need faster access to funds, or brand trust is critical for your conversion rates.</p>
+                <p><strong>Choose PayPal if:</strong> You&apos;re primarily online, your customers prefer PayPal checkout, you sell internationally, or you want the lowest flat in-person rate of the two.</p>
               </section>
 
               <section id="pricing" className="py-10 border-b border-border">
                 <h2 className="text-2xl font-bold text-foreground mb-4">Pricing & Fees Comparison</h2>
                 <p className="text-muted-foreground mb-6">
-                  Both Square and PayPal use flat-rate pricing, making costs predictable. However, rates differ significantly between in-person and online transactions. Understanding <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">credit card processing fees</Link> is crucial.
+                  Both Square and PayPal use flat-rate pricing, so the cost of a sale is easy to predict. The rates differ a lot between in-person and online payments, and Square&apos;s also depend on its plan. For how the card networks&apos; cost fits under these prices, see our guide to <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">credit card processing fees</Link>.
                 </p>
                 <h3 className="text-lg font-semibold mb-4">Transaction Fees</h3>
                 <div className="overflow-x-auto -mx-4 px-4 mb-8">
@@ -118,12 +144,12 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
                     </thead>
                     <tbody className="divide-y divide-border">
                       {[
-                        { type: "In-Person", square: "2.6% + $0.10", paypal: "2.29% + $0.09", winner: "PayPal" },
-                        { type: "Online/Ecommerce", square: "2.9% + $0.30", paypal: "2.99% + $0.49", winner: "Square" },
-                        { type: "Invoices", square: "2.9% + $0.30", paypal: "2.99% + $0.49", winner: "Square" },
-                        { type: "Manual Entry", square: "3.5% + $0.15", paypal: "3.49% + $0.49", winner: "Square" },
-                        { type: "International Cards", square: "+1.0%", paypal: "+1.5%", winner: "Square" },
-                        { type: "Currency Conversion", square: "+1.0%", paypal: "+3% to 4%", winner: "Square" },
+                        { type: "In person", square: `${feeLabel(sq.inPersonFree)} Free; ${feeLabel(sq.inPersonPremium)} Premium`, paypal: `${feeLabel(pp.pos)} POS`, winner: "PayPal" },
+                        { type: "Online", square: `${feeLabel(sq.onlinePaidOrApi)} paid plans or API; ${feeLabel(sq.onlineFree)} Free`, paypal: `${feeLabel(pp.checkout)} Checkout; ${feeLabel(pp.advancedCard)} Advanced, with approval`, winner: "Depends" },
+                        { type: "Manual entry", square: feeLabel(sq.manual), paypal: `${feeLabel(pp.posManual)} POS; ${feeLabel(pp.virtualTerminal)} Virtual Terminal`, winner: "PayPal" },
+                        { type: "International cards", square: `+${sq.internationalAddPct}%`, paypal: `+${pp.internationalAddPct}%`, winner: "Tie" },
+                        { type: "Instant payout", square: `${sq.instantPayoutPct}%`, paypal: `${pp.instantPayoutPct}% (50¢ min)`, winner: "PayPal" },
+                        { type: "Monthly fee", square: `$0 Free; $${sq.planPlus} Plus; $${sq.planPremium} Premium`, paypal: "$0 for POS and Advanced", winner: "Tie at $0" },
                       ].map((row, i) => (
                         <tr key={i}>
                           <td className="py-3 font-medium">{row.type}</td>
@@ -135,16 +161,16 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
                     </tbody>
                   </table>
                 </div>
-                <h3 className="text-lg font-semibold mb-4">Cost Analysis: $50,000 Monthly Processing</h3>
-                <p className="text-muted-foreground mb-4"><strong>Primarily In-Person (70/30 split):</strong> Square costs $1,262/month vs PayPal at $1,233/month. <em>PayPal saves $348/year.</em></p>
-                <p className="text-muted-foreground mb-6"><strong>Primarily Online (70/30 split):</strong> Square costs $1,407/month vs PayPal at $1,466/month. <em>Square saves $708/year.</em></p>
+                <p className="text-muted-foreground mb-6">
+                  The online winner depends on which PayPal product you use. The Checkout button costs more than Square on every sale; Advanced Credit and Debit costs about the same as Square&apos;s paid plans but needs PayPal&apos;s approval. The monthly cost at $10K, $50K and $250K is in the table at the top of this page.
+                </p>
               </section>
 
               <section id="features" className="py-10 border-b border-border">
                 <h2 className="text-2xl font-bold text-foreground mb-6">Core Features Head-to-Head</h2>
                 <h3 className="text-lg font-semibold mb-4">Point of Sale (POS) Features</h3>
                 <p className="text-muted-foreground mb-4"><strong>Square POS</strong> offers an intuitive interface, comprehensive inventory management with variants, built-in employee time tracking, table management for restaurants, customer directory with purchase history, and crucially - offline mode that processes payments without internet.</p>
-                <p className="text-muted-foreground mb-6"><strong>PayPal Zettle POS</strong> provides a simpler interface with basic inventory tracking, receipt customization, and sales analytics. While functional, it lacks the depth and polish of Square's offering.</p>
+                <p className="text-muted-foreground mb-6"><strong>PayPal POS</strong> provides a simpler interface with basic inventory tracking, receipt customization, and sales analytics. It covers the basics but lacks the depth of Square&apos;s POS.</p>
                 <p className="mb-6"><strong>Winner: Square.</strong> For any business where in-person POS is primary - retail, restaurants, salons - Square provides a superior experience.</p>
 
                 <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
@@ -189,29 +215,16 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
 
               <section id="hardware" className="py-10 border-b border-border">
                 <h2 className="text-2xl font-bold text-foreground mb-4">Hardware & POS Systems</h2>
-                <p className="text-muted-foreground mb-6">For businesses needing in-person payment processing, hardware quality matters enormously. Square has a significant advantage here.</p>
-                <p><strong>Winner: Square (by a wide margin).</strong> Square's hardware is superior in design, durability, and ecosystem integration.</p>
+                <p className="text-muted-foreground mb-6">Square&apos;s hardware starts at $59 and runs up to countertop registers, all built for its own POS software. PayPal POS offers a card reader and a terminal; its POS page does not list their prices, and Tap to Pay in the PayPal app needs no hardware.</p>
+                <p><strong>Winner: Square.</strong> More devices, and one system from reader to register.</p>
               </section>
 
               <section id="international" className="py-10 border-b border-border">
                 <h2 className="text-2xl font-bold text-foreground mb-4">International Business Support</h2>
-                <div className="overflow-x-auto -mx-4 px-4 mb-6">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b-2 border-foreground">
-                        <th className="py-3 text-left font-semibold">Feature</th>
-                        <th className="py-3 text-center font-semibold">Square</th>
-                        <th className="py-3 text-center font-semibold">PayPal</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-border">
-                      <tr><td className="py-3">Countries Supported</td><td className="py-3 text-center">8</td><td className="py-3 text-center font-semibold text-primary">200+</td></tr>
-                      <tr><td className="py-3">Currencies</td><td className="py-3 text-center">4 primary</td><td className="py-3 text-center font-semibold text-primary">100+</td></tr>
-                      <tr><td className="py-3">Active Global Accounts</td><td className="py-3 text-center">-</td><td className="py-3 text-center font-semibold text-primary">435M+</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p><strong>Winner: PayPal (decisively).</strong> PayPal's international capabilities are vastly superior.</p>
+                <p className="text-muted-foreground mb-6">
+                  On fees it is a tie: Square adds {sq.internationalAddPct}% for international cards and PayPal adds {pp.internationalAddPct}% for international commercial transactions. The difference is reach. PayPal works in far more countries and currencies than Square, and many buyers abroad already have a PayPal account.
+                </p>
+                <p><strong>Winner: PayPal</strong> for selling abroad.</p>
               </section>
 
               <section id="support" className="py-10 border-b border-border">
@@ -225,14 +238,14 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-1">
                   <li>You have a physical retail location</li>
                   <li>You run a restaurant or cafe</li>
-                  <li>You need robust POS hardware</li>
+                  <li>You need a full range of POS hardware</li>
                   <li>You want unified online/offline inventory</li>
                 </ul>
                 <h3 className="text-lg font-semibold mb-3">Choose PayPal If:</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-1">
                   <li>You primarily sell online</li>
                   <li>Your customers prefer PayPal checkout</li>
-                  <li>You sell internationally (200+ countries)</li>
+                  <li>You sell to buyers in other countries</li>
                   <li>Brand trust is critical for conversions</li>
                 </ul>
               </section>
@@ -241,19 +254,13 @@ export default function PayPalVsSquareContent({ aeoAnswer, relatedLinks }: Conte
                 <h2 className="text-2xl font-bold text-foreground mb-4">Final Verdict</h2>
                 <p className="text-muted-foreground mb-4"><strong>Square</strong> is the better choice for businesses with physical locations.</p>
                 <p className="text-muted-foreground mb-4"><strong>PayPal</strong> wins for pure ecommerce businesses and international sellers.</p>
-                <p className="text-muted-foreground"><strong>Pro Tip:</strong> Many successful businesses use both!</p>
+                <p className="text-muted-foreground"><strong>Tip:</strong> many businesses use both, Square at the counter and PayPal as a checkout button online.</p>
               </section>
 
               <section id="faq" className="py-10 border-b border-border">
                 <h2 className="text-2xl font-bold text-foreground mb-6">Frequently Asked Questions</h2>
                 <div className="space-y-8">
-                  {[
-                    { q: "Which is cheaper: Square or PayPal?", a: "It depends on your transaction mix. Square is cheaper for online transactions (2.9% + $0.30 vs PayPal's 2.99% + $0.49). PayPal's Zettle is cheaper for in-person (2.29% + $0.09 vs Square's 2.6% + $0.10)." },
-                    { q: "Which has better hardware: Square or PayPal?", a: "Square has significantly better hardware with a complete range from the $49 mobile reader to the $799 Square Register." },
-                    { q: "Is Square or PayPal better for online businesses?", a: "PayPal has a slight edge for pure online businesses due to higher conversion rates from brand recognition and one-click checkout." },
-                    { q: "Which is better for international sales?", a: "PayPal is vastly better for international sales. PayPal operates in 200+ countries with 100+ currencies." },
-                    { q: "Can I use both Square and PayPal?", a: "Yes! Many businesses use Square for in-person POS and PayPal as an online checkout option." },
-                  ].map((faq, i) => (
+                  {FAQ.map((faq, i) => (
                     <div key={i}>
                       <h3 className="font-semibold mb-2">{faq.q}</h3>
                       <p className="text-sm text-muted-foreground">{faq.a}</p>

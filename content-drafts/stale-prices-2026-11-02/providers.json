@@ -1,0 +1,78 @@
+{
+  "note": "providers table rows the homepage rate table (src/components/home/RateTable.tsx) renders. Each op is an exact replacement on one column; `set` writes plain values. Sources: provider-facts.json (checked 2026-10-29). Worldpay is left alone: it publishes no prices, so its May verification date stays.",
+  "rows": [
+    {
+      "name": "Square",
+      "ops": [
+        {
+          "field": "transaction_fees",
+          "why": "Square in person is 2.6% + 15c on Square Free; online 3.3% + 30c on Free, 2.9% + 30c on Plus, Premium or the Online API (squareup.com/us/en/pricing)",
+          "from": "In-person 2.6% + $0.10 · Online 2.9% + $0.30 · Keyed 3.5% + $0.15",
+          "to": "In-person 2.6% + $0.15 · Online 2.9% + $0.30 on paid plans, 3.3% + $0.30 on Free · Keyed 3.5% + $0.15"
+        }
+      ],
+      "set": { "last_verified": "2026-10-29" }
+    },
+    {
+      "name": "Stripe",
+      "ops": [],
+      "set": { "last_verified": "2026-10-29" }
+    },
+    {
+      "name": "Helcim",
+      "ops": [],
+      "why": "Helcim deposits next business day at no cost (helcim.com/pricing); transaction_fees already match",
+      "set": { "funding_speed": 1, "last_verified": "2026-10-29" }
+    },
+    {
+      "name": "Stax",
+      "ops": [
+        {
+          "field": "transaction_fees",
+          "why": "Stax: $99/mo up to $150K a year, $139 to $250K, $199+ above; 15c online, not 18c (staxpayments.com/pricing)",
+          "from": "$99/mo + IC + $0.08 in-person · + $0.18 online",
+          "to": "$99-$199/mo + IC + $0.08 in-person · + $0.15 online · $199+ above $250K a year"
+        }
+      ],
+      "why": "Stax funds next business day",
+      "set": { "funding_speed": 1, "last_verified": "2026-10-29" }
+    },
+    {
+      "name": "Payment Depot",
+      "ops": [
+        {
+          "field": "transaction_fees",
+          "why": "Payment Depot's pricing page shows interchange with 0% markup + 8c in person and 15c online, and no membership price; the $79-$199 range has no source",
+          "from": "$79-$199/mo + IC + $0.05-$0.15 per transaction",
+          "to": "In-person IC + 0% + $0.08 · Online IC + 0% + $0.15 · Membership fee not published"
+        }
+      ],
+      "why": "Payment Depot lists next business day funding",
+      "set": { "funding_speed": 1, "last_verified": "2026-10-29" }
+    },
+    {
+      "name": "Clover",
+      "ops": [
+        {
+          "field": "transaction_fees",
+          "why": "Clover software plans: Starter no software fee with the Go or Compact bundle, Essentials $29.95/mo, Growth plans $84.95 to $129.85/mo (clover.com/pricing); card rates unchanged",
+          "from": "Plans $14.95-$54.95/mo · 2.3-2.6% + $0.10 in-person · 3.5% + $0.10 keyed",
+          "to": "Software $0-$129.85/mo by plan · 2.3-2.6% + $0.10 in-person · 3.5% + $0.10 keyed"
+        }
+      ],
+      "set": { "last_verified": "2026-10-29" }
+    },
+    {
+      "name": "PayPal",
+      "ops": [
+        {
+          "field": "transaction_fees",
+          "why": "PayPal Advanced Credit and Debit is 2.89% + 29c, not 2.59% + 49c (paypal.com/us/business/paypal-business-fees)",
+          "from": "Advanced card 2.59% + $0.49",
+          "to": "Advanced card 2.89% + $0.29"
+        }
+      ],
+      "set": { "last_verified": "2026-10-29" }
+    }
+  ]
+}

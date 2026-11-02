@@ -1,0 +1,178 @@
+{
+  "kind": "comparisons",
+  "slug": "square-vs-shopify-payments-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Square Free is 3.3% + 30c online and 2.6% + 15c in person, so the entry rates no longer tie (squareup.com/us/en/pricing, 2026-10-29; Shopify Basic per shopify.com/pricing)",
+      "from": "Both Square and Shopify Payments charge 2.9 percent plus 30 cents on online card transactions at their entry tiers, so the headline rates tie.",
+      "to": "Shopify Payments Basic charges 2.9 percent plus 30 cents online. Square charges the same on its paid plans or through its Online API, and 3.3 percent plus 30 cents for online payments on its Free plan. In person, Square Free is 2.6 percent plus 15 cents against Shopify Basic's 2.6 percent plus 10 cents."
+    },
+    {
+      "field": "body_html",
+      "why": "Square table cell: 15c in person, Free plan online rate, next business day deposits (squareup.com/us/en/pricing, 2026-10-29; help article 3807)",
+      "from": "<td>In-person 2.6% + 10 cents; online 2.9% + 30 cents; keyed 3.5% + 15 cents</td><td>Month-to-month, no ETF</td><td>1 to 2 business days</td>",
+      "to": "<td>In-person 2.6% + 15 cents; online 3.3% + 30 cents on Free, 2.9% + 30 cents on paid plans or API; keyed 3.5% + 15 cents</td><td>Month-to-month, no ETF</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square rates by plan (squareup.com/us/en/pricing, 2026-10-29)",
+      "from": "2.6 percent plus 10 cents for in-person tapped, dipped, or swiped transactions; 2.9 percent plus 30 cents for online checkout; 3.5 percent plus 15 cents for keyed-in card-not-present; and 3.3 percent plus 30 cents for invoices paid by card.",
+      "to": "2.6 percent plus 15 cents for in-person tapped, dipped, or swiped transactions on the Free plan (2.5 percent on Plus at $49 a month, 2.4 percent on Premium at $149); 3.3 percent plus 30 cents for online and invoice payments on Free, or 2.9 percent plus 30 cents on the paid plans and through the Online API; and 3.5 percent plus 15 cents for keyed-in card-not-present."
+    },
+    {
+      "field": "body_html",
+      "why": "Square's pricing page lists hardware from $59, no free reader (squareup.com/us/en/pricing, 2026-10-29)",
+      "from": "Hardware sits between $0 (the magstripe reader) and roughly $799 (Square Register).",
+      "to": "Hardware starts at $59 and runs to roughly $799 (Square Register)."
+    },
+    {
+      "field": "body_html",
+      "why": "Square: next business day free; instant or same-day 1.95% (Square help article 3807)",
+      "from": "Settlement runs on a 1 to 2 business day schedule, with same-day or instant deposits available for an extra 1.75 percent.",
+      "to": "Settlement is next business day at no cost, with same-day or instant deposits available for 1.95 percent."
+    },
+    {
+      "field": "body_html",
+      "why": "Worked example redone with Square Free's 3.3% + 30c online and 2.6% + 15c in person; same $75 ticket and 80/20 split as the page",
+      "from": "At Square: same card math without the $39 plan. Total $797. Square wins by $39 per month, $468 per year, if and only if you do not need a Shopify store.",
+      "to": "At Square Free: 0.8 x $25K x 3.3% + (0.8 x $25K / $75) x $0.30 = $660 + $80 = $740 online. Plus 0.2 x $25K x 2.6% + (0.2 x $25K / $75) x $0.15 = $130 + $10 = $140 in-person. Total $880 with no plan fee, so Shopify Basic is $44 a month cheaper. Square comes out ahead only if your online sales run through its Online API at 2.9 percent plus 30 cents ($800 total) and you do not need a Shopify store.",
+      "derived": [
+        {
+          "value": "740",
+          "calc": "0.8*25000*0.033+(0.8*25000/75)*0.30"
+        },
+        {
+          "value": "660",
+          "calc": "0.8*25000*0.033"
+        },
+        {
+          "value": "80",
+          "calc": "(0.8*25000/75)*0.30"
+        },
+        {
+          "value": "140",
+          "calc": "0.2*25000*0.026+(0.2*25000/75)*0.15"
+        },
+        {
+          "value": "130",
+          "calc": "0.2*25000*0.026"
+        },
+        {
+          "value": "880",
+          "calc": "740+140"
+        },
+        {
+          "value": "44",
+          "calc": "880-836"
+        },
+        {
+          "value": "800",
+          "calc": "0.8*25000*0.029+(0.8*25000/75)*0.30+140"
+        },
+        {
+          "value": "0.8",
+          "calc": "0.8"
+        },
+        {
+          "value": "0.2",
+          "calc": "0.2"
+        },
+        {
+          "value": "75",
+          "calc": "75"
+        },
+        {
+          "value": "25",
+          "calc": "25"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Square Free in person is 2.6% + 15c, 5c more per sale than Shopify Basic",
+      "from": "The card rates match Shopify Basic's in-person rate, and you save the plan fee.",
+      "to": "Square Free charges 5 cents more per in-person sale than Shopify Basic (2.6 percent plus 15 cents against plus 10 cents), and you save the plan fee.",
+      "derived": [
+        {
+          "value": "5",
+          "calc": "15-10"
+        }
+      ]
+    },
+    {
+      "field": "key_findings",
+      "why": "Square Free online is 3.3% + 30c (squareup.com/us/en/pricing, 2026-10-29)",
+      "from": "Online card rates tie at 2.9% + 30 cents on entry plans for both processors.",
+      "to": "Online, Shopify Basic charges 2.9% + 30 cents; Square charges 3.3% + 30 cents on its Free plan and 2.9% + 30 cents on paid plans or its API."
+    },
+    {
+      "field": "key_findings",
+      "why": "In-person example redone: $50K at a $75 average sale, Square Free 2.6% + 15c vs Shopify Basic 2.6% + 10c",
+      "from": "In-person retail at $50K monthly volume costs roughly $1,350 in Square fees versus $1,300 in Shopify Basic, before plan fee.",
+      "to": "In-person retail at $50K monthly volume and a $75 average sale costs about $1,400 in Square Free fees versus $1,367 on Shopify Basic, before plan fee.",
+      "derived": [
+        {
+          "value": "1400",
+          "calc": "50000*0.026+(50000/75)*0.15"
+        },
+        {
+          "value": "1367",
+          "calc": "50000*0.026+(50000/75)*0.10"
+        },
+        {
+          "value": "75",
+          "calc": "75"
+        }
+      ]
+    },
+    {
+      "field": "faq_json",
+      "why": "Square Free online is 3.3% + 30c; break-even vs the $39 Shopify plan is $39 / 0.4% (squareup.com/us/en/pricing, 2026-10-29)",
+      "from": "At the entry tier the online card rate is identical at 2.9 percent plus 30 cents. Shopify Basic adds a $39 monthly plan fee that Square does not charge, so for a pure cost comparison Square is $39 per month cheaper at the same volume.",
+      "to": "Online, Shopify Basic charges 2.9 percent plus 30 cents and Square's Free plan charges 3.3 percent plus 30 cents; Square matches 2.9 percent plus 30 cents only on its paid plans or through its Online API. Shopify Basic adds a $39 monthly plan fee that Square Free does not charge, so on a mostly online business Square Free costs more once online volume passes about $9,750 a month.",
+      "derived": [
+        {
+          "value": "9750",
+          "calc": "39/0.004"
+        }
+      ]
+    },
+    {
+      "field": "faq_json",
+      "why": "Square's own online rate depends on plan",
+      "from": "applies in addition to Square's 2.9 percent plus 30 cents.",
+      "to": "applies in addition to Square's own 2.9 to 3.3 percent plus 30 cents."
+    },
+    {
+      "field": "faq_json",
+      "why": "Square deposits next business day free (help article 3807)",
+      "from": "Square settles on a 1 to 2 business day cycle by default,",
+      "to": "Square deposits next business day by default at no cost,"
+    },
+    {
+      "field": "faq_json",
+      "why": "Square instant or same-day transfer is 1.95%",
+      "from": "the instant-deposit upsell at 1.75 percent.",
+      "to": "the instant-deposit upsell at 1.95 percent."
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square Free is 2.6% + 15c in person and 3.3% + 30c online; the rates are no longer identical (squareup.com/us/en/pricing, 2026-10-29)",
+      "from": "Square and Shopify Payments offer identical basic rates: 2.6% + 10 cents for in-person transactions and 2.9% + 30 cents online.",
+      "to": "Shopify Basic: 2.6% + 10 cents in person, 2.9% + 30 cents online. Square Free: 2.6% + 15 cents in person, 3.3% + 30 cents online."
+    }
+  ],
+  "not_fixed": [
+    {
+      "text": "Shopify Basic 2.6% + 10 cents in-person; Shopify plan 2.5% + 10 cents; Advanced 2.4% + 10 cents",
+      "reason": "legit Shopify Payments rates"
+    },
+    {
+      "text": "Shopify Payments settles on a 2 to 3 business day cycle",
+      "reason": "provider-facts says 3 business days; not in this sweep's list, left"
+    }
+  ]
+}

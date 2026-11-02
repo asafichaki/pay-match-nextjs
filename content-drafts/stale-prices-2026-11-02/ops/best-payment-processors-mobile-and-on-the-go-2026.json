@@ -1,0 +1,236 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-mobile-and-on-the-go-2026",
+  "article": [
+    {
+      "field": "meta_description",
+      "why": "drop the May 2026 date stamp; Square: 2.6% + 15c in person on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or Online API; hardware from $59; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "May 2026: Square 2.6%+$0.10 mobile,",
+      "to": "Square 2.6% + $0.15 mobile,"
+    },
+    {
+      "field": "body_html",
+      "why": "drop the May 2026 date stamp; Square: 2.6% + 15c in person on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or Online API; hardware from $59; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "Updated May 2026. For mobile merchants under $30K monthly, Square wins at 2.6% + $0.10 with $0 entry hardware.",
+      "to": "For mobile merchants under $30K monthly, Square wins at 2.6% + $0.15 with hardware from $59."
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or Online API; hardware from $59; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "<td>2.6% + $0.10 in person</td><td>Month-to-month</td><td>Next-day (instant 1.75%)</td>",
+      "to": "<td>2.6% + $0.15 in person</td><td>Month-to-month</td><td>Next-day (instant 1.95%)</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing)",
+      "from": "<td>Month-to-month</td><td>T+2 standard</td><td>$25K to $250K mobile services</td>",
+      "to": "<td>Month-to-month</td><td>Next business morning</td><td>$25K to $250K mobile services</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com)",
+      "from": "<td>$99/mo + IC + $0.08 in person</td><td>Month-to-month</td><td>T+2 standard</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.08 in person</td><td>Month-to-month</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or Online API; hardware from $59; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "Square charges 2.6 percent plus 10 cents per in-person tap, dip, or swipe",
+      "to": "Square charges 2.6 percent plus 15 cents on its Free plan per in-person tap, dip, or swipe"
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or Online API; hardware from $59; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "Online checkout is 2.9 percent plus 30 cents. The basic POS app is free. A magstripe reader is free for the first device; the contactless Square Reader runs about $49.</p><p>Funding is next business day by default, with instant transfer at 1.75 percent per push.",
+      "to": "Online checkout is 3.3 percent plus 30 cents on the Free plan and 2.9 percent plus 30 cents on paid plans or the Online API. The basic POS app is free. Square's hardware starts at $59.</p><p>Funding is next business day by default, with instant transfer at 1.95 percent per push."
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or Online API; hardware from $59; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "the flat 2.6 percent plus 10 cents starts running",
+      "to": "the flat 2.6 percent plus 15 cents starts running"
+    },
+    {
+      "field": "body_html",
+      "why": "Stripe: Tap to Pay adds 10c per authorization; M2 $59, S700 $299; custom pricing for large volume, no published threshold (stripe.com/pricing)",
+      "from": "is 2.7 percent plus 5 cents for in-person taps via Tap to Pay on iPhone and Tap to Pay on Android,",
+      "to": "is 2.7 percent plus 5 cents for in-person card payments, plus 10 cents per authorization through Tap to Pay on iPhone and Tap to Pay on Android,"
+    },
+    {
+      "field": "body_html",
+      "why": "Stripe: Tap to Pay adds 10c per authorization; M2 $59, S700 $299; custom pricing for large volume, no published threshold (stripe.com/pricing)",
+      "from": "Stripe Reader S700 hardware is $349; the BBPOS WisePOS E is $249.",
+      "to": "Stripe Reader S700 hardware is $299; the Reader M2 is $59."
+    },
+    {
+      "field": "body_html",
+      "why": "Stripe: Tap to Pay adds 10c per authorization; M2 $59, S700 $299; custom pricing for large volume, no published threshold (stripe.com/pricing)",
+      "from": "Volume-based pricing is available above $80,000 a month by request.",
+      "to": "Custom pricing is available for large volume by request, with no published threshold."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing)",
+      "from": "Automatic volume discounts kick in at $25,000, $50,000, $100,000, and $250,000 a month.",
+      "to": "Automatic volume discounts kick in at $50,000, $100,000, $500,000, and $1 million a month.",
+      "derived": [
+        {
+          "value": "500000",
+          "calc": "500000"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing)",
+      "from": "Helcim's Card Reader is $99. Funding is T+2 standard, with same-day available for $25 per batch.",
+      "to": "Helcim's Card Reader is $199. Funding is next business day at no cost; Helcim lists no same-day option."
+    },
+    {
+      "field": "body_html",
+      "why": "Square on this page's own example (800 sales at $50K, about $62.50 each) is 2.6% + 15c / $62.50; savings range redone against the page's Helcim estimate",
+      "from": "Square at the same volume runs 2.55 to 2.65 percent. The annual savings on $600,000 in processed volume is $1,800 to $2,700.",
+      "to": "Square at the same volume, on 800 sales of about $62.50, runs about 2.84 percent (2.6 percent plus 15 cents). The annual savings on $600,000 in processed volume is about $2,940 to $3,840.",
+      "derived": [
+        {
+          "value": "62.50",
+          "calc": "50000/800"
+        },
+        {
+          "value": "2.84",
+          "calc": "2.6+0.15/62.5*100"
+        },
+        {
+          "value": "800",
+          "calc": "800"
+        },
+        {
+          "value": "2940",
+          "calc": "(2.84-2.35)/100*600000"
+        },
+        {
+          "value": "3840",
+          "calc": "(2.84-2.20)/100*600000"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Clover Rapid Deposit is 1.75% of the amount (clover.com, provider-facts)",
+      "from": "with Rapid Deposit at 1 percent per instant transfer.",
+      "to": "with Rapid Deposit at 1.75 percent per instant transfer."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com)",
+      "from": "<a href=\"https://staxpayments.com/pricing/\">Stax's pricing</a> starts at $99 a month plus interchange and 8 cents per in-person transaction, or 18 cents per online or keyed transaction.",
+      "to": "<a href=\"https://staxpayments.com/pricing/\">Stax's pricing</a> is $99 a month up to $150,000 a year in volume, $139 from $150,000 to $250,000 and $199 or more above that, plus interchange and 8 cents per in-person transaction, or 15 cents per online or keyed transaction."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com); $50K and $100K a month are above $250,000 a year, so the fee is $199, not $99: +0.20 and +0.10 points on the page's own ranges",
+      "from": "At $50,000 in monthly volume with 800 transactions, the all-in rate runs roughly 2.05 to 2.15 percent. At $100,000, the rate drops to 1.95 to 2.05 percent. Hardware sells separately, with mobile readers starting around $79.</p><p>Funding is T+2 standard.",
+      "to": "At $50,000 in monthly volume with 800 transactions, where the subscription is $199, the all-in rate runs roughly 2.25 to 2.35 percent. At $100,000, the rate drops to 2.05 to 2.15 percent. Hardware sells separately, with readers starting at $125.</p><p>Funding is next business day.",
+      "derived": [
+        {
+          "value": "2.25",
+          "calc": "2.05+(199-99)/50000*100"
+        },
+        {
+          "value": "2.35",
+          "calc": "2.15+(199-99)/50000*100"
+        },
+        {
+          "value": "2.05",
+          "calc": "1.95+(199-99)/100000*100"
+        },
+        {
+          "value": "2.15",
+          "calc": "2.05+(199-99)/100000*100"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com); at $30K a month the fee is $199, so the old $32K-$35K break-even (built on $99) no longer holds",
+      "from": "The $99 monthly fee makes Stax a losing trade below $30,000 a month. The savings only show up once fixed-cost breakeven clears, which is roughly $32,000 to $35,000 in volume at typical card mixes.",
+      "to": "The monthly fee, $99 to $199 depending on annual volume, makes Stax a losing trade below $30,000 a month. The savings only show up once volume is high enough to cover that fixed fee."
+    },
+    {
+      "field": "key_findings",
+      "why": "Stripe: Tap to Pay adds 10c per authorization; M2 $59, S700 $299; custom pricing for large volume, no published threshold (stripe.com/pricing)",
+      "from": "with Tap to Pay at 2.7 percent plus 5 cents in person.",
+      "to": "with Tap to Pay at 2.7 percent plus 5 cents in person, plus 10 cents per authorization."
+    },
+    {
+      "field": "key_findings",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com)",
+      "from": "the $99 monthly fee costs more than it saves.",
+      "to": "the $99 to $199 monthly fee costs more than it saves."
+    },
+    {
+      "field": "faq_json",
+      "why": "Square: 2.6% + 15c in person on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or Online API; hardware from $59; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "The reader is free for the first magstripe device, the POS app is free, there is no monthly fee, and the 2.6 percent plus 10 cents in-person rate",
+      "to": "The POS app is free, there is no monthly fee, and the 2.6 percent plus 15 cents in-person rate"
+    },
+    {
+      "field": "faq_json",
+      "why": "Stripe: Tap to Pay adds 10c per authorization; M2 $59, S700 $299; custom pricing for large volume, no published threshold (stripe.com/pricing)",
+      "from": "Stripe charges 2.7 percent plus 5 cents through Tap to Pay on iPhone, matching its hardware-reader rate.",
+      "to": "Stripe charges its 2.7 percent plus 5 cents in-person rate through Tap to Pay on iPhone, plus 10 cents per authorization."
+    },
+    {
+      "field": "faq_json",
+      "why": "Clover Rapid Deposit 1.75%, Square instant or same-day 1.95%; Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com)",
+      "from": "with same-day or instant transfer available for 1 percent to 1.75 percent.",
+      "to": "with same-day or instant transfer available for 1.75 percent (Clover) to 1.95 percent (Square)."
+    },
+    {
+      "field": "faq_json",
+      "why": "Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com)",
+      "from": "Helcim and Stax are T+2 standard.",
+      "to": "Helcim and Stax both deposit the next business day."
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square: 2.6% + 15c in person on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or Online API; hardware from $59; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "with rates of 2.6% + $0.10 in person.",
+      "to": "with rates of 2.6% + $0.15 in person."
+    },
+    {
+      "field": "aeo_answer",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com); $50K+ a month is above $250,000 a year",
+      "from": "with a $99/mo fee plus IC + $0.08 in person.",
+      "to": "with a $199/mo fee plus IC + $0.08 in person."
+    }
+  ],
+  "not_fixed": [
+    {
+      "text": "Clover 2.3% to 2.6% + $0.10 + plan fee; 3.5 percent plus 10 cents keyed",
+      "reason": "legit Clover rates"
+    },
+    {
+      "text": "Stripe T+2 (instant 1.5%)",
+      "reason": "legit"
+    },
+    {
+      "text": "'PayPal Zettle' naming; Zettle reader $29 then $79",
+      "reason": "PayPal now calls it PayPal POS and publishes no hardware price; no sourced replacement"
+    },
+    {
+      "text": "TL;DR 'Helcim saves $90-$130 per $25K'; verdict '0.30 to 0.60 percent spread'",
+      "reason": "estimates not tied to a stale price; left"
+    },
+    {
+      "text": "Clover plans $14.95 to $54.95",
+      "reason": "not in provider-facts; left"
+    },
+    {
+      "text": "Barak Bachar ranked 6 mobile processors",
+      "reason": "existing attribution, not a price; left"
+    }
+  ]
+}

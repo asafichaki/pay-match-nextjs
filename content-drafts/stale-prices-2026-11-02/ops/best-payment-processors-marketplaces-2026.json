@@ -1,0 +1,60 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-marketplaces-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c, not 2.59% + 49c (paypal.com business fees, 2026-10-29)",
+      "from": "<td>2.59% to 3.49% + $0.49</td>",
+      "to": "<td>2.89% + $0.29 to 3.49% + $0.49</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business day, not T+2 (helcim.com/pricing, 2026-10-29)",
+      "from": "<td>IC + 0.50% + $0.25 online</td><td>Month-to-month</td><td>T+2</td>",
+      "to": "<td>IC + 0.50% + $0.25 online</td><td>Month-to-month</td><td>Next business morning</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on Square Free; online is 3.3% + 30c on Free, 2.9% + 30c on paid plans or the API (squareup.com pricing, 2026-10-29)",
+      "from": "<td>2.9% + $0.30 online, 2.6% + $0.10 in-person</td>",
+      "to": "<td>2.9% + $0.30 online (3.3% + $0.30 on Free), 2.6% + $0.15 in-person</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99 to $199+/mo by annual volume, 15c online, next business day funding, contract length not published (staxpayments.com/pricing, 2026-10-29)",
+      "from": "<td>$99/mo + IC + $0.18 online</td><td>Month-to-month</td><td>T+2</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.15 online</td><td>No cancellation fee; length not published</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal: Checkout 3.49% + 49c, standard card payments 2.99% + 49c, Advanced Credit and Debit 2.89% + 29c (paypal.com business fees, 2026-10-29)",
+      "from": "runs 3.49 percent + $0.49 on standard credit and debit, 2.59 percent + $0.49 on Advanced Card, and 2.29 percent + $0.09 in-person.",
+      "to": "runs 3.49 percent + $0.49 on PayPal Checkout, 2.99 percent + $0.49 on standard card payments, 2.89 percent + $0.29 on Advanced Credit and Debit, and 2.29 percent + $0.09 in-person."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim's volume discounts start at $50K a month, not $25K (helcim.com/pricing, 2026-10-29)",
+      "from": "automatic volume discounts that begin at $25K monthly per",
+      "to": "automatic volume discounts that begin at $50K monthly per"
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on Square Free; online 3.3% + 30c on Free, 2.9% + 30c on Plus, Premium or the API",
+      "from": "Square charges 2.6 percent + $0.10 in-person, 2.9 percent + $0.30 online, and 3.5 percent + $0.15 keyed per",
+      "to": "Square charges 2.6 percent + $0.15 in-person on its Free plan, 2.9 percent + $0.30 online on paid plans or the API (3.3 percent + $0.30 on Free), and 3.5 percent + $0.15 keyed per"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax subscription is $99 to $199+ by annual volume; online per-transaction fee is 15c",
+      "from": "sells subscription pricing at $99 per month plus interchange and per-transaction fees of $0.08 in-person and $0.18 online per",
+      "to": "sells subscription pricing at $99 to $199 or more per month, depending on annual volume, plus interchange and per-transaction fees of $0.08 in-person and $0.15 online per"
+    }
+  ],
+  "not_fixed": [
+    { "text": "Stripe Connect T+2", "reason": "legit: Stripe pays out in 2 business days" },
+    { "text": "Clover $14.95 to $54.95/mo + 2.3% to 2.6% + $0.10 in-person", "reason": "Clover 10c rates are correct; the plan fee range is not in provider-facts but is outside this sweep's list" },
+    { "text": "Payment Depot $79 to $199/mo, T+2", "reason": "UNVERIFIED: Payment Depot no longer publishes a membership price (discrepancies #28); not a listed stale figure, flagged for Assaf" },
+    { "text": "Stax 'For direct merchants above $50K monthly volume, the math beats flat-rate processors by 30 to 60 basis points'", "reason": "unsourced range, left as is" }
+  ]
+}

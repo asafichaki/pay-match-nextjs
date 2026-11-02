@@ -1,0 +1,17 @@
+{
+  "kind": "comparisons",
+  "slug": "square-vs-clover-2026",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square Free in person is 2.6% + 15c (squareup.com pricing, 2026-10-29)",
+      "from": "offering a $0/mo Free plan with 2.6% + $0.10 in person.",
+      "to": "offering a $0/mo Free plan with 2.6% + $0.15 in person."
+    }
+  ],
+  "not_fixed": [
+    { "text": "AEO: Clover 2.3 to 2.6% + $0.10 in person", "reason": "legit Clover rates" },
+    { "text": "AEO: Clover plans $14.95 to $54.95/mo", "reason": "not in provider-facts; not a listed stale figure, flagged" },
+    { "text": "article body: Square 10c (8), Stax 18c (1), 1.75% (1)", "reason": "below the top-20 cut; AEO block only, body listed for Assaf" }
+  ]
+}

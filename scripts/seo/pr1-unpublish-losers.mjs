@@ -31,6 +31,7 @@ const APPLY = process.argv.includes("--apply");
 const LOSERS = [
   { kind: "comparisons", slug: "stripe-vs-square-2026", winner: "/comparisons/square-vs-stripe" },
   { kind: "comparisons", slug: "stripe-vs-helcim-2026", winner: "/comparisons/helcim-vs-stripe" },
+  { kind: "comparisons", slug: "paypal-vs-stripe-2026", winner: "/comparisons/stripe-vs-paypal" },
 ];
 
 function loadEnv() {

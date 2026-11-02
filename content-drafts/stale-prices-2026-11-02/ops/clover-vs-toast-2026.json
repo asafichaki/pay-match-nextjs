@@ -1,0 +1,9 @@
+{
+  "kind": "comparisons",
+  "slug": "clover-vs-toast-2026",
+  "not_fixed": [
+    { "text": "AEO: Clover 'rates are 2.3% to 2.6% plus $0.10 in-person'", "reason": "legit: Clover Starter 2.6% + 10c down to 2.3% + 10c on Growth bundles (sweep false positive)" },
+    { "text": "AEO: 'monthly plans from $14.95'; Toast 2.49% to 2.99% + 15c, $0 to $165", "reason": "not in provider-facts (Clover Essentials is $29.95; Starter shows no software fee); not a listed stale figure, flagged for Assaf" },
+    { "text": "article body: 10 sweep hits", "reason": "below the top-20 cut; listed for Assaf (most are likely Clover's legit 10c)" }
+  ]
+}

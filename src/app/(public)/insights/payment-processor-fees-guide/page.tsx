@@ -10,7 +10,7 @@ import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
   title: { absolute: "Average Credit Card Processing Fees 2026: 1.5%-3.5%" },
-  description: "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%. Real rates from 14 processors: interchange 1.5%-3.5%, markup 0.10%-2.00%, Square 2.65% effective.",
+  description: "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%: interchange 1.5%-3.5% plus markup 0.10%-2.00%. Square comes to 2.90% on a $50 sale.",
   keywords: "payment processor fees, credit card processing fees, interchange plus pricing, flat rate pricing, reduce processing fees, best payment processor",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
@@ -20,13 +20,13 @@ const baseMetadata: Metadata = {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
     title: "Payment Processing Fees 2026: 1.5%-3.5% Across 14 Processors",
-    description: "May 2026 rates from 14 processors. Interchange 1.5%-3.5%, markup 0.10%-2.00%. Real merchant statements, not vendor brochures.",
+    description: "Interchange 1.5%-3.5%, markup 0.10%-2.00%, and what Square, Stripe, PayPal and Helcim charge, read from their own pricing pages on Oct 29, 2026.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Payment Processing Fees 2026: 1.5%-3.5% Across 14 Processors",
-    description: "May 2026: interchange 1.5%-3.5%, markup 0.10%-2.00%, 14 processors compared on real merchant statements.",
+    description: "Interchange 1.5%-3.5%, markup 0.10%-2.00%, and what Square, Stripe, PayPal and Helcim charge, read from their own pricing pages on Oct 29, 2026.",
   },
 };
 
@@ -41,7 +41,7 @@ export default function PaymentProcessorFeesGuidePage() {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Payment Processing Fees in 2026: Real Rates from 14 Processors",
-    "description": "May 2026 rates from 14 processors. Interchange 1.5%-3.5%, markup 0.10%-2.00%. Real merchant statements, not vendor brochures.",
+    "description": "Interchange 1.5%-3.5%, markup 0.10%-2.00%, and what Square, Stripe, PayPal and Helcim charge, read from their own pricing pages on Oct 29, 2026.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Organization",
@@ -59,10 +59,10 @@ export default function PaymentProcessorFeesGuidePage() {
     },
     "datePublished": "2025-01-15",
     // 2026-09-08: absorbed /insights/credit-card-processing-fees-explained.
-    // This is when the document changed. The rate data is still the May 2026
-    // reconciliation, which is what the visible "Updated May 2026" label and
-    // the answer block refer to, and it was not re-verified today.
-    "dateModified": "2026-09-08",
+    // 2026-11-02: the Square, Stripe, PayPal and Helcim prices on this page were
+    // re-checked against provider-facts.json (read from each provider's pricing page
+    // on 2026-10-29); the Square 2.65% figure and the May dating were removed.
+    "dateModified": "2026-11-02",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/payment-processor-fees-guide"
@@ -192,7 +192,7 @@ export default function PaymentProcessorFeesGuidePage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Complete Guide</span>
                 <span>•</span>
-                <span>Updated May 2026</span>
+                <span>Updated November 2026</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
@@ -201,7 +201,7 @@ export default function PaymentProcessorFeesGuidePage() {
               <AeoAnswer kind="insights" slug="payment-processor-fees-guide" />
 
               <p data-speakable="true" className="aeo-answer text-xl text-muted-foreground leading-relaxed mb-6">
-                The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5% of each transaction. Updated May 2026. That cost splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat rate is 2.65% effective. Barak Bachar reconciled 14 U.S. processors against live merchant statements for this guide. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
+                The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5% of each transaction. That cost splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat 2.6% + 15¢ in person works out to 2.90% on a $50 sale, and Stripe&apos;s 2.9% + 30¢ online to 3.50%, at prices read from their pricing pages on Oct 29, 2026. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
               </p>
 
               {/* Reviewed-by byline: real expert. Fabricated author byline removed per locked portfolio_no_fictional_credentials policy. */}
@@ -558,8 +558,8 @@ export default function PaymentProcessorFeesGuidePage() {
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4"><a href="https://squareup.com/us/en/payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a></td>
-                      <td className="py-3 pr-4">2.9% + $0.30</td>
-                      <td className="py-3">2.6% + $0.10</td>
+                      <td className="py-3 pr-4">2.9% + $0.30 on paid plans; 3.3% + $0.30 on Free</td>
+                      <td className="py-3">2.6% + $0.15</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4"><a href="https://www.paypal.com/us/business/accept-payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a></td>
@@ -933,7 +933,7 @@ export default function PaymentProcessorFeesGuidePage() {
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Square</td>
-                      <td className="py-3 pr-4">2.6% + $0.10</td>
+                      <td className="py-3 pr-4">2.6% + $0.15 in person</td>
                       <td className="py-3 pr-4">$0</td>
                       <td className="py-3">Micro-businesses, startups</td>
                     </tr>
@@ -951,7 +951,7 @@ export default function PaymentProcessorFeesGuidePage() {
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Helcim</td>
-                      <td className="py-3 pr-4">Interchange + 0.3%</td>
+                      <td className="py-3 pr-4">Interchange + 0.40% + $0.08 in person</td>
                       <td className="py-3 pr-4">$0</td>
                       <td className="py-3">Transparent pricing seekers</td>
                     </tr>

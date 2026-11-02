@@ -1,0 +1,16 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-dental-practices-2026",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square Free in person is 2.6% + 15c (squareup.com pricing, 2026-10-29)",
+      "from": "charging 2.6% + $0.10 in-person.",
+      "to": "charging 2.6% + $0.15 in-person."
+    }
+  ],
+  "not_fixed": [
+    { "text": "AEO: Helcim IC + 0.40% + $0.08 for $25K to $150K", "reason": "Helcim's base tier under $50K; margin drops above $50K. Not stale as a starting rate, left" },
+    { "text": "article body: Square 10c (4), Stax 18c (2)", "reason": "below the top-20 cut; AEO block only, body listed for Assaf" }
+  ]
+}

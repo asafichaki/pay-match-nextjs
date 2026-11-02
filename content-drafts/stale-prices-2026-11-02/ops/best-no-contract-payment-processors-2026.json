@@ -1,0 +1,142 @@
+{
+  "kind": "comparisons",
+  "slug": "best-no-contract-payment-processors-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Square in-person is 2.6% + 15c on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or API (squareup.com/us/en/pricing, 2026-10-29)",
+      "from": "<td>2.6% + $0.10 in-person, 2.9% + $0.30 online</td>",
+      "to": "<td>2.6% + $0.15 in-person, 2.9% + $0.30 online on paid plans or API (3.3% + $0.30 on Free)</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square instant transfer is 1.95% (Square help article 3807)",
+      "from": "<td>Instant deposit costs 1.75%</td>",
+      "to": "<td>Instant deposit costs 1.95%</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business day, free (helcim.com/pricing)",
+      "from": "<td>Month-to-month</td><td>2 days</td><td>$25K to $500K monthly volume</td>",
+      "to": "<td>Month-to-month</td><td>Next business morning</td><td>$25K to $500K monthly volume</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/$139/$199+ by annual volume, IC + 15c online, next business day funding (staxpayments.com/pricing)",
+      "from": "<td>$99/mo + IC + $0.08 in-person, $0.18 online</td><td>Month-to-month</td><td>1 to 2 days</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.08 in-person, $0.15 online</td><td>Month-to-month</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stripe Terminal hardware: M2 $59 to T600 $329 (stripe.com/pricing)",
+      "from": "Hardware: Stripe Terminal readers $59 to $349, owned.",
+      "to": "Hardware: Stripe Terminal readers $59 to $329, owned."
+    },
+    {
+      "field": "body_html",
+      "why": "Square in-person 2.6% + 15c on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or API",
+      "from": "Square charges 2.6 percent plus $0.10 in-person, 2.9 percent plus $0.30 online,",
+      "to": "Square charges 2.6 percent plus $0.15 in-person on its Free plan, 2.9 percent plus $0.30 online on its paid plans or API (3.3 percent plus $0.30 on Free),"
+    },
+    {
+      "field": "body_html",
+      "why": "Square instant or same-day transfer is 1.95%; pricing page lists hardware from $59, no free reader",
+      "from": "Instant transfer costs 1.75 percent of the transfer amount.</p><p>Hardware: magstripe reader free, contactless and chip reader $59,",
+      "to": "Instant transfer costs 1.95 percent of the transfer amount.</p><p>Hardware: contactless and chip reader $59,"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim volume breaks are $50K, $100K, $500K and $1M (helcim.com/pricing)",
+      "from": "Discounts kick in automatically at $25K, $50K, $100K, and $250K monthly volume tiers.",
+      "to": "Discounts kick in automatically at $50K, $100K, $500K, and $1M monthly volume."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: next-business-morning deposits at $0, no same-day option published; Card Reader $199",
+      "from": "Settlement: two business days standard. Same-day available for established accounts.</p><p>Hardware: Helcim Card Reader $99,",
+      "to": "Settlement: next business day, free.</p><p>Hardware: Helcim Card Reader $199,"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax subscription bands and 15c online fee (staxpayments.com/pricing)",
+      "from": "Stax charges a monthly subscription starting at $99 (Starter), plus interchange plus $0.08 in-person and plus $0.18 online,",
+      "to": "Stax charges a monthly subscription of $99 up to $150,000 a year in volume, $139 from $150,000 to $250,000 and $199 or more above that, plus interchange plus $0.08 in-person and plus $0.15 online,"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: next business day funding; hardware B350 $125 to QD2 $495 (staxpayments.com/equipment)",
+      "from": "Settlement: one to two business days.</p><p>Hardware: terminals from $149 (mobile) to $899 (countertop).",
+      "to": "Settlement: next business day.</p><p>Hardware: terminals from $125 (SwipeSimple B350 reader) to $495 (Dejavoo QD2 wireless)."
+    },
+    {
+      "field": "body_html",
+      "why": "At $100K a month Stax's subscription is $199, not $99: 0.40% of $100K = $400, less $199",
+      "from": "switching from a 0.40 percent markup processor to Stax saves roughly $300 per month after the subscription cost.",
+      "to": "switching from a 0.40 percent markup processor to Stax saves roughly $200 per month after the $199 subscription.",
+      "derived": [
+        {
+          "value": "200",
+          "calc": "100000*0.004-199"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Stax's fee is $99 to $199+ depending on annual volume",
+      "from": "where the $99 fixed cost eats most of the markup savings.",
+      "to": "where the $99 to $199 monthly fee eats most of the markup savings."
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c; PayPal now calls Zettle PayPal POS (paypal.com fee page)",
+      "from": "2.59 percent plus $0.49 for advanced card processing, and 2.29 percent plus $0.09 in-person via Zettle,",
+      "to": "2.89 percent plus $0.29 for advanced card processing, and 2.29 percent plus $0.09 in-person through PayPal POS,"
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal instant transfer is 1.5% (50c minimum)",
+      "from": "Instant transfer to bank costs 1.75 percent.",
+      "to": "Instant transfer to bank costs 1.5 percent (50 cents minimum)."
+    },
+    {
+      "field": "body_html",
+      "why": "Square in-person 2.6% + 15c on Free",
+      "from": "Square's free POS plus 2.6 percent plus $0.10 in-person",
+      "to": "Square's free POS plus 2.6 percent plus $0.15 in-person"
+    },
+    {
+      "field": "faq_json",
+      "why": "At $50K a month Stax's subscription is $199 and Helcim's tier is 0.35% + 7c; engine figures from ranking-2026.ts",
+      "from": "At $50K monthly with a typical card mix, Helcim's interchange-plus 0.40 percent plus $0.08 costs roughly $1,250 per month, while Stax at $99 plus interchange plus $0.08 costs roughly $1,049. Above $80K monthly, Stax pulls further ahead.",
+      "to": "At $50K monthly in person, on our published method, Helcim comes to about 2.04 percent ($1,020 a month) and Stax about 2.11 percent ($1,055), because Stax's subscription is $199 at that volume. Above $80K monthly, Stax pulls ahead."
+    },
+    {
+      "field": "faq_json",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c",
+      "from": "Advanced Credit and Debit Card Payments product is 2.59 percent plus $0.49,",
+      "to": "Advanced Credit and Debit Card Payments product is 2.89 percent plus $0.29,"
+    }
+  ],
+  "not_fixed": [
+    {
+      "text": "Clover $14.95 to $54.95/mo + 2.3 to 2.6% + $0.10 in-person",
+      "reason": "legit Clover in-person rates; plan fee range is not in provider-facts (Essentials $29.95, Growth $84.95+), left for a Clover-specific pass"
+    },
+    {
+      "text": "Stripe settlement two business days; Instant payouts 1.5 percent",
+      "reason": "legit"
+    },
+    {
+      "text": "Zettle reader $29, Zettle Terminal $199",
+      "reason": "PayPal POS page shows no hardware price; unverified, no sourced replacement"
+    },
+    {
+      "text": "Payment Depot $79 plan",
+      "reason": "Payment Depot no longer publishes a membership fee; unverified, no sourced replacement"
+    },
+    {
+      "text": "Stax Month-to-month",
+      "reason": "Stax says no cancellation fees; contract length not published. Not in this sweep's list"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "kind": "comparisons",
+  "slug": "stripe-vs-stax-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Stax: $99 up to $150K a year, $139 to $250K, $199+ above; online fee 15c (staxpayments.com/pricing, 2026-10-29)",
+      "from": "Stax charges a $99 monthly subscription plus interchange and $0.08 (in-person) or $0.18 (online) per transaction.",
+      "to": "Stax charges a monthly subscription ($99 up to $150,000 a year in volume, $139 to $250,000, $199 or more above that) plus interchange and $0.08 (in-person) or $0.15 (online) per transaction."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax row: $99 to $199+ by annual volume, 15c online, next business day funding, contract length not published",
+      "from": "<td>$99/mo + IC + $0.08 in-person / $0.18 online</td><td>Month-to-month</td><td>1 to 2 business days</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.08 in-person / $0.15 online</td><td>No cancellation fee; length not published</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business day (helcim.com/pricing)",
+      "from": "<td>2 business days</td><td>$5K-$25K transparent pricing</td>",
+      "to": "<td>Next business morning</td><td>$5K-$25K transparent pricing</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person and 3.3% + 30c online on Free; standard payout is next business day, same-day costs 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "<td>2.6% + $0.10 in-person; 2.9% + $0.30 online</td><td>Month-to-month</td><td>Same day</td>",
+      "to": "<td>2.6% + $0.15 in-person; 3.3% + $0.30 online on the Free plan (2.9% + $0.30 on paid plans)</td><td>Month-to-month</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax subscription by annual volume; online fee 15c",
+      "from": "$99 per month plus interchange plus $0.08 per in-person or $0.18 per online transaction</a>.",
+      "to": "$99 per month up to $150,000 a year in volume ($139 to $250,000, $199 or more above), plus interchange plus $0.08 per in-person or $0.15 per online transaction</a>."
+    },
+    {
+      "field": "body_html",
+      "why": "Example redone: 15c online fee and the $199 tier for $50K a month ($600K a year); the article's own 1.85% interchange and Stripe figure kept",
+      "from": "Per-transaction fees (1,000 x $0.18): $180<br>Subscription: $99<br><strong>Total: $1,204 per month</strong><br>Same volume on Stripe Standard: roughly $1,750. Stax saves about $546 per month, or $6,552 per year, on this profile.",
+      "to": "Per-transaction fees (1,000 x $0.15): $150<br>Subscription: $199 (the tier for $600,000 a year)<br><strong>Total: $1,274 per month</strong><br>Same volume on Stripe Standard: roughly $1,750. Stax saves about $476 per month, or $5,712 per year, on this profile.",
+      "derived": [
+        {"value": "150", "calc": "1000*0.15"},
+        {"value": "600000", "calc": "50000*12"},
+        {"value": "1274", "calc": "925+150+199"},
+        {"value": "476", "calc": "1750-1274"},
+        {"value": "5712", "calc": "(1750-1274)*12"}
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim volume breaks are $50K, $100K, $500K and $1M (helcim.com/pricing)",
+      "from": "tier thresholds at $25K, $50K, $100K, and $250K.",
+      "to": "tier thresholds at $50K, $100K, $500K and $1M."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business day and publishes no instant option",
+      "from": "(it funds in two business days)",
+      "to": "(it funds next business day and publishes no instant option)"
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 15c in person on Free; online 3.3% + 30c on Free",
+      "from": "2.6 percent plus $0.10 in person, 2.9 percent plus $0.30 online, and 3.5 percent plus $0.15 keyed</a>.",
+      "to": "2.6 percent plus $0.15 in person and 3.3 percent plus $0.30 online on the Free plan (2.9 percent plus $0.30 online on paid plans), and 3.5 percent plus $0.15 keyed</a>."
+    },
+    {
+      "field": "body_html",
+      "why": "Square: next business day free, same-day 1.95%; hardware starts at $59, no free reader listed (squareup.com/us/en/pricing, help 3807)",
+      "from": "Same-day funding is included. The POS software is free. Hardware starts at $0 for the magstripe reader and $59 for the contactless terminal.",
+      "to": "Next-business-day funding is free and same-day transfers cost 1.95%. The POS software is free. Hardware starts at $59."
+    },
+    {
+      "field": "body_html",
+      "why": "Stripe vs Stax at $250K: engine figures (in person 2.80% vs 1.79%, online 3.50% vs 2.08%)",
+      "from": "At $250K monthly volume, the gap can clear $50,000 annually on a typical retail card mix.",
+      "to": "At $250K monthly volume, our published method puts the gap at about $2,525 a month in person and $3,550 a month online, or roughly $30,300 to $42,600 a year.",
+      "derived": [
+        {"value": "2525", "calc": "250000*(0.028-0.0179)"},
+        {"value": "3550", "calc": "250000*(0.035-0.0208)"},
+        {"value": "30300", "calc": "250000*(0.028-0.0179)*12"},
+        {"value": "42600", "calc": "250000*(0.035-0.0208)*12"}
+      ]
+    },
+    {
+      "field": "key_findings",
+      "why": "Stripe vs Stax at $250K: engine figures",
+      "from": "At $250K monthly volume, the Stripe-to-Stax gap on a typical card mix can clear $50,000 per year.",
+      "to": "At $250K monthly volume, the Stripe-to-Stax gap is about $30,300 a year in person and $42,600 online on our published method.",
+      "derived": [
+        {"value": "30300", "calc": "250000*(0.028-0.0179)*12"},
+        {"value": "42600", "calc": "250000*(0.035-0.0208)*12"}
+      ]
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Stax subscription is $99 to $199+ by annual volume",
+      "from": "Stax, with a $99/mo subscription, is best for",
+      "to": "Stax, with a $99 to $199+/mo subscription, is best for"
+    }
+  ],
+  "not_fixed": [
+    {"text": "Stripe 2 business days", "reason": "legit"},
+    {"text": "Payment Depot $79 to $199/mo, $0.05 to $0.15, $79 plan caps at $25K", "reason": "unverified: Payment Depot's page no longer publishes a membership price; not in this sweep's list"},
+    {"text": "The $99 base is a list price; FAQ 'standard $99 subscription'", "reason": "legit: $99 is Stax's entry tier"},
+    {"text": "Break-even $7K to $10K; 'Subscription pays off above ~$8K volume'; title 'Stax Wins Above ~$9K'", "reason": "not reproducible from published prices on the engine (Stax 2.70% vs Stripe 2.80% in person at $10K) but not a stale price; flag for a content pass"},
+    {"text": "TL;DR and key finding 'Stax saves roughly $500 per month' at $50K", "reason": "still true after the fix ($476)"}
+  ]
+}

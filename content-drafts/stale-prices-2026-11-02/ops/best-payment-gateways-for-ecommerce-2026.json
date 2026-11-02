@@ -1,0 +1,130 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-gateways-for-ecommerce-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Stax subscription is $99 to $199+ a month by annual volume (staxpayments.com/pricing, 2026-10-29)",
+      "from": "Stax wins above $80K monthly when the $99 subscription absorbs markup.",
+      "to": "Stax wins above $80K monthly when the subscription ($99 to $199+ a month) absorbs markup."
+    },
+    {
+      "field": "body_html",
+      "why": "Instant payouts: Stripe and PayPal 1.5%, Clover 1.75%, Square 1.95% (provider pages, 2026-10-29)",
+      "from": "instant deposit add-ons at 1.5 to 1.75% per transfer.",
+      "to": "instant deposit add-ons at 1.5 to 1.95% per transfer."
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on Square Free; online is 3.3% + 30c on Free, 2.9% + 30c on paid plans or the API",
+      "from": "<td>2.9% + $0.30 online; 2.6% + $0.10 in-person</td>",
+      "to": "<td>2.9% + $0.30 online (3.3% + $0.30 on Free); 2.6% + $0.15 in-person</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business day, not in 2 days (helcim.com/pricing, 2026-10-29)",
+      "from": "<td>IC + 0.50% + $0.25 online</td><td>None</td><td>2 days</td>",
+      "to": "<td>IC + 0.50% + $0.25 online</td><td>None</td><td>Next business morning</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99 to $199+/mo by annual volume, 15c online, next business day funding, contract length not published",
+      "from": "<td>$99/mo + IC + $0.18 online</td><td>Month-to-month after year 1</td><td>1 to 2 days</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.15 online</td><td>No cancellation fee; length not published</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c",
+      "from": "<td>3.49% + $0.49 standard; 2.59% + $0.49 advanced</td>",
+      "to": "<td>3.49% + $0.49 standard; 2.89% + $0.29 advanced</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square online is 2.9% + 30c only on paid plans or the Online API; 3.3% + 30c on Square Free",
+      "from": "Square's online rate is 2.9% + $0.30, matching Stripe's flat rate.",
+      "to": "Square's online rate is 2.9% + $0.30 on its paid plans or through the Online API, matching Stripe's flat rate; on the free plan it is 3.3% + $0.30."
+    },
+    {
+      "field": "body_html",
+      "why": "Square instant and same-day transfers cost 1.95% (Square help article 3807, 2026-10-29)",
+      "from": "instant deposit costs 1.75% per transfer.",
+      "to": "instant deposit costs 1.95% per transfer."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim volume breaks are $50K, $100K, $500K and $1M",
+      "from": "Volume above $25K, $100K, and $500K monthly triggers",
+      "to": "Volume above $50K, $100K, $500K and $1M monthly triggers"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim ACH is 0.5% + 25c capped at $6; deposits arrive next business day at $0",
+      "from": "ACH at 0.5% capped at $6, and recurring billing, all bundled. Settlement is 2 business days.",
+      "to": "ACH at 0.5% + $0.25 capped at $6, and recurring billing, all bundled. Deposits arrive the next business day at no charge."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax online fee is 15c and the subscription is set by annual volume ($50K a month is $600K a year, the $199 tier); effective rates from ranking-2026 at $50K",
+      "from": "Stax charges a $99 monthly subscription plus interchange and a $0.18 per online transaction, per its <a href=\"https://staxpayments.com/pricing/\">pricing page</a>. There is no percentage markup. At $50K monthly volume on a typical mix, total cost is roughly interchange (about $975) plus $99 plus per-transaction fees, landing near 2.10 to 2.25% effective.",
+      "to": "Stax charges a monthly subscription of $99 to $199 or more, set by annual volume, plus interchange and $0.15 per online transaction, per its <a href=\"https://staxpayments.com/pricing/\">pricing page</a>. There is no percentage markup. At $50K monthly volume, or $600,000 a year, the $199 tier applies; with our 1.70% online interchange estimate and a $50 average sale, that lands near 2.40% effective, against 2.55% for Helcim at the same volume.",
+      "derived": [{ "value": "600000", "calc": "50000*12" }]
+    },
+    {
+      "field": "body_html",
+      "why": "Stax ACH is 1% capped at $10; contract length is not published, the pricing page lists no cancellation fees",
+      "from": "and ACH at 0.8%. Hardware is sold separately. Contract is month-to-month after the first year.",
+      "to": "and ACH at 1% capped at $10. Hardware is sold separately. The pricing page lists no cancellation fees but does not publish a contract length."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax online per-transaction fee is 15c",
+      "from": "beats Stax's $0.18 by enough",
+      "to": "beats Stax's $0.15 by enough"
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c",
+      "from": "dropping to 2.59% + $0.49 for advanced credit and debit card processing",
+      "to": "dropping to 2.89% + $0.29 for advanced credit and debit card processing"
+    },
+    {
+      "field": "faq_json",
+      "why": "Stax subscription is $99 to $199+ a month by annual volume",
+      "from": "Stax's $99 subscription model with no percentage markup becomes cheaper.",
+      "to": "Stax's subscription model ($99 to $199+ a month) with no percentage markup becomes cheaper."
+    },
+    {
+      "field": "faq_json",
+      "why": "Helcim deposits next business day; Stax funds next business day; instant payouts run 1.5% to 1.95%",
+      "from": "Stripe and Helcim settle in 2 business days standard. Square, Clover, and PayPal settle in 1 business day. Stax and Payment Depot settle in 1 to 2 business days.",
+      "to": "Stripe settles in 2 business days standard and Helcim deposits the next business day. Square, Clover, and PayPal settle in 1 business day. Stax funds the next business day and Payment Depot in 1 to 2 business days."
+    },
+    {
+      "field": "faq_json",
+      "why": "Square instant transfers cost 1.95%",
+      "from": "instant payout add-ons at 1.5 to 1.75% of the transferred amount.",
+      "to": "instant payout add-ons at 1.5 to 1.95% of the transferred amount."
+    },
+    {
+      "field": "key_findings",
+      "why": "Stax subscription is $99 to $199+ a month by annual volume",
+      "from": "Stax's $99 monthly subscription beats interchange-plus pricing",
+      "to": "Stax's subscription ($99 to $199+ a month by annual volume) beats interchange-plus pricing"
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Stax fee is $99 to $199+ by annual volume and 15c online",
+      "from": "Stax fits $80K+ monthly at $99/mo + IC + $0.18 online.",
+      "to": "Stax fits $80K+ monthly at $99 to $199+/mo + IC + $0.15 online."
+    }
+  ],
+  "not_fixed": [
+    { "text": "Stripe 2 days / 2-day rolling, instant 1.5%", "reason": "legit" },
+    { "text": "Clover 2.3% to 2.6% + $0.10, 3.5% + $0.10 keyed", "reason": "legit Clover rates" },
+    { "text": "Helcim $250K example: 'all-in roughly 2.45% ... Stripe roughly 2.95% ... annualized gap about $13,500' and key finding '$13,500 per year'", "reason": "built on the page's own 1.95% interchange assumption, not a listed stale price; on our engine the gap at $250K is larger (Helcim 2.45% vs Stripe 3.50% online). Flagged for Assaf, not rewritten" },
+    { "text": "Payment Depot $79 to $199/mo + IC + $0.05 to $0.15 (body and AEO), $0.10 per-transaction", "reason": "UNVERIFIED: Payment Depot no longer publishes a membership price (discrepancies #28/#30); flagged" },
+    { "text": "Clover/PayPal settle in 1 business day", "reason": "Clover publishes 1 to 3 days; outside this sweep's list, flagged" }
+  ]
+}

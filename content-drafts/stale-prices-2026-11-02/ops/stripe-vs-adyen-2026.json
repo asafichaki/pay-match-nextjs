@@ -1,0 +1,54 @@
+{
+  "kind": "comparisons",
+  "slug": "stripe-vs-adyen-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business day, not T+2 (helcim.com/pricing, 2026-10-29)",
+      "from": "<td>IC + 0.50% + $0.25 online, IC + 0.40% + $0.08 in-person</td><td>Month to month</td><td>T+2</td>",
+      "to": "<td>IC + 0.50% + $0.25 online, IC + 0.40% + $0.08 in-person</td><td>Month to month</td><td>Next business morning</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/$139/$199+ by annual volume, 15c online, next business day funding, contract length not published (staxpayments.com/pricing, 2026-10-29)",
+      "from": "<td>$99/mo + IC + $0.08 in-person / $0.18 online</td><td>Month-to-month membership</td><td>T+2</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.08 in-person / $0.15 online</td><td>No cancellation fee; length not published</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim volume breaks are $50K, $100K, $500K and $1M (helcim.com/pricing)",
+      "from": "with markup compressing further at the $50K, $100K, and $250K tiers.",
+      "to": "with the markup stepping down at $50K, $100K, $500K and $1M a month."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim vs Stripe at $250K online: engine figures from ranking-2026.ts (Helcim 2.45%, Stripe 3.50% on a $50 sale)",
+      "from": "At $250K monthly online volume on a typical card mix with a 1.8 percent interchange floor, Helcim's effective rate runs roughly 2.30 percent, compared to roughly 2.92 percent on Stripe's flat rate.",
+      "to": "At $250K monthly online volume, Helcim's effective rate comes to about 2.45 percent on our published method (estimated 1.70 percent interchange plus Helcim's 0.35 percent and $0.20 at that tier, on a $50 sale), compared to about 3.50 percent on Stripe's flat rate."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax subscription depends on annual volume; online fee is 15c (staxpayments.com/pricing)",
+      "from": "Stax uses subscription pricing: $99 per month plus interchange plus $0.08 per in-person transaction or $0.18 per online transaction,",
+      "to": "Stax uses subscription pricing: $99 to $199 or more per month depending on annual volume, plus interchange plus $0.08 per in-person transaction or $0.15 per online transaction,"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax at $250K online: engine figure 2.08% ($199 tier, 15c on a $50 sale, 1.70% interchange estimate)",
+      "from": "At $250K monthly online volume with a 1.8 percent interchange floor, Stax's effective rate runs roughly 1.93 percent, including the membership fee amortized across transactions.",
+      "to": "At $250K monthly online volume, Stax's effective rate comes to about 2.08 percent on our published method (estimated 1.70 percent interchange, $0.15 per transaction on a $50 sale, and the $199 subscription spread across the volume)."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax online fee is 15c; only its online fee sits above Adyen's 13c",
+      "from": "because Stax's per-transaction fees of $0.08 to $0.18 are higher than Adyen's $0.13 floor on large card batches.",
+      "to": "because Stax's $0.15 online transaction fee is higher than Adyen's $0.13 processing fee on large card batches."
+    }
+  ],
+  "not_fixed": [
+    {"text": "Stripe settlement T+2 (TL;DR, table, FAQ)", "reason": "legit: Stripe pays out in 2 business days"},
+    {"text": "Settlement speed: T+1 beats T+2 beats weekly batch", "reason": "legit: generic statement"},
+    {"text": "Adyen ~$120 monthly invoice minimum (table)", "reason": "unverified: Adyen publishes a minimum invoice but not the amount (provider-facts.json); not in this sweep's stale list, flag for Assaf"},
+    {"text": "Break-even versus Stripe around $25K to $40K monthly (Stax)", "reason": "no source to recompute on the page's own assumptions; left as is"}
+  ]
+}

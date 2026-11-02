@@ -7,6 +7,8 @@ import ProcessorComparisonTable from "@/components/ProcessorComparisonTable";
 import { createSupabasePublicClient } from "@/integrations/supabase/server-public";
 import { REDIRECTED_COMPARISON_SLUGS } from "@/lib/comparisons/redirected-slugs";
 import { VOLUME_TIERS } from "@/lib/comparisons/volume-tiers";
+import { RATES_CHECKED, channelRates, formatRate, mainTable, type TierIndex } from "@/lib/data/ranking-2026";
+import { ASSUMPTIONS, FEES, crossoverTicket, engineRate, feeLabel, pct } from "@/lib/data/vs-pages-2026";
 import {
   SECTION_META,
   SECTION_ORDER,
@@ -62,9 +64,28 @@ async function fetchDbComparisons(): Promise<Comparison[]> {
   }
 }
 
+// Every number on this page comes from the ranking engine (lib/data/ranking-2026.ts),
+// the same source as the ranking, the vs-pages and /data/effective-rates-2026.
+// The title and description stay literal so the SEO manifest and llms.txt can read
+// them statically; the check below fails the build if a price moves under them.
+const HUB = (() => {
+  const rows = mainTable();
+  const at = (t: TierIndex) => rows.map((r) => ({ name: r.name, rate: r.rates[t] as number, channel: channelRates(r, t) }));
+  const low = (t: TierIndex) => at(t).reduce((a, b) => (b.rate < a.rate ? b : a));
+  const high = (t: TierIndex) => at(t).reduce((a, b) => (b.rate > a.rate ? b : a));
+  const ch = (x: { rate: number; channel: { inPerson: number | null; online: number | null } }) => (x.channel.inPerson === x.rate ? "in person" : "online");
+  return { low0: low(0), high0: high(0), low1: low(1), low2: low(2), low3: low(3), ch };
+})();
+const HUB_TITLE = "Compare Payment Processors 2026: Fees at $10K to $1M";
+const HUB_DESCRIPTION = "Published prices for Helcim, PayPal, Stripe, Square, Stax and more, checked Oct 29, 2026. Effective rates run 1.73% to 3.75% from $10K to $1M a month.";
+{
+  const computed = `Published prices for Helcim, PayPal, Stripe, Square, Stax and more, checked ${RATES_CHECKED}. Effective rates run ${formatRate(HUB.low3.rate)} to ${formatRate(HUB.high0.rate)} from $10K to $1M a month.`;
+  if (computed !== HUB_DESCRIPTION) throw new Error(`comparisons hub: description literal is out of date with ranking-2026.ts. Expected: ${computed}`);
+}
+
 export const metadata: Metadata = {
-  title: "Compare 15 Payment Processors: 2.32%-3.07% Real Rates",
-  description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%, Adyen 2.32%. Side-by-side at $10K, $50K, $250K, $1M monthly. Updated May 2026.",
+  title: { absolute: HUB_TITLE },
+  description: HUB_DESCRIPTION,
   keywords: "compare payment processors, payment processor comparison, Square vs Stripe, PayPal vs Stripe, best payment processor 2026, merchant services comparison",
   robots: { index: true, follow: true },
   alternates: {
@@ -76,18 +97,20 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://www.mypayadvisor.com/comparisons",
-    title: "Compare 15 Payment Processors: 2.32%-3.07% Real Rates",
-    description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%, Adyen 2.32%. Side-by-side at $10K, $50K, $250K, $1M monthly. Updated May 2026.",
+    title: HUB_TITLE,
+    description: HUB_DESCRIPTION,
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Compare 15 Payment Processors: 2.32%-3.07% Real Rates",
-    description: "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%, Adyen 2.32%. Side-by-side at $10K, $50K, $250K, $1M monthly. Updated May 2026.",
+    title: HUB_TITLE,
+    description: HUB_DESCRIPTION,
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
 };
 
+const sq = FEES.square;
+const st = FEES.stripe;
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -97,7 +120,7 @@ const faqSchema = {
       "name": "How do I compare payment processors fairly?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Compare on five things: effective rate at your card mix and ticket size, contract length and termination fee, settlement time, hidden fees (PCI, monthly minimum, batch, statement), and approval rate for your industry. Sticker rates rarely match what you actually pay."
+        "text": "Compare on five things: effective rate at your card mix and ticket size, contract length and termination fee, settlement time, extra fees (PCI, monthly minimum, batch, statement), and whether the processor approves your industry. The headline percentage rarely matches what you actually pay, because the fixed fee per sale and any monthly fee move it."
       }
     },
     {
@@ -105,7 +128,7 @@ const faqSchema = {
       "name": "Is Stripe cheaper than Square?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It depends on your channel mix. For online-only and recurring payments under $25,000 monthly, Stripe and Square are roughly equivalent. For in-person retail, Square is usually cheaper because Stripe's hardware ecosystem is thinner. Above $80,000 monthly, both are beaten by interchange-plus alternatives like Helcim or Stax."
+        "text": `In person, by a little on small sales. Stripe Terminal charges ${feeLabel(st.inPerson)} and Square Free ${feeLabel(sq.inPersonFree)}, which is ${pct(engineRate("Stripe", "In-person", 0))} against ${pct(engineRate("Square", "In-person", 0))} on a $${ASSUMPTIONS.averageSale} sale. The two cost the same at a $${crossoverTicket(st.inPerson, sq.inPersonFree)} ticket and Square costs less above it. Online, both charge ${feeLabel(sq.onlinePaidOrApi)} on Square's paid plans or Online API, but Square Free charges ${feeLabel(sq.onlineFree)}. On our assumptions, interchange-plus from Helcim costs less than either: ${pct(engineRate("Helcim", "In-person", 0))} in person at $10K a month.`
       }
     },
     {
@@ -113,7 +136,7 @@ const faqSchema = {
       "name": "Which payment processor has the lowest fees in 2026?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Below $10,000 monthly volume, Helcim's interchange-plus pricing is the standard answer. Between $25,000 and $250,000 monthly, subscription processors like Stax or negotiated IC++ contracts win. Above $250,000 monthly, custom IC++ contracts beat anything advertised publicly."
+        "text": `On our published method (a $${ASSUMPTIONS.averageSale} average sale, ${ASSUMPTIONS.cardMix}), ${HUB.low0.name} is cheapest at $10K a month (${formatRate(HUB.low0.rate)} ${HUB.ch(HUB.low0)}) and ${HUB.low1.name} at $50K (${formatRate(HUB.low1.rate)}). From $250K, ${HUB.low2.name} is cheapest (${formatRate(HUB.low2.rate)} at $250K, ${formatRate(HUB.low3.rate)} at $1M). Your own rate moves with your card mix and average sale, so run your numbers in the fee calculator.`
       }
     },
     {
@@ -121,7 +144,7 @@ const faqSchema = {
       "name": "Should I use PayPal or Stripe for online payments?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Stripe wins on developer tooling, subscription billing, and global routing. PayPal wins on consumer trust at checkout, especially for first-time buyers. Many high-converting checkouts run both: Stripe as the primary processor and PayPal as an alternative button."
+        "text": "Stripe wins on developer tooling, subscription billing and checkout control. PayPal wins with buyers who already pay with PayPal or Venmo. Many checkouts run both: Stripe as the card processor and PayPal as an extra button, so the higher PayPal rate applies only to the orders that use it."
       }
     },
     {
@@ -129,7 +152,7 @@ const faqSchema = {
       "name": "How long does it take to switch payment processors?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "For an online merchant on a standard processor, switching takes 1 to 3 weeks: underwriting (2 to 7 days), integration testing (3 to 5 days), and DNS or webhook updates. For complex verticals, 2 to 6 weeks is realistic. Most contracts have a termination fee, calculate the breakeven before you start."
+        "text": "For an online merchant on a standard processor, switching usually takes one to three weeks: underwriting, integration testing, and updating webhooks or checkout settings. Complex or high-risk businesses should plan for longer. Check your current contract for a termination fee before you start."
       }
     }
   ]
@@ -321,7 +344,7 @@ const speakableSchema = {
 // Literal on purpose: the old new Date() version re-stamped the hub as "updated this
 // month" on every render (check-dates.mjs now fails the build on render-time dates).
 // Update it when the rate table or the list actually changes.
-const LAST_REVIEWED = "August 2026";
+const LAST_REVIEWED = "November 2026";
 
 export default async function ComparisonsPage() {
   const comparisons = await getAllComparisons();
@@ -364,7 +387,7 @@ export default async function ComparisonsPage() {
                   </h1>
 
                   <p className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-xl hidden md:block">
-                    Updated May 2026. Compare 15 U.S. payment processors at real effective rates from 2.32% (Adyen, enterprise) to 3.07% (PayPal). Barak Bachar reconciles every rate against live merchant statements before publishing. Pick by volume tier and transaction mix in under five minutes.
+                    Prices read from each provider&apos;s own pricing page on {RATES_CHECKED}. At $10K a month the effective rate runs from {formatRate(HUB.low0.rate)} ({HUB.low0.name}, {HUB.ch(HUB.low0)}) to {formatRate(HUB.high0.rate)} ({HUB.high0.name}, {HUB.ch(HUB.high0)}). At $1M it falls to {formatRate(HUB.low3.rate)} ({HUB.low3.name}). Pick by your monthly volume and how you take cards.
                   </p>
 
                   <div className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary">
