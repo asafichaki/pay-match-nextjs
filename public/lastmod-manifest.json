@@ -18,7 +18,7 @@
   "/insights/in-person-payments-hardware-lockin-mdr": "2026-08-26",
   "/insights/level-2-level-3-processing-guide": "2026-09-08",
   "/insights/lowering-merchant-account-fees-2026-pricing-cost-reduction-strategies": "2026-05-07",
-  "/insights/lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide": "2026-08-26",
+  "/insights/lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide": "2026-11-02",
   "/insights/merchant-account-for-cbd": "2026-08-26",
   "/insights/merchant-contract-cancellation-guide": "2026-09-08",
   "/insights/merchant-services-glossary": "2026-09-08",
@@ -49,7 +49,7 @@
   "/comparisons/helcim-vs-stripe": "2026-11-02",
   "/comparisons/paymentcloud-vs-durango": "2026-08-26",
   "/comparisons/paymentcloud-vs-easy-pay-direct": "2026-08-26",
-  "/comparisons/paypal-vs-square": "2026-09-08",
+  "/comparisons/paypal-vs-square": "2026-11-02",
   "/comparisons/square-vs-stripe": "2026-11-02",
   "/comparisons/stripe-high-risk-alternatives": "2026-08-26",
   "/comparisons/stripe-vs-paypal": "2026-11-02",
@@ -66,5 +66,5 @@
   "/glossary/_terms": "2026-09-09",
   "__generated": "2026-11-02",
   "__source": "git-full-history",
-  "__head": "c04a8de"
+  "__head": "8ad2e50"
 }
