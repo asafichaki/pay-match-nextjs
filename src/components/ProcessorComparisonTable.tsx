@@ -9,6 +9,7 @@ import {
   type ProviderMeta,
   type TierIndex,
 } from "@/lib/data/ranking-2026";
+import { FEES, feeLabel } from "@/lib/data/vs-pages-2026";
 
 /**
  * The /comparisons hub table: every provider's published price and what it
@@ -47,13 +48,26 @@ function priceLabel(plan: PlanLike): string {
   return `${+plan.pct.toFixed(2)}% + ${cents(plan.fixed)}`;
 }
 
+/** Plan names that add nothing next to the price. */
+const GENERIC_PLAN = new Set(["Volume tier", "Subscription", "Standard", "Cards and wallets"]);
+
+/**
+ * Prices the ranking does not model but a reader comparing Square must see:
+ * Square Free charges more online than the Online API rate the ranking uses.
+ * Source: provider-facts.json via vs-pages-2026 FEES (checked 2026-10-29).
+ */
+const EXTRA: Partial<Record<string, Partial<Record<Channel, string>>>> = {
+  Square: { Online: `${feeLabel(FEES.square.onlineFree)} on the Free plan` },
+};
+
 /** The entry price on a channel: the plan a new merchant at $10K a month starts on. */
 function entryPrice(m: ProviderMeta, ch: Channel): string | null {
   const plans = plansAt(m, ch, 10_000);
   if (!plans.length) return null;
   const first = plans[0];
-  const named = plans.length > 1 || m.processor === "Shopify Payments" ? ` (${first.label})` : "";
-  return `${priceLabel(first)}${named}`;
+  const named = GENERIC_PLAN.has(first.label) ? "" : ` (${first.label})`;
+  const extra = EXTRA[m.processor]?.[ch];
+  return `${priceLabel(first)}${named}${extra ? `; ${extra}` : ""}`;
 }
 
 /** Monthly fee range across every plan and volume the ranking prices. */
