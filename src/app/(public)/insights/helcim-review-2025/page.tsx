@@ -161,7 +161,7 @@ export default function HelcimReview2025Page() {
                     Reviewed by{" "}
                     <a href="/about/barak" className="underline hover:text-primary">Barak Bachar</a>, Global Payments Manager
                   </p>
-                  <p className="text-sm text-muted-foreground">Covers processor pricing, interchange-plus models, and merchant fee structures, with hands-on payment operations experience at the $500M+ annual volume level.</p>
+                  <p className="text-sm text-muted-foreground">Covers processor pricing, interchange-plus models, and merchant fee structures, from hands-on experience running payment operations.</p>
                 </div>
               </div>
             </header>

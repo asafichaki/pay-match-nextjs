@@ -321,7 +321,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                       Reviewed by{" "}
                       <a href="/about/barak" className="underline hover:text-primary">Barak Bachar</a>, Global Payments Manager
                     </p>
-                    <p className="text-sm text-muted-foreground">Covers high-risk merchant services, reserve negotiation, and chargeback management, with hands-on payment operations experience at the $500M+ annual volume level.</p>
+                    <p className="text-sm text-muted-foreground">Covers high-risk merchant services, reserve negotiation, and chargeback management, from hands-on experience running payment operations.</p>
                   </div>
                 </div>
               </header>

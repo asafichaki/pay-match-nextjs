@@ -24,7 +24,7 @@ export default function Component(props: Props) {
             The providers on your shortlist have approved and kept accounts in your category. They&apos;re on the list because they actually deliver, not because they paid to be there.
           </Text>
           <Text style={p}>
-            Spent years managing payment operations at the $500M+ level. I know which acquirers are still easy to work with six months after you sign.
+            Spent years managing payment operations. I know which acquirers are still easy to work with six months after you sign.
           </Text>
           <Text style={p}>Back with your shortlist tomorrow.</Text>
           <Text style={signature}>Barak</Text>

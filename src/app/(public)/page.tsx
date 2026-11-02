@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     absolute: "myPayAdvisor, A real payments operator reviews your shortlist",
   },
   description:
-    "Independently reviewed by people who've operated payment infrastructure at $500M+ annual volume. Real 2026 rates, the questions to ask each processor, no generic CRM.",
+    "Independently reviewed by a working payments manager. Real 2026 rates, the questions to ask each processor, no generic CRM.",
   keywords:
     "payment processor comparison, payment processing rates 2026, merchant account negotiation, interchange-plus pricing, independent processor review",
   robots: {
@@ -75,7 +75,7 @@ const organizationSchema = {
   url: "https://www.mypayadvisor.com",
   logo: "https://www.mypayadvisor.com/og-logo.png",
   description:
-    "Independent payment-processor advisory and comparison platform. Reviewed by people who've operated payment infrastructure at the $500M+ annual volume level.",
+    "Independent payment-processor advisory and comparison platform. Reviewed by a working payments manager.",
   foundingDate: "2024",
   sameAs: [
     "https://www.linkedin.com/company/mypayadvisor",

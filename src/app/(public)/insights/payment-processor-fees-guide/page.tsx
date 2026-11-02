@@ -217,7 +217,7 @@ export default function PaymentProcessorFeesGuidePage() {
                     Reviewed by{" "}
                     <a href="/about/barak" className="underline hover:text-primary">Barak Bachar</a>, Global Payments Manager
                   </p>
-                  <p className="text-sm text-muted-foreground">Covers payment processor fees, interchange, and markup pricing across U.S. processors, with hands-on payment operations experience at the $500M+ annual volume level.</p>
+                  <p className="text-sm text-muted-foreground">Covers payment processor fees, interchange, and markup pricing across U.S. processors, from hands-on experience running payment operations.</p>
                 </div>
               </div>
             </header>

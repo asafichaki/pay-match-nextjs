@@ -18,7 +18,7 @@ const PILLARS = [
   {
     icon: ShieldCheck,
     title: "Operator-reviewed",
-    body: "The matching rules and every page are reviewed by Barak Bachar, who runs payment operations at $500M+ annual volume. Complex cases get a call from him, not from a call centre.",
+    body: "The matching rules and every page are reviewed by Barak Bachar, who runs payment operations as a Global Payments Manager. Complex cases get a call from him, not from a call centre.",
   },
   {
     icon: FileSearch,

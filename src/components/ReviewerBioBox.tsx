@@ -44,7 +44,7 @@ export default function ReviewerBioBox({ className, linkProfile = true }: Props)
             <span className="font-normal text-muted-foreground">, {BARAK_TITLE}</span>
           </p>
           <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-            Hands-on payments operator with experience at the $500M+ annual volume level. Reviews myPayAdvisor editorial for technical accuracy on pricing, acquirer routing, reserves, and approval-rate optimization.
+            Hands-on payments operator. Reviews myPayAdvisor editorial for technical accuracy on pricing, acquirer routing, reserves, and approval-rate optimization.
           </p>
           <div className="mt-3 flex flex-wrap gap-3 text-xs">
             <a

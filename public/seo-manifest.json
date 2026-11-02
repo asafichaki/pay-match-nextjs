@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-02T09:14:35.056Z",
+  "generated_at": "2026-11-02T10:50:21.279Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 55,
-    "db": 81,
-    "total": 136
+    "db": 80,
+    "total": 135
   },
   "routes": [
     {
@@ -14,7 +14,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "myPayAdvisor, A real payments operator reviews your shortlist",
-      "base_description": "Independently reviewed by people who've operated payment infrastructure at $500M+ annual volume. Real 2026 rates, the questions to ask each processor, no generic CRM.",
+      "base_description": "Independently reviewed by a working payments manager. Real 2026 rates, the questions to ask each processor, no generic CRM.",
       "outline": []
     },
     {
@@ -118,7 +118,7 @@
       "source": "static",
       "title_mode": "template",
       "base_title": "Barak Bachar, Global Payments Manager",
-      "base_description": "Barak Bachar, Global Payments Manager, reviews payment-processing content on myPayAdvisor. Hands-on payments operator with experience at the $500M+ annual volume level.",
+      "base_description": "Barak Bachar, Global Payments Manager, reviews payment-processing content on myPayAdvisor. Hands-on payments operator.",
       "outline": [
         "About",
         "Areas of focus",
@@ -1195,7 +1195,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Best Mobile Payment Processors 2026",
-      "base_description": "May 2026: Square 2.6%+$0.10 mobile, Helcim interchange-plus saves $90-$130 per $25K above $40K volume. 6 mobile processors ranked by total cost.",
+      "base_description": "Square 2.6% + $0.15 mobile, Helcim interchange-plus saves $90-$130 per $25K above $40K volume. 6 mobile processors ranked by total cost.",
       "outline": []
     },
     {
@@ -1286,16 +1286,6 @@
       "title_mode": "template",
       "base_title": "Helcim vs Payment Depot 2026: Cost Comparison",
       "base_description": "Helcim vs Payment Depot 2026: effective rates at $25K, $100K, $250K monthly volume, crossover math, contract terms, hardware lock-in, and verdict by tier.",
-      "outline": []
-    },
-    {
-      "route": "/comparisons/paypal-vs-stripe-2026",
-      "kind": "comparisons",
-      "slug": "paypal-vs-stripe-2026",
-      "source": "db",
-      "title_mode": "template",
-      "base_title": "PayPal vs Stripe 2026: Which Actually Costs Less",
-      "base_description": "Compare PayPal and Stripe 2026 pricing, effective rates, contracts, and reserve policies. Plus when Helcim or Stax beats both flat-rate plans on volume.",
       "outline": []
     },
     {
