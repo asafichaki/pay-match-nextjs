@@ -20,7 +20,9 @@ export function AnalyticsTracker() {
       const el = (e.target as Element | null)?.closest?.("a[data-partner], a[data-partner-direct]");
       if (!el) return;
       const partner = el.getAttribute("data-partner") || el.getAttribute("data-partner-direct") || "";
-      const placement = el.closest("[data-top-picks]")
+      const placement = el.closest("[data-cost-widget]")
+        ? "cost-widget"
+        : el.closest("[data-top-picks]")
         ? "top-picks"
         : el.closest("#ranking")
           ? "ranking"
