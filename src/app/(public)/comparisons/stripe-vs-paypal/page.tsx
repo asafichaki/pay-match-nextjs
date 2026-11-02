@@ -6,7 +6,14 @@ import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { CompareMore } from "@/components/comparisons/CompareMore";
-import { FAQ, META_DESCRIPTION } from "./data";
+import { FAQ, META_DESCRIPTION as COMPUTED_DESCRIPTION } from "./data";
+// Literal, so the SEO manifest and llms.txt can read it statically. It must equal the
+// string data.ts computes from ranking-2026.ts; the build fails if a price moves.
+const META_DESCRIPTION = "PayPal Checkout 3.49% + 49¢ vs Stripe 2.9% + 30¢: about $97 more per $10K on $50 sales. Card, in-person, dispute and payout fees by volume.";
+if (META_DESCRIPTION !== COMPUTED_DESCRIPTION) {
+  throw new Error("stripe-vs-paypal: meta description literal is out of date with data.ts / ranking-2026.ts");
+}
+
 
 const baseMetadata: Metadata = {
   title: { absolute: "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate" },
@@ -23,7 +30,7 @@ const baseMetadata: Metadata = {
   },
   other: {
     "article:published_time": "2025-11-15T00:00:00.000Z",
-    "article:modified_time": "2026-11-01T00:00:00.000Z",
+    "article:modified_time": "2026-11-02T00:00:00.000Z",
   },
 };
 
@@ -54,11 +61,11 @@ export default function StripeVsPayPalPage() {
   return (
     <>
       <ComparisonSchema
-        title="Stripe vs PayPal 2026: Fees, Payouts and Which Costs Less"
+        title="Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate"
         description={META_DESCRIPTION}
         slug="stripe-vs-paypal"
         datePublished="2025-11-15"
-        dateModified="2026-11-01"
+        dateModified="2026-11-02"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

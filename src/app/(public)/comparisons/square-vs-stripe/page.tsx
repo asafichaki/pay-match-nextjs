@@ -6,7 +6,14 @@ import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { CompareMore } from "@/components/comparisons/CompareMore";
-import { FAQ, META_DESCRIPTION } from "./data";
+import { FAQ, META_DESCRIPTION as COMPUTED_DESCRIPTION } from "./data";
+// Literal, so the SEO manifest and llms.txt can read it statically. It must equal the
+// string data.ts computes from ranking-2026.ts; the build fails if a price moves.
+const META_DESCRIPTION = "Stripe 2.7% + 5¢ vs Square 2.6% + 15¢ in person, both 2.9% + 30¢ online. Monthly cost at $10K, $50K and $250K, prices checked Oct 2026.";
+if (META_DESCRIPTION !== COMPUTED_DESCRIPTION) {
+  throw new Error("square-vs-stripe: meta description literal is out of date with data.ts / ranking-2026.ts");
+}
+
 
 const TITLE = "Square vs Stripe 2026: Fees Compared at $10K to $250K";
 
@@ -26,7 +33,7 @@ const baseMetadata: Metadata = {
   },
   other: {
     "article:published_time": "2025-11-15T00:00:00.000Z",
-    "article:modified_time": "2026-11-01T00:00:00.000Z",
+    "article:modified_time": "2026-11-02T00:00:00.000Z",
   },
 };
 
@@ -61,11 +68,11 @@ export default function SquareVsStripePage() {
   return (
     <>
       <ComparisonSchema
-        title="Square vs Stripe 2026: Fees, Payouts and Which to Pick"
+        title={TITLE}
         description={META_DESCRIPTION}
         slug="square-vs-stripe"
         datePublished="2025-11-15"
-        dateModified="2026-11-01"
+        dateModified="2026-11-02"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

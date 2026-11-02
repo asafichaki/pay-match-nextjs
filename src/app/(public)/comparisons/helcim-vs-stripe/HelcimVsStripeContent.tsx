@@ -36,13 +36,13 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
           <header className="pt-10 sm:pt-16 pb-10 border-b border-border">
             <p className="text-sm font-medium text-primary mb-4">Helcim vs Stripe fees, prices checked {RATES_CHECKED}</p>
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-6 leading-[1.1] tracking-tight">
-              Helcim vs Stripe 2026: Interchange-Plus vs Flat Rate, Priced Out
+              Helcim vs Stripe 2026: Helcim Is Cheaper From $10K a Month
             </h1>
             {aeoAnswer}
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
-              lastUpdated="2026-11-01"
+              lastUpdated="2026-11-02"
               className="mt-2 mb-6"
             />
             <p className="aeo-answer text-lg md:text-xl text-foreground leading-relaxed" data-speakable="true">

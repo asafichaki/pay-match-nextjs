@@ -6,7 +6,15 @@ import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { CompareMore } from "@/components/comparisons/CompareMore";
-import { FAQ, META_DESCRIPTION, TITLE } from "./data";
+import { FAQ, META_DESCRIPTION as COMPUTED_DESCRIPTION, TITLE as COMPUTED_TITLE } from "./data";
+// Literals, so the SEO manifest and llms.txt can read them statically. They must equal
+// the strings data.ts computes from ranking-2026.ts; the build fails if a price moves.
+const TITLE = "Helcim vs Stripe 2026: Helcim Is Cheaper From $10K a Month";
+const META_DESCRIPTION = "Helcim 2.11% vs Stripe 2.80% in person at $10K a month, 2.70% vs 3.50% online, fees included. Monthly cost to $250K, checked Oct 2026.";
+if (TITLE !== COMPUTED_TITLE || META_DESCRIPTION !== COMPUTED_DESCRIPTION) {
+  throw new Error("helcim-vs-stripe: title or meta literal is out of date with data.ts / ranking-2026.ts");
+}
+
 
 const baseMetadata: Metadata = {
   // absolute: skip the layout "%s | myPayAdvisor" suffix so the money query "helcim vs stripe" stays front-loaded and un-truncated.
@@ -31,7 +39,7 @@ const baseMetadata: Metadata = {
   },
   other: {
     "article:published_time": "2026-03-20T00:00:00.000Z",
-    "article:modified_time": "2026-11-01T00:00:00.000Z",
+    "article:modified_time": "2026-11-02T00:00:00.000Z",
   },
 };
 
@@ -62,11 +70,11 @@ export default function HelcimVsStripePage() {
   return (
     <>
       <ComparisonSchema
-        title="Helcim vs Stripe 2026: Interchange-Plus vs Flat Rate, Priced Out"
+        title={TITLE}
         description={META_DESCRIPTION}
         slug="helcim-vs-stripe"
         datePublished="2026-03-20"
-        dateModified="2026-11-01"
+        dateModified="2026-11-02"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

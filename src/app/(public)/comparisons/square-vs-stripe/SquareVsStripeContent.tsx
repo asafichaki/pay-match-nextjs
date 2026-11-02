@@ -37,14 +37,14 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
             <p className="text-sm font-medium text-primary mb-4">Stripe vs Square fees, prices checked {RATES_CHECKED}</p>
 
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-6 leading-[1.1] tracking-tight">
-              Square vs Stripe 2026: Fees, Payouts and Which to Pick
+              Square vs Stripe 2026: Fees Compared at $10K to $250K
             </h1>
             {aeoAnswer}
 
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
-              lastUpdated="2026-11-01"
+              lastUpdated="2026-11-02"
               className="mt-2 mb-6"
             />
 
@@ -57,7 +57,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
                 {
                   title: "In person (card present)",
                   options: [
-                    { label: "Square", note: `${feeLabel(sq.inPersonFree)}, cheapest plan`, rate: (t) => engineRate("Square", "In-person", t) },
+                    { label: "Square", note: "Cheapest plan at each volume", rate: (t) => engineRate("Square", "In-person", t) },
                     { label: "Stripe", note: `${feeLabel(st.inPerson)}, Terminal`, rate: (t) => engineRate("Stripe", "In-person", t) },
                   ],
                 },
@@ -70,7 +70,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
                   ],
                 },
               ]}
-              footnote={<>Square&apos;s in-person column uses the cheapest plan at each volume: Free at $10K and $50K, Premium (${sq.planPremium} a month) at $250K.</>}
+              footnote={<>Square&apos;s in-person column uses the cheapest plan at each volume: Free ({feeLabel(sq.inPersonFree)}) at $10K, Plus (${sq.planPlus} a month) at $50K, where it costs about the same as Free, and Premium (${sq.planPremium} a month) at $250K.</>}
             />
 
             <p className="text-muted-foreground leading-relaxed">

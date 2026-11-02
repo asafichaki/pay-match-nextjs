@@ -36,7 +36,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 const DRAFTS = path.join(ROOT, "content-drafts", "top5-2026-11-01");
 const SNAPSHOT = path.join(ROOT, "data", "seo", "top5-before-2026-11-01.json");
 const MODE = process.argv.includes("--rollback") ? "rollback" : process.argv.includes("--apply") ? "apply" : "dry-run";
-const TODAY = "2026-11-01";
+const TODAY = new Date().toISOString().slice(0, 10); // schema dateModified = the day this is applied
 const UPDATED_BY = "claude-top5-2026-11-01";
 
 const env = Object.fromEntries(
@@ -324,7 +324,10 @@ for (const p of plan) {
 
 const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 const fieldsOf = (p) => Object.keys(p.after).filter((k) => k !== "updated_by");
-const isApplied = (p) => fieldsOf(p).every((k) => same(p.row[k], p.after[k]));
+// schema_json.dateModified carries the apply date, so it is ignored when asking "already applied?";
+// otherwise a second --apply on a later day would treat the after-state as a fresh before-state.
+const noDate = (v) => (v && typeof v === "object" && !Array.isArray(v) ? { ...v, dateModified: undefined } : v);
+const isApplied = (p) => fieldsOf(p).every((k) => (k === "schema_json" ? same(noDate(p.row[k]), noDate(p.after[k])) : same(p.row[k], p.after[k])));
 
 // ---------------------------------------------------------------------------
 // 5. Rollback.

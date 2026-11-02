@@ -37,13 +37,13 @@ export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: Conte
           <header className="pt-10 sm:pt-16 pb-10 border-b border-border">
             <p className="text-sm font-medium text-primary mb-4">PayPal fees vs Stripe, prices checked {RATES_CHECKED}</p>
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-6 leading-[1.1] tracking-tight">
-              Stripe vs PayPal 2026: Fees, Payouts and Which Costs Less
+              Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate
             </h1>
             {aeoAnswer}
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
-              lastUpdated="2026-11-01"
+              lastUpdated="2026-11-02"
               className="mt-2 mb-6"
             />
 

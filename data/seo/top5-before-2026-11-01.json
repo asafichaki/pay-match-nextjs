@@ -1,5 +1,5 @@
 {
-  "written_at": "2026-11-02T08:04:14.176Z",
+  "written_at": "2026-11-02T08:16:24.726Z",
   "mode": "dry-run",
   "note": "before-state of every field top5-pages-2026-11-01.mjs touches; --rollback writes these back",
   "rows": {
