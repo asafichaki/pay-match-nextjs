@@ -88,7 +88,7 @@
       "field": "faq_json",
       "why": "Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing)",
       "from": "Helcim and Stax run T+2.",
-      "to": "Helcim deposits next business morning and Stax next business day."
+      "to": "Helcim and Stax both deposit the next business day."
     }
   ],
   "override": [

@@ -16,7 +16,7 @@
     },
     {
       "field": "body_html",
-      "why": "Helcim deposits next business morning, free (helcim.com/pricing)",
+      "why": "Helcim deposits next business day, free (helcim.com/pricing)",
       "from": "<td>Month-to-month</td><td>2 days</td><td>$25K to $500K monthly volume</td>",
       "to": "<td>Month-to-month</td><td>Next business morning</td><td>$25K to $500K monthly volume</td>"
     },
@@ -54,7 +54,7 @@
       "field": "body_html",
       "why": "Helcim: next-business-morning deposits at $0, no same-day option published; Card Reader $199",
       "from": "Settlement: two business days standard. Same-day available for established accounts.</p><p>Hardware: Helcim Card Reader $99,",
-      "to": "Settlement: next business morning, free.</p><p>Hardware: Helcim Card Reader $199,"
+      "to": "Settlement: next business day, free.</p><p>Hardware: Helcim Card Reader $199,"
     },
     {
       "field": "body_html",

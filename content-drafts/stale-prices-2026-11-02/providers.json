@@ -21,7 +21,7 @@
     {
       "name": "Helcim",
       "ops": [],
-      "why": "Helcim deposits next business morning at no cost (helcim.com/pricing); transaction_fees already match",
+      "why": "Helcim deposits next business day at no cost (helcim.com/pricing); transaction_fees already match",
       "set": { "funding_speed": 1, "last_verified": "2026-10-29" }
     },
     {

@@ -52,7 +52,7 @@ function loadEnvLocal() {
 
 // ---------------------------------------------------------------- inputs
 
-const REDIRECTED = new Set(["stripe-vs-square-2026", "stripe-vs-helcim-2026"]);
+const REDIRECTED = new Set(["stripe-vs-square-2026", "stripe-vs-helcim-2026", "paypal-vs-stripe-2026"]);
 
 function readStaticShells() {
   const dir = path.join(ROOT, "src", "app", "(public)", "comparisons");

@@ -16,7 +16,7 @@
     },
     {
       "field": "body_html",
-      "why": "Helcim deposits next business morning, not in 2 business days (helcim.com/pricing, 2026-10-29)",
+      "why": "Helcim deposits next business day, not in 2 business days (helcim.com/pricing, 2026-10-29)",
       "from": "<td>None</td><td>2 business days</td><td>$50K+ monthly with mixed card types</td>",
       "to": "<td>None</td><td>Next business morning</td><td>$50K+ monthly with mixed card types</td>"
     },

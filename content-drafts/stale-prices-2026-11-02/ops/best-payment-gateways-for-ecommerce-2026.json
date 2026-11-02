@@ -22,7 +22,7 @@
     },
     {
       "field": "body_html",
-      "why": "Helcim deposits next business morning, not in 2 days (helcim.com/pricing, 2026-10-29)",
+      "why": "Helcim deposits next business day, not in 2 days (helcim.com/pricing, 2026-10-29)",
       "from": "<td>IC + 0.50% + $0.25 online</td><td>None</td><td>2 days</td>",
       "to": "<td>IC + 0.50% + $0.25 online</td><td>None</td><td>Next business morning</td>"
     },
@@ -58,9 +58,9 @@
     },
     {
       "field": "body_html",
-      "why": "Helcim ACH is 0.5% + 25c capped at $6; deposits arrive next business morning at $0",
+      "why": "Helcim ACH is 0.5% + 25c capped at $6; deposits arrive next business day at $0",
       "from": "ACH at 0.5% capped at $6, and recurring billing, all bundled. Settlement is 2 business days.",
-      "to": "ACH at 0.5% + $0.25 capped at $6, and recurring billing, all bundled. Deposits arrive the next business morning at no charge."
+      "to": "ACH at 0.5% + $0.25 capped at $6, and recurring billing, all bundled. Deposits arrive the next business day at no charge."
     },
     {
       "field": "body_html",
@@ -95,9 +95,9 @@
     },
     {
       "field": "faq_json",
-      "why": "Helcim deposits next business morning; Stax funds next business day; instant payouts run 1.5% to 1.95%",
+      "why": "Helcim deposits next business day; Stax funds next business day; instant payouts run 1.5% to 1.95%",
       "from": "Stripe and Helcim settle in 2 business days standard. Square, Clover, and PayPal settle in 1 business day. Stax and Payment Depot settle in 1 to 2 business days.",
-      "to": "Stripe settles in 2 business days standard and Helcim deposits the next business morning. Square, Clover, and PayPal settle in 1 business day. Stax funds the next business day and Payment Depot in 1 to 2 business days."
+      "to": "Stripe settles in 2 business days standard and Helcim deposits the next business day. Square, Clover, and PayPal settle in 1 business day. Stax funds the next business day and Payment Depot in 1 to 2 business days."
     },
     {
       "field": "faq_json",

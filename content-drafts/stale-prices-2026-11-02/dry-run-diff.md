@@ -51,7 +51,7 @@
   - after: For an operator at $100K monthly volume, on our published method (a $50 average sale and an estimated interchange cost), Helcim comes to about 1.94 percent in person against about 2.85 percent on Square's cheapest plan. That gap is about $910 a month at that volume,
 - **body_html**: Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807
   - before: who want a same-day deposit by default and an instant push option for emergencies, Square wins. Zero monthly fee, free same-day batch before 5pm Pacific, and 1.75 percent instant transfer covers most cash-flow scenarios without contract risk.
-  - after: who want free next-day deposits and an instant push option for emergencies, Square wins. Zero monthly fee, free next-day deposits, and same-day or instant transfers at 1.95 percent cover most cash-flow scenarios without contract risk.
+  - after: who want free next-day deposits and no monthly fee, Square is the simplest choice: free next-day deposits, and same-day or instant transfers at 1.95 percent, with no contract risk. If you move money out instantly every week, Stripe and PayPal charge less at 1.5 percent per transfer.
 - **body_html**: PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29)
   - before: PayPal wins narrowly for one specific case: pushing a single balance above $1,450 to bank in minutes, where the $25 cap makes it the cheapest instant option in this set.
   - after: PayPal's instant transfer costs the same 1.5 percent as Stripe's, so it fits merchants whose sales already land in a PayPal balance.
@@ -114,7 +114,7 @@
 - **body_html**: Square instant transfer is 1.95% (Square help article 3807)
   - before: Instant deposit costs 1.75%
   - after: Instant deposit costs 1.95%
-- **body_html**: Helcim deposits next business morning, free (helcim.com/pricing)
+- **body_html**: Helcim deposits next business day, free (helcim.com/pricing)
   - before: Month-to-month 2 days $25K to $500K monthly volume
   - after: Month-to-month Next business morning $25K to $500K monthly volume
 - **body_html**: Stax: $99/$139/$199+ by annual volume, IC + 15c online, next business day funding (staxpayments.com/pricing)
@@ -134,7 +134,7 @@
   - after: Discounts kick in automatically at $50K, $100K, $500K, and $1M monthly volume.
 - **body_html**: Helcim: next-business-morning deposits at $0, no same-day option published; Card Reader $199
   - before: Settlement: two business days standard. Same-day available for established accounts. Hardware: Helcim Card Reader $99,
-  - after: Settlement: next business morning, free. Hardware: Helcim Card Reader $199,
+  - after: Settlement: next business day, free. Hardware: Helcim Card Reader $199,
 - **body_html**: Stax subscription bands and 15c online fee (staxpayments.com/pricing)
   - before: Stax charges a monthly subscription starting at $99 (Starter), plus interchange plus $0.08 in-person and plus $0.18 online,
   - after: Stax charges a monthly subscription of $99 up to $150,000 a year in volume, $139 from $150,000 to $250,000 and $199 or more above that, plus interchange plus $0.08 in-person and plus $0.15 online,
@@ -176,7 +176,7 @@
 - **body_html**: Square in person is 2.6% + 15c on Square Free; online is 3.3% + 30c on Free, 2.9% + 30c on paid plans or the API
   - before: 2.9% + $0.30 online; 2.6% + $0.10 in-person
   - after: 2.9% + $0.30 online (3.3% + $0.30 on Free); 2.6% + $0.15 in-person
-- **body_html**: Helcim deposits next business morning, not in 2 days (helcim.com/pricing, 2026-10-29)
+- **body_html**: Helcim deposits next business day, not in 2 days (helcim.com/pricing, 2026-10-29)
   - before: IC + 0.50% + $0.25 online None 2 days
   - after: IC + 0.50% + $0.25 online None Next business morning
 - **body_html**: Stax: $99 to $199+/mo by annual volume, 15c online, next business day funding, contract length not published
@@ -194,9 +194,9 @@
 - **body_html**: Helcim volume breaks are $50K, $100K, $500K and $1M
   - before: Volume above $25K, $100K, and $500K monthly triggers
   - after: Volume above $50K, $100K, $500K and $1M monthly triggers
-- **body_html**: Helcim ACH is 0.5% + 25c capped at $6; deposits arrive next business morning at $0
+- **body_html**: Helcim ACH is 0.5% + 25c capped at $6; deposits arrive next business day at $0
   - before: ACH at 0.5% capped at $6, and recurring billing, all bundled. Settlement is 2 business days.
-  - after: ACH at 0.5% + $0.25 capped at $6, and recurring billing, all bundled. Deposits arrive the next business morning at no charge.
+  - after: ACH at 0.5% + $0.25 capped at $6, and recurring billing, all bundled. Deposits arrive the next business day at no charge.
 - **body_html**: Stax online fee is 15c and the subscription is set by annual volume ($50K a month is $600K a year, the $199 tier); effective rates from ranking-2026 at $50K
   - before: Stax charges a $99 monthly subscription plus interchange and a $0.18 per online transaction, per its pricing page . There is no percentage markup. At $50K monthly volume on a typical mix, total cost is roughly interchange (about $975) plus $99 plus per-transaction fees, landing near 2.10 to 2.25% effective.
   - after: Stax charges a monthly subscription of $99 to $199 or more, set by annual volume, plus interchange and $0.15 per online transaction, per its pricing page . There is no percentage markup. At $50K monthly volume, or $600,000 a year, the $199 tier applies; with our 1.70% online interchange estimate and a $50 average sale, that lands near 2.40% effective, against 2.55% for Helcim at the same volume.
@@ -212,9 +212,9 @@
 - **faq_json**: Stax subscription is $99 to $199+ a month by annual volume
   - before: Stax's $99 subscription model with no percentage markup becomes cheaper.
   - after: Stax's subscription model ($99 to $199+ a month) with no percentage markup becomes cheaper.
-- **faq_json**: Helcim deposits next business morning; Stax funds next business day; instant payouts run 1.5% to 1.95%
+- **faq_json**: Helcim deposits next business day; Stax funds next business day; instant payouts run 1.5% to 1.95%
   - before: Stripe and Helcim settle in 2 business days standard. Square, Clover, and PayPal settle in 1 business day. Stax and Payment Depot settle in 1 to 2 business days.
-  - after: Stripe settles in 2 business days standard and Helcim deposits the next business morning. Square, Clover, and PayPal settle in 1 business day. Stax funds the next business day and Payment Depot in 1 to 2 business days.
+  - after: Stripe settles in 2 business days standard and Helcim deposits the next business day. Square, Clover, and PayPal settle in 1 business day. Stax funds the next business day and Payment Depot in 1 to 2 business days.
 - **faq_json**: Square instant transfers cost 1.95%
   - before: instant payout add-ons at 1.5 to 1.75% of the transferred amount.
   - after: instant payout add-ons at 1.5 to 1.95% of the transferred amount.
@@ -243,7 +243,7 @@
 
 7 op(s). Fields: body_html
 
-- **body_html**: Helcim deposits next business morning, not T+2 (helcim.com/pricing, 2026-10-29)
+- **body_html**: Helcim deposits next business day, not T+2 (helcim.com/pricing, 2026-10-29)
   - before: IC + 0.50% + $0.25 online Month-to-month T+2
   - after: IC + 0.50% + $0.25 online Month-to-month Next business morning
 - **body_html**: Stax: $99 to $199+/mo by annual volume, 15c online, next business day funding, contract length not published (staxpayments.com/pricing, 2026-10-29)
@@ -382,7 +382,7 @@
 - **body_html**: Square in person 2.6% + 15c on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans (squareup.com/us/en/pricing, 2026-10-29)
   - before: 2.6% + $0.10 in-person, 2.9% + $0.30 online
   - after: 2.6% + $0.15 in-person, 3.3% + $0.30 online on the Free plan (2.9% + $0.30 on paid plans)
-- **body_html**: Helcim deposits next business morning (helcim.com/pricing)
+- **body_html**: Helcim deposits next business day (helcim.com/pricing)
   - before: IC + 0.50% + $0.25 online, IC + 0.40% + $0.08 in-person None 2 business days
   - after: IC + 0.50% + $0.25 online, IC + 0.40% + $0.08 in-person None Next business morning
 - **body_html**: Stax: $99 to $199+ by annual volume, 15c online, next business day funding, contract length not published (staxpayments.com/pricing)
@@ -417,7 +417,7 @@
 
 1 op(s) + related-link titles. Fields: aeo_answer, related_links
 
-- **aeo_answer**: Helcim deposits next business morning (helcim.com/pricing)
+- **aeo_answer**: Helcim deposits next business day (helcim.com/pricing)
   - before: IC + 0.50% + $0.25 online pricing and 2 business day settlement.
   - after: IC + 0.50% + $0.25 online pricing and next-business-morning settlement.
 - **related_links** /comparisons/best-payment-processors-2026: "15 Best Payment Processors 2026, Ranked by Effective Rate" -> "Best Payment Processors 2026: 10 Ranked by Real Cost"
@@ -447,7 +447,7 @@
 - **body_html**: PayPal Advanced Credit and Debit is 2.89% + 29c, not 2.59% + 49c (paypal.com business fees, 2026-10-29)
   - before: 2.59% to 3.49% + $0.49
   - after: 2.89% + $0.29 to 3.49% + $0.49
-- **body_html**: Helcim deposits next business morning, not T+2 (helcim.com/pricing, 2026-10-29)
+- **body_html**: Helcim deposits next business day, not T+2 (helcim.com/pricing, 2026-10-29)
   - before: IC + 0.50% + $0.25 online Month-to-month T+2
   - after: IC + 0.50% + $0.25 online Month-to-month Next business morning
 - **body_html**: Square in person is 2.6% + 15c on Square Free; online is 3.3% + 30c on Free, 2.9% + 30c on paid plans or the API (squareup.com pricing, 2026-10-29)
@@ -511,7 +511,7 @@
   - after: Automatic volume discounts kick in at $50,000, $100,000, $500,000, and $1 million a month.
 - **body_html**: Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing)
   - before: Helcim's Card Reader is $99. Funding is T+2 standard, with same-day available for $25 per batch.
-  - after: Helcim's Card Reader is $199. Funding is next business morning at no cost; Helcim lists no same-day option.
+  - after: Helcim's Card Reader is $199. Funding is next business day at no cost; Helcim lists no same-day option.
 - **body_html**: Square on this page's own example (800 sales at $50K, about $62.50 each) is 2.6% + 15c / $62.50; savings range redone against the page's Helcim estimate
   - before: Square at the same volume runs 2.55 to 2.65 percent. The annual savings on $600,000 in processed volume is $1,800 to $2,700.
   - after: Square at the same volume, on 800 sales of about $62.50, runs about 2.84 percent (2.6 percent plus 15 cents). The annual savings on $600,000 in processed volume is about $2,940 to $3,840.
@@ -544,7 +544,7 @@
   - after: with same-day or instant transfer available for 1.75 percent (Clover) to 1.95 percent (Square).
 - **faq_json**: Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com)
   - before: Helcim and Stax are T+2 standard.
-  - after: Helcim deposits next business morning and Stax next business day.
+  - after: Helcim and Stax both deposit the next business day.
 
 ## seo_overrides:comparisons/best-payment-processors-mobile-and-on-the-go-2026
 
@@ -606,7 +606,7 @@
   - after: typically delivers a 2.4 to 2.7 percent effective rate at the same volume before its 0.4 percent recurring-payment fee, or 2.8 to 3.1 percent with it.
 - **faq_json**: Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing)
   - before: Helcim and Stax run T+2.
-  - after: Helcim deposits next business morning and Stax next business day.
+  - after: Helcim and Stax both deposit the next business day.
 
 ## seo_overrides:comparisons/best-payment-processors-subscription-products-2026
 
@@ -636,7 +636,7 @@
 - **body_html**: Square in person is 2.6% + 15c on the Free plan
   - before: Square 2.6% + $0.10 in-person
   - after: Square 2.6% + $0.15 in-person (Free plan)
-- **body_html**: Helcim deposits next business morning, free; it publishes no instant payout (helcim.com/pricing)
+- **body_html**: Helcim deposits next business day, free; it publishes no instant payout (helcim.com/pricing)
   - before: Month to month 2 business days $25K to $500K monthly 2-day funding
   - after: Month to month Next business morning $25K to $500K monthly No instant payout option
 - **body_html**: Stax: $99 to $199+ by annual volume, next business day funding, no cancellation fee, contract length not published (staxpayments.com/pricing)
@@ -680,7 +680,7 @@
 
 1 op(s) + related-link titles. Fields: aeo_answer, related_links
 
-- **aeo_answer**: Square 15c in person; Helcim deposits next business morning
+- **aeo_answer**: Square 15c in person; Helcim deposits next business day
   - before: with 2.6% + $0.10 in-person pricing and next day settlement. For $25K to $500K monthly, Helcim offers IC + 0.40% + $0.08 in-person. Helcim has month to month contracts and 2 business day funding.
   - after: with 2.6% + $0.15 in-person pricing and next day settlement. For $25K to $500K monthly, Helcim offers IC + 0.40% + $0.08 in-person. Helcim has month to month contracts and next-business-morning funding.
 - **related_links** /comparisons/best-payment-processors-2026: "15 Best Payment Processors 2026, Ranked by Effective Rate" -> "Best Payment Processors 2026: 10 Ranked by Real Cost"
@@ -713,7 +713,7 @@
 - **body_html**: PayPal Advanced Credit and Debit is 2.89% + 29c
   - before: 3.49% + $0.49 standard wallet; 2.59% + $0.49 advanced card; 2.29% + $0.09 in-person
   - after: 3.49% + $0.49 standard wallet; 2.89% + $0.29 advanced card; 2.29% + $0.09 in-person
-- **body_html**: Helcim deposits next business morning, not in 2 business days (helcim.com/pricing, 2026-10-29)
+- **body_html**: Helcim deposits next business day, not in 2 business days (helcim.com/pricing, 2026-10-29)
   - before: None 2 business days $50K+ monthly with mixed card types
   - after: None Next business morning $50K+ monthly with mixed card types
 - **body_html**: Stax: $99 to $199+/mo by annual volume, 15c online, next business day funding, contract length not published (staxpayments.com/pricing, 2026-10-29)
@@ -908,7 +908,7 @@
 
 7 op(s). Fields: body_html
 
-- **body_html**: Helcim deposits next business morning, not T+2 (helcim.com/pricing, 2026-10-29)
+- **body_html**: Helcim deposits next business day, not T+2 (helcim.com/pricing, 2026-10-29)
   - before: IC + 0.50% + $0.25 online, IC + 0.40% + $0.08 in-person Month to month T+2
   - after: IC + 0.50% + $0.25 online, IC + 0.40% + $0.08 in-person Month to month Next business morning
 - **body_html**: Stax: $99/$139/$199+ by annual volume, 15c online, next business day funding, contract length not published (staxpayments.com/pricing, 2026-10-29)
@@ -940,7 +940,7 @@
 - **body_html**: Stax row: $99 to $199+ by annual volume, 15c online, next business day funding, contract length not published
   - before: $99/mo + IC + $0.08 in-person / $0.18 online Month-to-month 1 to 2 business days
   - after: $99 to $199+/mo by annual volume + IC + $0.08 in-person / $0.15 online No cancellation fee; length not published Next business day
-- **body_html**: Helcim deposits next business morning (helcim.com/pricing)
+- **body_html**: Helcim deposits next business day (helcim.com/pricing)
   - before: 2 business days $5K-$25K transparent pricing
   - after: Next business morning $5K-$25K transparent pricing
 - **body_html**: Square: 2.6% + 15c in person and 3.3% + 30c online on Free; standard payout is next business day, same-day costs 1.95% (squareup.com/us/en/pricing, help 3807)
@@ -955,9 +955,9 @@
 - **body_html**: Helcim volume breaks are $50K, $100K, $500K and $1M (helcim.com/pricing)
   - before: tier thresholds at $25K, $50K, $100K, and $250K.
   - after: tier thresholds at $50K, $100K, $500K and $1M.
-- **body_html**: Helcim deposits next business morning and publishes no instant option
+- **body_html**: Helcim deposits next business day and publishes no instant option
   - before: (it funds in two business days)
-  - after: (it funds next business morning and publishes no instant option)
+  - after: (it funds next business day and publishes no instant option)
 - **body_html**: Square: 15c in person on Free; online 3.3% + 30c on Free
   - before: 2.6 percent plus $0.10 in person, 2.9 percent plus $0.30 online, and 3.5 percent plus $0.15 keyed .
   - after: 2.6 percent plus $0.15 in person and 3.3 percent plus $0.30 online on the Free plan (2.9 percent plus $0.30 online on paid plans), and 3.5 percent plus $0.15 keyed .

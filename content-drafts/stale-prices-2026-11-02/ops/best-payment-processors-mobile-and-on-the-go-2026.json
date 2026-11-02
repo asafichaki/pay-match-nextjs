@@ -84,7 +84,7 @@
       "field": "body_html",
       "why": "Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing)",
       "from": "Helcim's Card Reader is $99. Funding is T+2 standard, with same-day available for $25 per batch.",
-      "to": "Helcim's Card Reader is $199. Funding is next business morning at no cost; Helcim lists no same-day option."
+      "to": "Helcim's Card Reader is $199. Funding is next business day at no cost; Helcim lists no same-day option."
     },
     {
       "field": "body_html",
@@ -190,7 +190,7 @@
       "field": "faq_json",
       "why": "Helcim: breaks at $50K/$100K/$500K/$1M; Card Reader $199; next-business-morning deposits at $0, no same-day option listed (helcim.com/pricing); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online/keyed; next business day; B350 reader $125 (staxpayments.com)",
       "from": "Helcim and Stax are T+2 standard.",
-      "to": "Helcim deposits next business morning and Stax next business day."
+      "to": "Helcim and Stax both deposit the next business day."
     }
   ],
   "override": [

@@ -16,7 +16,7 @@
     },
     {
       "field": "body_html",
-      "why": "Helcim deposits next business morning (helcim.com/pricing)",
+      "why": "Helcim deposits next business day (helcim.com/pricing)",
       "from": "<td>2 business days</td><td>$5K-$25K transparent pricing</td>",
       "to": "<td>Next business morning</td><td>$5K-$25K transparent pricing</td>"
     },
@@ -53,9 +53,9 @@
     },
     {
       "field": "body_html",
-      "why": "Helcim deposits next business morning and publishes no instant option",
+      "why": "Helcim deposits next business day and publishes no instant option",
       "from": "(it funds in two business days)",
-      "to": "(it funds next business morning and publishes no instant option)"
+      "to": "(it funds next business day and publishes no instant option)"
     },
     {
       "field": "body_html",
