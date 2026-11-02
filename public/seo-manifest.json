@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T08:16:31.400Z",
+  "generated_at": "2026-11-02T09:11:06.353Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 55,
@@ -55,9 +55,9 @@
       "kind": "pages",
       "slug": "comparisons",
       "source": "static",
-      "title_mode": "template",
-      "base_title": "Compare 15 Payment Processors: 2.32%-3.07% Real Rates",
-      "base_description": "Stripe 2.97%, Square 2.65%, PayPal 3.07%, Helcim 2.51%, Adyen 2.32%. Side-by-side at $10K, $50K, $250K, $1M monthly. Updated May 2026.",
+      "title_mode": "absolute",
+      "base_title": "Compare Payment Processors 2026: Fees at $10K to $1M",
+      "base_description": "Published prices for Helcim, PayPal, Stripe, Square, Stax and more, checked Oct 29, 2026. Effective rates run 1.73% to 3.75% from $10K to $1M a month.",
       "outline": [
         "Declined, frozen, or flagged as high-risk?",
         "The most-read head-to-heads"
@@ -99,14 +99,15 @@
       "slug": "data/effective-rates-2026",
       "source": "static",
       "title_mode": "template",
-      "base_title": "2026 Payment Processor Effective Rate Database (US)",
-      "base_description": "Open dataset of effective rates for 12 US payment processors in 2026, at $10K / $50K / $250K / $1M monthly volume. Stripe, Square, PayPal, Helcim, Stax, Payment Depot and more.",
+      "base_title": "Payment Processor Effective Rates, 2026 Data",
+      "base_description": "Effective rate and monthly cost for US card processors at $10K, $50K, $250K and $1M a month, in person and online. From published prices. CSV and JSON.",
       "outline": [
-        "Key 2026 effective-rate findings",
-        "Effective rate by processor × volume × channel",
+        "The spread at each volume",
+        "Full table: effective rate and monthly cost",
         "Methodology",
-        "Sources",
-        "Citing this dataset",
+        "Not in the table, and why",
+        "How to cite this data",
+        "What changed from the May 2026 version",
         "Related"
       ]
     },
@@ -271,8 +272,8 @@
       "slug": "paypal-vs-square",
       "source": "static",
       "title_mode": "absolute",
-      "base_title": "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate",
-      "base_description": "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
+      "base_title": "PayPal vs Square 2026: Fees Compared In Person and Online",
+      "base_description": "PayPal POS 2.29% + 9¢ vs Square 2.6% + 15¢ in person; Square 2.9% + 30¢ vs PayPal Checkout 3.49% + 49¢ online. Monthly cost at $10K to $250K.",
       "outline": [
         "In This Article",
         "Square vs PayPal: Quick Overview",
@@ -834,7 +835,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Average Credit Card Processing Fees 2026: 1.5%-3.5%",
-      "base_description": "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%. Real rates from 14 processors: interchange 1.5%-3.5%, markup 0.10%-2.00%, Square 2.65% effective.",
+      "base_description": "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%: interchange 1.5%-3.5% plus markup 0.10%-2.00%. Square comes to 2.90% on a $50 sale.",
       "outline": [
         "Table of Contents",
         "What Are Payment Processor Fees?",
@@ -1313,8 +1314,8 @@
       "slug": "square-vs-helcim-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Square vs Helcim: Fees & Card Mix (2026)",
-      "base_description": "Compare Square plans with Helcim interchange-plus pricing. See a $25,000 sales example where the card mix changes which provider costs less.",
+      "base_title": "Helcim vs Square 2026: Which Costs Less at Your Volume",
+      "base_description": "Helcim 2.11% vs Square 2.90% effective at $10K a month in person, fees included, from prices checked Oct 2026. The $25K card-mix example and which to pick.",
       "outline": []
     },
     {
