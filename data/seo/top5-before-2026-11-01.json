@@ -1,0 +1,524 @@
+{
+  "written_at": "2026-11-02T08:16:24.726Z",
+  "mode": "dry-run",
+  "note": "before-state of every field top5-pages-2026-11-01.mjs touches; --rollback writes these back",
+  "rows": {
+    "blog_articles:comparisons/square-vs-helcim-2026": {
+      "table": "blog_articles",
+      "query": "id=eq.d1f1ef92-97e6-4498-a978-e200d8c4f5ef",
+      "before": {
+        "title": "Square vs Helcim 2026: Compare Fees for Your Card Mix",
+        "description": "Compare Square plans with Helcim interchange-plus pricing. See a $25,000 sales example where the card mix changes which provider costs less.",
+        "body_html": "<h2 id=\"tldr\">Which provider fits your business?</h2>\n<p>Square and Helcim use different pricing models. Square offers plan-based flat rates; Helcim adds a markup to wholesale card costs. There is no reliable rule that Helcim is cheaper for every merchant above $10,000 a month. Our recommendation is to compare your card mix and workflow at the same sales volume before selecting either provider.</p>\n<h2 id=\"how-we-ranked\">How to read this comparison</h2>\n<p>Published US pricing was checked September 14, 2026. The worked example below is a calculation with stated assumptions, not a measured merchant result or a provider quote. We compare transaction costs separately from software, hardware and additional services.</p>\n<h2 id=\"comparison-table\">Published pricing at a glance</h2>\n<div role=\"region\" aria-label=\"Square and Helcim pricing\" tabindex=\"0\" style=\"overflow-x:auto\"><table style=\"min-width:580px\"><thead><tr><th scope=\"col\">Plan</th><th scope=\"col\">In-person transactions</th><th scope=\"col\">Monthly software/account fee</th></tr></thead><tbody>\n<tr><th scope=\"row\">Square Free</th><td>2.6% + $0.15</td><td>$0 per location</td></tr>\n<tr><th scope=\"row\">Square Plus</th><td>2.5% + $0.15</td><td>$49 per location</td></tr>\n<tr><th scope=\"row\">Square Premium</th><td>2.4% + $0.15</td><td>$149 per location</td></tr>\n<tr><th scope=\"row\">Helcim, $0-$50K tier</th><td>Wholesale costs + 0.40% + $0.08</td><td>No account monthly fee</td></tr>\n</tbody></table></div>\n<p>Sources: <a href=\"https://squareup.com/us/en/pricing\">Square’s plan comparison</a> and <a href=\"https://www.helcim.com/pricing/\">Helcim’s pricing</a>. Optional features, equipment and other applicable charges are outside these rows.</p>\n<h2 id=\"square\">Square: compare the plan and the sales channel</h2>\n<p>Square’s Free-plan online/invoice card rate is 3.3% + $0.30, while its Online API rate is 2.9% + $0.30. Do not apply the API rate to every online transaction. Paid plans also change the comparison. Check the specific product used to collect the payment and the price shown for your account.</p>\n<p>In our view, Square belongs on the shortlist when its POS workflow and software features meet the business’s needs. Demonstrate a sale, return and end-of-day report with the hardware you intend to use. A lower transaction rate on a paid plan is useful only after its monthly charge and included features have been considered.</p>\n<h2 id=\"helcim\">Helcim: separate wholesale costs from the markup</h2>\n<p>At the published $0-$50K tier, Helcim’s keyed and online markup is 0.50% + $0.25 above wholesale costs. Its published volume discounts use average processing volume over the preceding three months. Confirm the applicable tier and any extra product charges, including recurring payments, before projecting a bill.</p>\n<p>Request a statement-based estimate instead of treating a sample effective rate as your own. Card type and transaction characteristics can move the underlying cost even when your volume and provider markup stay the same.</p>\n<h2 id=\"effective-rate-by-volume\">Worked example: $25,000 across 500 in-person sales</h2>\n<p>Assume one location and 500 transactions averaging $50. Square Free costs $725 in transaction fees: $25,000 × 2.6% + 500 × $0.15. Helcim’s markup at the stated tier is $140: $25,000 × 0.40% + 500 × $0.08, added to wholesale costs.</p>\n<div role=\"region\" aria-label=\"Illustrative card-mix scenarios\" tabindex=\"0\" style=\"overflow-x:auto\"><table style=\"min-width:540px\"><thead><tr><th scope=\"col\">Hypothetical wholesale cost</th><th scope=\"col\">Helcim total</th><th scope=\"col\">Square Free</th><th scope=\"col\">Difference</th></tr></thead><tbody>\n<tr><th scope=\"row\">$450, equivalent to 1.8% of sales</th><td>$590</td><td>$725</td><td>Helcim $135 lower</td></tr>\n<tr><th scope=\"row\">$600, equivalent to 2.4% of sales</th><td>$740</td><td>$725</td><td>Square Free $15 lower</td></tr>\n</tbody></table></div>\n<p>The wholesale totals are assumptions, not measured averages. Hardware, optional software, disputes and other additional charges are excluded. This example shows why the same sales volume can produce opposite outcomes. Model your own statement with the <a href=\"/calculator\">fee calculator</a>.</p>\n<h2 id=\"contracts-and-lock-in\">Check the agreement and the equipment</h2>\n<p>Ask who owns the hardware, which software subscription is required, how payment credentials can be exported, and what happens when you close the account. Include any implementation and migration expense in your decision. Use the <a href=\"/insights/what-to-ask-before-signing-a-processor-contract\">contract checklist</a> to compare written terms.</p>\n<h2 id=\"hidden-fees\">Separate additional services from processing</h2>\n<p>Ask for itemized pricing for the features you actually use: recurring billing, expedited transfers, invoicing, bank payments and dispute handling. Do not assume that “no monthly account fee” means every optional service is free. For a funding-specific comparison, see <a href=\"/comparisons/best-payment-processors-with-same-day-deposit-2026\">same-day and next-day deposit options</a>.</p>\n<h2 id=\"verdict\">Choose using your own numbers</h2>\n<p>Shortlist the provider whose software and operational requirements fit, then compare an itemized estimate against the same transaction history. A fixed sales-volume threshold or guaranteed monthly savings figure cannot replace that calculation.</p>\n<h2 id=\"related-comparisons\">Related comparisons</h2><ul><li><a href=\"/comparisons/helcim-vs-stripe\">Helcim vs Stripe</a></li><li><a href=\"/comparisons/square-vs-toast-2026\">Square vs Toast</a></li><li><a href=\"/insights/payment-processor-fees-guide\">Processing-fees guide</a></li></ul>",
+        "content": "<h2 id=\"tldr\">Which provider fits your business?</h2>\n<p>Square and Helcim use different pricing models. Square offers plan-based flat rates; Helcim adds a markup to wholesale card costs. There is no reliable rule that Helcim is cheaper for every merchant above $10,000 a month. Our recommendation is to compare your card mix and workflow at the same sales volume before selecting either provider.</p>\n<h2 id=\"how-we-ranked\">How to read this comparison</h2>\n<p>Published US pricing was checked September 14, 2026. The worked example below is a calculation with stated assumptions, not a measured merchant result or a provider quote. We compare transaction costs separately from software, hardware and additional services.</p>\n<h2 id=\"comparison-table\">Published pricing at a glance</h2>\n<div role=\"region\" aria-label=\"Square and Helcim pricing\" tabindex=\"0\" style=\"overflow-x:auto\"><table style=\"min-width:580px\"><thead><tr><th scope=\"col\">Plan</th><th scope=\"col\">In-person transactions</th><th scope=\"col\">Monthly software/account fee</th></tr></thead><tbody>\n<tr><th scope=\"row\">Square Free</th><td>2.6% + $0.15</td><td>$0 per location</td></tr>\n<tr><th scope=\"row\">Square Plus</th><td>2.5% + $0.15</td><td>$49 per location</td></tr>\n<tr><th scope=\"row\">Square Premium</th><td>2.4% + $0.15</td><td>$149 per location</td></tr>\n<tr><th scope=\"row\">Helcim, $0-$50K tier</th><td>Wholesale costs + 0.40% + $0.08</td><td>No account monthly fee</td></tr>\n</tbody></table></div>\n<p>Sources: <a href=\"https://squareup.com/us/en/pricing\">Square’s plan comparison</a> and <a href=\"https://www.helcim.com/pricing/\">Helcim’s pricing</a>. Optional features, equipment and other applicable charges are outside these rows.</p>\n<h2 id=\"square\">Square: compare the plan and the sales channel</h2>\n<p>Square’s Free-plan online/invoice card rate is 3.3% + $0.30, while its Online API rate is 2.9% + $0.30. Do not apply the API rate to every online transaction. Paid plans also change the comparison. Check the specific product used to collect the payment and the price shown for your account.</p>\n<p>In our view, Square belongs on the shortlist when its POS workflow and software features meet the business’s needs. Demonstrate a sale, return and end-of-day report with the hardware you intend to use. A lower transaction rate on a paid plan is useful only after its monthly charge and included features have been considered.</p>\n<h2 id=\"helcim\">Helcim: separate wholesale costs from the markup</h2>\n<p>At the published $0-$50K tier, Helcim’s keyed and online markup is 0.50% + $0.25 above wholesale costs. Its published volume discounts use average processing volume over the preceding three months. Confirm the applicable tier and any extra product charges, including recurring payments, before projecting a bill.</p>\n<p>Request a statement-based estimate instead of treating a sample effective rate as your own. Card type and transaction characteristics can move the underlying cost even when your volume and provider markup stay the same.</p>\n<h2 id=\"effective-rate-by-volume\">Worked example: $25,000 across 500 in-person sales</h2>\n<p>Assume one location and 500 transactions averaging $50. Square Free costs $725 in transaction fees: $25,000 × 2.6% + 500 × $0.15. Helcim’s markup at the stated tier is $140: $25,000 × 0.40% + 500 × $0.08, added to wholesale costs.</p>\n<div role=\"region\" aria-label=\"Illustrative card-mix scenarios\" tabindex=\"0\" style=\"overflow-x:auto\"><table style=\"min-width:540px\"><thead><tr><th scope=\"col\">Hypothetical wholesale cost</th><th scope=\"col\">Helcim total</th><th scope=\"col\">Square Free</th><th scope=\"col\">Difference</th></tr></thead><tbody>\n<tr><th scope=\"row\">$450, equivalent to 1.8% of sales</th><td>$590</td><td>$725</td><td>Helcim $135 lower</td></tr>\n<tr><th scope=\"row\">$600, equivalent to 2.4% of sales</th><td>$740</td><td>$725</td><td>Square Free $15 lower</td></tr>\n</tbody></table></div>\n<p>The wholesale totals are assumptions, not measured averages. Hardware, optional software, disputes and other additional charges are excluded. This example shows why the same sales volume can produce opposite outcomes. Model your own statement with the <a href=\"/calculator\">fee calculator</a>.</p>\n<h2 id=\"contracts-and-lock-in\">Check the agreement and the equipment</h2>\n<p>Ask who owns the hardware, which software subscription is required, how payment credentials can be exported, and what happens when you close the account. Include any implementation and migration expense in your decision. Use the <a href=\"/insights/what-to-ask-before-signing-a-processor-contract\">contract checklist</a> to compare written terms.</p>\n<h2 id=\"hidden-fees\">Separate additional services from processing</h2>\n<p>Ask for itemized pricing for the features you actually use: recurring billing, expedited transfers, invoicing, bank payments and dispute handling. Do not assume that “no monthly account fee” means every optional service is free. For a funding-specific comparison, see <a href=\"/comparisons/best-payment-processors-with-same-day-deposit-2026\">same-day and next-day deposit options</a>.</p>\n<h2 id=\"verdict\">Choose using your own numbers</h2>\n<p>Shortlist the provider whose software and operational requirements fit, then compare an itemized estimate against the same transaction history. A fixed sales-volume threshold or guaranteed monthly savings figure cannot replace that calculation.</p>\n<h2 id=\"related-comparisons\">Related comparisons</h2><ul><li><a href=\"/comparisons/helcim-vs-stripe\">Helcim vs Stripe</a></li><li><a href=\"/comparisons/square-vs-toast-2026\">Square vs Toast</a></li><li><a href=\"/insights/payment-processor-fees-guide\">Processing-fees guide</a></li></ul>",
+        "key_findings": [
+          "Monthly sales volume alone does not determine the cheaper provider.",
+          "Square Free in-person pricing uses a $0.15 fixed charge; paid plans change both rates and monthly costs.",
+          "Helcim adds its published markup to wholesale card costs, which vary with the transactions."
+        ],
+        "faq_json": [
+          {
+            "answer": "No. Wholesale card costs, transaction size, sales channel, plan and additional features change the comparison. Volume alone does not establish a universal break-even point.",
+            "question": "Is Helcim always cheaper than Square above $10,000 a month?"
+          },
+          {
+            "answer": "Helcim passes through wholesale card costs and adds its stated percentage and per-transaction markup. Its markup is not the complete processing rate.",
+            "question": "What does interchange-plus mean in this comparison?"
+          },
+          {
+            "answer": "Bring a recent processing statement, monthly sales and transaction counts, in-person versus online mix, and required software and hardware. Ask both providers to price the same business activity.",
+            "question": "What should I bring to a quote comparison?"
+          }
+        ],
+        "sources_json": [
+          {
+            "url": "https://squareup.com/us/en/pricing",
+            "name": "Square US plans and processing fees"
+          },
+          {
+            "url": "https://www.helcim.com/pricing/",
+            "name": "Helcim pricing and volume tiers"
+          }
+        ],
+        "toc": [
+          {
+            "id": "tldr",
+            "label": "TL;DR"
+          },
+          {
+            "id": "how-we-ranked",
+            "label": "How we ranked"
+          },
+          {
+            "id": "comparison-table",
+            "label": "At a glance"
+          },
+          {
+            "id": "square",
+            "label": "Square"
+          },
+          {
+            "id": "helcim",
+            "label": "Helcim"
+          },
+          {
+            "id": "effective-rate-by-volume",
+            "label": "Effective rate by volume"
+          },
+          {
+            "id": "contracts-and-lock-in",
+            "label": "Contracts and lock-in"
+          },
+          {
+            "id": "hidden-fees",
+            "label": "Hidden fees"
+          },
+          {
+            "id": "verdict",
+            "label": "Verdict"
+          },
+          {
+            "id": "faq",
+            "label": "FAQ"
+          }
+        ],
+        "meta_title": "Square vs Helcim: Fees & Card Mix (2026)",
+        "meta_description": "Compare Square plans with Helcim interchange-plus pricing. See a $25,000 sales example where the card mix changes which provider costs less.",
+        "og_title": "Square vs Helcim: Fees & Card Mix (2026)",
+        "og_description": "Compare total cost using your plan, card mix, transaction count and software needs.",
+        "schema_json": {
+          "@type": "Article",
+          "author": {
+            "name": "myPayAdvisor",
+            "@type": "Organization"
+          },
+          "@context": "https://schema.org",
+          "headline": "Square vs Helcim 2026: Compare Fees for Your Card Mix",
+          "publisher": {
+            "name": "myPayAdvisor",
+            "@type": "Organization"
+          },
+          "description": "Compare Square plans with Helcim interchange-plus pricing. See a $25,000 sales example where the card mix changes which provider costs less.",
+          "dateModified": "2026-09-14",
+          "datePublished": "2026-05-13T01:16:38+00:00",
+          "mainEntityOfPage": "https://www.mypayadvisor.com/comparisons/square-vs-helcim-2026"
+        },
+        "updated_at": "2026-09-14T07:37:57.393786+00:00"
+      }
+    },
+    "blog_articles:comparisons/stripe-vs-worldpay-2026": {
+      "table": "blog_articles",
+      "query": "id=eq.87ce7988-b9af-408f-8a6d-0007c43c93a6",
+      "before": {
+        "body_html": "<section id=\"tldr\"><h2 id=\"tldr\">TL;DR</h2><p>Stripe lists 2.9 percent plus 30 cents online with no monthly fee, same-day setup, and a published rate card (<a href=\"https://stripe.com/pricing\">stripe.com/pricing</a>). Worldpay quotes interchange-plus only, with a multi-week onboarding and a named account manager (<a href=\"https://www.worldpay.com\">worldpay.com</a>). For merchants under roughly $80,000 in monthly card volume, Stripe costs less and ships faster. Above $250,000 monthly with a stable card mix, a Worldpay interchange-plus contract typically beats Stripe's effective rate by 0.40 to 0.70 percent, before hardware and PCI fees.</p></section><section id=\"how-we-ranked\"><h2 id=\"how-we-ranked\">How we ranked</h2><p>This comparison weights criteria that move real money on a merchant's monthly statement, not feature checklists.</p><ul><li><strong>Effective rate at $250K monthly volume (40%):</strong> total processing cost divided by total volume, calculated on a mix of 65 percent consumer credit, 20 percent debit, 15 percent business or rewards.</li><li><strong>Contract length and ETF (15%):</strong> month-to-month with no early termination beats a three-year deal with a $495 ETF.</li><li><strong>Settlement speed (10%):</strong> T+2 is the U.S. baseline per <a href=\"https://www.federalreserve.gov/paymentsystems.htm\">Federal Reserve payments data</a>; same-day or next-day funding earns a bump.</li><li><strong>Level 2 and Level 3 data support (15%):</strong> B2B merchants on purchasing cards see 0.50 to 1.00 percent in interchange savings when the processor submits full Level 3 data per <a href=\"https://usa.visa.com/support/small-business/regulations-fees.html\">Visa interchange criteria</a>.</li><li><strong>Hardware and platform lock-in (10%):</strong> proprietary terminals or gateway fees that strand the merchant on switch lose points.</li><li><strong>Dispute and chargeback SLA (10%):</strong> response window, evidence portal, representment workflow.</li></ul></section><section id=\"comparison-table\"><h2 id=\"comparison-table\">At a glance</h2><p>Pricing pulled from each provider's public rate card, or where no public rate exists, the published structure. Effective rate assumes a $250,000 monthly mix of 65 percent consumer credit, 20 percent debit, 15 percent business cards.</p><table><thead><tr><th>Provider</th><th>Headline pricing</th><th>Contract</th><th>Settlement</th><th>Best for</th><th>Watch out for</th></tr></thead><tbody><tr><td>Stripe</td><td>2.9% + $0.30 online, 2.7% + $0.05 in-person</td><td>Month-to-month</td><td>T+2</td><td>SaaS, marketplaces, under $80K/mo</td><td>No volume discount on published rate</td></tr><tr><td>Worldpay</td><td>Interchange-plus (custom)</td><td>1 to 3 years typical</td><td>T+1 to T+2</td><td>$250K+ monthly, B2B, enterprise</td><td>ETFs, PCI fee, monthly minimum</td></tr><tr><td>Helcim</td><td>IC + 0.40% + $0.08 in-person, IC + 0.50% + $0.25 online</td><td>Month-to-month</td><td>T+2</td><td>$25K to $200K/mo SMB</td><td>No 24/7 phone support</td></tr><tr><td>Stax</td><td>$99/mo + IC + $0.08 in-person, $0.18 online</td><td>Month-to-month</td><td>T+2</td><td>$50K to $500K/mo</td><td>Subscription only pays off above ~$25K/mo</td></tr></tbody></table></section><section id=\"stripe\"><h2 id=\"stripe\">Stripe</h2><p>Stripe publishes its rate card: 2.9 percent plus 30 cents on online card transactions, 2.7 percent plus 5 cents in-person, and 3.4 percent plus 30 cents on manually keyed cards (<a href=\"https://stripe.com/pricing\">stripe.com/pricing</a>). There is no monthly platform fee on the Integrated plan, no setup fee, and no PCI compliance charge. U.S. settlement runs on T+2 by default.</p><p>The pricing structure is a flat blended rate. Stripe absorbs interchange variability on its side. That makes a low-volume founder's life simple, and it makes a high-volume merchant subsidize the rewards cards in their card mix. A merchant running $250,000 in monthly online card volume on a typical B2C mix pays roughly 3.0 to 3.1 percent effective rate including the per-transaction component. The same merchant on a clean interchange-plus deal at IC + 0.20 percent would pay closer to 2.30 to 2.50 percent.</p><p>Stripe also charges 0.5 percent on stored card data, 1 percent on cross-border currency conversion, 0.4 percent on instant payouts, and platform-specific fees on Connect. None of these appear on the headline 2.9 percent line. A SaaS firm running $250K monthly with 30 percent international card volume pays roughly 3.2 to 3.3 percent all-in.</p><p>Custom interchange-plus pricing is available on direct request, generally above approximately $80,000 in monthly card volume. Stripe does not publish those rates.</p><p><strong>Who it fits:</strong> SaaS subscriptions, digital goods, marketplaces, anything that needs a developer-first API. Best for merchants under $80,000 monthly until custom pricing becomes worth the conversation.</p><p><strong>Who should avoid it:</strong> B2B sellers running corporate card volume, merchants with ticket sizes above $500, and anyone above $80K monthly who has not yet asked for a custom rate.</p><div class=\"callout callout-example\"><span class=\"callout-title\">Example</span>A SaaS firm at $40,000 monthly card volume on Stripe pays roughly $1,160 in percentage fees plus per-transaction cents. The same firm on a custom IC+ deal at IC + 0.50 percent saves perhaps $80 to $120 per month, not enough to justify a contract switch at that volume.</div></section><section id=\"worldpay\"><h2 id=\"worldpay\">Worldpay</h2><p>Worldpay does not publish a public rate card. Pricing is interchange-plus, quoted per merchant after underwriting, with onboarding typically taking 7 to 14 days (<a href=\"https://www.worldpay.com\">worldpay.com</a>). Following the 2025 Global Payments acquisition, Worldpay sits inside the largest U.S. acquirer-processor stack alongside TSYS and Heartland.</p><p>Real-world IC+ quotes for mid-market merchants land in the 0.20 to 0.45 percent over interchange range, with per-transaction fees of 5 to 10 cents. A $250,000-per-month merchant with a typical card mix pays an effective rate of roughly 2.30 to 2.60 percent on Worldpay versus 3.0 to 3.1 percent on Stripe flat-rate. The delta is 0.40 to 0.70 percent, or $1,000 to $1,750 per month in savings before fixed fees.</p><p>For B2B merchants accepting purchasing cards, Worldpay's full Level 3 data submission can pull commercial card interchange down by 0.50 to 1.00 percent versus a Stripe flat-rate that processes the same card at the same blended 2.9 percent, per <a href=\"https://www.mastercard.us/en-us/business/overview/support/interchange.html\">Mastercard interchange criteria</a>. On a $50,000 B2B invoice, that delta is $250 to $500 saved per transaction.</p><p>The catch sits in the contract. Three-year terms with $295 to $495 early termination fees are standard. PCI compliance fees of $99 to $199 per year and monthly minimums of $25 are common. Gateway and hardware fees vary by sales rep.</p><p><strong>Who it fits:</strong> brick-and-mortar retailers, restaurants, B2B sellers above $250,000 monthly, anyone with a stable card mix willing to sign a contract for the savings.</p><p><strong>Who should avoid it:</strong> startups, founders without statement-reading help, anyone who needs published pricing for board reporting.</p><div class=\"callout callout-warning\"><span class=\"callout-title\">Watch out</span>Worldpay quotes vary by sales rep. Two merchants with identical volume and card mix often receive different IC+ markups. Always ask for a redlined statement showing every line item, every fee, and the exact interchange pass-through formula before signing.</div></section><section id=\"helcim\"><h2 id=\"helcim\">Helcim</h2><p>Helcim publishes interchange-plus on the public site: IC + 0.40 percent + 8 cents in-person, IC + 0.50 percent + 25 cents online, with automatic volume tiers that lower the markup as monthly volume rises (<a href=\"https://www.helcim.com/pricing/\">helcim.com/pricing</a>). No monthly fee, no PCI fee, no setup fee, no contract.</p><p>For a $100,000-per-month online merchant, the effective rate runs roughly 2.15 to 2.35 percent depending on card mix, well under Stripe's flat 2.9 percent and inside the range a Worldpay rep will quote, but without a contract or ETF. Helcim's automatic volume discounts kick in at $25,000 and again at $50,000 monthly, dropping the percentage markup by roughly 0.05 percent at each tier. The discount is published and applies without renegotiation.</p><p>Helcim caps out before enterprise complexity: there is no dedicated implementation team, no integrated surcharging program, and phone support is business-hours only.</p><p><strong>Who it fits:</strong> $25,000 to $200,000 monthly merchants who want interchange-plus transparency without a multi-year commitment. Strong for e-commerce SMBs and professional services.</p><p><strong>Who should avoid it:</strong> high-risk verticals, very high ticket B2B requiring Level 3 specialist setup, merchants needing 24/7 phone support.</p></section><section id=\"stax\"><h2 id=\"stax\">Stax</h2><p>Stax sells a subscription model: $99 per month plus interchange plus 8 cents per in-person transaction or 18 cents online, with no per-transaction percentage markup on the processor side (<a href=\"https://staxpayments.com/pricing/\">staxpayments.com/pricing</a>).</p><p>The math only works above roughly $25,000 to $30,000 in monthly card volume. At $250,000 monthly, the subscription is amortized at about 0.04 percent of volume, putting the effective rate at roughly 2.10 to 2.30 percent including interchange and per-transaction fees, competitive with Worldpay and slightly under Helcim's tiered markup.</p><p><strong>Who it fits:</strong> $50,000 to $500,000 monthly merchants with a stable card mix who want predictable monthly cost and zero percentage markup.</p><p><strong>Who should avoid it:</strong> seasonal merchants whose volume drops below $25,000 in slow months, and businesses with high keyed-in volume where the ticket size is low.</p></section><section id=\"verdict\"><h2 id=\"verdict\">Verdict</h2><p>Stripe wins the <a href=\"/comparisons/stripe-vs-square-2026\">Stripe vs</a> Worldpay matchup for merchants under $80,000 in monthly card volume, online-first businesses, and any operator who needs developer documentation and same-day setup. The flat 2.9 percent plus 30 cents is rarely the lowest possible rate, but it ships fast and avoids contract friction.</p><p>Worldpay wins above $250,000 monthly when a stable card mix and willingness to sign a 1 to 3 year contract translate into 0.40 to 0.70 percent in interchange-plus savings. That delta is $1,000 to $1,750 per month at $250K volume, $5,000 to $8,750 at $1M volume, per the Visa and Mastercard interchange schedules cited above.</p><p>Between $80,000 and $250,000 monthly, the smarter move is usually neither. Helcim's published interchange-plus or Stax's subscription model often beats both on effective rate without the Worldpay contract length or the Stripe blended markup. For B2B sellers running corporate card volume, neither flat-rate Stripe nor a generic Worldpay quote is correct without Level 3 data submission confirmed in writing.</p><figure class=\"article-figure\"><img src=\"https://fjzkukalkxfcveattcyg.supabase.co/storage/v1/object/public/autopilot-media/stripe-vs-worldpay-2026/slide-2-1779412588.png\" alt=\"Effective rate by monthly card volume: Stripe flat-rate vs Worldpay IC+ vs Helcim and Stax alternatives.\" loading=\"lazy\" /><figcaption>Effective rate by monthly card volume: Stripe flat-rate vs Worldpay IC+ vs Helcim and Stax alternatives.</figcaption></figure></section>",
+        "schema_json": {
+          "@type": "Article",
+          "author": {
+            "name": "myPayAdvisor",
+            "@type": "Organization"
+          },
+          "@context": "https://schema.org",
+          "headline": "Stripe vs Worldpay 2026: Which Actually Costs Less",
+          "publisher": {
+            "logo": {
+              "url": "https://www.mypayadvisor.com/og-logo.png",
+              "@type": "ImageObject"
+            },
+            "name": "myPayAdvisor",
+            "@type": "Organization"
+          },
+          "description": "Stripe vs Worldpay compared on pricing, contracts, and effective rate by monthly volume. Stripe wins under $80K; Worldpay wins above $250K on IC+ deals.",
+          "dateModified": "2026-05-22",
+          "datePublished": "2026-05-22",
+          "mainEntityOfPage": {
+            "@id": "https://www.mypayadvisor.com/comparisons/stripe-vs-worldpay-2026",
+            "@type": "WebPage"
+          }
+        },
+        "updated_at": "2026-05-22T01:16:30.703198+00:00"
+      }
+    },
+    "blog_articles:comparisons/best-payment-processors-with-same-day-deposit-2026": {
+      "table": "blog_articles",
+      "query": "id=eq.0cea83c8-021b-4830-a0ea-2e3c977a60e5",
+      "before": {
+        "body_html": "<section id=\"tldr\"><h2 id=\"tldr\">TL;DR</h2><p>For U.S. merchants, compare instant access to an existing balance with standard next-day funding before choosing a processor. Faster payouts do not remove an account hold or reserve. The table below separates payout fees from card processing fees, with official terms checked September 9, 2026.</p><p>If you transfer $250,000 at a 1.5% payout fee, the extra cost is $3,750. Transferring the same total weekly instead of daily does not divide that percentage fee by four. Expedite only the amount you actually need.</p></section><section id=\"how-we-ranked\"><h2 id=\"how-we-ranked\">How we ranked</h2><p>We compared published U.S. transfer terms, then assessed which operating need each option fits. These are editorial comparisons, not approval or funding guarantees.</p><ol><li>Fee charged on the amount transferred, including minimums.</li><li>Eligibility of the merchant, bank account and available balance.</li><li>Standard funding time and any batch cutoff.</li><li>Processing fees charged separately from payout fees.</li><li>Software, hardware and contract costs.</li><li>Whether a reserve or review prevents access to the funds.</li></ol><p>Use your actual statement to compare total cost: card processing fees + payout fees + fixed account costs. Divide that total by processed sales volume for the effective rate. We do not infer an effective rate from the payout percentage alone.</p></section><section id=\"comparison-table\"><h2 id=\"comparison-table\">At a glance</h2><p>Published U.S. payout terms, checked September 9, 2026. Processing fees are separate.</p><div class=\"overflow-x-auto\" role=\"region\" aria-label=\"Payout comparison\" tabindex=\"0\"><table><thead><tr><th>Provider</th><th>Instant or same-day option</th><th>Standard alternative</th><th>Check before choosing</th></tr></thead><tbody><tr><td><a href=\"https://squareup.com/us/en/payments/instant-transfers\">Square</a></td><td>1.95% for instant or scheduled same-day external transfers</td><td>Free; as soon as next business day</td><td>Transfer limits and eligible balance</td></tr><tr><td><a href=\"https://stripe.com/pricing\">Stripe</a></td><td>1.5% Instant Payouts; $0.50 minimum</td><td>Standard schedule free</td><td>Account and destination eligibility; Connect pricing differs</td></tr><tr><td><a href=\"https://www.paypal.com/us/business/paypal-business-fees\">PayPal Business</a></td><td>1.50% Instant Transfer; $0.50 USD minimum</td><td>Standard transfer free without currency conversion</td><td>Business account terms and withdrawal limits</td></tr><tr><td><a href=\"https://www.clover.com/financial-solutions/rapid-deposit\">Clover</a></td><td>1.75% Rapid Deposit</td><td>Published standard settlement: 1 to 3 days</td><td>Eligible debit card and your provider agreement</td></tr><tr><td><a href=\"https://learn.helcim.com/docs/bank-deposit-timelines-helcim\">Helcim</a></td><td>Compare as a next-day alternative</td><td>Cards: 1 to 2 business days; eligible Faster Deposits next business day free</td><td>Bank participation and 7 PM MT batch cutoff</td></tr></tbody></table></div><p>For example, a $10,000 transfer costs $150 at 1.5%, $175 at 1.75%, or $195 at 1.95%, before any separate processing charges. This is payout arithmetic, not a quote for your account.</p></section><section id=\"square\"><h2 id=\"square\">Square</h2><p><a href=\"https://squareup.com/us/en/payments/instant-transfers\">Square's transfer page</a> lists the same 1.95% fee for on-demand instant transfers and scheduled same-day transfers to an external account. Square Checking provides immediate access to eligible sales funds within that account; that is a different option from an external bank transfer.</p><p>Our fit assessment: consider Square if your store already uses its POS and needs occasional early access. Compare the extra payout cost with your actual cash shortfall before enabling daily transfers. At a 1.95% fee, expediting $80,000 costs $1,560; expediting only $10,000 costs $195. These examples exclude payment processing fees.</p></section><section id=\"stripe\"><h2 id=\"stripe\">Stripe</h2><p><a href=\"https://stripe.com/pricing\">Stripe's U.S. pricing</a> lists 1.5% for Instant Payouts with a $0.50 minimum. Its <a href=\"https://support.stripe.com/questions/what-are-instant-payouts-and-who-is-eligible\">eligibility guidance</a> says requests can run on weekends and holidays, but new users are not immediately eligible. Eligible destinations include debit cards or bank accounts.</p><p>Our fit assessment: consider this if Stripe already fits your online checkout and you occasionally need available funds sooner. A payment marked successful is not necessarily an instantly withdrawable balance. Check the dashboard's eligible amount before relying on it for payroll.</p><p>If the total amount expedited during a month is $250,000, a 1.5% fee is $3,750. If only $62,500 is expedited and the rest follows the free standard schedule, the fee is $937.50. The share expedited changes the cost; merely changing how often you transfer does not.</p><p>For standard funding, use the <a href=\"https://docs.stripe.com/payouts\">country-specific payout schedule</a> and your account settings. Initial payouts and reviews can take longer; instant payout settings do not bypass reserves.</p></section><section id=\"paypal\"><h2 id=\"paypal\">PayPal</h2><p>The <a href=\"https://www.paypal.com/us/business/paypal-business-fees\">U.S. PayPal Business fee table</a> lists Instant Transfer at 1.50%, with a $0.50 minimum for USD. It does not list a maximum fee in that business withdrawal table. Do not use the consumer account's $25 fee cap when budgeting a business transfer.</p><p>Our fit assessment: compare PayPal when sales already accumulate in a PayPal business balance. An instant withdrawal feature alone is not a reason to move your checkout. Compare checkout charges, currency conversion and payout costs together.</p><p>At 1.50%, a $5,000 transfer costs $75, not $25. Account withdrawal limits still apply. Confirm the displayed fee before submitting a transfer.</p></section><section id=\"clover\"><h2 id=\"clover\">Clover</h2><p><a href=\"https://www.clover.com/financial-solutions/rapid-deposit\">Clover publishes a 1.75% Rapid Deposit fee</a> on the amount transferred and describes access in minutes through a linked debit card, including nights and weekends. Its page contrasts this with standard settlement of 1 to 3 days.</p><p>Our fit assessment: useful to evaluate for an existing Clover merchant who needs occasional liquidity. A $10,000 Rapid Deposit at that rate costs $175 before processing fees. Ask your merchant services provider to confirm eligibility, the quoted payout fee, software charges and termination terms in writing.</p><p>When switching providers, include hardware and contract costs in the comparison. Avoid choosing a POS bundle from its advertised transaction percentage alone.</p></section><section id=\"helcim\"><h2 id=\"helcim\">Helcim</h2><p><a href=\"https://learn.helcim.com/docs/bank-deposit-timelines-helcim\">Helcim's funding documentation</a> says card deposits normally take 1 to 2 business days. Eligible U.S. banks on RTP or FedNow can receive free next-business-day Faster Deposits when the batch closes by 7 PM MT. ACH payments take 3 to 5 business days and are not included in Faster Deposits.</p><p>Our fit assessment: compare Helcim when next-business-day card funding meets the need. It is a baseline against which to price paid instant access, not a promise of same-day money for every merchant. Initial batches, holidays and reviews can delay funding.</p><p>Request a processing quote using your card mix, average ticket and sales channel. An interchange-plus label alone does not establish the final effective rate or a guaranteed saving.</p></section><section id=\"verdict\"><h2 id=\"verdict\">Verdict</h2><p>Start with how much cash must arrive early and when. Then check which portion of your available balance is eligible. Compare the cost of expediting that portion with the free standard schedule before changing your whole processing setup.</p><p>For an existing Square, Stripe, PayPal or Clover merchant, occasional instant access may solve a timing problem without a switch. If tomorrow is soon enough, compare standard funding and eligible next-day options such as Helcim. These are fit assessments; approval, holds and bank eligibility remain account-specific.</p><h3 id=\"payout-cost-example\">Work out your monthly payout cost</h3><p>Payout fee = total amount expedited × fee percentage, subject to per-transfer minimums. At 1.5%, expediting $25,000 costs $375; $100,000 costs $1,500; $250,000 costs $3,750. Those fees are additional to processing. Do not divide the monthly total by the number of weekly transfers.</p><p>Bring your last statement and ask: what is my net available balance, what portion needs early access, what is the transfer limit, and what happens over weekends? A reliable answer needs all four.</p></section><section id=\"related-comparisons\"><h2>Related comparisons</h2><ul><li><a href=\"/comparisons/best-payment-processors-2026\">Best payment processors 2026</a>: 15 processors ranked by effective rate.</li><li><a href=\"/comparisons/square-vs-stripe\">Square vs Stripe</a>: instant payouts versus API-first payments.</li><li><a href=\"/comparisons/square-vs-helcim-2026\">Square vs Helcim 2026</a>: free next-day funding versus paid instant transfers.</li></ul></section>"
+      }
+    },
+    "seo_overrides:comparisons/square-vs-helcim-2026#aeo": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.65",
+      "before": {
+        "aeo_answer": "Square uses plan-based flat rates, while Helcim adds a markup to wholesale card costs. Compare your card mix, sales channel, transaction count and required software. There is no universal sales-volume threshold at which Helcim always costs less. The worked examples show how different underlying card costs can reverse the result at the same monthly volume.",
+        "related_links": [
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/helcim-vs-payment-depot-2026",
+            "title": "Helcim vs Payment Depot 2026: Cost Comparison"
+          },
+          {
+            "href": "/comparisons/paypal-vs-square",
+            "title": "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": "claude-ctr-2026-10-28"
+      }
+    },
+    "seo_overrides:comparisons/stripe-vs-adyen-2026#title": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.82",
+      "before": {
+        "title_absolute": false,
+        "related_links": [
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/paypal-vs-stripe-2026",
+            "title": "PayPal vs Stripe 2026: Which Actually Costs Less"
+          },
+          {
+            "href": "/comparisons/square-vs-stripe",
+            "title": "Square vs Stripe 2026: 2.65% In-Person vs 2.97% Online"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": "loop:links"
+      }
+    },
+    "seo_overrides:comparisons/stripe-vs-worldpay-2026#title": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.83",
+      "before": {
+        "title_absolute": false,
+        "related_links": [
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/stripe-vs-adyen-2026",
+            "title": "Stripe vs Adyen 2026: Fees & Pricing Compared"
+          },
+          {
+            "href": "/comparisons/paypal-vs-stripe-2026",
+            "title": "PayPal vs Stripe 2026: Which Actually Costs Less"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": "loop:links"
+      }
+    },
+    "seo_overrides:comparisons/stripe-vs-stax-2026#title": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.96",
+      "before": {
+        "title_absolute": false,
+        "related_links": [
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/stripe-vs-adyen-2026",
+            "title": "Stripe vs Adyen 2026: Fees & Pricing Compared"
+          },
+          {
+            "href": "/comparisons/paypal-vs-stripe-2026",
+            "title": "PayPal vs Stripe 2026: Which Actually Costs Less"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": "loop:links"
+      }
+    },
+    "seo_overrides:comparisons/square-vs-clover-2026#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.15",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/square-vs-helcim-2026",
+            "title": "Square vs Helcim 2026: Helcim Saves $90-$130"
+          },
+          {
+            "href": "/comparisons/clover-vs-toast-2026",
+            "title": "Clover vs Toast 2026: Which Costs Less for Your Volume"
+          },
+          {
+            "href": "/comparisons/paypal-vs-square",
+            "title": "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/paypal-vs-square#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.14",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/square-vs-helcim-2026",
+            "title": "Square vs Helcim 2026: Helcim Saves $90-$130"
+          },
+          {
+            "href": "/comparisons/paypal-vs-stripe-2026",
+            "title": "PayPal vs Stripe 2026: Which Actually Costs Less"
+          },
+          {
+            "href": "/comparisons/square-vs-clover-2026",
+            "title": "Square vs Clover 2026: Real Cost Comparison"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/paypal-vs-stripe-2026#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.46",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/stripe-vs-paypal",
+            "title": "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate"
+          },
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/stripe-vs-adyen-2026",
+            "title": "Stripe vs Adyen 2026: Fees & Pricing Compared"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/square-vs-toast-2026#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.80",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/square-vs-helcim-2026",
+            "title": "Square vs Helcim 2026: Helcim Saves $90-$130"
+          },
+          {
+            "href": "/comparisons/clover-vs-toast-2026",
+            "title": "Clover vs Toast 2026: Which Costs Less for Your Volume"
+          },
+          {
+            "href": "/comparisons/paypal-vs-square",
+            "title": "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/helcim-vs-payment-depot-2026#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.87",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/square-vs-helcim-2026",
+            "title": "Square vs Helcim 2026: Helcim Saves $90-$130"
+          },
+          {
+            "href": "/comparisons/stripe-vs-payment-depot-2026",
+            "title": "Stripe vs Payment Depot 2026: Fees Compared"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/square-vs-stripe#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.103",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/square-vs-helcim-2026",
+            "title": "Square vs Helcim 2026: Helcim Saves $90-$130"
+          },
+          {
+            "href": "/comparisons/stripe-vs-adyen-2026",
+            "title": "Stripe vs Adyen 2026: Fees & Pricing Compared"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/helcim-vs-stripe#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.105",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/square-vs-helcim-2026",
+            "title": "Square vs Helcim 2026: Helcim Saves $90-$130"
+          },
+          {
+            "href": "/comparisons/helcim-vs-payment-depot-2026",
+            "title": "Helcim vs Payment Depot 2026: Cost Comparison"
+          },
+          {
+            "href": "/comparisons/stripe-vs-adyen-2026",
+            "title": "Stripe vs Adyen 2026: Fees & Pricing Compared"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/stripe-vs-paypal#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.107",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/paypal-vs-stripe-2026",
+            "title": "PayPal vs Stripe 2026: Which Actually Costs Less"
+          },
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/stripe-vs-adyen-2026",
+            "title": "Stripe vs Adyen 2026: Fees & Pricing Compared"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/best-virtual-terminals-2026#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.93",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/best-payment-processors-contractors-and-field-services-2026",
+            "title": "Best Payment Processors for Contractors 2026"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          },
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:comparisons/square-vs-shopify-payments-2026#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.89",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/square-vs-helcim-2026",
+            "title": "Square vs Helcim 2026: Helcim Saves $90-$130"
+          },
+          {
+            "href": "/comparisons/paypal-vs-square",
+            "title": "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate"
+          },
+          {
+            "href": "/comparisons/square-vs-clover-2026",
+            "title": "Square vs Clover 2026: Real Cost Comparison"
+          },
+          {
+            "href": "/comparisons/best-payment-processors-2026",
+            "title": "15 Best Payment Processors 2026, Ranked by Effective Rate"
+          }
+        ],
+        "updated_by": null
+      }
+    },
+    "seo_overrides:insights/helcim-review-2025#related": {
+      "table": "seo_overrides",
+      "query": "override_id=eq.143",
+      "before": {
+        "related_links": [
+          {
+            "href": "/comparisons/helcim-vs-stripe",
+            "title": "Helcim vs Stripe 2026: Helcim Wins Above $25K Monthly"
+          },
+          {
+            "href": "/comparisons/square-vs-helcim-2026",
+            "title": "Square vs Helcim 2026: Helcim Saves $90-$130"
+          },
+          {
+            "href": "/comparisons/helcim-vs-payment-depot-2026",
+            "title": "Helcim vs Payment Depot 2026: Cost Comparison"
+          },
+          {
+            "href": "/insights/best-payment-gateway-ecommerce",
+            "title": "Best Payment Gateway for Ecommerce: Complete 2025 Guide"
+          }
+        ],
+        "updated_by": null
+      }
+    }
+  }
+}

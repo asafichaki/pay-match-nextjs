@@ -21,10 +21,16 @@ export function HowToChoose() {
       <p className="mt-2 text-muted-foreground leading-relaxed">
         Card-present payments (tap, dip, swipe) cost less than online or keyed payments, because the card networks charge less when the card is physically there. A restaurant and an online store with the same volume will see different winners. If you sell both ways, compare the rate for the channel where most of your money comes in.
       </p>
+      <p className="mt-2 text-muted-foreground leading-relaxed">
+        The two big flat-rate brands split along this line: our <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">Stripe vs Square</Link> comparison shows Stripe cheaper on small in-person tickets and the two tied online, and <Link href="/comparisons/stripe-vs-paypal" className="text-primary hover:underline">Stripe vs PayPal</Link> shows how much more PayPal&apos;s checkout button costs than a plain card form.
+      </p>
 
       <h3 className="mt-6 text-xl font-semibold text-foreground">3. The pricing model</h3>
       <p className="mt-2 text-muted-foreground leading-relaxed">
         Flat-rate is simple and predictable. Interchange-plus shows you the network cost and a fixed markup on top, so you can see exactly what the processor keeps. Tiered pricing sorts cards into &ldquo;qualified&rdquo; and &ldquo;non-qualified&rdquo; buckets and is the hardest to audit; if a quote is tiered, ask for interchange-plus instead. Our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">fees guide</Link> walks through each line on a statement.
+      </p>
+      <p className="mt-2 text-muted-foreground leading-relaxed">
+        To see the two models priced against each other at the same volume, read <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline">Helcim vs Stripe</Link> for online sellers and <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline">Helcim vs Square</Link> for counter sales. Larger merchants weighing a negotiated contract can start with <Link href="/comparisons/stripe-vs-worldpay-2026" className="text-primary hover:underline">Stripe vs Worldpay</Link>.
       </p>
 
       <h3 className="mt-6 text-xl font-semibold text-foreground">4. Contract, hardware and exit costs</h3>

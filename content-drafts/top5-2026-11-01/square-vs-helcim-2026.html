@@ -1,0 +1,90 @@
+<h2 id="tldr">The short answer</h2>
+<p data-speakable="true">Helcim costs less than Square at every volume we priced, in person and online. At $10,000 a month of in-person sales, Helcim comes to about $211 and Square to about $290, a 2.11% against 2.90% effective rate. The gap grows with volume: about $430 a month at $50,000 and $2,050 at $250,000. Square is still the better pick if you want its free POS app and hardware from $59, or if most of your customers pay with premium rewards cards, which can push Helcim's pass-through cost above Square's flat rate.</p>
+<div role="region" aria-label="Helcim and Square monthly cost in person" tabindex="0" style="overflow-x:auto"><table><caption>In person (card present)</caption><thead><tr><th scope="col">Monthly volume</th><th scope="col">Helcim</th><th scope="col">Square</th></tr></thead><tbody>
+<tr><th scope="row">$10,000</th><td><strong>2.11% · $211</strong></td><td>2.90% · $290</td></tr>
+<tr><th scope="row">$50,000</th><td><strong>2.04% · $1,020</strong></td><td>2.90% · $1,450</td></tr>
+<tr><th scope="row">$250,000</th><td><strong>1.94% · $4,850</strong></td><td>2.76% · $6,900</td></tr>
+</tbody></table></div>
+<div role="region" aria-label="Helcim and Square monthly cost online" tabindex="0" style="overflow-x:auto"><table><caption>Online (Square&#39;s Online API rate)</caption><thead><tr><th scope="col">Monthly volume</th><th scope="col">Helcim</th><th scope="col">Square</th></tr></thead><tbody>
+<tr><th scope="row">$10,000</th><td><strong>2.70% · $270</strong></td><td>3.50% · $350</td></tr>
+<tr><th scope="row">$50,000</th><td><strong>2.55% · $1,275</strong></td><td>3.50% · $1,750</td></tr>
+<tr><th scope="row">$250,000</th><td><strong>2.45% · $6,125</strong></td><td>3.50% · $8,750</td></tr>
+</tbody></table></div>
+<p><small>Prices read from <a href="https://squareup.com/us/en/pricing">Square's pricing page</a> and <a href="https://www.helcim.com/pricing/">Helcim's pricing page</a> on October 29, 2026. Effective rate = percentage + fixed fee ÷ $50 average sale + monthly plan fee ÷ volume, on a 60% credit, 40% debit card mix. Helcim's rate adds our published estimate of the card networks' wholesale cost: 1.55% in person and 1.70% online. Square's in-person column uses its cheapest plan at each volume (Free at $10,000, Plus at $50,000, Premium at $250,000). Square Free's online store and invoices cost more than the API rate shown: 3.3% + 30¢, or 3.90% effective. Same method as our <a href="/comparisons/best-payment-processors-2026#method">payment processor ranking</a>.</small></p>
+
+<h2 id="how-we-ranked">How we priced Helcim against Square</h2>
+<p>The two providers price cards in different ways, so a side-by-side rate list misleads. Square charges one flat rate per sale that already contains the card network's cost. Helcim charges the network's cost at whatever it is for that card, then adds its own published margin. To compare them on the same terms we turn both into an effective rate: the total fee on a month of sales divided by the volume.</p>
+<p>That needs three assumptions, and we print all three. A $50 average sale, because the fixed cents per transaction matter more on small tickets. A card mix of 60% credit and 40% debit. And an estimate of wholesale interchange plus network assessments for that mix: 1.55% in person and 1.70% online. The debit part is anchored by the Federal Reserve's Regulation II cap of 21¢ + 0.05% + 1¢ for large issuers; the credit part uses typical Visa and Mastercard consumer credit interchange. It is an estimate, and your own statement will show the real number.</p>
+<p>Software, hardware, chargebacks and optional services are priced separately below, because they depend on how you run the business rather than on the card.</p>
+
+<h2 id="comparison-table">Published pricing at a glance</h2>
+<div role="region" aria-label="Square and Helcim published pricing" tabindex="0" style="overflow-x:auto"><table style="min-width:580px"><thead><tr><th scope="col">Fee</th><th scope="col">Square</th><th scope="col">Helcim</th></tr></thead><tbody>
+<tr><th scope="row">In person</th><td>2.6% + 15¢ Free; 2.5% + 15¢ Plus; 2.4% + 15¢ Premium</td><td>Interchange + 0.40% + 8¢ under $50K a month, lower above</td></tr>
+<tr><th scope="row">Online</th><td>3.3% + 30¢ Free online store and invoices; 2.9% + 30¢ on Plus, Premium or the Online API</td><td>Interchange + 0.50% + 25¢ under $50K a month, lower above</td></tr>
+<tr><th scope="row">Keyed or card on file</th><td>3.5% + 15¢</td><td>Online rate (interchange + 0.50% + 25¢)</td></tr>
+<tr><th scope="row">Monthly fee</th><td>$0 Free; $49 Plus; $149 Premium, per location</td><td>$0</td></tr>
+<tr><th scope="row">Standard deposit</th><td>Next business day, free</td><td>Next business morning, free</td></tr>
+<tr><th scope="row">Instant deposit</th><td>1.95% per transfer</td><td>Not offered</td></tr>
+<tr><th scope="row">Entry hardware</th><td>From $59</td><td>Card Reader $199; Smart Terminal $349 or $32 a month for a year</td></tr>
+<tr><th scope="row">Contract</th><td>None</td><td>None; no setup, PCI or cancellation fee</td></tr>
+</tbody></table></div>
+
+<h2 id="square">Square: simple pricing, and a plan choice that matters</h2>
+<p>Square's appeal is that you can sign up, plug in a reader and sell the same afternoon, with a free POS app and deposits the next business day at no cost. The price for that simplicity is a flat rate with a 15¢ fixed fee on every in-person sale. On Square Free that is 2.6% + 15¢, which works out to 2.90% on a $50 sale and much more on small tickets: an $8 coffee pays 4.48%.</p>
+<p>The paid plans lower the percentage, but they cost money every month, so they only pay off above a certain volume. Each step down is 0.1% of your in-person sales, so the arithmetic is quick:</p>
+<ul>
+<li><strong>Plus ($49 a month)</strong> beats Free once you take more than about $49,000 a month in person.</li>
+<li><strong>Premium ($149 a month)</strong> beats Plus above about $100,000 a month, and beats Free above about $74,500.</li>
+<li>Both plans also bring the online store and invoice rate down from 3.3% + 30¢ to 2.9% + 30¢, which can change the math if you sell a lot online.</li>
+</ul>
+<p>Read which Square product takes each payment. The Online API rate of 2.9% + 30¢ is available on every plan, but Square Free's own online store and invoices cost 3.3% + 30¢. International cards add 1.5%. Square's ACH bank payments cost 1% with a $1 minimum, capped at $10 on Plus and Premium invoices and $5 through the API. Square offers custom pricing only above $250,000 a year in card sales.</p>
+<p><strong>Who it fits:</strong> new and small in-person sellers who want everything in one box and value next-day deposits more than the last few tenths of a percent. If you are choosing between the two big flat-rate brands, our <a href="/comparisons/square-vs-stripe">Square vs Stripe fees</a> comparison shows where Stripe's 2.7% + 5¢ comes out ahead.</p>
+
+<h2 id="helcim">Helcim: pay the card's real cost, plus a small margin</h2>
+<p>Helcim passes the card network's interchange through at cost and adds a margin it publishes for US merchants. Under $50,000 a month that margin is 0.40% + 8¢ in person and 0.50% + 25¢ for online and keyed sales. It steps down on its own as volume grows, with no negotiation:</p>
+<div role="region" aria-label="Helcim US volume tiers" tabindex="0" style="overflow-x:auto"><table style="min-width:480px"><thead><tr><th scope="col">Monthly volume</th><th scope="col">In-person margin</th><th scope="col">Online and keyed margin</th></tr></thead><tbody>
+<tr><th scope="row">Under $50K</th><td>0.40% + 8¢</td><td>0.50% + 25¢</td></tr>
+<tr><th scope="row">$50K to $100K</th><td>0.35% + 7¢</td><td>0.45% + 20¢</td></tr>
+<tr><th scope="row">$100K to $500K</th><td>0.25% + 7¢</td><td>0.35% + 20¢</td></tr>
+<tr><th scope="row">$500K to $1M</th><td>0.20% + 6¢</td><td>0.25% + 15¢</td></tr>
+<tr><th scope="row">$1M to $5M</th><td>0.15% + 6¢</td><td>0.15% + 15¢</td></tr>
+</tbody></table></div>
+<p>Helcim's published volume discounts use your average processing volume over the preceding three months, so a single big month does not move you down a tier. There is no monthly fee, no setup fee, no PCI fee and no cancellation fee. Deposits arrive the next business morning at no cost; Helcim publishes no instant option.</p>
+<p>The trade-off is predictability. Because you pay each card's own interchange, a month heavy in premium rewards or corporate cards costs more than a month of debit cards, even at the same volume. Check the add-ons too: recurring payments add 0.4% per transaction, Tap to Pay on iPhone adds 10¢, and a chargeback costs $15 if you lose it and $0 if you win. ACH costs 0.5% + 25¢, capped at $6.</p>
+<p><strong>Who it fits:</strong> small and mid-size US merchants who want the lowest published cost without a contract and are comfortable with a rate that moves a little with the card mix. Online sellers can see the same comparison against a flat rate in <a href="/comparisons/helcim-vs-stripe">Helcim vs Stripe</a>.</p>
+
+<h2 id="effective-rate-by-volume">Worked example: $25,000 across 500 in-person sales</h2>
+<p>Take one location with 500 card sales a month averaging $50. On Square Free the fee is simple: $25,000 × 2.6% plus 500 × 15¢, or $725. On Helcim you pay the wholesale card cost plus Helcim's margin, which at this tier is $25,000 × 0.40% plus 500 × 8¢, or $140.</p>
+<p>The wholesale part depends on which cards your customers carry. Here are three versions of the same month:</p>
+<div role="region" aria-label="Helcim vs Square card-mix scenarios at $25,000" tabindex="0" style="overflow-x:auto"><table style="min-width:540px"><thead><tr><th scope="col">Wholesale card cost</th><th scope="col">Helcim total</th><th scope="col">Square Free</th><th scope="col">Difference</th></tr></thead><tbody>
+<tr><th scope="row">$387.50 (1.55%, our estimate for a 60/40 credit and debit mix)</th><td>$527.50</td><td>$725</td><td>Helcim $197.50 lower</td></tr>
+<tr><th scope="row">$450 (1.8%, a heavier credit mix)</th><td>$590</td><td>$725</td><td>Helcim $135 lower</td></tr>
+<tr><th scope="row">$600 (2.4%, mostly premium rewards cards)</th><td>$740</td><td>$725</td><td>Square $15 lower</td></tr>
+</tbody></table></div>
+<p>The break-even sits at a wholesale cost of about 2.34% of sales, or $585 on this month. Below that Helcim wins; above it Square Free does. For most retailers and restaurants, where debit cards are a large share, the wholesale cost lands well under that line. A business selling mostly to customers with premium travel cards can cross it. The fastest way to know which side you are on is to read the interchange lines on a recent statement, or to plug your own numbers into our <a href="/calculator">fee calculator</a>.</p>
+<p>The wholesale totals in rows two and three are assumptions, not measured merchant averages. Hardware, software, disputes and other optional charges are left out of all three rows.</p>
+
+<h2 id="hardware-and-payouts">Hardware, software and payouts</h2>
+<p>This is where Square earns its higher rate. Its POS app is free on the Free plan, its hardware starts at $59, and the system covers inventory, staff and reports in one place. Helcim's Card Reader costs $199 and its Smart Terminal $349, or $32 a month for a year, with optional 4G data at $7 a month. If you are opening one small location on a tight budget, the hardware difference alone covers a few months of the fee gap.</p>
+<p>Payouts are close. Square deposits the next business day for free and sells instant or same-day transfers at 1.95% of the amount moved. Helcim deposits the next business morning for free and offers no paid instant option. If you often need money the same day, Square has the feature and Helcim does not; if next morning is enough, both are free. More options are in our guide to <a href="/comparisons/best-payment-processors-with-same-day-deposit-2026">same-day and next-day deposit processors</a>.</p>
+
+<h2 id="contracts-and-lock-in">Contracts and lock-in</h2>
+<p>Neither provider locks you into a contract. Square says there are no locked-in contracts and you can cancel or switch plans at any time. Helcim lists $0 setup and $0 cancellation fees. That makes this one of the lower-risk switches in payments: you can open a Helcim account, run some sales through it for a month and compare the statement with Square's before moving everything.</p>
+<p>The real switching cost is equipment and workflow. Square hardware works with Square, and Helcim's readers work with Helcim, so moving means buying new readers. If you rely on Square's POS for inventory or staff, check that whatever you move to does the same job. Before you sign anything with any processor, our <a href="/insights/what-to-ask-before-signing-a-processor-contract">contract checklist</a> lists the questions to get answered in writing.</p>
+
+<h2 id="hidden-fees">Fees to check before you switch</h2>
+<p>The card rate is most of the bill, but not all of it. Price these lines for the way you actually sell:</p>
+<ul>
+<li><strong>Recurring billing:</strong> Helcim adds 0.4% per recurring transaction. Square's recurring invoices follow its online and invoice rates for your plan.</li>
+<li><strong>Keyed sales:</strong> Square charges 3.5% + 15¢ for manually entered cards and card on file; Helcim charges its online margin on top of interchange, which comes to about 2.70% on a $50 sale under $50K a month.</li>
+<li><strong>Chargebacks:</strong> Helcim charges $15 only when you lose a dispute. Square does not list a chargeback fee on the pricing pages we checked; confirm it in your agreement.</li>
+<li><strong>Bank payments:</strong> Helcim ACH is 0.5% + 25¢, capped at $6. Square ACH is 1% with a $1 minimum.</li>
+<li><strong>International cards:</strong> Square adds 1.5%. On Helcim the higher interchange of a foreign card is passed through.</li>
+</ul>
+
+<h2 id="verdict">Verdict: Helcim for cost, Square for convenience</h2>
+<p><strong>Pick Helcim</strong> if the processing bill is the number you want to shrink. On our method it is cheaper than Square at $10,000, $50,000 and $250,000 a month, in person and online, by about $79, $430 and $2,050 a month in person. It has no monthly fee and no contract, and its margin keeps falling as you grow.</p>
+<p><strong>Pick Square</strong> if you are just starting, want a free POS and cheap hardware in one box, or need same-day transfers. It also wins on cost if your customers pay mostly with premium rewards cards, because a flat rate absorbs that cost for you.</p>
+<p>If you process over about $50,000 a month, price a subscription model too. Stax charges interchange at cost plus a monthly fee and ranks first in our test from $250,000 a month. See every provider side by side in our <a href="/comparisons/best-payment-processors-2026">best payment processors ranking</a>.</p>
+
+<h2 id="related-comparisons">Related comparisons</h2><ul><li><a href="/comparisons/helcim-vs-stripe">Helcim vs Stripe</a></li><li><a href="/comparisons/square-vs-stripe">Square vs Stripe</a></li><li><a href="/comparisons/square-vs-toast-2026">Square vs Toast</a></li><li><a href="/insights/payment-processor-fees-guide">Payment processing fees guide</a></li></ul>

@@ -1,0 +1,66 @@
+{
+  "title": "Helcim vs Square 2026: Which Costs Less at Your Volume",
+  "description": "Helcim 2.11% vs Square 2.90% effective at $10K a month in person, fees included. Cost at $10K, $50K and $250K, the card-mix break-even and payouts.",
+  "meta_title": "Helcim vs Square 2026: Which Costs Less at Your Volume",
+  "meta_description": "Helcim 2.11% vs Square 2.90% effective at $10K a month in person, fees included, from prices checked Oct 2026. The $25K card-mix example and which to pick.",
+  "og_title": "Helcim vs Square 2026: Which Costs Less at Your Volume",
+  "og_description": "Helcim 2.11% vs Square 2.90% effective at $10K a month in person. Monthly cost at $10K, $50K and $250K, and when Square still wins.",
+  "key_findings": [
+    "Helcim costs less than Square at $10K, $50K and $250K a month: about $211 vs $290 in person at $10K, $1,020 vs $1,450 at $50K and $4,850 vs $6,900 at $250K.",
+    "Online, Helcim comes to 2.70% at $10K a month against 3.50% on Square's Online API and 3.90% on Square Free's online store.",
+    "Square only wins on cost when your cards' wholesale interchange averages more than about 2.34% of sales, a mix heavy in premium rewards cards.",
+    "Square Plus ($49) pays off above about $49,000 a month in person; Premium ($149) above about $100,000 compared with Plus.",
+    "Square includes a free POS app and hardware from $59; Helcim's Card Reader is $199. Neither has a contract."
+  ],
+  "toc": [
+    { "id": "tldr", "label": "The short answer" },
+    { "id": "how-we-ranked", "label": "How we priced them" },
+    { "id": "comparison-table", "label": "At a glance" },
+    { "id": "square", "label": "Square" },
+    { "id": "helcim", "label": "Helcim" },
+    { "id": "effective-rate-by-volume", "label": "$25,000 worked example" },
+    { "id": "hardware-and-payouts", "label": "Hardware and payouts" },
+    { "id": "contracts-and-lock-in", "label": "Contracts and lock-in" },
+    { "id": "hidden-fees", "label": "Fees to check" },
+    { "id": "verdict", "label": "Verdict" },
+    { "id": "faq", "label": "FAQ" }
+  ],
+  "faq_json": [
+    {
+      "question": "Is Helcim cheaper than Square?",
+      "answer": "On our method, yes, at every volume we priced. With a $50 average sale and a 60% credit, 40% debit card mix, Helcim comes to 2.11% in person at $10,000 a month against 2.90% on Square, and 1.94% against 2.76% at $250,000. Online the figures are 2.70% against 3.50% on Square's Online API. Helcim passes each card's wholesale cost through, so your exact rate moves with the cards your customers use."
+    },
+    {
+      "question": "At what volume does Helcim beat Square?",
+      "answer": "From the first dollar on a typical card mix, because the comparison is driven by card mix more than volume. The saving is small at low volume, about $79 a month in person at $10,000, and grows to about $430 at $50,000 and $2,050 at $250,000 as Helcim's margin steps down at $50K, $100K, $500K and $1M a month. Square wins only when your average wholesale interchange runs above about 2.34% of sales."
+    },
+    {
+      "question": "Is Helcim always cheaper than Square above $10,000 a month?",
+      "answer": "Not always. Volume does not settle it on its own. If most of your customers pay with premium rewards or corporate cards, the wholesale cost Helcim passes through can exceed Square's flat rate. In our $25,000 example, a wholesale cost of 2.4% of sales makes Square Free $15 cheaper, while the 1.55% we estimate for a typical credit and debit mix makes Helcim about $198 cheaper."
+    },
+    {
+      "question": "Which Square plan should I compare with Helcim?",
+      "answer": "The cheapest one for your volume. Each paid plan cuts the in-person rate by 0.1%, so Square Plus at $49 a month beats Free above about $49,000 a month in person, and Premium at $149 beats Plus above about $100,000. Both paid plans also lower the online store and invoice rate from 3.3% + 30¢ to 2.9% + 30¢. Our table uses whichever plan is cheapest at each volume."
+    },
+    {
+      "question": "What does interchange-plus mean in this comparison?",
+      "answer": "Helcim charges you the card network's own fee for each transaction, called interchange, at cost, and then adds a published margin of its own, for example 0.40% + 8¢ in person under $50,000 a month. Square's 2.6% + 15¢ already includes the network fee. Helcim's margin is not its full rate, so always add an interchange estimate before comparing it with a flat rate."
+    },
+    {
+      "question": "Do Square and Helcim deposit money at the same speed?",
+      "answer": "Roughly. Square deposits the next business day at no cost and sells instant or same-day transfers for 1.95% of the amount. Helcim deposits the next business morning at no cost and publishes no paid instant option. If you need money the same day, Square has the feature; if next morning is enough, both are free."
+    },
+    {
+      "question": "Can I switch from Square to Helcim without a fee?",
+      "answer": "Yes. Square has no locked-in contract and Helcim charges no setup or cancellation fee. The cost of switching is practical: Helcim's Card Reader is $199 and its Smart Terminal $349, Square hardware will not move across, and if you rely on Square's POS for inventory or staff you need a replacement. Many merchants run both for a month and compare statements first."
+    }
+  ],
+  "sources_json": [
+    { "name": "Square US plans and processing fees", "url": "https://squareup.com/us/en/pricing" },
+    { "name": "Square deposit options and transfer fees", "url": "https://squareup.com/help/us/en/article/3807-deposit-options-with-square" },
+    { "name": "Square fees overview", "url": "https://squareup.com/help/us/en/article/5068-what-are-square-s-fees" },
+    { "name": "Helcim pricing and US volume tiers", "url": "https://www.helcim.com/pricing/" },
+    { "name": "Federal Reserve Regulation II debit interchange cap", "url": "https://www.federalreserve.gov/paymentsystems/regii-average-interchange-fee.htm" }
+  ],
+  "aeo_answer": "Helcim costs less than Square at every volume we priced: 2.11% vs 2.90% effective in person at $10K a month, about $79 saved, rising to $430 at $50K and $2,050 at $250K. Square wins only if premium rewards cards push your wholesale card cost above about 2.34%, or if you want its free POS and $59 hardware."
+}

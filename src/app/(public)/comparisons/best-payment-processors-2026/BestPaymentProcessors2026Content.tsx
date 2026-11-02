@@ -131,6 +131,9 @@ export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLin
                 ))}
               </ul>
               <p className="mt-3 text-sm text-muted-foreground">
+                Worldpay can still be the right call for a large merchant willing to sign a contract; <Link href="/comparisons/stripe-vs-worldpay-2026" className="text-primary hover:underline">Stripe vs Worldpay</Link> shows what to ask for and where the negotiated deal tends to pay off.
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
                 For CBD, gaming, nutra, firearms, travel or subscription businesses, most providers above may decline you; start with the <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">high-risk payment processing guide</Link>.
               </p>
             </section>

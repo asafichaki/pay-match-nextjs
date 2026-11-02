@@ -9,6 +9,9 @@ import ArticleSidebar from "@/components/ArticleSidebar";
 import { MatchCTA } from "@/components/MatchCTA";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
+import { VsCostTable } from "@/components/mix/VsCostTable";
+import { FEES, RATES_CHECKED, TIER_LABELS, dollarsAt, engineRate, feeLabel, flatEffective, pct, usd } from "@/lib/data/vs-pages-2026";
+import { ANSWER, EXAMPLES, FAQ, N } from "./data";
 
 interface ContentSlots {
   /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
@@ -16,6 +19,10 @@ interface ContentSlots {
   /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
   relatedLinks?: React.ReactNode;
 }
+
+const sq = FEES.square;
+const st = FEES.stripe;
+const link = "text-primary hover:underline";
 
 export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -26,47 +33,68 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-12 justify-center">
             <article className="max-w-3xl flex-1 min-w-0">
-          <header className="pt-16 pb-10 border-b border-border">
-            <p className="text-sm font-medium text-primary mb-4">Payment Processor Comparison</p>
+          <header className="pt-10 sm:pt-16 pb-10 border-b border-border">
+            <p className="text-sm font-medium text-primary mb-4">Stripe vs Square fees, prices checked {RATES_CHECKED}</p>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
-              Square vs Stripe 2026: Retail Wins for Square, SaaS for Stripe
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-6 leading-[1.1] tracking-tight">
+              Square vs Stripe 2026: Fees Compared at $10K to $250K
             </h1>
             {aeoAnswer}
-
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
-              Verdict, May 2026: <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> wins for retail under $80K monthly at a 2.65% effective in-person rate. Stripe wins for SaaS, subscriptions, and any online-first business at 2.97% effective. Rates come from each provider's published 2026 pricing on a standard U.S. card mix, fees included. Full breakdown below.
-            </p>
 
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
-              lastUpdated="2026-08-25"
-              className="mt-4"
+              lastUpdated="2026-11-02"
+              className="mt-2 mb-6"
             />
+
+            <p className="aeo-answer text-lg md:text-xl text-foreground leading-relaxed" data-speakable="true">
+              {ANSWER}
+            </p>
+
+            <VsCostTable
+              groups={[
+                {
+                  title: "In person (card present)",
+                  options: [
+                    { label: "Square", note: "Cheapest plan at each volume", rate: (t) => engineRate("Square", "In-person", t) },
+                    { label: "Stripe", note: `${feeLabel(st.inPerson)}, Terminal`, rate: (t) => engineRate("Stripe", "In-person", t) },
+                  ],
+                },
+                {
+                  title: "Online (card not present)",
+                  options: [
+                    { label: "Square Free", note: `${feeLabel(sq.onlineFree)}, online store`, rate: () => flatEffective(sq.onlineFree) },
+                    { label: "Square API", note: `${feeLabel(sq.onlinePaidOrApi)}, or paid plan`, rate: (t) => engineRate("Square", "Online", t) },
+                    { label: "Stripe", note: feeLabel(st.online), rate: (t) => engineRate("Stripe", "Online", t) },
+                  ],
+                },
+              ]}
+              footnote={<>Square&apos;s in-person column uses the cheapest plan at each volume: Free ({feeLabel(sq.inPersonFree)}) at $10K, Plus (${sq.planPlus} a month) at $50K, where it costs about the same as Free, and Premium (${sq.planPremium} a month) at $250K.</>}
+            />
+
+            <p className="text-muted-foreground leading-relaxed">
+              The gap between the two is small, so the better question is which tools you need. Square gives you a free POS app and next-day deposits. Stripe gives you APIs, subscription billing and a checkout you can shape. If fees are the deciding factor, neither is the cheapest option we priced: see <Link href="/comparisons/helcim-vs-stripe" className={link}>Helcim vs Stripe</Link> and <Link href="/comparisons/square-vs-helcim-2026" className={link}>Helcim vs Square</Link>.
+            </p>
 
             <MatchCTA
               variant="inline"
               headline="Square or Stripe: which fits your business?"
-              subline="Skip the 4,000-word read. Get a 60-second match based on your channel mix, volume, and ticket size."
+              subline="Tell us your channel mix, volume and average sale. We send back the processors that fit, with the questions to ask before you sign."
             />
           </header>
 
-          <section className="py-10 border-b border-border aeo-answer">
+          <section className="py-10 border-b border-border">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Quick Verdict</h2>
             <div className="space-y-4">
-              <p className="text-lg text-foreground leading-relaxed">
-                Square charges <strong>2.6% + $0.10</strong> in-person and <strong>2.9% + $0.30</strong> online. Stripe charges <strong>2.7% + $0.05</strong> in-person and <strong>2.9% + $0.30</strong> online.
-                For physical retail under $80,000 monthly, Square is usually cheaper because hardware is free and tap-to-pay is built in. For online-only or developer-driven setups, Stripe wins on API depth, subscriptions, and global currency support.
-              </p>
-              <p className="text-foreground leading-relaxed">
-                In person, the crossover ticket is exactly <strong>$50</strong>: Stripe&rsquo;s lower fixed fee wins below it, Square&rsquo;s lower percentage wins above it. Square funds next business day for free; Stripe funds in 2 business days, or instantly for 1.5% of the transfer. Above $80,000 monthly, neither flat rate is the cheapest answer: an interchange-plus processor typically saves 0.30 to 0.60 percent.
+              <p className="text-foreground">
+                <strong className="text-primary">Choose Square</strong> if you sell at a counter, a table or a market stall and want a working <Link href="/comparisons/best-pos-systems-for-small-business-2026" className={link}>POS system</Link> today with no developer, plus free next-business-day deposits.
               </p>
               <p className="text-foreground">
-                <strong className="text-primary">Choose Square</strong> if you have a physical store and need an all-in-one <Link href="/insights" className="text-primary hover:underline">POS system</Link> with free hardware.
+                <strong className="text-primary">Choose Stripe</strong> if most of your money comes in online, you bill subscriptions, or you have a developer to build the checkout. Its in-person readers work too, at {feeLabel(st.inPerson)}, which beats Square on small tickets.
               </p>
               <p className="text-foreground">
-                <strong className="text-primary">Choose Stripe</strong> if you're online-first and have technical resources for customization.
+                <strong className="text-primary">Choose neither</strong> if you process more than about {TIER_LABELS[1]} a month and cost comes first. Interchange-plus providers such as Helcim ({pct(N.helcimIp[1])} in person at {TIER_LABELS[1]}) and subscription models such as Stax ({pct(N.staxIp250)} at {TIER_LABELS[2]}) come in well under both. Our <Link href="/comparisons/best-payment-processors-2026" className={link}>ranking of the best payment processors</Link> prices all of them on the same method.
               </p>
             </div>
           </section>
@@ -76,10 +104,11 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
             <ol className="grid md:grid-cols-2 gap-2 text-sm list-decimal list-inside">
               {[
                 { href: "#comparison", label: "Quick Comparison" },
-                { href: "#square", label: "What Is Square?" },
-                { href: "#stripe", label: "What Is Stripe?" },
-                { href: "#pricing", label: "Pricing Breakdown" },
-                { href: "#pos", label: "POS Capabilities" },
+                { href: "#pricing", label: "Every Fee, Side by Side" },
+                { href: "#examples", label: "Two Worked Examples" },
+                { href: "#payouts", label: "Payouts and Cash Flow" },
+                { href: "#high-volume", label: "Above $50K a Month" },
+                { href: "#pos", label: "POS and Hardware" },
                 { href: "#features", label: "Features Comparison" },
                 { href: "#use-cases", label: "Best Use Cases" },
                 { href: "#faq", label: "FAQ" },
@@ -106,24 +135,21 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
                 <tbody className="divide-y divide-border">
                   {[
                     { feature: "Best For", square: "In-person, brick-and-mortar", stripe: "Online, developers, SaaS" },
-                    { feature: "In-Person Rate", square: "2.6% + $0.10", stripe: "2.7% + $0.05", squareWins: true },
-                    { feature: "Online Rate", square: "2.9% + $0.30", stripe: "2.9% + $0.30" },
+                    { feature: "In-Person Rate", square: `${feeLabel(sq.inPersonFree)} (Free plan)`, stripe: feeLabel(st.inPerson), stripeWins: true },
+                    { feature: "Online Rate", square: `${feeLabel(sq.onlineFree)} on Free; ${feeLabel(sq.onlinePaidOrApi)} on paid plans or API`, stripe: feeLabel(st.online), stripeWins: true },
                     { feature: "Standard Payout", square: "Next business day, free", stripe: "2 business days", squareWins: true },
-                    { feature: "Instant Payout", square: "1.75% of transfer", stripe: "1.5% of transfer", stripeWins: true },
-                    { feature: "Monthly, PCI, Statement Fees", square: "$0 on the free plan", stripe: "$0" },
-                    { feature: "Free POS System", square: "Yes", stripe: "No", squareWins: true },
-                    { feature: "Free Hardware", square: "Yes", stripe: "No", squareWins: true },
-                    { feature: "Setup Difficulty", square: "Easy", stripe: "Moderate-Advanced", squareWins: true },
-                    { feature: "API Quality", square: "Good", stripe: "Best-in-class", stripeWins: true },
-                    { feature: "Countries", square: "8", stripe: "46", stripeWins: true },
+                    { feature: "Instant Payout", square: `${sq.instantPayoutPct}% of transfer`, stripe: `${st.instantPayoutPct}% of transfer`, stripeWins: true },
+                    { feature: "Monthly Fee", square: `$0 Free, $${sq.planPlus} Plus, $${sq.planPremium} Premium`, stripe: "$0" },
+                    { feature: "Free POS Software", square: "Yes", stripe: "No", squareWins: true },
+                    { feature: "Entry Hardware", square: "From $59", stripe: "Reader M2 $59" },
+                    { feature: "Setup Difficulty", square: "Easy", stripe: "Moderate to advanced", squareWins: true },
+                    { feature: "API and Billing Tools", square: "Good, basic recurring", stripe: "Extensive, full subscription billing", stripeWins: true },
                     { feature: "Currencies", square: "Limited", stripe: "135+", stripeWins: true },
-                    { feature: "Subscription Billing", square: "Basic", stripe: "Advanced", stripeWins: true },
-                    { feature: "24/7 Phone Support", square: "Yes", stripe: "No", squareWins: true },
                   ].map((row, i) => (
                     <tr key={i}>
-                      <td className="py-3 font-medium">{row.feature}</td>
-                      <td className={`py-3 text-center ${row.squareWins ? 'text-primary font-semibold' : ''}`}>{row.square}</td>
-                      <td className={`py-3 text-center ${row.stripeWins ? 'text-primary font-semibold' : ''}`}>{row.stripe}</td>
+                      <td className="py-3 pr-2 font-medium">{row.feature}</td>
+                      <td className={`py-3 px-1 text-center ${row.squareWins ? 'text-primary font-semibold' : ''}`}>{row.square}</td>
+                      <td className={`py-3 px-1 text-center ${row.stripeWins ? 'text-primary font-semibold' : ''}`}>{row.stripe}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -131,84 +157,11 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
             </div>
           </section>
 
-          <section id="square" className="py-10 border-b border-border">
-            <h2 className="text-2xl font-bold text-foreground mb-4">What Is Square?</h2>
-
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Square</a> launched in 2009
-              and revolutionized <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">payment processing</Link> with its iconic white card reader. Today, Square (now part of <a href="https://block.xyz" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Block, Inc.</a>)
-              is a comprehensive business platform serving 4+ million merchants.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-6">
-              <div>
-                <h3 className="font-semibold text-foreground mb-3">Key Facts</h3>
-                <ul className="space-y-2 text-muted-foreground text-sm">
-                  <li><strong>Founded:</strong> 2009 by Jack Dorsey</li>
-                  <li><strong>Parent Company:</strong> <a href="https://block.xyz" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Block, Inc.</a></li>
-                  <li><strong>Active Merchants:</strong> 4+ million</li>
-                  <li><strong>Transaction Volume:</strong> $200+ billion annually</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-3">What Square Offers</h3>
-                <ul className="space-y-1 text-muted-foreground text-sm">
-                  <li>- <a href="https://squareup.com/us/en/point-of-sale" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square POS</a> - Free point-of-sale</li>
-                  <li>- <a href="https://squareup.com/us/en/online-store" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square Online</a> - Free ecommerce</li>
-                  <li>- <a href="https://squareup.com/us/en/point-of-sale/restaurants" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square for Restaurants</a></li>
-                  <li>- <a href="https://squareup.com/us/en/point-of-sale/retail" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square for Retail</a></li>
-                  <li>- <a href="https://squareup.com/us/en/banking" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square Banking</a> - Business checking</li>
-                </ul>
-              </div>
-            </div>
-
-            <p className="text-sm text-muted-foreground">
-              <strong>Who Uses Square:</strong> Retail stores, restaurants, cafes, food trucks, salons, spas, service businesses, pop-up shops, farmers markets
-            </p>
-          </section>
-
-          <section id="stripe" className="py-10 border-b border-border">
-            <h2 className="text-2xl font-bold text-foreground mb-4">What Is Stripe?</h2>
-
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              <strong className="text-foreground">Stripe</strong> is the global
-              leader in payment infrastructure for the internet, founded in 2010 by brothers Patrick and John Collison.
-              With a $50 billion valuation, Stripe powers payments for millions of online businesses. Learn more in our <Link href="/comparisons/stripe-vs-paypal" className="text-primary hover:underline">Stripe vs PayPal comparison</Link>.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-6">
-              <div>
-                <h3 className="font-semibold text-foreground mb-3">Key Facts</h3>
-                <ul className="space-y-2 text-muted-foreground text-sm">
-                  <li><strong>Founded:</strong> 2010</li>
-                  <li><strong>Valuation:</strong> $50 billion</li>
-                  <li><strong>Processing Volume:</strong> $640+ billion annually</li>
-                  <li><strong>Countries:</strong> 46</li>
-                  <li><strong>Currencies:</strong> 135+</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-3">What Stripe Offers</h3>
-                <ul className="space-y-1 text-muted-foreground text-sm">
-                  <li>- Stripe Payments - Core processing</li>
-                  <li>- Stripe Billing - Subscriptions</li>
-                  <li>- Stripe Connect - Marketplaces</li>
-                  <li>- Stripe Radar - Fraud prevention</li>
-                  <li>- <a href="https://stripe.com/terminal" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe Terminal</a> - In-person</li>
-                </ul>
-              </div>
-            </div>
-
-            <p className="text-sm text-muted-foreground">
-              <strong>Who Uses Stripe:</strong> SaaS companies, ecommerce stores, marketplaces, subscription businesses, mobile apps, tech startups. Powers: Amazon, Google, Shopify, Lyft, DoorDash
-            </p>
-          </section>
-
           <section id="pricing" className="py-10 border-b border-border">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Pricing Breakdown</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Square vs Stripe Fees, Side by Side</h2>
 
             <p className="text-muted-foreground mb-6">
-              Understanding the complete cost structure is crucial for your bottom line. Before reading the side-by-side fees below, set a benchmark for what a healthy effective rate actually looks like.
+              Every figure below is from the providers&apos; own pricing pages (<a href={sq.pricingUrl} target="_blank" rel="noopener noreferrer" className={link}>Square</a>, <a href={st.pricingUrl} target="_blank" rel="noopener noreferrer" className={link}>Stripe</a>), checked {RATES_CHECKED}. Our <Link href="/insights/payment-processor-fees-guide" className={link}>payment processing fees guide</Link> explains each line. Before you read them, a benchmark for what a healthy effective rate looks like:
             </p>
 
             <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
@@ -220,134 +173,149 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               </figcaption>
             </figure>
 
-            <div className="overflow-x-auto -mx-4 px-4 mb-8">
+            <div className="overflow-x-auto -mx-4 px-4 mb-6">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b-2 border-foreground">
-                    <th className="py-3 text-left font-semibold">Transaction Type</th>
+                    <th className="py-3 text-left font-semibold">Fee</th>
                     <th className="py-3 text-center font-semibold">Square</th>
                     <th className="py-3 text-center font-semibold">Stripe</th>
-                    <th className="py-3 text-center font-semibold">Winner</th>
+                    <th className="py-3 text-center font-semibold">Lower</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
                   {[
-                    { type: "In-Person (Card Present)", square: "2.6% + $0.10", stripe: "2.7% + $0.05", winner: "Square*" },
-                    { type: "Online/Ecommerce", square: "2.9% + $0.30", stripe: "2.9% + $0.30", winner: "Tie" },
-                    { type: "Keyed-In/Manual", square: "3.5% + $0.15", stripe: "3.4% + $0.30", winner: "Depends" },
-                    { type: "ACH/Bank Transfer", square: "3.3% + $0.30", stripe: "0.8% (cap $5)", winner: "Stripe" },
-                    { type: "International Cards", square: "Included", stripe: "+1.5%", winner: "Square" },
-                    { type: "Chargeback Fee", square: "$0 (first $250/mo)", stripe: "$15", winner: "Square" },
+                    { type: "In person", square: `${feeLabel(sq.inPersonFree)} Free; ${feeLabel(sq.inPersonPlus)} Plus; ${feeLabel(sq.inPersonPremium)} Premium`, stripe: feeLabel(st.inPerson), winner: `Stripe under $${N.crossover} a sale` },
+                    { type: "Online", square: `${feeLabel(sq.onlineFree)} Free; ${feeLabel(sq.onlinePaidOrApi)} paid plans and API`, stripe: feeLabel(st.online), winner: "Tie, or Stripe vs Square Free" },
+                    { type: "Keyed or card on file", square: feeLabel(sq.manual), stripe: feeLabel(st.manual), winner: "Depends on sale size" },
+                    { type: "ACH bank payment", square: sq.ach, stripe: `${st.achPct}%, capped at $${st.achCap}`, winner: "Stripe" },
+                    { type: "International card", square: `+${sq.internationalAddPct}%`, stripe: `+${st.internationalAddPct}%, plus ${st.conversionAddPct}% if currency is converted`, winner: "Tie when settled in USD" },
+                    { type: "Dispute", square: "Not listed on the pricing page", stripe: `$${st.dispute}, plus $${st.disputeCounter} if you counter it (refunded if you win)`, winner: "Check your agreement" },
                   ].map((row, i) => (
                     <tr key={i}>
-                      <td className="py-3 font-medium">{row.type}</td>
-                      <td className="py-3 text-center">{row.square}</td>
-                      <td className="py-3 text-center">{row.stripe}</td>
-                      <td className={`py-3 text-center font-semibold ${row.winner !== 'Tie' && row.winner !== 'Depends' ? 'text-primary' : ''}`}>{row.winner}</td>
+                      <td className="py-3 pr-2 font-medium">{row.type}</td>
+                      <td className="py-3 px-1 text-center">{row.square}</td>
+                      <td className="py-3 px-1 text-center">{row.stripe}</td>
+                      <td className="py-3 px-1 text-center font-semibold text-primary">{row.winner}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
 
-            <p className="text-sm text-muted-foreground mb-8">
-              *Square is cheaper in person once the ticket is over $50: 2.6% + $0.10 and 2.7% + $0.05 cross at exactly a $50 ticket. Below that, Stripe's lower fixed fee wins.
+            <p className="text-muted-foreground mb-4">
+              The in-person rates cross at exactly ${N.crossover}: {feeLabel(sq.inPersonFree)} and {feeLabel(st.inPerson)} cost the same on a ${N.crossover} sale. A coffee shop selling $8 drinks pays noticeably less on Stripe; a furniture store selling $400 pieces pays a little less on Square. If your sales cluster on one side of ${N.crossover}, that settles the fee question.
             </p>
+            <p className="text-muted-foreground">
+              Online, read which Square product you would actually use. Square Free charges {feeLabel(sq.onlineFree)} on its online store and invoices ({pct(N.sqOnFree)} effective on a $50 sale); the {feeLabel(sq.onlinePaidOrApi)} rate applies on Plus and Premium or through Square&apos;s Online API. Stripe charges {feeLabel(st.online)} everywhere ({pct(N.stOn[0])}). If you are weighing Stripe against a wallet button instead, our <Link href="/comparisons/stripe-vs-paypal" className={link}>Stripe vs PayPal fees</Link> breakdown runs the same numbers.
+            </p>
+          </section>
 
-            <h3 className="font-semibold text-foreground mb-4">Real-World Cost Examples</h3>
-
+          <section id="examples" className="py-10 border-b border-border">
+            <h2 className="text-2xl font-bold text-foreground mb-6">Two Worked Examples</h2>
             <div className="space-y-6">
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-semibold text-foreground">Coffee Shop</h4>
-                <p className="text-sm text-muted-foreground mb-2">$30K/month, $8 average transaction, 90% in-person</p>
+                <h3 className="font-semibold text-foreground">Coffee shop</h3>
+                <p className="text-sm text-muted-foreground mb-2">{usd(EXAMPLES.coffee.volume)} a month, ${EXAMPLES.coffee.avg} average sale, {Math.round(EXAMPLES.coffee.inPersonShare * 100)}% in person, the rest online through Square&apos;s API or Stripe</p>
                 <p className="text-sm">
-                  Square: <strong>$1,239/month</strong> | Stripe: <strong>$1,097/month</strong>
+                  Square: <strong>{usd(EXAMPLES.coffee.square)}/month</strong> | Stripe: <strong>{usd(EXAMPLES.coffee.stripe)}/month</strong>
                 </p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Stripe saves $142/mo BUT Square offers free POS + free hardware = better overall value
+                  Stripe saves about {usd(EXAMPLES.coffee.square - EXAMPLES.coffee.stripe)} a month because Square&apos;s 15¢ fixed fee is a big share of an $8 sale. Square still wins on the POS software, which Stripe does not include.
                 </p>
               </div>
 
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-semibold text-foreground">SaaS Company</h4>
-                <p className="text-sm text-muted-foreground mb-2">$100K/month, $200 average transaction, 100% online</p>
+                <h3 className="font-semibold text-foreground">SaaS company</h3>
+                <p className="text-sm text-muted-foreground mb-2">{usd(EXAMPLES.saas.volume)} a month, ${EXAMPLES.saas.avg} average charge, all online</p>
                 <p className="text-sm">
-                  Square: <strong>$3,050/month</strong> | Stripe: <strong>$3,050/month</strong>
+                  Stripe: <strong>{usd(EXAMPLES.saas.stripe)}/month</strong> | Square API: <strong>{usd(EXAMPLES.saas.squareApi)}/month</strong> | Square Free invoices: <strong>{usd(EXAMPLES.saas.squareFree)}/month</strong>
                 </p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Same price, but Stripe's subscription features are FAR superior for SaaS
+                  The card fee is the same on Stripe and Square&apos;s API. Stripe wins on billing tools: proration, usage-based plans and failed-payment retries.
                 </p>
               </div>
             </div>
+          </section>
 
-            <h3 className="font-semibold text-foreground mt-10 mb-4">Above $80K a month: when neither flat rate wins</h3>
+          <section id="payouts" className="py-10 border-b border-border">
+            <h2 className="text-2xl font-bold text-foreground mb-4">Payouts and Cash Flow</h2>
             <p className="text-muted-foreground mb-4">
-              Both published rates bake in roughly 0.40 to 0.60 percent of markup over interchange, depending on card mix. Around $80K to $100K in monthly card volume that markup starts costing more than an interchange-plus account. At $250K monthly with a typical retail card mix, an interchange-plus processor with a 0.40 percent markup lands 0.30 to 0.60 percent below either flat rate, roughly $12,000 to $18,000 a year on $3M of annual volume. Stripe offers custom interchange-plus pricing through its sales team above that range; the published 2.9% + $0.30 is the self-serve rate.
+              Square deposits the next business day at no cost. Stripe pays out in 2 business days, and a new account&apos;s first payout typically takes 7 to 14 days, which matters if you open the week you launch. For faster money, Stripe Instant Payouts cost {st.instantPayoutPct}% (50¢ minimum) and Square&apos;s instant or same-day transfers cost {sq.instantPayoutPct}%.
+            </p>
+            <p className="text-muted-foreground">
+              On {usd(10_000)} moved early each month, that is {usd(10_000 * st.instantPayoutPct / 100)} on Stripe against {usd(10_000 * sq.instantPayoutPct / 100)} on Square. More options, including free next-day funding, are in our guide to <Link href="/comparisons/best-payment-processors-with-same-day-deposit-2026" className={link}>same-day deposit payment processors</Link>.
+            </p>
+          </section>
+
+          <section id="high-volume" className="py-10 border-b border-border">
+            <h2 className="text-2xl font-bold text-foreground mb-4">Above $50K a Month: When Neither Flat Rate Wins</h2>
+            <p className="text-muted-foreground mb-4">
+              Flat rates bundle the card networks&apos; cost and the provider&apos;s markup into one number, so the markup grows with every sale. Interchange-plus pricing shows the two separately and the markup is small. On our method, at {TIER_LABELS[2]} a month in person:
             </p>
             <div className="overflow-x-auto -mx-4 px-4 mb-4">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b-2 border-foreground">
                     <th className="py-3 text-left font-semibold">Processor</th>
-                    <th className="py-3 text-center font-semibold">In-Person</th>
-                    <th className="py-3 text-center font-semibold">Online</th>
-                    <th className="py-3 text-center font-semibold">Monthly Fee</th>
+                    <th className="py-3 text-center font-semibold">Effective rate</th>
+                    <th className="py-3 text-center font-semibold">Monthly cost</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
                   {[
-                    { name: "Square", inPerson: "2.6% + $0.10", online: "2.9% + $0.30", monthly: "$0" },
-                    { name: "Stripe", inPerson: "2.7% + $0.05", online: "2.9% + $0.30", monthly: "$0" },
-                    { name: "Helcim (interchange-plus)", inPerson: "Interchange + 0.40% + $0.08", online: "Interchange + 0.50% + $0.25", monthly: "$0" },
-                  ].map((row, i) => (
-                    <tr key={i}>
+                    { name: "Stripe", rate: N.stIp[2] },
+                    { name: `Square Premium ($${sq.planPremium}/mo)`, rate: N.sqIp[2] },
+                    { name: "Helcim (interchange-plus)", rate: N.helcimIp[2] },
+                    { name: "Stax (subscription)", rate: N.staxIp250 },
+                  ].map((row) => (
+                    <tr key={row.name}>
                       <td className="py-3 font-medium">{row.name}</td>
-                      <td className="py-3 text-center">{row.inPerson}</td>
-                      <td className="py-3 text-center">{row.online}</td>
-                      <td className="py-3 text-center">{row.monthly}</td>
+                      <td className="py-3 text-center tabular-nums">{pct(row.rate)}</td>
+                      <td className="py-3 text-center tabular-nums">{usd(dollarsAt(row.rate, 2))}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+            <p className="text-muted-foreground mb-4">
+              Stripe offers custom pricing for large volume through its sales team but publishes no threshold. Square offers custom pricing only above $250,000 a year in card sales. Both are worth asking for, with a competing interchange-plus quote in hand.
+            </p>
             <p className="text-sm text-muted-foreground">
-              See how the interchange-plus math plays out in <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline">Helcim vs Stripe</Link> and <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline">Square vs Helcim</Link>.
+              The math for each pair is in <Link href="/comparisons/helcim-vs-stripe" className={link}>Helcim vs Stripe</Link>, <Link href="/comparisons/square-vs-helcim-2026" className={link}>Helcim vs Square</Link> and, for larger merchants who would sign a negotiated contract, <Link href="/comparisons/stripe-vs-worldpay-2026" className={link}>Stripe vs Worldpay</Link>.
             </p>
           </section>
 
           <section id="pos" className="py-10 border-b border-border">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Point of Sale (POS) Systems</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">POS and Hardware</h2>
 
             <div className="space-y-8">
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Square POS</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>+ <strong>FREE</strong> full-featured POS app</li>
-                  <li>+ Works on any device (iOS, Android, iPad)</li>
-                  <li>+ Offline mode - process without internet</li>
-                  <li>+ Inventory management with alerts</li>
-                  <li>+ Employee management & permissions</li>
-                  <li>+ Real-time analytics & reports</li>
-                  <li>+ Multi-location support</li>
-                  <li>+ Industry-specific: Restaurants, Retail, Appointments</li>
+                  <li>+ Free POS app on the Free plan</li>
+                  <li>+ Works on iOS, Android and iPad</li>
+                  <li>+ Offline mode for card payments when the internet drops</li>
+                  <li>+ Inventory, staff permissions and reports</li>
+                  <li>+ Versions for retail, restaurants and appointments</li>
+                  <li>+ {sq.hardware}; no contract</li>
                 </ul>
               </div>
 
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Stripe Terminal</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>- No built-in POS software</li>
-                  <li>+ Hardware readers available</li>
-                  <li>+ SDK to build custom POS</li>
-                  <li>+ Tap to Pay on iPhone (no hardware needed)</li>
-                  <li>- Must integrate with third-party POS</li>
-                  <li>- Not plug-and-play</li>
+                  <li>- No POS software of its own</li>
+                  <li>+ {st.hardware}</li>
+                  <li>+ SDK to build a custom checkout, or use a POS partner</li>
+                  <li>+ Tap to Pay on iPhone, at {Math.round(st.tapToPayAdd * 100)}¢ extra per sale</li>
+                  <li>- Not plug-and-play without a developer or a partner app</li>
                 </ul>
               </div>
             </div>
 
             <p className="mt-6 p-4 bg-muted/50 text-sm">
-              <strong className="text-primary">POS Winner: Square (by far)</strong> - Unless you have developers to build a custom POS, Square is the obvious choice for in-person sales.
+              <strong className="text-primary">POS winner: Square.</strong> Unless you have developers or already run a POS that supports Stripe Terminal, Square is the simpler choice for in-person sales.
             </p>
           </section>
 
@@ -356,12 +324,11 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
 
             <div className="space-y-8">
               {[
-                { title: "Hardware", square: "Free magstripe reader, $49-$799 for advanced. Full ecosystem.", stripe: "$59-$299 readers. Tap to Pay on iPhone (free, no hardware).", winner: "Square (free option)" },
-                { title: "Subscriptions", square: "Basic recurring billing. Limited pricing models.", stripe: "Advanced: usage-based, metered, tiered, smart dunning, revenue recognition.", winner: "Stripe (by landslide)" },
-                { title: "API & Developer", square: "Good REST API. Smaller developer community.", stripe: "Best-in-class. Exceptional docs. 100+ webhooks. CLI.", winner: "Stripe (gold standard)" },
-                { title: "International", square: "8 countries only. No cross-border payments.", stripe: "46 countries. 135+ currencies. Local payment methods.", winner: "Stripe (far superior)" },
-                { title: "Support", square: "24/7 phone + chat. Video tutorials. 4/5 rating.", stripe: "Email + chat only. No phone. Excellent for technical.", winner: "Square (phone available)" },
-                { title: "Fraud Protection", square: "Built-in fraud detection. Limited customization.", stripe: "Radar ML fraud detection. Customizable rules. Risk scoring.", winner: "Stripe (more advanced)" },
+                { title: "Subscriptions", square: "Basic recurring invoices.", stripe: "Usage-based, tiered and per-seat billing, retries for failed payments, customer portal.", winner: "Stripe" },
+                { title: "API and developer tools", square: "Solid REST API, smaller developer community.", stripe: "Extensive documentation, webhooks, CLI and test mode.", winner: "Stripe" },
+                { title: "International", square: "Sells in a handful of countries, little currency support.", stripe: "135+ currencies and many local payment methods.", winner: "Stripe" },
+                { title: "Fraud tools", square: "Built-in fraud detection, few settings.", stripe: "Radar machine-learning screening with custom rules.", winner: "Stripe" },
+                { title: "Getting started", square: "Sign up, plug in a reader, sell the same day.", stripe: "Fast for payment links and hosted checkout; slower for custom builds.", winner: "Square" },
               ].map((feature, i) => (
                 <div key={i} className="border-b border-border pb-6 last:border-b-0">
                   <h3 className="font-semibold text-foreground mb-3">{feature.title}</h3>
@@ -388,37 +355,25 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               <div>
                 <h3 className="font-semibold text-foreground mb-4 text-primary">Choose Square If:</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>- You have a physical storefront</li>
-                  <li>- You run a restaurant or cafe</li>
-                  <li>- You're a service business (salon, spa)</li>
-                  <li>- You need inventory management</li>
-                  <li>- You manage employees</li>
-                  <li>- You need to start immediately</li>
+                  <li>- You have a storefront, a restaurant or a cafe</li>
+                  <li>- Your average sale is above ${N.crossover}</li>
+                  <li>- You need inventory and staff management</li>
+                  <li>- You want to start selling today</li>
                   <li>- You have no developers</li>
-                  <li>- You value 24/7 phone support</li>
-                  <li>- You want free POS + hardware</li>
+                  <li>- You want free next-day deposits</li>
                 </ul>
-                <p className="text-sm text-muted-foreground mt-4">
-                  <strong>Perfect for:</strong> Retail, restaurants, salons, service businesses, brick-and-mortar, startups
-                </p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-foreground mb-4 text-primary">Choose Stripe If:</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>- You're primarily online</li>
-                  <li>- You're a SaaS or subscription business</li>
-                  <li>- You have developers</li>
-                  <li>- You need customization</li>
-                  <li>- You're international or expanding globally</li>
-                  <li>- You're building mobile apps</li>
-                  <li>- You're building a marketplace</li>
-                  <li>- You need detailed analytics</li>
-                  <li>- You're a fast-growing tech startup</li>
+                  <li>- You sell mainly online</li>
+                  <li>- You run a SaaS or subscription business</li>
+                  <li>- You have developers or use a cart that supports Stripe</li>
+                  <li>- You sell internationally</li>
+                  <li>- You are building an app or a marketplace</li>
+                  <li>- Your in-person sales are small tickets under ${N.crossover}</li>
                 </ul>
-                <p className="text-sm text-muted-foreground mt-4">
-                  <strong>Perfect for:</strong> SaaS, ecommerce, tech startups, developers, international businesses, apps
-                </p>
               </div>
             </div>
           </section>
@@ -432,21 +387,18 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
                 <div className="mb-4">
                   <p className="text-sm font-medium text-primary mb-2">Pros</p>
                   <ul className="space-y-1 text-sm text-muted-foreground">
-                    <li>+ Free POS system - fully-functional</li>
-                    <li>+ Free hardware - magstripe reader</li>
-                    <li>+ All-in-one platform</li>
-                    <li>+ No coding required</li>
-                    <li>+ Quick setup - live in minutes</li>
-                    <li>+ 24/7 phone support</li>
-                    <li>+ Offline mode</li>
+                    <li>+ Free POS app on the Free plan</li>
+                    <li>+ Next-business-day deposits at no cost</li>
+                    <li>+ All-in-one hardware and software</li>
+                    <li>+ No coding, no contract</li>
                   </ul>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground mb-2">Cons</p>
                   <ul className="space-y-1 text-sm text-muted-foreground">
-                    <li>- Limited international (8 countries)</li>
-                    <li>- Limited customization</li>
-                    <li>- Basic API compared to Stripe</li>
+                    <li>- {feeLabel(sq.onlineFree)} online on the Free plan</li>
+                    <li>- 15¢ fixed fee costs more on small tickets</li>
+                    <li>- Instant transfers cost {sq.instantPayoutPct}%</li>
                     <li>- Basic subscription features</li>
                   </ul>
                 </div>
@@ -457,22 +409,19 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
                 <div className="mb-4">
                   <p className="text-sm font-medium text-primary mb-2">Pros</p>
                   <ul className="space-y-1 text-sm text-muted-foreground">
-                    <li>+ Best API - industry gold standard</li>
-                    <li>+ Advanced features (Billing, Connect, Radar)</li>
-                    <li>+ Global reach - 46 countries, 135+ currencies</li>
-                    <li>+ Highly customizable</li>
-                    <li>+ Superior documentation</li>
-                    <li>+ Lower ACH fees (0.8%)</li>
-                    <li>+ Volume discounts available</li>
+                    <li>+ Lower in-person rate on sales under ${N.crossover}</li>
+                    <li>+ Full billing, marketplace and fraud tools</li>
+                    <li>+ 135+ currencies</li>
+                    <li>+ ACH capped at ${st.achCap}; instant payouts at {st.instantPayoutPct}%</li>
                   </ul>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground mb-2">Cons</p>
                   <ul className="space-y-1 text-sm text-muted-foreground">
-                    <li>- Requires coding - not plug-and-play</li>
-                    <li>- Setup takes hours to days</li>
-                    <li>- No free POS software</li>
-                    <li>- Limited phone support</li>
+                    <li>- No POS software of its own</li>
+                    <li>- Payouts take 2 business days</li>
+                    <li>- Countering a dispute adds a second ${st.disputeCounter}</li>
+                    <li>- International cards add {st.internationalAddPct}% plus {st.conversionAddPct}% for conversion</li>
                   </ul>
                 </div>
               </div>
@@ -483,19 +432,8 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
             <h2 className="text-2xl font-bold text-foreground mb-6">Frequently Asked Questions</h2>
 
             <div className="space-y-6">
-              {[
-                { q: "Which is cheaper, Square or Stripe?", a: "For in-person: Square is slightly cheaper (2.6% + $0.10 vs 2.7% + $0.05). For online: identical (2.9% + $0.30). For ACH: Stripe crushes (0.8% capped at $5 vs 3.3% + $0.30). Overall difference is minimal except for ACH payments." },
-                { q: "Which is better for restaurants?", a: "Square wins for restaurants. Square for Restaurants offers table management, course firing, menu modifiers, kitchen display system, tableside ordering, split checks, and tip pooling. Stripe would require building or buying third-party restaurant POS." },
-                { q: "Which is better for SaaS/subscription businesses?", a: "Stripe wins hands down. Stripe Billing offers usage-based pricing, metered billing, tiered pricing, per-seat pricing, smart dunning, revenue recognition, and customer portal. Square only offers basic recurring billing." },
-                { q: "Do I need a developer for Stripe?", a: "Not necessarily. You don't need a developer if using Stripe with platforms like Shopify/WooCommerce, Stripe Checkout hosted pages, or simple payment links. Developers are helpful for custom checkout design and required for building marketplaces or complex automation." },
-                { q: "Can I accept international payments with Square?", a: "Very limited. Square only operates in 8 countries with no currency conversion or local payment methods. Stripe supports 46 countries, 135+ currencies, and local payment methods - making it the clear choice for international businesses." },
-                { q: "Can I switch from Square to Stripe (or vice versa)?", a: "Yes, and it's straightforward with no cancellation fees from either processor. Timeline is typically 1-3 weeks including account setup, integration, customer data migration, and testing." },
-                { q: "When does it make sense to leave Stripe or Square for interchange-plus?", a: "Around $80K to $100K in monthly card volume, the markup baked into a 2.6 to 2.9 percent flat rate starts costing more than a monthly subscription or a small interchange-plus markup. At $250K monthly volume with an average retail card mix, an interchange-plus processor with a 0.40 percent markup typically lands 0.30 to 0.60 percent below either flat rate. On $3M annual volume that is roughly $12,000 to $18,000 saved per year. The exception is if you have heavy seasonality or unstable volume, where unpredictable monthly fees can hurt more than the percentage savings help." },
-                { q: "Does Square ever charge a monthly fee?", a: "Not on the free plan. Square POS, Square Dashboard, and basic invoicing are free, and you only pay per transaction. Square does charge monthly subscriptions for vertical-specific software: Square for Restaurants Plus is $69 per location per month, Square for Retail Plus is $89 per location per month, Square Appointments Plus is $29 per location per month. Square Online is free with paid plans starting at $29 per month for custom domain and removed Square branding. Hardware is sold separately. PCI compliance, statement fees, and account closure fees are not charged on the standard plan." },
-                { q: "Why is Stripe's published rate higher than what large enterprises pay?", a: "The 2.9 percent plus 30 cents number is Stripe's standard plan, designed for self-serve signups under $80K monthly volume. Stripe offers custom interchange-plus pricing through its sales team for higher-volume merchants, where the markup is typically negotiated as a small percentage and per-transaction fee on top of true interchange. The published rate has to cover Stripe's full cost (interchange, network fees, processing margin, fraud risk, and software) for any account that signs up without a conversation, so it is intentionally above what a $1M+ monthly volume merchant would actually pay after negotiation." },
-                { q: "Can Square hold my money?", a: "Yes. Square's Seller Agreement allows account holds, rolling reserves, and termination at Square's discretion, particularly for merchants in higher-risk categories or those whose volume patterns trigger automated risk filters. Common triggers include a sudden volume spike, high chargeback ratio, or a merchant category code (firearms, supplements, CBD, ticket resale, certain coaching) that Square treats as elevated risk. Funds are typically held for 30 to 90 days. The defensive move for any business in those verticals is to set up a parallel interchange-plus merchant account on day one, so a Square hold does not freeze your operations." },
-              ].map((faq, i) => (
-                <div key={i} className="border-b border-border pb-6 last:border-b-0">
+              {FAQ.map((faq) => (
+                <div key={faq.q} className="border-b border-border pb-6 last:border-b-0">
                   <h3 className="font-semibold text-foreground mb-2">{faq.q}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
                 </div>
@@ -508,15 +446,15 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
 
             <div className="space-y-4 mb-8">
               <p className="text-foreground">
-                <strong className="text-primary">Square = Physical Business</strong> - Best all-in-one solution for any business with a physical location. Free to start, easy to use, everything included.
+                <strong className="text-primary">Square for a physical business.</strong> The free POS, free next-day deposits and same-day setup outweigh a fee gap of about {usd(dollarsAt(N.sqIp[0], 0) - dollarsAt(N.stIp[0], 0))} per {TIER_LABELS[0]} of sales.
               </p>
               <p className="text-foreground">
-                <strong className="text-primary">Stripe = Online Business</strong> - Best payment infrastructure for online businesses, especially with technical resources and growth plans.
+                <strong className="text-primary">Stripe for an online business.</strong> Same online card rate as Square&apos;s API, far better billing and developer tools, and a lower in-person rate if you also sell small tickets face to face.
               </p>
             </div>
 
             <p className="p-4 bg-muted/50 text-foreground">
-              <strong>The Simple Truth:</strong> Both are excellent. The right choice depends entirely on your business model. Choose Square for physical/hybrid businesses. Choose Stripe for online/tech businesses.
+              <strong>On fees alone</strong>, the two sit within {pct(Math.abs(N.sqIp[0] - N.stIp[0]))} of each other at {TIER_LABELS[0]} and {TIER_LABELS[1]} a month. Above that, compare both against an interchange-plus quote; Helcim at {pct(engineRate("Helcim", "In-person", 1))} in person at {TIER_LABELS[1]} is the one to beat.
             </p>
           </section>
 
@@ -525,8 +463,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               Not Sure Which Processor Is Right for You?
             </h2>
             <p className="text-muted-foreground mb-6">
-              Take our 60-second quiz to get a personalized recommendation based on your
-              business type, technical resources, and specific needs.
+              Take our 60-second quiz to get a recommendation based on your business type, how you take payments and your volume.
             </p>
             <Button
               size="lg"
@@ -541,7 +478,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
           <section className="py-10 border-t border-border">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Related Comparisons</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline text-sm">Square vs Helcim 2026 &rarr;</Link>
+              <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline text-sm">Helcim vs Square 2026 &rarr;</Link>
               <Link href="/comparisons/square-vs-toast-2026" className="text-primary hover:underline text-sm">Square vs Toast 2026 &rarr;</Link>
               <Link href="/comparisons/stripe-vs-adyen-2026" className="text-primary hover:underline text-sm">Stripe vs Adyen 2026 &rarr;</Link>
               <Link href="/comparisons/best-payment-processors-2026" className="text-primary hover:underline text-sm">Best Payment Processors 2026 &rarr;</Link>
@@ -556,7 +493,7 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
 
           <footer className="py-8 border-t border-border">
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Disclosure: This comparison is based on each provider's published pricing and terms, checked on the dates shown. We earn a commission from some providers when you sign up through our links, at no extra cost to you. It never changes our scores or the order of our rankings, and it doesn't change your price. <a href="/how-we-make-money" className="underline">How we make money</a>.
+              Disclosure: This comparison is based on each provider&apos;s published pricing and terms, checked on the dates shown. We earn a commission from some providers when you sign up through our links, at no extra cost to you. It never changes our scores or the order of our rankings, and it doesn&apos;t change your price. <a href="/how-we-make-money" className="underline">How we make money</a>.
             </p>
           </footer>
         </article>
