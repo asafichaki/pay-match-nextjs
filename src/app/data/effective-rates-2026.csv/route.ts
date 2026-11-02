@@ -1,39 +1,46 @@
-import { EFFECTIVE_RATES_2026, VOLUME_TIERS } from "@/lib/data/effective-rates-2026";
+import { DATASET, TIER_VOLUMES, datasetRows } from "@/lib/data/effective-rates-2026";
 
 export const revalidate = 86400;
 
-function csvEscape(value: string): string {
-  if (/[",\n]/.test(value)) {
-    return `"${value.replace(/"/g, '""')}"`;
-  }
-  return value;
+function csvEscape(value: string | number): string {
+  const s = String(value);
+  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }
 
+const tierKey = (v: number) => (v >= 1_000_000 ? `${v / 1_000_000}m` : `${v / 1_000}k`);
+
+/** Same rows as the page, derived from src/lib/data/ranking-2026.ts. */
 export async function GET() {
   const headers = [
     "processor",
     "channel",
     "pricing_model",
-    ...VOLUME_TIERS.map((t) => `rate_${t.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`),
-    "notes",
+    ...TIER_VOLUMES.flatMap((v) => [
+      `effective_rate_pct_${tierKey(v)}`,
+      `monthly_cost_usd_${tierKey(v)}`,
+      `plan_used_${tierKey(v)}`,
+    ]),
+    "pricing_url",
+    "prices_checked",
   ];
 
   const lines = [headers.join(",")];
-  for (const row of EFFECTIVE_RATES_2026) {
+  for (const row of datasetRows()) {
     lines.push(
       [
-        csvEscape(row.processor),
-        csvEscape(row.channel),
-        csvEscape(row.pricingModel),
-        ...row.rates.map(csvEscape),
-        csvEscape(row.notes),
-      ].join(",")
+        row.name,
+        row.channel,
+        row.pricingModel,
+        ...row.cells.flatMap((c) => [c.rate.toFixed(2), c.monthlyFee, c.plan]),
+        row.pricingUrl,
+        DATASET.dateModified,
+      ]
+        .map(csvEscape)
+        .join(","),
     );
   }
 
-  const body = lines.join("\n") + "\n";
-
-  return new Response(body, {
+  return new Response(lines.join("\n") + "\n", {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
       "Content-Disposition": `attachment; filename="mypayadvisor-effective-rates-2026.csv"`,

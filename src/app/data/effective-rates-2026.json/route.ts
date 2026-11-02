@@ -1,26 +1,61 @@
-import { EFFECTIVE_RATES_2026, VOLUME_TIERS } from "@/lib/data/effective-rates-2026";
+import {
+  ASSUMPTIONS,
+  CITATION,
+  DATASET,
+  METHOD_FORMULA,
+  NOT_RANKED,
+  TIER_VOLUMES,
+  allSpreads,
+  datasetRows,
+} from "@/lib/data/effective-rates-2026";
 
 export const revalidate = 86400;
 
+/** Same rows as the page, derived from src/lib/data/ranking-2026.ts. */
 export async function GET() {
   const payload = {
-    name: "2026 Payment Processor Effective Rate Database (US)",
-    url: "https://www.mypayadvisor.com/data/effective-rates-2026",
-    license: "https://creativecommons.org/licenses/by/4.0/",
-    publisher: "myPayAdvisor",
-    temporalCoverage: "2026",
-    methodology: "https://www.mypayadvisor.com/data/effective-rates-2026#methodology",
-    cardMixAssumption: { credit: 0.6, debit: 0.4, rewards: 0.3 },
-    volumeTiers: VOLUME_TIERS,
-    rows: EFFECTIVE_RATES_2026.map((row) => ({
-      processor: row.processor,
-      channel: row.channel,
-      pricingModel: row.pricingModel,
-      effectiveRates: Object.fromEntries(
-        row.rates.map((rate, i) => [VOLUME_TIERS[i], rate])
-      ),
-      notes: row.notes,
+    name: DATASET.name,
+    url: DATASET.url,
+    license: DATASET.license,
+    publisher: DATASET.publisher,
+    citation: CITATION,
+    pricesChecked: DATASET.dateModified,
+    methodology: {
+      url: `${DATASET.url}#methodology`,
+      formula: METHOD_FORMULA,
+      averageSaleUsd: ASSUMPTIONS.averageSale,
+      cardMix: ASSUMPTIONS.cardMix,
+      interchangeEstimatePct: {
+        inPerson: ASSUMPTIONS.interchangeInPerson,
+        online: ASSUMPTIONS.interchangeOnline,
+        appliesTo: "interchange-plus and subscription providers only",
+      },
+      planRule: "for providers with several plans, the cheapest plan at each volume is used",
+    },
+    monthlyVolumesUsd: TIER_VOLUMES,
+    rows: datasetRows().map((r) => ({
+      processor: r.name,
+      channel: r.channel,
+      pricingModel: r.pricingModel,
+      pricingUrl: r.pricingUrl,
+      caveat: r.caveat ?? null,
+      byVolume: r.cells.map((c, i) => ({
+        monthlyVolumeUsd: TIER_VOLUMES[i],
+        effectiveRatePct: c.rate,
+        monthlyCostUsd: c.monthlyFee,
+        planUsed: c.plan,
+      })),
     })),
+    spreads: allSpreads().map((s) => ({
+      channel: s.channel,
+      monthlyVolumeUsd: s.volume,
+      cheapest: s.cheapest,
+      cheapestRatePct: s.cheapestRate,
+      mostExpensive: s.priciest,
+      mostExpensiveRatePct: s.priciestRate,
+      monthlyGapUsd: s.gapMonthly,
+    })),
+    notRanked: NOT_RANKED,
   };
 
   return new Response(JSON.stringify(payload, null, 2), {

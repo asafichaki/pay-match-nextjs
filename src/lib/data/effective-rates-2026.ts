@@ -1,32 +1,145 @@
-export interface EffectiveRateRow {
-  processor: string;
-  channel: "Online" | "In-Person" | "Mixed";
-  rates: [string, string, string, string];
-  pricingModel: string;
-  notes: string;
+/**
+ * The open dataset behind /data/effective-rates-2026 and its .csv and .json
+ * downloads.
+ *
+ * Nothing in here is a number typed by hand. Until November 2026 this file
+ * held a May 2026 table that disagreed with the site's own ranking (it had
+ * Stripe online at 2.97% and Braintree below its own published price). Every
+ * row is now derived from src/lib/data/ranking-2026.ts, the one engine the
+ * best-of ranking uses, so the page, the CSV, the JSON and the ranking cannot
+ * drift apart.
+ */
+import {
+  ASSUMPTIONS,
+  NOT_RANKED,
+  PRICES_CHECKED_ISO,
+  PROVIDER_META,
+  RATES_CHECKED,
+  TIER_LABELS,
+  TIER_VOLUMES,
+  mainTable,
+  quoteAtVolume,
+  type RateChannel,
+} from "./ranking-2026";
+
+const SITE = "https://www.mypayadvisor.com";
+
+export const DATASET = {
+  name: "US Payment Processor Effective Rates by Monthly Volume (2026)",
+  shortName: "myPayAdvisor Effective Rate Dataset",
+  url: `${SITE}/data/effective-rates-2026`,
+  csvUrl: `${SITE}/data/effective-rates-2026.csv`,
+  jsonUrl: `${SITE}/data/effective-rates-2026.json`,
+  license: "https://creativecommons.org/licenses/by/4.0/",
+  licenseName: "CC BY 4.0",
+  publisher: "myPayAdvisor",
+  dateModified: PRICES_CHECKED_ISO,
+  datePublished: "2026-05-15",
+  checkedLabel: RATES_CHECKED,
+} as const;
+
+export const CHANNELS: RateChannel[] = ["In-person", "Online"];
+export { TIER_LABELS, TIER_VOLUMES, ASSUMPTIONS, NOT_RANKED };
+
+export interface DatasetCell {
+  /** Effective rate in percent, rounded to 2 decimals. */
+  rate: number;
+  /** Rate x volume, rounded to whole dollars. */
+  monthlyFee: number;
+  /** The provider's plan that is cheapest at this volume. */
+  plan: string;
 }
 
-export const VOLUME_TIERS = [
-  "$10K monthly",
-  "$50K monthly",
-  "$250K monthly",
-  "$1M monthly",
-] as const;
+export interface DatasetRow {
+  processor: string;
+  name: string;
+  channel: RateChannel;
+  pricingModel: string;
+  pricingUrl: string;
+  caveat?: string;
+  /** One cell per volume in TIER_VOLUMES order. */
+  cells: DatasetCell[];
+}
 
-export const EFFECTIVE_RATES_2026: EffectiveRateRow[] = [
-  { processor: "Stripe", channel: "Online", rates: ["2.97%", "2.95%", "2.92%", "2.88%"], pricingModel: "Flat-rate (negotiable >$80K)", notes: "Best for SaaS, subscriptions, custom checkout." },
-  { processor: "Stripe", channel: "In-Person", rates: ["2.73%", "2.71%", "2.68%", "2.64%"], pricingModel: "Flat-rate", notes: "Terminal hardware $59-249. Thinner POS ecosystem than Square." },
-  { processor: "Square", channel: "In-Person", rates: ["2.65%", "2.63%", "2.60%", "2.56%"], pricingModel: "Flat-rate", notes: "Free hardware on entry tier. Best for retail under $80K monthly." },
-  { processor: "Square", channel: "Online", rates: ["2.95%", "2.93%", "2.90%", "2.86%"], pricingModel: "Flat-rate", notes: "Simpler than Stripe; weaker subscription engine." },
-  { processor: "PayPal", channel: "Online", rates: ["3.07%", "3.05%", "3.01%", "2.97%"], pricingModel: "Flat-rate", notes: "Adds 5-10% checkout conversion via 400M+ accounts. Higher per-tx fixed fee ($0.49)." },
-  { processor: "Helcim", channel: "Online", rates: ["2.51%", "2.43%", "2.37%", "2.31%"], pricingModel: "Interchange-plus", notes: "No monthly fee. Volume discounts auto-apply. Strong above $25K." },
-  { processor: "Helcim", channel: "In-Person", rates: ["2.41%", "2.33%", "2.27%", "2.21%"], pricingModel: "Interchange-plus", notes: "Often beats Stripe + Square above $25K." },
-  { processor: "Stax (Fattmerchant)", channel: "Mixed", rates: ["2.85%", "2.45%", "2.21%", "2.13%"], pricingModel: "Subscription + IC-plus", notes: "$99-199/mo. Win threshold: $80K+ monthly." },
-  { processor: "Payment Depot", channel: "Mixed", rates: ["2.88%", "2.41%", "2.18%", "2.09%"], pricingModel: "Membership + IC-plus", notes: "$79-199/mo. Designed for >$100K monthly." },
-  { processor: "Clover", channel: "In-Person", rates: ["2.61%", "2.58%", "2.55%", "2.50%"], pricingModel: "Flat-rate (tiered)", notes: "Owned by Fiserv. All-in-one POS hardware + software." },
-  { processor: "Authorize.net", channel: "Online", rates: ["2.96%", "2.94%", "2.91%", "2.87%"], pricingModel: "Gateway + processor markup", notes: "$25/mo gateway. Bring your own merchant account." },
-  { processor: "Braintree", channel: "Online", rates: ["2.67%", "2.65%", "2.62%", "2.58%"], pricingModel: "Flat-rate", notes: "PayPal-owned. Strong for marketplaces and recurring billing." },
-  { processor: "Adyen", channel: "Online", rates: ["2.32%", "2.18%", "2.04%", "1.91%"], pricingModel: "Interchange-plus", notes: "Enterprise / global. Min ~$120K monthly. Strong cross-border." },
-  { processor: "Shopify Payments", channel: "Online", rates: ["2.95%", "2.78%", "2.55%", "2.45%"], pricingModel: "Plan-bundled", notes: "Lower tier on Advanced/Plus plans. Only for Shopify stores." },
-  { processor: "Worldpay", channel: "Mixed", rates: ["2.61%", "2.41%", "2.18%", "1.98%"], pricingModel: "Negotiated", notes: "Mid-market / enterprise. Always negotiate." },
-];
+/** Provider order of the best-of table, so the two pages read the same way. */
+function rankedMeta() {
+  const order = mainTable().map((r) => r.processor);
+  return [...PROVIDER_META].sort((a, b) => order.indexOf(a.processor) - order.indexOf(b.processor));
+}
+
+/** Every provider x channel it publishes a price for, at all four volumes. */
+export function datasetRows(): DatasetRow[] {
+  const rows: DatasetRow[] = [];
+  for (const m of rankedMeta()) {
+    for (const channel of CHANNELS) {
+      const cells = TIER_VOLUMES.map((v) => quoteAtVolume(m, channel, v));
+      if (cells.some((c) => c === null)) continue;
+      rows.push({
+        processor: m.processor,
+        name: m.name,
+        channel,
+        pricingModel: m.pricingModel,
+        pricingUrl: m.pricingUrl,
+        caveat: m.caveat,
+        cells: cells as DatasetCell[],
+      });
+    }
+  }
+  return rows;
+}
+
+export interface ChannelSpread {
+  channel: RateChannel;
+  tier: number;
+  volume: number;
+  /** Providers tied at the lowest rate. */
+  cheapest: string[];
+  cheapestRate: number;
+  cheapestFee: number;
+  /** Providers tied at the highest rate. */
+  priciest: string[];
+  priciestRate: number;
+  priciestFee: number;
+  /** priciestFee - cheapestFee, dollars per month. */
+  gapMonthly: number;
+  providers: number;
+}
+
+/** Cheapest and most expensive provider for one channel at one volume. */
+export function spreadAt(channel: RateChannel, tier: number, rows = datasetRows()): ChannelSpread {
+  const inChannel = rows.filter((r) => r.channel === channel);
+  const rates = inChannel.map((r) => r.cells[tier].rate);
+  const lo = Math.min(...rates);
+  const hi = Math.max(...rates);
+  const lowRow = inChannel.find((r) => r.cells[tier].rate === lo)!;
+  const highRow = inChannel.find((r) => r.cells[tier].rate === hi)!;
+  return {
+    channel,
+    tier,
+    volume: TIER_VOLUMES[tier],
+    cheapest: inChannel.filter((r) => r.cells[tier].rate === lo).map((r) => r.name),
+    cheapestRate: lo,
+    cheapestFee: lowRow.cells[tier].monthlyFee,
+    priciest: inChannel.filter((r) => r.cells[tier].rate === hi).map((r) => r.name),
+    priciestRate: hi,
+    priciestFee: highRow.cells[tier].monthlyFee,
+    gapMonthly: highRow.cells[tier].monthlyFee - lowRow.cells[tier].monthlyFee,
+    providers: inChannel.length,
+  };
+}
+
+/** All eight (channel x volume) spreads, in-person first. */
+export function allSpreads(): ChannelSpread[] {
+  const rows = datasetRows();
+  return CHANNELS.flatMap((ch) => TIER_VOLUMES.map((_, t) => spreadAt(ch, t, rows)));
+}
+
+export const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
+export const pct = (n: number) => `${n.toFixed(2)}%`;
+export const joinNames = (names: string[]) =>
+  names.length <= 1 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+
+/** Suggested citation, used on the page and in the JSON download. */
+export const CITATION = `myPayAdvisor. "${DATASET.name}." Prices checked ${RATES_CHECKED}. ${DATASET.url}`;
+
+export const METHOD_FORMULA = "effective rate = percentage + fixed fee / average sale + monthly fee / monthly volume";
