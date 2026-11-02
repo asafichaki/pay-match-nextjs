@@ -170,8 +170,10 @@ const SAMEDAY_OPS = [
 function applyOps(body, ops, label) {
   let out = body;
   for (const op of ops) {
+    // Check `to` first: when `to` contains `from` (an appended sentence), `from`
+    // is still present after applying, and replacing again would duplicate it.
+    if (out.includes(op.to)) continue; // already applied
     const nFrom = out.split(op.from).length - 1;
-    if (out.includes(op.to) && nFrom === 0) continue; // already applied
     if (nFrom !== 1) throw new Error(`${label}: expected the text once, found ${nFrom}: ${op.from.slice(0, 80)}`);
     out = out.replace(op.from, op.to);
   }
@@ -322,7 +324,11 @@ for (const p of plan) {
   if (locked) throw new Error(`${p.key} is locked (citation_lock or locked_until); not touching it`);
 }
 
-const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+// Key order is ignored: Postgres jsonb stores object keys sorted, so a byte compare
+// would report an applied faq_json/sources_json as still pending.
+const canon = (v) => JSON.stringify(v ?? null, (_k, x) =>
+  x && typeof x === "object" && !Array.isArray(x) ? Object.fromEntries(Object.entries(x).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))) : x);
+const same = (a, b) => canon(a) === canon(b);
 const fieldsOf = (p) => Object.keys(p.after).filter((k) => k !== "updated_by");
 // schema_json.dateModified carries the apply date, so it is ignored when asking "already applied?";
 // otherwise a second --apply on a later day would treat the after-state as a fresh before-state.
@@ -347,9 +353,11 @@ if (MODE === "rollback") {
 // 6. Snapshot, previews, diff.
 // ---------------------------------------------------------------------------
 const prev = fs.existsSync(SNAPSHOT) ? JSON.parse(fs.readFileSync(SNAPSHOT, "utf8")) : { rows: {} };
-const snap = { written_at: now, mode: MODE, note: "before-state of every field top5-pages-2026-11-01.mjs touches; --rollback writes these back", rows: {} };
+const snap = { written_at: now, mode: MODE, note: "before-state of every field top5-pages-2026-11-01.mjs touches; --rollback writes these back", rows: { ...(prev.rows || {}) } };
+// Rows already applied drop out of `plan` (nothing left to change), so carry every recorded row over.
 for (const p of plan) {
-  const keep = prev.rows?.[p.key] && isApplied(p);
+  // Never overwrite a recorded before-state: after --apply the live row IS the after-state.
+  const keep = Boolean(prev.rows?.[p.key]);
   const fields = [...fieldsOf(p), ...(p.table === "blog_articles" && p.bumpDate ? ["updated_at"] : []), ...(p.table === "seo_overrides" ? ["updated_by"] : [])];
   snap.rows[p.key] = keep ? prev.rows[p.key] : { table: p.table, query: p.query, before: Object.fromEntries(fields.map((f) => [f, p.row[f] ?? null])) };
 }
