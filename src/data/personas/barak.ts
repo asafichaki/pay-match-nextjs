@@ -7,7 +7,7 @@ export const BARAK_PERSON_ID = "https://www.mypayadvisor.com/about/barak#person"
 export const BARAK_IMAGE = "https://www.mypayadvisor.com/images/barak-monogram.svg";
 
 export const BARAK_BIO_SHORT =
-  "Barak Bachar is a Global Payments Manager with hands-on experience operating payment infrastructure at the $500M+ annual volume level. He works with merchants on pricing structure, acquirer routing, reserve negotiation, and onboarding for complex verticals.";
+  "Barak Bachar is a Global Payments Manager with hands-on experience running payment operations. He works with merchants on pricing structure, acquirer routing, reserve negotiation, and onboarding for complex verticals.";
 
 export const BARAK_AREAS = [
   "Payment processing",

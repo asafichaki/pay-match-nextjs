@@ -43,7 +43,7 @@ const COPY = {
     title: "You're in. Barak is on it.",
     sub: "First email lands in minutes. Shortlist tomorrow with reserve and approval-rate notes.",
     body: [
-      "Barak has spent years managing payment operations at the $500M+ annual volume level. He knows which acquirers stay easy to work with six months after you sign, and which ones quietly tighten the screws.",
+      "Barak has spent years managing payment operations. He knows which acquirers stay easy to work with six months after you sign, and which ones quietly tighten the screws.",
       "If you want a second look at terms you've already been offered, mention it when you reply and he'll go through them.",
     ],
     bookHeadline: "What happens next",

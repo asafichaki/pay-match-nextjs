@@ -20,7 +20,7 @@ const OG_IMAGE = {
 
 export const metadata: Metadata = {
   title: `${BARAK_NAME}, ${BARAK_TITLE}`,
-  description: `${BARAK_NAME}, ${BARAK_TITLE}, reviews payment-processing content on myPayAdvisor. Hands-on payments operator with experience at the $500M+ annual volume level.`,
+  description: `${BARAK_NAME}, ${BARAK_TITLE}, reviews payment-processing content on myPayAdvisor. Hands-on payments operator.`,
   alternates: { canonical: "https://www.mypayadvisor.com/about/barak" },
   robots: { index: true, follow: true },
   openGraph: {
