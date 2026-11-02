@@ -1,0 +1,11 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-with-same-day-deposit-2026",
+  "article": [],
+  "not_fixed": [
+    {"text": "Clover 1.75% Rapid Deposit (table, Clover section, override meta_description)", "reason": "legit: Clover Rapid Deposit is 1.75% per provider-facts.json"},
+    {"text": "$175 at 1.75% payout arithmetic example", "reason": "legit: arithmetic on the Clover fee"},
+    {"text": "Square 1.95% instant/same-day", "reason": "already correct"},
+    {"text": "Helcim: Cards 1 to 2 business days; eligible Faster Deposits next business day free", "reason": "left: quotes Helcim's own funding doc (learn.helcim.com/docs/bank-deposit-timelines-helcim), not the May dataset. Helcim's pricing page says next-business-morning deposits; a source conflict for Assaf, not a stale price"}
+  ]
+}

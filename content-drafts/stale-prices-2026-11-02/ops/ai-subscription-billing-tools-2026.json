@@ -1,0 +1,16 @@
+{
+  "kind": "comparisons",
+  "slug": "ai-subscription-billing-tools-2026",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Stax online fee is 15c and the subscription is $99 to $199+ a month by annual volume",
+      "from": "Stax is for $80K+ MRR at $99/mo + IC + $0.18 online.",
+      "to": "Stax is for $80K+ MRR at $99 to $199+/mo + IC + $0.15 online."
+    }
+  ],
+  "not_fixed": [
+    { "text": "Stripe '+0.5% Billing'", "reason": "Stripe Billing fee is not in provider-facts; not a listed stale figure, left" },
+    { "text": "article body: Stax 18c (3), T+2 (1)", "reason": "below the top-20 cut; AEO block only, body listed for Assaf" }
+  ]
+}

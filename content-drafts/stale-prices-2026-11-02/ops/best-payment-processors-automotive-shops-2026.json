@@ -1,0 +1,15 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-automotive-shops-2026",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Helcim's in-person margin from $50K is 0.35% + 7c and lower above $100K; Stax at $80K+ a month is above $250K a year, so $199+ a month; Square Free in person 2.6% + 15c (provider pages, 2026-10-29)",
+      "from": "with pricing at IC + 0.40% + $0.08 in-person. Stax is a fit for shops above $80K monthly, charging $99/mo + IC + $0.08 in-person. Square serves shops below $25K, with rates of 2.6% + $0.10 in-person.",
+      "to": "with pricing from IC + 0.35% + $0.07 in-person. Stax is a fit for shops above $80K monthly, charging $199+/mo + IC + $0.08 in-person. Square serves shops below $25K, with rates of 2.6% + $0.15 in-person."
+    }
+  ],
+  "not_fixed": [
+    { "text": "article body: Square 10c (4), Stax 18c (2)", "reason": "below the top-20 cut; AEO block only, body listed for Assaf" }
+  ]
+}

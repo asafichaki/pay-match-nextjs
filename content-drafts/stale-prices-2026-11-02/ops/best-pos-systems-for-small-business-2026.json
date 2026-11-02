@@ -1,0 +1,129 @@
+{
+  "kind": "comparisons",
+  "slug": "best-pos-systems-for-small-business-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on the Free plan (squareup.com/us/en/pricing, 2026-10-29)",
+      "from": "transparent flat-rate pricing (2.6% + $0.10 in-person, per",
+      "to": "transparent flat-rate pricing (2.6% + $0.15 in-person on the Free plan, per"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax's fee depends on annual volume; at $80K a month it is the $199+ tier, not $99 (staxpayments.com/pricing)",
+      "from": "and Stax's $99 subscription beats both above $80K.",
+      "to": "and Stax's subscription ($99 to $199+ a month by annual volume) beats both above $80K."
+    },
+    {
+      "field": "body_html",
+      "why": "prices were not all re-checked since May; the date is dropped rather than restated",
+      "from": "We weighted six factors against each provider's public pricing as of May 2026.",
+      "to": "We weighted six factors against each provider's public pricing page."
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on the Free plan",
+      "from": "<td>Square</td><td>2.6% + $0.10 in-person</td>",
+      "to": "<td>Square</td><td>2.6% + $0.15 in-person (Free plan)</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business morning, free; it publishes no instant payout (helcim.com/pricing)",
+      "from": "<td>Month to month</td><td>2 business days</td><td>$25K to $500K monthly</td><td>2-day funding</td>",
+      "to": "<td>Month to month</td><td>Next business morning</td><td>$25K to $500K monthly</td><td>No instant payout option</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99 to $199+ by annual volume, next business day funding, no cancellation fee, contract length not published (staxpayments.com/pricing)",
+      "from": "<td>$99/mo + IC + $0.08 in-person</td><td>Month to month after term</td><td>2 business days</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.08 in-person</td><td>No cancellation fee; length not published</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 15c in person on Free, online 3.3% + 30c on Free and 2.9% + 30c on paid plans (squareup.com/us/en/pricing)",
+      "from": "Square charges 2.6% + $0.10 per in-person card transaction, 2.9% + $0.30 for online checkout,",
+      "to": "Square charges 2.6% + $0.15 per in-person card transaction on its Free plan, 3.3% + $0.30 for online checkout on Free (2.9% + $0.30 on paid plans),"
+    },
+    {
+      "field": "body_html",
+      "why": "Square instant and same-day transfers cost 1.95% (help article 3807)",
+      "from": "or same-day for a 1.75% instant-deposit fee.",
+      "to": "or same-day for a 1.95% instant-deposit fee."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim publishes five volume bands up to $5M a month (helcim.com/pricing)",
+      "from": "Helcim publishes nine bands from $0 to over $1M monthly, with the top tier dropping the in-person markup to 0.15%.",
+      "to": "Helcim publishes five bands from under $50K to $5M monthly, with the top tier dropping the in-person markup to 0.15%."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99 up to $150,000 a year, $139 to $250,000, $199+ above; online fee 15c (staxpayments.com/pricing)",
+      "from": "Stax charges $99 per month for businesses under $250K annual volume, plus IC + $0.08 per in-person transaction and IC + $0.18 online, per the <a href=\"https://staxpayments.com/pricing/\">Stax pricing page</a>. Above $250K annual, plans scale to $199 monthly.",
+      "to": "Stax charges $99 per month up to $150,000 in annual volume and $139 from $150,000 to $250,000, plus IC + $0.08 per in-person transaction and IC + $0.15 online, per the <a href=\"https://staxpayments.com/pricing/\">Stax pricing page</a>. Above $250K annual, plans start at $199 monthly."
+    },
+    {
+      "field": "body_html",
+      "why": "at $80K a month Stax is on its $199+ tier, not a flat $99",
+      "from": "The flat $99 plus interchange beats Square's 2.6% above roughly $80K monthly.",
+      "to": "The subscription plus interchange beats Square's 2.6% above roughly $80K monthly."
+    },
+    {
+      "field": "body_html",
+      "why": "Example redone with Square's 15c fee (Free plan) and Stax's $199 tier at $150K a month; the article's own 1.83% Stax assumption is kept",
+      "from": "A $150K monthly retailer with $80 average tickets pays about $4,050 in Square fees vs. roughly $2,850 on Stax ($99 fee plus around 1.83% effective interchange and markup). That is a $1,200 monthly difference.",
+      "to": "A $150K monthly retailer with $80 average tickets pays about $4,181 in Square fees on the Free plan vs. roughly $2,944 on Stax ($199 fee at that volume plus around 1.83% effective interchange and markup). That is about a $1,237 monthly difference.",
+      "derived": [
+        {"value": "4181", "calc": "150000*0.026+150000/80*0.15"},
+        {"value": "2944", "calc": "199+150000*0.0183"},
+        {"value": "1237", "calc": "(150000*0.026+150000/80*0.15)-(199+150000*0.0183)"}
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c; Zettle is now PayPal POS (paypal.com/us/business/paypal-business-fees)",
+      "from": "2.59% + $0.49 for advanced credit card processing, and 2.29% + $0.09 for Zettle in-person card transactions,",
+      "to": "2.89% + $0.29 for Advanced Credit and Debit card processing, and 2.29% + $0.09 for PayPal POS in-person card transactions,"
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on the Free plan",
+      "from": "transparent 2.6% + $0.10 in-person pricing, and same-day setup",
+      "to": "transparent 2.6% + $0.15 in-person pricing, and same-day setup"
+    },
+    {
+      "field": "faq_json",
+      "why": "Square in person is 2.6% + 15c on the Free plan",
+      "from": "the effective in-person rate sits at 2.6% plus $0.10 per transaction.",
+      "to": "the in-person rate on the Free plan is 2.6% plus $0.15 per transaction."
+    },
+    {
+      "field": "key_findings",
+      "why": "Square in person is 2.6% + 15c on the Free plan",
+      "from": "free software, 2.6% + $0.10 in-person, and same-day setup.",
+      "to": "free software, 2.6% + $0.15 in-person on the Free plan, and same-day setup."
+    },
+    {
+      "field": "key_findings",
+      "why": "Stax's subscription runs $99 to $199+ by annual volume; $80K+ a month is the $199+ tier",
+      "from": "Stax $99 monthly subscription wins for $80K+ volume with high-average tickets.",
+      "to": "Stax's subscription ($99 to $199+ a month by annual volume) wins for $80K+ volume with high-average tickets."
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square 15c in person; Helcim deposits next business morning",
+      "from": "with 2.6% + $0.10 in-person pricing and next day settlement. For $25K to $500K monthly, Helcim offers IC + 0.40% + $0.08 in-person. Helcim has month to month contracts and 2 business day funding.",
+      "to": "with 2.6% + $0.15 in-person pricing and next day settlement. For $25K to $500K monthly, Helcim offers IC + 0.40% + $0.08 in-person. Helcim has month to month contracts and next-business-morning funding."
+    }
+  ],
+  "not_fixed": [
+    {"text": "Clover $14.95 to $54.95/mo plans (table and Clover section)", "reason": "stale but outside this sweep's list: Clover.com now shows Starter with no software fee, Essentials $29.95, Retail Growth $84.95 (provider-facts.json). Flag for a Clover pass"},
+    {"text": "Clover 2.3% to 2.6% + $0.10; keyed 3.5% + $0.10", "reason": "legit: Clover rates"},
+    {"text": "Payment Depot $79 to $199/mo", "reason": "unverified: Payment Depot's page no longer publishes a membership price; not in this sweep's list"},
+    {"text": "Square vs Helcim example: $100K retailer ~$2,700 Square vs ~$2,300 Helcim", "reason": "left: still roughly right for Square paid plans at a $100 ticket; Helcim side is the article's own assumption"},
+    {"text": "FAQ: Square almost always cheapest under $20K", "reason": "conclusion conflicts with the engine (Helcim 2.11% vs Square 2.90% at $10K) but is not a stale price; flag for a content pass"},
+    {"text": "Stripe 2 business days", "reason": "legit"}
+  ]
+}

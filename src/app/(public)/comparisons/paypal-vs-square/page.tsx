@@ -6,30 +6,39 @@ import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { CompareMore } from "@/components/comparisons/CompareMore";
+import { FAQ, META_DESCRIPTION as COMPUTED_DESCRIPTION } from "./data";
+
+// Literal, so the SEO manifest and llms.txt can read it statically. It must equal the
+// string data.ts computes from ranking-2026.ts; the build fails if a price moves.
+const TITLE = "PayPal vs Square 2026: Fees Compared In Person and Online";
+const META_DESCRIPTION = "PayPal POS 2.29% + 9¢ vs Square 2.6% + 15¢ in person; Square 2.9% + 30¢ vs PayPal Checkout 3.49% + 49¢ online. Monthly cost at $10K to $250K.";
+if (META_DESCRIPTION !== COMPUTED_DESCRIPTION) {
+  throw new Error(`paypal-vs-square: meta description literal is out of date with data.ts / ranking-2026.ts. Expected: ${COMPUTED_DESCRIPTION}`);
+}
 
 const baseMetadata: Metadata = {
-  title: { absolute: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate" },
-  description: "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
-  keywords: ["Square vs PayPal", "PayPal vs Square", "payment processor comparison", "small business payments", "POS comparison"],
+  title: { absolute: TITLE },
+  description: META_DESCRIPTION,
+  keywords: ["Square vs PayPal", "PayPal vs Square", "PayPal vs Square fees", "payment processor comparison", "POS comparison"],
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/paypal-vs-square",
   },
   openGraph: {
-    title: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate",
-    description: "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
+    title: TITLE,
+    description: META_DESCRIPTION,
     url: "https://www.mypayadvisor.com/comparisons/paypal-vs-square",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PayPal vs Square 2026: 3.07% vs 2.65% Effective Rate",
-    description: "PayPal 2.99% + $0.49 online vs Square 2.6% + $0.10 in-person. PayPal POS gets some of the lowest flat rates, Square owns retail. Which wins by channel and volume.",
+    title: TITLE,
+    description: META_DESCRIPTION,
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   other: {
     "article:published_time": "2026-03-20T00:00:00.000Z",
-    "article:modified_time": "2026-08-25T00:00:00.000Z",
+    "article:modified_time": "2026-11-02T00:00:00.000Z",
   },
 };
 
@@ -42,43 +51,19 @@ export async function generateMetadata(): Promise<Metadata> {
 const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Which is cheaper: Square or PayPal?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Square is cheaper for online transactions (2.9% + $0.30 vs PayPal's 2.99% + $0.49). PayPal's Zettle is cheaper for in-person (2.29% + $0.09 vs Square's 2.6% + $0.10).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Which has better hardware: Square or PayPal?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Square has significantly better hardware with a complete range from $49 mobile readers to $799 Square Register. PayPal's Zettle has only two main devices.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is Square or PayPal better for restaurants?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Square is significantly better for restaurants with industry-specific features like table management, course timing, kitchen display integration, and delivery platform connections.",
-      },
-    },
-  ],
+  // Same list as the visible FAQ (data.ts), so the two cannot disagree.
+  mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
 
 export default function PayPalVsSquarePage() {
   return (
     <>
       <ComparisonSchema
-        title="Square vs PayPal 2026: Complete Comparison for Small Businesses"
-        description="Complete comparison of Square vs PayPal for 2026. Compare fees, features, hardware, and find which payment processor is best for your small business needs."
+        title={TITLE}
+        description={META_DESCRIPTION}
         slug="paypal-vs-square"
         datePublished="2026-03-20"
-        dateModified="2026-08-25"
+        dateModified="2026-11-02"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

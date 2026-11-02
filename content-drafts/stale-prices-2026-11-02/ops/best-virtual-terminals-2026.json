@@ -1,0 +1,15 @@
+{
+  "kind": "comparisons",
+  "slug": "best-virtual-terminals-2026",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Stax keyed fee is 15c and the subscription is $99 to $199+ a month by annual volume (staxpayments.com/pricing, 2026-10-29)",
+      "from": "Stax suits $80K+ monthly, charging Interchange-plus $0.18 and a $99 monthly fee.",
+      "to": "Stax suits $80K+ monthly, charging interchange plus $0.15 and a $99 to $199+ monthly fee."
+    }
+  ],
+  "not_fixed": [
+    { "text": "article body: Stax 18c (2 hits)", "reason": "below the top-20 cut; AEO block only, body listed for Assaf" }
+  ]
+}

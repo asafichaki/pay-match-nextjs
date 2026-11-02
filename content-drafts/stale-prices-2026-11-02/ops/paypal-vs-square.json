@@ -1,0 +1,12 @@
+{
+  "kind": "comparisons",
+  "slug": "paypal-vs-square",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "The answer block quoted unsourced country and volume counts and no price; replaced with the prices the page now leads with (provider-facts.json, engine effective rates on a $50 sale)",
+      "from": "Square is better for small businesses needing in-person payment processing, POS hardware, or running a retail store or restaurant. It operates in 8 countries with $200B+ annual volume. PayPal is better for ecommerce and international businesses, known for online payments, operating in 200+ countries with $1.4T+ annual volume.",
+      "to": "PayPal costs less in person: PayPal POS charges 2.29% + 9¢ and Square Free 2.6% + 15¢, or 2.47% against 2.90% on a $50 sale. Online, Square at 2.9% + 30¢ on paid plans or its API beats the PayPal Checkout button at 3.49% + 49¢. Choose Square for POS depth, PayPal if your buyers pay with PayPal."
+    }
+  ]
+}

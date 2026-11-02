@@ -1,0 +1,16 @@
+{
+  "kind": "comparisons",
+  "slug": "best-low-fee-payment-processors-2026",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square Free in person is 2.6% + 15c (squareup.com pricing, 2026-10-29)",
+      "from": "Square fits under $20K retail at 2.6% + $0.10 in-person.",
+      "to": "Square fits under $20K retail at 2.6% + $0.15 in-person."
+    }
+  ],
+  "not_fixed": [
+    { "text": "AEO: Helcim IC + 0.40% + $0.08 for $25K to $250K", "reason": "Helcim's base tier; drops above $50K. Starting rate, left" },
+    { "text": "article body: Square 10c (4), Stax 18c (2), T+2 (5), 1.75% (1)", "reason": "below the top-20 cut; AEO block only, body listed for Assaf" }
+  ]
+}

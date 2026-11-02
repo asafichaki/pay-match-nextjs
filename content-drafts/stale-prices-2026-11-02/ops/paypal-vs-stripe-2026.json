@@ -1,0 +1,198 @@
+{
+  "kind": "comparisons",
+  "slug": "paypal-vs-stripe-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c (paypal.com business fees, 2026-10-29), which is slightly below Stripe at every ticket; engine: 3.47% vs 3.50% online at a $50 sale",
+      "from": "PayPal's Advanced Credit and Debit rate of 2.59 percent plus $0.49 closes part of the gap but loses on tickets under $100 because of the higher per-transaction fee.",
+      "to": "PayPal's Advanced Credit and Debit rate of 2.89 percent plus $0.29, which PayPal approves case by case, is a hair below Stripe at every ticket size: 3.47 percent against 3.50 percent on a $50 sale."
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c",
+      "from": "<td>3.49% + $0.49 standard wallet; 2.59% + $0.49 advanced card; 2.29% + $0.09 in-person</td>",
+      "to": "<td>3.49% + $0.49 standard wallet; 2.89% + $0.29 advanced card; 2.29% + $0.09 in-person</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim deposits next business morning, not in 2 business days (helcim.com/pricing, 2026-10-29)",
+      "from": "<td>None</td><td>2 business days</td><td>$50K+ monthly with mixed card types</td>",
+      "to": "<td>None</td><td>Next business morning</td><td>$50K+ monthly with mixed card types</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99 to $199+/mo by annual volume, 15c online, next business day funding, contract length not published (staxpayments.com/pricing, 2026-10-29)",
+      "from": "<td>$99/mo + IC + $0.18 online; IC + $0.08 in-person</td><td>Month to month</td><td>1 to 2 business days</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.15 online; IC + $0.08 in-person</td><td>No cancellation fee; length not published</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on Square Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or the API",
+      "from": "<td>2.6% + $0.10 in-person; 2.9% + $0.30 online; 3.5% + $0.15 keyed</td>",
+      "to": "<td>2.6% + $0.15 in-person; 2.9% + $0.30 online (3.3% + $0.30 on Free); 3.5% + $0.15 keyed</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal side of the $250K example recomputed with Advanced Credit and Debit at 2.89% + 29c (wallet half unchanged at 3.49% + 49c, 2,941 transactions)",
+      "from": "spends about $9,041. The annual gap is near $10,900 before any conversion lift from the PayPal wallet.",
+      "to": "spends about $9,122. The annual gap is near $11,900 before any conversion lift from the PayPal wallet.",
+      "derived": [
+        { "value": "9122", "calc": "125000*0.0349+1470.5*0.49+125000*0.0289+1470.5*0.29" },
+        { "value": "11900", "calc": "(9121.99-8132.3)*12" }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Stripe disputes: $15, plus $15 to counter, the counter fee refunded if you win (stripe.com/pricing, 2026-10-29)",
+      "from": "Chargebacks cost $15 each, refunded if you win the dispute.",
+      "to": "Disputes cost $15 each, plus another $15 if you counter one, refunded if you win."
+    },
+    {
+      "field": "body_html",
+      "why": "Stripe Instant Payouts cost 1.5% (50c minimum), not 1%",
+      "from": "Faster payouts cost 1 percent extra on Stripe Instant Payouts.",
+      "to": "Instant Payouts cost 1.5 percent of the payout, with a 50 cent minimum."
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal fee page: Checkout 3.49% + 49c, Pay Later 4.99% + 49c, Advanced Credit and Debit 2.89% + 29c, PayPal POS (no longer called Zettle) 2.29% + 9c",
+      "from": "3.49 percent plus $0.49 for standard PayPal Checkout, Venmo, and Pay Later; 2.59 percent plus $0.49 for Advanced Credit and Debit Card Payments; and 2.29 percent plus $0.09 for PayPal Zettle in-person sales.",
+      "to": "3.49 percent plus $0.49 for standard PayPal Checkout and Venmo (Pay Later is 4.99 percent plus $0.49); 2.89 percent plus $0.29 for Advanced Credit and Debit Card Payments; and 2.29 percent plus $0.09 for PayPal POS in-person sales."
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89%",
+      "from": "The Advanced Credit and Debit rate of 2.59 percent applies",
+      "to": "The Advanced Credit and Debit rate of 2.89 percent applies"
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal blended example recomputed with 2.89% + 29c on the card half",
+      "from": "produces an effective rate near 3.62 percent including the $0.49 per-transaction fee, or about $9,041 a month. That is $909 a month higher than Stripe's published rate at the same volume, roughly $10,900 a year.",
+      "to": "produces an effective rate near 3.65 percent including the per-transaction fees, or about $9,122 a month. That is $990 a month higher than Stripe's published rate at the same volume, roughly $11,900 a year.",
+      "derived": [
+        { "value": "3.65", "calc": "9121.99/250000*100" },
+        { "value": "9122", "calc": "125000*0.0349+1470.5*0.49+125000*0.0289+1470.5*0.29" },
+        { "value": "990", "calc": "9121.99-8132.3" },
+        { "value": "11900", "calc": "(9121.99-8132.3)*12" }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "At $250K a month Helcim's online margin is 0.35% + 20c (the $100K to $500K tier), not the 0.50% + 25c base; recomputed on the page's own 1.80% interchange and $85 ticket",
+      "from": "the effective Helcim rate lands near 2.60 percent, or about $6,485 a month. That is roughly 0.65 percentage points below Stripe's published flat rate at the same volume.",
+      "to": "Helcim's online margin at that volume is 0.35 percent plus $0.20, so the effective rate lands near 2.39 percent, or about $5,963 a month. That is roughly 0.86 percentage points below Stripe's 3.25 percent at the same volume.",
+      "derived": [
+        { "value": "2.39", "calc": "1.80+0.35+0.20/85*100" },
+        { "value": "5963", "calc": "250000*(1.80+0.35+0.20/85*100)/100" },
+        { "value": "0.86", "calc": "3.25-2.39" },
+        { "value": "3.25", "calc": "(250000*0.029+2941*0.30)/250000*100" }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: subscription $99 to $199+ by annual volume, 15c online",
+      "from": "Merchants pay $99 a month and process at interchange plus $0.18 per online transaction or $0.08 per in-person transaction. There is no percentage markup above interchange. Plans scale up at higher volume tiers.",
+      "to": "Merchants pay $99 a month up to $150,000 a year in volume, $139 up to $250,000 a year and $199 or more above that, and process at interchange plus $0.15 per online transaction or $0.08 per in-person transaction. There is no percentage markup above interchange."
+    },
+    {
+      "field": "body_html",
+      "why": "Stax at $250K a month ($3M a year) is on the $199 tier with a 15c online fee; recomputed on the page's own 1.80% interchange and 2,941 transactions",
+      "from": "the Stax effective cost works out to about $5,422 a month including the membership and per-transaction fees, or 2.17 percent all-in. That beats Stripe by roughly $2,700 a month at that volume tier.",
+      "to": "the Stax effective cost works out to about $5,140 a month including the $199 membership and per-transaction fees, or 2.06 percent all-in. That beats Stripe by roughly $3,000 a month at that volume tier.",
+      "derived": [
+        { "value": "5140", "calc": "250000*0.018+2941*0.15+199" },
+        { "value": "2.06", "calc": "5140.15/250000*100" },
+        { "value": "3000", "calc": "8132.3-5140.15" }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "the $99 tier is only the entry tier; the membership rises with annual volume",
+      "from": "Below $50K monthly volume the $99 membership eats the savings.",
+      "to": "Below $50K monthly volume the membership eats the savings."
+    },
+    {
+      "field": "body_html",
+      "why": "Square in person is 2.6% + 15c on Square Free; online 2.9% + 30c on paid plans or the API, 3.3% + 30c on Free",
+      "from": "of 2.6 percent plus $0.10 for in-person card-present, 2.9 percent plus $0.30 for online, and 3.5 percent plus $0.15",
+      "to": "of 2.6 percent plus $0.15 for in-person card-present on the Free plan, 2.9 percent plus $0.30 for online on paid plans or the API (3.3 percent plus $0.30 on Free), and 3.5 percent plus $0.15"
+    },
+    {
+      "field": "body_html",
+      "why": "with the 15c fee Square is not the cheapest in person here (PayPal POS 2.29% + 9c and Stripe 2.7% + 5c cost less on a $20 ticket); example recomputed",
+      "from": "Square is the cheapest in-person option among the five providers here. At $100K monthly card-present volume on a $20 retail ticket, Square's effective rate comes to 3.10 percent, including the per-transaction $0.10, or about $3,100 a month. PayPal Zettle at 2.29 percent plus $0.09 prices lower on percentage but has thinner POS hardware and reporting depth.",
+      "to": "At $100K monthly card-present volume on a $20 retail ticket, Square's effective rate comes to 3.35 percent, including the per-transaction $0.15, or about $3,350 a month. PayPal POS at 2.29 percent plus $0.09 costs less on both parts of the fee but has thinner POS hardware and reporting depth.",
+      "derived": [
+        { "value": "3.35", "calc": "2.6+0.15/20*100" },
+        { "value": "3350", "calc": "100000*(2.6+0.15/20*100)/100" }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "at 2.89% + 29c PayPal Advanced is slightly cheaper than Stripe at every ticket; the gap comes from wallet orders",
+      "from": "The gap holds even at PayPal's Advanced Credit and Debit rate because the $0.49 per-transaction fee outweighs the percentage discount on tickets under $100.",
+      "to": "On card payments alone, PayPal's Advanced Credit and Debit rate, if PayPal approves you for it, is a hair below Stripe: 3.47 percent against 3.50 percent on a $50 sale. Stripe's lead comes from the orders paid through the PayPal wallet at 3.49 percent plus $0.49."
+    },
+    {
+      "field": "faq_json",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c, slightly cheaper than Stripe at every ticket (engine: 3.47% vs 3.50% at $50)",
+      "from": "PayPal's Advanced Credit and Debit rate of 2.59 percent plus $0.49 beats Stripe on the percentage component, but the higher per-transaction fee makes Stripe cheaper on tickets below roughly $100.",
+      "to": "PayPal's Advanced Credit and Debit rate of 2.89 percent plus $0.29, if PayPal approves you for it, is slightly cheaper than Stripe at every ticket size: 3.47 percent against 3.50 percent on a $50 sale."
+    },
+    {
+      "field": "faq_json",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c; effective rates and the blended range recomputed",
+      "from": "rate is 2.59 percent plus $0.49 per transaction for card-on-page checkout. The effective rate depends on average ticket. At a $50 ticket, the $0.49 adds 0.98 percent, producing an effective rate of 3.57 percent. At a $200 ticket, the $0.49 adds 0.245 percent, producing 2.835 percent. The blended rate for a typical DTC store with half wallet and half advanced card sits between 3.4 and 3.7 percent before card-brand assessments.",
+      "to": "rate is 2.89 percent plus $0.29 per transaction for card-on-page checkout. The effective rate depends on average ticket. At a $50 ticket, the $0.29 adds 0.58 percent, producing an effective rate of 3.47 percent. At a $200 ticket, the $0.29 adds 0.145 percent, producing 3.035 percent. The blended rate for a DTC store with half wallet and half advanced card runs from about 3.39 percent on $200 tickets to 3.97 percent on $50 tickets before card-brand assessments.",
+      "derived": [
+        { "value": "0.58", "calc": "0.29/50*100" },
+        { "value": "0.145", "calc": "0.29/200*100" },
+        { "value": "3.035", "calc": "2.89+0.29/200*100" },
+        { "value": "3.39", "calc": "(3.49+0.49/200*100+2.89+0.29/200*100)/2" },
+        { "value": "3.97", "calc": "(3.49+0.49/50*100+2.89+0.29/50*100)/2" }
+      ]
+    },
+    {
+      "field": "faq_json",
+      "why": "Stax subscription is $99 to $199+ a month by annual volume",
+      "from": "Stax requires a $99 monthly subscription, so it breaks even closer to $80K.",
+      "to": "Stax charges a monthly subscription of $99 to $199 or more, so it breaks even closer to $80K."
+    },
+    {
+      "field": "faq_json",
+      "why": "Stripe: $15 dispute plus $15 to counter, the counter fee refunded if you win; PayPal $20 chargeback (refund-on-win not on PayPal's fee page)",
+      "from": "Stripe charges $15 per chargeback per its Services Agreement, refunded if you win the dispute. PayPal charges $20 per chargeback with the same refund-on-win policy.",
+      "to": "Stripe charges $15 per dispute, plus another $15 if you counter it manually, and refunds the counter fee if you win. PayPal charges $20 per chargeback."
+    },
+    {
+      "field": "key_findings",
+      "why": "PayPal side of the $250K example recomputed with 2.89% + 29c",
+      "from": "Stripe is cheaper than PayPal by about $909 a month at $250K volume",
+      "to": "Stripe is cheaper than PayPal by about $990 a month at $250K volume",
+      "derived": [{ "value": "990", "calc": "9121.99-8132.3" }]
+    },
+    {
+      "field": "key_findings",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c, slightly cheaper than Stripe at every ticket",
+      "from": "PayPal's Advanced Credit and Debit rate is 2.59 percent plus $0.49, only cheaper than Stripe on tickets above roughly $100.",
+      "to": "PayPal's Advanced Credit and Debit rate is 2.89 percent plus $0.29, slightly cheaper than Stripe at every ticket size if PayPal approves you for it."
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c and needs PayPal's approval",
+      "from": "Its advanced card processing is 2.59% + $0.49, and in-person transactions are 2.29% + $0.09.",
+      "to": "Its advanced card processing, which needs PayPal's approval, is 2.89% + $0.29, a hair below Stripe, and in-person transactions are 2.29% + $0.09."
+    }
+  ],
+  "not_fixed": [
+    { "text": "Stripe 2 business days / T plus 2", "reason": "legit" },
+    { "text": "PayPal settlement '1 business day' / 'can pay out same day'", "reason": "PayPal publishes free standard withdrawal, no timing; not a listed stale figure, left" },
+    { "text": "'Stax also charges separate fees for its virtual terminal and gateway'", "reason": "UNVERIFIED (not on Stax's pricing page per provider-facts); left, flagged" },
+    { "text": "Venmo at 3.49% + 49c", "reason": "PayPal's fee page lists Checkout at 3.49% + 49c; Venmo rate not separately confirmed in provider-facts; left" },
+    { "text": "'roughly 60 cents lower per $100 in revenue'", "reason": "0.59 percentage points on the percentage part; not a stale price, left" }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "comparisons",
+  "slug": "stripe-vs-worldpay-2026",
+  "article": [],
+  "not_fixed": [
+    {"text": "Stripe T+2 (table, Stripe section)", "reason": "legit: Stripe pays out in 2 business days"},
+    {"text": "T+2 is the U.S. baseline (method)", "reason": "legit: generic statement"},
+    {"text": "Worldpay T+1 to T+2", "reason": "Worldpay publishes no price list or terms; not a stale figure from the May data"},
+    {"text": "Helcim and Stax rows", "reason": "already corrected by top5-pages-2026-11-01.mjs (next business morning, $99 to $199+, 15c, next business day)"}
+  ]
+}

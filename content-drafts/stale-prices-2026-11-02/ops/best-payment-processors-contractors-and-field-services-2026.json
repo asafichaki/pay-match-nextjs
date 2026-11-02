@@ -1,0 +1,214 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-contractors-and-field-services-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing); at $50K+ a month the fee is $199",
+      "from": "Stax's $99 subscription model saves a little more.",
+      "to": "Stax's subscription model ($199 a month at that volume) saves a little more."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: $50K-$100K tier is IC + 0.35% + 7c in person; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing)",
+      "from": "<td>IC + 0.40% + $0.08 in-person</td><td>None</td><td>2 days</td>",
+      "to": "<td>IC + 0.40% + $0.08 in-person</td><td>None</td><td>Next business morning</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "<td>$99/mo + IC + $0.08 in-person</td><td>None</td><td>2 days</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.08 in-person</td><td>None</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person on Free; online and invoices 3.3% + 30c on Free, 2.9% + 30c on paid plans; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "<td>2.6% + $0.10 in-person, 2.9% + $0.30 online</td>",
+      "to": "<td>2.6% + $0.15 in-person, 2.9% + $0.30 online on paid plans (3.3% + $0.30 on Free)</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: $50K-$100K tier is IC + 0.35% + 7c in person; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing)",
+      "from": "optional ACH at $0.50 flat per transaction.",
+      "to": "optional ACH at 0.5 percent plus $0.25, capped at $6."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: $50K-$100K tier is IC + 0.35% + 7c in person; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing); effective rate on the page's own 1.65% interchange and $700 ticket",
+      "from": "in-person blended cost lands around 2.05 to 2.15 percent.",
+      "to": "in-person blended cost lands around 2.01 percent on a 1.65 percent average interchange, at Helcim's published 0.35 percent plus $0.07 for that volume.",
+      "derived": [
+        {
+          "value": "2.01",
+          "calc": "1.65+0.35+0.07/700*100"
+        },
+        {
+          "value": "1.65",
+          "calc": "1.65"
+        },
+        {
+          "value": "700",
+          "calc": "700"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Worked example redone: Square 2.6% + 15c; Helcim at $80K is in its $50K-$100K tier (IC + 0.35% + 7c). Square: 2.6% + 15c in person on Free; online and invoices 3.3% + 30c on Free, 2.9% + 30c on paid plans; instant 1.95% (squareup.com/us/en/pricing, help 3807); Helcim: $50K-$100K tier is IC + 0.35% + 7c in person; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing)",
+      "from": "pays roughly $2,090 per month on Square (2.6% + $0.10) versus roughly $1,660 on Helcim (IC + 0.40% + $0.08 on a 1.65% average Visa CPS Retail interchange). The $430 monthly delta is $5,160 per year,",
+      "to": "pays roughly $2,097 per month on Square (2.6% + $0.15) versus roughly $1,608 on Helcim (IC + 0.35% + $0.07 on a 1.65% average Visa CPS Retail interchange). The $489 monthly delta is $5,868 per year,",
+      "derived": [
+        {
+          "value": "2097",
+          "calc": "80000*0.026+80000/700*0.15"
+        },
+        {
+          "value": "1608",
+          "calc": "80000*(0.0165+0.0035)+80000/700*0.07"
+        },
+        {
+          "value": "489",
+          "calc": "2097-1608"
+        },
+        {
+          "value": "5868",
+          "calc": "489*12"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "Stax charges $99 per month for accounts under $250K annual volume, then adds interchange plus $0.08 in person and $0.18 online",
+      "to": "Stax charges $99 per month up to $150,000 a year in volume, $139 from $150,000 to $250,000 and $199 or more above that, then adds interchange plus $0.08 in person and $0.15 online"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "because of the $0.18 transaction fee",
+      "to": "because of the $0.15 transaction fee"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing); at $30K a month ($360K a year) the fee is $199",
+      "from": "where the $99 fee is dead weight in slow months.",
+      "to": "where the $99 to $199 monthly fee is dead weight in slow months."
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person on Free; online and invoices 3.3% + 30c on Free, 2.9% + 30c on paid plans; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "Square charges 2.6 percent plus $0.10 in person, 2.9 percent plus $0.30 online via invoice,",
+      "to": "Square charges 2.6 percent plus $0.15 in person on its Free plan, 3.3 percent plus $0.30 online via invoice on Free (2.9 percent plus $0.30 on its paid plans),"
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person on Free; online and invoices 3.3% + 30c on Free, 2.9% + 30c on paid plans; instant 1.95% (squareup.com/us/en/pricing, help 3807); effective rates redone with 15c: 2.6 + 0.15/700 and 2.6 + 0.15/200",
+      "from": "lands closer to 2.74 percent because the $0.10 per-transaction fee weighs more.",
+      "to": "lands closer to 2.68 percent because the $0.15 per-transaction fee weighs more.",
+      "derived": [
+        {
+          "value": "2.68",
+          "calc": "2.6+0.15/200*100"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Square: 2.6% + 15c in person on Free; online and invoices 3.3% + 30c on Free, 2.9% + 30c on paid plans; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "instant deposits available for a 1.75 percent surcharge.",
+      "to": "instant deposits available for a 1.95 percent fee."
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c (paypal.com fee page)",
+      "from": "2.59 percent plus $0.49 on its advanced card processing tier,",
+      "to": "2.89 percent plus $0.29 on its advanced card processing tier,"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "Stax's $99 subscription saves more once the markup is gone.",
+      "to": "Stax's subscription ($199 a month at that volume) saves more once the markup is gone."
+    },
+    {
+      "field": "key_findings",
+      "why": "example redone: $489 a month (see body example)",
+      "from": "switching from Square flat-rate to Helcim saves roughly $400 per month.",
+      "to": "switching from Square flat-rate to Helcim saves roughly $490 per month.",
+      "derived": [
+        {
+          "value": "490",
+          "calc": "2097.14-1608"
+        }
+      ]
+    },
+    {
+      "field": "key_findings",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "once its $99 subscription absorbs the markup gap.",
+      "to": "once its subscription ($199 a month above $250,000 a year) absorbs the markup gap."
+    },
+    {
+      "field": "faq_json",
+      "why": "Helcim: $50K-$100K tier is IC + 0.35% + 7c in person; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing); Square: 2.6% + 15c in person on Free; online and invoices 3.3% + 30c on Free, 2.9% + 30c on paid plans; instant 1.95% (squareup.com/us/en/pricing, help 3807); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "Interchange plus 0.40 percent plus $0.08 lands around 2.05 to 2.15 percent effective on a typical Visa and Mastercard card mix. Square charges 2.62 percent effective at the same volume on its flat 2.6 percent plus $0.10 in-person rate. Stax wins above $50K only if the volume is steady enough to absorb the $99 monthly fee.",
+      "to": "Interchange plus 0.35 percent plus $0.07, Helcim's published margin at that volume, lands around 2.01 percent effective on a 1.65 percent average interchange. Square charges 2.62 percent effective at the same volume on its flat 2.6 percent plus $0.15 in-person rate. Stax wins above $50K only if the volume is steady enough to absorb its $199 monthly fee.",
+      "derived": [
+        {
+          "value": "2.01",
+          "calc": "1.65+0.35+0.07/700*100"
+        },
+        {
+          "value": "1.65",
+          "calc": "1.65"
+        },
+        {
+          "value": "2.62",
+          "calc": "2.6+0.15/700*100"
+        }
+      ]
+    },
+    {
+      "field": "faq_json",
+      "why": "Square: 2.6% + 15c in person on Free; online and invoices 3.3% + 30c on Free, 2.9% + 30c on paid plans; instant 1.95% (squareup.com/us/en/pricing, help 3807)",
+      "from": "(Square instant deposits cost 1.75 percent of the transferred amount)",
+      "to": "(Square instant deposits cost 1.95 percent of the transferred amount)"
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square: 2.6% + 15c in person on Free; online and invoices 3.3% + 30c on Free, 2.9% + 30c on paid plans; instant 1.95% (squareup.com/us/en/pricing, help 3807); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "Square suits brand-new crews under $25K monthly at 2.6% + $0.10 in-person.",
+      "to": "Square suits brand-new crews under $25K monthly at 2.6% + $0.15 in-person."
+    },
+    {
+      "field": "aeo_answer",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 8c in person, 15c online; next business day funding (staxpayments.com/pricing); above $50K a month the fee is $199",
+      "from": "may prefer Stax at $99/mo + IC + $0.08.",
+      "to": "may prefer Stax at $199/mo + IC + $0.08."
+    }
+  ],
+  "not_fixed": [
+    {
+      "text": "Clover 2.3 to 2.6% + $0.10 in-person; 3.5% + $0.10 keyed",
+      "reason": "legit Clover rates"
+    },
+    {
+      "text": "Stripe 2 days settlement in table",
+      "reason": "legit"
+    },
+    {
+      "text": "FAQ: 'Stripe, Helcim, Stax, and Payment Depot settle next business day'",
+      "reason": "Stripe is 2 business days; not in this sweep's list, flagged for editorial pass"
+    },
+    {
+      "text": "Payment Depot $79 to $199/mo, $0.05 to $0.15, 2 days",
+      "reason": "Payment Depot no longer publishes a membership fee; no sourced replacement"
+    },
+    {
+      "text": "Clover plans $14.95 to $54.95/mo",
+      "reason": "not in provider-facts; left"
+    }
+  ]
+}

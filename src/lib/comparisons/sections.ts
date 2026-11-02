@@ -36,8 +36,8 @@ interface SectionMeta {
   heading: string;
   /**
    * 40 to 60 words. Every number in here is already on this page: the hero
-   * quotes the 2.32% to 3.07% effective-rate band, and the FAQ block below
-   * carries the sub-$10K, $80K and $250K thresholds. Nothing new is claimed.
+   * and the rate table (both computed from lib/data/ranking-2026.ts) carry the
+   * $10K and $250K volumes and who is cheapest at each. Nothing new is claimed.
    */
   intro: string;
   /**
@@ -62,7 +62,7 @@ export const SECTION_META: Record<ComparisonSection, SectionMeta> = {
     eyebrow: "By size",
     heading: "By monthly volume",
     intro:
-      "Processing cost is a function of volume, not brand. Below $10,000 a month flat-rate pricing is usually fine; above $80,000 both Stripe and Square are beaten by interchange-plus. These pages break the market into tiers and show what a merchant at that size should expect to pay.",
+      "Processing cost moves with volume more than brand. On published prices, interchange-plus from Helcim already costs less than Stripe or Square at $10,000 a month, and from $250,000 a Stax subscription with interchange at cost is cheapest. These pages break the market into tiers and show what a merchant at that size should expect to pay.",
   },
   "use-case": {
     id: "by-use-case",

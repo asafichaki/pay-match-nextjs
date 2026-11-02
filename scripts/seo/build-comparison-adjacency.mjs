@@ -63,7 +63,11 @@ function readStaticShells() {
     const file = path.join(dir, e.name, "page.tsx");
     if (!fs.existsSync(file)) continue;
     const src = fs.readFileSync(file, "utf8");
+    // `title: { absolute: TITLE }` with `const TITLE = "..."` (the engine-built vs-pages):
+    // resolve the constant, or the tile falls back to the bare slug.
+    const absConst = src.match(/title:\s*\{\s*absolute:\s*([A-Z_][A-Z0-9_]*)\s*\}/)?.[1];
     const title =
+      (absConst && src.match(new RegExp(`const\\s+${absConst}\\s*=\\s*["'\`]([^"'\`]+)["'\`]`))?.[1]) ||
       src.match(/title:\s*\{\s*absolute:\s*["'`]([^"'`]+)["'`]/)?.[1] ||
       src.match(/(?:const baseMetadata|export const metadata)[\s\S]{0,400}?title:\s*["'`]([^"'`]+)["'`]/)?.[1] ||
       src.match(/metaTitle/)?.[0] ||

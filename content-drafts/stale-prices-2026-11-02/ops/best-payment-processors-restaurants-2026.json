@@ -1,0 +1,16 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-restaurants-2026",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square in person is 2.6% + 15c on Square Free; Helcim in-person margin at $100K to $500K is 0.25% + 7c and 0.20% + 6c from $500K to $1M; Stax above $250K a year is $199+ a month (provider pages, 2026-10-29)",
+      "from": "Square is best for $25K to $500K QSR and full-service, with 2.6% + $0.10 in-person. Stripe suits online ordering and ghost kitchens at 2.9% + $0.30 online. Helcim fits $250K to $1M monthly, charging IC + 0.40% + $0.08. Stax serves $1M+ monthly for $99/mo + IC + $0.08.",
+      "to": "Square is best for $25K to $500K QSR and full-service, with 2.6% + $0.15 in-person. Stripe suits online ordering and ghost kitchens at 2.9% + $0.30 online. Helcim fits $250K to $1M monthly, at IC + 0.25% + $0.07 or less. Stax serves $1M+ monthly for $199+/mo + IC + $0.08."
+    }
+  ],
+  "not_fixed": [
+    { "text": "Payment Depot $500K to $2M", "reason": "positioning, not a price; left" },
+    { "text": "article body: Square 10c (5), May 2026 (1), Stax 18c (1)", "reason": "below the top-20 cut; AEO block only, body listed for Assaf" }
+  ]
+}

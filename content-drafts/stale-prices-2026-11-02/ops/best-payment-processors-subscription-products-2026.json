@@ -1,0 +1,126 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-subscription-products-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "on interchange-plus pricing with no Billing surcharge. Stax wins above $80K monthly when a flat $99 membership beats a percentage markup.",
+      "to": "on interchange-plus pricing, even after its 0.4 percent recurring-payment fee. Stax wins above $80K monthly when its membership, $199 a month at that volume, beats a percentage markup."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing)",
+      "from": "<td>IC + 0.50% + $0.25 online</td><td>Month to month</td><td>T+2</td>",
+      "to": "<td>IC + 0.50% + $0.25 online, plus 0.4% on recurring</td><td>Month to month</td><td>Next business morning</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "<td>$99/mo + IC + $0.18 online</td><td>Month to month</td><td>T+2</td>",
+      "to": "<td>$99 to $199+/mo by annual volume + IC + $0.15 online</td><td>Month to month</td><td>Next business day</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing)",
+      "from": "Helcim runs interchange-plus pricing with no monthly fee and no Billing surcharge for recurring transactions.",
+      "to": "Helcim runs interchange-plus pricing with no monthly fee; recurring transactions carry an extra 0.4 percent."
+    },
+    {
+      "field": "body_html",
+      "why": "Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing)",
+      "from": "ACH is available at 0.5 percent capped at $6 per transaction,",
+      "to": "ACH is available at 0.5 percent plus 25 cents, capped at $6 per transaction,"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "Stax charges a flat $99 to $199 per month plus interchange and a fixed per-transaction fee of 18 cents online,",
+      "to": "Stax charges $99 to $199 or more per month depending on annual volume, plus interchange and a fixed per-transaction fee of 15 cents online,"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "costs only published interchange plus 18 cents,",
+      "to": "costs only published interchange plus 15 cents,"
+    },
+    {
+      "field": "body_html",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing); $300K a month is above $250,000 a year, so the membership is $199; delta recomputed from the example's own figures",
+      "from": "plus $99 membership plus per-transaction fees. The same volume on Stripe with the Starter Billing plan runs roughly $9,300. Annualized delta: about $42,000.",
+      "to": "plus $199 membership plus per-transaction fees. The same volume on Stripe with the Starter Billing plan runs roughly $9,300. Annualized delta: about $40,200.",
+      "derived": [
+        {
+          "value": "40200",
+          "calc": "(9300-5750-199)*12"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Square instant or same-day transfer is 1.95% (Square help article 3807)",
+      "from": "Square Instant Transfer pulls funds to a debit card for 1.75 percent.",
+      "to": "Square Instant Transfer pulls funds to a debit card for 1.95 percent."
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c (paypal.com fee page)",
+      "from": "The Advanced Credit and Debit Card rate is 2.59 percent plus 49 cents.",
+      "to": "The Advanced Credit and Debit Card rate is 2.89 percent plus 29 cents."
+    },
+    {
+      "field": "faq_json",
+      "why": "Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing)",
+      "from": "typically delivers a 2.4 to 2.7 percent effective rate at the same volume with recurring billing included at no extra surcharge.",
+      "to": "typically delivers a 2.4 to 2.7 percent effective rate at the same volume before its 0.4 percent recurring-payment fee, or 2.8 to 3.1 percent with it.",
+      "derived": [
+        {
+          "value": "2.8",
+          "calc": "2.4+0.4"
+        },
+        {
+          "value": "3.1",
+          "calc": "2.7+0.4"
+        }
+      ]
+    },
+    {
+      "field": "faq_json",
+      "why": "Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing); Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing)",
+      "from": "Helcim and Stax run T+2.",
+      "to": "Helcim deposits next business morning and Stax next business day."
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Helcim: recurring payments add 0.4% per transaction; next-business-morning deposits; ACH 0.5% + 25c capped at $6 (helcim.com/pricing)",
+      "from": "Helcim, at IC + 0.50% + $0.25 online,",
+      "to": "Helcim, at IC + 0.50% + $0.25 online plus 0.4% on recurring,"
+    },
+    {
+      "field": "aeo_answer",
+      "why": "Stax: $99/mo up to $150,000 a year, $139 for $150,000-$250,000, $199+ above; IC + 15c online; next business day funding (staxpayments.com/pricing); $80K+ a month is above $250,000 a year",
+      "from": "with $99/mo + IC + $0.18 online.",
+      "to": "with $199/mo + IC + $0.15 online."
+    }
+  ],
+  "not_fixed": [
+    {
+      "text": "Stripe T+2 settlement; Instant Payouts 1.5 percent",
+      "reason": "legit"
+    },
+    {
+      "text": "Square 'online rate is 2.9 percent plus 30 cents' (section and table)",
+      "reason": "true only on paid plans or the Online API (Free is 3.3% + 30c); not edited because no stale figure from the list sits in that sentence/cell"
+    },
+    {
+      "text": "Stripe Billing 0.5% / 0.8% surcharge",
+      "reason": "not in provider-facts; left"
+    },
+    {
+      "text": "Helcim '0.4 to 0.6 percent below Stripe with Billing'",
+      "reason": "estimate, still directionally true after the 0.4% recurring fee; left"
+    }
+  ]
+}

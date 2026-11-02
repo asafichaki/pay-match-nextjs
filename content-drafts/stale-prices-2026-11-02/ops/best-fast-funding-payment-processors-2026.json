@@ -1,0 +1,210 @@
+{
+  "kind": "comparisons",
+  "slug": "best-fast-funding-payment-processors-2026",
+  "article": [
+    {
+      "field": "body_html",
+      "why": "Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807; PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29)",
+      "from": "Square wins on fast funding for in-person merchants under $200K monthly. Same-day deposits are free if batched before 5pm Pacific, and instant transfers run 1.75 percent per push. Stripe Instant Payouts at 1.5 percent (minimum $0.50) fit online-only operators above $100K monthly. PayPal instant transfer caps at $25 per push, which favors larger batches.",
+      "to": "Square is the simplest fast-funding setup for in-person merchants under $200K monthly: next-business-day deposits are free, and same-day or instant transfers cost 1.95 percent per transfer. Stripe Instant Payouts at 1.5 percent (minimum $0.50) fit online-only operators above $100K monthly. PayPal's instant transfer also costs 1.5 percent (50 cents minimum), up to $25,000 per bank transfer."
+    },
+    {
+      "field": "body_html",
+      "why": "Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807",
+      "from": "<td>T+0 if before 5pm PT</td><td>Yes (debit)</td><td>1.75 percent</td>",
+      "to": "<td>T+1 (next business day)</td><td>Yes (debit)</td><td>1.95 percent, same-day too</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29)",
+      "from": "<td>1.75 percent, $25 cap</td><td>Instant pushes above $1,450</td>",
+      "to": "<td>1.5 percent, $0.50 min</td><td>Merchants already paid through PayPal</td>"
+    },
+    {
+      "field": "body_html",
+      "why": "Square in-person 2.6% + 15c on Free; online 3.3% + 30c on Free, 2.9% + 30c on paid plans or API (squareup.com/us/en/pricing)",
+      "from": "Square publishes a flat 2.6 percent plus $0.10 for tapped, dipped, or swiped card-present transactions and 2.9 percent plus $0.30 for online checkout",
+      "to": "Square publishes a flat 2.6 percent plus $0.15 for tapped, dipped, or swiped card-present transactions on its Free plan and 2.9 percent plus $0.30 for online payments on its paid plans or API (3.3 percent plus $0.30 on Free)"
+    },
+    {
+      "field": "body_html",
+      "why": "Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807",
+      "from": "Same-day batching is free if the day's transactions close before 5pm Pacific Time on a business day. Instant Transfer pushes funds to a linked debit card within minutes for 1.75 percent per transfer, with no per-transfer minimum.",
+      "to": "Same-day and instant transfers cost 1.95 percent per transfer. Instant transfers have a $25 minimum, and new sellers are limited to one instant transfer of up to $2,000 a day."
+    },
+    {
+      "field": "body_html",
+      "why": "Square same-day is a paid transfer, not a free 5pm batch",
+      "from": "Square's funding pipeline is the cleanest in this comparison set for one reason: there is no separate underwriting cycle for the same-day cutoff. Once the account is active, the 5pm batch reaches your bank that night.",
+      "to": "Once a Square account is active, deposits arrive next business day with no fee, and a same-day or instant transfer is available at 1.95 percent."
+    },
+    {
+      "field": "body_html",
+      "why": "Square same-day is not free",
+      "from": "Square's combination of zero monthly fee, instant transfer, and same-day batch is hard to beat.",
+      "to": "Square's combination of zero monthly fee, free next-day deposits, and a paid instant option is simple to run."
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal Advanced Credit and Debit is 2.89% + 29c",
+      "from": "2.59 percent plus $0.49 for Advanced Card Processing,",
+      "to": "2.89 percent plus $0.29 for Advanced Card Processing,"
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29)",
+      "from": "within minutes for 1.75 percent, capped at $25 per transfer.</p>",
+      "to": "within minutes for 1.5 percent (50 cents minimum), up to $25,000 per bank transfer.</p>"
+    },
+    {
+      "field": "body_html",
+      "why": "Worked example redone: PayPal and Stripe 1.5%, Square 1.95%; $20,000 stays under PayPal's $25,000 per-transfer limit. PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29)",
+      "from": "A merchant pushing $50,000 from a PayPal balance to bank pays $25, which works out to 0.05 percent effective. The same push on Stripe Instant Payouts at 1.5 percent would cost $750. The same push on Square Instant Transfer at 1.75 percent would cost $875.</div><p>The 1.75 percent fee with a $25 cap makes PayPal the cheapest instant option in this comparison for any single push above roughly $1,450. Below that threshold, Stripe Instant Payouts at 1.5 percent come out cheaper.",
+      "to": "Pushing $20,000 instantly costs $300 from a PayPal balance at 1.5 percent, $300 on Stripe Instant Payouts at 1.5 percent and $390 on Square Instant Transfer at 1.95 percent.</div><p>PayPal's instant fee matches Stripe's at 1.5 percent with the same 50 cent minimum, and both undercut Square's 1.95 percent.",
+      "derived": [
+        {
+          "value": "20000",
+          "calc": "20000"
+        },
+        {
+          "value": "300",
+          "calc": "20000*0.015"
+        },
+        {
+          "value": "390",
+          "calc": "20000*0.0195"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "there is no fee cap to chase",
+      "from": "Routing fresh card volume through PayPal just to chase the cap is overpaying on the front end.",
+      "to": "Routing fresh card volume through PayPal just for the instant transfer is overpaying on the front end."
+    },
+    {
+      "field": "body_html",
+      "why": "Square effective rate at $100K: old 2.60 to 2.70 used the 10c fee; engine method (ranking-2026.ts: $50 sale, 1.55% in-person interchange estimate) gives Helcim 1.94% (0.25% + 7c tier) and Square Plus 2.85%",
+      "from": "For an operator at $100K monthly volume with a mid-tier card mix, the effective rate on Helcim runs roughly 2.30 to 2.50 percent against Square's 2.60 to 2.70 percent flat. That gap is $100 to $300 saved per $100K processed,",
+      "to": "For an operator at $100K monthly volume, on our published method (a $50 average sale and an estimated interchange cost), Helcim comes to about 1.94 percent in person against about 2.85 percent on Square's cheapest plan. That gap is about $910 a month at that volume,",
+      "derived": [
+        {
+          "value": "1.94",
+          "calc": "1.55+0.25+0.07/50*100"
+        },
+        {
+          "value": "2.85",
+          "calc": "2.5+0.15/50*100+49/100000*100"
+        },
+        {
+          "value": "910",
+          "calc": "(2.85-1.94)/100*100000"
+        }
+      ]
+    },
+    {
+      "field": "body_html",
+      "why": "Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807",
+      "from": "who want a same-day deposit by default and an instant push option for emergencies, Square wins. Zero monthly fee, free same-day batch before 5pm Pacific, and 1.75 percent instant transfer covers most cash-flow scenarios without contract risk.",
+      "to": "who want free next-day deposits and an instant push option for emergencies, Square wins. Zero monthly fee, free next-day deposits, and same-day or instant transfers at 1.95 percent cover most cash-flow scenarios without contract risk."
+    },
+    {
+      "field": "body_html",
+      "why": "PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29)",
+      "from": "PayPal wins narrowly for one specific case: pushing a single balance above $1,450 to bank in minutes, where the $25 cap makes it the cheapest instant option in this set.",
+      "to": "PayPal's instant transfer costs the same 1.5 percent as Stripe's, so it fits merchants whose sales already land in a PayPal balance."
+    },
+    {
+      "field": "key_findings",
+      "why": "Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807",
+      "from": "Square same-day deposits are free if batched before 5pm Pacific Time, with no monthly fee and no contract.",
+      "to": "Square deposits next business day for free; same-day and instant transfers cost 1.95 percent, with no monthly fee and no contract."
+    },
+    {
+      "field": "key_findings",
+      "why": "PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29)",
+      "from": "PayPal's 1.75 percent instant transfer caps at $25 per push, making it cheapest above roughly $1,450.",
+      "to": "PayPal's instant transfer costs 1.5 percent (50 cents minimum), the same as Stripe, up to $25,000 per bank transfer."
+    },
+    {
+      "field": "faq_json",
+      "why": "fee range is now 1.5% (Stripe, PayPal) to 1.95% (Square)",
+      "from": "Are instant payouts worth the 1.5 to 1.75 percent fee?",
+      "to": "Are instant payouts worth the 1.5 to 1.95 percent fee?"
+    },
+    {
+      "field": "faq_json",
+      "why": "Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807",
+      "from": "for both Square (1.75 percent) and Stripe (1.5 percent),",
+      "to": "for both Square (1.95 percent) and Stripe (1.5 percent),"
+    },
+    {
+      "field": "faq_json",
+      "why": "PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29); Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807",
+      "from": "For a single transfer above roughly $1,450, PayPal's instant push wins because the 1.75 percent fee caps at $25 per transfer. A $50,000 push from PayPal balance to bank costs $25, or 0.05 percent effective. Below that $1,450 threshold, Stripe Instant Payouts at 1.5 percent (minimum $0.50) is the cheapest. Square instant transfers at 1.75 percent have no cap, so they cost the most on large pushes. Operators who run multiple processors can route the largest pushes through PayPal and keep daily smaller pushes on Stripe or Square to optimize the blended cost.",
+      "to": "PayPal's and Stripe's instant transfers both cost 1.5 percent with a 50 cent minimum, so a $20,000 push costs $300 on either. Square's same-day and instant transfers cost 1.95 percent, or $390 on the same push. PayPal limits a single bank transfer to $25,000. Operators who run more than one processor can route large pushes through Stripe or PayPal rather than Square.",
+      "derived": [
+        {
+          "value": "20000",
+          "calc": "20000"
+        },
+        {
+          "value": "300",
+          "calc": "20000*0.015"
+        },
+        {
+          "value": "390",
+          "calc": "20000*0.0195"
+        }
+      ]
+    },
+    {
+      "field": "faq_json",
+      "why": "Square Free in person is 2.6% + 15c, about 2.90% on a $50 sale (ranking-2026.ts); instant 1.95%",
+      "from": "A merchant at $150K monthly volume on Square paying 2.6 percent plus $0.10 in-person sees an effective rate of about 2.65 percent. Pushing every batch through Instant Transfer at 1.75 percent adds another 1.75 percent on top of that, bringing the blended rate close to 4.4 percent",
+      "to": "A merchant on Square Free paying 2.6 percent plus $0.15 in person sees an effective rate of about 2.90 percent on a $50 average sale. Pushing every batch through Instant Transfer at 1.95 percent adds another 1.95 percent on top of that, bringing the blended rate close to 4.85 percent",
+      "derived": [
+        {
+          "value": "4.85",
+          "calc": "2.9+1.95"
+        }
+      ]
+    }
+  ],
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square: next business day free; instant or same-day transfer 1.95% (instant minimum $25; new sellers one instant transfer up to $2,000 a day), help article 3807",
+      "from": "Square offers T+0 if before 5pm PT and instant debit for 1.75 percent,",
+      "to": "Square offers free next-day deposits and same-day or instant transfers for 1.95 percent,"
+    },
+    {
+      "field": "aeo_answer",
+      "why": "PayPal: instant transfer 1.5% (min 50c), up to $25,000 per bank transfer; no $25 fee cap on the fee page (paypal.com/us/business/paypal-business-fees, 2026-10-29)",
+      "from": "PayPal has instant pushes for 1.75 percent, $25 cap, best for amounts above $1,450.",
+      "to": "PayPal has instant transfers for 1.5 percent, $0.50 min, up to $25,000 per transfer."
+    }
+  ],
+  "not_fixed": [
+    {
+      "text": "Stripe T+2 rolling / two business days; Instant Payouts 1.5% ($0.50 min)",
+      "reason": "legit"
+    },
+    {
+      "text": "Clover 2.3 to 2.6 percent plus $0.10 in-person, 3.5 percent plus $0.10 keyed",
+      "reason": "legit Clover rates"
+    },
+    {
+      "text": "Clover Rapid Deposit fee 'varies by acquirer'",
+      "reason": "provider-facts says 1.75% on Clover.com; not in this sweep's list, left"
+    },
+    {
+      "text": "PayPal 3.49% + 49c 'runs 0.55 to 0.80 percent above Stripe'",
+      "reason": "ticket-dependent claim, not a stale price; engine at $50 sale says about 0.97 points; left for editorial pass"
+    },
+    {
+      "text": "Square 'wins' framing in the verdict",
+      "reason": "kept; the free same-day premise is gone, so the ranking deserves an editorial look"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "kind": "comparisons",
+  "slug": "best-payment-processors-healthcare-practices-2026",
+  "override": [
+    {
+      "field": "aeo_answer",
+      "why": "Square Free in person is 2.6% + 15c; Helcim's in-person margin from $50K is 0.35% + 7c and lower above $100K; Stax at $80K+ a month is above $250K a year, so $199+ a month (provider pages, 2026-10-29)",
+      "from": "Square is a fit for solo practitioners under $25K monthly, with 2.6% + $0.10 in-person. Helcim suits $50K to $500K monthly volumes at IC + 0.40% + $0.08 in-person. For $80K+ monthly, Stax offers $99/mo + IC + $0.08 in-person.",
+      "to": "Square is a fit for solo practitioners under $25K monthly, with 2.6% + $0.15 in-person. Helcim suits $50K to $500K monthly at IC + 0.35% + $0.07 in-person or less. For $80K+ monthly, Stax offers $199+/mo + IC + $0.08 in-person."
+    }
+  ],
+  "not_fixed": [
+    { "text": "article body: Square 10c (4), Stax 18c (3), 1.75% (1)", "reason": "below the top-20 cut; AEO block only, body listed for Assaf" }
+  ]
+}
