@@ -9,6 +9,9 @@ import ArticleSidebar from "@/components/ArticleSidebar";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
 import ProviderCTA from "@/components/ProviderCTA";
+import { VsCostTable } from "@/components/mix/VsCostTable";
+import { ASSUMPTIONS, FEES, RATES_CHECKED, TIER_LABELS, VS_TIERS, engineRate, feeLabel, pct, usd } from "@/lib/data/vs-pages-2026";
+import { ANSWER, FAQ, N, SAVE_IP, SAVE_ON } from "./data";
 
 interface ContentSlots {
   /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
@@ -16,6 +19,10 @@ interface ContentSlots {
   /** <RelatedLinks> from page.tsx. Rendered at the end of the article. */
   relatedLinks?: React.ReactNode;
 }
+
+const st = FEES.stripe;
+const hc = FEES.helcim;
+const link = "text-primary hover:underline";
 
 export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
@@ -26,33 +33,48 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-12 justify-center">
             <article className="max-w-3xl flex-1 min-w-0">
-          <header className="pt-16 pb-10 border-b border-border">
-            <p className="text-sm font-medium text-primary mb-4">Payment Processor Comparison</p>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-[1.1] tracking-tight">
-              Helcim vs Stripe: Transparent Pricing vs Advanced Features
+          <header className="pt-10 sm:pt-16 pb-10 border-b border-border">
+            <p className="text-sm font-medium text-primary mb-4">Helcim vs Stripe fees, prices checked {RATES_CHECKED}</p>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-6 leading-[1.1] tracking-tight">
+              Helcim vs Stripe 2026: Interchange-Plus vs Flat Rate, Priced Out
             </h1>
             {aeoAnswer}
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
-              <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> is known for radically transparent <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">interchange-plus pricing</Link>.
-              Stripe leads with best-in-class APIs.
-              Which saves you more? Let's find out.
-            </p>
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
-              lastUpdated="2026-08-25"
-              className="mt-4"
+              lastUpdated="2026-11-01"
+              className="mt-2 mb-6"
+            />
+            <p className="aeo-answer text-lg md:text-xl text-foreground leading-relaxed" data-speakable="true">
+              {ANSWER}
+            </p>
+
+            <VsCostTable
+              groups={[
+                {
+                  title: "In person (card present)",
+                  options: [
+                    { label: "Helcim", note: `Interchange + ${feeLabel(hc.inPersonFirstTier)} under $50K`, rate: (t) => engineRate("Helcim", "In-person", t) },
+                    { label: "Stripe", note: `${feeLabel(st.inPerson)}, Terminal`, rate: (t) => engineRate("Stripe", "In-person", t) },
+                  ],
+                },
+                {
+                  title: "Online and keyed",
+                  options: [
+                    { label: "Helcim", note: `Interchange + ${feeLabel(hc.onlineFirstTier)} under $50K`, rate: (t) => engineRate("Helcim", "Online", t) },
+                    { label: "Stripe", note: feeLabel(st.online), rate: (t) => engineRate("Stripe", "Online", t) },
+                  ],
+                },
+              ]}
+              footnote={<>Helcim&apos;s margin steps down at $50K a month, so its $50K and $250K rows use the lower published tiers.</>}
             />
           </header>
 
-          <section className="py-10 border-b border-border aeo-answer">
+          <section className="py-10 border-b border-border">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Quick Verdict</h2>
             <div className="space-y-4">
-              <p className="text-lg text-foreground leading-relaxed">
-                Helcim wins for most U.S. merchants above <strong>$25K</strong> in monthly card volume. Stripe&rsquo;s flat <strong>2.9% + $0.30</strong> online rate is easy to budget but stops being competitive once interchange averages run below 1.8 percent. Helcim&rsquo;s interchange-plus model passes through the wholesale cost and adds <strong>0.50% + $0.25</strong> online, with automatic volume discounts at $50K, $100K, and $250K monthly tiers. Stripe wins on developer tooling and global card support.
-              </p>
-              <p className="text-foreground"><strong className="text-primary">Choose Helcim</strong> if you want the lowest fees, transparent pricing, and excellent 24/7 support.</p>
-              <p className="text-foreground"><strong className="text-primary">Choose Stripe</strong> if you need advanced features, customization, and have developers.</p>
+              <p className="text-foreground"><strong className="text-primary">Choose Helcim</strong> if cost is the priority and you are a US or Canadian business. You see the card network&apos;s cost and Helcim&apos;s margin on every sale, the margin falls on its own at {hc.tierBreaks} a month, and deposits arrive the next business morning for free.</p>
+              <p className="text-foreground"><strong className="text-primary">Choose Stripe</strong> if you need deep developer tools, subscription billing, a marketplace setup or many currencies. The flat {feeLabel(st.online)} is easy to budget, and you pay for that simplicity.</p>
             </div>
           </section>
 
@@ -88,23 +110,24 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
                 </thead>
                 <tbody className="divide-y divide-border">
                   {[
-                    { feature: "Best For", helcim: "Transparency, savings, SMBs", stripe: "Developers, SaaS, customization" },
-                    { feature: "Pricing Model", helcim: "Interchange-plus", stripe: "Flat-rate", helcimWins: true },
-                    { feature: "Online Rate", helcim: "Interchange + 0.50% + $0.25", stripe: "2.9% + $0.30", helcimWins: true },
-                    { feature: "In-Person Rate", helcim: "Interchange + 0.40% + $0.08", stripe: "2.7% + $0.05", helcimWins: true },
+                    { feature: "Best For", helcim: "Cost-focused SMBs", stripe: "Developers, SaaS, platforms" },
+                    { feature: "Pricing Model", helcim: "Interchange-plus", stripe: "Flat rate" },
+                    { feature: "Online Rate", helcim: `Interchange + ${feeLabel(hc.onlineFirstTier)}`, stripe: feeLabel(st.online), helcimWins: true },
+                    { feature: "In-Person Rate", helcim: `Interchange + ${feeLabel(hc.inPersonFirstTier)}`, stripe: feeLabel(st.inPerson), helcimWins: true },
                     { feature: "Monthly Fee", helcim: "$0", stripe: "$0" },
-                    { feature: "Volume Discounts", helcim: "Automatic at $25K, $50K, $100K, $250K", stripe: "Custom ($1M+)", helcimWins: true },
-                    { feature: "Settlement", helcim: "2 business days", stripe: "2 business days" },
-                    { feature: "Level 2 / Level 3 Data", helcim: "Supported on the hosted gateway", stripe: "Level 2 via API, level 3 limited", helcimWins: true },
-                    { feature: "International Cards", helcim: "USD and CAD only", stripe: "+1.5%, plus 1% currency conversion", stripeWins: true },
-                    { feature: "Customer Support", helcim: "24/7 Phone/Chat/Email", stripe: "Email/Chat only", helcimWins: true },
-                    { feature: "API Quality", helcim: "Good", stripe: "Best-in-class", stripeWins: true },
-                    { feature: "Currencies", helcim: "USD, CAD only", stripe: "135+", stripeWins: true },
+                    { feature: "Volume Discounts", helcim: `Automatic at ${hc.tierBreaks}`, stripe: "Custom pricing on request", helcimWins: true },
+                    { feature: "Standard Payout", helcim: hc.payouts, stripe: "2 business days", helcimWins: true },
+                    { feature: "Instant Payout", helcim: "Not offered", stripe: `${st.instantPayoutPct}%`, stripeWins: true },
+                    { feature: "Chargeback", helcim: `$${hc.chargebackLost} if lost, $0 if won`, stripe: `$${st.dispute}, +$${st.disputeCounter} to counter`, helcimWins: true },
+                    { feature: "Recurring Payments", helcim: `+${hc.recurringAddPct}% per transaction`, stripe: "Stripe Billing, priced separately" },
+                    { feature: "Hardware", helcim: hc.hardware, stripe: st.hardware },
+                    { feature: "Currencies", helcim: "USD and CAD", stripe: "135+", stripeWins: true },
+                    { feature: "API Depth", helcim: "Good", stripe: "Extensive", stripeWins: true },
                   ].map((row, i) => (
                     <tr key={i}>
-                      <td className="py-3 font-medium">{row.feature}</td>
-                      <td className={`py-3 text-center ${row.helcimWins ? 'text-primary font-semibold' : ''}`}>{row.helcim}</td>
-                      <td className={`py-3 text-center ${row.stripeWins ? 'text-primary font-semibold' : ''}`}>{row.stripe}</td>
+                      <td className="py-3 pr-2 font-medium">{row.feature}</td>
+                      <td className={`py-3 px-1 text-center ${row.helcimWins ? 'text-primary font-semibold' : ''}`}>{row.helcim}</td>
+                      <td className={`py-3 px-1 text-center ${row.stripeWins ? 'text-primary font-semibold' : ''}`}>{row.stripe}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -114,22 +137,28 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
 
           <section id="helcim" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-4">What Is Helcim?</h2>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Helcim</a> is a Canadian payment processor founded in 2007, known for radically transparent pricing.
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Helcim</a> is a Canadian payment processor founded in 2007 that publishes its full interchange-plus price list, including the US volume tiers. {hc.contract}.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              It also competes with Square for in-person sellers; the <Link href="/comparisons/square-vs-helcim-2026" className={link}>Helcim vs Square</Link> breakdown runs the same cost table for Square&apos;s plans.
             </p>
           </section>
 
           <section id="stripe" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-4">What Is Stripe?</h2>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              <strong className="text-foreground">Stripe</strong> is the global leader in payment infrastructure, founded in 2010. See our <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">Square vs Stripe</Link> comparison for more.
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              <strong className="text-foreground">Stripe</strong> is an online payments platform founded in 2010, built around APIs, hosted checkout and subscription billing, with Terminal readers for in-person sales. It charges one flat rate with no monthly fee.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              For how Stripe compares with the other flat-rate brands, see <Link href="/comparisons/square-vs-stripe" className={link}>Stripe vs Square</Link> and <Link href="/comparisons/stripe-vs-paypal" className={link}>Stripe vs PayPal</Link>.
             </p>
           </section>
 
           <section id="pricing" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6">Pricing Deep Dive</h2>
             <p className="text-muted-foreground mb-6">
-              This is where Helcim and Stripe differ most. Understanding these <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">pricing models</Link> can save you thousands.
+              This is where Helcim and Stripe differ most. Our <Link href="/insights/payment-processor-fees-guide" className={link}>payment processor fees guide</Link> explains interchange, assessments and markup line by line.
             </p>
 
             <figure className="my-6 border-l-4 border-primary bg-muted/40 px-5 py-4 rounded-r-md">
@@ -141,48 +170,78 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               </figcaption>
             </figure>
 
-            <h3 className="font-semibold text-foreground mb-4">Effective rate math at $250K a month</h3>
+            <h3 className="font-semibold text-foreground mb-4">How the two prices are built</h3>
             <p className="text-muted-foreground mb-4">
-              Per <a href="https://www.federalreserve.gov/paymentsystems.htm" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Federal Reserve payments studies</a>, U.S. card interchange has averaged near a 1.7 to 1.9 percent weighted rate across recent reporting cycles. At a 1.8 percent average interchange, a merchant processing $250K monthly pays roughly 2.30% + $0.25 per transaction on Helcim versus 2.90% + $0.30 on Stripe. On 2,500 transactions averaging $100, that gap is about $1,500 a month before Helcim&rsquo;s automatic volume discount. Stripe&rsquo;s flat rate covers interchange, the network assessments, and its own markup; on a typical U.S. consumer card mix that markup is 0.90 to 1.40 percent above wholesale, and there is no volume discount until a custom contract above roughly $1M monthly.
+              Stripe&apos;s {feeLabel(st.online)} online and {feeLabel(st.inPerson)} in person include everything: the card network&apos;s interchange, its assessments and Stripe&apos;s own margin. Helcim charges the interchange at cost and adds a margin it publishes. To compare them you need an estimate of interchange. We use {ASSUMPTIONS.interchangeInPerson.toFixed(2)}% in person and {ASSUMPTIONS.interchangeOnline.toFixed(2)}% online for a {ASSUMPTIONS.cardMix} mix, blending typical Visa and Mastercard credit interchange with the federal cap on large-bank debit cards.
+            </p>
+            <p className="text-muted-foreground mb-6">
+              At that estimate Helcim wins at every volume. The break-even is an average interchange of {N.beIp.toFixed(2)}% in person or {N.beOn.toFixed(2)}% online: a business whose customers pay almost entirely with premium rewards and corporate cards could reach it, a typical retailer or online store will not. Your last statement shows your real interchange line by line.
             </p>
 
-            <h3 className="font-semibold text-foreground mb-4">Real Savings Comparison</h3>
-            <div className="overflow-x-auto -mx-4 px-4 mb-8">
+            <h3 className="font-semibold text-foreground mb-4">Monthly savings with Helcim</h3>
+            <div className="overflow-x-auto -mx-4 px-4 mb-6">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b-2 border-foreground">
                     <th className="py-3 text-left font-semibold">Monthly Volume</th>
-                    <th className="py-3 text-center font-semibold">Helcim Fees</th>
-                    <th className="py-3 text-center font-semibold">Stripe Fees</th>
-                    <th className="py-3 text-center font-semibold">You Save</th>
+                    <th className="py-3 text-center font-semibold">In person</th>
+                    <th className="py-3 text-center font-semibold">Online</th>
+                    <th className="py-3 text-center font-semibold">A year, online</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
-                  {[
-                    { volume: "$25,000/month", helcim: "$585", stripe: "$755", savings: "$170/mo ($2,040/yr)" },
-                    { volume: "$50,000/month", helcim: "$1,120", stripe: "$1,500", savings: "$380/mo ($4,560/yr)" },
-                    { volume: "$100,000/month", helcim: "$2,140", stripe: "$3,000", savings: "$860/mo ($10,320/yr)" },
-                  ].map((row, i) => (
-                    <tr key={i}>
-                      <td className="py-3 font-medium">{row.volume}</td>
-                      <td className="py-3 text-center">{row.helcim}</td>
-                      <td className="py-3 text-center">{row.stripe}</td>
-                      <td className="py-3 text-center text-primary font-semibold">{row.savings}</td>
+                  {VS_TIERS.map((t) => (
+                    <tr key={t}>
+                      <td className="py-3 font-medium">{TIER_LABELS[t]}</td>
+                      <td className="py-3 text-center tabular-nums">{usd(SAVE_IP[t])}/mo</td>
+                      <td className="py-3 text-center tabular-nums">{usd(SAVE_ON[t])}/mo</td>
+                      <td className="py-3 text-center tabular-nums text-primary font-semibold">{usd(SAVE_ON[t] * 12)}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+
+            <h3 className="font-semibold text-foreground mb-4">Helcim&apos;s US volume tiers</h3>
+            <div className="overflow-x-auto -mx-4 px-4 mb-4">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b-2 border-foreground">
+                    <th className="py-3 text-left font-semibold">Monthly volume</th>
+                    <th className="py-3 text-center font-semibold">In person</th>
+                    <th className="py-3 text-center font-semibold">Online and keyed</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {[
+                    ["Under $50K", "0.40% + 8¢", "0.50% + 25¢"],
+                    ["$50K to $100K", "0.35% + 7¢", "0.45% + 20¢"],
+                    ["$100K to $500K", "0.25% + 7¢", "0.35% + 20¢"],
+                    ["$500K to $1M", "0.20% + 6¢", "0.25% + 15¢"],
+                    ["$1M to $5M", "0.15% + 6¢", "0.15% + 15¢"],
+                  ].map(([v, ip, on]) => (
+                    <tr key={v}>
+                      <td className="py-3 font-medium">{v}</td>
+                      <td className="py-3 text-center">Interchange + {ip}</td>
+                      <td className="py-3 text-center">Interchange + {on}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              From <a href={hc.pricingUrl} target="_blank" rel="noopener noreferrer" className={link}>Helcim&apos;s pricing page</a>, checked {RATES_CHECKED}. Above $5M a month Helcim quotes custom pricing. Stripe offers custom pricing to large merchants too, with no published threshold; at {TIER_LABELS[2]} a month and up, also compare a negotiated contract such as the one in <Link href="/comparisons/stripe-vs-worldpay-2026" className={link}>Stripe vs Worldpay</Link>.
+            </p>
           </section>
 
           <section id="features" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6">Features Comparison</h2>
             <div className="space-y-8">
               {[
-                { title: "Pricing Transparency", helcim: "Industry leader. Shows exact interchange costs.", stripe: "Clear flat-rate but hides actual interchange.", winner: "Helcim" },
-                { title: "Customer Support", helcim: "24/7 phone, email, chat. 4.8/5 rating.", stripe: "Email and chat only. No phone.", winner: "Helcim" },
-                { title: "API & Developer Tools", helcim: "Good API, adequate docs.", stripe: "Best-in-class. 100+ webhooks.", winner: "Stripe" },
-                { title: "International", helcim: "US and Canada only.", stripe: "46 countries. 135+ currencies.", winner: "Stripe" },
+                { title: "Pricing Transparency", helcim: "Shows interchange and margin on every transaction.", stripe: "One clear flat rate; the interchange inside it is not shown.", winner: "Helcim" },
+                { title: "Payouts", helcim: "Next business morning, free. No instant option.", stripe: `2 business days; Instant Payouts at ${st.instantPayoutPct}%.`, winner: "Helcim for free speed, Stripe for instant" },
+                { title: "API & Developer Tools", helcim: "Good API and documentation.", stripe: "Extensive APIs, webhooks, test mode and CLI.", winner: "Stripe" },
+                { title: "International", helcim: "US and Canada, in USD and CAD.", stripe: "135+ currencies and many local payment methods.", winner: "Stripe" },
               ].map((feature, i) => (
                 <div key={i} className="border-b border-border pb-6 last:border-b-0">
                   <h3 className="font-semibold text-foreground mb-3">{feature.title}</h3>
@@ -202,19 +261,19 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               <div>
                 <h3 className="font-semibold text-foreground mb-4 text-primary">Choose Helcim If:</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>- Cost savings are a priority</li>
-                  <li>- You process $10K+/month</li>
-                  <li>- You want 24/7 phone support</li>
-                  <li>- You're a Canadian business</li>
+                  <li>- Cost is the priority</li>
+                  <li>- You process {TIER_LABELS[0]} a month or more</li>
+                  <li>- You want free next-day deposits</li>
+                  <li>- You are a US or Canadian business</li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-4 text-primary">Choose Stripe If:</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>- You need advanced API features</li>
-                  <li>- You're building a SaaS product</li>
-                  <li>- You need international expansion</li>
-                  <li>- You're building a marketplace</li>
+                  <li>- You are building a SaaS product</li>
+                  <li>- You sell in many currencies</li>
+                  <li>- You are building a marketplace</li>
                 </ul>
               </div>
             </div>
@@ -223,17 +282,8 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
           <section id="faq" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6">Frequently Asked Questions</h2>
             <div className="space-y-6">
-              {[
-                { q: "Is Helcim cheaper than Stripe?", a: "For most businesses processing $10K+/month, yes. Helcim's interchange-plus pricing typically saves 15-25%." },
-                { q: "When does Helcim become cheaper than Stripe?", a: "Helcim is usually cheaper than Stripe once monthly card volume passes $25K and the merchant accepts at least 60 percent in-person or low-risk online cards. On a 1.8 percent average interchange mix, Helcim's interchange plus 0.50 percent plus $0.25 online rate works out to roughly 2.30 percent versus Stripe's 2.90 percent. On $100K monthly volume, that gap is around $600 per month, before any of Helcim's automatic volume discount kicks in. Below $25K, the savings are usually too small to justify the time spent switching integrations." },
-                { q: "Does Stripe negotiate below 2.9 percent?", a: "Stripe offers custom pricing for merchants above roughly $1 million in monthly processing volume, per its public pricing page. The custom rate is interchange-plus and can drop the effective markup by 0.30 to 0.60 percent depending on card mix. For volumes between $250K and $1M, Stripe sometimes offers volume discounts on a case-by-case basis, but the published flat rate is the default. Merchants in that range should price-check Helcim, Stax, or a tier-one acquirer before signing any Stripe custom contract because the comparison points strengthen the negotiation." },
-                { q: "Are there any monthly fees with Stripe or Helcim?", a: "Neither company charges a base monthly fee on its standard plan. Stripe's pricing is purely per transaction at 2.9 percent plus $0.30 online, with no monthly fee, no PCI fee, and no statement fee. Helcim charges no monthly fee, no setup fee, and no PCI compliance fee. Both companies operate month-to-month with no early termination fee. Add-on Stripe products like Radar for fraud, Sigma for reporting, and Atlas for incorporation carry their own pricing, which is published separately on the Stripe pricing page." },
-                { q: "Which is better for B2B card-not-present?", a: "Helcim is the stronger choice for B2B card-not-present merchants in most cases. Interchange-plus pricing combined with level 2 and level 3 data support qualifies commercial, purchasing, and government cards for lower interchange categories, which can drop the effective rate by 0.50 to 1.00 percent versus a flat rate. Stripe supports level 2 data on its API, but level 3 support is limited unless the merchant builds it into the integration. For B2B operators with average tickets above $500, the rate difference compounds quickly into five-figure annual savings." },
-                { q: "Can I switch from Stripe to Helcim mid-contract?", a: "Yes. Stripe runs a month-to-month standard agreement with no early termination fee, per its public terms. A merchant can stop processing through Stripe at any time and switch to Helcim without paying a penalty. The practical work involves repointing the payment integration, migrating saved card tokens (Stripe will migrate tokens to a compliant processor on request), and updating recurring billing schedules. For ecommerce merchants, plan for one to two engineering weeks if recurring billing or saved cards are in scope. Run both processors in parallel for a week to validate." },
-                { q: "Does Helcim work in the US?", a: "Yes. Despite being Canadian-based, Helcim fully supports US businesses with USD processing." },
-                { q: "Which has better support?", a: "Helcim wins with 24/7 phone, email, and chat. Stripe offers email and chat only." },
-              ].map((faq, i) => (
-                <div key={i} className="border-b border-border pb-6 last:border-b-0">
+              {FAQ.map((faq) => (
+                <div key={faq.q} className="border-b border-border pb-6 last:border-b-0">
                   <h3 className="font-semibold text-foreground mb-2">{faq.q}</h3>
                   <p className="text-sm text-muted-foreground">{faq.a}</p>
                 </div>
@@ -244,7 +294,7 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
           <section className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6">Final Verdict</h2>
             <p className="p-4 bg-muted/50 text-foreground">
-              <strong>Bottom Line:</strong> If you're an SMB in North America and cost matters, <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> will save you thousands. If you're building a tech product, <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe's</a> features may justify the cost.
+              <strong>Bottom line:</strong> for a North American business where cost matters, <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> saves about {usd(SAVE_ON[1] * 12)} a year online at {TIER_LABELS[1]} a month. If you are building a tech product, <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe&apos;s</a> tools may be worth the {pct(N.stOn[1] - N.hcOn[1])} premium. See where both land among every provider we priced in the <Link href="/comparisons/best-payment-processors-2026" className={link}>best payment processors ranking</Link>.
             </p>
           </section>
 

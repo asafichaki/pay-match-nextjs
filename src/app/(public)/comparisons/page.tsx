@@ -167,7 +167,7 @@ const staticComparisons: Comparison[] = [
   },
   {
     title: "Helcim vs Stripe: Transparent Pricing vs Advanced Features",
-    description: "Save 15-25% with Helcim's interchange-plus pricing or get powerful developer tools with Stripe. Find out which processor delivers better value for your business.",
+    description: "Interchange-plus against a flat rate, priced at $10K, $50K and $250K a month in person and online, with the break-even card mix.",
     href: "/comparisons/helcim-vs-stripe",
     date: "Nov. 8, 2025",
     iso: "2025-11-08"
@@ -416,6 +416,16 @@ export default async function ComparisonsPage() {
               The rates below assume a processor will take you. Before you compare them, read the{" "}
               <Link href="/insights/high-risk-payment-processing-guide" className="text-primary font-medium hover:underline">high-risk payment processing guide</Link>
               {" "}for reserves, VAMP thresholds and the processors that approve CBD, gaming, nutra, firearms, travel and subscription merchants.
+            </p>
+          </div>
+        </section>
+
+        {/* The head-to-heads readers search for most, linked in a sentence rather than only as cards. */}
+        <section aria-labelledby="popular-vs-heading" className="border-b border-border">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-6">
+            <h2 id="popular-vs-heading" className="text-lg font-bold text-foreground mb-2">The most-read head-to-heads</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Choosing between two big names? Start with <Link href="/comparisons/square-vs-stripe" className="text-primary font-medium hover:underline">Square vs Stripe fees</Link> if you sell in person, or <Link href="/comparisons/stripe-vs-paypal" className="text-primary font-medium hover:underline">Stripe vs PayPal</Link> if you sell online. If cost matters more than brand, see how interchange-plus pricing compares in <Link href="/comparisons/helcim-vs-stripe" className="text-primary font-medium hover:underline">Helcim vs Stripe</Link> and <Link href="/comparisons/square-vs-helcim-2026" className="text-primary font-medium hover:underline">Helcim vs Square</Link>. Above about $250K a month, <Link href="/comparisons/stripe-vs-worldpay-2026" className="text-primary font-medium hover:underline">Stripe vs Worldpay</Link> covers when a negotiated contract beats a flat rate. Every one uses the same prices and method as our <Link href="/comparisons/best-payment-processors-2026" className="text-primary font-medium hover:underline">payment processor ranking</Link>.
             </p>
           </div>
         </section>

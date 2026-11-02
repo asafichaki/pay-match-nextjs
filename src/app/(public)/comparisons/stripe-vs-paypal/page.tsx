@@ -6,23 +6,24 @@ import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { CompareMore } from "@/components/comparisons/CompareMore";
+import { FAQ, META_DESCRIPTION } from "./data";
 
 const baseMetadata: Metadata = {
   title: { absolute: "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate" },
-  description: "Stripe 2.9% + $0.30, PayPal 3.49% + $0.49 commercial rate. Stripe wins on subscriptions and APIs. PayPal wins on 400M+ buyer trust. May 2026 rates.",
+  description: META_DESCRIPTION,
   alternates: {
     canonical: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal",
   },
   openGraph: {
     title: "Stripe vs PayPal 2026: 2.9% Stripe vs 3.49% PayPal Rate",
-    description: "Stripe 2.9% + $0.30, PayPal 3.49% + $0.49 commercial rate. Stripe wins on subscriptions and APIs. PayPal wins on 400M+ buyer trust. May 2026 rates.",
+    description: META_DESCRIPTION,
     url: "https://www.mypayadvisor.com/comparisons/stripe-vs-paypal",
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   other: {
     "article:published_time": "2025-11-15T00:00:00.000Z",
-    "article:modified_time": "2026-08-25T00:00:00.000Z",
+    "article:modified_time": "2026-11-01T00:00:00.000Z",
   },
 };
 
@@ -45,22 +46,19 @@ const speakableSchema = {
 const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "Is Stripe cheaper than PayPal?", acceptedAnswer: { "@type": "Answer", text: "For most card transactions, yes. Stripe charges 2.9% + $0.30 per transaction versus PayPal's 3.49% + $0.49 commercial rate, so Stripe is typically the lower-cost option on standard online payments." } },
-    { "@type": "Question", name: "What is the difference between Stripe and PayPal fees?", acceptedAnswer: { "@type": "Answer", text: "Stripe runs 2.9% + $0.30 on online card payments with strong subscription and API tooling. PayPal runs 3.49% + $0.49 on commercial transactions but adds access to 400M+ existing buyer accounts that can lift checkout conversion." } },
-    { "@type": "Question", name: "Should I use Stripe or PayPal for my business?", acceptedAnswer: { "@type": "Answer", text: "Choose Stripe if you sell subscriptions, need developer APIs, or want the lowest per-transaction rate. Choose PayPal if buyer trust and one-click checkout for existing PayPal users matter more than the rate difference." } },
-  ],
+  // Same list as the visible FAQ (data.ts), so the two cannot disagree.
+  mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
 
 export default function StripeVsPayPalPage() {
   return (
     <>
       <ComparisonSchema
-        title="Stripe vs PayPal 2026: Fees, FX Cost & Conversion Compared"
-        description="Stripe vs PayPal comparison for 2026. Fees, FX cost, conversion lift, APIs, and subscriptions, side by side."
+        title="Stripe vs PayPal 2026: Fees, Payouts and Which Costs Less"
+        description={META_DESCRIPTION}
         slug="stripe-vs-paypal"
         datePublished="2025-11-15"
-        dateModified="2026-08-25"
+        dateModified="2026-11-01"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },

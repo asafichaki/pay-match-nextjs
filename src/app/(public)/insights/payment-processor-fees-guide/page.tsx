@@ -729,6 +729,10 @@ export default function PaymentProcessorFeesGuidePage() {
                 <li>PCI compliance, statement, and gateway fees</li>
               </ul>
 
+              <p className="text-foreground leading-relaxed">
+                We run this exact calculation, at $10K, $50K and $250K a month, in our head-to-head comparisons. <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">Stripe vs Square</Link> shows how a 10¢ difference in the fixed fee decides the winner on small tickets. <Link href="/comparisons/stripe-vs-paypal" className="text-primary hover:underline">Stripe vs PayPal fees</Link> shows what a 49¢ fixed fee does to an online store. For interchange-plus against flat rate, see <Link href="/comparisons/helcim-vs-stripe" className="text-primary hover:underline">Helcim vs Stripe</Link> and <Link href="/comparisons/square-vs-helcim-2026" className="text-primary hover:underline">Helcim vs Square</Link>, and for a negotiated enterprise contract, <Link href="/comparisons/stripe-vs-worldpay-2026" className="text-primary hover:underline">Stripe vs Worldpay</Link>.
+              </p>
+
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">2. Evaluate Integration Requirements</h3>
 
               <p className="text-foreground leading-relaxed">
@@ -1178,7 +1182,7 @@ export default function PaymentProcessorFeesGuidePage() {
                   </li>
                   <li>
                     <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">
-                      Square vs Stripe: Complete Comparison for 2025
+                      Square vs Stripe fees compared, 2026
                     </Link>
                   </li>
                 </ul>
