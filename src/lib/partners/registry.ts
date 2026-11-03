@@ -12,6 +12,12 @@ export type Partner = {
   slug: string;
   name: string;
   destination_url: string;
+  /**
+   * The provider's clean address. Once a program is signed destination_url
+   * carries the network's tracking link and this does not, so a click that
+   * is probably not a person can still reach the provider untracked.
+   */
+  plain_url: string | null;
   /** Contact/demo destination. Null falls back to destination_url. */
   quote_url: string | null;
   network: string | null;
@@ -30,7 +36,7 @@ async function fetchAll(): Promise<Map<string, Partner>> {
   if (!base || !key) throw new Error("partners: missing Supabase env");
 
   const res = await fetch(
-    `${base}/rest/v1/partners?select=slug,name,destination_url,quote_url,network,program_status,is_active&is_active=eq.true`,
+    `${base}/rest/v1/partners?select=slug,name,destination_url,plain_url,quote_url,network,program_status,is_active&is_active=eq.true`,
     {
       headers: { apikey: key, Authorization: `Bearer ${key}` },
       cache: "no-store",

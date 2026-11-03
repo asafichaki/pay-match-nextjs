@@ -1,5 +1,5 @@
 import { after, NextResponse, type NextRequest } from "next/server";
-import { isAutomatedClick } from "@/lib/partners/click-bot";
+import { isAutomatedClick, isLikelyHumanClick } from "@/lib/partners/click-bot";
 import { parseAttributionCookie, ATTRIBUTION_COOKIE } from "@/lib/attribution";
 import { classifyChannel } from "@/lib/partners/channel";
 import { getPartner } from "@/lib/partners/registry";
@@ -47,8 +47,17 @@ export async function GET(
 
   const ua = request.headers.get("user-agent");
   const isBot = isAutomatedClick(request.headers);
+  const rawAttr = request.cookies.get(ATTRIBUTION_COOKIE)?.value;
+  const hasAttrCookie = Boolean(rawAttr);
+  const likelyHuman = isLikelyHumanClick(request.headers, hasAttrCookie);
+  const signals = {
+    has_attr_cookie: hasAttrCookie,
+    sec_fetch_site: request.headers.get("sec-fetch-site"),
+    sec_fetch_user: request.headers.get("sec-fetch-user"),
+    likely_human: likelyHuman,
+  };
 
-  const first = parseAttributionCookie(request.cookies.get(ATTRIBUTION_COOKIE)?.value);
+  const first = parseAttributionCookie(rawAttr);
   const clickReferrer = request.headers.get("referer");
 
   const fromParam = request.nextUrl.searchParams.get("from");
@@ -84,9 +93,28 @@ export async function GET(
         partner_slug: partner.slug, from_path: fromPath, channel, click_referrer: clickReferrer,
         first_referrer: first.referrer, utm_source: first.utm_source, utm_medium: first.utm_medium,
         utm_campaign: first.utm_campaign, destination_url: FALLBACK, variant, ua, is_bot: true,
+        ...signals,
       }));
     } catch { /* never block the redirect */ }
     return NextResponse.redirect(new URL(FALLBACK, origin), 302);
+  }
+  // Same rule one step softer: a browser-looking click that did not come from
+  // our page goes to the provider's clean address, so the network only ever
+  // sees clicks from people. If no clean address is stored, the hub.
+  if (!likelyHuman && partner.program_status === "active") {
+    const plain = partner.plain_url || FALLBACK;
+    try {
+      after(() => logOutboundClick({
+        partner_slug: partner.slug, from_path: fromPath, channel, click_referrer: clickReferrer,
+        first_referrer: first.referrer, utm_source: first.utm_source, utm_medium: first.utm_medium,
+        utm_campaign: first.utm_campaign, destination_url: plain, variant, ua, is_bot: isBot,
+        ...signals,
+      }));
+    } catch { /* never block the redirect */ }
+    const out = NextResponse.redirect(new URL(plain, origin), 302);
+    out.headers.set("X-Robots-Tag", "noindex, nofollow");
+    out.headers.set("Cache-Control", "no-store");
+    return out;
   }
   const destination = withOurTag(target, partner.program_status);
 
@@ -117,6 +145,7 @@ export async function GET(
       variant,
       ua,
       is_bot: isBot,
+      ...signals,
     }));
   } catch {
     // A logging row is never worth a 500 on the way out.
