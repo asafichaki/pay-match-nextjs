@@ -26,3 +26,24 @@ export function isAutomatedClick(headers: Headers): boolean {
   if (accept && !/text\/html/i.test(accept)) return true;
   return false;
 }
+
+/**
+ * Did a person click this link on our page?
+ *
+ * Stricter than `!isAutomatedClick`. Scripted fetchers that borrow a full
+ * browser UA pass the UA check, and on 2026-11-03 they were 98% of the table.
+ * Two things only a real browser on our site produces:
+ *
+ *   - the first-touch cookie, written by our JavaScript on the first page load;
+ *   - Sec-Fetch-Site: same-origin on the navigation. A missing header is
+ *     allowed (older browsers do not send it); "none" (typed or fetched
+ *     directly) and "cross-site" (linked from elsewhere) are not a click on
+ *     our page.
+ */
+export function isLikelyHumanClick(headers: Headers, hasAttrCookie: boolean): boolean {
+  if (isAutomatedClick(headers)) return false;
+  if (!hasAttrCookie) return false;
+  const site = headers.get("sec-fetch-site");
+  if (site && site !== "same-origin") return false;
+  return true;
+}

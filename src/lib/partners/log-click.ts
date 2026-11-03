@@ -17,6 +17,10 @@ export type OutboundClickRow = {
   variant: "visit" | "quote";
   ua: string | null;
   is_bot: boolean;
+  has_attr_cookie: boolean;
+  sec_fetch_site: string | null;
+  sec_fetch_user: string | null;
+  likely_human: boolean;
 };
 
 export function logOutboundClick(row: OutboundClickRow): Promise<void> | undefined {
@@ -38,6 +42,8 @@ export function logOutboundClick(row: OutboundClickRow): Promise<void> | undefin
       click_referrer: row.click_referrer?.slice(0, 500) ?? null,
       first_referrer: row.first_referrer?.slice(0, 500) ?? null,
       ua: row.ua?.slice(0, 300) ?? null,
+      sec_fetch_site: row.sec_fetch_site?.slice(0, 40) ?? null,
+      sec_fetch_user: row.sec_fetch_user?.slice(0, 10) ?? null,
     }),
     cache: "no-store",
   })
