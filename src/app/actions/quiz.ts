@@ -14,7 +14,7 @@ import { normalizePhone } from "@/lib/phone";
 
 const quizLeadSchema = z.object({
   fullName: z.string().min(1).max(200),
-  email: z.string().email().max(320),
+  email: z.string().trim().email().max(320),
   // Required but never format-checked (2026-11-10): stored as typed when
   // normalizePhone cannot make it E.164, never refused.
   phone: z.string().trim().min(1).max(40),
