@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { isValidPhone } from "@/lib/phone";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -237,7 +236,7 @@ const QuizContent = ({ onComplete, showBackButton = true }: QuizContentProps) =>
   const currentQuestion = quizQuestions[currentStep];
   const currentAnswer = currentQuestion ? answers[currentQuestion.id as keyof QuizAnswers] : undefined;
   const canProceed = isContactStep 
-    ? (answers.fullName && answers.email && isValidPhone(answers.phone || "")) 
+    ? (answers.fullName && answers.email && (answers.phone || "").trim()) 
     : currentQuestion?.multiSelect 
       ? Array.isArray(currentAnswer) && currentAnswer.length > 0
       : currentAnswer;
