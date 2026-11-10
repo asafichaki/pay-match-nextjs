@@ -2,6 +2,8 @@
 
 import { useState, useTransition, useEffect, useRef } from "react";
 import { isValidPhone, PHONE_INVALID_MESSAGE } from "@/lib/phone";
+
+const PHONE_REQUIRED_MESSAGE = "Please add your mobile number so Barak can reach you.";
 import { useRouter } from "next/navigation";
 import { track } from "@/lib/analytics/track";
 import { Button } from "@/components/ui/button";
@@ -38,12 +40,13 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
   const [isPending, startTransition] = useTransition();
   const emailFocusedRef = useRef(false);
 
+  // Required on step 4 (Assaf, 2026-11-10). See the note on `submit` below.
+  const [phone, setPhone] = useState("");
+
   // Step 5 state. The lead is already saved by the time any of this is filled,
-  // so everything here is optional and skipping costs us nothing. The phone
-  // lives here on purpose: see the note on `submit` below.
+  // so everything here is optional and skipping costs us nothing.
   const [leadId, setLeadId] = useState<string | null>(null);
   const [thankYouSlug, setThankYouSlug] = useState<string | null>(null);
-  const [phone, setPhone] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [currentProvider, setCurrentProvider] = useState("");
 
@@ -79,17 +82,29 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       setError("Please add your name and email.");
       return;
     }
-    // The phone is NOT collected here and NOT required to save the lead.
-    // It was required on this step between 2026-08-29 and 2026-09-08, which
-    // meant anyone unwilling to type a number was never written to the
-    // database at all, not even their email. This gate may have increased
-    // abandonment; its causal impact is unmeasured. Step 5 runs
-    // after the row exists, so refusing it now costs a phone number rather
-    // than the whole lead.
+    // Required again since 2026-11-10 at Assaf's call: a lead Barak cannot
+    // call is not worth much to this business. History: required here
+    // 2026-08-29 to 2026-09-08 (0 leads in 9 days), then optional on step 5
+    // (1 lead between 2026-09-18 and 2026-11-10, and part of that drought was
+    // the honeypot bug fixed in the same commit as this note). Watch
+    // `sh_phone_missing` vs `sh_submit_success` before judging the gate.
+    if (!phone.trim()) {
+      setError(PHONE_REQUIRED_MESSAGE);
+      track("sh_phone_missing");
+      return;
+    }
+    // Checked here so the message lands next to the field instead of after a
+    // round trip. The server checks it again.
+    if (!isValidPhone(phone)) {
+      setError(PHONE_INVALID_MESSAGE);
+      track("sh_submit_error", { message: "phone_invalid" });
+      return;
+    }
     startTransition(async () => {
       const result = await submitSortingHatLead({
         fullName: fullName.trim(),
         email: email.trim(),
+        phone: phone.trim(),
         businessType,
         volumeTier,
         painPoint,
@@ -127,19 +142,12 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       finish(slug);
       return;
     }
-    // Only blocks on a number that was actually typed and cannot be dialled.
-    // An empty box is a valid answer here and falls through to finish().
-    if (phone.trim() && !isValidPhone(phone)) {
-      setError(PHONE_INVALID_MESSAGE);
-      return;
-    }
     const payload = {
       leadId,
-      phone: phone.trim(),
       companyName: companyName.trim(),
       currentProvider: currentProvider.trim(),
     };
-    if (!payload.phone && !payload.companyName && !payload.currentProvider) {
+    if (!payload.companyName && !payload.currentProvider) {
       track("sh_details_skipped", { reason: "empty" });
       finish(slug);
       return;
@@ -151,7 +159,6 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       track("sh_details_submitted", {
         ok: result.success,
         fields: [
-          payload.phone && "phone",
           payload.companyName && "company",
           payload.currentProvider && "provider",
         ]
@@ -321,10 +328,36 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
                 className="mt-1"
               />
             </div>
-            {/* Honeypot */}
+            <div>
+              <Label htmlFor="sh-phone">Mobile number</Label>
+              <Input
+                id="sh-phone"
+                type="tel"
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                  if (error === PHONE_INVALID_MESSAGE || error === PHONE_REQUIRED_MESSAGE) setError(null);
+                }}
+                placeholder="(415) 555-0134"
+                autoComplete="tel"
+                inputMode="tel"
+                required
+                aria-describedby="sh-phone-why"
+                className="mt-1"
+              />
+              <p id="sh-phone-why" className="text-xs text-muted-foreground mt-1.5">
+                Barak reads the shortlist before he sends it, and the questions
+                that matter (your reserve, your approval odds) take two minutes
+                on the phone. He calls once. No call centre, and we never sell
+                your number.
+              </p>
+            </div>
+            {/* Honeypot. Browser autofill can fill this for a real person, so
+                the server only tags a filled value, it never rejects on it. */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
               <input
                 tabIndex={-1}
+                name="sh_hp_ignore"
                 value={honeypot}
                 onChange={(e) => setHoneypot(e.target.value)}
                 autoComplete="off"
@@ -363,7 +396,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
           <div className="flex items-center gap-2 mb-2">
             <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
             <h2 className="text-2xl font-semibold text-foreground">
-              You&apos;re in. Want Barak to just call you?
+              You&apos;re in. Two quick details?
             </h2>
           </div>
           <p className="text-sm text-muted-foreground mb-6">
@@ -371,29 +404,6 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
             they are what let Barak open with an answer instead of a question.
           </p>
           <div className="space-y-4">
-            <div>
-              <Label htmlFor="sh-phone">Mobile number</Label>
-              <Input
-                id="sh-phone"
-                type="tel"
-                value={phone}
-                onChange={(e) => {
-                  setPhone(e.target.value);
-                  if (error === PHONE_INVALID_MESSAGE) setError(null);
-                }}
-                placeholder="(415) 555-0134"
-                autoComplete="tel"
-                inputMode="tel"
-                aria-describedby="sh-phone-why"
-                className="mt-1"
-              />
-              <p id="sh-phone-why" className="text-xs text-muted-foreground mt-1.5">
-                The questions that matter (your reserve, your approval odds)
-                take two minutes on the phone and four emails in writing. He
-                calls once. No call centre. We never sell your number, and we only pass it
-                to a provider if you ask us to introduce you.
-              </p>
-            </div>
             <div>
               <Label htmlFor="sh-provider">Who processes your payments today?</Label>
               <Input
@@ -452,8 +462,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
               </Button>
             </div>
             <p className="text-xs text-muted-foreground pt-2">
-              All optional. A number gets you a two minute call instead of a
-              four email thread, and nothing here is shared with anyone else.
+              Both optional, and nothing here is shared with anyone else.
             </p>
           </div>
         </div>

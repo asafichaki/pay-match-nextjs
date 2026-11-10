@@ -15,7 +15,7 @@ import { headers, cookies } from "next/headers";
 const newsletterSchema = z.object({
   email: z.string().email("Please enter a valid email address").max(320),
   source: z.enum(["homepage", "footer", "exit_intent"]).default("homepage"),
-  honeypot: z.string().max(0).optional(),
+  honeypot: z.string().max(500).optional(),
 });
 
 /** How long after signing up the optional details step stays open. */
@@ -54,9 +54,11 @@ export async function subscribeNewsletter(formData: {
       return { success: false, error: "Too many requests. Please try again later." };
     }
 
-    // Honeypot check
+    // Honeypot: logged, never a reason to drop the submission. Browser
+    // autofill fills hidden fields for real people, and this branch used to
+    // show them a success screen while saving nothing (fixed 2026-11-10).
     if (formData.honeypot) {
-      return { success: true };
+      console.warn("[honeypot] filled, saving anyway", { email: formData.email });
     }
 
     // Validate

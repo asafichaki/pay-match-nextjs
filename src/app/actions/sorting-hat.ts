@@ -34,22 +34,14 @@ import { isValidPhone, normalizePhone, PHONE_INVALID_MESSAGE } from "@/lib/phone
 const schema = z.object({
   fullName: z.string().min(1).max(120),
   email: z.string().email().max(320),
-  // Optional again since 2026-09-08, and no longer collected on this step at
-  // all. History worth keeping, because both ends of it were wrong:
-  //   - until 2026-08-29 it sat on the optional step under the label "only if
-  //     you'd rather talk", and produced 9 leads with 0 phone numbers;
-  //   - from 2026-08-29 it was required here, before the row was written, and
-  //     produced 0 leads in 9 days.
-  // A merchant who will not type a number is still a merchant with an email.
-  // The ask now lives on step 5 (enrichSortingHatLead), which runs after the
-  // insert, so the worst case is a lead without a phone rather than no lead.
-  // Anything that does arrive here is still validated, because a client-side
-  // check is a suggestion to anyone posting to the action directly.
+  // Required on step 4 (Assaf, 2026-11-10). Optional on step 5 between
+  // 2026-09-08 and 2026-11-10; required here 2026-08-29 to 2026-09-08. The
+  // client checks it too, but a browser rule is a suggestion to anyone
+  // posting to the action directly.
   phone: z
     .string()
     .max(40)
-    .refine((v) => !v || isValidPhone(v), { message: PHONE_INVALID_MESSAGE })
-    .optional(),
+    .refine((v) => isValidPhone(v), { message: PHONE_INVALID_MESSAGE }),
   businessType: z.enum([
     "physical_goods",
     "saas_digital",
@@ -78,7 +70,11 @@ const schema = z.object({
     "in_person_costs",
     "needs_approval",
   ]),
-  honeypot: z.string().max(0).optional(),
+  // Never a reason to reject. `max(0)` here returned "Please check your
+  // inputs" to real people whose browser autofill filled the hidden field
+  // (Assaf hit it 2026-11-10 with Chrome autofill). A filled value is logged
+  // and tagged on the row instead; the rate limit is the bot defence.
+  honeypot: z.string().max(500).optional(),
 });
 
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
@@ -107,9 +103,11 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       return { success: false as const, error: "Please check your inputs and try again." };
     }
     const data = parsed.data;
-    if (data.honeypot) {
-      // bot — silently succeed without doing anything destructive
-      return { success: true as const, thankYouSlug: "a" as const, leadId: null };
+    const honeypotHit = Boolean(data.honeypot);
+    if (honeypotHit) {
+      console.warn("[submitSortingHatLead] honeypot filled, saving and tagging", {
+        email: data.email,
+      });
     }
 
     const route = routeTrack(data.businessType, data.painPoint);
@@ -134,6 +132,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       business_type: data.businessType,
       funnel_state: "day0",
       lead_source: "sorting_hat",
+      ...(honeypotHit ? { honeypot_hit: true } : {}),
     };
 
     // Build insert payload using both legacy and new columns. Supabase will
@@ -142,7 +141,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
     const insertPayload: Record<string, unknown> = {
       full_name: data.fullName,
       email: data.email,
-      phone: data.phone ? normalizePhone(data.phone) : null,
+      phone: normalizePhone(data.phone),
       monthly_volume: data.volumeTier,
       business_type: data.businessType,
       industry: BUSINESS_TYPE_LABELS[data.businessType],
@@ -174,7 +173,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       const legacyPayload: Record<string, unknown> = {
         full_name: data.fullName,
         email: data.email,
-        phone: data.phone ? normalizePhone(data.phone) : null,
+        phone: normalizePhone(data.phone),
         monthly_volume: data.volumeTier,
         business_type: data.businessType,
         industry: BUSINESS_TYPE_LABELS[data.businessType],
@@ -198,7 +197,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
         payload: {
           full_name: data.fullName,
           email: data.email,
-          phone: data.phone ? normalizePhone(data.phone) : null,
+          phone: normalizePhone(data.phone),
           business_type: data.businessType,
           volume_tier: data.volumeTier,
           pain_point: data.painPoint,
@@ -220,11 +219,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       lead: {
         email: data.email,
         name: data.fullName,
-        // Usually null now that the number is asked on step 5: the enrich
-        // action sends its own alert once it arrives. Still passed, because a
-        // number posted directly to this action must reach the subject line
-        // and the tel: link the same way.
-        phone: data.phone ? normalizePhone(data.phone) : null,
+        phone: normalizePhone(data.phone),
         business_type: BUSINESS_TYPE_LABELS[data.businessType],
       },
       funnel: {
