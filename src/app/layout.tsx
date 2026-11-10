@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { OPERATOR_NAME, OPERATOR_STREET, OPERATOR_CITY, OPERATOR_REGION, OPERATOR_POSTAL } from "@/lib/funnel/operator";
 import ClarityLoader from "@/components/ClarityLoader";
 import { Inter, Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/google";
 import Script from "next/script";
@@ -157,6 +158,18 @@ const organizationSchema = {
   description:
     "Expert payment processing advisory and comparison platform helping businesses find the best payment solutions",
   foundingDate: "2024",
+  parentOrganization: {
+    "@type": "Organization",
+    name: OPERATOR_NAME,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: OPERATOR_STREET,
+      addressLocality: OPERATOR_CITY,
+      addressRegion: OPERATOR_REGION,
+      postalCode: OPERATOR_POSTAL,
+      addressCountry: "US",
+    },
+  },
   sameAs: [
     "https://www.linkedin.com/company/mypayadvisor",
     "https://www.crunchbase.com/organization/mypayadvisor",

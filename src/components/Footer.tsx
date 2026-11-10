@@ -1,6 +1,8 @@
 import { CreditCard, Shield, Lock } from "lucide-react";
 import Link from "next/link";
 import NewsletterForm from "./NewsletterForm";
+import { DISCLOSURE_TEXT } from "./AffiliateLink";
+import { OPERATOR_LINE } from "@/lib/funnel/operator";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -124,12 +126,13 @@ const Footer = () => {
         {/* Disclaimer */}
         <aside className="text-center border-t border-background/15 pt-6 mb-3">
           <p className="text-[10px] sm:text-xs text-background/40 max-w-5xl mx-auto">
-            <strong>Affiliate Disclosure:</strong> We earn a commission from some providers when you sign up through our links. It never changes our scores or the order of our rankings, and it doesn&apos;t change your price. <a href="/how-we-make-money" className="underline">How we make money</a>. We recommend confirming rates and terms directly with any provider before signing.
+            <strong>Affiliate Disclosure:</strong> {DISCLOSURE_TEXT} <a href="/how-we-make-money" className="underline">How we make money</a>. We recommend confirming rates and terms directly with any provider before signing.
           </p>
         </aside>
 
         {/* Copyright */}
         <div className="text-center text-[10px] sm:text-xs text-background/50">
+          <p>{OPERATOR_LINE}</p>
           <p>&copy; {currentYear} myPayAdvisor. All rights reserved.</p>
         </div>
       </div>

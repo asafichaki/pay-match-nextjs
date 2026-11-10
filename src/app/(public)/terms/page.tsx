@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { OPERATOR_LINE } from "@/lib/funnel/operator";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -121,7 +122,7 @@ export default function TermsPage() {
               <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-foreground">9. Contact Information</h2>
                 <p className="text-muted-foreground">
-                  If you have any questions about these Terms and Conditions, please contact us at:
+                  {OPERATOR_LINE} If you have any questions about these Terms and Conditions, please contact us at:
                 </p>
                 <p className="text-muted-foreground">
                   <a href="mailto:info@mypayadvisor.com" className="text-primary hover:underline">
