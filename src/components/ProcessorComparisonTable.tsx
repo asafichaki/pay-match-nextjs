@@ -10,6 +10,9 @@ import {
   type TierIndex,
 } from "@/lib/data/ranking-2026";
 import { FEES, feeLabel } from "@/lib/data/vs-pages-2026";
+import { ArrowUpRight } from "lucide-react";
+import { ProviderButton } from "@/components/mix/ProviderButton";
+import { DisclosureBar } from "@/components/mix/DisclosureBar";
 
 /**
  * The /comparisons hub table: every provider's published price and what it
@@ -133,6 +136,7 @@ export default function ProcessorComparisonTable() {
   return (
     <section aria-labelledby="rates-table-heading" className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-8 sm:py-10">
       <header className="mb-4 sm:mb-6">
+        <DisclosureBar className="mb-3" />
         <h2 id="rates-table-heading" className="font-display text-2xl sm:text-3xl font-bold text-foreground tracking-tight">
           {rows.length} payment processors at a glance: published prices and real cost
         </h2>
@@ -144,7 +148,7 @@ export default function ProcessorComparisonTable() {
 
       {/* Phones: one card per provider */}
       <ol className="md:hidden grid gap-3 list-none p-0 m-0" data-hub-cards>
-        {rows.map((r) => (
+        {rows.map((r, i) => (
           <li key={r.meta.processor} className="rounded-xl border border-border bg-card p-4 shadow-sm">
             <p className="font-semibold text-foreground"><Name m={r.meta} /></p>
             <p className="text-xs text-muted-foreground">{r.meta.pricingModel}</p>
@@ -166,6 +170,17 @@ export default function ProcessorComparisonTable() {
             </div>
             <p className="mt-3 text-sm text-muted-foreground">{r.meta.bestFor}</p>
             {r.meta.caveat ? <p className="mt-1 text-xs text-muted-foreground">{r.meta.caveat}</p> : null}
+            <ProviderButton
+              partnerSlug={r.meta.partnerSlug}
+              pricingUrl={r.meta.pricingUrl}
+              from="/comparisons"
+              el="hub"
+              pos={i + 1}
+              label={`Visit ${r.meta.name}`}
+              className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-1.5 rounded-xl bg-cta px-4 py-2.5 text-sm font-semibold text-cta-foreground hover:bg-cta-hover transition-colors"
+            >
+              Visit {r.meta.name.replace(" Payments", "")} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </ProviderButton>
           </li>
         ))}
       </ol>
@@ -183,10 +198,11 @@ export default function ProcessorComparisonTable() {
               {SHOWN.map((t) => (
                 <th key={t} scope="col" className="text-right font-semibold px-3 py-3 whitespace-nowrap">At {SHOWN_LABEL[t]}/mo</th>
               ))}
+              <th scope="col" className="w-36 px-3 py-3"><span className="sr-only">Visit</span></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
-            {rows.map((r) => (
+            {rows.map((r, i) => (
               <tr key={r.meta.processor} className="align-top hover:bg-muted/30 transition-colors">
                 <th scope="row" className="text-left font-semibold text-foreground px-4 py-3">
                   <Name m={r.meta} />
@@ -196,11 +212,24 @@ export default function ProcessorComparisonTable() {
                 <td className="px-3 py-3 text-muted-foreground">{r.inPerson ?? "Not offered"}</td>
                 <td className="px-3 py-3 text-muted-foreground">{r.online ?? "Not offered"}</td>
                 <td className="px-3 py-3 text-muted-foreground">{r.monthly}</td>
-                {SHOWN.map((t, i) => (
+                {SHOWN.map((t, j) => (
                   <td key={t} className="px-3 py-3 text-right tabular-nums whitespace-nowrap">
-                    <RateCell r={r.rates[i]} best={r.rates[i]?.rate === cheapest[i]} />
+                    <RateCell r={r.rates[j]} best={r.rates[j]?.rate === cheapest[j]} />
                   </td>
                 ))}
+                <td className="px-3 py-3 text-right">
+                  <ProviderButton
+                    partnerSlug={r.meta.partnerSlug}
+                    pricingUrl={r.meta.pricingUrl}
+                    from="/comparisons"
+                    el="hub"
+                    pos={i + 1}
+                    label={`Visit ${r.meta.name}`}
+                    className="inline-flex w-32 items-center justify-center gap-1 whitespace-nowrap rounded-xl bg-cta px-3 py-2 text-sm font-semibold text-cta-foreground hover:bg-cta-hover transition-colors"
+                  >
+                    Visit <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </ProviderButton>
+                </td>
               </tr>
             ))}
           </tbody>

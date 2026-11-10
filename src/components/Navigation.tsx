@@ -120,8 +120,8 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center gap-2">
             <ThemeToggle />
             <Button
-              variant="cta"
-              className="font-semibold flex-shrink-0"
+              variant="outline"
+              className="font-semibold flex-shrink-0 border-primary/40 text-primary hover:bg-accent hover:text-accent-foreground"
               onClick={handleGetOffers}
               aria-label="Find your perfect payment processor match"
             >
@@ -133,9 +133,9 @@ const Navigation = () => {
           <div className="flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
             <div className="hidden sm:block"><ThemeToggle /></div>
             <Button
-              variant="cta"
+              variant="outline"
               size="sm"
-              className="hidden min-[375px]:inline-flex font-semibold text-sm"
+              className="hidden min-[375px]:inline-flex font-semibold text-sm border-primary/40 text-primary hover:bg-accent hover:text-accent-foreground"
               onClick={handleGetOffers}
             >
               Find Match

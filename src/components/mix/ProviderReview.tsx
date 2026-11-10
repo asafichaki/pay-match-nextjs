@@ -22,7 +22,7 @@ export function ProviderReview({ row, review, from, cheapest }: { row: TableRow;
     ["Other fees", review.otherFees],
   ];
   const button = (cls: string) => (
-    <ProviderButton partnerSlug={row.partnerSlug} pricingUrl={row.pricingUrl} from={from} label={`Visit ${row.name}`} className={cls}>
+    <ProviderButton partnerSlug={row.partnerSlug} pricingUrl={row.pricingUrl} from={from} el="review" pos={row.rank ?? undefined} label={`Visit ${row.name}`} className={cls}>
       Visit {row.name} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
     </ProviderButton>
   );

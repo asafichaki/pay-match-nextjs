@@ -21,6 +21,10 @@ export type OutboundClickRow = {
   sec_fetch_site: string | null;
   sec_fetch_user: string | null;
   likely_human: boolean;
+  /** Added 2026-11-10 (migration 20261110_outbound_clicks_placement). */
+  placement?: string | null;
+  position?: number | null;
+  volume_tier?: string | null;
 };
 
 export function logOutboundClick(row: OutboundClickRow): Promise<void> | undefined {

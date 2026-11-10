@@ -5,6 +5,9 @@ const EVENTS = new Set([
   // Fired by a real browser when a reader clicks a provider button. The /go/
   // log counts every fetch of the redirect, bots included; this counts people.
   "affiliate_click",
+  // Pilot of the offer-card template (2026-11-10): a card 50% visible for 1s,
+  // the volume selector, and the "show the other N" expander.
+  "card_impression", "volume_select", "show_more_open",
 ]);
 
 let fallbackSession: string | undefined;
@@ -42,10 +45,11 @@ export function recordFunnelEvent(event: string, params: Record<string, unknown>
     }
     if (typeof params.ok === "boolean") metadata.ok = params.ok;
     // Provider slugs and placement names only: short, lowercase, no free text.
-    for (const name of ["partner", "placement"]) {
+    for (const name of ["partner", "placement", "vol", "from_vol"]) {
       const v = params[name];
       if (typeof v === "string" && /^[a-z0-9-]{1,40}$/.test(v)) metadata[name] = v;
     }
+    if (Number.isInteger(params.pos) && Number(params.pos) >= 1 && Number(params.pos) <= 99) metadata.pos = Number(params.pos);
     void fetch(`${url}/rest/v1/analytics_events`, {
       method: "POST",
       headers: { "Content-Type": "application/json", apikey: key, Authorization: `Bearer ${key}`, Prefer: "return=minimal" },

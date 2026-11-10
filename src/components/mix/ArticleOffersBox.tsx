@@ -25,6 +25,8 @@ export function ArticleOffersBox({ offers, from }: { offers: ArticleOffers; from
                 partnerSlug={meta.partnerSlug}
                 pricingUrl={meta.pricingUrl}
                 from={from}
+                el="offers"
+                pos={i + 1}
                 label={`Check rates at ${meta.name}`}
                 className="inline-flex shrink-0 items-center justify-center gap-1 rounded-lg bg-cta px-3 py-2 text-xs sm:px-4 sm:text-sm font-semibold text-cta-foreground hover:bg-cta-hover transition-colors"
               >

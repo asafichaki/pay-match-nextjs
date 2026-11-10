@@ -4,6 +4,7 @@ import { parseAttributionCookie, ATTRIBUTION_COOKIE } from "@/lib/attribution";
 import { classifyChannel } from "@/lib/partners/channel";
 import { getPartner } from "@/lib/partners/registry";
 import { logOutboundClick } from "@/lib/partners/log-click";
+import { PLACEMENTS, VOLUME_KEYS } from "@/components/AffiliateLink";
 
 /**
  * The outbound gate: /go/<partner>?from=<path>
@@ -83,6 +84,15 @@ export async function GET(
   // program is usually the event that actually pays. Counted separately so a
   // quote request is never averaged in with a browse.
   const variant = request.nextUrl.searchParams.get("v") === "quote" ? "quote" : "visit";
+  // Where on the page the click came from, which position, at which selected
+  // volume. Validated against short allowlists: these go straight into a table.
+  const elRaw = request.nextUrl.searchParams.get("el");
+  const placement = elRaw && (PLACEMENTS as readonly string[]).includes(elRaw) ? elRaw : null;
+  const posRaw = Number(request.nextUrl.searchParams.get("pos"));
+  const position = Number.isInteger(posRaw) && posRaw > 0 && posRaw < 100 ? posRaw : null;
+  const volRaw = request.nextUrl.searchParams.get("vol");
+  const volume_tier = volRaw && (VOLUME_KEYS as readonly string[]).includes(volRaw) ? volRaw : null;
+  const where = { placement, position, volume_tier };
   const target =
     variant === "quote" ? (partner.quote_url ?? partner.destination_url) : partner.destination_url;
   // A detected bot never reaches a live tracking URL: a stream of clicks with
@@ -93,7 +103,7 @@ export async function GET(
         partner_slug: partner.slug, from_path: fromPath, channel, click_referrer: clickReferrer,
         first_referrer: first.referrer, utm_source: first.utm_source, utm_medium: first.utm_medium,
         utm_campaign: first.utm_campaign, destination_url: FALLBACK, variant, ua, is_bot: true,
-        ...signals,
+        ...signals, ...where,
       }));
     } catch { /* never block the redirect */ }
     return NextResponse.redirect(new URL(FALLBACK, origin), 302);
@@ -108,7 +118,7 @@ export async function GET(
         partner_slug: partner.slug, from_path: fromPath, channel, click_referrer: clickReferrer,
         first_referrer: first.referrer, utm_source: first.utm_source, utm_medium: first.utm_medium,
         utm_campaign: first.utm_campaign, destination_url: plain, variant, ua, is_bot: isBot,
-        ...signals,
+        ...signals, ...where,
       }));
     } catch { /* never block the redirect */ }
     const out = NextResponse.redirect(new URL(plain, origin), 302);
@@ -146,6 +156,7 @@ export async function GET(
       ua,
       is_bot: isBot,
       ...signals,
+      ...where,
     }));
   } catch {
     // A logging row is never worth a 500 on the way out.

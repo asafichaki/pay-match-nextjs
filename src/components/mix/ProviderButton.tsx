@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { AffiliateLink } from "@/components/AffiliateLink";
+import { AffiliateLink, type Placement, type VolumeKey } from "@/components/AffiliateLink";
 
 /**
  * The Visit button for a ranked provider. A provider with a `partners` row
@@ -14,6 +14,10 @@ export function ProviderButton({
   className,
   children,
   label,
+  el,
+  pos,
+  vol,
+  variant,
 }: {
   partnerSlug: string | null;
   pricingUrl: string;
@@ -21,16 +25,20 @@ export function ProviderButton({
   className?: string;
   children: ReactNode;
   label: string;
+  el?: Placement;
+  pos?: number;
+  vol?: VolumeKey;
+  variant?: "visit" | "quote";
 }) {
   if (partnerSlug) {
     return (
-      <AffiliateLink partner={partnerSlug} from={from} className={className} title={label}>
+      <AffiliateLink partner={partnerSlug} from={from} className={className} title={label} el={el} pos={pos} vol={vol} variant={variant}>
         {children}
       </AffiliateLink>
     );
   }
   return (
-    <a href={pricingUrl} target="_blank" rel="nofollow noopener" className={className} title={label} data-partner-direct={label.replace(/^(Visit|Check rates at) /, "").toLowerCase().replace(/[^a-z0-9]+/g, "-")}>
+    <a href={pricingUrl} target="_blank" rel="nofollow noopener" className={className} title={label} data-placement={el} data-position={pos} data-partner-direct={label.replace(/^(Visit|Check rates at) /, "").toLowerCase().replace(/[^a-z0-9]+/g, "-")}>
       {children}
     </a>
   );
