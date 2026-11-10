@@ -41,7 +41,7 @@ export default function NewsletterForm({
     return (
       <div className={`flex items-center gap-2 text-sm text-primary ${className}`}>
         <CheckCircle2 className="h-5 w-5" />
-        <span className="font-medium">You&rsquo;re on the list. The first Rate Brief is on its way.</span>
+        <span className="font-medium">You&rsquo;re on the list. Barak sees every signup and replies by email.</span>
       </div>
     );
   }
@@ -115,7 +115,7 @@ export default function NewsletterForm({
       )}
       <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-3">
         <Lock className="h-3 w-3" />
-        No spam. Unsubscribe anytime. We'll never share your email.
+        No spam. Unsubscribe anytime. We&rsquo;ll never share your email.
       </p>
     </form>
   );

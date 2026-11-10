@@ -32,8 +32,9 @@ import { renderFunnelEmail, unsubscribeHeaders } from "@/lib/funnel/email-footer
 import { isValidPhone, normalizePhone } from "@/lib/phone";
 
 const schema = z.object({
-  fullName: z.string().min(1).max(120),
-  email: z.string().email().max(320),
+  fullName: z.string().trim().min(1).max(120),
+  // trim first: zod rejects " a@b.com", and a pasted address often carries a space.
+  email: z.string().trim().email().max(320),
   // Required on step 4 (Assaf, 2026-11-10). Optional on step 5 between
   // 2026-09-08 and 2026-11-10; required here 2026-08-29 to 2026-09-08. The
   // client checks it too, but a browser rule is a suggestion to anyone

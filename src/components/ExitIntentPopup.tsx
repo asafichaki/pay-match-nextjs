@@ -219,8 +219,8 @@ export default function ExitIntentPopup() {
             </h3>
             <p className="text-sm text-muted-foreground mb-5">
               He does this all day. Leave a number and he&rsquo;ll tell you what
-              you&rsquo;re really paying, on one call. Optional, and the brief is
-              already on its way either way.
+              you&rsquo;re really paying, on one call. Optional, and you&rsquo;re
+              already on the list either way.
             </p>
 
             <form data-clarity-mask="true" onSubmit={submitDetails} className="space-y-3">
@@ -293,8 +293,8 @@ export default function ExitIntentPopup() {
             </h3>
             <p className="text-sm text-muted-foreground mb-6">
               {detailsSent && phone.trim()
-                ? "Usually within one business day. The first Rate Brief is on its way too."
-                : "The first Rate Brief is on its way. Check your inbox in a minute or two."}
+                ? "Usually within one business day."
+                : "Barak sees every signup and replies by email."}
             </p>
             <Button onClick={close} variant="outline" className="w-full">
               Keep reading

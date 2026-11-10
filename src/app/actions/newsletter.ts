@@ -10,10 +10,11 @@ import {
   parseAttributionCookie,
 } from "@/lib/attribution";
 import { z } from "zod";
+import { normalizePhone } from "@/lib/phone";
 import { headers, cookies } from "next/headers";
 
 const newsletterSchema = z.object({
-  email: z.string().email("Please enter a valid email address").max(320),
+  email: z.string().trim().email("Please enter a valid email address").max(320),
   source: z.enum(["homepage", "footer", "exit_intent"]).default("homepage"),
   honeypot: z.string().max(500).optional(),
 });
@@ -236,7 +237,8 @@ export async function enrichNewsletterLead(input: EnrichNewsletterPayload) {
     const parsed = enrichSchema.safeParse(input);
     if (!parsed.success) return { success: false as const };
 
-    const phone = parsed.data.phone?.trim() || null;
+    // Same normaliser as the quizzes, so the alert's tel: link dials.
+    const phone = parsed.data.phone?.trim() ? normalizePhone(parsed.data.phone) : null;
     const companyName = parsed.data.companyName?.trim() || null;
     const currentProvider = parsed.data.currentProvider?.trim() || null;
     if (!phone && !companyName && !currentProvider) {
