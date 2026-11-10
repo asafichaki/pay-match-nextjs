@@ -27,7 +27,7 @@ const quizLeadSchema = z.object({
   averageTransaction: z.string().max(50).optional(),
   priority: z.array(z.string().max(50)).optional(),
   recommendedProvider: z.string().max(200).optional(),
-  honeypot: z.string().max(0).optional(),
+  honeypot: z.string().max(500).optional(),
 });
 
 // Simple in-memory rate limiter
@@ -71,10 +71,11 @@ export async function submitQuizLead(formData: {
       return { success: false, error: "Too many requests. Please try again later." };
     }
 
-    // Honeypot check
+    // Honeypot: logged, never a reason to drop the submission. Browser
+    // autofill fills hidden fields for real people, and this branch used to
+    // show them a success screen while saving nothing (fixed 2026-11-10).
     if (formData.honeypot) {
-      // Silently reject bot submissions
-      return { success: true };
+      console.warn("[honeypot] filled, saving anyway", { email: formData.email });
     }
 
     // Validate input
