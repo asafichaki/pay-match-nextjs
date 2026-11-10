@@ -13,24 +13,29 @@ export function ArticleOffersBox({ offers, from }: { offers: ArticleOffers; from
       <ol className="space-y-2 list-none p-0 m-0">
         {offers.items.map((it, i) => {
           const meta = PROVIDER_META.find((m) => m.processor === it.processor);
-          if (!meta) return null;
+          const name = meta?.name ?? it.custom?.name;
+          const partnerSlug = meta ? meta.partnerSlug : (it.custom?.partnerSlug ?? null);
+          const url = meta?.pricingUrl ?? it.custom?.url;
+          if (!name || !url) return null;
+          const quote = !meta && it.custom?.variant === "quote";
           return (
             <li key={it.processor} className="flex items-center gap-3 rounded-xl border border-border bg-background p-3">
               <span className="hidden sm:inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">{i + 1}</span>
               <div className="min-w-0 flex-1">
-                <p className="text-sm sm:text-base font-bold text-foreground">{meta.name}</p>
+                <p className="text-sm sm:text-base font-bold text-foreground">{name}</p>
                 <p className="text-xs sm:text-sm text-muted-foreground">{it.fact}</p>
               </div>
               <ProviderButton
-                partnerSlug={meta.partnerSlug}
-                pricingUrl={meta.pricingUrl}
+                partnerSlug={partnerSlug}
+                pricingUrl={url}
                 from={from}
                 el="offers"
                 pos={i + 1}
-                label={`Check rates at ${meta.name}`}
+                variant={quote ? "quote" : "visit"}
+                label={quote ? `Get a quote from ${name}` : `Check rates at ${name}`}
                 className="inline-flex shrink-0 items-center justify-center gap-1 rounded-lg bg-cta px-3 py-2 text-xs sm:px-4 sm:text-sm font-semibold text-cta-foreground hover:bg-cta-hover transition-colors"
               >
-                <span className="sm:hidden">Visit</span><span className="hidden sm:inline">Visit {meta.name}</span> <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                <span className="sm:hidden">{quote ? "Quote" : "Visit"}</span><span className="hidden sm:inline">{quote ? `Get a quote from ${name}` : `Visit ${name}`}</span> <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </ProviderButton>
             </li>
           );
