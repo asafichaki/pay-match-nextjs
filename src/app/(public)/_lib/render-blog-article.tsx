@@ -14,6 +14,7 @@ import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { CompareMore } from "@/components/comparisons/CompareMore";
 import { MatchCTA } from "@/components/MatchCTA";
+import { DisclosureBar } from "@/components/mix/DisclosureBar";
 import { getAdminSupabase } from "@/lib/funnel/admin-supabase";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import type { RelatedLink } from "@/lib/seo/overrides";
@@ -408,6 +409,7 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
       </nav>
 
       <article className="mx-auto max-w-3xl">
+        {kind === "comparisons" ? <DisclosureBar className="mb-4" /> : null}
         <header className="mb-10 border-b border-border pb-8">
           <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
             <span className="font-semibold text-primary">{eyebrow}</span>

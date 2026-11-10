@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { VsPicksBox } from "@/components/mix/VsPicksBox";
+import { DisclosureBar } from "@/components/mix/DisclosureBar";
 import { useState } from "react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import ArticleSidebar from "@/components/ArticleSidebar";
@@ -34,6 +36,7 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
           <div className="flex gap-12 justify-center">
             <article className="max-w-3xl flex-1 min-w-0">
           <header className="pt-10 sm:pt-16 pb-10 border-b border-border">
+            <DisclosureBar className="mb-3" />
             <p className="text-sm font-medium text-primary mb-4">Helcim vs Stripe fees, prices checked {RATES_CHECKED}</p>
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-6 leading-[1.1] tracking-tight">
               Helcim vs Stripe 2026: Helcim Is Cheaper From $10K a Month
@@ -77,6 +80,8 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               <p className="text-foreground"><strong className="text-primary">Choose Stripe</strong> if you need deep developer tools, subscription billing, a marketplace setup or many currencies. The flat {feeLabel(st.online)} is easy to budget, and you pay for that simplicity.</p>
             </div>
           </section>
+
+          <VsPicksBox a="Helcim" b="Stripe" from="/comparisons/helcim-vs-stripe" />
 
           <nav className="py-10 border-b border-border">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">In This Article</h2>

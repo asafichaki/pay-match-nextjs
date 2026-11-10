@@ -1,16 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, CalendarCheck, Scale, TrendingDown } from "lucide-react";
+import { ArrowRight, BadgeCheck, Scale, TrendingDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import PaymentQuiz from "@/components/PaymentQuiz";
 import { MatchCTA } from "@/components/MatchCTA";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { MainRankingTable } from "@/components/mix/MainRankingTable";
+import { DisclosureBar } from "@/components/mix/DisclosureBar";
 import { ProviderReview } from "@/components/mix/ProviderReview";
 import { ASSUMPTIONS, cheapestPerTier, formatRate, mainTable, monthlyCost, NOT_RANKED, rankAt, RATES_CHECKED, TIER_LABELS } from "@/lib/data/ranking-2026";
 import { PROVIDER_REVIEWS } from "@/lib/data/provider-reviews-2026";
+import { DISCLOSURE_TEXT } from "@/components/AffiliateLink";
 import { BEST_OF_FAQ } from "./faq";
 import { HowToChoose } from "./HowToChoose";
 
@@ -25,6 +28,26 @@ const FROM = "/comparisons/best-payment-processors-2026";
 
 export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLinks }: ContentSlots) {
   const [quizOpen, setQuizOpen] = useState(false);
+
+  // The ten reviews sit in <details>, so a 35,000px page becomes a 10,000px one.
+  // A "Read our Helcim review" link or a shared #helcim URL still has to land
+  // on an OPEN review, so the matching <details> is opened on load and on
+  // every hash change before the browser scrolls to it.
+  useEffect(() => {
+    const openFromHash = () => {
+      const id = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+      if (!id) return;
+      const target = document.getElementById(id);
+      const details = target?.closest("details");
+      if (details && !details.open) {
+        details.open = true;
+        window.requestAnimationFrame(() => target?.scrollIntoView({ block: "start" }));
+      }
+    };
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, []);
   const at10k = rankAt(0);
   const at250k = rankAt(2);
   const rows = mainTable();
@@ -35,34 +58,29 @@ export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLin
       <main className="min-h-screen bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <article className="mx-auto max-w-5xl pb-16">
-            <header className="pt-6 sm:pt-12 pb-2">
-              <nav aria-label="Breadcrumb" className="mb-4 text-xs text-muted-foreground">
+            <header className="pt-3 sm:pt-10 pb-2">
+              <DisclosureBar className="mb-3" />
+              <nav aria-label="Breadcrumb" className="mb-3 text-xs text-muted-foreground">
                 <Link href="/" className="hover:text-foreground">Home</Link>
                 <span className="mx-1.5">/</span>
                 <Link href="/comparisons" className="hover:text-foreground">Comparisons</Link>
                 <span className="mx-1.5">/</span>
                 <span className="text-foreground">Best payment processors</span>
               </nav>
-              <p className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-                <CalendarCheck className="h-3.5 w-3.5" aria-hidden="true" /> Prices checked {RATES_CHECKED}<span className="hidden sm:inline">&nbsp;on each provider&apos;s own pricing page</span>
-              </p>
-              <h1 className="text-[1.85rem]/[1.15] sm:text-4xl/[1.15] lg:text-[3.25rem]/[1.1] font-bold text-foreground mb-4 tracking-tight text-balance">
-                Best Payment Processors of 2026, Ranked by What You&apos;d Actually Pay
+              <h1 className="text-[1.75rem]/[1.15] sm:text-4xl/[1.15] lg:text-[3.25rem]/[1.1] font-bold text-foreground mb-1.5 tracking-tight text-balance">
+                Best Payment Processors of 2026
               </h1>
+              <p className="mb-3 hidden sm:block text-sm sm:text-base text-muted-foreground">Ranked by what you&apos;d actually pay, from each provider&apos;s own pricing page.</p>
               {aeoAnswer}
-              <p className="aeo-answer max-w-3xl text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed" data-speakable="true">
-                At {TIER_LABELS[0]} a month, {at10k[0].name} costs the least at {formatRate(at10k[0].score)} effective
-                (about {monthlyCost(at10k[0].score, 0)} a month), ahead of {at10k[1].name} ({formatRate(at10k[1].score)}) and {at10k[2].name} ({formatRate(at10k[2].score)}).
-                At {TIER_LABELS[2]} and above, {at250k[0].name} leads at {formatRate(at250k[0].score)}. The table shows all four volumes; full reviews follow.
+              <p className="aeo-answer max-w-3xl text-base sm:text-lg lg:text-xl text-foreground leading-snug" data-speakable="true">
+                At {TIER_LABELS[0]} a month {at10k[0].name} costs least: {formatRate(at10k[0].score)} effective, about {monthlyCost(at10k[0].score, 0)}, ahead of {at10k[1].name} ({formatRate(at10k[1].score)}) and {at10k[2].name} ({formatRate(at10k[2].score)}).<span className="hidden sm:inline"> From {TIER_LABELS[2]} a month {at250k[0].name} leads at {formatRate(at250k[0].score)}.</span>
               </p>
 
-              <div className="mt-4 sm:mt-5 flex items-center gap-3">
-                <span aria-hidden="true" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">BB</span>
-                <div className="text-sm leading-tight">
-                  <p className="text-foreground">Reviewed by <Link href="/about/barak" className="font-semibold hover:text-primary">Barak Bachar</Link>, payments manager</p>
-                  <p className="text-muted-foreground">Updated Oct 29, 2026<span className="hidden sm:inline"> · {at10k.length} providers ranked</span></p>
-                </div>
-              </div>
+              <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/barak-monogram.svg" alt="" width={28} height={28} className="h-7 w-7 rounded-full bg-primary/10" />
+                <span className="min-w-0 truncate">Reviewed by <Link href="/about/barak" className="font-semibold text-foreground hover:text-primary">Barak Bachar</Link> · Checked {RATES_CHECKED}<span className="hidden sm:inline"> · <a href="#method" className="underline underline-offset-2 hover:text-foreground">How we rank</a></span></span>
+              </p>
 
               <ul className="mt-6 hidden gap-3 sm:grid sm:grid-cols-3 list-none p-0">
                 <li className="rounded-2xl border border-border bg-background p-4 shadow-sm">
@@ -118,7 +136,19 @@ export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLin
               </p>
               {rows.map((r) =>
                 PROVIDER_REVIEWS[r.processor] ? (
-                  <ProviderReview key={r.processor} row={r} review={PROVIDER_REVIEWS[r.processor]} from={FROM} cheapest={cheapest} />
+                  <details key={r.processor} className="group mt-4 rounded-2xl border border-border bg-background open:border-primary/30" open={r.rank === 1}>
+                    <summary className="flex cursor-pointer list-none items-center gap-3 p-4 [&::-webkit-details-marker]:hidden">
+                      <span className="w-6 shrink-0 text-sm font-bold text-muted-foreground tabular-nums">{r.rank}</span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block font-bold text-foreground">{r.name}</span>
+                        <span className="block truncate text-xs text-muted-foreground">{formatRate(r.rates[0])} effective at $10K · {r.pricingModel}</span>
+                      </span>
+                      <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" />
+                    </summary>
+                    <div className="px-2 pb-2 sm:px-3 sm:pb-3 [&>article]:mt-0 [&>article]:border-0 [&>article]:shadow-none [&>article]:ring-0">
+                      <ProviderReview row={r} review={PROVIDER_REVIEWS[r.processor]} from={FROM} cheapest={cheapest} />
+                    </div>
+                  </details>
                 ) : null,
               )}
             </section>
@@ -225,7 +255,7 @@ export default function BestPaymentProcessors2026Content({ aeoAnswer, relatedLin
 
             <footer className="py-8 border-t border-border">
               <p className="text-xs text-muted-foreground">
-                <strong>How we make money:</strong> We earn a commission from some providers when you sign up through our links. It never changes our scores or the order of our rankings, and it doesn&apos;t change your price. <a href="/how-we-make-money" className="underline">Details</a>.
+                <strong>How we make money:</strong> {DISCLOSURE_TEXT} <a href="/how-we-make-money" className="underline">Details</a>.
               </p>
             </footer>
           </article>

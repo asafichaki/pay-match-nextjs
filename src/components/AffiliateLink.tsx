@@ -1,5 +1,10 @@
 import type { ReactNode } from "react";
 
+export const PLACEMENTS = ["card", "table", "review", "verdict", "sticky", "widget", "offers", "hub", "sidebar"] as const;
+export type Placement = (typeof PLACEMENTS)[number];
+export const VOLUME_KEYS = ["10k", "50k", "250k", "1m"] as const;
+export type VolumeKey = (typeof VOLUME_KEYS)[number];
+
 /**
  * A commercial link to a provider.
  *
@@ -22,6 +27,9 @@ export function AffiliateLink({
   partner,
   from,
   variant,
+  el,
+  pos,
+  vol,
   children,
   className,
   title,
@@ -32,6 +40,12 @@ export function AffiliateLink({
   from?: string;
   /** "quote" sends the reader to the provider's contact/demo page instead. */
   variant?: "visit" | "quote";
+  /** Where on the page the button sits: card | table | review | verdict | sticky | widget | offers | hub. */
+  el?: Placement;
+  /** 1-based position of the provider in the block it sits in. */
+  pos?: number;
+  /** The volume the reader had selected when they clicked: 10k | 50k | 250k | 1m. */
+  vol?: VolumeKey;
   children: ReactNode;
   className?: string;
   title?: string;
@@ -39,6 +53,9 @@ export function AffiliateLink({
   const qs = new URLSearchParams();
   if (from) qs.set("from", from);
   if (variant === "quote") qs.set("v", "quote");
+  if (el) qs.set("el", el);
+  if (pos && Number.isInteger(pos) && pos > 0) qs.set("pos", String(pos));
+  if (vol) qs.set("vol", vol);
   const query = qs.toString();
   const href = query ? `/go/${partner}?${query}` : `/go/${partner}`;
 
@@ -50,6 +67,8 @@ export function AffiliateLink({
       className={className}
       title={title}
       data-partner={partner}
+      data-placement={el}
+      data-position={pos}
     >
       {children}
     </a>

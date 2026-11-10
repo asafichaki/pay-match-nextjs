@@ -15,6 +15,11 @@ export default function StickyCTABar() {
     // Show on /thank-you, /quiz, and the in-funnel pages → noisy; skip
     const path = window.location.pathname;
     if (path.startsWith("/thank-you") || path.startsWith("/quiz")) return;
+    // Money pages carry their own provider CTAs (ranking cards, verdict
+    // blocks); the quiz is offered once, inline, and never as a sticky bar.
+    if (path.startsWith("/comparisons")) return;
+    // A page with its own provider sticky bar never gets two.
+    if (document.querySelector("[data-ranking-sticky]")) return;
 
     // Try to observe a hero/header element. Comparison pages use
     // [aria-labelledby$='-heading']; long-form articles use <header>.

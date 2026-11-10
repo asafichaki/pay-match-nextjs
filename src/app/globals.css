@@ -26,12 +26,15 @@
     --accent: 184 35% 96%;
     --accent-foreground: 184 50% 26%;
 
-    --cta: 28 90% 50%;
+    /* Deepened 2026-11-10: the old 28 90% 50% was 2.81:1 against white and
+       failed WCAG AA on every button. This is 5.18:1, hover 7.31:1. */
+    --cta: 17 88% 40%;
     --cta-foreground: 0 0% 100%;
-    --cta-hover: 28 90% 44%;
+    --cta-hover: 16 79% 34%;
 
     --success: 158 64% 52%;
     --success-foreground: 0 0% 100%;
+    --success-ink: 142 72% 29%;
 
     --warning: 43 96% 56%;
     --warning-foreground: 220 13% 13%;
@@ -82,6 +85,7 @@
 
     --success: 158 64% 52%;
     --success-foreground: 0 0% 100%;
+    --success-ink: 142 60% 62%;
 
     --warning: 43 96% 56%;
     --warning-foreground: 220 13% 13%;

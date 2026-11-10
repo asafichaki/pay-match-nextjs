@@ -42,3 +42,15 @@ export const ARTICLE_OFFERS: Record<string, ArticleOffers> = {
 export const ARTICLE_VS: Record<string, [string, string]> = {
   "square-vs-helcim-2026": ["Helcim", "Square"],
 };
+
+/**
+ * The one-line "choose X if" for each side of a verdict block, keyed by the
+ * processor name. Facts only, consistent with ranking-2026.ts and the
+ * provider's published pricing; no adjectives. Used by VsPicksBox.
+ */
+export const VS_CHOOSE: Record<string, string> = {
+  Helcim: "cost is the priority: interchange-plus with no monthly fee, no contract, and a margin that drops as volume grows",
+  Square: "you want free POS software, a $0 monthly plan and same-day transfers, and accept a flat rate for it",
+  Stripe: "you need developer tools, subscription billing, marketplaces or many currencies, and accept 2.9% + 30¢ online for it",
+  PayPal: "your customers already pay with PayPal and you want its 2.29% + 9¢ in-person rate",
+};
