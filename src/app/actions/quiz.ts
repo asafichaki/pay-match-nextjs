@@ -10,16 +10,14 @@ import {
   attributionColumns,
   parseAttributionCookie,
 } from "@/lib/attribution";
-import { isValidPhone, normalizePhone, PHONE_INVALID_MESSAGE } from "@/lib/phone";
+import { normalizePhone } from "@/lib/phone";
 
 const quizLeadSchema = z.object({
   fullName: z.string().min(1).max(200),
   email: z.string().email().max(320),
-  phone: z
-    .string()
-    .min(1)
-    .max(40)
-    .refine(isValidPhone, { message: PHONE_INVALID_MESSAGE }),
+  // Required but never format-checked (2026-11-10): stored as typed when
+  // normalizePhone cannot make it E.164, never refused.
+  phone: z.string().trim().min(1).max(40),
   monthlyVolume: z.string().max(50).optional(),
   businessType: z.string().max(50).optional(),
   industry: z.string().max(100).optional(),

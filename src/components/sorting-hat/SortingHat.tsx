@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition, useEffect, useRef } from "react";
-import { isValidPhone, PHONE_INVALID_MESSAGE } from "@/lib/phone";
+import { isValidPhone } from "@/lib/phone";
 
 const PHONE_REQUIRED_MESSAGE = "Please add your mobile number so Barak can reach you.";
 import { useRouter } from "next/navigation";
@@ -93,13 +93,11 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
       track("sh_phone_missing");
       return;
     }
-    // Checked here so the message lands next to the field instead of after a
-    // round trip. The server checks it again.
-    if (!isValidPhone(phone)) {
-      setError(PHONE_INVALID_MESSAGE);
-      track("sh_submit_error", { message: "phone_invalid" });
-      return;
-    }
+    // Format is never a reason to block (Assaf, 2026-11-10). An Israeli
+    // 054-... was refused for its trunk zero. A number Barak cannot dial
+    // as typed is still a number he can read and fix; a blocked merchant
+    // is gone. The server tags it phone_unverified instead.
+    if (!isValidPhone(phone)) track("sh_phone_unverified");
     startTransition(async () => {
       const result = await submitSortingHatLead({
         fullName: fullName.trim(),
@@ -336,7 +334,7 @@ export default function SortingHat({ onComplete, variant = "popup", initialBusin
                 value={phone}
                 onChange={(e) => {
                   setPhone(e.target.value);
-                  if (error === PHONE_INVALID_MESSAGE || error === PHONE_REQUIRED_MESSAGE) setError(null);
+                  if (error === PHONE_REQUIRED_MESSAGE) setError(null);
                 }}
                 placeholder="(415) 555-0134"
                 autoComplete="tel"

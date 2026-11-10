@@ -29,7 +29,7 @@ import {
 } from "@/lib/funnel/resend-client";
 import { getEmail } from "@/lib/funnel/email-registry";
 import { renderFunnelEmail, unsubscribeHeaders } from "@/lib/funnel/email-footer";
-import { isValidPhone, normalizePhone, PHONE_INVALID_MESSAGE } from "@/lib/phone";
+import { isValidPhone, normalizePhone } from "@/lib/phone";
 
 const schema = z.object({
   fullName: z.string().min(1).max(120),
@@ -38,10 +38,9 @@ const schema = z.object({
   // 2026-09-08 and 2026-11-10; required here 2026-08-29 to 2026-09-08. The
   // client checks it too, but a browser rule is a suggestion to anyone
   // posting to the action directly.
-  phone: z
-    .string()
-    .max(40)
-    .refine((v) => isValidPhone(v), { message: PHONE_INVALID_MESSAGE }),
+  // Present, but never format-checked: a wrong format is stored as typed and
+  // tagged phone_unverified rather than refused (Assaf, 2026-11-10).
+  phone: z.string().trim().min(1).max(40),
   businessType: z.enum([
     "physical_goods",
     "saas_digital",
@@ -100,7 +99,21 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
 
     const parsed = schema.safeParse(input);
     if (!parsed.success) {
-      return { success: false as const, error: "Please check your inputs and try again." };
+      // Name the field. "Please check your inputs" left Assaf (2026-11-10)
+      // with no way to tell what was wrong, and gave us nothing to debug.
+      const field = String(parsed.error.issues[0]?.path[0] ?? "");
+      console.warn("[submitSortingHatLead] validation failed", {
+        fields: parsed.error.issues.map((i) => i.path.join(".")),
+      });
+      const message: Record<string, string> = {
+        email: "Please check your email address.",
+        fullName: "Please add your first name.",
+        phone: "Please add your mobile number.",
+      };
+      return {
+        success: false as const,
+        error: message[field] || "Something went wrong. Please refresh the page and try again.",
+      };
     }
     const data = parsed.data;
     const honeypotHit = Boolean(data.honeypot);
@@ -133,6 +146,7 @@ export async function submitSortingHatLead(input: SortingHatPayload) {
       funnel_state: "day0",
       lead_source: "sorting_hat",
       ...(honeypotHit ? { honeypot_hit: true } : {}),
+      ...(isValidPhone(data.phone) ? {} : { phone_unverified: true }),
     };
 
     // Build insert payload using both legacy and new columns. Supabase will
