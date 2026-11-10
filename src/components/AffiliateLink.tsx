@@ -71,7 +71,7 @@ export function AffiliateLink({
  * whether or not it pays.
  */
 export const DISCLOSURE_TEXT =
-  "We earn a commission from some providers when you sign up through our links. It never changes our scores or the order of our rankings, and it doesn't change your price.";
+  "We earn a commission from some providers when you sign up through our links. Paying us does not move a provider up: the published cost formula sets the order. It adds nothing to the price you pay.";
 
 export function AffiliateDisclosure({ className }: { className?: string }) {
   return (

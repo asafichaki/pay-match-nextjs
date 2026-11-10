@@ -11,6 +11,7 @@ import {
   expectedStateForAge,
 } from "@/lib/funnel/email-dispatch";
 import { getEmail } from "@/lib/funnel/email-registry";
+import { renderFunnelEmail, unsubscribeHeaders } from "@/lib/funnel/email-footer";
 import {
   FUNNEL_FROM,
   FUNNEL_REPLY_TO,
@@ -161,18 +162,22 @@ export async function GET(req: NextRequest) {
 
       const subject = mod.subject(choice.props);
       const react = mod.default(choice.props);
+      // Rendered here, not passed as `react`, so the CAN-SPAM footer
+      // (postal address + unsubscribe) is added once for every template.
+      const html = await renderFunnelEmail(react, lead.email);
 
       const delivery = await resend.emails.send({
         from: FUNNEL_FROM,
         replyTo: FUNNEL_REPLY_TO,
         to: lead.email,
         subject,
-        react,
+        html,
         tags: [
           { name: "lead_id", value: lead.id },
           { name: "funnel_state", value: currentState },
         ],
         headers: {
+          ...unsubscribeHeaders(lead.email),
           "X-Funnel-Track": lead.track || "",
           "X-Funnel-State": currentState,
           "X-Funnel-Lead-Id": lead.id,

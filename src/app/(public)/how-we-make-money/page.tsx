@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DISCLOSURE_TEXT } from "@/components/AffiliateLink";
+import { OPERATOR_NAME, OPERATOR_ADDRESS_LINE } from "@/lib/funnel/operator";
 import { RATES_CHECKED } from "@/lib/data/ranking-2026";
 
 export const metadata: Metadata = {
@@ -41,6 +42,13 @@ export default async function HowWeMakeMoneyPage() {
         <p className="text-sm font-medium text-primary mb-3">Disclosure</p>
         <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">How we make money</h1>
         <p className="text-lg text-muted-foreground mb-8">{DISCLOSURE_TEXT}</p>
+
+        <section className="space-y-3 mb-10">
+          <h2 className="text-2xl font-bold text-foreground">Who runs this site</h2>
+          <p className="text-muted-foreground">
+            myPayAdvisor is published by {OPERATOR_NAME}, {OPERATOR_ADDRESS_LINE}. The same company signs every partner agreement listed below and receives every payment. Barak Bachar reviews the rates and the rankings; he does not negotiate or sign partner agreements and is not paid per referral.
+          </p>
+        </section>
 
         <section className="space-y-3 mb-10">
           <h2 className="text-2xl font-bold text-foreground">Who pays us, and for what</h2>

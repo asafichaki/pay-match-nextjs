@@ -28,6 +28,7 @@ import {
   SHORTLIST_URL_BASE,
 } from "@/lib/funnel/resend-client";
 import { getEmail } from "@/lib/funnel/email-registry";
+import { renderFunnelEmail, unsubscribeHeaders } from "@/lib/funnel/email-footer";
 import { isValidPhone, normalizePhone, PHONE_INVALID_MESSAGE } from "@/lib/phone";
 
 const schema = z.object({
@@ -432,18 +433,22 @@ async function sendDay0Email(args: Day0Args) {
   if (!mod) throw new Error(`Day 0 email module not found for track ${args.track}`);
   const subject = mod.subject(sharedProps);
   const react = mod.default(sharedProps);
+  // Same footer as the tick cron: postal address + unsubscribe, keyed on the
+  // address because the lead id may not be known yet at Day 0.
+  const html = await renderFunnelEmail(react, args.email);
 
   const result = await resend.emails.send({
     from: FUNNEL_FROM,
     replyTo: FUNNEL_REPLY_TO,
     to: args.email,
     subject,
-    react,
+    html,
     tags: [
       { name: "funnel_state", value: "day0" },
       ...(args.leadId ? [{ name: "lead_id", value: args.leadId }] : []),
     ],
     headers: {
+      ...unsubscribeHeaders(args.email),
       ...(args.leadId ? { "X-Funnel-Lead-Id": args.leadId } : {}),
       "X-Funnel-Track": args.track,
       "X-Funnel-State": "day0",
