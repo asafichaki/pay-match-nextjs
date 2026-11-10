@@ -6,6 +6,7 @@ import EffectiveRateCalculator from "@/components/calculator/EffectiveRateCalcul
 import { MatchCTA } from "@/components/MatchCTA";
 import { withSeoOverride } from "@/lib/seo/overrides";
 import { AeoAnswer } from "@/components/seo/AeoAnswer";
+import { CostAtVolume } from "@/components/rates/CostAtVolume";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
@@ -203,6 +204,9 @@ export default function PaymentProcessorFeesGuidePage() {
               <p data-speakable="true" className="aeo-answer text-xl text-muted-foreground leading-relaxed mb-6">
                 The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5% of each transaction. That cost splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat 2.6% + 15¢ in person works out to 2.90% on a $50 sale, and Stripe&apos;s 2.9% + 30¢ online to 3.50%, at prices read from their pricing pages on Oct 29, 2026. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
               </p>
+
+              {/* What the reader came for, as their own number: effective cost at their volume, every ranked provider, Visit buttons. Added 2026-11-10 (19 human views / 14d with no provider path). */}
+              <CostAtVolume from="/insights/payment-processor-fees-guide" className="mb-8" defaultVolume={25_000} defaultChannel="In-person" />
 
               {/* Reviewed-by byline: real expert. Fabricated author byline removed per locked portfolio_no_fictional_credentials policy. */}
               <div className="flex items-center gap-4 pt-6 border-t border-border">
