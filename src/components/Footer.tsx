@@ -33,9 +33,9 @@ const Footer = () => {
 
           {/* Footer Newsletter */}
           <div>
-            <h3 className="font-display font-bold text-sm mb-3">Get Payment Processing Tips</h3>
+            <h3 className="font-display font-bold text-sm mb-3">Questions about your rates?</h3>
             <p className="text-xs text-background/70 mb-4">
-              Weekly insights on saving money, avoiding hidden fees, and choosing the right processor.
+              Leave your email and we&rsquo;ll get back to you soon.
             </p>
             <NewsletterForm source="footer" variant="compact" />
           </div>
