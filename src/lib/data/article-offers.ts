@@ -170,8 +170,8 @@ ARTICLE_OFFERS["paymentcloud-review-2026"] = {
   checked: "2026",
   items: [
     { processor: "PaymentCloud", fact: "Quote-only pricing. Approval in 24 hours to 5 days per its homepage; free terminal per location advertised.", custom: { name: "PaymentCloud", partnerSlug: "paymentcloud", url: "https://paymentcloudinc.com/", variant: "quote" } },
-    { processor: "Durango Merchant Services", fact: "Interchange-plus pricing by quote; over 20 years in business; offshore placement options.", custom: { name: "Durango Merchant Services", partnerSlug: "durango", url: "https://durangomerchantservices.com/", variant: "quote" } },
-    { processor: "Easy Pay Direct", fact: "Standard accounts: 2.69% + $0.36 online, 1.59% + $0.19 swiped, monthly typically $36.", custom: { name: "Easy Pay Direct", partnerSlug: "easy-pay-direct", url: "https://www.easypaydirect.com/", variant: "visit" } },
+    { processor: "Durango Merchant Services", fact: "Publishes ranges: 1.95% to 4.95% + $0.15 to $0.25 per authorization, 5% to 10% reserve. Quote sets your rate.", custom: { name: "Durango Merchant Services", partnerSlug: "durango", url: "https://durangomerchantservices.com/", variant: "quote" } },
+    { processor: "Easy Pay Direct", fact: "Standard accounts: 2.69% + $0.36 online; monthly typically $25; $99 setup waived if documents arrive in 24 hours.", custom: { name: "Easy Pay Direct", partnerSlug: "easy-pay-direct", url: "https://www.easypaydirect.com/", variant: "visit" } },
     { processor: "Helcim", fact: "Interchange + 0.50% + 25¢ online, no monthly fee, no contract. Mid-risk only; declines most high-risk categories." },
   ],
 };
@@ -275,7 +275,7 @@ ARTICLE_OFFERS["best-high-risk-friendly-payment-processors-2026"] = {
   checked: "2026",
   items: [
     { processor: "PaymentCloud", fact: "Says it serves high-risk businesses, approves in 24 hours to 5 days, no long-term contracts. Pricing is quote-only.", custom: { name: "PaymentCloud", partnerSlug: "paymentcloud", url: "https://paymentcloudinc.com/", variant: "quote" } },
-    { processor: "Durango Merchant Services", fact: "Says it opens high-risk and large-volume accounts with interchange-plus pricing. Pricing is quote-only.", custom: { name: "Durango Merchant Services", partnerSlug: "durango", url: "https://durangomerchantservices.com/", variant: "quote" } },
+    { processor: "Durango Merchant Services", fact: "Publishes ranges: 1.95% to 4.95% + $0.15 to $0.25 per authorization, 5% to 10% reserve. Quote sets your rate.", custom: { name: "Durango Merchant Services", partnerSlug: "durango", url: "https://durangomerchantservices.com/", variant: "quote" } },
     { processor: "Worldpay", fact: "Publishes no price list or high-risk terms; every account is priced by quote. Ask for reserve and contract terms in writing.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en/small-business", variant: "quote" } },
     { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no contract, no monthly fee. No high-risk program on its pricing page." },
   ],
