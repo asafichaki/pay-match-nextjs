@@ -36,7 +36,7 @@ export default function Page() {
     "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": { "@type": "Organization", "name": "myPayAdvisor", "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" } },
     "datePublished": "2026-05-07",
-    "dateModified": "2026-05-07",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": { "@type": "WebPage", "@id": URL }
   };
 
@@ -54,11 +54,11 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "Why is in-person processing usually cheaper than online?", "acceptedAnswer": { "@type": "Answer", "text": "Card-present interchange is 0.30% to 0.80% lower than card-not-present because the issuer treats a chip-read or contactless tap as proof the real card was present. Lower fraud risk for the issuer means lower interchange for you. The savings only show up if the terminal is reading EMV chip and not falling back to keyed entry." } },
-      { "@type": "Question", "name": "Should I lease or buy my payment terminal?", "acceptedAnswer": { "@type": "Answer", "text": "Buy. A modern EMV terminal costs $300 to $700. A lease at $39 per month for 48 months is $1,872 plus tax for the same hardware. Leasing is one of the most predatory products in payments. Even on poor cash flow, financing the purchase on a credit card and paying it off costs less than leasing." } },
-      { "@type": "Question", "name": "What is MDR and how is it hidden in terminal pricing?", "acceptedAnswer": { "@type": "Answer", "text": "MDR is the Merchant Discount Rate, the all-in percentage you pay per transaction. The terminal-pricing trick is to advertise low or zero terminal cost and bury an extra 0.20% to 0.50% inside the MDR over 36 months. On $30K monthly volume, that hidden 0.30% is $1,080 a year, far more than the $500 the terminal would have cost outright." } },
-      { "@type": "Question", "name": "Can I use my own terminal with a new processor?", "acceptedAnswer": { "@type": "Answer", "text": "Sometimes. BYO works with processors that support open hardware (Helcim, Stax, some Fiserv reseller channels). It does not work with closed ecosystems (Square, Clover when locked to a specific processor, Toast). Before signing, ask which terminal models are supported on a BYO basis and get the answer in writing." } },
-      { "@type": "Question", "name": "What is the tip-adjustment fee and why does it cost so much?", "acceptedAnswer": { "@type": "Answer", "text": "Tip adjustment is when a restaurant authorizes a card amount, the customer adds a tip on the slip, and the final settlement amount is higher than the auth. Some processors charge $0.05 to $0.25 per tip adjustment. On 100 covers a night with tips, that is $5 to $25 per shift. Other processors include tip adjustment free. The fee is 100% negotiable and should be zero." } }
+      { "@type": "Question", "name": "Why is in-person processing usually cheaper than online?", "acceptedAnswer": { "@type": "Answer", "text": "Card-present interchange is lower because the issuer treats a chip read or contactless tap as proof the real card was present. On Visa's schedule effective Oct 24, 2026, a basic consumer credit card costs 1.51% + 10 cents in person (Retail Credit Product 2) against 1.89% + 10 cents online (Card Not Present Product 1), and a Traditional Rewards card 1.65% against 2.04%. The savings only show up if the terminal reads the chip or tap and does not fall back to keyed entry." } },
+      { "@type": "Question", "name": "Should I lease or buy my payment terminal?", "acceptedAnswer": { "@type": "Answer", "text": "Usually buy. Published prices include Stripe's S700 at $299, Stax's Dejavoo QD4 countertop at $310, Clover Compact at $349 and Helcim's Smart Terminal at $349 (checked Oct 2026). A third-party lease at, say, $39 a month for 48 months is $1,872 plus tax, and these leases are commonly non-cancelable, so you keep paying even after you switch processors. Owning a device does not make it portable, though: Clover hardware is locked to Fiserv and Square hardware to Square." } },
+      { "@type": "Question", "name": "What is MDR and how is it hidden in terminal pricing?", "acceptedAnswer": { "@type": "Answer", "text": "MDR is the Merchant Discount Rate, the all-in percentage you pay per transaction. The terminal-pricing trick is to advertise a low or zero terminal cost and recover it through a higher MDR for the life of the contract. As a hypothetical example, an extra 0.30% on $30K monthly volume is $90 a month, $1,080 a year and $3,240 over 36 months, far more than the $299 to $349 that published countertop terminals cost outright." } },
+      { "@type": "Question", "name": "Can I use my own terminal with a new processor?", "acceptedAnswer": { "@type": "Answer", "text": "Sometimes. A generic PCI-approved terminal (PAX, Verifone, Ingenico and similar) bought outright can be re-injected with a new processor's encryption keys, if the new processor supports that model. Vendor-locked hardware cannot move: Clover is locked to Fiserv and Square hardware works only with Square. We could not confirm whether Toast devices work with another processor. Before signing, ask which terminal models are supported, the re-injection fee and the turnaround, and get the answers in writing." } },
+      { "@type": "Question", "name": "What is the tip-adjustment fee and why does it cost so much?", "acceptedAnswer": { "@type": "Answer", "text": "Tip adjustment is when a restaurant authorizes a card amount, the customer adds a tip on the slip, and the final settlement amount is higher than the auth. Some fee schedules list a charge per adjustment, so check yours. As a hypothetical example, 10 cents on 100 tipped checks a night is $10 a night, about $3,650 a year if you open every day. Visa lets a US restaurant clear up to 30% above the authorized amount (20% for bars) without a new authorization, so keep tips inside that limit and ask for any per-adjustment fee to be removed." } }
     ]
   };
 
@@ -108,7 +108,7 @@ export default function Page() {
 
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed">
-                The pitch sounds great. &quot;Free terminal, 2.5% all-in, no setup fees.&quot; Three years later, the operator has paid $1,800 for a terminal worth $400, the all-in rate is actually 2.85% after the &quot;regulatory product fee&quot; kicked in, and the contract has 9 months left on a 48-month auto-renew. This is the standard in-person payments story. It does not have to be yours.
+                The pitch sounds great. &quot;Free terminal, low all-in rate, no setup fees.&quot; Here is how it can go wrong, as a hypothetical example: the terminal arrives on a third-party lease at $39 a month for 48 months, or $1,872, for hardware that sells outright for a few hundred dollars. A &quot;regulatory&quot; or &quot;compliance&quot; fee appears on the statement a few months in, and the contract auto-renews. It does not have to be yours.
               </p>
               <p className="text-foreground leading-relaxed">
                 In-person payments should be cheaper than online. Card-present interchange is lower. Fraud risk is lower. The economics favor the merchant. They only stop favoring the merchant when the contract is structured to claw back what the interchange was supposed to save.
@@ -118,42 +118,42 @@ export default function Page() {
                 Why in-person economics are different from online
               </h2>
               <p className="text-foreground leading-relaxed">
-                Card-present interchange runs 0.30% to 0.80% lower than card-not-present on the same card. Visa CPS Retail (chip card-present) is 1.51% + $0.10. The same Visa card on a card-not-present transaction is 1.80% + $0.10 or higher. That gap exists because the issuer trusts the chip read more than a typed-in PAN.
+                Card-present interchange is lower than card-not-present on the same card. On Visa&apos;s schedule effective Oct 24, 2026, a basic consumer credit card in person (Retail Credit Product 2) is 1.51% + $0.10. The same card online (Card Not Present Product 1) is 1.89% + $0.10, and a Traditional Rewards card is 1.65% in person against 2.04% online. That gap exists because the issuer trusts the chip read more than a typed-in card number.
               </p>
               <p className="text-foreground leading-relaxed">
-                Effective rate on a clean retail account, $30 average ticket, IC++ pricing: 2.10% to 2.40%. On the same volume online, the floor is 2.50% to 2.80%. The 30 to 50 basis point difference is real money. On $400K annual volume, that is $1,200 to $2,000.
+                The gap carries through to what you pay. In our cost engine, Helcim&apos;s interchange-plus pricing at $50K a month works out to 2.04% in person against 2.55% online (prices checked Oct 2026). That 0.51-point difference is $255 a month, or $3,060 a year, at that volume.
               </p>
               <p className="text-foreground leading-relaxed">
-                The catch: the savings only land if the terminal is actually reading the chip, the batch is closing daily, and the contract is on transparent IC++ pricing. Three things processors selling into restaurant, retail, and services accounts often quietly undercut.
+                The catch: the savings only land if the terminal is actually reading the chip, the batch is closing daily, and the contract is on transparent IC++ pricing. Check all three before you assume the savings are reaching you.
               </p>
 
               <h2 id="terminal-trick" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 The terminal-pricing trick: low upfront, high MDR over 36 months
               </h2>
               <p className="text-foreground leading-relaxed">
-                The trick has two flavors. Free terminal with elevated processing rate. Or low monthly terminal lease with the same elevated rate.
+                The trick has two flavors. Free terminal with a higher processing rate. Or low monthly terminal lease with the same higher rate.
               </p>
               <p className="text-foreground leading-relaxed">
-                Free terminal sounds free. It is not. The processor recoups the hardware cost (and a margin) by adding 0.15% to 0.40% to the MDR. On $30K monthly volume across 36 months, an extra 0.30% is $3,240. The terminal cost the processor $250. They just made $2,990 on a piece of hardware worth a fraction of what they buried in your processing rate.
+                Free terminal sounds free. It often is not. The processor can recoup the hardware cost, and a margin, through a higher MDR. As a hypothetical example, an extra 0.30% on $30K monthly volume across 36 months is $3,240 ($90 a month), while published countertop terminals cost $299 to $349 outright (Stripe S700 $299, Clover Compact $349, Helcim Smart Terminal $349, checked Oct 2026).
               </p>
               <p className="text-foreground leading-relaxed">
-                Terminal lease is worse. $39 per month for 48 months is $1,872 for a terminal that retails at $400 to $700. The lease often comes with a non-cancellable clause that survives even if you switch processors. Operators end up paying for hardware they no longer use because the lease was issued by a third-party finance company, not the processor.
+                Terminal lease is worse. A lease at $39 per month for 48 months is $1,872 for a single terminal. Third-party equipment leases are commonly written as non-cancelable, and the lease survives even if you switch processors. Operators end up paying for hardware they no longer use because the lease was issued by a third-party finance company, not the processor.
               </p>
               <div className="my-8 p-6 bg-orange-50 dark:bg-orange-950/20 rounded-lg border-l-4 border-orange-500">
-                <p className="text-foreground"><strong>The right move:</strong> buy the terminal outright. A countertop EMV terminal (Verifone V200c, Ingenico Desk 5000) runs $300 to $500. A handheld for restaurants (PAX A920) runs $500 to $700. Pay once. Own it. Negotiate the processing rate as a separate, clean number with no hardware bundling.</p>
+                <p className="text-foreground"><strong>The right move:</strong> buy the terminal outright where you can. Published prices include Stripe&apos;s Reader M2 at $59 and S700 at $299, Stax&apos;s Dejavoo QD4 countertop at $310 and Helcim&apos;s Smart Terminal at $349 (checked Oct 2026). Pay once. Own it. Negotiate the processing rate as a separate, clean number with no hardware bundling, and remember that owning a device does not guarantee it will work with your next processor.</p>
               </div>
 
               <h2 id="byo" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 BYO terminal options
               </h2>
               <p className="text-foreground leading-relaxed">
-                Bring-your-own-terminal works on processors that support open hardware. Helcim, Stax, and many traditional acquirer reseller channels accept Verifone and Ingenico hardware purchased outright. The terminal is reprogrammed for the new processor. Switching costs: $0 to $200 in setup fees.
+                Bring-your-own-terminal works only with generic hardware the new processor supports. A PCI-approved terminal from a maker such as PAX, Verifone or Ingenico, bought outright, can be re-injected with the new processor&apos;s encryption keys, usually by shipping it to a key injection facility. Any fee and the turnaround are set by the processors involved, so get both in writing.
               </p>
               <p className="text-foreground leading-relaxed">
-                Closed ecosystems do not allow BYO. Square hardware only works with Square. Toast hardware only works with Toast. Clover is closed when sold through specific resellers (First Data/Fiserv-bundled Clover) and semi-open when sold through other channels. Before buying any hardware, confirm in writing whether it can move to a different processor.
+                Closed ecosystems do not allow BYO. Square processes payments only through Square. Clover hardware is locked to Fiserv, Clover&apos;s parent company, whether you buy it from Clover or through a bank or reseller, and Clover&apos;s hardware subscriptions run 36 months and cannot be canceled. Toast also sells hardware, software and payments together; we could not confirm whether its devices work with another processor. Before buying any hardware, confirm in writing whether it can move to a different processor.
               </p>
               <p className="text-foreground leading-relaxed">
-                The closed-ecosystem trade-off: tighter integration, higher rates, full vendor lock-in. The open-hardware trade-off: more setup work, better rates, freedom to switch processors without re-buying $5,000 of equipment.
+                The closed-ecosystem trade-off: tighter integration, higher rates, full vendor lock-in. The open-hardware trade-off: more setup work, better rates, more freedom to switch processors without re-buying every device. See our <Link href="/insights/hardware-lock-in-across-processors" className="text-primary hover:underline">hardware lock-in guide</Link> for the full mechanics.
               </p>
 
               <h2 id="multi-location" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -166,7 +166,7 @@ export default function Page() {
                 The right setup: one MID (merchant ID) per location, daily batch close per location, daily settlement to the location-level bank account or to a central account with a clean per-location report. Anything else turns end-of-month bookkeeping into a forensic exercise.
               </p>
               <p className="text-foreground leading-relaxed">
-                Things to watch for: chain-level MIDs that lump all locations into one settlement (impossible to reconcile). Manual batch close (someone forgets, the next day&apos;s transactions downgrade). Mid-day batch close (creates two settlements per day, doubles the settlement fees on contracts that charge per batch).
+                Things to watch for: chain-level MIDs that lump all locations into one settlement (impossible to reconcile). Manual batch close (someone forgets, the next day&apos;s transactions downgrade). Mid-day batch close (creates two settlements per day, which doubles the batch fees on contracts that charge per batch).
               </p>
               <div className="my-8 p-6 bg-primary/5 rounded-lg border-l-4 border-primary">
                 <p className="text-foreground"><strong>Multi-location must-haves in the contract:</strong> per-location MIDs, automatic daily batch close, location-level reporting in the dashboard, and a single chargeback management portal across all locations. If any of these is missing, push back before signing.</p>
@@ -176,32 +176,35 @@ export default function Page() {
                 Tip-adjustment hidden fee
               </h2>
               <p className="text-foreground leading-relaxed">
-                Restaurants live with this one. Authorize $80 for the meal. Customer adds $15 tip. Settle $95. The processor sometimes charges $0.05 to $0.25 per tip adjustment. On 100 covers a night, that is $5 to $25 per shift, $1,800 to $9,000 per year per location.
+                Restaurants live with this one. Authorize $80 for the meal. Customer adds $15 tip. Settle $95. Some fee schedules list a charge per tip adjustment. As a hypothetical example, 10 cents on 100 tipped checks a night is $10 a night, about $3,650 a year per location if you open every day.
               </p>
               <p className="text-foreground leading-relaxed">
-                Worse: tip-adjustment downgrades. If the tip is added more than 24 hours after the auth, the transaction can downgrade from CPS Retail to CPS Retail Late Adjustment, which costs an extra 0.30% to 0.50% in interchange. On a $95 ticket, that is an extra $0.40 per cover. On 30,000 covers a year, $12,000.
+                Worse: downgrades. Visa lets a US restaurant clear up to 30% above the authorized amount (20% for bars) without a new authorization; a bigger tip no longer matches the authorization. A batch that settles outside Visa&apos;s timing rules can also lose its program and land in a costlier one. On Visa&apos;s October 2026 schedule, Non-Qualified Consumer Credit is 3.15% + $0.10, against 2.10% for a basic card under Restaurant 2. On a $95 check, that is about $3.09 instead of $2.00, roughly $1.10 more.
               </p>
               <p className="text-foreground leading-relaxed">
-                Two fixes. Negotiate the tip-adjustment fee to zero in the contract (most processors will). Train staff to close tips and batch within 24 hours of the auth, every shift, no exceptions.
+                Two fixes. Ask for any tip-adjustment fee to be removed in the contract. Close tips and batch every day, inside the settlement window your processor gives you, with auto-batch turned on. For the full mechanics, see <Link href="/insights/tipping-fees-on-pos-systems" className="text-primary hover:underline">tipping fees on POS systems</Link>.
               </p>
 
               <h2 id="benchmarks" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Restaurant vs retail vs services pricing benchmarks
               </h2>
               <p className="text-foreground leading-relaxed">
-                <strong>Quick-service restaurant (QSR), $15 average ticket, $40K monthly:</strong> effective rate target 2.30% to 2.55%. Per-transaction fee is the dominant cost driver because tickets are small. Negotiate the per-transaction fee aggressively, often more than the percentage.
+                For reference, our cost engine puts in-person effective rates at $50K a month at 2.04% for Helcim, 2.11% for Stax, 2.67% for Clover, 2.80% for Stripe and 2.90% for Square (prices checked Oct 2026; see the <Link href="/data/effective-rates-2026" className="text-primary hover:underline">effective-rate table</Link>). Your own rate depends on ticket size and card mix, which is why the cost drivers below differ by vertical.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Full-service restaurant, $55 average ticket with tip, $80K monthly:</strong> effective rate target 2.20% to 2.45%. Tip adjustment is the silent driver. Confirm same-day batch close and zero tip-adjustment fee.
+                <strong>Quick-service restaurant (QSR), $15 average ticket, $40K monthly:</strong> the per-transaction fee is the dominant cost driver because tickets are small: a 10-cent fee is 0.67% of a $15 sale. Negotiate the per-transaction fee aggressively, often more than the percentage.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Specialty retail, $40 average ticket, $50K monthly:</strong> effective rate target 2.10% to 2.40%. EMV chip read on every transaction. Avoid keyed entry except for phone orders.
+                <strong>Full-service restaurant, $55 average ticket with tip, $80K monthly:</strong> tip adjustment is the silent driver. Confirm same-day batch close, tips inside Visa&apos;s 30% limit and no tip-adjustment fee.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Big-ticket retail (furniture, jewelry), $400 average ticket, $100K monthly:</strong> effective rate target 1.90% to 2.20%. Per-transaction fee matters less. Surcharge programs are worth evaluating because the dollar value per transaction makes the surcharge legal and meaningful.
+                <strong>Specialty retail, $40 average ticket, $50K monthly:</strong> EMV chip read or tap on every transaction. Avoid keyed entry except for phone orders.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Services (salon, spa, auto repair), $80 average ticket, $30K monthly:</strong> effective rate target 2.20% to 2.50%. Watch for keyed-entry creep when running cards over the phone for repeat clients. Build a recurring tokenized billing flow instead.
+                <strong>Big-ticket retail (furniture, jewelry), $400 average ticket, $100K monthly:</strong> the per-transaction fee matters less and the percentage matters more. Surcharge programs are worth evaluating where they are allowed, because the dollar amount per sale is larger.
+              </p>
+              <p className="text-foreground leading-relaxed">
+                <strong>Services (salon, spa, auto repair), $80 average ticket, $30K monthly:</strong> watch for keyed-entry creep when running cards over the phone for repeat clients. On exempt Visa debit, a keyed retail sale costs 1.65% + $0.15 against 0.80% + $0.15 for a chip read. Build a recurring tokenized billing flow instead.
               </p>
 
               <h2 id="contract-clauses" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -211,16 +214,16 @@ export default function Page() {
                 <strong>Auto-renewal length.</strong> 12 months is acceptable. 36 to 48 months is a trap. Get the auto-renew clause shortened to 12 months or struck entirely.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Early termination fee.</strong> Should be zero on a renewal. On a new contract, $295 is the highest acceptable. Anything tied to remaining contract months ($95 per month remaining is common) is unacceptable on a 48-month auto-renew because the math gets to $4,560 fast.
+                <strong>Early termination fee.</strong> Should be zero on a renewal. On a new contract, push for a small flat fee or none. Avoid fees tied to remaining contract months: as an example, $95 per remaining month on a 48-month term is $4,560.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Hardware return clause.</strong> If the contract includes a &quot;free&quot; terminal, find the clause that says you have to return the hardware in original condition or pay $500 to $1,200. That clause exists. Read it before accepting the free terminal.
+                <strong>Hardware return clause.</strong> If the contract includes a &quot;free&quot; terminal, look for the clause that says you have to return the hardware in original condition or pay a non-return fee set in the agreement. Read it before accepting the free terminal.
               </p>
               <p className="text-foreground leading-relaxed">
                 <strong>Rate-increase clause.</strong> Some contracts allow the processor to raise rates on 30 days&apos; notice. Strike it. Replace with a rate-lock clause for the initial term.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Liquidated damages.</strong> Distinct from the ETF. Some contracts include a liquidated damages clause that calculates a penalty based on average monthly fees times remaining months. On a $50K monthly account at 2.7%, that is potentially $30,000+ on a 24-month early exit. Strike this. Always.
+                <strong>Liquidated damages.</strong> Distinct from the ETF. Some contracts include a liquidated damages clause that calculates a penalty based on average monthly fees times remaining months. As a hypothetical example, a $50K monthly account at 2.7% pays $1,350 a month in fees, so 24 remaining months would be $32,400. Strike this. Always.
               </p>
               <p className="text-foreground leading-relaxed">
                 For the full negotiation framework on these clauses, see the <Link href="/insights/payment-processor-negotiation-playbook" className="text-primary hover:underline">Negotiation Playbook</Link>. To audit an existing contract before deciding whether to renegotiate or move, run the <Link href="/insights/free-statement-audit-playbook" className="text-primary hover:underline">Statement Audit Playbook</Link>.
@@ -230,23 +233,23 @@ export default function Page() {
                 Surcharging and cash discount programs
               </h2>
               <p className="text-foreground leading-relaxed">
-                On larger tickets, surcharging shifts the credit card processing cost from the merchant to the cardholder, capped at 3% (4% in some states) and only on credit cards (not debit). Done legally, it eliminates 70 to 90% of the processing cost line on the P&amp;L.
+                On larger tickets, surcharging shifts part of the credit card processing cost from the merchant to the cardholder. Visa allows it on credit cards only, never debit or prepaid, capped at your own cost and never above 3%, with 30 days&apos; written notice to your acquirer.
               </p>
               <p className="text-foreground leading-relaxed">
-                The catch: surcharging is illegal or restricted in some states (CT, MA among others as of 2026, plus rules that change). Required disclosures: at the entrance, at the point of sale, and on the receipt. Rules audited by the card networks. Get the program from a compliance-focused provider, not a generic processor add-on, because the penalty for non-compliance is account termination.
+                The catch: some states ban or limit surcharges, and the rules change, so check your state&apos;s current law before you start. Visa requires notices at the store entrance and at checkout, and the surcharge must show on the receipt. Get the program from a provider that can show how it complies, because breaking network rules can cost you the merchant account. Our <Link href="/comparisons/credit-card-surcharging-guide-2026" className="text-primary hover:underline">surcharging guide</Link> covers the details, and the pending <Link href="/insights/visa-mastercard-settlement-2026" className="text-primary hover:underline">Visa and Mastercard settlement</Link> may change them.
               </p>
               <p className="text-foreground leading-relaxed">
-                Cash discount programs are the legal-everywhere alternative. The list price is set at the credit card price, and a discount is applied at the register for cash payment. Mechanically similar to surcharging, legally distinct. Works in every state.
+                Cash discount programs are the usual alternative. The list price is set at the card price, and a discount is applied at the register for cash payment. Mechanically similar to surcharging, but treated differently under network rules. The signage and pricing still have to be set up correctly, so ask the provider how its program fits your state.
               </p>
               <p className="text-foreground leading-relaxed">
-                For a salon with $40 average ticket, surcharging is awkward and customers notice. For a furniture store with $400 average ticket, surcharging saves $11.60 per transaction at 2.9% effective. The math depends entirely on ticket size and customer expectations.
+                For a salon with $40 average ticket, surcharging is awkward and customers notice. For a furniture store with $400 average ticket and a 2.9% effective rate, a full-cost surcharge recovers $11.60 per transaction. The math depends entirely on ticket size and customer expectations.
               </p>
 
               <h2 className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 The point-of-sale lock-in nobody mentions
               </h2>
               <p className="text-foreground leading-relaxed">
-                In 2026, the in-person payment terminal is rarely just a payment terminal. It is part of a POS system that also handles inventory, employee management, online ordering, gift cards, and loyalty. The integration is the lock-in. The processing rate is almost a side effect.
+                Today, the in-person payment terminal is rarely just a payment terminal. It is part of a POS system that also handles inventory, employee management, online ordering, gift cards, and loyalty. The integration is the lock-in. The processing rate is almost a side effect.
               </p>
               <p className="text-foreground leading-relaxed">
                 Toast, Square, Clover, Lightspeed: the POS holds the menu, the inventory, the employee logins, the customer database. Switching processors usually means switching POS, which means re-training staff, re-loading data, re-printing menus, re-issuing employee credentials. The friction is the moat.
@@ -264,29 +267,29 @@ export default function Page() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Why is in-person processing usually cheaper than online?</h3>
-                  <p className="text-foreground leading-relaxed">Card-present interchange is 0.30% to 0.80% lower than card-not-present because the issuer treats a chip-read or contactless tap as proof the real card was present. Lower fraud risk for the issuer means lower interchange for you. The savings only show up if the terminal is reading EMV chip and not falling back to keyed entry.</p>
+                  <p className="text-foreground leading-relaxed">Card-present interchange is lower because the issuer treats a chip read or contactless tap as proof the real card was present. On Visa&apos;s schedule effective Oct 24, 2026, a basic consumer credit card costs 1.51% + 10 cents in person (Retail Credit Product 2) against 1.89% + 10 cents online (Card Not Present Product 1), and a Traditional Rewards card 1.65% against 2.04%. The savings only show up if the terminal reads the chip or tap and does not fall back to keyed entry.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Should I lease or buy my payment terminal?</h3>
-                  <p className="text-foreground leading-relaxed">Buy. A modern EMV terminal costs $300 to $700. A lease at $39 per month for 48 months is $1,872 plus tax for the same hardware. Leasing is one of the most predatory products in payments. Even on poor cash flow, financing the purchase on a credit card and paying it off costs less than leasing.</p>
+                  <p className="text-foreground leading-relaxed">Usually buy. Published prices include Stripe&apos;s S700 at $299, Stax&apos;s Dejavoo QD4 countertop at $310, Clover Compact at $349 and Helcim&apos;s Smart Terminal at $349 (checked Oct 2026). A third-party lease at, say, $39 a month for 48 months is $1,872 plus tax, and these leases are commonly non-cancelable, so you keep paying even after you switch processors. Owning a device does not make it portable, though: Clover hardware is locked to Fiserv and Square hardware to Square.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What is MDR and how is it hidden in terminal pricing?</h3>
-                  <p className="text-foreground leading-relaxed">MDR is the Merchant Discount Rate, the all-in percentage you pay per transaction. The terminal-pricing trick is to advertise low or zero terminal cost and bury an extra 0.20% to 0.50% inside the MDR over 36 months. On $30K monthly volume, that hidden 0.30% is $1,080 a year, far more than the $500 the terminal would have cost outright.</p>
+                  <p className="text-foreground leading-relaxed">MDR is the Merchant Discount Rate, the all-in percentage you pay per transaction. The terminal-pricing trick is to advertise a low or zero terminal cost and recover it through a higher MDR for the life of the contract. As a hypothetical example, an extra 0.30% on $30K monthly volume is $90 a month, $1,080 a year and $3,240 over 36 months, far more than the $299 to $349 that published countertop terminals cost outright.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Can I use my own terminal with a new processor?</h3>
-                  <p className="text-foreground leading-relaxed">Sometimes. BYO works with processors that support open hardware (Helcim, Stax, some Fiserv reseller channels). It does not work with closed ecosystems (Square, Clover when locked to a specific processor, Toast). Before signing, ask which terminal models are supported on a BYO basis and get the answer in writing.</p>
+                  <p className="text-foreground leading-relaxed">Sometimes. A generic PCI-approved terminal (PAX, Verifone, Ingenico and similar) bought outright can be re-injected with a new processor&apos;s encryption keys, if the new processor supports that model. Vendor-locked hardware cannot move: Clover is locked to Fiserv and Square hardware works only with Square. We could not confirm whether Toast devices work with another processor. Before signing, ask which terminal models are supported, the re-injection fee and the turnaround, and get the answers in writing.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What is the tip-adjustment fee and why does it cost so much?</h3>
-                  <p className="text-foreground leading-relaxed">Tip adjustment is when a restaurant authorizes a card amount, the customer adds a tip on the slip, and the final settlement amount is higher than the auth. Some processors charge $0.05 to $0.25 per tip adjustment. On 100 covers a night with tips, that is $5 to $25 per shift. Other processors include tip adjustment free. The fee is 100% negotiable and should be zero.</p>
+                  <p className="text-foreground leading-relaxed">Tip adjustment is when a restaurant authorizes a card amount, the customer adds a tip on the slip, and the final settlement amount is higher than the auth. Some fee schedules list a charge per adjustment, so check yours. As a hypothetical example, 10 cents on 100 tipped checks a night is $10 a night, about $3,650 a year if you open every day. Visa lets a US restaurant clear up to 30% above the authorized amount (20% for bars) without a new authorization, so keep tips inside that limit and ask for any per-adjustment fee to be removed.</p>
                 </div>
               </div>
 
               <div className="not-prose mt-12 p-6 rounded-lg bg-primary/5 border border-primary/20">
-                <h3 className="text-xl font-semibold text-foreground mb-2">Want a 15-minute call with Barak?</h3>
-                <p className="text-foreground mb-4">If you want a second set of eyes on a contract, statement, or pricing offer, Barak takes a limited number of merchant calls per week.</p>
+                <h3 className="text-xl font-semibold text-foreground mb-2">Want a matched shortlist?</h3>
+                <p className="text-foreground mb-4">Answer a few questions about your volume, ticket size and setup, and we will show processors that fit.</p>
                 <Link href="/quiz" className="inline-flex items-center px-5 py-2.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium">Get my matched shortlist →</Link>
               </div>
             </div>

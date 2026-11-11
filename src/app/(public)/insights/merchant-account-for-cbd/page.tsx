@@ -65,7 +65,7 @@ export default function CbdMerchantAccountPage() {
       }
     },
     "datePublished": "2026-05-30",
-    "dateModified": "2026-05-30",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/merchant-account-for-cbd"
@@ -93,7 +93,7 @@ export default function CbdMerchantAccountPage() {
         "name": "Can a CBD business get a merchant account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. CBD and hemp businesses cannot use generalist processors like Stripe, PayPal, or Square, which prohibit CBD in their terms, but they can be approved through high-risk specialists whose acquiring banks underwrite hemp-derived CBD. PaymentCloud, Easy Pay Direct, and Soar Payments publicly state CBD acceptance, and Durango Merchant Services adds offshore options for cases domestic banks decline. Approval depends on your product compliance, your chargeback history, and complete documentation rather than on the category alone."
+          "text": "Yes. Square lists CBD products as unsupported, and Stripe treats low-THC CBD as a restricted category that needs extra due diligence, so most CBD and hemp businesses apply through high-risk specialists instead. PaymentCloud and Easy Pay Direct publish dedicated CBD merchant account programs. Durango Merchant Services lists CBD and hemp among its high-risk industries for U.S. accounts. Soar Payments offers CBD eCheck processing only, not card processing. Approval depends on your product compliance, your chargeback history, and complete documentation rather than on the category alone."
         }
       },
       {
@@ -101,7 +101,7 @@ export default function CbdMerchantAccountPage() {
         "name": "What does CBD payment processing cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CBD is priced as a high-risk vertical, so effective rates run higher than standard retail and most CBD accounts carry a rolling reserve. Acquiring banks quote rates per merchant on underwriting rather than from a public rate card, so treat any guaranteed-rate claim as an opening position to verify in writing. The variables that move your number are processing volume, chargeback ratio, product mix, and how well your compliance documentation is prepared, not the CBD label by itself."
+          "text": "CBD is priced as a high-risk vertical, and the specialists named here do not publish CBD rate cards, so pricing is quote-only and set per merchant on underwriting. Some accounts also carry a reserve. Treat any guaranteed-rate claim as an opening position to verify in writing. The variables that move your number are processing volume, chargeback ratio, product mix, and how well your compliance documentation is prepared, not the CBD label by itself."
         }
       },
       {
@@ -109,15 +109,15 @@ export default function CbdMerchantAccountPage() {
         "name": "What documents do I need to open a CBD merchant account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Underwriters generally require business formation documents, a government ID, recent processing statements if you have them, and product-compliance evidence specific to CBD. The compliance document that matters most is a Certificate of Analysis from an accredited lab for the products you sell, showing cannabinoid content and confirming THC within the legal threshold. Many banks also ask for your product labels, your supplier or lab relationship, and a compliant website with required disclaimers before they approve the account."
+          "text": "Underwriters generally require business formation documents, a government ID, recent processing statements if you have them, and product-compliance evidence specific to CBD. The compliance document that matters most is a Certificate of Analysis from an accredited lab for the products you sell, showing cannabinoid content and confirming THC within the legal threshold. Durango, for example, says its CBD accounts need a Certificate of Analysis under 12 months old. Many banks also ask for your product labels, your supplier or lab relationship, and a compliant website with required disclaimers before they approve the account."
         }
       },
       {
         "@type": "Question",
-        "name": "Why did Stripe or PayPal close my CBD account?",
+        "name": "Why did Stripe or Square close my CBD account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stripe, PayPal, and Square exclude CBD and many hemp products in their acceptable-use policies, so an account can be approved automatically at signup and then terminated once their review flags the CBD category. This is a policy decision, not a judgment on your business. The fix is to move to a high-risk specialist whose acquiring banks already underwrite CBD, rather than reopening another generalist account that will be closed again. Stand up the specialist account first, then migrate volume so revenue keeps moving."
+          "text": "Each platform writes its own rules. Square's Payment Terms list products containing CBD, THC, or other cannabinoids as unsupported. Stripe lists CBD with only negligible THC as a restricted category that requires additional due diligence, and prohibits CBD above the local THC limit, including CBD edibles. PayPal's US Acceptable Use Policy does not name CBD, so confirm with PayPal before you rely on it. An account opened without that review can be closed once the processor sees what you sell. This is a policy decision, not a judgment on your business. The fix is a specialist account underwritten for CBD. Stand up the specialist account first, then migrate volume so revenue keeps moving."
         }
       }
     ]
@@ -138,14 +138,14 @@ export default function CbdMerchantAccountPage() {
           "name": "PaymentCloud",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://paymentcloudinc.com",
+          "url": "https://paymentcloudinc.com/industries/cbd-hemp/",
           "offers": {
             "@type": "Offer",
             "category": "CBD merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk CBD pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; no published CBD rates"
             }
           }
         }
@@ -158,14 +158,14 @@ export default function CbdMerchantAccountPage() {
           "name": "Easy Pay Direct",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://easypaydirect.com",
+          "url": "https://www.easypaydirect.com/merchant-accounts/cbd-merchant-accounts/",
           "offers": {
             "@type": "Offer",
             "category": "CBD merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk pricing with multi-bank load balancing; rate quoted per merchant"
+              "description": "Quote-only; transaction routing across multiple merchant accounts"
             }
           }
         }
@@ -178,14 +178,14 @@ export default function CbdMerchantAccountPage() {
           "name": "Soar Payments",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://soarpayments.com",
+          "url": "https://www.soarpay.com/industry/cbd/",
           "offers": {
             "@type": "Offer",
-            "category": "CBD merchant account",
+            "category": "CBD eCheck processing",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk CBD pricing; rate quoted per merchant on underwriting"
+              "description": "CBD eCheck (ACH) processing only; quote-only"
             }
           }
         }
@@ -198,14 +198,14 @@ export default function CbdMerchantAccountPage() {
           "name": "Durango Merchant Services",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://www.durangomerchantservices.com",
+          "url": "https://www.durangomerchantservices.com/high-risk-merchant-account/",
           "offers": {
             "@type": "Offer",
             "category": "CBD merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "Domestic and offshore CBD acquiring; rate quoted per merchant and acquirer"
+              "description": "Quote-only; CBD and hemp accounts are U.S.-only per its site"
             }
           }
         }
@@ -238,7 +238,7 @@ export default function CbdMerchantAccountPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">High-Risk Processing</span>
                 <span>•</span>
-                <span>Updated May 2026</span>
+                <span>Updated November 2026</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
@@ -247,7 +247,7 @@ export default function CbdMerchantAccountPage() {
               <AeoAnswer kind="insights" slug="merchant-account-for-cbd" />
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Generalist processors ban CBD. High-risk specialists underwrite it. Here is who approves CBD and hemp, what it costs, and the one compliance document that decides most applications.
+                Big generalist processors ban or restrict CBD. High-risk specialists underwrite it. Here is who publishes CBD programs, how pricing works, and the compliance document underwriters ask for first.
               </p>
 
               {/* Reviewed-by byline: real expert only (no fabricated credentials per locked portfolio policy). */}
@@ -271,18 +271,18 @@ export default function CbdMerchantAccountPage() {
             {/* AEO lead-answer block: direct answer for AI Overviews / LLM extraction. */}
             <section className="aeo-answer mb-12 p-6 bg-primary/5 rounded-lg border-l-4 border-primary" data-speakable>
               <p className="text-lg text-foreground leading-relaxed">
-                Yes, a CBD business can get a merchant account, but not through Stripe, PayPal, or Square, which prohibit CBD. You apply through high-risk specialists whose acquiring banks underwrite hemp-derived CBD, such as PaymentCloud, Easy Pay Direct, and Soar Payments. Expect higher effective rates and a rolling reserve, with rates quoted per merchant on underwriting rather than from a public rate card.
+                Yes, a CBD business can get a merchant account. Square lists CBD as unsupported and Stripe treats low-THC CBD as a restricted category, so most CBD sellers apply through high-risk specialists that publish CBD programs, such as PaymentCloud and Easy Pay Direct. Pricing is quote-only, set per merchant on underwriting, and a reserve is possible.
               </p>
             </section>
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed">
-                CBD sits in the &ldquo;regulated but legal&rdquo; band that card networks treat as high-risk. The product is lawful at the federal level when it is hemp-derived and within the legal THC threshold, yet generalist processors exclude it in their acceptable-use policies. That gap is why CBD merchants get approved automatically at signup and then terminated weeks later, and why the right move is a specialist account from day one rather than a generalist account that will be closed again.
+                CBD sits in the &ldquo;regulated but legal&rdquo; band that acquiring banks treat as high-risk, and the rules keep moving. Congress rewrote the federal definition of hemp in Public Law 119-37, enacted November 12, 2025; per the <a href="https://www.everycrsreport.com/reports/IF13136.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Congressional Research Service</a>, most of the new definition takes effect December 11, 2026, and it excludes finished hemp-derived cannabinoid products with more than 0.4 milligrams of total THC per container. State rules vary on top of that. This is general information, not legal advice; check your products with counsel. Generalist processors handle that uncertainty by excluding or restricting CBD, which is why the right move is a specialist account from day one rather than a generalist account that may be closed later.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                This guide is part of our coverage of <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">high-risk merchant accounts</Link>. It covers why CBD is classified the way it is, who underwrites it, what approval actually costs, and the compliance documents that decide most applications. Reviewed by Barak Bachar, a working payments operator who has onboarded regulated-but-legal verticals.
+                This guide is part of our coverage of <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">high-risk merchant accounts</Link>. It covers why CBD is classified the way it is, who underwrites it, what approval actually costs, and the compliance documents that decide most applications.
               </p>
 
               {/* Section 1 */}
@@ -291,11 +291,11 @@ export default function CbdMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                CBD is a high-risk category for two reasons that have nothing to do with whether your specific business is legitimate. First, the regulatory picture varies by state and changes over time, which acquiring banks price as uncertainty. Second, CBD has historically carried elevated chargeback and return activity, which raises loss exposure for the bank. Generalist processors handle that uncertainty the simplest way available to them, by prohibiting the category outright in their terms.
+                CBD is a high-risk category for reasons that have nothing to do with whether your specific business is legitimate. The regulatory picture varies by state and changes over time, which acquiring banks price as uncertainty, and most CBD sales are online, where disputes and fraud cost the bank more. Generalist processors handle that uncertainty the simplest way available to them, by prohibiting or restricting the category in their terms.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                The practical consequence: <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a>, <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a>, and <a href="https://squareup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a> all exclude CBD. An account that processes for a few weeks before a freeze is not a glitch; it is the policy catching up with the signup. You need an acquiring bank that has decided, in advance, to underwrite CBD.
+                Here is what each policy says (checked November 11, 2026). <a href="https://squareup.com/us/en/legal/general/payment" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square&rsquo;s Payment Terms</a> list &ldquo;products containing CBD, THC, or other cannabinoids&rdquo; as unsupported. <a href="https://stripe.com/legal/restricted-businesses" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe&rsquo;s restricted businesses list</a> puts CBD with only negligible THC under restricted categories that need additional due diligence, and prohibits CBD above the local legal THC limit, including CBD edibles. <a href="https://www.paypal.com/us/legalhub/paypal/acceptableuse-full" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal&rsquo;s US Acceptable Use Policy</a> does not name CBD, so ask PayPal before you rely on it. An account that processes for a few weeks before a freeze is usually the policy catching up with the signup. You need an acquiring bank that has decided, in advance, to underwrite CBD.
               </p>
 
               {/* Section 2 */}
@@ -304,7 +304,7 @@ export default function CbdMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                The providers below are current, real U.S. high-risk specialists that publicly state CBD or broad high-risk acceptance. Positioning reflects each provider&rsquo;s stated focus and onboarding model. Rates are quoted per merchant on underwriting, so we do not publish fixed numbers; treat any guaranteed-rate claim as a starting position to verify in writing.
+                The providers below are U.S. high-risk specialists whose own sites address CBD (checked November 11, 2026). Each cell reflects what the provider publishes. None publishes CBD rates, so pricing is quote-only; treat any guaranteed-rate claim as a starting position to verify in writing.
               </p>
 
               <div className="overflow-x-auto my-6">
@@ -313,34 +313,34 @@ export default function CbdMerchantAccountPage() {
                     <tr className="border-b-2 border-foreground">
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">Processor</th>
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">CBD fit</th>
-                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Acquiring model</th>
+                      <th className="text-left py-3 pr-4 font-semibold text-foreground">What it offers (published)</th>
                       <th className="text-left py-3 font-semibold text-foreground">Notable</th>
                     </tr>
                   </thead>
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
-                      <td className="py-3 pr-4">CBD, hemp, e-commerce and retail</td>
-                      <td className="py-3 pr-4">U.S. acquirers, dedicated account rep</td>
-                      <td className="py-3">Broad domestic high-risk acceptance</td>
+                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com/industries/cbd-hemp/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
+                      <td className="py-3 pr-4">Dedicated CBD and hemp merchant account page</td>
+                      <td className="py-3 pr-4">Card processing; dedicated account managers</td>
+                      <td className="py-3">Says no long-term contracts or hidden fees</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://easypaydirect.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Easy Pay Direct</a></td>
-                      <td className="py-3 pr-4">CBD, supplements, subscription</td>
-                      <td className="py-3 pr-4">Multi-bank load balancing across MIDs</td>
-                      <td className="py-3">Routes volume across acquirers for continuity</td>
+                      <td className="py-3 pr-4"><a href="https://www.easypaydirect.com/merchant-accounts/cbd-merchant-accounts/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Easy Pay Direct</a></td>
+                      <td className="py-3 pr-4">CBD, hemp, and hemp-derived product businesses</td>
+                      <td className="py-3 pr-4">Transaction Routing (load balancing) across multiple merchant accounts</td>
+                      <td className="py-3">Says underwriting takes 1 to 4 business days</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://soarpayments.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
-                      <td className="py-3 pr-4">CBD, nutra, subscription</td>
-                      <td className="py-3 pr-4">U.S. acquirers</td>
-                      <td className="py-3">Onboarding focus for declined domestic merchants</td>
+                      <td className="py-3 pr-4"><a href="https://www.soarpay.com/industry/cbd/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
+                      <td className="py-3 pr-4">Hemp and CBD oil businesses</td>
+                      <td className="py-3 pr-4">eCheck (ACH) processing only, no card processing</td>
+                      <td className="py-3">Says its sponsor banks will not underwrite CBD for card processing</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
-                      <td className="py-3 pr-4">CBD where domestic banks decline</td>
-                      <td className="py-3 pr-4">Domestic and offshore acquiring</td>
-                      <td className="py-3">Offshore options for harder cases or higher volume</td>
+                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com/high-risk-merchant-account/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
+                      <td className="py-3 pr-4">Lists CBD and hemp (under 0.3% THC) among its high-risk industries</td>
+                      <td className="py-3 pr-4">U.S.-only CBD and hemp accounts</td>
+                      <td className="py-3">Requires a Certificate of Analysis under 12 months old</td>
                     </tr>
                   </tbody>
                 </table>
@@ -352,7 +352,7 @@ export default function CbdMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                For CBD, the single piece of paperwork that moves an application is the Certificate of Analysis. A Certificate of Analysis is a lab report from an accredited testing facility that states the cannabinoid content of your product and confirms the THC level sits within the legal threshold. Underwriters use it to confirm the product they are about to process for is the compliant product you describe, not a higher-THC item that would breach card-network and legal rules.
+                For CBD, the single piece of paperwork that moves an application is the Certificate of Analysis. A Certificate of Analysis is a lab report from an accredited testing facility that states the cannabinoid content of your product and confirms the THC level sits within the legal threshold. Underwriters use it to confirm the product they are about to process for is the compliant product you describe, not a higher-THC item that would breach the processor&rsquo;s rules or the law. Durango, for one, states that its CBD accounts need a Certificate of Analysis under 12 months old.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -365,7 +365,7 @@ export default function CbdMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                CBD accounts are priced as high-risk, so plan for a higher effective rate than standard retail and, in most cases, a rolling reserve. The reserve, not the headline rate, is usually the lever that matters most to your cash flow, and it is negotiable once you have a clean processing history. For how reserves work and how to bring one down in writing, see our explainer on <Link href="/insights/reserves-frozen-funds-capped-vs-rolling" className="text-primary hover:underline">capped vs rolling reserves and frozen funds</Link>.
+                CBD accounts are priced as high-risk and quoted per merchant, and some come with a reserve. If you are offered one, the reserve often matters more to cash flow than the headline rate, and its terms are worth negotiating in writing once you have a clean processing history. For how reserves work and how to bring one down in writing, see our explainer on <Link href="/insights/reserves-frozen-funds-capped-vs-rolling" className="text-primary hover:underline">capped vs rolling reserves and frozen funds</Link>.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -380,22 +380,22 @@ export default function CbdMerchantAccountPage() {
               <div className="space-y-6">
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">Can a CBD business get a merchant account?</h3>
-                  <p className="text-foreground">Yes. CBD and hemp businesses cannot use Stripe, PayPal, or Square, which prohibit CBD, but they can be approved through high-risk specialists whose acquiring banks underwrite hemp-derived CBD. PaymentCloud, Easy Pay Direct, and Soar Payments publicly state CBD acceptance, and Durango adds offshore options for cases domestic banks decline. Approval depends on product compliance, chargeback history, and documentation rather than the category alone.</p>
+                  <p className="text-foreground">Yes. Square lists CBD products as unsupported, and Stripe treats low-THC CBD as a restricted category that needs extra due diligence, so most CBD and hemp businesses apply through high-risk specialists instead. PaymentCloud and Easy Pay Direct publish dedicated CBD merchant account programs. Durango Merchant Services lists CBD and hemp among its high-risk industries for U.S. accounts. Soar Payments offers CBD eCheck processing only, not card processing. Approval depends on your product compliance, your chargeback history, and complete documentation rather than on the category alone.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">What does CBD payment processing cost?</h3>
-                  <p className="text-foreground">CBD is priced as a high-risk vertical, so effective rates run higher than standard retail and most accounts carry a rolling reserve. Acquiring banks quote rates per merchant on underwriting rather than from a public rate card, so treat any guaranteed-rate claim as an opening position. The variables that move your number are volume, chargeback ratio, product mix, and how well your compliance documentation is prepared.</p>
+                  <p className="text-foreground">CBD is priced as a high-risk vertical, and the specialists named here do not publish CBD rate cards, so pricing is quote-only and set per merchant on underwriting. Some accounts also carry a reserve. Treat any guaranteed-rate claim as an opening position to verify in writing. The variables that move your number are processing volume, chargeback ratio, product mix, and how well your compliance documentation is prepared, not the CBD label by itself.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">What documents do I need to open a CBD merchant account?</h3>
-                  <p className="text-foreground">Underwriters generally require business formation documents, a government ID, recent processing statements if you have them, and product-compliance evidence. The document that matters most is a Certificate of Analysis from an accredited lab, showing cannabinoid content and confirming THC within the legal threshold. Many banks also ask for product labels, your lab relationship, and a compliant website with the required disclaimers.</p>
+                  <p className="text-foreground">Underwriters generally require business formation documents, a government ID, recent processing statements if you have them, and product-compliance evidence specific to CBD. The compliance document that matters most is a Certificate of Analysis from an accredited lab for the products you sell, showing cannabinoid content and confirming THC within the legal threshold. Durango, for example, says its CBD accounts need a Certificate of Analysis under 12 months old. Many banks also ask for your product labels, your supplier or lab relationship, and a compliant website with required disclaimers before they approve the account.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Why did Stripe or PayPal close my CBD account?</h3>
-                  <p className="text-foreground">Stripe, PayPal, and Square exclude CBD and many hemp products in their acceptable-use policies, so an account can be approved at signup and then terminated once review flags the category. This is a policy decision, not a judgment on your business. The fix is to move to a high-risk specialist whose acquiring banks already underwrite CBD. Stand up the specialist account first, then migrate volume so revenue keeps moving.</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">Why did Stripe or Square close my CBD account?</h3>
+                  <p className="text-foreground">Each platform writes its own rules. Square&rsquo;s Payment Terms list products containing CBD, THC, or other cannabinoids as unsupported. Stripe lists CBD with only negligible THC as a restricted category that requires additional due diligence, and prohibits CBD above the local THC limit, including CBD edibles. PayPal&rsquo;s US Acceptable Use Policy does not name CBD, so confirm with PayPal before you rely on it. An account opened without that review can be closed once the processor sees what you sell. This is a policy decision, not a judgment on your business. The fix is a specialist account underwritten for CBD. Stand up the specialist account first, then migrate volume so revenue keeps moving.</p>
                 </div>
               </div>
 

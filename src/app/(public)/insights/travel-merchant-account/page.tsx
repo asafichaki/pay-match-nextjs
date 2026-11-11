@@ -66,7 +66,7 @@ export default function TravelMerchantAccountPage() {
       }
     },
     "datePublished": "2026-05-30",
-    "dateModified": "2026-08-19",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/travel-merchant-account"
@@ -107,7 +107,7 @@ export default function TravelMerchantAccountPage() {
         "name": "Why did Stripe (or another aggregator) shut down my travel agency account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Because travel is on their written lists. Stripe's published restricted-businesses page marks \"Travel reservation services and clubs\" as restricted, requiring additional due diligence, under Stripe's own heading of businesses that \"might pose elevated financial risk,\" and separately prohibits timeshare services and commercial airlines and cruises outright (quotes verified against Stripe's restricted businesses page, accessed August 18, 2026). Aggregators approve instantly by underwriting lightly, then their risk systems flag travel's signature pattern later: high tickets, long delivery windows, seasonal spikes. The termination usually arrives after volume grows, which is the worst possible timing. The fix is structural, not cosmetic: a dedicated travel merchant account that underwrites your model upfront, so the risk review happens before your peak season instead of during it."
+          "text": "Because travel is on their written lists. Stripe's restricted businesses page (checked November 11, 2026) lists travel reservation services and clubs as restricted, requiring additional due diligence, under its heading for businesses that may carry higher financial risk, and separately prohibits timeshare services, commercial airlines and cruises, and international charter and private airlines. Aggregators approve instantly by underwriting lightly, then their risk systems flag travel's signature pattern later: high tickets, long delivery windows, seasonal spikes. The termination usually arrives after volume grows, which is the worst possible timing. The fix is structural, not cosmetic: a dedicated travel merchant account that underwrites your model upfront, so the risk review happens before your peak season instead of during it."
         }
       },
       {
@@ -123,7 +123,7 @@ export default function TravelMerchantAccountPage() {
         "name": "How big is a rolling reserve on a travel merchant account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "There is no single number, and be wary of anyone quoting you one before underwriting. Among processors that publish figures, Durango Merchant Services states travel rolling reserves range from 0% to 10% of processing volume and typically decrease or are removed as processing history stabilizes. Your actual reserve depends on the exposure your account presents: how much volume settles on your merchant account (versus your suppliers'), how far ahead of delivery you charge, your average ticket, and your dispute ratio. Merchant-of-record tour operators with long horizons sit at the high end; agency-model shops running mostly service fees sit at the low end."
+          "text": "There is no single number, and be wary of anyone quoting you one before underwriting. Among processors that publish figures, Durango Merchant Services states travel rolling reserves range from 0% to 10% and that, as processing stabilizes, reserve percentages typically decrease or are removed entirely. Your actual reserve depends on the exposure your account presents: how much volume settles on your merchant account (versus your suppliers'), how far ahead of delivery you charge, your average ticket, and your dispute ratio. Merchant-of-record tour operators with long horizons sit at the high end; agency-model shops running mostly service fees sit at the low end."
         }
       },
       {
@@ -131,7 +131,7 @@ export default function TravelMerchantAccountPage() {
         "name": "Do I need ARC or IATA accreditation to get a travel merchant account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Only if you issue airline tickets. PaymentCloud's published requirements ask for an ARC bond or IATA certificate specifically from merchants selling flight tickets, and Soar Payments requires a current ARC bond for airfare sellers. If you sell tours, packages, hotels, or cruises without issuing air, accreditation is not a standard underwriting requirement, though supplier and reseller agreements are. Worth knowing: ARC accreditation changes your risk profile too, because ARC-settled tickets run on the airlines' merchant accounts rather than yours, which shrinks the volume your own acquirer has to underwrite."
+          "text": "Only if you issue airline tickets. PaymentCloud's published requirements ask for an ARC bond or IATA certificate for flight tickets only, and Soar Payments requires an ARC bond if you sell airfare. If you sell tours, packages, hotels, or cruises without issuing air, accreditation is not a standard underwriting requirement, though supplier and reseller agreements are. Worth knowing: ARC accreditation changes your risk profile too, because ARC-settled tickets run on the airlines' merchant accounts rather than yours, which shrinks the volume your own acquirer has to underwrite."
         }
       },
       {
@@ -160,14 +160,14 @@ export default function TravelMerchantAccountPage() {
           "name": "Durango Merchant Services",
           "serviceType": "Travel merchant account",
           "provider": { "@type": "Organization", "name": "Durango Merchant Services" },
-          "url": "https://www.durangomerchantservices.com",
+          "url": "https://www.durangomerchantservices.com/travel-merchant-account-and-travel-business-payment-processing/",
           "offers": {
             "@type": "Offer",
             "category": "Travel merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk travel pricing; rate quoted per merchant and acquirer"
+              "description": "Publishes discount rates of 1.95% to 4.95% for travel accounts"
             }
           }
         }
@@ -180,14 +180,14 @@ export default function TravelMerchantAccountPage() {
           "name": "PaymentCloud",
           "serviceType": "Travel merchant account",
           "provider": { "@type": "Organization", "name": "PaymentCloud" },
-          "url": "https://paymentcloudinc.com",
+          "url": "https://paymentcloudinc.com/industries/travel-agency/",
           "offers": {
             "@type": "Offer",
             "category": "Travel merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk travel and timeshare pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; no published travel rates"
             }
           }
         }
@@ -200,14 +200,14 @@ export default function TravelMerchantAccountPage() {
           "name": "Soar Payments",
           "serviceType": "Travel merchant account",
           "provider": { "@type": "Organization", "name": "Soar Payments" },
-          "url": "https://www.soarpay.com",
+          "url": "https://www.soarpay.com/industry/travel/",
           "offers": {
             "@type": "Offer",
             "category": "Travel merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk travel pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; no published travel rates"
             }
           }
         }
@@ -220,14 +220,14 @@ export default function TravelMerchantAccountPage() {
           "name": "PayCompass",
           "serviceType": "Travel merchant account",
           "provider": { "@type": "Organization", "name": "PayCompass" },
-          "url": "https://paycompass.com",
+          "url": "https://paycompass.com/travel/",
           "offers": {
             "@type": "Offer",
             "category": "Travel merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk travel pricing; rate quoted per merchant on underwriting"
+              "description": "Says travel transaction fees are typically between 3% and 5%"
             }
           }
         }
@@ -260,7 +260,7 @@ export default function TravelMerchantAccountPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">High-Risk Processing</span>
                 <span>•</span>
-                <span>Updated August 2026</span>
+                <span>Updated November 2026</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
@@ -300,7 +300,7 @@ export default function TravelMerchantAccountPage() {
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed">
-                If you run a travel agency, an OTA, or a tour operator doing serious monthly volume, you have probably lived some version of this: a mainstream processor approved you fast, processed you for a season, then froze funds or terminated the account right as bookings peaked. Or a high-risk processor approved you but parked 10% of every settlement in a reserve you never agreed to in spirit.
+                If you run a travel agency, an OTA, or a tour operator doing serious monthly volume, you have probably lived some version of this: a mainstream processor approved you fast, processed you for a season, then froze funds or terminated the account right as bookings peaked. Or a high-risk processor approved you but parked a share of every settlement in a reserve you never agreed to in spirit.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -353,7 +353,7 @@ export default function TravelMerchantAccountPage() {
               </h3>
 
               <p className="text-foreground leading-relaxed">
-                Aggregator terminations of travel merchants are written policy, not anecdote. Stripe&rsquo;s published restricted-businesses list places &ldquo;Commercial airlines and cruises,&rdquo; &ldquo;International (cross-border) charter and private airlines,&rdquo; and &ldquo;Timeshare services&rdquo; under prohibited categories, and lists &ldquo;Travel reservation services and clubs&rdquo; as restricted, meaning they require additional due diligence, under Stripe&rsquo;s own heading of businesses that &ldquo;might pose elevated financial risk&rdquo; (quotes verified verbatim against Stripe&rsquo;s restricted businesses page, accessed August 18, 2026). Other aggregators apply similar house rules.
+                Aggregator terminations of travel merchants are written policy, not anecdote. <a href="https://stripe.com/legal/restricted-businesses" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe&rsquo;s restricted businesses list</a> places &ldquo;Commercial airlines and cruises,&rdquo; &ldquo;International (cross-border) charter and private airlines,&rdquo; and &ldquo;Timeshare services&rdquo; under prohibited businesses, and lists &ldquo;Travel reservation services and clubs&rdquo; as restricted, meaning they require additional due diligence, under its heading for businesses that may carry higher financial risk (checked November 11, 2026). <a href="https://www.paypal.com/us/legalhub/paypal/acceptableuse-full" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal&rsquo;s Acceptable Use Policy</a> requires pre-approval for airlines and scheduled or non-scheduled charter operators.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -370,7 +370,7 @@ export default function TravelMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Agency model.</strong> The supplier (airline, hotel, cruise line) is the merchant of record. Your agency passes the traveler&rsquo;s card to the supplier, the charge settles on the supplier&rsquo;s merchant account, and you earn commission. Your own merchant account only carries your service fees and markups. In the airline channel this is formalized: ARC-accredited agencies accept cards on behalf of ARC participating airlines, the ticket settles as the airline&rsquo;s transaction, and when a cardholder disputes it, ARC&rsquo;s guide states the dispute is submitted to the airline&rsquo;s payment processor. The Merchant of Record analysis published by AltexSoft puts it simply: in the agency model, suppliers carry the direct chargeback and payment risk.
+                <strong>Agency model.</strong> The supplier (airline, hotel, cruise line) is the merchant of record. Your agency passes the traveler&rsquo;s card to the supplier, the charge settles on the supplier&rsquo;s merchant account, and you earn commission. Your own merchant account only carries your service fees and markups. In the airline channel this is formalized: ARC-accredited agencies accept cards on behalf of ARC participating airlines, the ticket settles as the airline&rsquo;s transaction, and when a cardholder disputes it, ARC&rsquo;s guide states the dispute is submitted to the airline&rsquo;s payment processor.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -411,39 +411,39 @@ export default function TravelMerchantAccountPage() {
                   </thead>
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
+                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com/travel-merchant-account-and-travel-business-payment-processing/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
                       <td className="py-3 pr-4">Dedicated travel program: agencies, OTAs, tour operators, charters</td>
                       <td className="py-3 pr-4">Publishes a 0% to 10% rolling reserve range and states reserves typically decrease or are removed as processing stabilizes</td>
-                      <td className="py-3 pr-4">1 to 3 business days once documentation is complete</td>
-                      <td className="py-3">Publishes full rate ranges (1.95% to 4.95% discount rate); acquiring bank network in US, Canada, EU; $5,000 monthly minimum (US)</td>
+                      <td className="py-3 pr-4">1 to 3 business days once documentation is complete in its FAQ; 1 to 5 business days elsewhere on the same page</td>
+                      <td className="py-3">Publishes full rate ranges (1.95% to 4.95% discount rate); acquiring bank network in US, Canada, EU; $5,000 minimum processing for US accounts</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
+                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com/industries/travel-agency/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
                       <td className="py-3 pr-4">Dedicated travel and timeshare page: agencies, cruises, timeshares</td>
                       <td className="py-3 pr-4">Not published</td>
                       <td className="py-3 pr-4">Application &ldquo;in as little as 5 minutes,&rdquo; representative within 24 hours</td>
-                      <td className="py-3">Requires ARC bond or IATA certificate for airfare sellers; multiple gateway options (Authorize.net, NMI, others)</td>
+                      <td className="py-3">Requires an ARC bond or IATA certificate for flight tickets only; gateway options include Authorize.net and NMI</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://www.soarpay.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
+                      <td className="py-3 pr-4"><a href="https://www.soarpay.com/industry/travel/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
                       <td className="py-3 pr-4">Travel and timeshare page; states it has served travel since its founding</td>
                       <td className="py-3 pr-4">Not published</td>
                       <td className="py-3 pr-4">Not published</td>
-                      <td className="py-3">Requires a current ARC bond for airfare sellers and reseller agreements for resold inventory</td>
+                      <td className="py-3">Requires an ARC bond if selling airfare, reseller agreements, and inbound marketing only (no outbound sales calls)</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://paycompass.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayCompass</a></td>
+                      <td className="py-3 pr-4"><a href="https://paycompass.com/travel/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayCompass</a></td>
                       <td className="py-3 pr-4">Dedicated travel page: agencies, tour operators, timeshares</td>
                       <td className="py-3 pr-4">Not published</td>
                       <td className="py-3 pr-4">3 to 5 business days</td>
-                      <td className="py-3">Publishes a typical travel fee range of 3% to 5%; multi-currency processing and virtual cards</td>
+                      <td className="py-3">Says transaction fees are typically between 3% and 5%; multi-currency processing</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
               <p className="text-foreground leading-relaxed">
-                PayKings, Host Merchant Services, Zen Payments, and Easy Pay Direct also market travel merchant accounts; we excluded them from the table because their pages could not be verified during this review (rate-limited or blocked), not because of any negative finding.
+                Easy Pay Direct also markets a travel merchant account covering OTAs, tour operators, airlines, and hotels, with rolling or fixed reserves set upfront; we left it out of the table because its site blocks automated checks of the full terms, not because of any negative finding.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -508,7 +508,7 @@ export default function TravelMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                A travel merchant account application is judged on its document file: corporate identity, banking, processing history, accreditation if you issue air, and proof of how you book and deliver. The list below is compiled from the published requirements of the travel processors above. Have it ready before you apply; incomplete files are the most common reason a 3-day approval becomes a 3-week one.
+                A travel merchant account application is judged on its document file: corporate identity, banking, processing history, accreditation if you issue air, and proof of how you book and deliver. The list below is compiled from the published requirements of the travel processors above. Have it ready before you apply; incomplete files are a common reason a 3-day approval becomes a 3-week one.
               </p>
 
               <ul className="text-foreground space-y-2 ml-6 list-disc">
@@ -545,7 +545,7 @@ export default function TravelMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>The verdict:</strong> travel is not unbankable, it is mispriced by default. The merchants that get sane terms are the ones that walk in with the exposure math already done: model split documented, delivery horizons proven, dispute ratio in hand. If you want that shortlist built for your specific file instead of a generic one, <Link href="/quiz" className="text-primary hover:underline">take our matching quiz</Link> and Barak will review the shortlist against your volume, ticket size, and model before you apply anywhere.
+                <strong>The verdict:</strong> travel is not unbankable, it is mispriced by default. The merchants that get sane terms are the ones that walk in with the exposure math already done: model split documented, delivery horizons proven, dispute ratio in hand. If you want that shortlist built for your specific file instead of a generic one, <Link href="/quiz" className="text-primary hover:underline">take our matching quiz</Link> before you apply anywhere.
               </p>
 
               {/* FAQ Section */}
@@ -556,7 +556,7 @@ export default function TravelMerchantAccountPage() {
               <div className="space-y-6">
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">Why did Stripe (or another aggregator) shut down my travel agency account?</h3>
-                  <p className="text-foreground">Because travel is on their written lists. Stripe&rsquo;s published restricted-businesses page marks &ldquo;Travel reservation services and clubs&rdquo; as restricted, requiring additional due diligence, under Stripe&rsquo;s own heading of businesses that &ldquo;might pose elevated financial risk,&rdquo; and separately prohibits timeshare services and commercial airlines and cruises outright (quotes verified against Stripe&rsquo;s restricted businesses page, accessed August 18, 2026). Aggregators approve instantly by underwriting lightly, then their risk systems flag travel&rsquo;s signature pattern later: high tickets, long delivery windows, seasonal spikes. The termination usually arrives after volume grows, which is the worst possible timing. The fix is structural, not cosmetic: a dedicated travel merchant account that underwrites your model upfront, so the risk review happens before your peak season instead of during it.</p>
+                  <p className="text-foreground">Because travel is on their written lists. Stripe&rsquo;s restricted businesses page (checked November 11, 2026) lists travel reservation services and clubs as restricted, requiring additional due diligence, under its heading for businesses that may carry higher financial risk, and separately prohibits timeshare services, commercial airlines and cruises, and international charter and private airlines. Aggregators approve instantly by underwriting lightly, then their risk systems flag travel&rsquo;s signature pattern later: high tickets, long delivery windows, seasonal spikes. The termination usually arrives after volume grows, which is the worst possible timing. The fix is structural, not cosmetic: a dedicated travel merchant account that underwrites your model upfront, so the risk review happens before your peak season instead of during it.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
@@ -566,12 +566,12 @@ export default function TravelMerchantAccountPage() {
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">How big is a rolling reserve on a travel merchant account?</h3>
-                  <p className="text-foreground">There is no single number, and be wary of anyone quoting you one before underwriting. Among processors that publish figures, Durango Merchant Services states travel rolling reserves range from 0% to 10% of processing volume and typically decrease or are removed as processing history stabilizes. Your actual reserve depends on the exposure your account presents: how much volume settles on your merchant account (versus your suppliers&rsquo;), how far ahead of delivery you charge, your average ticket, and your dispute ratio. Merchant-of-record tour operators with long horizons sit at the high end; agency-model shops running mostly service fees sit at the low end.</p>
+                  <p className="text-foreground">There is no single number, and be wary of anyone quoting you one before underwriting. Among processors that publish figures, Durango Merchant Services states travel rolling reserves range from 0% to 10% and that, as processing stabilizes, reserve percentages typically decrease or are removed entirely. Your actual reserve depends on the exposure your account presents: how much volume settles on your merchant account (versus your suppliers&rsquo;), how far ahead of delivery you charge, your average ticket, and your dispute ratio. Merchant-of-record tour operators with long horizons sit at the high end; agency-model shops running mostly service fees sit at the low end.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">Do I need ARC or IATA accreditation to get a travel merchant account?</h3>
-                  <p className="text-foreground">Only if you issue airline tickets. PaymentCloud&rsquo;s published requirements ask for an ARC bond or IATA certificate specifically from merchants selling flight tickets, and Soar Payments requires a current ARC bond for airfare sellers. If you sell tours, packages, hotels, or cruises without issuing air, accreditation is not a standard underwriting requirement, though supplier and reseller agreements are. Worth knowing: ARC accreditation changes your risk profile too, because ARC-settled tickets run on the airlines&rsquo; merchant accounts rather than yours, which shrinks the volume your own acquirer has to underwrite.</p>
+                  <p className="text-foreground">Only if you issue airline tickets. PaymentCloud&rsquo;s published requirements ask for an ARC bond or IATA certificate for flight tickets only, and Soar Payments requires an ARC bond if you sell airfare. If you sell tours, packages, hotels, or cruises without issuing air, accreditation is not a standard underwriting requirement, though supplier and reseller agreements are. Worth knowing: ARC accreditation changes your risk profile too, because ARC-settled tickets run on the airlines&rsquo; merchant accounts rather than yours, which shrinks the volume your own acquirer has to underwrite.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">

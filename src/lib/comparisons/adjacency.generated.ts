@@ -56,7 +56,7 @@ export const COMPARISON_TITLES: Record<string, string> = {
   "helcim-vs-payment-depot-2026": "Helcim vs Payment Depot 2026: Which Costs Less",
   "helcim-vs-stripe": "Helcim vs Stripe 2026: Helcim Is Cheaper From $10K a Month",
   "paymentcloud-review-2026": "PaymentCloud Review 2026: Quote-Only Pricing, Approval and Risks",
-  "paymentcloud-vs-durango": "PaymentCloud vs Durango 2026: Which High-Risk Processor Approves You Faster",
+  "paymentcloud-vs-durango": "PaymentCloud vs Durango 2026: High-Risk Terms Compared",
   "paymentcloud-vs-easy-pay-direct": "PaymentCloud vs Easy Pay Direct 2026: High-Risk Approval and Multi-MID Compared",
   "paypal-alternatives-2026": "PayPal Alternatives 2026: Lower Fees, Fewer Holds",
   "paypal-vs-square": "PayPal vs Square 2026: Fees Compared In Person and Online",

@@ -7,7 +7,7 @@ import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
   title: "Subscription Merchant Account: Recurring Billing, Dunning & Approval (2026)",
-  description: "How subscription merchant accounts work in 2026. Reduce failed recurring payments, recover declines with dunning and account updater, and get approved as a recurring-billing business. Reviewed by a payments operator.",
+  description: "How subscription merchant accounts work in 2026. Reduce failed recurring payments, recover declines with dunning and account updater, and get approved as a recurring-billing business.",
   keywords: "subscription merchant account, recurring billing, failed recurring payments, dunning, account updater, involuntary churn, high-risk subscription processing",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/subscription-merchant-account",
@@ -65,7 +65,7 @@ export default function SubscriptionMerchantAccountPage() {
       }
     },
     "datePublished": "2026-05-30",
-    "dateModified": "2026-05-30",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/subscription-merchant-account"
@@ -93,7 +93,7 @@ export default function SubscriptionMerchantAccountPage() {
         "name": "What is a subscription merchant account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A subscription merchant account is a payment-processing account set up for recurring billing, where a business charges the same customer on a repeating schedule. Acquiring banks treat recurring models as elevated risk because renewals generate disputes from forgotten sign-ups, expired cards, and free-trial confusion. Many recurring businesses end up underwritten as high-risk, which means stricter terms, sometimes a rolling reserve, and a stronger emphasis on clear billing descriptors, cancellation flows, and chargeback controls than a one-time retail account would face."
+          "text": "A subscription merchant account is a payment-processing account set up for recurring billing, where a business charges the same customer on a repeating schedule. Acquiring banks treat recurring models as higher risk because renewals generate disputes from forgotten sign-ups, expired cards, and free-trial confusion. Many recurring businesses end up underwritten as high-risk, which means stricter terms, sometimes a rolling reserve, and a stronger emphasis on clear billing descriptors, cancellation flows, and chargeback controls than a one-time retail account would face."
         }
       },
       {
@@ -101,7 +101,7 @@ export default function SubscriptionMerchantAccountPage() {
         "name": "Why do recurring subscription payments fail?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Most recurring failures are not fraud. The largest single cause is expired or reissued cards, followed by insufficient funds, then issuer soft declines that clear on a later retry. A smaller share is hard declines, such as closed accounts or blocks. Because so many failures are recoverable, the recovery tooling matters more than the decline rate itself: an account updater service refreshes stored card credentials, smart retry logic re-attempts soft declines on a sensible schedule, and dunning emails prompt customers to fix a payment method before the subscription lapses."
+          "text": "Most recurring failures are not fraud. Common causes are expired or reissued cards, insufficient funds, and issuer soft declines that clear on a later retry, while hard declines such as closed accounts need the customer to act. Because many failures are recoverable, the recovery tooling matters as much as the decline rate itself: an account updater service refreshes stored card credentials, smart retry logic re-attempts soft declines on a sensible schedule within card-network retry limits, and dunning emails prompt customers to fix a payment method before the subscription lapses."
         }
       },
       {
@@ -117,7 +117,7 @@ export default function SubscriptionMerchantAccountPage() {
         "name": "Is a subscription business considered high-risk for payment processing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It depends on the model. Low-ticket monthly subscriptions with clear billing and easy cancellation can stay on standard processing. Free-to-paid trials, high price points, long billing cycles, and verticals like supplements, software, or coaching push the account toward high-risk underwriting, where banks expect a rolling reserve and tighter chargeback limits. The classification is a pricing and risk decision, not a verdict on legitimacy, and the levers you actually negotiate are reserve size and approval odds rather than the headline rate."
+          "text": "It depends on the model. Low-ticket monthly subscriptions with clear billing and easy cancellation can stay on standard processing. Free-to-paid trials, high price points, long billing cycles, and verticals like supplements, software, or coaching push the account toward high-risk underwriting, where a reserve and tighter chargeback limits are possible. The classification is a pricing and risk decision, not a verdict on legitimacy, and the levers you actually negotiate are reserve size and approval odds rather than the headline rate."
         }
       },
       {
@@ -125,7 +125,7 @@ export default function SubscriptionMerchantAccountPage() {
         "name": "Which processors approve subscription and recurring-billing merchants?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Domestic high-risk specialists that publicly serve recurring-billing models include Easy Pay Direct, which load-balances volume across multiple acquiring banks for continuity, PaymentCloud, which onboards a broad set of high-risk verticals, and Soar Payments, which focuses on fast onboarding for declined merchants. Durango Merchant Services adds offshore acquiring for models or volumes domestic banks decline. The right fit is the provider whose acquiring banks already underwrite your billing model, your price point, and your chargeback history, so verify acceptance for your exact category before you sign."
+          "text": "Domestic high-risk specialists that publish recurring-billing programs include Easy Pay Direct, whose Transaction Routing spreads volume across multiple merchant accounts and whose subscription page lists auto-rebills, failed-card retries, and dunning; PaymentCloud, which says it offers transparent pricing with no long-term contracts for continuity and subscription merchants; and Soar Payments, which caps recurring contracts at 12 months. Durango Merchant Services publishes an annual membership and subscription program with discount rates of 1.95% to 4.95%. The right fit is the provider whose acquiring banks already underwrite your billing model, your price point, and your chargeback history, so verify acceptance for your exact category before you sign."
         }
       }
     ]
@@ -146,14 +146,14 @@ export default function SubscriptionMerchantAccountPage() {
           "name": "Easy Pay Direct",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://easypaydirect.com",
+          "url": "https://easypaydirect.com/merchant-accounts/continuity-subscription-merchant-account/",
           "offers": {
             "@type": "Offer",
             "category": "Subscription merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk recurring-billing pricing with multi-bank load balancing; rate quoted per merchant"
+              "description": "Quote-only; transaction routing across multiple merchant accounts"
             }
           }
         }
@@ -166,14 +166,14 @@ export default function SubscriptionMerchantAccountPage() {
           "name": "PaymentCloud",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://paymentcloudinc.com",
+          "url": "https://paymentcloudinc.com/industries/continuity-subscription/",
           "offers": {
             "@type": "Offer",
             "category": "Subscription merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "Broad high-risk and recurring pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; no long-term contracts (its claim)"
             }
           }
         }
@@ -186,14 +186,14 @@ export default function SubscriptionMerchantAccountPage() {
           "name": "Soar Payments",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://soarpayments.com",
+          "url": "https://www.soarpay.com/industry/recurring/",
           "offers": {
             "@type": "Offer",
             "category": "Subscription merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk recurring pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; recurring contracts capped at 12 months"
             }
           }
         }
@@ -206,14 +206,14 @@ export default function SubscriptionMerchantAccountPage() {
           "name": "Durango Merchant Services",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://www.durangomerchantservices.com",
+          "url": "https://www.durangomerchantservices.com/annual-membership-and-subscription-merchant-account/",
           "offers": {
             "@type": "Offer",
             "category": "Subscription merchant account",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "Domestic and offshore recurring-billing pricing; rate quoted per merchant and acquirer"
+              "description": "Publishes discount rates of 1.95% to 4.95% for subscription accounts"
             }
           }
         }
@@ -246,7 +246,7 @@ export default function SubscriptionMerchantAccountPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">High-Risk Processing</span>
                 <span>•</span>
-                <span>Updated May 2026</span>
+                <span>Updated November 2026</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
@@ -279,14 +279,14 @@ export default function SubscriptionMerchantAccountPage() {
             {/* AEO lead-answer block: 40-60 word direct answer for AI Overviews / LLM extraction. */}
             <section className="aeo-answer mb-12 p-6 bg-primary/5 rounded-lg border-l-4 border-primary" data-speakable>
               <p className="text-lg text-foreground leading-relaxed">
-                A subscription merchant account is a payment-processing account built for recurring billing, where the same customer is charged on a repeating schedule. Acquiring banks treat recurring models as elevated risk, so many are underwritten as high-risk. The lever that decides whether you keep customers is failed-payment recovery: account updater, smart retries, and dunning, not the headline rate.
+                A subscription merchant account is a payment-processing account built for recurring billing, where the same customer is charged on a repeating schedule. Acquiring banks treat recurring models as higher risk, so many are underwritten as high-risk. The lever that decides whether you keep customers is failed-payment recovery: account updater, smart retries, and dunning, not the headline rate.
               </p>
             </section>
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed">
-                Recurring revenue looks predictable on a spreadsheet and behaves nothing like it inside the card networks. Every renewal is a fresh authorization that can be declined, disputed, or blocked, and the cards on file quietly expire, get reissued after a breach, or run out of funds. For an introduction to how acquiring banks classify and price elevated-risk businesses, start with our guide to{" "}
+                Recurring revenue looks predictable on a spreadsheet and behaves nothing like it inside the card networks. Every renewal is a fresh authorization that can be declined, disputed, or blocked, and the cards on file quietly expire, get reissued after a breach, or run out of funds. For an introduction to how acquiring banks classify and price higher-risk businesses, start with our guide to{" "}
                 <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">high-risk merchant accounts</Link>. This page is the recurring-billing chapter of that story: who approves subscription models, why renewals fail, and how to recover the ones worth keeping.
               </p>
 
@@ -310,7 +310,7 @@ export default function SubscriptionMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                The instinct is to treat a failed renewal as a lost customer. Most of the time it is not. The dominant causes of recurring failure are recoverable: a card that expired or was reissued, a temporary shortfall in funds, or an issuer soft decline that would clear on a later attempt. Genuine hard declines, closed accounts, and deliberate cancellations are the minority. That distribution is the whole reason recovery tooling exists, and it is why measuring your raw decline rate tells you far less than measuring how much of it you win back.
+                The instinct is to treat a failed renewal as a lost customer. Most of the time it is not. Many causes of recurring failure are recoverable: a card that expired or was reissued, a temporary shortfall in funds, or an issuer soft decline that would clear on a later attempt. Genuine hard declines, closed accounts, and deliberate cancellations need a different response. That distribution is the whole reason recovery tooling exists, and it is why measuring your raw decline rate tells you far less than measuring how much of it you win back.
               </p>
 
               <div className="my-8 p-6 bg-muted/30 rounded-lg border-l-4 border-primary">
@@ -334,7 +334,7 @@ export default function SubscriptionMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Recovery is a stack, not a single feature, and the three layers reinforce each other. An <strong>account updater</strong> service queries the card networks for refreshed credentials so an expired or reissued card is corrected before the renewal even runs. <strong>Smart retry logic</strong> re-attempts soft declines on a schedule that respects pay cycles and issuer behaviour rather than hammering the card. <strong>Dunning</strong> sits on top: a sequence of clear, non-alarming messages that ask the customer to update a payment method when the automated layers cannot fix the charge on their own.
+                Recovery is a stack, not a single feature, and the three layers reinforce each other. An <strong>account updater</strong> service queries the card networks for refreshed credentials so an expired or reissued card is corrected before the renewal even runs. <strong>Smart retry logic</strong> re-attempts soft declines on a schedule that respects pay cycles and issuer behaviour rather than hammering the card. Visa&rsquo;s rules set the outer limit: declines with Category 1 response codes must never be retried, and other declines can be retried up to 20 times in 30 days. <strong>Dunning</strong> sits on top: a sequence of clear, non-alarming messages that ask the customer to update a payment method when the automated layers cannot fix the charge on their own.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -372,7 +372,7 @@ export default function SubscriptionMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                The four below are current, real U.S. high-risk specialists whose public positioning includes recurring-billing and subscription verticals. Pricing is quoted per merchant on underwriting, so we do not publish fixed rates here; treat any &ldquo;guaranteed rate&rdquo; you are offered as a starting point to confirm in writing. Approval still depends on your model, your price point, and your chargeback history.
+                The four below are current, real U.S. high-risk specialists whose public positioning includes recurring-billing and subscription verticals. Most pricing is quoted per merchant on underwriting (Durango is the only one here that publishes a rate range), so we do not publish fixed rates here; treat any &ldquo;guaranteed rate&rdquo; you are offered as a starting point to confirm in writing. Approval still depends on your model, your price point, and your chargeback history.
               </p>
 
               <div className="overflow-x-auto my-6">
@@ -381,34 +381,34 @@ export default function SubscriptionMerchantAccountPage() {
                     <tr className="border-b-2 border-foreground">
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">Processor</th>
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">Best-fit recurring models</th>
-                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Acquiring model</th>
+                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Terms (published)</th>
                       <th className="text-left py-3 font-semibold text-foreground">Notable</th>
                     </tr>
                   </thead>
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://easypaydirect.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Easy Pay Direct</a></td>
-                      <td className="py-3 pr-4">Subscriptions, supplements, e-commerce recurring</td>
-                      <td className="py-3 pr-4">Multi-bank load balancing across MIDs</td>
-                      <td className="py-3">Routes volume across acquirers for continuity</td>
+                      <td className="py-3 pr-4"><a href="https://easypaydirect.com/merchant-accounts/continuity-subscription-merchant-account/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Easy Pay Direct</a></td>
+                      <td className="py-3 pr-4">Continuity and subscription merchants</td>
+                      <td className="py-3 pr-4">Transaction Routing (load balancing) across multiple merchant accounts</td>
+                      <td className="py-3">Lists auto-rebills, failed-card retries, vaulting, and dunning; dedicated account manager</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
-                      <td className="py-3 pr-4">Broad high-risk recurring e-commerce</td>
-                      <td className="py-3 pr-4">U.S. acquirers, month-to-month positioning</td>
-                      <td className="py-3">Broad domestic acceptance, dedicated account rep</td>
+                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com/industries/continuity-subscription/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
+                      <td className="py-3 pr-4">Continuity and subscription merchants</td>
+                      <td className="py-3 pr-4">Dedicated account managers</td>
+                      <td className="py-3">Says no hidden fees or long-term contracts</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://soarpayments.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
-                      <td className="py-3 pr-4">Subscription, nutra, coaching, software</td>
-                      <td className="py-3 pr-4">U.S. acquirers</td>
-                      <td className="py-3">Fast onboarding focus for declined merchants</td>
+                      <td className="py-3 pr-4"><a href="https://www.soarpay.com/industry/recurring/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
+                      <td className="py-3 pr-4">Recurring billing and subscription boxes</td>
+                      <td className="py-3 pr-4">Recurring contracts capped at 12 months; 7- or 14-day free trials only if underwriting approves</td>
+                      <td className="py-3">Says underwriting is typically completed in 24 to 72 hours</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
-                      <td className="py-3 pr-4">Recurring models domestic banks decline</td>
-                      <td className="py-3 pr-4">Domestic and offshore acquiring</td>
-                      <td className="py-3">Offshore options for harder recurring verticals</td>
+                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com/annual-membership-and-subscription-merchant-account/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
+                      <td className="py-3 pr-4">Annual membership and subscription businesses</td>
+                      <td className="py-3 pr-4">Several bank and processor relationships (its claim)</td>
+                      <td className="py-3">Publishes discount rates of 1.95% to 4.95%; approval in 1 to 5 business days</td>
                     </tr>
                   </tbody>
                 </table>
@@ -427,12 +427,12 @@ export default function SubscriptionMerchantAccountPage() {
               <div className="space-y-6">
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">What is a subscription merchant account?</h3>
-                  <p className="text-foreground">A subscription merchant account is a payment-processing account set up for recurring billing, where a business charges the same customer on a repeating schedule. Acquiring banks treat recurring models as elevated risk because renewals generate disputes from forgotten sign-ups, expired cards, and free-trial confusion. Many recurring businesses end up underwritten as high-risk, with stricter terms, sometimes a rolling reserve, and a stronger emphasis on clear descriptors, cancellation flows, and chargeback controls than a one-time retail account.</p>
+                  <p className="text-foreground">A subscription merchant account is a payment-processing account set up for recurring billing, where a business charges the same customer on a repeating schedule. Acquiring banks treat recurring models as higher risk because renewals generate disputes from forgotten sign-ups, expired cards, and free-trial confusion. Many recurring businesses end up underwritten as high-risk, with stricter terms, sometimes a rolling reserve, and a stronger emphasis on clear descriptors, cancellation flows, and chargeback controls than a one-time retail account.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">Why do recurring subscription payments fail?</h3>
-                  <p className="text-foreground">Most recurring failures are not fraud. The largest cause is expired or reissued cards, followed by insufficient funds, then issuer soft declines that clear on a later retry. Hard declines such as closed accounts are a smaller share. Because so many failures are recoverable, the recovery tooling matters more than the decline rate: an account updater refreshes stored credentials, smart retry logic re-attempts soft declines on a sensible schedule, and dunning emails prompt customers to fix a payment method before the subscription lapses.</p>
+                  <p className="text-foreground">Most recurring failures are not fraud. Common causes are expired or reissued cards, insufficient funds, and issuer soft declines that clear on a later retry, while hard declines such as closed accounts need the customer to act. Because many failures are recoverable, the recovery tooling matters as much as the decline rate itself: an account updater service refreshes stored card credentials, smart retry logic re-attempts soft declines on a sensible schedule within card-network retry limits, and dunning emails prompt customers to fix a payment method before the subscription lapses.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
@@ -442,12 +442,12 @@ export default function SubscriptionMerchantAccountPage() {
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">Is a subscription business considered high-risk for payment processing?</h3>
-                  <p className="text-foreground">It depends on the model. Low-ticket monthly subscriptions with clear billing and easy cancellation can stay on standard processing. Free-to-paid trials, high price points, long billing cycles, and verticals like supplements, software, or coaching push the account toward high-risk underwriting, where banks expect a rolling reserve and tighter chargeback limits. The classification is a pricing and risk decision, not a verdict on legitimacy, and the levers you negotiate are reserve size and approval odds rather than the headline rate.</p>
+                  <p className="text-foreground">It depends on the model. Low-ticket monthly subscriptions with clear billing and easy cancellation can stay on standard processing. Free-to-paid trials, high price points, long billing cycles, and verticals like supplements, software, or coaching push the account toward high-risk underwriting, where a reserve and tighter chargeback limits are possible. The classification is a pricing and risk decision, not a verdict on legitimacy, and the levers you actually negotiate are reserve size and approval odds rather than the headline rate.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">Which processors approve subscription and recurring-billing merchants?</h3>
-                  <p className="text-foreground">Domestic high-risk specialists that publicly serve recurring-billing models include Easy Pay Direct, which load-balances volume across multiple acquiring banks for continuity, PaymentCloud, which onboards a broad set of high-risk verticals, and Soar Payments, which focuses on fast onboarding for declined merchants. Durango Merchant Services adds offshore acquiring for models or volumes domestic banks decline. The right fit is the provider whose acquiring banks already underwrite your billing model, price point, and chargeback history, so verify acceptance for your exact category before you sign.</p>
+                  <p className="text-foreground">Domestic high-risk specialists that publish recurring-billing programs include Easy Pay Direct, whose Transaction Routing spreads volume across multiple merchant accounts and whose subscription page lists auto-rebills, failed-card retries, and dunning; PaymentCloud, which says it offers transparent pricing with no long-term contracts for continuity and subscription merchants; and Soar Payments, which caps recurring contracts at 12 months. Durango Merchant Services publishes an annual membership and subscription program with discount rates of 1.95% to 4.95%. The right fit is the provider whose acquiring banks already underwrite your billing model, your price point, and your chargeback history, so verify acceptance for your exact category before you sign.</p>
                 </div>
               </div>
 

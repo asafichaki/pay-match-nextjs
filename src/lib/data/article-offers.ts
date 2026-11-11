@@ -344,10 +344,277 @@ ARTICLE_OFFERS["square-vs-toast-2026"] = {
     { processor: "Toast", fact: "2.49% + $0.15 plus $69+ a month and a $1,153 kit, or 3.09% + $0.15 with $0 upfront. 2-year agreement.", custom: { name: "Toast", partnerSlug: "toast", url: "https://pos.toasttab.com/pricing", variant: "visit" } },
   ],
 };
+// Offer boxes for the pages corrected in the Nov 11 2026 fact sweep.
+ARTICLE_OFFERS["stripe-vs-worldpay-2026"] = {
+  heading: "Stripe vs Worldpay, with two published alternatives",
+  orderNote: "The two sides of the matchup first, Stripe as the verdict's pick for published pricing, then the interchange-plus alternatives the verdict names from about $50K a month.",
+  checked: "2026",
+  items: [
+    { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person, no monthly fee or contract. About $1,750 a month at $50K online." },
+    { processor: "Worldpay", fact: "Part of Global Payments; custom quote, no published rates. Ask for contract length and any early termination fee in writing.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no monthly fee, no contract. About $1,275 a month at $50K online." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. About $1,200 a month at $50K online." },
+  ],
+};
+
+ARTICLE_OFFERS["stripe-vs-payment-depot-2026"] = {
+  heading: "Stripe vs Payment Depot, with two published alternatives",
+  orderNote: "The two sides of the matchup first, then the published interchange-plus alternatives the verdict names; Payment Depot cannot be priced because it lists no prices.",
+  checked: "2026",
+  items: [
+    { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person, no monthly fee. About $1,750 a month at $50K online." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+    { processor: "Helcim", fact: "Publishes interchange-plus prices, no quote needed. About $1,275 a month at $50K online on our method." },
+    { processor: "Stax (Fattmerchant)", fact: "Publishes interchange-plus prices, no quote needed. About $1,200 a month at $50K online on our method." },
+  ],
+};
+
+ARTICLE_OFFERS["helcim-vs-payment-depot-2026"] = {
+  heading: "Helcim vs Payment Depot at a glance",
+  orderNote: "Helcim first because it is the one of the two the verdict can price, then Payment Depot by quote, then Stax as the published subscription alternative the verdict names.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no contract. About $1,020 a month at $50K in person." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 in person. 1.79% against Helcim's 1.94% at $250K a month." },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-for-nonprofits-2026"] = {
+  heading: "Nonprofit processors at a glance",
+  orderNote: "In the order of the article's verdict: PayPal and Helcim under about $30K a month, Stax above it, then Stripe for custom donor flows and Square for in-person events.",
+  checked: "2026",
+  items: [
+    { processor: "PayPal", fact: "1.99% + $0.49 confirmed charity rate once PayPal approves a 501(c)(3). About 2.97% on a $50 gift." },
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no monthly fee, no contract. About $270 a month at $10K online." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. $1,200 a month at $50K against $1,275 for Helcim." },
+    { processor: "Stripe", fact: "2.9% + $0.30 online; nonprofit discount by application, rate not published. For custom donor flows." },
+    { processor: "Square", fact: "2.6% + $0.15 in person, hardware from $59, free next-day deposits. For galas and in-person collections." },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-contractors-and-field-services-2026"] = {
+  heading: "Contractor processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim up to about $60K a month, Stax above it, Square under $25K, Stripe for ACH invoicing, then Payment Depot by quote.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no contract. Cheapest in our engine at $10K and $50K a month." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 in person. $4,475 a month at $250K against $4,850 for Helcim." },
+    { processor: "Square", fact: "2.6% + $0.15 in person, no contract, free tap-on-phone app. For new crews under $25K a month." },
+    { processor: "Stripe", fact: "ACH 0.8% capped at $5; cards 2.9% + $0.30 online. For online B2B invoices routed to ACH." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-b2b-saas-2026"] = {
+  heading: "B2B SaaS processors at a glance",
+  orderNote: "In the order of the article's verdict: Stripe as the default on tooling, Helcim and Stax for a side-by-side on cost, Worldpay for enterprise contracts, then Payment Depot by quote.",
+  checked: "2026",
+  items: [
+    { processor: "Stripe", fact: "2.9% + $0.30 online plus 0.7% for Stripe Billing, pay as you go. Smart Retries and automatic card updates." },
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online plus 0.4% on recurring. $7,125 at $250K a month against $10,500 on Stripe with Billing." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. $1,200 a month at $50K online against $1,750 on Stripe." },
+    { processor: "Worldpay", fact: "Part of Global Payments; custom quote, no published rates. For enterprise SaaS with multi-region settlement.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-gateways-for-ecommerce-2026"] = {
+  heading: "Ecommerce gateways at a glance",
+  orderNote: "In the order of the article's verdict: Helcim up to about $50K a month, Stripe for developer-heavy stacks, Stax from $50K, Payment Depot by quote, Square for omnichannel and PayPal as a second button.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no monthly fee, no contract. $6,125 a month at $250K online against $8,750 on Stripe." },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, pay as you go, 135+ currencies. For developer-led teams, marketplaces and global sellers." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. $5,200 a month at $250K online against $6,125 on Helcim." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+    { processor: "Square", fact: "2.9% + $0.30 online on paid plans (3.3% + $0.30 on Free), free next-day funding. Omnichannel sellers under $50K." },
+    { processor: "PayPal", fact: "PayPal Checkout 3.49% + $0.49, about 4.47% on a $50 sale. Works as a second button next to a card gateway." },
+  ],
+};
+
+ARTICLE_OFFERS["best-interchange-plus-payment-processors-2026"] = {
+  heading: "Interchange-plus processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim from $10K to $50K a month, Stax as volume climbs, Payment Depot by quote, Stripe's custom pricing for high-volume online sellers, Worldpay for enterprise.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no contract. About $1,020 a month at $50K in person." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 in person. About $4,475 a month at $250K against $4,850 on Helcim." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+    { processor: "Stripe", fact: "Standard plan is a flat 2.9% + $0.30 online; interchange-plus only as custom pricing by negotiation." },
+    { processor: "Worldpay", fact: "Part of Global Payments; custom quote, no published rates. Markups and contract terms are negotiated.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-subscription-products-2026"] = {
+  heading: "Subscription processors at a glance",
+  orderNote: "In the order of the article's verdict: Stripe as the default on billing tools, Helcim on cost up to about $50K a month, Stax from $50K, then Worldpay, PayPal and Square for narrower cases.",
+  checked: "2026",
+  items: [
+    { processor: "Stripe", fact: "2.9% + $0.30 plus 0.7% for Stripe Billing, with automatic card updates and Smart Retries. $10,500 a month at $250K." },
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online plus 0.4% on recurring. 2.95% at $50K against 4.20% for Stripe with Billing." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. 2.08% online at $250K, about $5,200 a month." },
+    { processor: "Worldpay", fact: "Part of Global Payments; custom quote, no published rates. For enterprises with dedicated payments engineering.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
+    { processor: "PayPal", fact: "PayPal Checkout 3.49% + $0.49. A secondary checkout next to Stripe or Helcim, not a primary processor." },
+    { processor: "Square", fact: "2.9% + $0.30 online on paid plans (3.3% + $0.30 on Free), next-day deposits free. For sub-$25K creators." },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-for-b2b-2026"] = {
+  heading: "B2B processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim for $25K to $500K a month, Stax from about $50K, Worldpay above $1M, Stripe where billing complexity drives the choice, then Payment Depot by quote.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no monthly fee, no contract. Applies Level 2/3 data automatically, keeps 30% of savings." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. 2.08% at $250K against 2.45% for Helcim; Level 2 via API." },
+    { processor: "Worldpay", fact: "Part of Global Payments; custom quote, no published rates. For B2B merchants above $1M a month.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, pay as you go. Level 2/3 savings reach you only on IC+ pricing, not the flat rate." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-restaurants-2026"] = {
+  heading: "Restaurant processors at a glance",
+  orderNote: "In the order of the article's verdict: Square under about $25K a month, Helcim from $10K to $250K, Stax from $250K, then Clover, Toast and Stripe for specific setups.",
+  checked: "2026",
+  items: [
+    { processor: "Square", fact: "2.6% + $0.15 in person on the $0 Free plan, no contract, free next-day funding. Simplest start under about $25K a month." },
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no contract. About $1,020 a month at $50K; no restaurant POS software." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 in person. About $4,475 a month at $250K against $4,850 on Helcim." },
+    { processor: "Clover", fact: "2.3% + $0.10 on Growth bundles, about $1,335 a month at $50K. 36-month hardware subscription that cannot be canceled." },
+    { processor: "Toast", fact: "Traditional plan: 2.49% + $0.15 plus $69 a month, about $1,464 at $50K. 2-year agreement.", custom: { name: "Toast", partnerSlug: "toast", url: "https://pos.toasttab.com/pricing", variant: "visit" } },
+    { processor: "Stripe", fact: "2.7% + $0.05 in person, 2.9% + $0.30 online, no contract. For delivery-only and multi-tenant ordering platforms." },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-ecommerce-2026"] = {
+  heading: "Ecommerce processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim up to about $50K a month, Stax from $50K, Stripe for global or developer-heavy stacks, then PayPal as a wallet button, Worldpay for large merchants and Square for omnichannel.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no monthly fee, no contract. 2.70% at $10K against 3.50% for Stripe." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. $5,200 a month at $250K against $6,125 on Helcim." },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, no contract, 135-plus currencies. $8,750 a month at $250K; wins on tools, not price." },
+    { processor: "PayPal", fact: "PayPal Checkout 3.49% + $0.49, about 4.47% on a $50 sale. Use it as a wallet button, not the primary processor." },
+    { processor: "Worldpay", fact: "Part of Global Payments; custom quote, no published rates. For large merchants with an international or B2B mix.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
+    { processor: "Square", fact: "2.9% + $0.30 online on paid plans (3.3% + $0.30 on Free). Small omnichannel sellers under $60K a month online." },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-yoga-and-fitness-studios-2026"] = {
+  heading: "Studio processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim up to about $60K a month, Square under $25K, Stripe for custom apps, Stax above $60K or card-on-file billing, then Clover and PayPal for narrower cases.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no contract. About $1,020 a month at $50K against $1,450 on Square Plus." },
+    { processor: "Square", fact: "2.6% + $0.15 in person, no monthly fee on Free, Square Appointments for booking. For studios under $25K a month." },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person, no contract. For custom booking apps and multi-location operators." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. About $1,200 a month at $50K online against $1,275 on Helcim." },
+    { processor: "Clover", fact: "2.3% to 2.6% + $0.10 in person; 36-month hardware subscriptions cannot be canceled. For retail-heavy studios." },
+    { processor: "PayPal", fact: "2.29% + $0.09 in person, 3.49% + $0.49 standard. For donation-based studios and workshops above $100 a ticket." },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-professional-services-2026"] = {
+  heading: "Professional services processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim under about $50K a month, Stax from $50K, Payment Depot by quote, Stripe when billing needs API work, then Square for solo practices.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no monthly fee, no contract. About $270 a month at $10K online, $1,275 at $50K." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. $1,200 a month at $50K online, $5,200 at $250K." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, no monthly fee. About $1,750 a month at $50K online; worth it when billing needs API work." },
+    { processor: "Square", fact: "2.6% + $0.15 in person, 3.5% + $0.15 keyed, free invoicing tool. For solo practices under $25K a month." },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-legal-practices-2026"] = {
+  heading: "Law firm processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim under about $50K a month, payments built into legal billing software such as LawPay, Stripe for custom portals, Stax from $50K, then Payment Depot by quote.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no monthly fee, no contract. About $270 a month at $10K online against $350 on Stripe." },
+    { processor: "LawPay", fact: "Lists 2.99% + $0.30 and $19 a month; markets trust account protection and IOLTA compliance.", custom: { name: "LawPay", partnerSlug: null, url: "https://www.lawpay.com/pricing/", variant: "visit" } },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, ACH 0.8% capped at $5. For custom client portals; no IOLTA product on its pricing page." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. $1,200 a month at $50K online against $1,275 on Helcim." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-healthcare-practices-2026"] = {
+  heading: "Healthcare processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim up to about $60K a month, Square for solo practices, Stax above about $60K, Stripe for custom patient portals, then Payment Depot by quote.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, BAA on request. About $1,020 a month at $50K in person." },
+    { processor: "Square", fact: "2.6% + $0.15 in person on Free, no contract; HIPAA users agree to its BAA. For solo practices under $25K a month." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 in person. $4,475 a month at $250K against $4,850 on Helcim." },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person, no monthly fee. For custom patient portals; no BAA policy found." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-dental-practices-2026"] = {
+  heading: "Dental processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim up to about $60K a month, Stax above it, Square under $25K, Stripe and Clover for narrow cases, then Payment Depot by quote.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no contract. $1,020 a month at $50K; no direct Dentrix integration." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 in person. $4,475 a month at $250K against $4,850 on Helcim." },
+    { processor: "Square", fact: "2.6% + $0.15 in person on Free, no contract, hardware from $59. For solo practices under $25K a month." },
+    { processor: "Stripe", fact: "2.7% + $0.05 in person, 2.9% + $0.30 online. 2.80% at $50K in person; for custom patient-pay portals." },
+    { processor: "Clover", fact: "2.3% + $0.10 on Growth bundles, about $1,335 a month at $50K. 36-month hardware subscriptions cannot be canceled." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-payment-processors-automotive-shops-2026"] = {
+  heading: "Auto shop processors at a glance",
+  orderNote: "In the order of the article's verdict: Helcim up to about $60K a month, Stax above it, Square under $25K, Clover for counter hardware, Stripe for online parts and deposits, then Payment Depot by quote.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no contract. About $2,832 a month in our $150K shop example." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 in person. About $2,617 in the $150K example, $215 below Helcim." },
+    { processor: "Square", fact: "2.6% + $0.15 in person, hardware from $59, free next-day deposits. A starter for shops under $25K a month." },
+    { processor: "Clover", fact: "2.3% to 2.6% + $0.10 in person plus $0 to $89.95+ a month; 36-month hardware subscriptions cannot be canceled." },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person. For online parts and booking deposits; few shop-management integrations." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-multi-acquirer-payment-processors-2026"] = {
+  heading: "Multi-acquirer options at a glance",
+  orderNote: "In the order of the article's verdict: Stripe, the only one here that publishes multi-processor routing, then Worldpay and Braintree on negotiated terms, then Helcim and Stax, which publish no multi-acquirer routing.",
+  checked: "2026",
+  items: [
+    { processor: "Stripe", fact: "2.9% + $0.30 online. Orchestration routes across processors (private preview); Adaptive Acceptance retries declines." },
+    { processor: "Worldpay", fact: "Part of Global Payments; custom quote, no published rates. Get routing, contract and every fee in writing.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
+    { processor: "Braintree", fact: "2.89% + $0.29 for cards and wallets, Venmo 3.49% + $0.49. Does not publish whether it routes across acquirers." },
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee. $1,020 a month at $50K; no multi-acquirer routing published." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 to $0.15. $4,475 at $250K in person; no multi-acquirer routing." },
+  ],
+};
+
+ARTICLE_OFFERS["ai-subscription-billing-tools-2026"] = {
+  heading: "Subscription billing tools at a glance",
+  orderNote: "In the order of the article's verdict: Stripe Billing on features, Stax on cost from about $50K a month, Helcim at $10K, PayPal as a second consumer checkout, then Payment Depot by quote.",
+  checked: "2026",
+  items: [
+    { processor: "Stripe", fact: "Stripe Billing: 0.7% of Billing volume on top of 2.9% + $0.30 online. Smart Retries uses AI to time retries." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. $20,200 a month at $1M online against $35,000 on Stripe." },
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online plus 0.4% on recurring, no contract. Cheapest at $10K a month; rule-based retries." },
+    { processor: "PayPal", fact: "PayPal Checkout 3.49% + $0.49 with a Subscriptions API. A second checkout for consumer subscriptions only." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
+  ],
+};
+
 
 /** Database-rendered vs-pages that get the two-brand box. [first, second] match PROVIDER_META.processor. */
 export const ARTICLE_VS: Record<string, [string, string]> = {
   "square-vs-helcim-2026": ["Helcim", "Square"],
+  "stripe-vs-adyen-2026": ["Adyen", "Stripe"],
+  "stripe-vs-stax-2026": ["Stax (Fattmerchant)", "Stripe"],
+  "square-vs-shopify-payments-2026": ["Square", "Shopify Payments"],
 };
 
 /**
@@ -360,4 +627,7 @@ export const VS_CHOOSE: Record<string, string> = {
   Square: "you want free POS software, a $0 monthly plan and same-day transfers, and accept a flat rate for it",
   Stripe: "you need developer tools, subscription billing, marketplaces or many currencies, and accept 2.9% + 30¢ online for it",
   PayPal: "your customers already pay with PayPal and you want its 2.29% + 9¢ in-person rate",
+  Adyen: "you sell online at volume or across borders and can meet a minimum monthly invoice it sets by industry and does not publish, for interchange++ + 0.60% + 13¢ on Visa and Mastercard",
+  "Stax (Fattmerchant)": "your card volume is steady above about $10K a month and you want interchange plus 8¢ in person or 15¢ online for a $99 to $199+ monthly fee, with no percentage markup",
+  "Shopify Payments": "you run a Shopify store, where any other processor adds a 0.2% to 2% third-party fee, and accept 2.9% + 30¢ online on Basic",
 };

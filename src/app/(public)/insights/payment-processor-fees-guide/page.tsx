@@ -10,8 +10,8 @@ import { CostAtVolume } from "@/components/rates/CostAtVolume";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
-  title: { absolute: "Average Credit Card Processing Fees 2026: 1.5%-3.5%" },
-  description: "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%: interchange 1.5%-3.5% plus markup 0.10%-2.00%. Square comes to 2.90% on a $50 sale.",
+  title: { absolute: "Average Credit Card Processing Fees 2026: 2.65% to 3.31%" },
+  description: "Our 2026 data on 10 U.S. processors: average effective rate 2.65% in person and 3.31% online at $10K a month on a $50 sale. Full range 1.73% to 3.75%.",
   keywords: "payment processor fees, credit card processing fees, interchange plus pricing, flat rate pricing, reduce processing fees, best payment processor",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
@@ -20,14 +20,14 @@ const baseMetadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/payment-processor-fees-guide",
-    title: "Payment Processing Fees 2026: 1.5%-3.5% Across 14 Processors",
-    description: "Interchange 1.5%-3.5%, markup 0.10%-2.00%, and what Square, Stripe, PayPal and Helcim charge, read from their own pricing pages on Oct 29, 2026.",
+    title: "Credit Card Processing Fees 2026: Averages for 10 Processors",
+    description: "Average effective rate 2.65% in person and 3.31% online at $10K a month across 10 processors, from prices read on Oct 29, 2026, plus Visa's Oct 24, 2026 interchange.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Payment Processing Fees 2026: 1.5%-3.5% Across 14 Processors",
-    description: "Interchange 1.5%-3.5%, markup 0.10%-2.00%, and what Square, Stripe, PayPal and Helcim charge, read from their own pricing pages on Oct 29, 2026.",
+    title: "Credit Card Processing Fees 2026: Averages for 10 Processors",
+    description: "Average effective rate 2.65% in person and 3.31% online at $10K a month across 10 processors, from prices read on Oct 29, 2026, plus Visa's Oct 24, 2026 interchange.",
   },
 };
 
@@ -41,8 +41,8 @@ export default function PaymentProcessorFeesGuidePage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Payment Processing Fees in 2026: Real Rates from 14 Processors",
-    "description": "Interchange 1.5%-3.5%, markup 0.10%-2.00%, and what Square, Stripe, PayPal and Helcim charge, read from their own pricing pages on Oct 29, 2026.",
+    "headline": "Payment Processing Fees in 2026: Real Rates from 10 Processors",
+    "description": "Average effective rate 2.65% in person and 3.31% online at $10K a month across 10 processors, from prices read on Oct 29, 2026, plus Visa's Oct 24, 2026 interchange.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Organization",
@@ -63,7 +63,9 @@ export default function PaymentProcessorFeesGuidePage() {
     // 2026-11-02: the Square, Stripe, PayPal and Helcim prices on this page were
     // re-checked against provider-facts.json (read from each provider's pricing page
     // on 2026-10-29); the Square 2.65% figure and the May dating were removed.
-    "dateModified": "2026-11-02",
+    // 2026-11-11: averages and ranges re-derived from effective-rates-2026.csv;
+    // interchange figures from Visa's Oct 24, 2026 schedule.
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/payment-processor-fees-guide"
@@ -90,7 +92,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "What is the average credit card processing fee?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The average credit card processing fee ranges from 1.5% to 3.5% per transaction, plus a fixed fee of $0.10 to $0.30. For most businesses using flat-rate processors like Square or Stripe, expect to pay around 2.6% to 2.9% + $0.30 per transaction."
+          "text": "In our 2026 dataset of 10 U.S. processors (a $50 sale, 60% credit and 40% debit, prices checked Oct 29, 2026), the average effective rate at $10K a month is 2.65% in person and 3.31% online, and the full range across volumes is 1.73% to 3.75%. Headline flat rates run from 2.29% + $0.09 (PayPal POS) to 2.6% + $0.15 (Square) in person, and from 2.9% + $0.30 (Stripe) to 3.49% + $0.49 (PayPal Checkout) online."
         }
       },
       {
@@ -98,7 +100,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "Which payment processor has the lowest fees?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The lowest-fee processor depends on your business volume. For businesses under $10,000 monthly, Helcim often offers the best rates with interchange-plus pricing and no monthly fees. For businesses processing $25,000+ monthly, subscription-based processors typically provide the lowest total costs."
+          "text": "It depends on your volume. In our dataset Helcim (interchange-plus, no monthly fee) is cheapest in person at $10K and $50K a month ($211 and $1,020), and Stax (subscription plus interchange) is cheapest from $250K a month in person and from $50K a month online. Adyen's online rate is lower on paper at $10K, but it applies a minimum monthly invoice it does not publish."
         }
       },
       {
@@ -106,7 +108,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "Is Stripe cheaper than PayPal?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For online transactions, Stripe (2.9% + $0.30) is slightly cheaper than PayPal (2.99% + $0.49). On a $100 transaction, Stripe costs $3.20 while PayPal costs $3.48. However, PayPal's brand recognition can increase conversion rates by 5-10%, potentially offsetting the higher fees."
+          "text": "For online card payments, Stripe (2.9% + $0.30) is cheaper than PayPal Checkout (3.49% + $0.49): on a $100 transaction, Stripe costs $3.20 and PayPal Checkout $3.98. PayPal's Advanced Credit and Debit rate (2.89% + $0.29, subject to approval) comes to $3.18, about the same as Stripe. Test whether a PayPal button lifts your own conversion before paying its higher rate."
         }
       },
       {
@@ -114,7 +116,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "How do I choose the best payment processor for my startup?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For startups, prioritize processors with no monthly fees, easy integration, and transparent pricing. Start with Stripe if you're primarily online, as their documentation and developer tools are excellent. Choose Square for in-person sales with their free reader."
+          "text": "For startups, prioritize processors with no monthly fees, easy integration, and transparent pricing. Start with Stripe if you're primarily online and want its documentation and developer tools, or Helcim if the lowest published cost matters most. Choose Square for in-person sales if you want a free plan with next-business-day deposits."
         }
       },
       {
@@ -122,7 +124,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "What is interchange-plus pricing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Interchange-plus pricing separates the non-negotiable interchange fees from the processor's markup. You pay the actual interchange rate plus a clearly defined markup (e.g., \"Interchange + 0.3% + $0.10\"). This model offers the most transparency and is typically cheapest for businesses processing over $10,000 monthly."
+          "text": "Interchange-plus pricing separates the non-negotiable interchange fees from the processor's markup. You pay the actual interchange rate plus a clearly defined markup (e.g., \"Interchange + 0.40% + $0.08\", Helcim's in-person rate under $50K a month). In our dataset Helcim's interchange-plus costs less than every flat-rate provider at $10,000 a month."
         }
       },
       {
@@ -130,7 +132,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "What is a good credit card processing rate?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A good rate depends on your business type. Retail card-present businesses should aim for 1.7-2.2% effective rate, e-commerce for 2.4-2.8%, and restaurants for 1.9-2.4%. If you're above these ranges, you're likely overpaying."
+          "text": "Use our dataset as a benchmark: at $10K a month on a $50 sale, the lowest effective rates are 2.11% in person (Helcim) and 2.56% online (Adyen), and the averages are 2.65% and 3.31%. If you pay well above the average for your channel and volume, get competing quotes."
         }
       },
       {
@@ -138,7 +140,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "Can I negotiate credit card processing fees?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, but only the processor markup (10-20% of total fees). Interchange and assessment fees are set by card networks and non-negotiable. Focus negotiations on the processor's margin, monthly fees, and per-transaction costs."
+          "text": "Yes, but only the processor's share. Interchange and card-network fees are set by the card networks and are non-negotiable. Focus negotiations on the processor's margin, monthly fees, and per-transaction costs; Stripe, for example, offers interchange-plus and custom pricing to large-volume businesses."
         }
       },
       {
@@ -146,7 +148,7 @@ export default function PaymentProcessorFeesGuidePage() {
         "name": "Why do rewards cards cost more to process?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Premium rewards cards have higher interchange rates because the card-issuing bank funds customer rewards (cashback, travel points) from these fees. A card offering 2% cashback needs to charge merchants more to fund that reward."
+          "text": "Rewards cards have higher interchange rates because the card-issuing bank funds customer rewards (cashback, travel points) partly from these fees. On Visa's Oct 24, 2026 schedule, a traditional non-rewards credit card costs 1.51% + $0.10 in store, a Traditional Rewards card 1.65% + $0.10, and a spend-qualified Visa Infinite card 2.30% + $0.10."
         }
       },
       {
@@ -197,12 +199,12 @@ export default function PaymentProcessorFeesGuidePage() {
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                Credit Card Processing Fees in 2026: Average Rates from 14 Processors
+                Credit Card Processing Fees in 2026: Average Rates from 10 Processors
               </h1>
               <AeoAnswer kind="insights" slug="payment-processor-fees-guide" />
 
               <p data-speakable="true" className="aeo-answer text-xl text-muted-foreground leading-relaxed mb-6">
-                The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5% of each transaction. That cost splits three ways: interchange (1.5%-3.5%), card-network assessments (0.13%-0.15%), and processor markup (0.10%-2.00%). Square&apos;s flat 2.6% + 15¢ in person works out to 2.90% on a $50 sale, and Stripe&apos;s 2.9% + 30¢ online to 3.50%, at prices read from their pricing pages on Oct 29, 2026. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
+                Across the 10 U.S. processors in our <a href="/data/effective-rates-2026" className="text-primary hover:underline">2026 effective-rate dataset</a>, the average effective rate at $10K a month on a $50 sale is 2.65% in person and 3.31% online, and the full range across volumes runs 1.73% to 3.75%. That cost splits three ways: interchange paid to the card&apos;s issuing bank, card-network fees, and the processor&apos;s markup. Square&apos;s flat 2.6% + 15¢ in person works out to 2.90% on a $50 sale, and Stripe&apos;s 2.9% + 30¢ online to 3.50%, at prices read from their pricing pages on Oct 29, 2026. See <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for full calculation.
               </p>
 
               {/* What the reader came for, as their own number: effective cost at their volume, every ranked provider, Visit buttons. Added 2026-11-10 (19 human views / 14d with no provider path). */}
@@ -259,11 +261,11 @@ export default function PaymentProcessorFeesGuidePage() {
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed">
-                Effective rates run 2.4% to 3.0% for card-not-present and 2.1% to 2.6% for card-present in 2026. The gap between what you&rsquo;re quoted and what you actually pay is usually 0.30 to 0.80 percent. This guide shows the real numbers for 14 processors and the four levers that move the rate down.
+                In our dataset (a $50 sale, 60% credit and 40% debit), effective rates at $10K a month run 2.11% to 2.90% in person and 2.56% to 3.75% online. Your own rate also depends on your card mix and any fees beyond the headline price. This guide shows the real numbers for 10 processors and the levers that move the rate down.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                After auditing hundreds of merchant statements, the same pattern repeats: blended pricing hides 0.20 to 0.50 percent of markup that interchange-plus exposes. Below is the side-by-side, with hidden fees called out and the negotiation moves that move the number.
+                Blended and flat pricing fold the processor&apos;s markup into one number; interchange-plus shows it as its own line. Below is the side-by-side, with hidden fees called out and the negotiation moves that move the number.
               </p>
 
               {/* Section 1 */}
@@ -292,32 +294,32 @@ export default function PaymentProcessorFeesGuidePage() {
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The Three Core Fee Components</h3>
 
               <p className="text-foreground leading-relaxed">
-                <strong>1. Interchange Fees (1.5% - 3.5%)</strong><br />
+                <strong>1. Interchange Fees (Visa: 0.05% + 21¢ to 3.15% + 10¢ on consumer cards)</strong><br />
                 Who receives it: Card-issuing bank (Chase, Bank of America, etc.)<br />
                 What it covers: Fraud risk, rewards programs, card benefits<br />
-                Can you negotiate? No, these are set by card networks and non-negotiable<br />
+                Can you negotiate? No, these are set by card networks and non-negotiable. On <a href="https://usa.visa.com/content/dam/VCOM/download/merchants/visa-usa-interchange-reimbursement-fees.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa&apos;s U.S. schedule effective Oct 24, 2026</a>, regulated debit costs 0.05% + 21¢ (plus 1¢ for fraud prevention) and consumer credit runs up to 3.15% + 10¢ for non-qualified sales<br />
                 Variation factors: Card type, industry, transaction method, data provided
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>2. Assessment Fees (0.13% - 0.15%)</strong><br />
+                <strong>2. Card-Network Fees (not published as a price list)</strong><br />
                 Who receives it: Card networks (<a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a>, <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>, Discover, Amex)<br />
                 What it covers: Network infrastructure, fraud prevention, dispute resolution<br />
-                Can you negotiate? No, these are set by card networks<br />
-                Additional charges: Network fees, brand fees, authentication fees
+                Can you negotiate? No, these are set by card networks, which do not publish them for merchants<br />
+                How they show up: Separate network, brand or authentication lines on an interchange-plus statement; folded into the rate on flat pricing
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>3. Processor Markup (0.1% - 2%+)</strong><br />
+                <strong>3. Processor Markup (0% to 0.60% plus a per-sale fee on published interchange-plus plans)</strong><br />
                 Who receives it: Your payment processor (<a href="https://stripe.com/pricing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a>, <a href="https://squareup.com/us/en/payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a>, etc.)<br />
                 What it covers: Payment gateway, customer support, features<br />
                 Can you negotiate? YES, this is where you save money<br />
-                Highly variable: Depends on volume, industry, pricing model
+                Published examples: Helcim adds 0.40% + 8¢ in person and 0.50% + 25¢ online, falling with volume; Adyen adds 0.60% + 13¢; Stax adds no percentage, only 8¢ or 15¢ per sale plus $99 to $199+ a month
               </p>
 
               <div className="my-8 p-6 bg-primary/5 rounded-lg border-l-4 border-primary">
                 <p className="text-foreground">
-                  <strong>Critical Insight:</strong> Interchange and assessment fees represent 85-90% of total processing costs, but they&apos;re completely non-negotiable. The processor markup, which is only 10-15% of total fees, is your only opportunity to negotiate and reduce costs.
+                  <strong>Critical Insight:</strong> Our dataset estimates interchange plus network fees at 1.55% in person and 1.70% online for a 60% credit, 40% debit mix on a $50 sale. On Stripe&apos;s 3.50% online effective rate, that leaves about 1.80 points for Stripe; on Helcim&apos;s 2.70% at $10K a month, about 1.00 point. The network cost is fixed for a given card mix; the processor&apos;s share is what you shop and negotiate.
                 </p>
               </div>
 
@@ -330,7 +332,7 @@ export default function PaymentProcessorFeesGuidePage() {
                   <thead>
                     <tr className="border-b-2 border-foreground">
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">Fee Type</th>
-                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Typical Amount</th>
+                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Published Examples</th>
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">Who Receives It</th>
                       <th className="text-left py-3 font-semibold text-foreground">Notes</th>
                     </tr>
@@ -338,26 +340,26 @@ export default function PaymentProcessorFeesGuidePage() {
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Authorization Fee</td>
-                      <td className="py-3 pr-4">$0.05 - $0.15</td>
+                      <td className="py-3 pr-4">Set by contract; flat-rate providers such as Stripe and Square publish none</td>
                       <td className="py-3 pr-4">Processor</td>
-                      <td className="py-3">Per authorization attempt, even if declined</td>
+                      <td className="py-3">On many contracts, per authorization attempt, even if declined</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Transaction Fee</td>
-                      <td className="py-3 pr-4">$0.10 - $0.30</td>
+                      <td className="py-3 pr-4">5¢ (Stripe Terminal) to 49¢ (PayPal Checkout); 15¢ at Square in person, 30¢ at Stripe online</td>
                       <td className="py-3 pr-4">Processor</td>
                       <td className="py-3">Per successful transaction</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Gateway Fee</td>
-                      <td className="py-3 pr-4">$0.05 - $0.25</td>
+                      <td className="py-3 pr-4">10¢ per sale (Authorize.net gateway-only plan, plus $25 a month)</td>
                       <td className="py-3 pr-4">Gateway provider</td>
                       <td className="py-3">If using separate gateway and processor</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Batch Fee</td>
-                      <td className="py-3 pr-4">$0.10 - $0.50</td>
-                      <td className="py-3 pr-4">Processor</td>
+                      <td className="py-3 pr-4">10¢ per daily batch (Authorize.net gateway-only plan)</td>
+                      <td className="py-3 pr-4">Processor or gateway</td>
                       <td className="py-3">Per batch settlement (usually daily)</td>
                     </tr>
                   </tbody>
@@ -366,22 +368,22 @@ export default function PaymentProcessorFeesGuidePage() {
 
               <div className="my-8 p-6 bg-orange-50 dark:bg-orange-950/20 rounded-lg border-l-4 border-orange-500">
                 <p className="text-foreground">
-                  <strong>Impact on Small Tickets:</strong> Fixed per-transaction fees disproportionately impact low-ticket sales. A $0.30 fixed fee on a $5 transaction represents an additional 6% cost on top of percentage fees. For coffee shops, quick-service restaurants, or any business with average transactions under $15, these fixed fees can double your effective rate.
+                  <strong>Impact on Small Tickets:</strong> Fixed per-transaction fees disproportionately impact low-ticket sales. A $0.30 fixed fee on a $5 transaction represents an additional 6% cost on top of percentage fees. On a $10 sale, 2.9% + 30¢ comes to 5.9%, about double the headline percentage, so coffee shops, quick-service restaurants, and other businesses with average transactions under $15 should compare fixed fees first.
                 </p>
               </div>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Monthly and Annual Fees</h3>
 
-              <p className="text-foreground leading-relaxed">These recurring fees apply regardless of your transaction volume:</p>
+              <p className="text-foreground leading-relaxed">These recurring fees apply regardless of your transaction volume. Amounts are set by your processor, so check your own fee schedule (published examples checked Oct 2026):</p>
 
               <ul className="text-foreground space-y-2 ml-6 list-disc">
-                <li><strong>Monthly Account Fee:</strong> $0-50/month for account maintenance</li>
-                <li><strong>Monthly Minimum Fee:</strong> $15-50/month if you don&apos;t meet minimum processing volume</li>
-                <li><strong>Gateway Fee:</strong> $10-30/month for payment gateway access (if separate from processor)</li>
-                <li><strong>PCI Compliance Fee:</strong> $5-50/month or $50-200/year for PCI compliance programs</li>
-                <li><strong>Statement Fee:</strong> $5-20/month for detailed transaction statements</li>
-                <li><strong>Customer Support Fee:</strong> $0-25/month for phone/email support access</li>
-                <li><strong>Annual Fee:</strong> $0-100/year for account renewal</li>
+                <li><strong>Monthly Account Fee:</strong> $0 at Stripe, Helcim and Square&apos;s Free plan; $25 at Authorize.net; $99 to $199+ for a Stax subscription</li>
+                <li><strong>Monthly Minimum Fee:</strong> charged on some contracts when you process less than a set amount; Adyen applies a minimum monthly invoice whose amount it does not publish</li>
+                <li><strong>Gateway Fee:</strong> charged when the gateway is separate from the processor; Authorize.net&apos;s is $25 a month</li>
+                <li><strong>PCI Compliance Fee:</strong> processor-set; Wells Fargo lists $10 a month per merchant ID, Helcim lists none</li>
+                <li><strong>Statement Fee:</strong> a flat monthly charge on some contracts; ask for it to be waived</li>
+                <li><strong>Customer Support Fee:</strong> rare, but read the fee schedule for it</li>
+                <li><strong>Annual Fee:</strong> a yearly account charge on some contracts</li>
               </ul>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Incident-Based Fees</h3>
@@ -393,7 +395,7 @@ export default function PaymentProcessorFeesGuidePage() {
                   <thead>
                     <tr className="border-b-2 border-foreground">
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">Incident Type</th>
-                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Typical Fee</th>
+                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Published Examples</th>
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">When It Applies</th>
                       <th className="text-left py-3 font-semibold text-foreground">How to Avoid</th>
                     </tr>
@@ -401,25 +403,25 @@ export default function PaymentProcessorFeesGuidePage() {
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Chargeback Fee</td>
-                      <td className="py-3 pr-4">$15 - $100</td>
+                      <td className="py-3 pr-4">$15 (Stripe, Helcim, Braintree) to $20 (PayPal); Stripe adds $15 more to counter a dispute</td>
                       <td className="py-3 pr-4">Customer disputes transaction</td>
                       <td className="py-3">Clear policies, good customer service</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Retrieval Fee</td>
-                      <td className="py-3 pr-4">$5 - $25</td>
+                      <td className="py-3 pr-4">Set by contract where charged</td>
                       <td className="py-3 pr-4">Issuer requests transaction details</td>
                       <td className="py-3">Keep thorough records, respond quickly</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Refund Fee</td>
-                      <td className="py-3 pr-4">$0 - $0.30</td>
+                      <td className="py-3 pr-4">Braintree keeps its fees on refunds</td>
                       <td className="py-3 pr-4">Transaction refund processed</td>
-                      <td className="py-3">Most keep fixed fee but refund percentage</td>
+                      <td className="py-3">Check whether your processor returns any of the original fee</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Declined Transaction Fee</td>
-                      <td className="py-3 pr-4">$0.05 - $0.25</td>
+                      <td className="py-3 pr-4">Set by contract where charged</td>
                       <td className="py-3 pr-4">Card authorization declined</td>
                       <td className="py-3">Some processors charge even for declines</td>
                     </tr>
@@ -433,34 +435,34 @@ export default function PaymentProcessorFeesGuidePage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                When you accept a $100 credit card payment and pay $2.90 in fees, that money doesn&apos;t go to a single entity. It&apos;s distributed across a complex ecosystem of financial institutions and service providers. Understanding who gets what helps you identify where you can negotiate and where you can&apos;t.
+                Take a $100 online sale on a Visa Traditional Rewards credit card through Stripe: you pay $3.20 (2.9% + 30¢), and that money doesn&apos;t go to a single entity. It&apos;s distributed across a complex ecosystem of financial institutions and service providers. Understanding who gets what helps you identify where you can negotiate and where you can&apos;t.
               </p>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The Four Key Players in Every Transaction</h3>
 
               <p className="text-foreground leading-relaxed">
-                <strong>1. Card-Issuing Bank (Gets ~$1.80, 62% of fees)</strong><br />
-                The bank that issued the customer&apos;s credit card (Chase, Wells Fargo, Capital One, etc.) receives the largest portion of fees through interchange. They&apos;re assuming most of the fraud risk and funding the transaction instantly.
+                <strong>1. Card-Issuing Bank (gets $2.14 of the $3.20 in this example)</strong><br />
+                The bank that issued the customer&apos;s credit card (Chase, Wells Fargo, Capital One, etc.) receives the largest portion of fees through interchange: Visa&apos;s schedule effective Oct 24, 2026 sets this card online (Product 1) at 2.04% + 10¢, or $2.14. They&apos;re assuming most of the fraud risk and funding the transaction instantly.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>2. Card Network (Gets ~$0.14, 5% of fees)</strong><br />
-                Visa, Mastercard, Discover, or American Express receive assessment fees for maintaining their network infrastructure, brand, and fraud prevention systems.
+                <strong>2. Card Network (a share of the remaining $1.06; amount not published)</strong><br />
+                Visa, Mastercard, Discover, or American Express charge network fees for maintaining their network infrastructure, brand, and fraud prevention systems. The networks do not publish these fees as a merchant price list.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>3. Payment Processor (Gets ~$0.50, 17% of fees)</strong><br />
+                <strong>3. Payment Processor (keeps the rest of the $1.06)</strong><br />
                 Your processor (Stripe, Square, First Data, etc.) handles the technical processing, moves money between accounts, provides customer support, and manages risk. This is where you have negotiating power.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>4. Payment Gateway (Gets ~$0.30, 10% of fees)</strong><br />
-                If you use a separate gateway (Authorize.Net, NMI), they charge for securely transmitting payment data. Many modern processors bundle gateway and processing, eliminating this separate fee.
+                <strong>4. Payment Gateway (bundled in this example)</strong><br />
+                If you use a separate gateway (Authorize.Net, NMI), they charge for securely transmitting payment data: Authorize.net&apos;s gateway-only plan is 10¢ per sale plus $25 a month. Stripe and many other modern processors bundle gateway and processing, eliminating this separate fee.
               </p>
 
               <div className="my-8 p-6 bg-primary/5 rounded-lg border-l-4 border-primary">
                 <p className="text-foreground">
-                  <strong>Key Takeaway:</strong> You can&apos;t negotiate with card-issuing banks or card networks, as interchange and assessment fees are completely non-negotiable. Your ONLY opportunity to reduce costs is negotiating the processor markup and eliminating unnecessary third-party fees from resellers or intermediaries.
+                  <strong>Key Takeaway:</strong> You can&apos;t negotiate with card-issuing banks or card networks, as interchange and card-network fees are completely non-negotiable. Your ONLY opportunity to reduce costs is negotiating the processor markup and eliminating unnecessary third-party fees from resellers or intermediaries.
                 </p>
               </div>
 
@@ -470,7 +472,7 @@ export default function PaymentProcessorFeesGuidePage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Not all credit cards cost the same to process. A basic debit card transaction might cost 1.3%, while a premium rewards credit card costs 2.7%, more than double. Understanding these differences helps you optimize costs and avoid surprises.
+                Not all credit cards cost the same to process. On a $50 sale, a regulated debit card costs the merchant about 25¢ in interchange (0.05% + 21¢ + 1¢, or 0.49%), while a Visa Infinite card online costs $1.40 (2.60% + 10¢, or 2.80%), more than five times as much. Understanding these differences helps you optimize costs and avoid surprises.
               </p>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The Interchange Rate Hierarchy</h3>
@@ -480,39 +482,39 @@ export default function PaymentProcessorFeesGuidePage() {
                   <thead>
                     <tr className="border-b-2 border-foreground">
                       <th className="text-left py-3 pr-4 font-semibold text-foreground">Card Type</th>
-                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Typical Interchange</th>
+                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Visa Interchange (Oct 24, 2026)</th>
                       <th className="text-left py-3 font-semibold text-foreground">Why It Costs This</th>
                     </tr>
                   </thead>
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4">Debit Card (PIN)</td>
-                      <td className="py-3 pr-4">0.05% + $0.21</td>
-                      <td className="py-3">Regulated by Durbin Amendment, minimal fraud risk</td>
+                      <td className="py-3 pr-4">Debit Card, large issuer (regulated)</td>
+                      <td className="py-3 pr-4">0.05% + $0.21 (+ $0.01 fraud adjustment)</td>
+                      <td className="py-3">Regulation II cap (Durbin Amendment) for issuers with $10B+ in assets, PIN or signature</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4">Debit Card (Signature)</td>
-                      <td className="py-3 pr-4">0.95% + $0.25</td>
-                      <td className="py-3">Higher fraud risk than PIN debit, still regulated</td>
+                      <td className="py-3 pr-4">Debit Card, smaller issuer (exempt)</td>
+                      <td className="py-3 pr-4">0.80% + $0.15 in store; 1.65% + $0.15 online</td>
+                      <td className="py-3">Not covered by the Regulation II cap</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Basic Credit Card</td>
-                      <td className="py-3 pr-4">1.51% + $0.10</td>
+                      <td className="py-3 pr-4">1.51% + $0.10 in store; 1.89% + $0.10 online</td>
                       <td className="py-3">Standard credit card with no rewards</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Rewards Credit Card</td>
-                      <td className="py-3 pr-4">1.65% - 2.10% + $0.10</td>
-                      <td className="py-3">Bank funds 1-2% cashback from higher interchange</td>
+                      <td className="py-3 pr-4">1.65% to 2.10% + $0.10 in store (Traditional Rewards to Signature Preferred)</td>
+                      <td className="py-3">Bank funds cashback and points partly from higher interchange</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Premium Rewards Card</td>
-                      <td className="py-3 pr-4">2.40% - 2.95% + $0.10</td>
+                      <td className="py-3 pr-4">2.30% + $0.10 in store; 2.60% + $0.10 online (Visa Infinite, spend qualified)</td>
                       <td className="py-3">Funds premium travel rewards, lounge access</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Corporate/Business Card</td>
-                      <td className="py-3 pr-4">1.85% - 2.95% + $0.10</td>
+                      <td className="py-3 pr-4">1.90% to 3.00% + $0.10 (Visa Business credit, by spend tier and channel)</td>
                       <td className="py-3">Higher limits, benefits, often premium rewards</td>
                     </tr>
                   </tbody>
@@ -522,12 +524,12 @@ export default function PaymentProcessorFeesGuidePage() {
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Factors That Determine Your Interchange Rate</h3>
 
               <ul className="text-foreground space-y-2 ml-6 list-disc">
-                <li><strong>Card present vs. card not present:</strong> Swiped/dipped cards qualify for lower rates than typed-in card numbers (0.3-0.5% difference)</li>
-                <li><strong>How quickly you batch:</strong> Settlements within 24 hours qualify for better rates; delayed batching causes downgrades</li>
+                <li><strong>Card present vs. card not present:</strong> Swiped, dipped or tapped cards qualify for lower rates than online or typed-in card numbers (on a Visa Traditional Rewards card, about 0.4 points: 1.65% + 10¢ in store against 2.04% + 10¢ online)</li>
+                <li><strong>How quickly you batch:</strong> Late settlement can drop a sale into a pricier category; Visa&apos;s non-qualified consumer credit rate is 3.15% + 10¢</li>
                 <li><strong>Data provided:</strong> Including AVS, CVV, Level 2/3 data qualifies for better categories</li>
-                <li><strong>Industry category:</strong> Some industries (grocery, gas) qualify for lower interchange than others</li>
+                <li><strong>Industry category:</strong> Some industries qualify for lower interchange than others (Visa supermarket credit starts at 1.18% + 5¢)</li>
                 <li><strong>Transaction size:</strong> Large transactions sometimes qualify for better percentage rates</li>
-                <li><strong>Recurring vs. one-time:</strong> Subscription payments often qualify for different interchange</li>
+                <li><strong>Recurring vs. one-time:</strong> Subscription payments have their own Visa categories (1.33% to 2.30% + 5¢ for consumer credit)</li>
               </ul>
 
               {/* Section 2 */}
@@ -567,7 +569,7 @@ export default function PaymentProcessorFeesGuidePage() {
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4"><a href="https://www.paypal.com/us/business/accept-payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a></td>
-                      <td className="py-3 pr-4">2.99% + $0.49</td>
+                      <td className="py-3 pr-4">3.49% + $0.49 (PayPal Checkout); 2.89% + $0.29 (Advanced Credit and Debit)</td>
                       <td className="py-3">2.29% + $0.09</td>
                     </tr>
                   </tbody>
@@ -575,7 +577,7 @@ export default function PaymentProcessorFeesGuidePage() {
               </div>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Best for:</strong> New businesses, low-volume merchants (under $10,000 monthly), or those who value simplicity over optimization.
+                <strong>Best for:</strong> New businesses and those who value one predictable rate over optimization. Note that in our dataset, Helcim&apos;s interchange-plus already costs less than every flat-rate provider at $10,000 a month ($211 in person against $290 for Square).
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -585,18 +587,18 @@ export default function PaymentProcessorFeesGuidePage() {
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Interchange-Plus Pricing</h3>
 
               <p className="text-foreground leading-relaxed">
-                This transparent model separates the non-negotiable interchange fees from the processor&apos;s markup. You might see pricing like &quot;Interchange + 0.3% + $0.10,&quot; meaning you pay the actual interchange rate plus the processor&apos;s clearly defined markup.
+                This transparent model separates the non-negotiable interchange fees from the processor&apos;s markup. You might see pricing like &quot;Interchange + 0.40% + $0.08&quot; (Helcim&apos;s in-person rate under $50K a month), meaning you pay the actual interchange rate plus the processor&apos;s clearly defined markup.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Best for:</strong> Established businesses processing over $10,000 monthly who want transparency and fair pricing. Companies like <a href="https://www.helcim.com/pricing/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> have popularized this model for small and medium businesses.
+                <strong>Best for:</strong> Most businesses from about $10,000 a month that want transparency and fair pricing. Companies like <a href="https://www.helcim.com/pricing/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> have popularized this model for small and medium businesses.
               </p>
 
               <div className="my-8 p-6 bg-muted/30 rounded-lg border-l-4 border-primary">
-                <p className="font-semibold text-foreground mb-2">Example: $100 Transaction Comparison</p>
-                <p className="text-foreground mb-2"><strong>Flat-Rate (2.9% + $0.30):</strong> $3.20 total fee</p>
-                <p className="text-foreground mb-2"><strong>Interchange-Plus (Debit Card):</strong> ~$0.75 total fee (0.05% + $0.21 interchange + 0.30% + $0.10 markup)</p>
-                <p className="text-muted-foreground text-sm mt-2">On debit card transactions, interchange-plus can save you 75% compared to flat-rate.</p>
+                <p className="font-semibold text-foreground mb-2">Example: $100 In-Person Debit Sale</p>
+                <p className="text-foreground mb-2"><strong>Flat-Rate (Square, 2.6% + $0.15):</strong> $2.75 total fee</p>
+                <p className="text-foreground mb-2"><strong>Interchange-Plus (Helcim, regulated debit card):</strong> about $0.75 (0.05% + $0.21 + $0.01 interchange = $0.27, plus 0.40% + $0.08 markup = $0.48)</p>
+                <p className="text-muted-foreground text-sm mt-2">On this debit sale, interchange-plus costs about 73% less than flat-rate, before card-network fees, which are not published. On a premium rewards card, interchange-plus can cost more than the flat rate: a $100 Visa Infinite sale in store carries $2.40 of interchange alone.</p>
               </div>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Tiered Pricing (Avoid If Possible)</h3>
@@ -607,18 +609,18 @@ export default function PaymentProcessorFeesGuidePage() {
 
               <div className="my-8 p-6 bg-red-50 dark:bg-red-950/20 rounded-lg border-l-4 border-red-500">
                 <p className="text-foreground">
-                  <strong>Warning:</strong> Tiered pricing almost always costs more than interchange-plus or flat-rate. The attractive &quot;qualified&quot; rate is often a bait-and-switch, as most transactions don&apos;t qualify. If you&apos;re on tiered pricing, switching to interchange-plus will likely save 0.3-0.8% on your effective rate.
+                  <strong>Warning:</strong> Tiered pricing almost always costs more than interchange-plus or flat-rate. The attractive &quot;qualified&quot; rate is often a bait-and-switch, as many transactions don&apos;t qualify. If you&apos;re on tiered pricing, get an interchange-plus quote and compare effective rates on the same month of sales.
                 </p>
               </div>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Subscription/Membership Pricing</h3>
 
               <p className="text-foreground leading-relaxed">
-                Companies like Payment Depot and <a href="https://www.helcim.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> offer models where you pay a monthly fee plus interchange costs with minimal markup.
+                <a href="https://staxpayments.com/pricing/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stax</a> is the best-known example: $99, $139 or $199+ a month by annual volume, plus interchange at cost and 8¢ in person or 15¢ online per sale, with no percentage markup. (<a href="https://www.helcim.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim</a> is interchange-plus with no monthly fee, and Payment Depot quotes interchange-plus pricing individually.)
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Best for:</strong> High-volume businesses where the monthly fee is offset by lower per-transaction costs. If you&apos;re processing over $25,000 monthly, this model often provides the lowest total costs.
+                <strong>Best for:</strong> High-volume businesses where the monthly fee is offset by lower per-transaction costs. In our dataset Stax becomes cheaper than Helcim from $50,000 a month online ($1,200 against $1,275) and by $250,000 a month in person ($4,475 against $4,850).
               </p>
 
               {/* Moved from /insights/credit-card-processing-fees-explained, merged 2026-09-08 */}
@@ -627,7 +629,7 @@ export default function PaymentProcessorFeesGuidePage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Most merchants can&apos;t tell you their actual processing costs. They know the quoted rate (2.9% + $0.30) but have no idea what they truly pay once all fees are included. This ignorance costs thousands annually.
+                Most merchants can&apos;t tell you their actual processing costs. They know the quoted rate (2.9% + $0.30) but not what they truly pay once all fees are included.
               </p>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The Effective Rate Formula</h3>
@@ -637,65 +639,73 @@ export default function PaymentProcessorFeesGuidePage() {
               <div className="my-8 p-6 bg-muted/30 rounded-lg border-l-4 border-primary">
                 <p className="font-semibold text-foreground mb-4">Effective Rate Calculation</p>
                 <p className="text-foreground mb-4"><strong>Formula:</strong> (Total Fees Paid ÷ Total Processing Volume) × 100</p>
-                <p className="text-foreground mb-2"><strong>Example:</strong></p>
+                <p className="text-foreground mb-2"><strong>Example (hypothetical merchant):</strong></p>
                 <p className="text-foreground">Monthly Processing Volume: $45,000</p>
                 <p className="text-foreground">Total Fees Paid: $1,423</p>
                 <p className="text-foreground mt-2">Effective Rate: ($1,423 ÷ $45,000) × 100 = <strong>3.16%</strong></p>
-                <p className="text-muted-foreground mt-4 text-sm">Even though this merchant was quoted &quot;2.9% + $0.30,&quot; their true effective rate is 3.16% due to additional fees, downgrades, and higher-cost card types.</p>
+                <p className="text-muted-foreground mt-4 text-sm">Even though this merchant was quoted &quot;2.9% + $0.30,&quot; the true effective rate is 3.16%, because the fixed fee, monthly fees and any surcharges all count.</p>
               </div>
 
-              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Industry Benchmark Effective Rates</h3>
+              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Benchmark Effective Rates from Our Dataset</h3>
+
+              <p className="text-foreground leading-relaxed">
+                These benchmarks come from our <a href="/data/effective-rates-2026" className="text-primary hover:underline">effective-rate dataset</a>: 7 providers that price in-person sales and 10 that price online sales, at published prices checked Oct 29, 2026, on a $50 average sale with 60% credit and 40% debit. &quot;Average&quot; is the simple mean across those providers.
+              </p>
 
               <div className="overflow-x-auto my-6">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b-2 border-foreground">
-                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Business Type</th>
-                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Good Rate</th>
-                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Average Rate</th>
-                      <th className="text-left py-3 font-semibold text-foreground">High (Overpaying)</th>
+                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Channel and Volume</th>
+                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Lowest</th>
+                      <th className="text-left py-3 pr-4 font-semibold text-foreground">Average</th>
+                      <th className="text-left py-3 font-semibold text-foreground">Highest</th>
                     </tr>
                   </thead>
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4">Retail (Card Present)</td>
-                      <td className="py-3 pr-4">1.7% - 2.2%</td>
-                      <td className="py-3 pr-4">2.3% - 2.7%</td>
-                      <td className="py-3">2.8%+</td>
+                      <td className="py-3 pr-4">In person, $10K a month</td>
+                      <td className="py-3 pr-4">2.11% (Helcim)</td>
+                      <td className="py-3 pr-4">2.65%</td>
+                      <td className="py-3">2.90% (Square)</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4">E-commerce (Card Not Present)</td>
-                      <td className="py-3 pr-4">2.4% - 2.8%</td>
-                      <td className="py-3 pr-4">2.9% - 3.2%</td>
-                      <td className="py-3">3.3%+</td>
+                      <td className="py-3 pr-4">In person, $50K a month</td>
+                      <td className="py-3 pr-4">2.04% (Helcim)</td>
+                      <td className="py-3 pr-4">2.54%</td>
+                      <td className="py-3">2.90% (Square)</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4">Restaurant</td>
-                      <td className="py-3 pr-4">1.9% - 2.4%</td>
-                      <td className="py-3 pr-4">2.5% - 2.9%</td>
-                      <td className="py-3">3.0%+</td>
+                      <td className="py-3 pr-4">In person, $250K a month</td>
+                      <td className="py-3 pr-4">1.79% (Stax)</td>
+                      <td className="py-3 pr-4">2.44%</td>
+                      <td className="py-3">2.80% (Stripe, Shopify Payments)</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4">B2B/Wholesale</td>
-                      <td className="py-3 pr-4">1.6% - 2.0%</td>
-                      <td className="py-3 pr-4">2.1% - 2.5%</td>
-                      <td className="py-3">2.6%+</td>
+                      <td className="py-3 pr-4">Online, $10K a month</td>
+                      <td className="py-3 pr-4">2.56% (Adyen)</td>
+                      <td className="py-3 pr-4">3.31%</td>
+                      <td className="py-3">3.75% (Authorize.net)</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4">Professional Services</td>
-                      <td className="py-3 pr-4">2.2% - 2.6%</td>
-                      <td className="py-3 pr-4">2.7% - 3.1%</td>
-                      <td className="py-3">3.2%+</td>
+                      <td className="py-3 pr-4">Online, $50K a month</td>
+                      <td className="py-3 pr-4">2.40% (Stax)</td>
+                      <td className="py-3 pr-4">3.22%</td>
+                      <td className="py-3">3.70% (Clover, keyed)</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4">Non-Profit</td>
-                      <td className="py-3 pr-4">1.8% - 2.3%</td>
-                      <td className="py-3 pr-4">2.4% - 2.8%</td>
-                      <td className="py-3">2.9%+</td>
+                      <td className="py-3 pr-4">Online, $250K a month</td>
+                      <td className="py-3 pr-4">2.08% (Stax)</td>
+                      <td className="py-3 pr-4">3.17%</td>
+                      <td className="py-3">3.70% (Clover, keyed)</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+
+              <p className="text-foreground leading-relaxed">
+                Adyen&apos;s low online rate comes with a minimum monthly invoice it does not publish. Interchange-plus figures use our interchange estimate (1.55% in person, 1.70% online), so your own rate moves with your card mix.
+              </p>
 
               {/* Section 3 */}
               <h2 id="compare-providers" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -709,9 +719,9 @@ export default function PaymentProcessorFeesGuidePage() {
                 <p className="text-foreground">
                   We maintain a live comparison at{" "}
                   <Link href="/comparisons" className="text-primary font-medium hover:underline">
-                    15 Payment Processors Compared 2026
+                    Payment Processors Compared 2026
                   </Link>
-                  {" "}covering effective rate at $10K / $50K / $250K / $1M monthly volume, hardware costs, and contract red flags. Updated quarterly.
+                  {" "}covering effective rate at $10K / $50K / $250K / $1M monthly volume, hardware costs, and contract red flags.
                 </p>
               </div>
 
@@ -740,7 +750,7 @@ export default function PaymentProcessorFeesGuidePage() {
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">2. Evaluate Integration Requirements</h3>
 
               <p className="text-foreground leading-relaxed">
-                The easiest payment gateway to integrate depends on your technical setup. A processor that&apos;s 0.1% cheaper but requires $5,000 in custom integration work isn&apos;t actually cheaper. Also evaluate documentation quality and developer support.
+                The easiest payment gateway to integrate depends on your technical setup. A processor that&apos;s 0.1% cheaper saves $600 a year at $50,000 a month, so it isn&apos;t actually cheaper if it needs thousands of dollars of custom integration work. Also evaluate documentation quality and developer support.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -750,7 +760,7 @@ export default function PaymentProcessorFeesGuidePage() {
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">3. Test Customer Experience</h3>
 
               <p className="text-foreground leading-relaxed">
-                The payment experience impacts conversion rates. Request demo accounts and process test transactions. A clunky checkout can reduce conversion rates by 10-20%, potentially costing far more than any fee savings.
+                The payment experience impacts conversion rates. Request demo accounts and process test transactions. A clunky checkout loses sales, which can cost far more than any fee savings.
               </p>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">4. Assess Security and Compliance</h3>
@@ -765,31 +775,31 @@ export default function PaymentProcessorFeesGuidePage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Based on analysis of hundreds of merchant accounts, these strategies consistently deliver the biggest savings:
+                These strategies move the effective rate the most, with figures from Visa&apos;s Oct 24, 2026 schedule and providers&apos; published prices:
               </p>
 
-              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Optimize Card Entry Methods (Save 0.5% - 1.5%)</h3>
+              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Optimize Card Entry Methods</h3>
 
               <p className="text-foreground leading-relaxed">
-                Card-present transactions (chip/tap) cost significantly less than card-not-present (keyed in). If you have a physical location, always use EMV chip readers rather than manually entering card numbers.
+                Card-present transactions (chip/tap) cost significantly less than card-not-present (keyed in). Square charges 2.6% + 15¢ for tapped or dipped cards and 3.5% + 15¢ for keyed ones, and Stripe charges 2.7% + 5¢ with Terminal against 3.4% + 30¢ for manually entered cards. If you have a physical location, always use EMV chip readers rather than manually entering card numbers.
               </p>
 
-              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Encourage ACH and Debit Payments (Save 1% - 2%)</h3>
+              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Encourage ACH and Debit Payments</h3>
 
               <p className="text-foreground leading-relaxed">
-                ACH bank transfers cost just $0.25-$0.50 flat per transaction regardless of amount. A $5,000 payment via ACH costs $0.50 versus $150+ in credit card fees. Debit cards also cost significantly less than credit cards due to the Durbin Amendment.
+                ACH bank transfers are usually capped: Stripe charges 0.8% up to $5, Helcim 0.5% + 25¢ up to $6. A $5,000 payment via ACH costs $5 on Stripe versus $145.30 at a 2.9% + 30¢ card rate. Debit cards from large issuers also cost far less than credit cards in interchange (0.05% + 21¢ under the Durbin Amendment), but you only keep that saving on interchange-plus pricing; a flat rate charges the same for both.
               </p>
 
-              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Batch Transactions Promptly (Save 0.5% - 1%)</h3>
+              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Batch Transactions Promptly</h3>
 
               <p className="text-foreground leading-relaxed">
-                Settle your batch within 24 hours of authorization. Delayed settlement causes &quot;downgrades&quot; where transactions are charged at higher rates because the processor considers them higher risk.
+                Settle your batch within 24 hours of authorization. Delayed settlement can cause &quot;downgrades,&quot; where a sale misses its category&apos;s conditions and is charged at a higher rate, up to Visa&apos;s 3.15% + 10¢ non-qualified consumer credit rate.
               </p>
 
-              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Provide Complete Transaction Data (Save 0.5% - 1%)</h3>
+              <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Provide Complete Transaction Data</h3>
 
               <p className="text-foreground leading-relaxed">
-                For B2B transactions, submitting Level 2 and Level 3 data (tax amounts, customer codes, line-item details) can reduce interchange by 0.5-1.5% on business and corporate cards.
+                For B2B transactions, submitting Level 3 data (tax amounts, customer codes, line-item details) lowers Visa corporate and purchasing card interchange from 2.70% + 10¢ (Commercial Card Not Present) to 1.75% + 10¢ (Commercial Product 3), a 0.95-point drop. Visa sunset its Level 2 rates in April 2026, and the saving only reaches you on interchange-plus pricing.
               </p>
 
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Review Statements Monthly</h3>
@@ -817,8 +827,8 @@ export default function PaymentProcessorFeesGuidePage() {
               <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The 12 Most Common Hidden Fees</h3>
 
               <p className="text-foreground leading-relaxed">
-                <strong>1. PCI Non-Compliance Fee ($20-50/month)</strong><br />
-                Processors charge this &quot;non-compliance&quot; fee even if you&apos;re actually PCI compliant. Complete your annual PCI Self-Assessment Questionnaire and send proof to your processor. Many modern processors include PCI compliance with no additional fee.
+                <strong>1. PCI Non-Compliance Fee</strong><br />
+                Some processors charge this &quot;non-compliance&quot; fee whenever they have no proof on file that you&apos;re PCI compliant, even if you are. Complete your annual PCI Self-Assessment Questionnaire and send proof to your processor. Some processors charge no PCI fee at all (Helcim lists none); Checkout.com publishes a $150 monthly non-compliance fee for Level 4 merchants after a 60-day grace period.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -833,47 +843,47 @@ export default function PaymentProcessorFeesGuidePage() {
 
               <p className="text-foreground leading-relaxed">
                 <strong>4. Statement Fees for &quot;Detailed&quot; Reporting</strong><br />
-                Charging $10-20/month for transaction statements that should be included free. These fees are pure profit and 100% negotiable.
+                A flat monthly charge for transaction statements that should be included free. Ask for it to be waived in writing.
               </p>
 
               <p className="text-foreground leading-relaxed">
                 <strong>5. Batch Header Fees</strong><br />
-                Charging $0.10-0.50 per batch settlement. Modern processors don&apos;t charge batch fees. If yours does, it&apos;s a sign you&apos;re on an outdated pricing model.
+                A charge on each batch settlement, such as the 10¢ per daily batch on Authorize.net&apos;s gateway-only plan. Flat-rate providers such as Stripe and Square publish no batch fee, and closing several batches a day multiplies the cost.
               </p>
 
               <p className="text-foreground leading-relaxed">
                 <strong>6. Equipment Rental That Never Ends</strong><br />
-                Renting card terminals for $30-50/month that you could buy outright for $200-400. After 12 months, you&apos;ve paid more than purchase price but still don&apos;t own it.
+                Renting or financing card terminals on terms that cost more than buying. Clover&apos;s Compact costs $349 outright or $16 a month for 36 months ($576 in total), on a hardware subscription that cannot be canceled. Third-party equipment leases keep billing even after you switch processors.
               </p>
 
               <p className="text-foreground leading-relaxed">
                 <strong>7. &quot;Network Access&quot; Fees</strong><br />
-                Vaguely named fees ($5-25/month) that supposedly cover network access, but are actually just padding the processor&apos;s profit margin. Challenge any fee with a vague name.
+                Vaguely named monthly fees that supposedly cover network access but may simply pad the processor&apos;s margin. Challenge any fee with a vague name and ask which network charge it passes through.
               </p>
 
               <p className="text-foreground leading-relaxed">
                 <strong>8. Excessive Chargeback Fees</strong><br />
-                Charging $50-100 per chargeback when industry standard is $15-25. Negotiate chargeback fees during contract signing.
+                The providers we track publish $15 (Stripe, Helcim, Braintree) to $20 (PayPal) per chargeback. If your quote is far above that, negotiate it during contract signing.
               </p>
 
               <p className="text-foreground leading-relaxed">
                 <strong>9. Voice Authorization Fees</strong><br />
-                Charging $1-5 every time you call for manual authorization. If you see these regularly but aren&apos;t calling for authorization, your system is misconfigured.
+                A charge every time you call for manual authorization. If you see these regularly but aren&apos;t calling for authorization, your system is misconfigured.
               </p>
 
               <p className="text-foreground leading-relaxed">
                 <strong>10. Early Termination Fees After Contract Expires</strong><br />
-                Contracts that &quot;automatically renew&quot; for another 1-3 years unless you cancel in writing 30-90 days before expiration. Never sign contracts longer than one year.
+                Contracts that &quot;automatically renew&quot; for another term unless you cancel in writing within a notice window before expiration. Many providers have no contract at all (Square, Stripe) or no cancellation fee (Helcim, Authorize.net), so read the renewal and exit clauses before you sign.
               </p>
 
               <p className="text-foreground leading-relaxed">
                 <strong>11. Retrieval Request Fees</strong><br />
-                Charging $5-25 when a cardholder&apos;s bank requests transaction details before any actual dispute. Respond quickly to retrieval requests with complete documentation.
+                A charge when a cardholder&apos;s bank requests transaction details before any actual dispute. Respond quickly to retrieval requests with complete documentation.
               </p>
 
               <p className="text-foreground leading-relaxed">
                 <strong>12. &quot;Regulatory&quot; or &quot;Compliance&quot; Fees</strong><br />
-                Vague regulatory fees ($3-20/month) that supposedly cover compliance costs but are really just additional markup. Most are negotiable or removable.
+                Vague regulatory fees that supposedly cover compliance costs but often work as additional markup. Ask what each one covers and whether it can be removed.
               </p>
 
               {/* Moved from /insights/credit-card-processing-fees-explained, merged 2026-09-08 */}
@@ -943,13 +953,13 @@ export default function PaymentProcessorFeesGuidePage() {
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">PayPal</td>
-                      <td className="py-3 pr-4">2.99% + $0.49</td>
+                      <td className="py-3 pr-4">2.29% + $0.09 in person; 3.49% + $0.49 PayPal Checkout</td>
                       <td className="py-3 pr-4">$0</td>
                       <td className="py-3">Customer trust, brand recognition</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">Stripe</td>
-                      <td className="py-3 pr-4">2.9% + $0.30</td>
+                      <td className="py-3 pr-4">2.9% + $0.30 online; 2.7% + $0.05 in person</td>
                       <td className="py-3 pr-4">$0</td>
                       <td className="py-3">Online businesses, developers</td>
                     </tr>
@@ -964,7 +974,7 @@ export default function PaymentProcessorFeesGuidePage() {
               </div>
 
               <p className="text-foreground leading-relaxed">
-                <strong>When to upgrade:</strong> As your volume increases, flat-rate processors become expensive. Consider switching to interchange-plus when you&apos;re consistently processing over $10,000 monthly or your average transaction exceeds $100.
+                <strong>When to upgrade:</strong> As your volume increases, flat-rate processors become expensive. In our dataset Helcim&apos;s interchange-plus already costs less than Square at $10,000 a month in person ($211 against $290) and at $50,000 ($1,020 against $1,450), so compare it once your volume is steady.
               </p>
 
               {/* Section 6 */}
@@ -987,7 +997,7 @@ export default function PaymentProcessorFeesGuidePage() {
               </ul>
 
               <p className="text-foreground leading-relaxed mt-4">
-                Specialized high-risk processors include <a href="https://paymentcloudinc.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a>, Durango Merchant Services, and processors partnered with high-risk acquiring banks. Expect to pay 3.5-5% plus higher monthly fees, but these processors provide stability that mainstream options can&apos;t offer.
+                Specialized high-risk processors include <a href="https://paymentcloudinc.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a>, Durango Merchant Services, and processors partnered with high-risk acquiring banks. Expect higher rates, monthly fees and reserves than mainstream processors charge, and get the full schedule in writing; in exchange, these processors accept businesses that mainstream options decline.
               </p>
               <p className="text-foreground leading-relaxed mt-4">
                 For CBD, gaming, nutra, firearms, travel or subscription merchants, start with our <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">high-risk payment processing guide</Link>: it covers reserves, VAMP thresholds, multi-MID setups and which processors approve each vertical.
@@ -1021,28 +1031,28 @@ export default function PaymentProcessorFeesGuidePage() {
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4"><a href="https://stripe.com/global" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a></td>
-                      <td className="py-3 pr-4">135+</td>
+                      <td className="py-3 pr-4">135+ for charging customers</td>
                       <td className="py-3 pr-4">45+</td>
-                      <td className="py-3">Competitive FX rates, unified API</td>
+                      <td className="py-3">Unified API; international cards +1.5%, currency conversion +1%</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4">PayPal</td>
-                      <td className="py-3 pr-4">100+</td>
-                      <td className="py-3 pr-4">200+</td>
-                      <td className="py-3">Global brand recognition</td>
+                      <td className="py-3 pr-4">Not checked</td>
+                      <td className="py-3 pr-4">Not checked</td>
+                      <td className="py-3">Buyers who pay with a PayPal balance; international sales +1.5%</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4"><a href="https://www.adyen.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Adyen</a></td>
-                      <td className="py-3 pr-4">250+</td>
-                      <td className="py-3 pr-4">All major</td>
-                      <td className="py-3">Enterprise-grade, local routing</td>
+                      <td className="py-3 pr-4">Many settlement currencies</td>
+                      <td className="py-3 pr-4">Not checked</td>
+                      <td className="py-3">Interchange++ + 0.60% + 13¢ on Visa and Mastercard; minimum invoice not published</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
               <p className="text-foreground leading-relaxed">
-                International payments involve additional fees: foreign transaction fees (1-3%), currency conversion fees (1-3%), and cross-border interchange. Consider processing in local currencies and using regional processors for high-volume markets.
+                International payments involve additional fees: Stripe adds 1.5% for international cards and 1% when currency conversion applies, PayPal and Square add 1.5% on international sales, and Braintree adds 1% for non-U.S. cards and another 1% for non-USD currency, on top of cross-border interchange. Consider processing in local currencies and using regional processors for high-volume markets.
               </p>
 
               {/* Section 8 */}
@@ -1077,54 +1087,54 @@ export default function PaymentProcessorFeesGuidePage() {
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What is the average credit card processing fee?</h3>
                   <p className="text-foreground leading-relaxed">
-                    The average credit card processing fee ranges from 1.5% to 3.5% per transaction, plus a fixed fee of $0.10 to $0.30. For most businesses using flat-rate processors like Square or Stripe, expect to pay around 2.6% to 2.9% + $0.30 per transaction.
+                    In our 2026 dataset of 10 U.S. processors (a $50 sale, 60% credit and 40% debit, prices checked Oct 29, 2026), the average effective rate at $10K a month is 2.65% in person and 3.31% online, and the full range across volumes is 1.73% to 3.75%. Headline flat rates run from 2.29% + $0.09 (PayPal POS) to 2.6% + $0.15 (Square) in person, and from 2.9% + $0.30 (Stripe) to 3.49% + $0.49 (PayPal Checkout) online.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Which payment processor has the lowest fees?</h3>
                   <p className="text-foreground leading-relaxed">
-                    The lowest-fee processor depends on your business volume. For businesses under $10,000 monthly, Helcim often offers the best rates with interchange-plus pricing and no monthly fees. For businesses processing $25,000+ monthly, subscription-based processors typically provide the lowest total costs.
+                    It depends on your volume. In our dataset Helcim (interchange-plus, no monthly fee) is cheapest in person at $10K and $50K a month ($211 and $1,020), and Stax (subscription plus interchange) is cheapest from $250K a month in person and from $50K a month online. Adyen&apos;s online rate is lower on paper at $10K, but it applies a minimum monthly invoice it does not publish.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Is Stripe cheaper than PayPal?</h3>
                   <p className="text-foreground leading-relaxed">
-                    For online transactions, Stripe (2.9% + $0.30) is slightly cheaper than PayPal (2.99% + $0.49). On a $100 transaction, Stripe costs $3.20 while PayPal costs $3.48. However, PayPal&apos;s brand recognition can increase conversion rates by 5-10%, potentially offsetting the higher fees.
+                    For online card payments, Stripe (2.9% + $0.30) is cheaper than PayPal Checkout (3.49% + $0.49): on a $100 transaction, Stripe costs $3.20 and PayPal Checkout $3.98. PayPal&apos;s Advanced Credit and Debit rate (2.89% + $0.29, subject to approval) comes to $3.18, about the same as Stripe. Test whether a PayPal button lifts your own conversion before paying its higher rate.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">How do I choose the best payment processor for my startup?</h3>
                   <p className="text-foreground leading-relaxed">
-                    For startups, prioritize processors with no monthly fees, easy integration, and transparent pricing. Start with Stripe if you&apos;re primarily online, as their documentation and developer tools are excellent. Choose Square for in-person sales with their free reader.
+                    For startups, prioritize processors with no monthly fees, easy integration, and transparent pricing. Start with Stripe if you&apos;re primarily online and want its documentation and developer tools, or Helcim if the lowest published cost matters most. Choose Square for in-person sales if you want a free plan with next-business-day deposits.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What is interchange-plus pricing?</h3>
                   <p className="text-foreground leading-relaxed">
-                    Interchange-plus pricing separates the non-negotiable interchange fees from the processor&apos;s markup. You pay the actual interchange rate plus a clearly defined markup (e.g., &quot;Interchange + 0.3% + $0.10&quot;). This model offers the most transparency and is typically cheapest for businesses processing over $10,000 monthly.
+                    Interchange-plus pricing separates the non-negotiable interchange fees from the processor&apos;s markup. You pay the actual interchange rate plus a clearly defined markup (e.g., &quot;Interchange + 0.40% + $0.08&quot;, Helcim&apos;s in-person rate under $50K a month). In our dataset Helcim&apos;s interchange-plus costs less than every flat-rate provider at $10,000 a month.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What is a good credit card processing rate?</h3>
                   <p className="text-foreground leading-relaxed">
-                    A good rate depends on your business type. Retail card-present businesses should aim for 1.7-2.2% effective rate, e-commerce for 2.4-2.8%, and restaurants for 1.9-2.4%. If you&apos;re above these ranges, you&apos;re likely overpaying.
+                    Use our dataset as a benchmark: at $10K a month on a $50 sale, the lowest effective rates are 2.11% in person (Helcim) and 2.56% online (Adyen), and the averages are 2.65% and 3.31%. If you pay well above the average for your channel and volume, get competing quotes.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Can I negotiate credit card processing fees?</h3>
                   <p className="text-foreground leading-relaxed">
-                    Yes, but only the processor markup (10-20% of total fees). Interchange and assessment fees are set by card networks and non-negotiable. Focus negotiations on the processor&apos;s margin, monthly fees, and per-transaction costs.
+                    Yes, but only the processor&apos;s share. Interchange and card-network fees are set by the card networks and are non-negotiable. Focus negotiations on the processor&apos;s margin, monthly fees, and per-transaction costs; Stripe, for example, offers interchange-plus and custom pricing to large-volume businesses.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Why do rewards cards cost more to process?</h3>
                   <p className="text-foreground leading-relaxed">
-                    Premium rewards cards have higher interchange rates because the card-issuing bank funds customer rewards (cashback, travel points) from these fees. A card offering 2% cashback needs to charge merchants more to fund that reward.
+                    Rewards cards have higher interchange rates because the card-issuing bank funds customer rewards (cashback, travel points) partly from these fees. On Visa&apos;s Oct 24, 2026 schedule, a traditional non-rewards credit card costs 1.51% + $0.10 in store, a Traditional Rewards card 1.65% + $0.10, and a spend-qualified Visa Infinite card 2.30% + $0.10.
                   </p>
                 </div>
                 <div>
@@ -1166,7 +1176,7 @@ export default function PaymentProcessorFeesGuidePage() {
               {/* Disclosure */}
               <div className="mt-12 pt-8 border-t border-border">
                 <p className="text-sm text-muted-foreground italic">
-                  <strong>Disclosure:</strong> myPayAdvisor may receive compensation from some of the payment processors mentioned in this article. However, our analysis and recommendations are based on objective research and real merchant data. We only recommend processors we believe provide genuine value.
+                  <strong>Disclosure:</strong> myPayAdvisor may receive compensation from some of the payment processors mentioned in this article. However, our analysis and recommendations are based on providers&apos; published prices and our effective-rate dataset, and rankings follow cost and fit, not who pays us. We only recommend processors we believe provide genuine value.
                 </p>
               </div>
 
@@ -1181,7 +1191,7 @@ export default function PaymentProcessorFeesGuidePage() {
                   </li>
                   <li>
                     <Link href="/comparisons/helcim-review-2026" className="text-primary hover:underline">
-                      Helcim Review 2025: Is This the Best Low-Fee Payment Processor?
+                      Helcim Review 2026: Is This the Best Low-Fee Payment Processor?
                     </Link>
                   </li>
                   <li>

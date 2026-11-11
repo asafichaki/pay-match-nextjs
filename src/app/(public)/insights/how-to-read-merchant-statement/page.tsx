@@ -8,8 +8,8 @@ import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
-  title: "How to Read Your Merchant Statement: Ultimate 2025 Guide to Decoding Processing Fees",
-  description: "Learn how to decode your merchant statement, understand processing fee acronyms like MTOT and NQUAL, calculate your effective rate, and identify junk fees costing your business thousands.",
+  title: "How to Read Your Merchant Statement: Decode Your Fees",
+  description: "Learn how to decode your merchant statement, understand processing fee acronyms like MTOT and NQUAL, calculate your effective rate, and identify the junk fees you can remove.",
   keywords: "how to read merchant statement, merchant statement explained, credit card processing fees, effective rate calculation, interchange fees, assessment fees, processor markup, tiered pricing, interchange-plus pricing, PCI compliance fee",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/how-to-read-merchant-statement",
@@ -21,13 +21,13 @@ const baseMetadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/how-to-read-merchant-statement",
-    title: "How to Read Your Merchant Statement: Ultimate 2025 Guide to Decoding Processing Fees",
+    title: "How to Read Your Merchant Statement: Decode Your Fees",
     description: "Decode your merchant statement and identify hidden fees. Learn the acronyms, calculate your effective rate, and stop overpaying for payment processing.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "How to Read Your Merchant Statement: 2025 Decoding Guide",
+    title: "How to Read Your Merchant Statement: Decode Your Fees",
     description: "Learn to decode merchant statement acronyms and identify hidden processing fees.",
   },
 };
@@ -42,8 +42,8 @@ export default function HowToReadMerchantStatementPage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "How to Read Your Merchant Statement: The Ultimate 2025 Guide to Decoding Processing Fees",
-    "description": "Learn how to decode your merchant statement, understand processing fee acronyms, calculate your effective rate, and identify junk fees that are costing your business thousands annually.",
+    "headline": "How to Read Your Merchant Statement: A Guide to Decoding Processing Fees",
+    "description": "Learn how to decode your merchant statement, understand processing fee acronyms, calculate your effective rate, and identify the junk fees you can remove.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
@@ -61,7 +61,7 @@ export default function HowToReadMerchantStatementPage() {
       }
     },
     "datePublished": "2025-12-26",
-    "dateModified": "2025-12-26",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/how-to-read-merchant-statement"
@@ -96,7 +96,7 @@ export default function HowToReadMerchantStatementPage() {
         "name": "Why does my statement show a 'Dues and Assessments' fee?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "This is a legitimate pass-through fee that goes directly to Visa, Mastercard, and Discover for operating the network. However, ensure your processor isn't marking this up. It should be around 0.13%."
+          "text": "This is a legitimate pass-through fee that goes to Visa, Mastercard, and Discover for operating the network. However, ensure your processor isn't marking it up. The networks' assessment rates are not on Visa's public interchange schedule, so ask your processor in writing for the network's published rate behind each line; anything above it is markup."
         }
       },
       {
@@ -112,7 +112,7 @@ export default function HowToReadMerchantStatementPage() {
         "name": "Can I get a refund for past PCI Non-Compliance fees?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Often, yes. If you were compliant but just forgot to file the paperwork, a good processor will retroactively refund 1-3 months of fees if you ask and submit the certificate immediately."
+          "text": "Sometimes. If you were compliant but forgot to file the questionnaire, submit it right away and ask in writing for a refund of the fees already charged. Whether you get one, and for how many months, is up to your processor."
         }
       },
       {
@@ -120,7 +120,7 @@ export default function HowToReadMerchantStatementPage() {
         "name": "What is Level 3 Data on a merchant statement?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If you see 'Level 3' or 'Enhanced Data,' this is a good thing. It means your system is sending extra data (like invoice numbers) to the bank, which qualifies you for lower Interchange rates on B2B and Government cards."
+          "text": "If you see 'Level 3' or 'Enhanced Data,' this is a good thing. It means your system is sending extra data (tax amount, invoice number, line items) with B2B and government card sales, which can qualify them for lower interchange. On Visa's schedule effective Oct 24, 2026, corporate and purchasing cards cost 2.70% + 10¢ card-not-present, against 1.75% + 10¢ at the Commercial Product 3 rate with Level 3 data. Visa ended its separate Level 2 rates in April 2026."
         }
       }
     ]
@@ -147,12 +147,12 @@ export default function HowToReadMerchantStatementPage() {
                 </div>
                 
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                  How to Read Your Merchant Statement: The Ultimate 2025 Guide to Decoding Processing Fees
+                  How to Read Your Merchant Statement: A Guide to Decoding Processing Fees
                 </h1>
                 <AeoAnswer kind="insights" slug="how-to-read-merchant-statement" />
                 
                 <p data-speakable="true" className="text-xl text-muted-foreground leading-relaxed mb-6">
-                  A merchant statement is a monthly document from your payment processor that itemizes every fee, fund settlement, and chargeback on your account. The five sections to know are: deposits summary, fee summary, transaction detail, chargebacks/disputes, and adjustments. The four hidden flat fees most merchants miss (PCI, statement, regulatory, monthly minimum) typically add $30-$90 per month, see <a href="/research/methodology" className="text-primary hover:underline">methodology</a> for the calculation.
+                  A merchant statement is a monthly document from your payment processor that itemizes every fee, fund settlement, and chargeback on your account. The five sections to know are: deposits summary, fee summary, transaction detail, chargebacks/disputes, and adjustments. Four flat fees are easy to miss (PCI, statement, regulatory, monthly minimum). Amounts vary by processor, so total them from your own statement; some providers, such as Helcim, list no monthly, PCI or statement fee (checked Oct 2026).
                 </p>
 
                 {/* Author Byline */}
@@ -188,7 +188,7 @@ export default function HowToReadMerchantStatementPage() {
                   <li><a href="#effective-rate" className="text-muted-foreground hover:text-primary transition-colors">4. The Effective Rate Test</a></li>
                   <li><a href="#glossary" className="text-muted-foreground hover:text-primary transition-colors">5. Decoding the Acronyms: A Glossary</a></li>
                   <li><a href="#red-flags" className="text-muted-foreground hover:text-primary transition-colors">6. Red Flags: 5 Fees You Should Never Pay</a></li>
-                  <li><a href="#audit-steps" className="text-muted-foreground hover:text-primary transition-colors">7. How to Audit Your Statement in 5 Minutes</a></li>
+                  <li><a href="#audit-steps" className="text-muted-foreground hover:text-primary transition-colors">7. How to Audit Your Statement Quickly</a></li>
                   <li><a href="#conclusion" className="text-muted-foreground hover:text-primary transition-colors">8. Conclusion: Transparency is Power</a></li>
                   <li><a href="#faq" className="text-muted-foreground hover:text-primary transition-colors">9. Frequently Asked Questions</a></li>
                 </ul>
@@ -207,12 +207,12 @@ export default function HowToReadMerchantStatementPage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  It is no wonder that a recent industry survey found that <strong>78% of merchants simply look at the bottom line total, wince, and pay the bill</strong>.
+                  It is no wonder that many merchants <strong>simply look at the bottom line total, wince, and pay the bill</strong>.
                 </p>
 
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <p className="text-foreground">
-                    <strong>The Hidden Cost of Confusion:</strong> Ignoring the details of your statement is a costly mistake. Your merchant statement is the most powerful financial tool you have for controlling your operational costs. Hidden within those columns of numbers are unnecessary surcharges, billing errors, and "junk fees" that can bleed thousands of dollars from your annual revenue.
+                    <strong>The Hidden Cost of Confusion:</strong> Ignoring the details of your statement is a costly mistake. Your merchant statement is the most powerful financial tool you have for controlling your operational costs. Hidden within those columns of numbers are unnecessary surcharges, billing errors, and "junk fees" that add up month after month.
                   </p>
                 </div>
 
@@ -238,8 +238,8 @@ export default function HowToReadMerchantStatementPage() {
                 <div className="my-6 p-4 bg-muted/30 rounded-lg">
                   <ul className="list-none space-y-2 text-foreground">
                     <li><strong>Who gets it:</strong> The Issuing Bank (Chase, Capital One, Wells Fargo, etc., the bank that gave the card to your customer).</li>
-                    <li><strong>The Cost:</strong> This is the largest portion of your fees (<strong>70-90%</strong>).</li>
-                    <li><strong>Negotiability:</strong> Zero. These rates are set by <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a>/<a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>.</li>
+                    <li><strong>The Cost:</strong> Usually the largest portion of your fees; the share depends on your pricing model and card mix. A Visa Signature card swiped in a retail store costs 1.65% + 10¢ on Visa's schedule effective Oct 24, 2026.</li>
+                    <li><strong>Negotiability:</strong> Zero. These rates are set by the card networks; Visa publishes its <a href="https://usa.visa.com/content/dam/VCOM/download/merchants/visa-usa-interchange-reimbursement-fees.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">interchange schedule</a>, and Mastercard publishes its own.</li>
                     <li><strong>What it looks like on the bill:</strong> Often listed as "Interchange," "IC Costs," or detailed with codes like "Visa Rewards 1" or "MC World Elite."</li>
                   </ul>
                 </div>
@@ -249,8 +249,8 @@ export default function HowToReadMerchantStatementPage() {
                 <div className="my-6 p-4 bg-muted/30 rounded-lg">
                   <ul className="list-none space-y-2 text-foreground">
                     <li><strong>Who gets it:</strong> The Card Brands (Visa, Mastercard, Discover, Amex).</li>
-                    <li><strong>The Cost:</strong> A very small percentage (approx. 0.13% - 0.15%) for using their network infrastructure.</li>
-                    <li><strong>Negotiability:</strong> Zero.</li>
+                    <li><strong>The Cost:</strong> A small percentage of volume plus small per-transaction fees for using their network. The rates are not on Visa's public interchange schedule, so ask your processor for the network's published rate behind each line.</li>
+                    <li><strong>Negotiability:</strong> Zero when passed through at cost. A line above the network's published rate is processor markup.</li>
                     <li><strong>What it looks like on the bill:</strong> "NABU Fee" (Mastercard), "APF" (Visa), "Data Usage Fee."</li>
                   </ul>
                 </div>
@@ -286,21 +286,21 @@ export default function HowToReadMerchantStatementPage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>The Trap:</strong> The processor quotes you a low rate (e.g., 1.5%) for "Qualified" transactions. However, they define "Qualified" very narrowly (usually only plain debit cards).
+                  <strong>The Trap:</strong> The processor quotes you a low rate (e.g., 1.5%) for "Qualified" transactions. However, they can define "Qualified" narrowly, often only basic cards swiped in person.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>The Surcharge:</strong> Reward cards, corporate cards, or keyed-in transactions are <em>downgraded</em> to "Non-Qualified," where the rate can skyrocket to 3.5% or 4.0%.
+                  <strong>The Surcharge:</strong> Reward cards, corporate cards, or keyed-in transactions are <em>downgraded</em> to mid- or non-qualified rates, often far above the qualified rate and above the interchange the card actually cost.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Model B: Flat-Rate Pricing (The Aggregator Model)</h3>
 
                 <div className="my-4 p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg border-l-4 border-yellow-500">
-                  <p className="font-semibold text-foreground">Verdict: Good for micro-businesses (under $10k/mo), bad for everyone else.</p>
+                  <p className="font-semibold text-foreground">Verdict: Simple and predictable, but in our cost tables it costs more than interchange-plus at every volume we test.</p>
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>How to spot it:</strong> You won't see a detailed breakdown of card types. You will likely see one line item for "Processing Fees" calculated at a single rate (e.g., 2.9% + $0.30). Common with <a href="https://squareup.com/us/en/payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a>, <a href="https://stripe.com/pricing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a>, and <a href="https://www.paypal.com/us/business/accept-payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a>.
+                  <strong>How to spot it:</strong> You won't see a detailed breakdown of card types. You will likely see one line item for "Processing Fees" calculated at a single rate (e.g., Stripe's 2.9% + $0.30 online or Square's 2.6% + $0.15 in person, checked Oct 2026). Common with <a href="https://squareup.com/us/en/payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a>, <a href="https://stripe.com/pricing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a>, and <a href="https://www.paypal.com/us/business/accept-payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal</a>.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -310,11 +310,11 @@ export default function HowToReadMerchantStatementPage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Model C: Interchange-Plus (The Gold Standard)</h3>
 
                 <div className="my-4 p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border-l-4 border-green-500">
-                  <p className="font-semibold text-foreground">Verdict: The only model recommended by financial experts.</p>
+                  <p className="font-semibold text-foreground">Verdict: The most transparent model, and the cheapest in our cost tables.</p>
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>How to spot it:</strong> Your statement is long. It lists the exact Interchange name for every card type (e.g., "Visa Signature Pref") and the cost associated with it. Separately, there is a section for "Discount" or "Service Fee" which is a fixed markup.
+                  <strong>How to spot it:</strong> Your statement is long. It lists the exact Interchange name for every card type (e.g., "Visa Signature Pref") and the cost associated with it. Separately, there is a section for "Discount" or "Service Fee" which is the processor's markup.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -349,37 +349,37 @@ export default function HowToReadMerchantStatementPage() {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The Benchmark: Where Should You Be?</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The Benchmark: What Published Prices Cost</h3>
 
                 <div className="overflow-x-auto my-8">
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b-2 border-foreground">
-                        <th className="text-left py-3 pr-4 font-semibold text-foreground">Industry</th>
-                        <th className="text-left py-3 pr-4 font-semibold text-foreground">Target Effective Rate</th>
-                        <th className="text-left py-3 font-semibold text-foreground">"Red Flag" Rate</th>
+                        <th className="text-left py-3 pr-4 font-semibold text-foreground">Channel</th>
+                        <th className="text-left py-3 pr-4 font-semibold text-foreground">Published effective rates</th>
+                        <th className="text-left py-3 font-semibold text-foreground">Cheapest and priciest (monthly cost)</th>
                       </tr>
                     </thead>
                     <tbody className="text-foreground">
                       <tr className="border-b border-border">
-                        <td className="py-3 pr-4">Retail (Card Present)</td>
-                        <td className="py-3 pr-4 text-green-600 dark:text-green-400">2.2% - 2.5%</td>
-                        <td className="py-3 text-red-600 dark:text-red-400">&gt; 2.9%</td>
+                        <td className="py-3 pr-4">In person, at $50K a month</td>
+                        <td className="py-3 pr-4">2.04% to 2.90%</td>
+                        <td className="py-3">Helcim $1,020; Square $1,450</td>
                       </tr>
                       <tr className="border-b border-border">
-                        <td className="py-3 pr-4">Restaurant (QSR/Full Service)</td>
-                        <td className="py-3 pr-4 text-green-600 dark:text-green-400">2.3% - 2.6%</td>
-                        <td className="py-3 text-red-600 dark:text-red-400">&gt; 3.0%</td>
+                        <td className="py-3 pr-4">In person, at $10K a month</td>
+                        <td className="py-3 pr-4">2.11% to 2.90%</td>
+                        <td className="py-3">Helcim $211; Square $290</td>
                       </tr>
                       <tr className="border-b border-border">
-                        <td className="py-3 pr-4">E-Commerce (Card Not Present)</td>
-                        <td className="py-3 pr-4 text-green-600 dark:text-green-400">2.5% - 2.9%</td>
-                        <td className="py-3 text-red-600 dark:text-red-400">&gt; 3.4%</td>
+                        <td className="py-3 pr-4">Online, at $50K a month</td>
+                        <td className="py-3 pr-4">2.40% to 3.70%</td>
+                        <td className="py-3">Stax $1,200; Clover keyed $1,850</td>
                       </tr>
                       <tr className="border-b border-border">
-                        <td className="py-3 pr-4">B2B / Wholesale</td>
-                        <td className="py-3 pr-4 text-green-600 dark:text-green-400">2.0% - 2.4%</td>
-                        <td className="py-3 text-red-600 dark:text-red-400">&gt; 2.8%</td>
+                        <td className="py-3 pr-4">B2B corporate cards (Visa interchange only)</td>
+                        <td className="py-3 pr-4">1.75% + 10¢ with Level 3 data; 2.70% + 10¢ without</td>
+                        <td className="py-3">Visa schedule, Oct 24, 2026</td>
                       </tr>
                     </tbody>
                   </table>
@@ -387,7 +387,7 @@ export default function HowToReadMerchantStatementPage() {
 
                 <div className="my-6 p-4 bg-red-50 dark:bg-red-950/20 rounded-lg border-l-4 border-red-500">
                   <p className="text-foreground">
-                    <strong>Action Required:</strong> If your rate is in the "Red Flag" zone, stop reading and <Link href="/quiz" className="text-primary hover:underline font-semibold">contact MyPayAdvisor immediately for an audit</Link>.
+                    <strong>How to read this:</strong> the first three rows are total monthly cost at published prices across the providers in our <Link href="/data/effective-rates-2026" className="text-primary hover:underline">cost tables</Link> (prices checked Oct 2026). If your effective rate is above the priciest published option for your volume, <Link href="/quiz" className="text-primary hover:underline font-semibold">get a matched shortlist</Link> and compare quotes.
                   </p>
                 </div>
 
@@ -426,7 +426,7 @@ export default function HowToReadMerchantStatementPage() {
                     <p className="text-foreground"><strong>INT / I/C (Interchange):</strong> The base cost paid to the bank.</p>
                   </div>
                   <div className="p-4 bg-muted/30 rounded-lg">
-                    <p className="text-foreground"><strong>APF / NABU:</strong> Network Access and Brand Usage fees (paid to Visa/Mastercard).</p>
+                    <p className="text-foreground"><strong>APF / NABU:</strong> Visa's Acquirer Processing Fee (APF) and Mastercard's Network Access and Brand Usage fee (NABU), per-transaction network fees.</p>
                   </div>
                   <div className="p-4 bg-muted/30 rounded-lg">
                     <p className="text-foreground"><strong>PCI:</strong> Payment Card Industry compliance fees. See the <a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PCI Security Standards Council</a> for official requirements.</p>
@@ -443,33 +443,33 @@ export default function HowToReadMerchantStatementPage() {
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">1. PCI Non-Compliance Fee</h3>
-                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> $19.95 - $99.00 / month</p>
+                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> Varies by processor, so check your statement. Checkout.com, for example, publishes $150 a month for Level 4 merchants after a 60-day grace period; Helcim lists no PCI fee (checked Oct 2026).</p>
                 <p className="text-foreground leading-relaxed"><strong>What it is:</strong> A penalty for not completing your annual self-assessment questionnaire.</p>
-                <p className="text-foreground leading-relaxed"><strong>Action:</strong> If you see this, you are throwing money away. Complete the survey (it takes 15 minutes) or demand your processor help you. <span className="text-primary font-semibold">This fee is 100% avoidable.</span></p>
+                <p className="text-foreground leading-relaxed"><strong>Action:</strong> If you see this, you are throwing money away. Complete the questionnaire or ask your processor to help you. <span className="text-primary font-semibold">This fee is 100% avoidable.</span></p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">2. Monthly Minimum Fee</h3>
-                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> $25.00 - $50.00</p>
-                <p className="text-foreground leading-relaxed"><strong>What it is:</strong> A fee charged if your total fees generated don't meet a certain minimum (usually $25).</p>
+                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> Varies by contract, so check your statement.</p>
+                <p className="text-foreground leading-relaxed"><strong>What it is:</strong> A fee charged if your total fees generated don't meet a minimum set in your contract.</p>
                 <p className="text-foreground leading-relaxed"><strong>Action:</strong> If you are a seasonal business or have a slow month, you shouldn't be penalized. Negotiate this out of your contract.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">3. Statement / Reporting Fee</h3>
-                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> $10.00 - $20.00</p>
+                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> Varies by processor, so check your statement. Stripe and Square's Free plan publish no monthly fee (checked Oct 2026).</p>
                 <p className="text-foreground leading-relaxed"><strong>What it is:</strong> A fee for mailing you a paper statement or even just providing a digital PDF.</p>
-                <p className="text-foreground leading-relaxed"><strong>Action:</strong> In 2025, digital statements should be free. This is pure profit for the processor.</p>
+                <p className="text-foreground leading-relaxed"><strong>Action:</strong> A PDF statement costs the processor little to produce. Ask for the fee to be waived in writing.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">4. "Enhanced Security" or "Regulatory" Bundles</h3>
-                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> $59.00 - $149.00 / year (or monthly)</p>
+                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> Varies by processor, billed yearly or monthly. Check your statement.</p>
                 <p className="text-foreground leading-relaxed"><strong>What it is:</strong> Vague line items often labeled as "Regulatory Compliance" or "Risk Monitoring."</p>
-                <p className="text-foreground leading-relaxed"><strong>Action:</strong> These are often not government mandates but discretionary service bundles. Ask for an itemized list of what this fee covers.</p>
+                <p className="text-foreground leading-relaxed"><strong>Action:</strong> No regulation requires a "regulatory product" fee; these are processor-set service bundles. Ask for an itemized list of what this fee covers.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">5. IRS Reporting Fee (1099-K)</h3>
-                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> $4.95 - $10.00 / month</p>
+                <p className="text-foreground leading-relaxed"><strong>Cost:</strong> Varies by processor, often a monthly or yearly charge. Check your statement.</p>
                 <p className="text-foreground leading-relaxed"><strong>What it is:</strong> A fee to cover the cost of the processor sending one tax form to the <a href="https://www.irs.gov/forms-pubs/about-form-1099-k" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">IRS</a> at the end of the year.</p>
-                <p className="text-foreground leading-relaxed"><strong>Action:</strong> The actual cost to file a 1099-K is pennies. Charging monthly for this is predatory.</p>
+                <p className="text-foreground leading-relaxed"><strong>Action:</strong> Filing Form 1099-K is the processor's own reporting duty, not a government fee charged to you. Ask for this fee to be removed.</p>
 
                 {/* Section 7 */}
                 <h2 id="audit-steps" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
-                  7. Step-by-Step: How to Audit Your Statement in 5 Minutes
+                  7. Step-by-Step: How to Audit Your Statement Quickly
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
@@ -489,7 +489,7 @@ export default function HowToReadMerchantStatementPage() {
                   
                   <div className="p-4 bg-muted/30 rounded-lg border-l-4 border-primary">
                     <p className="text-foreground"><strong>Step 3: Scan for "Non-Qualified"</strong></p>
-                    <p className="text-muted-foreground mt-1">If you see the words "Non-Qual" or "NQUAL" anywhere, you are on Tiered Pricing and are overpaying.</p>
+                    <p className="text-muted-foreground mt-1">If you see the words "Non-Qual" or "NQUAL" anywhere, you are on Tiered Pricing. Check how much volume lands in those buckets.</p>
                   </div>
                   
                   <div className="p-4 bg-muted/30 rounded-lg border-l-4 border-primary">
@@ -509,7 +509,7 @@ export default function HowToReadMerchantStatementPage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  The payments industry relies on your apathy. They bank on the fact that you are too busy running your business to decode their acronyms and complex tables.
+                  Many processors benefit when you are too busy running your business to decode their acronyms and complex tables.
                 </p>
 
                 <p className="text-foreground leading-relaxed text-lg font-semibold">
@@ -526,18 +526,18 @@ export default function HowToReadMerchantStatementPage() {
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  At MyPayAdvisor, we specialize in decoding these statements. We don't just read them; we benchmark them against thousands of other businesses to tell you exactly how much you <em>should</em> be paying.
+                  At MyPayAdvisor, we compare providers on their published prices. Our cost tables show what each one costs at $10K, $50K, $250K and $1M a month, so you can see what you <em>could</em> be paying.
                 </p>
 
                 {/* CTA */}
                 <div className="my-10 p-8 bg-primary/5 rounded-lg border border-primary/20 text-center">
                   <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Stop the Guessing Game?</h3>
                   <p className="text-foreground mb-6">
-                    We will translate the "foreign language" of your bill into clear, actionable savings. Upload your statement for a free confidential audit.
+                    Take the quiz for a matched shortlist by email. If you leave a phone number, Barak may call and can read your current statement with you.
                   </p>
                   <Link href="/quiz">
                     <Button size="lg" className="px-8">
-                      Get Your Free Statement Audit
+                      Get My Matched Shortlist
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                   </Link>
@@ -552,7 +552,7 @@ export default function HowToReadMerchantStatementPage() {
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-3">Why does my statement show a "Dues and Assessments" fee?</h3>
                     <p className="text-foreground">
-                      This is a legitimate pass-through fee. It goes directly to Visa, Mastercard, and Discover for operating the network. However, ensure your processor isn't marking this up. It should be around 0.13%.
+                      This is a legitimate pass-through fee that goes to Visa, Mastercard, and Discover for operating the network. However, ensure your processor isn't marking it up. The networks' assessment rates are not on Visa's public interchange schedule, so ask your processor in writing for the network's published rate behind each line; anything above it is markup.
                     </p>
                   </div>
 
@@ -566,14 +566,14 @@ export default function HowToReadMerchantStatementPage() {
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-3">Can I get a refund for past PCI Non-Compliance fees?</h3>
                     <p className="text-foreground">
-                      Often, yes. If you were compliant but just forgot to file the paperwork, a good processor will retroactively refund 1-3 months of fees if you ask and submit the certificate immediately.
+                      Sometimes. If you were compliant but forgot to file the questionnaire, submit it right away and ask in writing for a refund of the fees already charged. Whether you get one, and for how many months, is up to your processor.
                     </p>
                   </div>
 
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-3">What is Level 3 Data on a statement?</h3>
                     <p className="text-foreground">
-                      If you see "Level 3" or "Enhanced Data," this is a good thing. It means your system is sending extra data (like invoice numbers) to the bank, which qualifies you for lower Interchange rates on B2B and Government cards. This is especially relevant for businesses processing with <a href="https://www.gsa.gov/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">GSA</a> or corporate clients.
+                      If you see "Level 3" or "Enhanced Data," this is a good thing. It means your system is sending extra data (tax amount, invoice number, line items) with B2B and government card sales, which can qualify them for lower interchange. On Visa's schedule effective Oct 24, 2026, corporate and purchasing cards cost 2.70% + 10¢ card-not-present, against 1.75% + 10¢ at the Commercial Product 3 rate with Level 3 data. Visa ended its separate Level 2 rates in April 2026. This is especially relevant for businesses selling to <a href="https://www.gsa.gov/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">government agencies</a> or corporate clients.
                     </p>
                   </div>
                 </div>
@@ -584,7 +584,7 @@ export default function HowToReadMerchantStatementPage() {
                   <div className="grid gap-4">
                     <Link href="/insights/merchant-statement-audit-guide" className="block p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
                       <p className="font-medium text-foreground">How to Reduce Credit Card Processing Fees: Merchant Statement Audit Guide</p>
-                      <p className="text-sm text-muted-foreground mt-1">Learn to audit your statement and reduce costs by 20-30%.</p>
+                      <p className="text-sm text-muted-foreground mt-1">Learn to audit your statement and find the fees you can cut.</p>
                     </Link>
                     <Link href="/insights/payment-processor-fees-guide" className="block p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
                       <p className="font-medium text-foreground">Credit Card Processing Fees Explained: Complete Guide (2025)</p>

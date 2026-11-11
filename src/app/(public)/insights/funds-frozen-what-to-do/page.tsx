@@ -26,7 +26,7 @@ const baseMetadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Processor Froze Your Funds? Here Is What To Do",
-    description: "The fixed, in-order operator response to a funds freeze, reviewed by a working payments operator.",
+    description: "The fixed, in-order operator response to a funds freeze, from getting the reason in writing to involving counsel.",
   },
 };
 

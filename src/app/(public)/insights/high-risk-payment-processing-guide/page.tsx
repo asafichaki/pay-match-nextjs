@@ -22,7 +22,7 @@ const baseMetadata: Metadata = {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide",
     publishedTime: "2025-12-09T00:00:00.000Z",
-    modifiedTime: "2026-09-09T00:00:00.000Z",
+    modifiedTime: "2026-11-11T00:00:00.000Z",
     title: "High-Risk Payment Processing Guide 2026: Approval, Reserves",
     description: "Compare high-risk merchant accounts, underwriting requirements, rolling reserves and chargeback controls.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
@@ -69,7 +69,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
       }
     },
     "datePublished": "2025-12-09",
-    "dateModified": "2026-09-09",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide"
@@ -97,7 +97,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
         "name": "What makes a business high-risk for payment processing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Businesses are classified as high-risk based on industry (CBD, gaming, adult, travel, subscriptions), chargeback history above 0.9%, 100% online sales, international transactions over 30%, or selling products delivered 30+ days after payment."
+          "text": "Each acquirer sets its own criteria. Common triggers are the industry (CBD, gaming, adult, travel, subscriptions), a history of high chargebacks or a previous account termination, all-online sales, a large share of international transactions, and products or services delivered long after payment."
         }
       },
       {
@@ -105,7 +105,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
         "name": "What is Visa VAMP and how does it affect my business?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "VAMP (Visa Acquirer Monitoring Program) monitors chargeback ratios. Early warning triggers at 0.65% ratio with 75 chargebacks. Standard program (0.9% + 100 chargebacks) can cost $5,000-15,000/month in fees. Exceeding thresholds risks account termination."
+          "text": "VAMP (Visa Acquirer Monitoring Program) replaced Visa's separate fraud and dispute monitoring programs in 2025. It counts fraud reports plus disputes against settled card-not-present transactions. Since April 1, 2026, a U.S. merchant is flagged as Excessive at a ratio of 1.5% or more with at least 1,500 fraud reports and disputes in a month, and an acquirer's whole portfolio is flagged at 0.5% (Above Standard) or 0.7% (Excessive). Flagged merchants must cut risk and can face fees passed on by the acquirer, and repeated breaches risk account termination."
         }
       },
       {
@@ -113,7 +113,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
         "name": "How can I reduce chargebacks for my high-risk business?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Implement chargeback alert services like Verifi CDRN (can prevent 20-40% of chargebacks), optimize billing descriptors, use 3D Secure 2.0 authentication, respond to disputes within 24 hours, and maintain detailed transaction records."
+          "text": "Use pre-dispute alert services such as Verifi CDRN and Ethoca so you can refund before a dispute is filed, make your billing descriptor recognizable, use 3D Secure authentication on risky orders, answer disputes early with complete evidence, and keep detailed transaction records."
         }
       },
       {
@@ -121,7 +121,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
         "name": "What is a rolling reserve and how can I reduce it?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A rolling reserve is a percentage of each batch (commonly 5-15%) that the acquiring bank withholds for a fixed window of 90 to 180 days to cover post-settlement chargebacks. It is negotiable. After three to twelve months of clean processing, a written release request that cites a low chargeback ratio, stable volume, and active fraud tooling typically reduces either the percentage or the hold window. Ask in writing to the risk department, not on a phone call, and ask after you have a track record, not before."
+          "text": "A rolling reserve is a percentage of each batch that the acquirer withholds for a hold period set in your merchant agreement, to cover chargebacks that arrive after settlement. The processor sets both numbers, not Visa or Mastercard; PayPal's own example is 5 percent held on a 60-day rolling basis, and higher-risk accounts can see larger, longer holds. It is negotiable. After several months of clean processing, a written request that cites a low fraud and dispute ratio, stable volume, and active fraud tooling can reduce the percentage or the hold window. Ask in writing to the risk department, not on a phone call, and ask after you have a track record, not before."
         }
       },
       {
@@ -137,7 +137,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
         "name": "Which processors approve CBD, firearms, or nutra businesses?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Domestic high-risk specialists such as PaymentCloud, Soar Payments, and Easy Pay Direct publicly state acceptance of regulated-but-legal verticals including CBD, firearms, nutraceuticals, and supplements. Durango Merchant Services adds offshore acquiring for verticals or volumes that domestic banks decline. Host Merchant Services serves a broad high-risk set with interchange-plus pricing. Approval still depends on your chargeback history, documentation, and product compliance (for example a Certificate of Analysis for CBD), so the right fit is the processor whose acquiring banks already underwrite your exact category."
+          "text": "Domestic high-risk specialists such as PaymentCloud, Soar Payments, and Easy Pay Direct publicly market acceptance of regulated-but-legal verticals including CBD, firearms, nutraceuticals, and supplements. Durango Merchant Services adds offshore acquiring for verticals or volumes that domestic banks decline. Host Merchant Services offers interchange-plus pricing and takes some high-risk industries. Approval still depends on your chargeback history, documentation, and product compliance (for example a Certificate of Analysis for CBD), so the right fit is the processor whose acquiring banks already underwrite your exact category."
         }
       }
     ]
@@ -218,7 +218,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
           "name": "Soar Payments",
           "applicationCategory": "FinanceApplication",
           "operatingSystem": "Web",
-          "url": "https://soarpayments.com",
+          "url": "https://www.soarpay.com",
           "offers": {
             "@type": "Offer",
             "category": "High-risk merchant account",
@@ -267,7 +267,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
     "@context": "https://schema.org",
     "@type": "Quotation",
     "@id": "https://www.mypayadvisor.com/insights/high-risk-payment-processing-guide#barak-quote",
-    "text": "Most merchants treat the rolling reserve as fixed, and it is not. The number on your first offer is the acquirer's opening position, not the bank's final answer. When I take a clean six-month processing history back to a risk desk in writing, low chargebacks, fulfillment on time, fraud tooling switched on, the reserve almost always comes down, either in percentage or in hold window. The mistake is asking on a phone call instead of in writing, and asking before you have a track record instead of after.",
+    "text": "Most merchants treat the rolling reserve as fixed, and it is not. The number on your first offer is the acquirer's opening position, not the bank's final answer. When a merchant takes a clean six-month processing history back to a risk desk in writing, low chargebacks, fulfillment on time, fraud tooling switched on, the reserve can often come down, either in percentage or in hold window. The mistake is asking on a phone call instead of in writing, and asking before you have a track record instead of after.",
     "creator": {
       "@type": "Person",
       "@id": "https://www.mypayadvisor.com/about/barak#person",
@@ -296,7 +296,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                   <span className="font-medium text-primary">High-Risk Processing</span>
                   <span>•</span>
-                  <span>Updated September 2026</span>
+                  <span>Updated November 2026</span>
                 </div>
                 
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
@@ -335,7 +335,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
               {/* AEO lead-answer block: direct 40-60 word answer for AI Overviews / LLM extraction. data-speakable + .aeo-answer targeted by SpeakableSpecification. */}
               <section className="aeo-answer mb-12 p-6 bg-primary/5 rounded-lg border-l-4 border-primary" data-speakable>
                 <p className="text-lg text-foreground leading-relaxed">
-                  A high-risk merchant account is a payment-processing account priced for businesses that card-acquiring banks judge likelier to generate chargebacks, fraud, or regulatory exposure, such as CBD, firearms, nutraceuticals, subscriptions, travel, or future-delivery sales. You typically pay higher effective rates and a rolling reserve. The trade-off you actually negotiate is reserve size and approval odds, not the headline rate.
+                  A high-risk merchant account is a payment-processing account priced for businesses that card-acquiring banks judge likelier to generate chargebacks, fraud, or regulatory exposure, such as CBD, firearms, nutraceuticals, subscriptions, travel, or future-delivery sales. You often pay higher effective rates and a rolling reserve. The trade-off you actually negotiate is reserve size and approval odds, not the headline rate.
                 </p>
               </section>
 
@@ -377,7 +377,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                         <td className="py-3"><Link href="/comparisons/paymentcloud-vs-easy-pay-direct" className="text-primary hover:underline">vs PaymentCloud</Link></td>
                       </tr>
                       <tr>
-                        <td className="py-3 font-medium"><a href="https://soarpayments.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
+                        <td className="py-3 font-medium"><a href="https://www.soarpay.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
                         <td className="py-3">High-risk pricing; rate quoted per merchant on underwriting</td>
                         <td className="py-3"><Link href="/comparisons/stripe-high-risk-alternatives" className="text-primary hover:underline">Stripe alternatives</Link></td>
                       </tr>
@@ -413,11 +413,11 @@ export default function HighRiskPaymentProcessingGuidePage() {
               {/* Article Content */}
               <div className="prose prose-lg max-w-none">
                 <p className="text-lg text-foreground leading-relaxed">
-                  High-risk classification is a pricing and underwriting decision, not a judgment that your business is illegitimate. Acquiring banks flag certain industries (CBD, gaming, subscriptions, travel, firearms, nutraceuticals) and certain patterns (high chargebacks, future delivery, near-100% card-not-present) as elevated loss exposure, then price for it with higher rates, rolling reserves, and stricter terms. Visa&apos;s VAMP (Visa Acquirer Monitoring Program) has made acquiring banks more selective, which is why the lever that matters is approval odds and reserve size, not the headline rate.
+                  High-risk classification is a pricing and underwriting decision, not a judgment that your business is illegitimate. Acquiring banks flag certain industries (CBD, gaming, subscriptions, travel, firearms, nutraceuticals) and certain patterns (high chargebacks, future delivery, near-100% card-not-present) as higher loss exposure, then price for it with higher rates, rolling reserves, and stricter terms. Visa&apos;s VAMP (Visa Acquirer Monitoring Program) judges each acquirer on its whole portfolio&apos;s fraud and dispute ratio, which gives acquiring banks a reason to be selective. That is why the lever that matters is approval odds and reserve size, not the headline rate.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  This guide covers what actually drives classification, how reserves and VAMP thresholds work, which processors approve difficult verticals, and the fixed operator playbook for getting approved, lowering a reserve, and recovering frozen funds. Reviewed by Barak Bachar, a working payments operator who negotiates reserves and places merchants in complex high-risk verticals.
+                  This guide covers what actually drives classification, how reserves and VAMP thresholds work, which processors approve difficult verticals, and the fixed operator playbook for getting approved, lowering a reserve, and recovering frozen funds.
                 </p>
 
                 {/* Section 1 */}
@@ -434,11 +434,11 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <div className="my-8 p-6 bg-muted/30 rounded-lg border-l-4 border-primary">
                   <p className="font-semibold text-foreground mb-4">High-Risk Account Terms vs. Standard Accounts</p>
                   <ul className="text-foreground space-y-2 ml-4">
-                    <li><strong>Transaction fees:</strong> 50-200% higher (1.5-4.5% vs 2.9-3.5%)</li>
-                    <li><strong>Rolling reserves:</strong> 5-20% of monthly processing volume</li>
-                    <li><strong>Payout periods:</strong> 7-30 days vs 2-7 days</li>
-                    <li><strong>Chargeback ratio limit:</strong> Must maintain under 1% vs 1.5%</li>
-                    <li><strong>Security requirements:</strong> PCI DSS Level 1 compliance, 3D Secure, tokenization</li>
+                    <li><strong>Transaction fees:</strong> Quoted per merchant at underwriting and usually above published standard rates such as Stripe&apos;s 2.9% + 30&cent; online (checked Oct 2026)</li>
+                    <li><strong>Rolling reserves:</strong> Common; the acquirer sets the percentage and the hold period</li>
+                    <li><strong>Payout periods:</strong> Can be slower or partly held; Stripe&apos;s standard payouts take 2 business days, so get any high-risk funding schedule in writing</li>
+                    <li><strong>Chargeback ratio limit:</strong> Set by your acquirer, often well under Visa&apos;s VAMP merchant line of 1.5%</li>
+                    <li><strong>Security requirements:</strong> PCI DSS compliance (v4.0.1) at the level your volume requires, plus 3D Secure and tokenization</li>
                   </ul>
                 </div>
 
@@ -446,23 +446,20 @@ export default function HighRiskPaymentProcessingGuidePage() {
                   For a detailed breakdown of how processing fees work and strategies to reduce them, see our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">Complete Guide to Credit Card Processing Fees</Link>.
                 </p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The 2026 Payment Processing Landscape</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">What Changed for High-Risk Merchants in 2026</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  The payment processing ecosystem has undergone significant transformation following <a href="https://usa.visa.com/support/merchant/library/visa-acquirer-monitoring-program.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa&apos;s implementation of VAMP</a> in 2024. This change has made acquiring banks significantly more selective, with underwriters now requiring:
+                  <a href="https://corporate.visa.com/content/dam/VCOM/corporate/visa-perspectives/security-and-trust/documents/visa-acquirer-monitoring-program-fact-sheet-2025.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa&apos;s VAMP</a> replaced its separate fraud and dispute monitoring programs in June 2025, and on April 1, 2026 the U.S. merchant threshold dropped to 1.5%. Because acquirers are also judged on their whole portfolio, underwriters commonly ask for:
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li>3-6 months of clean processing history before reducing reserves</li>
+                  <li>A track record of clean processing before they reduce a reserve</li>
                   <li>Detailed business documentation including supplier contracts and fulfillment workflows</li>
                   <li>Comprehensive fraud prevention infrastructure before approval</li>
                   <li>Evidence of chargeback management systems and dispute resolution protocols</li>
                 </ul>
 
-                <p className="text-foreground leading-relaxed mt-4">
-                  According to recent industry data, <strong>90% of online merchants</strong> are classified as high-risk by at least one major payment processor.
-                </p>
-
+                
                 {/* Section 2 */}
                 <h2 id="high-risk-classification" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                   2. What Makes Your Business High-Risk?
@@ -486,7 +483,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                     <tbody className="text-foreground">
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">CBD/Hemp Products</td>
-                        <td className="py-3 pr-4">5993</td>
+                        <td className="py-3 pr-4">Varies by product</td>
                         <td className="py-3">Regulatory complexity across jurisdictions</td>
                       </tr>
                       <tr className="border-b border-border">
@@ -497,7 +494,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Travel/Tourism</td>
                         <td className="py-3 pr-4">4722</td>
-                        <td className="py-3">Long chargeback liability (6-18 months)</td>
+                        <td className="py-3">Long dispute window on future travel (some Visa non-delivery disputes up to 540 days)</td>
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Subscription Services</td>
@@ -506,7 +503,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Nutraceuticals/Supplements</td>
-                        <td className="py-3 pr-4">5499</td>
+                        <td className="py-3 pr-4">Varies by product</td>
                         <td className="py-3">FTC scrutiny, high return rates</td>
                       </tr>
                       <tr className="border-b border-border">
@@ -525,11 +522,11 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong>Chargeback History:</strong> Current ratio above 0.9% or previous termination</li>
-                  <li><strong>Business Longevity:</strong> Less than 12 months in operation</li>
-                  <li><strong>Card-Not-Present Transactions:</strong> 100% online sales</li>
-                  <li><strong>International Sales:</strong> Cross-border transactions exceeding 30%</li>
-                  <li><strong>Future Delivery:</strong> Products/services delivered 30+ days after payment</li>
+                  <li><strong>Chargeback History:</strong> A high fraud and dispute ratio or a previous termination</li>
+                  <li><strong>Business Longevity:</strong> A short operating and processing history</li>
+                  <li><strong>Card-Not-Present Transactions:</strong> All or nearly all sales online</li>
+                  <li><strong>International Sales:</strong> A large share of cross-border transactions</li>
+                  <li><strong>Future Delivery:</strong> Products or services delivered long after payment</li>
                 </ul>
 
                 {/* Section 3 */}
@@ -538,47 +535,47 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  Most merchants dramatically underestimate chargeback costs. A single <strong>$100 chargeback actually costs approximately $240</strong> when accounting for all factors:
+                  Most merchants underestimate chargeback costs. A lost $100 chargeback costs you far more than $100 once you add up all the factors:
                 </p>
 
                 <div className="my-8 p-6 bg-destructive/10 rounded-lg border-l-4 border-destructive">
                   <p className="font-semibold text-foreground mb-4">Direct Costs Per Chargeback</p>
                   <ul className="text-foreground space-y-1 ml-4">
-                    <li><strong>Chargeback Fee:</strong> $20-100 (varies by processor)</li>
+                    <li><strong>Chargeback Fee:</strong> Varies by processor; PayPal lists $20 per chargeback and Helcim $15 for a lost chargeback, $0 if you win (checked Oct 2026)</li>
                     <li><strong>Lost Product Value:</strong> $100 (original sale)</li>
-                    <li><strong>Processing Fees Not Refunded:</strong> $3-5</li>
-                    <li><strong>Shipping/Fulfillment:</strong> $10-20</li>
-                    <li><strong>Administrative Time:</strong> $25-50</li>
+                    <li><strong>Processing Fees Not Refunded:</strong> Depends on your processor&apos;s refund policy</li>
+                    <li><strong>Shipping/Fulfillment:</strong> Your own cost to ship the order</li>
+                    <li><strong>Administrative Time:</strong> Staff time to gather evidence and respond</li>
                   </ul>
                 </div>
 
                 <div className="my-8 p-6 bg-warning/10 rounded-lg border-l-4 border-warning">
                   <p className="font-semibold text-foreground mb-4">Hidden/Indirect Costs</p>
                   <ul className="text-foreground space-y-1 ml-4">
-                    <li><strong>Increased Processing Rates:</strong> 0.25-0.75% rate increase</li>
-                    <li><strong>Rolling Reserve Increases:</strong> Additional 5-10% held</li>
-                    <li><strong>Monitoring Program Fees:</strong> $5,000-25,000/month</li>
-                    <li><strong>Acquirer Fines:</strong> Up to $100,000 for non-compliance</li>
+                    <li><strong>Increased Processing Rates:</strong> Acquirers can reprice a risky account</li>
+                    <li><strong>Rolling Reserve Increases:</strong> Many agreements let the acquirer raise the reserve at its discretion</li>
+                    <li><strong>Monitoring Program Fees:</strong> Network program fees an acquirer can pass on if you are flagged</li>
+                    <li><strong>Placement on MATCH:</strong> A terminated account can be listed, which makes new accounts harder to get</li>
                     <li><strong>Account Termination Risk:</strong> Loss of processing entirely</li>
                   </ul>
                 </div>
 
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Real-World Example: Subscription Business</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Hypothetical Example: Subscription Business</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  Consider a subscription box company processing $500,000/month with a 2% chargeback ratio (100 chargebacks at $100 average):
+                  Consider a hypothetical subscription box company processing $500,000/month with a 2% chargeback ratio by dollar volume (100 chargebacks at $100 average), a $20 chargeback fee and $15 of fulfillment cost per order:
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li>Direct chargeback costs: 100 × $240 = <strong>$24,000</strong></li>
-                  <li>Excessive Chargeback Program fee: <strong>$15,000/month</strong></li>
-                  <li>Increased processing rate: 0.5% × $500K = <strong>$2,500</strong></li>
-                  <li>Additional reserve held: 10% × $500K = <strong>$50,000 cash flow impact</strong></li>
-                  <li><strong>Total Monthly Impact: $41,500 + $50K cash restriction</strong></li>
+                  <li>Direct chargeback costs: 100 × ($100 + $20 + $15) = <strong>$13,500</strong></li>
+                  <li>Monitoring program: at 100 disputes a month this merchant is below VAMP&apos;s 1,500-case merchant floor, but its acquirer can still act on its own limits</li>
+                  <li>Assumed rate increase from the acquirer: 0.5% × $500K = <strong>$2,500</strong></li>
+                  <li>Assumed extra reserve: 10% × $500K = <strong>$50,000 a month withheld</strong></li>
+                  <li><strong>Total Monthly Impact: $16,000 + $50K a month of cash withheld</strong></li>
                 </ul>
 
                 <p className="text-foreground leading-relaxed mt-4">
-                  This is why reducing chargebacks from 2% to 0.8% can literally transform business profitability.
+                  This is why reducing chargebacks from 2% to 0.8% can change business profitability.
                 </p>
 
                 {/* Section 4 */}
@@ -589,7 +586,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Understanding Visa VAMP</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  Implemented in 2024, <a href="https://usa.visa.com/support/merchant/library/visa-acquirer-monitoring-program.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">VAMP consolidates previous Visa monitoring programs</a> into a unified framework with stricter enforcement:
+                  Since June 1, 2025, <a href="https://corporate.visa.com/content/dam/VCOM/corporate/visa-perspectives/security-and-trust/documents/visa-acquirer-monitoring-program-fact-sheet-2025.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">VAMP consolidates Visa&apos;s previous fraud and dispute monitoring programs</a> into one count-based ratio: fraud reports plus disputes, divided by settled card-not-present transactions. The U.S. thresholds:
                 </p>
 
                 <div className="overflow-x-auto my-6">
@@ -598,24 +595,24 @@ export default function HighRiskPaymentProcessingGuidePage() {
                       <tr className="border-b-2 border-foreground">
                         <th className="text-left py-3 pr-4 font-semibold text-foreground">Level</th>
                         <th className="text-left py-3 pr-4 font-semibold text-foreground">Threshold</th>
-                        <th className="text-left py-3 font-semibold text-foreground">Monthly Fee</th>
+                        <th className="text-left py-3 font-semibold text-foreground">What it means</th>
                       </tr>
                     </thead>
                     <tbody className="text-foreground">
                       <tr className="border-b border-border">
-                        <td className="py-3 pr-4">Early Warning</td>
-                        <td className="py-3 pr-4">0.65% ratio AND 75 chargebacks</td>
-                        <td className="py-3">Warning only</td>
+                        <td className="py-3 pr-4">Acquirer portfolio: Above Standard</td>
+                        <td className="py-3 pr-4">0.5% ratio, with a minimum of 1,500 fraud reports and disputes a month</td>
+                        <td className="py-3">The acquirer must cut risk across its merchants</td>
                       </tr>
                       <tr className="border-b border-border">
-                        <td className="py-3 pr-4">Standard Program</td>
-                        <td className="py-3 pr-4">0.9% ratio AND 100 chargebacks</td>
-                        <td className="py-3">$5,000-15,000</td>
+                        <td className="py-3 pr-4">Acquirer portfolio: Excessive</td>
+                        <td className="py-3 pr-4">0.7% ratio, same minimum count</td>
+                        <td className="py-3">Stronger pressure on the acquirer, which often tightens merchant terms</td>
                       </tr>
                       <tr className="border-b border-border">
-                        <td className="py-3 pr-4">Excessive Program</td>
-                        <td className="py-3 pr-4">1.8% ratio AND 1,000 chargebacks</td>
-                        <td className="py-3">$25,000-50,000</td>
+                        <td className="py-3 pr-4">Merchant: Excessive</td>
+                        <td className="py-3 pr-4">1.5% ratio AND at least 1,500 fraud reports and disputes a month (since April 1, 2026; 2.2% before)</td>
+                        <td className="py-3">Merchant must cut risk; fees can be passed on by the acquirer, which can also raise reserves or close the account</td>
                       </tr>
                     </tbody>
                   </table>
@@ -625,15 +622,15 @@ export default function HighRiskPaymentProcessingGuidePage() {
 
                 <ol className="text-foreground space-y-3 ml-6 list-decimal">
                   <li><strong>Real-Time Monitoring:</strong> Implement daily chargeback tracking dashboards</li>
-                  <li><strong>Chargeback Alerts:</strong> Use <a href="https://www.verifi.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Verifi</a>/<a href="https://www.ethoca.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Ethoca</a> to intercept disputes (prevents 20-40%)</li>
+                  <li><strong>Chargeback Alerts:</strong> Use <a href="https://www.verifi.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Verifi</a>/<a href="https://www.ethoca.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Ethoca</a> to intercept disputes; VAMP excludes disputes resolved through pre-dispute solutions</li>
                   <li><strong>Compelling Evidence:</strong> Maintain detailed transaction records</li>
-                  <li><strong>Rapid Response:</strong> Contest chargebacks within 24-48 hours (35% better win rate)</li>
+                  <li><strong>Rapid Response:</strong> Contest chargebacks early, well inside your processor&apos;s deadline, with complete evidence</li>
                 </ol>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Mastercard Excessive Chargeback Program (ECP)</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-chargeback-programs.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard operates a parallel program</a> with slightly different thresholds. Key difference: Mastercard excludes fraud chargebacks if you have EMV/3D Secure implementation.
+                  Mastercard operates its own Excessive Chargeback Program, with thresholds set in its own rules. Mastercard&apos;s pages were not readable when we checked, so ask your acquirer for the current Mastercard thresholds and fees in writing.
                 </p>
 
                 {/* Section 5 */}
@@ -644,18 +641,18 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Strategy 1: Proactive Dispute Resolution</h3>
 
                 <div className="my-8 p-6 bg-primary/5 rounded-lg border-l-4 border-primary">
-                  <p className="font-semibold text-foreground mb-4">Chargeback Alert Services (ROI: 300-500%)</p>
+                  <p className="font-semibold text-foreground mb-4">Chargeback Alert Services</p>
                   <ul className="text-foreground space-y-2 ml-4">
-                    <li><strong><a href="https://www.verifi.com/solutions/prevent/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Verifi CDRN</a>:</strong> Notification when customer contacts bank, allowing immediate refund. Cost: $20-40 per alert vs $75-100 chargeback fee.</li>
-                    <li><strong><a href="https://www.ethoca.com/consumer-clarity" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Ethoca Consumer Clarity</a>:</strong> Enhanced transaction descriptors in banking apps, reducing friendly fraud by 25-35%.</li>
+                    <li><strong><a href="https://www.verifi.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Verifi CDRN</a>:</strong> Notification when a customer contacts the bank, allowing an immediate refund. Alerts are priced per alert, so compare the price with your chargeback fee.</li>
+                    <li><strong><a href="https://www.ethoca.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Ethoca Consumer Clarity</a>:</strong> Order details shown in the cardholder&apos;s banking app, which helps customers recognize a purchase before they dispute it.</li>
                   </ul>
-                  <p className="text-foreground mt-4"><strong>Impact:</strong> Most merchants see 20-40% chargeback reduction in first 60 days.</p>
+                  <p className="text-foreground mt-4"><strong>Impact:</strong> Measure your dispute ratio before and after; results depend on your issuer mix and how fast you refund.</p>
                 </div>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Strategy 2: Billing Descriptor Optimization</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>Problem:</strong> 30% of chargebacks stem from customers not recognizing transactions.
+                  <strong>Problem:</strong> Some chargebacks come from customers who do not recognize the charge on their statement.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -667,39 +664,15 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>Impact:</strong> Can reduce &quot;item not recognized&quot; chargebacks by 40-60%.
+                  <strong>Impact:</strong> Fewer &quot;transaction not recognized&quot; disputes; track the change in your own data.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Strategy 3: Response Time Optimization</h3>
 
-                <div className="overflow-x-auto my-6">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b-2 border-foreground">
-                        <th className="text-left py-3 pr-4 font-semibold text-foreground">Response Time</th>
-                        <th className="text-left py-3 font-semibold text-foreground">Win Rate</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-foreground">
-                      <tr className="border-b border-border">
-                        <td className="py-3 pr-4">Under 24 hours</td>
-                        <td className="py-3 text-primary font-semibold">65-75%</td>
-                      </tr>
-                      <tr className="border-b border-border">
-                        <td className="py-3 pr-4">24-72 hours</td>
-                        <td className="py-3">45-55%</td>
-                      </tr>
-                      <tr className="border-b border-border">
-                        <td className="py-3 pr-4">4-7 days</td>
-                        <td className="py-3">25-35%</td>
-                      </tr>
-                      <tr className="border-b border-border">
-                        <td className="py-3 pr-4">7+ days</td>
-                        <td className="py-3 text-destructive">10-15%</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <p className="text-foreground leading-relaxed">
+                  Your processor gives you a deadline to respond to each dispute, usually shorter than the card network&apos;s. Answer early with complete evidence (order details, delivery proof, customer communication, and your refund policy). We found no reliable public data on win rates by response time, so track your own win rate by reason code.
+                </p>
+
 
                 {/* Section 6 */}
                 <h2 id="fraud-prevention" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -716,32 +689,32 @@ export default function HighRiskPaymentProcessingGuidePage() {
                   <li><strong>Behavioral Biometrics:</strong> Analyzing typing patterns, mouse movements</li>
                   <li><strong>Device Fingerprinting:</strong> Creating unique identifiers for fraud detection</li>
                   <li><strong>Velocity Checks:</strong> Flagging unusual transaction frequency</li>
-                  <li><strong>Predictive Risk Scoring:</strong> 0-100 scores based on 200+ data points</li>
+                  <li><strong>Predictive Risk Scoring:</strong> A risk score for each order built from many data points</li>
                 </ul>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Leading AI Fraud Prevention Platforms</h3>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong><a href="https://sift.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Sift</a>:</strong> Machine learning for payment fraud. $500-5,000/month.</li>
-                  <li><strong><a href="https://www.kount.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Kount (Equifax)</a>:</strong> Real-time prevention with 99.9% approval rates.</li>
+                  <li><strong><a href="https://sift.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Sift</a>:</strong> Machine learning for payment fraud. Pricing by quote.</li>
+                  <li><strong><a href="https://www.kount.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Kount (Equifax)</a>:</strong> Real-time fraud prevention.</li>
                   <li><strong><a href="https://www.signifyd.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Signifyd</a>:</strong> Chargeback guarantee (assumes financial liability).</li>
-                  <li><strong><a href="https://www.riskified.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Riskified</a>:</strong> Popular with e-commerce sites doing $5M+ annually.</li>
+                  <li><strong><a href="https://www.riskified.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Riskified</a>:</strong> Fraud prevention for e-commerce merchants.</li>
                 </ul>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">3D Secure 2.0 Implementation</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  The upgraded <a href="https://www.emvco.com/emv-technologies/3d-secure/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">3D Secure protocol</a> (Visa Secure, Mastercard Identity Check) provides enhanced protection:
+                  The current <a href="https://usa.visa.com/products/visa-secure.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EMV 3-D Secure protocol</a> (Visa Secure, Mastercard Identity Check) provides added protection. Visa ended support for the old 3DS 1.0.2 on October 15, 2022.
                 </p>
 
                 <div className="my-8 p-6 bg-success/10 rounded-lg border-l-4 border-success">
                   <p className="font-semibold text-foreground mb-4">3D Secure 2.0 Benefits</p>
                   <ul className="text-foreground space-y-2 ml-4">
-                    <li><strong>Liability Shift:</strong> Card issuer assumes chargeback liability</li>
-                    <li><strong>Frictionless Auth:</strong> 95% approved without customer interaction</li>
-                    <li><strong>Rich Data Exchange:</strong> 100+ data points for better assessment</li>
-                    <li><strong>Reduced Fraud:</strong> 40-60% reduction in fraudulent transactions</li>
-                    <li><strong>Improved Conversion:</strong> 70-85% checkout completion rate</li>
+                    <li><strong>Liability Shift:</strong> Under Visa&apos;s rules, a card-absent fraud dispute is invalid when the sale was authenticated through Visa Secure (ECI 5 with the CAVV) or was an attempted authentication with the CAVV (ECI 6)</li>
+                    <li><strong>Frictionless Auth:</strong> Many authentications complete without a challenge to the customer</li>
+                    <li><strong>Rich Data Exchange:</strong> Device and transaction data the issuer can use to decide</li>
+                    <li><strong>Lower Interchange:</strong> On Visa consumer credit card-not-present sales, a 0.10 percentage point interchange incentive (Visa schedule effective Oct 24, 2026)</li>
+                    <li><strong>Conversion Trade-off:</strong> A challenge can cost sales, so challenge only risky orders</li>
                   </ul>
                 </div>
 
@@ -769,7 +742,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                     <strong>Transparent Fee Structure:</strong>
                     <ul className="ml-6 mt-2 list-disc">
                       <li>Get detailed breakdown of all fees in writing</li>
-                      <li>Watch for hidden fees: setup ($500-2,000), termination ($1,000-5,000)</li>
+                      <li>Watch for hidden fees: setup fees, early termination fees, and liquidated damages clauses</li>
                       <li>Request rate renegotiation terms after 6 months</li>
                     </ul>
                   </li>
@@ -802,12 +775,12 @@ export default function HighRiskPaymentProcessingGuidePage() {
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4"><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
                         <td className="py-3 pr-4">CBD, firearms, adult, nutra, e-cig, e-commerce</td>
-                        <td className="py-3 pr-4">U.S. acquirers, month-to-month positioning</td>
+                        <td className="py-3 pr-4">U.S. acquirers, says no long-term contracts</td>
                         <td className="py-3">Broad domestic high-risk acceptance, dedicated account rep</td>
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
-                        <td className="py-3 pr-4">Offshore, adult, travel, high-volume, tech-support</td>
+                        <td className="py-3 pr-4">Offshore, travel, nutraceuticals, credit repair, international</td>
                         <td className="py-3 pr-4">Domestic and offshore acquiring</td>
                         <td className="py-3">Offshore options for verticals domestic banks decline</td>
                       </tr>
@@ -818,16 +791,16 @@ export default function HighRiskPaymentProcessingGuidePage() {
                         <td className="py-3">Routes volume across several acquirers for continuity</td>
                       </tr>
                       <tr className="border-b border-border">
-                        <td className="py-3 pr-4"><a href="https://soarpayments.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
-                        <td className="py-3 pr-4">Firearms, tactical, subscription, nutra</td>
+                        <td className="py-3 pr-4"><a href="https://www.soarpay.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
+                        <td className="py-3 pr-4">Firearms, subscription, nutra, CBD</td>
                         <td className="py-3 pr-4">U.S. acquirers</td>
-                        <td className="py-3">Fast onboarding focus for declined domestic merchants</td>
+                        <td className="py-3">Says underwriting typically takes 24 to 72 hours</td>
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4"><a href="https://www.hostmerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Host Merchant Services</a></td>
-                        <td className="py-3 pr-4">Broad high-risk e-commerce and services</td>
+                        <td className="py-3 pr-4">Some high-risk industries, through a partner bank network per third-party reviews</td>
                         <td className="py-3 pr-4">Interchange-plus pricing model</td>
-                        <td className="py-3">Transparent interchange-plus positioning</td>
+                        <td className="py-3">Interchange-plus positioning; confirm high-risk terms directly</td>
                       </tr>
                     </tbody>
                   </table>
@@ -887,13 +860,13 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong>Business Continuity:</strong> If one MID frozen, route to backup with zero downtime</li>
-                  <li><strong>Volume Management:</strong> Distribute across MIDs to stay under limits</li>
-                  <li><strong>Chargeback Protection:</strong> Isolate high-chargeback products to protect primary MID</li>
+                  <li><strong>Business Continuity:</strong> If one MID is frozen, route to a backup with little downtime</li>
+                  <li><strong>Volume Management:</strong> Keep each account within the processing limit it was approved for</li>
+                  <li><strong>Product Separation:</strong> Run product lines with different risk on separate accounts, each underwritten for what it sells (splitting volume to hide a ratio from network monitoring breaks card rules)</li>
                   <li><strong>Geographic Optimization:</strong> Different MIDs for different regions</li>
                 </ul>
 
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Recommended Account Structure</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Example Account Structure</h3>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
                   <li><strong>Primary MID:</strong> 60-70% of volume, best rates, cleanest processing</li>
@@ -905,9 +878,9 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Gateway Options Supporting Multi-MID</h3>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong><a href="https://www.authorize.net" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Authorize.Net</a>:</strong> Industry standard, unlimited MIDs, $25/month</li>
-                  <li><strong><a href="https://www.nmi.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">NMI</a>:</strong> White-label gateway, advanced routing, $15-30/month</li>
-                  <li><strong><a href="https://www.spreedly.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Spreedly</a>:</strong> Payment orchestration, 100+ processors</li>
+                  <li><strong><a href="https://www.authorize.net/sign-up/pricing.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Authorize.Net</a>:</strong> Widely supported gateway; gateway-only plan $25/month plus 10&cent; per transaction and a 10&cent; daily batch fee (checked Nov 2026)</li>
+                  <li><strong><a href="https://www.nmi.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">NMI</a>:</strong> White-label gateway sold through resellers, with routing tools; pricing set by the reseller</li>
+                  <li><strong><a href="https://www.spreedly.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Spreedly</a>:</strong> Payment orchestration; connects one integration to many gateways and processors</li>
                 </ul>
 
                 {/* Section 9 */}
@@ -922,17 +895,17 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong>Percentage:</strong> 5-20% of daily/weekly volume withheld</li>
-                  <li><strong>Hold Period:</strong> Usually 180 days (6 months)</li>
+                  <li><strong>Percentage:</strong> Set by the acquirer in your agreement; PayPal&apos;s own example is 5% (higher-risk accounts often see more)</li>
+                  <li><strong>Hold Period:</strong> Also set in your agreement; PayPal&apos;s example is 60 days, and higher-risk accounts can see 180 days (6 months)</li>
                   <li><strong>Rolling Release:</strong> After hold period, oldest reserves released</li>
                 </ul>
 
                 <div className="my-8 p-6 bg-muted/30 rounded-lg border-l-4 border-primary">
-                  <p className="font-semibold text-foreground mb-4">Example: $500K/Month with 10% Reserve</p>
+                  <p className="font-semibold text-foreground mb-4">Hypothetical Example: $500K/Month with 10% Reserve Held 180 Days</p>
                   <ul className="text-foreground space-y-1 ml-4">
                     <li><strong>Months 1-6:</strong> $50K/month withheld, builds to $300K total</li>
                     <li><strong>Month 7+:</strong> $50K from Month 1 released, $50K from Month 7 collected</li>
-                    <li><strong>Impact:</strong> $300K permanently locked for business lifetime</li>
+                    <li><strong>Impact:</strong> $300K stays held for as long as you keep processing on that structure</li>
                   </ul>
                 </div>
 
@@ -941,7 +914,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 {/* Inline Barak Quotation block: opinion/experience, no fabricated stats. Mirrors quotationSchema JSON-LD above. */}
                 <figure id="barak-quote" className="my-8 border-l-4 border-primary bg-muted/40 px-6 py-5 rounded-r-md not-prose">
                   <blockquote cite="https://www.mypayadvisor.com/about/barak" className="text-foreground italic leading-relaxed">
-                    &ldquo;Most merchants treat the rolling reserve as fixed, and it is not. The number on your first offer is the acquirer&rsquo;s opening position, not the bank&rsquo;s final answer. When I take a clean six-month processing history back to a risk desk in writing, low chargebacks, fulfillment on time, fraud tooling switched on, the reserve almost always comes down, either in percentage or in hold window. The mistake is asking on a phone call instead of in writing, and asking before you have a track record instead of after.&rdquo;
+                    &ldquo;Most merchants treat the rolling reserve as fixed, and it is not. The number on your first offer is the acquirer&rsquo;s opening position, not the bank&rsquo;s final answer. When a merchant takes a clean six-month processing history back to a risk desk in writing, low chargebacks, fulfillment on time, fraud tooling switched on, the reserve can often come down, either in percentage or in hold window. The mistake is asking on a phone call instead of in writing, and asking before you have a track record instead of after.&rdquo;
                   </blockquote>
                   <figcaption className="mt-3 text-sm text-muted-foreground not-italic">
                     <span className="font-medium text-foreground">Barak Bachar</span>, Global Payments Manager, myPayAdvisor
@@ -949,7 +922,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </figure>
 
                 <p className="text-foreground leading-relaxed">
-                  Most processors will reduce reserves after demonstrating stability:
+                  Processors can reduce reserves after you demonstrate stability, if you ask in writing:
                 </p>
 
                 <p className="text-foreground leading-relaxed mt-4">
@@ -957,9 +930,9 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong>3-Month Review:</strong> Chargeback ratio under 0.5%? Request 25% reduction</li>
-                  <li><strong>6-Month Review:</strong> Continued clean processing? Request additional reduction</li>
-                  <li><strong>12-Month Review:</strong> May eliminate reserve entirely or reduce to 2-3%</li>
+                  <li><strong>3-Month Review:</strong> Low, stable fraud and dispute ratio? Ask in writing for a step-down</li>
+                  <li><strong>6-Month Review:</strong> Continued clean processing? Request an additional reduction or a switch to a capped reserve</li>
+                  <li><strong>12-Month Review:</strong> Ask for removal, or a written step-down schedule tied to your ratio</li>
                 </ul>
 
                 {/* Section 10 */}
@@ -970,26 +943,26 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">AI-Powered Payment Optimization</h3>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong>Dynamic Routing:</strong> AI routes to highest-probability approver (8-15% improvement)</li>
-                  <li><strong>Predictive Prevention:</strong> ML identifies 70% likely chargebacks before filing</li>
-                  <li><strong>Revenue Recovery:</strong> AI optimizes failed payment retry (30% → 60% recovery)</li>
+                  <li><strong>Dynamic Routing:</strong> Models route each transaction to the acquirer most likely to approve it</li>
+                  <li><strong>Predictive Prevention:</strong> Models flag orders likely to turn into chargebacks before they ship</li>
+                  <li><strong>Revenue Recovery:</strong> Smarter retry timing for failed payments, inside Visa&apos;s limit of 20 attempts in 30 days and none after a Category 1 decline</li>
                 </ul>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Cryptocurrency Payment Options</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  Blockchain offers compelling advantages for high-risk merchants:
+                  Crypto payments offer some advantages for high-risk merchants, along with price volatility and lower customer adoption:
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
                   <li><strong>Immutable Records:</strong> Tamper-proof transaction records for chargeback defense</li>
-                  <li><strong>Lower Costs:</strong> 1-2% vs 3-5% traditional processing</li>
+                  <li><strong>Costs:</strong> Fees vary by crypto processor; compare the published rate with your card cost</li>
                   <li><strong>No Chargebacks:</strong> Crypto transactions are irreversible</li>
-                  <li><strong>Banking Independence:</strong> Bypass institutions that decline high-risk</li>
+                  <li><strong>Fewer Bank Gatekeepers:</strong> Less reliance on card acquirers, though crypto processors run their own business checks and restricted lists</li>
                 </ul>
 
                 <p className="text-foreground leading-relaxed mt-4">
-                  Leading crypto processors: <a href="https://bitpay.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">BitPay</a>, <a href="https://coingate.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CoinGate</a>, <a href="https://nowpayments.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">NOWPayments</a>, <a href="https://commerce.coinbase.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Coinbase Commerce</a>.
+                  Crypto payment processors include <a href="https://bitpay.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">BitPay</a>, <a href="https://coingate.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CoinGate</a>, and <a href="https://nowpayments.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">NOWPayments</a>.
                 </p>
 
                 {/* FAQ Section */}
@@ -1000,22 +973,22 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 <div className="space-y-6">
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="text-lg font-semibold text-foreground mb-3">What makes a business high-risk for payment processing?</h3>
-                    <p className="text-foreground">Businesses are classified as high-risk based on industry (CBD, gaming, adult, travel, subscriptions), chargeback history above 0.9%, 100% online sales, international transactions over 30%, or selling products delivered 30+ days after payment.</p>
+                    <p className="text-foreground">Each acquirer sets its own criteria. Common triggers are the industry (CBD, gaming, adult, travel, subscriptions), a history of high chargebacks or a previous account termination, all-online sales, a large share of international transactions, and products or services delivered long after payment.</p>
                   </div>
 
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="text-lg font-semibold text-foreground mb-3">What is Visa VAMP and how does it affect my business?</h3>
-                    <p className="text-foreground">VAMP (Visa Acquirer Monitoring Program) monitors chargeback ratios. Early warning triggers at 0.65% ratio with 75 chargebacks. Standard program (0.9% + 100 chargebacks) can cost $5,000-15,000/month in fees. Exceeding thresholds risks account termination.</p>
+                    <p className="text-foreground">VAMP (Visa Acquirer Monitoring Program) replaced Visa&apos;s separate fraud and dispute monitoring programs in 2025. It counts fraud reports plus disputes against settled card-not-present transactions. Since April 1, 2026, a U.S. merchant is flagged as Excessive at a ratio of 1.5% or more with at least 1,500 fraud reports and disputes in a month, and an acquirer&apos;s whole portfolio is flagged at 0.5% (Above Standard) or 0.7% (Excessive). Flagged merchants must cut risk and can face fees passed on by the acquirer, and repeated breaches risk account termination.</p>
                   </div>
 
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="text-lg font-semibold text-foreground mb-3">How can I reduce chargebacks for my high-risk business?</h3>
-                    <p className="text-foreground">Implement chargeback alert services like Verifi CDRN (prevents 20-40%), optimize billing descriptors, use 3D Secure 2.0 authentication, respond to disputes within 24 hours, and maintain detailed transaction records.</p>
+                    <p className="text-foreground">Use pre-dispute alert services such as Verifi CDRN and Ethoca so you can refund before a dispute is filed, make your billing descriptor recognizable, use 3D Secure authentication on risky orders, answer disputes early with complete evidence, and keep detailed transaction records.</p>
                   </div>
 
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="text-lg font-semibold text-foreground mb-3">What is a rolling reserve and how can I reduce it?</h3>
-                    <p className="text-foreground">A rolling reserve is a percentage of each batch (commonly 5-15%) that the acquiring bank withholds for 90 to 180 days to cover post-settlement chargebacks. It is negotiable. After three to twelve months of clean processing, a written release request that cites a low chargeback ratio, stable volume, and active fraud tooling typically reduces the percentage or the hold window. Ask in writing to the risk department, and ask after you have a track record, not before.</p>
+                    <p className="text-foreground">A rolling reserve is a percentage of each batch that the acquirer withholds for a hold period set in your merchant agreement, to cover chargebacks that arrive after settlement. The processor sets both numbers, not Visa or Mastercard; PayPal&apos;s own example is 5 percent held on a 60-day rolling basis, and higher-risk accounts can see larger, longer holds. It is negotiable. After several months of clean processing, a written request that cites a low fraud and dispute ratio, stable volume, and active fraud tooling can reduce the percentage or the hold window. Ask in writing to the risk department, not on a phone call, and ask after you have a track record, not before.</p>
                   </div>
 
                   <div className="p-6 bg-muted/30 rounded-lg">
@@ -1025,7 +998,7 @@ export default function HighRiskPaymentProcessingGuidePage() {
 
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="text-lg font-semibold text-foreground mb-3">Which processors approve CBD, firearms, or nutra businesses?</h3>
-                    <p className="text-foreground">Domestic specialists such as PaymentCloud, Soar Payments, and Easy Pay Direct publicly state acceptance of CBD, firearms, nutraceuticals, and supplements. Durango Merchant Services adds offshore acquiring for verticals or volumes domestic banks decline, and Host Merchant Services serves a broad high-risk set on interchange-plus pricing. Approval still depends on your chargeback history, documentation, and product compliance, so the right fit is the processor whose acquiring banks already underwrite your exact category.</p>
+                    <p className="text-foreground">Domestic specialists such as PaymentCloud, Soar Payments, and Easy Pay Direct publicly market acceptance of CBD, firearms, nutraceuticals, and supplements. Durango Merchant Services adds offshore acquiring for verticals or volumes domestic banks decline, and Host Merchant Services offers interchange-plus pricing and takes some high-risk industries. Approval still depends on your chargeback history, documentation, and product compliance, so the right fit is the processor whose acquiring banks already underwrite your exact category.</p>
                   </div>
                 </div>
 
@@ -1035,12 +1008,12 @@ export default function HighRiskPaymentProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  Succeeding in high-risk payment processing requires treating it as a core business function. The merchants who thrive implement comprehensive chargeback prevention, maintain multiple merchant accounts, monitor VAMP/ECP compliance daily, and invest in appropriate fraud prevention technology.
+                  Succeeding in high-risk payment processing requires treating it as a core business function. The merchants who thrive implement comprehensive chargeback prevention, maintain multiple merchant accounts, monitor their fraud and dispute ratios against VAMP and Mastercard&apos;s program regularly, and invest in appropriate fraud prevention technology.
                 </p>
 
                 <div className="my-8 p-6 bg-primary/10 rounded-lg border-l-4 border-primary">
                   <p className="font-semibold text-foreground mb-2">Key Takeaway</p>
-                  <p className="text-foreground">Reducing your chargeback ratio from 1.5% to 0.7% isn&apos;t just about avoiding VAMP fees, it transforms your entire payment processing relationship, unlocking better rates, lower reserves, and most importantly, business continuity and peace of mind.</p>
+                  <p className="text-foreground">Reducing your fraud and dispute ratio from 1.5% to 0.7% isn&apos;t just about staying clear of VAMP. It changes your whole processing relationship: it gives you the case for better rates and lower reserves, and most importantly, business continuity.</p>
                 </div>
 
                 {/* Related Articles */}

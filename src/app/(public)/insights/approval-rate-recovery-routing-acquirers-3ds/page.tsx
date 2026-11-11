@@ -36,7 +36,7 @@ export default function Page() {
     "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": { "@type": "Organization", "name": "myPayAdvisor", "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" } },
     "datePublished": "2026-05-07",
-    "dateModified": "2026-05-07",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": { "@type": "WebPage", "@id": URL }
   };
 
@@ -54,11 +54,11 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "What is a normal approval rate for a US ecommerce merchant?", "acceptedAnswer": { "@type": "Answer", "text": "Domestic US Visa and Mastercard approval rates run 92% to 96% on a healthy account. Below 90% means a real routing or acquirer problem. International cross-border approval rates are 75% to 85% as a baseline, which is why merchants selling globally need local acquiring in their top 3 markets." } },
+      { "@type": "Question", "name": "What is a normal approval rate for a US ecommerce merchant?", "acceptedAnswer": { "@type": "Answer", "text": "We found no official public benchmark for U.S. card-not-present approval rates. Ask your acquirer for the median in your merchant category and volume tier, and compare yourself with merchants like you. Card-not-present sales generally decline more often than card-present ones, and cross-border cards are a common weak spot, which is why merchants selling heavily into one foreign market often look at local acquiring there." } },
       { "@type": "Question", "name": "Will adding a second processor improve my approval rate?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, if the second processor uses a different acquirer with better issuer relationships in your traffic mix. No, if both processors route through the same acquirer. Approval lift comes from acquirer diversity, not from having two logos. Confirm the acquirer BIN before signing." } },
-      { "@type": "Question", "name": "Does 3DS2 hurt or help approval rates?", "acceptedAnswer": { "@type": "Answer", "text": "It helps when used correctly. 3DS2 frictionless flow shifts liability to the issuer, which makes issuers approve transactions they would otherwise decline as fraud risk. Forcing 3DS2 challenge on every transaction hurts because customers abandon. The right setup is frictionless by default, challenge only on risk signals." } },
-      { "@type": "Question", "name": "What is network tokenization and why does it matter for approval rates?", "acceptedAnswer": { "@type": "Answer", "text": "Network tokenization replaces the card PAN with a token issued by Visa or Mastercard. Issuers approve tokenized transactions at 1% to 3% higher rates than raw PANs because the token signals the card is in a verified merchant relationship. Turning it on is one of the highest-ROI auth-rate moves available in 2026." } },
-      { "@type": "Question", "name": "How fast can I see auth-rate improvement after a routing change?", "acceptedAnswer": { "@type": "Answer", "text": "Same week. Routing changes take effect on the next transaction. The full picture takes 30 days because card mix and traffic patterns shift. A clean 90-day roadmap should show measurable lift in week 2 and stabilized lift by week 8." } }
+      { "@type": "Question", "name": "Does 3DS2 hurt or help approval rates?", "acceptedAnswer": { "@type": "Answer", "text": "It helps when used selectively. Under Visa's rules, a card-absent fraud dispute is invalid when the sale was authenticated through Visa Secure (ECI 5 with the CAVV in the authorization) or was an attempted authentication with the CAVV (ECI 6), so the fraud cost moves off you, and the extra data gives the issuer more to approve on. Forcing a challenge on every transaction hurts because some customers abandon. The right setup is frictionless by default, challenge only on risk signals or when the issuer asks." } },
+      { "@type": "Question", "name": "What is network tokenization and why does it matter for approval rates?", "acceptedAnswer": { "@type": "Answer", "text": "Network tokenization replaces the card number with a token issued through Visa or Mastercard and bound to your business. Visa reports a 4.8% increase in authorization rates for tokenized card-not-present transactions versus card numbers; your own lift will differ. Tokens also update when a card is reissued, and Visa's October 2026 interchange schedule cuts consumer credit card-not-present interchange by 0.05 percentage points for token transactions. Ask your processor what tokens cost before you count the gain." } },
+      { "@type": "Question", "name": "How fast can I see auth-rate improvement after a routing change?", "acceptedAnswer": { "@type": "Answer", "text": "Routing changes take effect on the next transaction, so early data shows up within days. Give it at least 30 days before you judge the result, because card mix and traffic patterns shift week to week. Compare approval rate by issuer, card type and decline code before and after, not just the overall number." } }
     ]
   };
 
@@ -82,7 +82,7 @@ export default function Page() {
               </h1>
               <AeoAnswer kind="insights" slug="approval-rate-recovery-routing-acquirers-3ds" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Approval rate problems are routing problems, not product problems. Here is how interchange routing actually works, what acquirer-issuer relationships do to your auth rate, how 3DS2 frictionless flow recovers transactions you are losing today, and a 90-day roadmap to lift auth rates 2 to 5 points.
+                Approval rate problems are often routing problems, not product problems. Here is how transaction routing actually works, what your choice of acquirer does to your auth rate, how 3DS2 frictionless flow can recover transactions you are losing today, and a 90-day roadmap to measure and lift your auth rate.
               </p>
               <p className="text-sm text-muted-foreground mt-3">
                 By{" "}
@@ -108,10 +108,10 @@ export default function Page() {
 
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed">
-                A 92% approval rate sounds fine until you do the math. On $1M monthly volume, every percentage point of auth rate is $10,000 of recovered revenue per month, $120,000 per year. Going from 92% to 95% is $360,000 a year. That is not optimization. That is a missing line on the P&amp;L.
+                A 92% approval rate sounds fine until you do the math. Take a hypothetical merchant with $1M a month in attempted card sales: every percentage point of auth rate is $10,000 of sales per month, $120,000 per year. Going from 92% to 95% is $360,000 a year in sales. That is not optimization. That is a missing line on the P&amp;L.
               </p>
               <p className="text-foreground leading-relaxed">
-                Every approval rate problem I have diagnosed traces back to four causes: wrong routing, wrong acquirer, missing 3DS2 frictionless, or missing network tokenization. Product, checkout UX, and fraud rules matter, but they are second-order. Fix the routing first.
+                Many approval rate problems trace back to four causes: wrong routing, wrong acquirer, missing 3DS2 frictionless, or missing network tokenization. Product, checkout UX, and fraud rules matter, but they are second-order. Fix the routing first.
               </p>
 
               <h2 id="routing-not-product" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -122,7 +122,7 @@ export default function Page() {
 
               </p>
               <p className="text-foreground leading-relaxed">
-                Soft declines, the kind that flip to approvals on a retry through a different acquirer, run 3% to 8% of total volume on most accounts. That is the recoverable layer. None of it gets recovered by changing checkout copy or running another A/B test on the buy button.
+                Soft declines, the kind that can flip to approvals on a later retry or through a different acquirer, are the recoverable layer. Your decline-code report shows how big that layer is on your account. None of it gets recovered by changing checkout copy or running another A/B test on the buy button.
               </p>
 
               <h2 id="how-routing-works" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -132,55 +132,55 @@ export default function Page() {
                 When a customer hits Pay, the transaction leaves your gateway, hits a processor, hits an acquirer, hits a card network (Visa, Mastercard), and finally hits the issuing bank. The issuer says yes or no. The answer travels back the same path.
               </p>
               <p className="text-foreground leading-relaxed">
-                Each hop is a routing decision. The processor picks an acquirer. The acquirer picks a network rail. The network picks an issuer. Most merchants treat this as a black box. It is not. Each hop has a configuration, and the configuration determines whether your auth rate is 91% or 96%.
+                Several hops involve a routing decision. The processor picks an acquirer. On U.S. debit cards, the transaction can often go over more than one network. The network then delivers it to the card&apos;s issuer. Most merchants treat this as a black box. It is not. Each hop has a configuration, and the configuration affects your auth rate.
               </p>
               <p className="text-foreground leading-relaxed">
-                Smart routing means the processor uses real-time data to pick the rail and acquirer most likely to approve a given BIN. Static routing means everything goes through one acquirer regardless. Static routing is what most accounts have, and it is why most accounts leave 2 to 5 points of approval rate on the table.
+                Smart routing means the processor uses real-time data to pick the rail and acquirer most likely to approve a given BIN. Static routing means everything goes through one acquirer regardless. Static routing is what many accounts have, and it can leave approvals on the table. Only your own per-BIN data shows how many.
               </p>
 
               <h2 id="acquirer-issuer" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Acquirer-issuer relationships explained
               </h2>
               <p className="text-foreground leading-relaxed">
-                Issuers (Chase, Citi, Capital One, Wells Fargo, plus thousands of credit unions) keep approval models per acquirer. If your acquirer has a long, clean history with that issuer, transactions get the benefit of the doubt. If the relationship is thin or noisy, the issuer is more conservative.
+                Issuers (Chase, Citi, Capital One, Wells Fargo, plus thousands of credit unions) decide with their own risk models, and where a transaction comes from is one of the inputs. Approval rates can differ by acquirer on the same traffic.
               </p>
               <p className="text-foreground leading-relaxed">
-                Big-name acquirers (Chase Paymentech, Worldpay, Fiserv, Adyen, Stripe-as-acquirer in many cases) have deep issuer relationships in the US. Smaller acquirers and many international acquirers do not. If your processor is using a budget acquirer to save on interchange, your auth rate is paying for the savings.
+                Interchange is set by the card networks, so it is the same whichever acquirer you use; what differs is the acquirer&apos;s markup, its risk rules and how its traffic performs with your customers&apos; issuers. If your processor picked an acquirer only on cost, check what that choice does to your auth rate.
               </p>
               <p className="text-foreground leading-relaxed">
-                Cross-border makes this worse. A US merchant routing through a US acquirer sees 75% to 85% approval on European cards. The same volume routed through a European acquirer with local issuer relationships sees 88% to 93%. Local acquiring is the single biggest lever on cross-border auth.
+                Cross-border makes this worse. Cards issued abroad are a common weak spot for a US merchant routing through a US acquirer, and a local acquirer in the cardholder&apos;s country can turn the sale into a domestic one for that issuer. Local acquiring is one of the main levers on cross-border auth.
               </p>
               <div className="my-8 p-6 bg-primary/5 rounded-lg border-l-4 border-primary">
-                <p className="text-foreground"><strong>Rule of thumb:</strong> if more than 15% of your volume is from a single non-domestic country, you need local acquiring in that country. The auth-rate lift will pay for the integration in 60 to 90 days.</p>
+                <p className="text-foreground"><strong>Rule of thumb:</strong> if a meaningful share of your volume, say 15% or more, comes from a single non-domestic country, get a quote for local acquiring in that country. Compare the approval lift you measure in a test with the cost of the integration.</p>
               </div>
 
               <h2 id="3ds2" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 3DS2 frictionless flow
               </h2>
               <p className="text-foreground leading-relaxed">
-                3DS2 is the protocol that lets the issuer see device, browser, and transaction context before approving. Done right, 95% of transactions go through frictionless (no challenge to the customer) and the issuer approves at higher rates because liability shifts to them.
+                3DS2 is the protocol that lets the issuer see device, browser, and transaction context before approving. Done right, most transactions go through frictionless (no challenge to the customer). Under <a href="https://usa.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa&apos;s rules</a>, a card-absent fraud dispute is invalid when the sale was authenticated through Visa Secure with the CAVV in the authorization (ECI 5), or was an attempted authentication with the CAVV (ECI 6), so the fraud cost moves off you.
               </p>
               <p className="text-foreground leading-relaxed">
-                Done wrong, 3DS2 forces challenge on every transaction. Customers see a code prompt, half abandon, conversion drops 8 to 15 points. That is not a 3DS2 problem. That is a configuration problem.
+                Done wrong, 3DS2 forces a challenge on every transaction. Customers see a code prompt, some abandon, and conversion drops. Measure your own abandonment rate at the challenge step. That is not a 3DS2 problem. That is a configuration problem.
               </p>
               <p className="text-foreground leading-relaxed">
-                The right setup: 3DS2 enabled with frictionless as default, challenge triggered only by risk score above a threshold or by issuer mandate. On EU and UK volume, 3DS2 is required by SCA. On US volume, it is optional but lifts auth rates 1 to 3 points and shifts chargeback liability.
+                The right setup: 3DS2 enabled with frictionless as default, challenge triggered only by risk score above a threshold or by issuer request. Issuers in the European Economic Area work under PSD2 strong customer authentication rules (the UK has its own version), may decline a sale without it, and Visa&apos;s response code 1A asks for authentication. On US volume there is no SCA mandate: 3DS is optional, moves card-absent fraud disputes off you under Visa&apos;s rules, and on Visa consumer credit card-not-present sales earns a 0.10 percentage point interchange incentive under <a href="https://usa.visa.com/dam/VCOM/download/merchants/visa-usa-interchange-reimbursement-fees.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa&apos;s October 2026 schedule</a>. Visa ended support for the old 3DS 1.0.2 on October 15, 2022.
               </p>
 
               <h2 id="config-mistakes" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Common config mistakes
               </h2>
               <p className="text-foreground leading-relaxed">
-                <strong>Missing CVV on card-on-file.</strong> Stored cards without the original CVV captured at first transaction get declined at higher rates. Capture CVV on the first transaction, store the network token, never store the CVV.
+                <strong>Missing CVV on card-on-file.</strong> Issuers use the CVV match result as a risk input. Capture CVV on the first transaction, store the network token, and never store the CVV after authorization (PCI DSS forbids it).
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Wrong MCC code.</strong> The merchant category code drives interchange and risk model. A SaaS company classified under a generic MCC instead of 5734 (computer software stores) sees auth rates 2 to 4 points lower. Get the MCC right.
+                <strong>Wrong MCC code.</strong> The merchant category code feeds interchange and the issuer&apos;s risk model. A business whose MCC no longer matches what it sells, common after a pivot, can see more declines. Check your MCC against the code list in Visa&apos;s Merchant Data Standards Manual and get it right.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Account updater not enabled.</strong> Visa Account Updater and Mastercard Automatic Billing Updater catch reissued cards on subscription rebills. Without them, churn from card expiration runs 4% to 7% per month on subscription businesses. Free to enable. Enable it.
+                <strong>Account updater not enabled.</strong> Visa Account Updater and Mastercard Automatic Billing Updater catch reissued cards on subscription rebills. Visa requires U.S. issuers to enroll most BINs in Visa Account Updater. Without the updaters, expired and reissued cards show up as declines that look like customer churn. Some processors charge per update, so ask the price and compare it with your expired-card declines. Then enable it.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Static retry on soft declines.</strong> Retrying a soft decline through the same acquirer 30 seconds later gets the same answer. Retry through a different acquirer, or retry 24 hours later through a smart retry tool. Either recovers 30% to 60% of soft declines.
+                <strong>Static retry on soft declines.</strong> Retrying a soft decline through the same acquirer 30 seconds later usually gets the same answer. Retry later, by decline code, or through a different acquirer, and count every attempt toward the network limits: <a href="https://usa.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> allows up to 20 attempts in 30 days after a retryable decline and none after a Category 1 code, and <a href="https://pep.paypal.com/us/brc/article/avoid-excessive-retries-penalties" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PayPal&apos;s notice</a> lists Mastercard&apos;s limits as 10 in 24 hours and 35 in 30 days.
               </p>
 
               <h2 id="reading-dashboard" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -193,13 +193,13 @@ export default function Page() {
                 <strong>Issuer BIN range.</strong> Top 20 issuers by volume, sorted by approval rate. The bottom 5 are your recovery target.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Card type.</strong> Credit, debit, prepaid, commercial. Commercial cards often run 3 to 6 points lower because of corporate fraud rules.
+                <strong>Card type.</strong> Credit, debit, prepaid, commercial. Each can carry different issuer rules, so compare them separately.
               </p>
               <p className="text-foreground leading-relaxed">
                 <strong>Geography.</strong> Domestic vs cross-border, by country. The cross-border number is almost always the gap.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Decline code.</strong> Group by ISO 8583 response code. Code 05 (do not honor), code 51 (insufficient funds), code 14 (invalid card) each have different recovery strategies.
+                <strong>Decline code.</strong> Group by ISO 8583 response code. Code 05 (do not honor), code 51 (insufficient funds), code 14 (invalid card) each have different recovery strategies; under Visa&apos;s rules, code 14 is a Category 1 code and must never be retried.
               </p>
 
               <h2 id="90-day" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -209,7 +209,7 @@ export default function Page() {
                 <strong>Days 1 to 14:</strong> Pull 30 days of transaction data with full decline-code breakdown. Identify the top 5 issuer BINs by decline volume and the top 3 decline codes. Confirm acquirer BIN. Confirm MCC code. Enable Account Updater if not on.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>Days 15 to 30:</strong> Turn on network tokenization (Visa, Mastercard). Configure 3DS2 frictionless on EU and UK volume. Implement smart retry on soft declines (delay 24 hours, retry through alternate acquirer if available).
+                <strong>Days 15 to 30:</strong> Turn on network tokenization (Visa, Mastercard). Configure 3DS2 frictionless on EU and UK volume. Implement smart retry on soft declines (delay, retry through alternate acquirer if available, stay inside network retry limits).
               </p>
               <p className="text-foreground leading-relaxed">
                 <strong>Days 31 to 60:</strong> If cross-border is more than 15% of volume in a single market, scope local acquiring. If domestic auth on a top issuer is below benchmark, evaluate adding a second acquirer with stronger relationships there.
@@ -218,7 +218,7 @@ export default function Page() {
                 <strong>Days 61 to 90:</strong> Measure. Lock in changes that produced lift. Reverse changes that did not. Document the new baseline. Set a quarterly review cadence.
               </p>
               <p className="text-foreground leading-relaxed">
-                Realistic outcome: 2 to 4 points of approval rate recovered. On a $1M monthly account, that is $240,000 to $480,000 a year. None of it required new product, new checkout, or new fraud tools.
+                There is no published benchmark for how much this recovers; measure it. On a hypothetical $1M monthly account, each point of approval rate recovered is about $10,000 a month in sales, $120,000 a year. None of it requires new product, new checkout, or new fraud tools.
               </p>
               <p className="text-foreground leading-relaxed">
                 If reserves or contract terms are blocking the routing changes you need, see the <Link href="/insights/payment-processor-negotiation-playbook" className="text-primary hover:underline">Negotiation Playbook</Link>.
@@ -231,10 +231,10 @@ export default function Page() {
                 Not every decline is recoverable. Hard declines (lost card, stolen card, fraud-confirmed, account closed) are final. Soft declines (insufficient funds, do not honor, exceeds withdrawal limit, issuer system error) are recoverable, sometimes immediately on a different routing path, sometimes 24 hours later when the customer&apos;s funds clear.
               </p>
               <p className="text-foreground leading-relaxed">
-                On a typical account, hard declines run 1% to 2% of attempts. Soft declines run 4% to 8%. The soft-decline pool is your recoverable revenue. A smart retry tool, configured against ISO 8583 response codes, recovers 30% to 60% of soft declines without the customer ever seeing a failure message.
+                Pull your own split of hard and soft declines from the decline-code report. The soft-decline pool is your recoverable revenue. A smart retry tool, configured against ISO 8583 response codes, can recover part of it without the customer ever seeing a failure message.
               </p>
               <p className="text-foreground leading-relaxed">
-                The most expensive mistake here is retrying a soft decline through the same acquirer 30 seconds later. The issuer returns the same answer. Worse, on some BIN ranges, repeated retries trigger a fraud flag that hardens the decline for 24 to 48 hours. Smart retry waits, varies the routing, and respects retry limits the network publishes.
+                The most expensive mistake here is retrying a soft decline through the same acquirer 30 seconds later. The issuer usually returns the same answer, and every attempt counts toward the network limits. Past those limits, or on a Category 1 code, Visa charges fees; PayPal lists Visa&apos;s excess reattempt fee at $0.10 per domestic attempt and $0.25 cross-border. Smart retry waits, varies the routing, and respects retry limits the network publishes.
               </p>
 
               <h2 className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -244,7 +244,7 @@ export default function Page() {
                 Approval rate recovery often requires structural changes the current contract was never set up to allow. Adding a second acquirer requires a second MID. Adding a second MID often requires re-underwriting. If the current processor holds a reserve, that reserve does not transfer. If the current contract has an ETF, splitting volume across two processors may trigger it.
               </p>
               <p className="text-foreground leading-relaxed">
-                These are solvable. Most processors will allow a second MID under the same parent account if the volume justification is clean. If they will not, see <Link href="/insights/reserves-frozen-funds-capped-vs-rolling" className="text-primary hover:underline">Capped vs Rolling Reserves</Link> for how to negotiate the reserve out, and the <Link href="/insights/payment-processor-negotiation-playbook" className="text-primary hover:underline">Negotiation Playbook</Link> for how to remove the ETF.
+                These are solvable. Many processors can add a second MID under the same parent account if the volume justification is clean; ask. If they will not, see <Link href="/insights/reserves-frozen-funds-capped-vs-rolling" className="text-primary hover:underline">Capped vs Rolling Reserves</Link> for how to negotiate the reserve out, and the <Link href="/insights/payment-processor-negotiation-playbook" className="text-primary hover:underline">Negotiation Playbook</Link> for how to remove the ETF.
               </p>
               <p className="text-foreground leading-relaxed">
                 Treat routing optimization as a 6-month project, not a 6-week one. The technical work is fast. The contract work is what takes time.
@@ -256,7 +256,7 @@ export default function Page() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What is a normal approval rate for a US ecommerce merchant?</h3>
-                  <p className="text-foreground leading-relaxed">Domestic US Visa and Mastercard approval rates run 92% to 96% on a healthy account. Below 90% means a real routing or acquirer problem. International cross-border approval rates are 75% to 85% as a baseline, which is why merchants selling globally need local acquiring in their top 3 markets.</p>
+                  <p className="text-foreground leading-relaxed">We found no official public benchmark for U.S. card-not-present approval rates. Ask your acquirer for the median in your merchant category and volume tier, and compare yourself with merchants like you. Card-not-present sales generally decline more often than card-present ones, and cross-border cards are a common weak spot, which is why merchants selling heavily into one foreign market often look at local acquiring there.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Will adding a second processor improve my approval rate?</h3>
@@ -264,15 +264,15 @@ export default function Page() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Does 3DS2 hurt or help approval rates?</h3>
-                  <p className="text-foreground leading-relaxed">It helps when used correctly. 3DS2 frictionless flow shifts liability to the issuer, which makes issuers approve transactions they would otherwise decline as fraud risk. Forcing 3DS2 challenge on every transaction hurts because customers abandon. The right setup is frictionless by default, challenge only on risk signals.</p>
+                  <p className="text-foreground leading-relaxed">It helps when used selectively. Under Visa&apos;s rules, a card-absent fraud dispute is invalid when the sale was authenticated through Visa Secure (ECI 5 with the CAVV in the authorization) or was an attempted authentication with the CAVV (ECI 6), so the fraud cost moves off you, and the extra data gives the issuer more to approve on. Forcing a challenge on every transaction hurts because some customers abandon. The right setup is frictionless by default, challenge only on risk signals or when the issuer asks.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What is network tokenization and why does it matter for approval rates?</h3>
-                  <p className="text-foreground leading-relaxed">Network tokenization replaces the card PAN with a token issued by Visa or Mastercard. Issuers approve tokenized transactions at 1% to 3% higher rates than raw PANs because the token signals the card is in a verified merchant relationship. Turning it on is one of the highest-ROI auth-rate moves available in 2026.</p>
+                  <p className="text-foreground leading-relaxed">Network tokenization replaces the card number with a token issued through Visa or Mastercard and bound to your business. Visa reports a 4.8% increase in authorization rates for tokenized card-not-present transactions versus card numbers; your own lift will differ. Tokens also update when a card is reissued, and Visa&apos;s October 2026 interchange schedule cuts consumer credit card-not-present interchange by 0.05 percentage points for token transactions. Ask your processor what tokens cost before you count the gain.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">How fast can I see auth-rate improvement after a routing change?</h3>
-                  <p className="text-foreground leading-relaxed">Same week. Routing changes take effect on the next transaction. The full picture takes 30 days because card mix and traffic patterns shift. A clean 90-day roadmap should show measurable lift in week 2 and stabilized lift by week 8.</p>
+                  <p className="text-foreground leading-relaxed">Routing changes take effect on the next transaction, so early data shows up within days. Give it at least 30 days before you judge the result, because card mix and traffic patterns shift week to week. Compare approval rate by issuer, card type and decline code before and after, not just the overall number.</p>
                 </div>
               </div>
 

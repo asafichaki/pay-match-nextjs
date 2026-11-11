@@ -12,21 +12,21 @@ const URL = "https://www.mypayadvisor.com/comparisons/stripe-high-risk-alternati
 const baseMetadata: Metadata = {
   title: { absolute: "Stripe High-Risk Alternatives 2026: Where to Go After a Freeze" },
   description:
-    "Stripe froze your account or holds your funds? Here are real high-risk payment processors that approve merchants Stripe declines: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, and Host Merchant Services. Reviewed by a payments operator.",
+    "Stripe froze your account or holds your funds? Here are real high-risk payment processors that approve merchants Stripe declines: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, and Host Merchant Services, with what each publishes.",
   alternates: {
     canonical: URL,
   },
   openGraph: {
     title: "Stripe High-Risk Alternatives 2026: Where to Go After a Freeze",
     description:
-      "Real high-risk payment processors that approve merchants Stripe declines, frozen, or terminated. PaymentCloud, Durango, Easy Pay Direct, Soar Payments, Host Merchant Services compared.",
+      "Real high-risk payment processors for merchants Stripe declined, froze, or terminated. PaymentCloud, Durango, Easy Pay Direct, Soar Payments, Host Merchant Services compared.",
     url: URL,
     type: "article",
     images: ["https://www.mypayadvisor.com/og-logo.png"],
   },
   other: {
     "article:published_time": "2026-05-30T00:00:00.000Z",
-    "article:modified_time": "2026-08-25T00:00:00.000Z",
+    "article:modified_time": "2026-11-11T00:00:00.000Z",
   },
 };
 
@@ -69,7 +69,7 @@ const itemListSchema = {
           priceSpecification: {
             "@type": "PriceSpecification",
             description:
-              "Domestic high-risk pricing; rate quoted per merchant on underwriting",
+              "Quote-only; PaymentCloud publishes no rate card",
           },
         },
       },
@@ -90,7 +90,7 @@ const itemListSchema = {
           priceSpecification: {
             "@type": "PriceSpecification",
             description:
-              "Domestic and offshore high-risk pricing; rate quoted per merchant and acquirer",
+              "Published typical ranges: 1.95% to 4.95% plus $0.15 to $0.25 per authorization; final pricing set in a written offer",
           },
         },
       },
@@ -103,7 +103,7 @@ const itemListSchema = {
         name: "Easy Pay Direct",
         applicationCategory: "FinanceApplication",
         operatingSystem: "Web",
-        url: "https://easypaydirect.com",
+        url: "https://www.easypaydirect.com",
         offers: {
           "@type": "Offer",
           category: "High-risk merchant account",
@@ -111,7 +111,7 @@ const itemListSchema = {
           priceSpecification: {
             "@type": "PriceSpecification",
             description:
-              "High-risk pricing quoted per merchant; supports load balancing across multiple MIDs",
+              "Published online card rate 2.69% + $0.36 per transaction; custom pricing for higher volume",
           },
         },
       },
@@ -132,7 +132,7 @@ const itemListSchema = {
           priceSpecification: {
             "@type": "PriceSpecification",
             description:
-              "Domestic high-risk pricing; rate quoted per merchant on underwriting",
+              "Quote-only; Soar Payments publishes no rates",
           },
         },
       },
@@ -153,7 +153,7 @@ const itemListSchema = {
           priceSpecification: {
             "@type": "PriceSpecification",
             description:
-              "Interchange-plus pricing; high-risk placement quoted per merchant",
+              "Interchange-plus; standard e-commerce markup 0.35% + $0.10 per transaction and $14.99 monthly fee published; high-risk accounts placed through partners and priced per merchant",
           },
         },
       },
@@ -170,7 +170,7 @@ const faqSchema = {
       name: "Why did Stripe freeze my account or hold my funds?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Stripe is an aggregator: many merchants share underwriting on its platform, so it manages risk by acting fast on anything that looks elevated. Common triggers are a rising chargeback ratio, a sudden spike in volume, selling a restricted or high-risk category (CBD, supplements, firearms, adult, future-delivery sales), a mismatch between your stated business and your actual transactions, or a dispute pattern flagged by its automated review. When Stripe sees risk it can pause payouts, hold a reserve, or terminate the account, often before a human reviews the case. The first step is to request the specific reason in writing through Stripe support.",
+        text: "Stripe pools many merchants on one platform and reviews risk continuously, so it can act quickly on anything that looks risky. Common triggers are a rising chargeback ratio, a sudden spike in volume, selling a category on Stripe's prohibited or restricted list (adult content is prohibited; CBD and legal firearms are restricted), a mismatch between your stated business and your actual transactions, or a flagged dispute pattern. When Stripe sees risk it can pause payouts, hold a reserve, or close the account. The first step is to request the specific reason in writing through Stripe support.",
       },
     },
     {
@@ -178,7 +178,7 @@ const faqSchema = {
       name: "What is the best alternative to Stripe for a high-risk business?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "There is no single best answer, because the right alternative depends on your vertical, volume, and why Stripe declined you. For domestic CBD, firearms, or nutra e-commerce that wants speed, PaymentCloud is a common default. If a domestic bank has already declined you or you need offshore acquiring, Durango Merchant Services widens the options. For high-volume or subscription merchants, Easy Pay Direct's load balancing across multiple MIDs adds resilience. Soar Payments and Host Merchant Services are additional domestic high-risk specialists worth a quote. The honest move is to get written quotes from two or three whose acquiring banks already underwrite your category.",
+        text: "There is no single best answer, because the right alternative depends on your vertical, volume, and why Stripe declined you. PaymentCloud accepts a wide list of verticals, including adult, and quotes every account. Durango Merchant Services publishes its typical price and reserve ranges and offers international accounts in Canada, Europe, and Panama, but does not take adult content. Easy Pay Direct publishes an online rate of 2.69% + $0.36 and routes transactions across multiple merchant accounts, which suits high-volume or subscription merchants. Soar Payments is another quote-only high-risk specialist, and Host Merchant Services publishes interchange-plus markups for standard accounts and places high-risk merchants through partners. Get written quotes from two or three whose banks already underwrite your category.",
       },
     },
     {
@@ -186,7 +186,7 @@ const faqSchema = {
       name: "Can I get my frozen funds back from Stripe?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Frozen funds are usually released, but on Stripe's timeline, not yours. When an account is terminated, processors commonly hold the balance for a period (often around ninety to one hundred eighty days) to cover potential chargebacks and refunds, then release the remainder. To improve your odds and speed, get the freeze reason in writing, respond to every documentation request promptly, resolve open disputes, and keep records of fulfilled orders. Funds tied to genuine, fulfilled transactions are generally returned; the hold exists to protect against future chargebacks, not to keep your money permanently. Meanwhile, set up a high-risk account elsewhere so the business keeps running.",
+        text: "Stripe's reserves FAQ describes a reserve as a temporary hold on a portion of your funds for a predetermined period, released in full at the end of the reserve period, and says that in rare cases a reserve may be required indefinitely. Stripe does not publish a fixed number of days for funds held after an account closes, so ask support for the expected release date in writing. To speed things up, respond to every documentation request promptly, resolve open disputes, and keep records of fulfilled orders. Meanwhile, set up a high-risk account elsewhere so the business keeps running.",
       },
     },
     {
@@ -194,7 +194,7 @@ const faqSchema = {
       name: "How fast can I switch to a high-risk processor after Stripe freezes me?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "High-risk specialists can often approve and onboard within one to three business days once your application and documentation are complete, because approving merchants the aggregators decline is their core business. The bottleneck is usually documentation, not the processor: have your business details, processing history, prior statements, and any chargeback context ready before you apply. Applying to a specialist whose acquiring banks already underwrite your vertical, rather than another aggregator, is what shortens the gap and reduces the chance of a repeat freeze.",
+        text: "High-risk specialists state approval times from about 24 hours to five business days once your application and documents are complete: PaymentCloud says 24 hours to 5 days, Durango says most accounts take 1 to 3 business days, Soar says underwriting typically takes 24 to 72 hours, and Easy Pay Direct says 24 to 48 hours from a complete submission. The bottleneck is usually documentation: have your business details, bank and processing statements, and any chargeback context ready before you apply. Applying to a specialist whose banks already underwrite your vertical is what shortens the gap and reduces the chance of a repeat freeze.",
       },
     },
   ],
@@ -205,17 +205,17 @@ export default function StripeHighRiskAlternativesPage() {
     <>
       <ComparisonSchema
         title="Stripe High-Risk Alternatives 2026: Where to Go After a Freeze"
-        description="Real high-risk payment processors that approve merchants Stripe declines, freezes, or terminates: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, Host Merchant Services, reviewed by a payments operator."
+        description="Real high-risk payment processors for merchants Stripe declines, freezes, or terminates: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, Host Merchant Services, with what each publishes."
         slug="stripe-high-risk-alternatives"
         datePublished="2026-05-30"
-        dateModified="2026-08-25"
+        dateModified="2026-11-11"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
           { name: "Stripe High-Risk Alternatives" },
         ]}
         quotation={{
-          text: "When Stripe freezes a merchant, the panic is about the held funds, but the real problem is that the business stopped processing today. Stripe is an aggregator, so it manages risk for thousands of accounts at once and acts fast on anything elevated. The fix is not to argue your way back in; it is to move to a processor whose acquiring banks actually underwrite your category, so you are a known risk they priced for, not an anomaly an algorithm flagged. Get the freeze reason in writing, then place the account where it belongs.",
+          text: "When Stripe freezes a merchant, the panic is about the held funds, but the real problem is that the business stopped processing today. Stripe is an aggregator, so it manages risk for thousands of accounts at once and acts fast on anything that looks risky. The fix is not to argue your way back in; it is to move to a processor whose acquiring banks actually underwrite your category, so you are a known risk they priced for, not an anomaly an algorithm flagged. Get the freeze reason in writing, then place the account where it belongs.",
           creator: {
             "@type": "Person",
             name: "Barak Bachar",

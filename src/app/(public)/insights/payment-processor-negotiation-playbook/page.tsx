@@ -37,7 +37,7 @@ export default function Page() {
     "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": { "@type": "Organization", "name": "myPayAdvisor", "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" } },
     "datePublished": "2026-05-07",
-    "dateModified": "2026-05-07",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": { "@type": "WebPage", "@id": URL }
   };
 
@@ -55,11 +55,11 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How much can I negotiate off my processing fees?", "acceptedAnswer": { "@type": "Answer", "text": "On $50K to $250K monthly volume, 0.15% to 0.30% off the effective rate is realistic. Above $500K monthly, 0.30% to 0.60% is realistic. The dollar value depends on your base. On $1M monthly, even 0.20% is $24,000 a year." } },
-      { "@type": "Question", "name": "What is the single most powerful negotiation lever?", "acceptedAnswer": { "@type": "Answer", "text": "Switching from blended or tiered pricing to interchange-plus. That single change usually delivers 0.20% to 0.50% of savings before any other negotiation, because it strips out the surcharge the processor was hiding inside the blended rate." } },
+      { "@type": "Question", "name": "How much can I negotiate off my processing fees?", "acceptedAnswer": { "@type": "Answer", "text": "There is no reliable average. It depends on how far your current markup and fees sit above the competing quotes you collect. The dollar value depends on your base: every 0.10 point is $250 a month on $250K monthly volume and $1,000 a month ($12,000 a year) on $1M." } },
+      { "@type": "Question", "name": "What is the single most powerful negotiation lever?", "acceptedAnswer": { "@type": "Answer", "text": "Switching from blended or tiered pricing to interchange-plus. It shows the processor markup as its own line, so you can see what you pay and attack it. In our cost model at $250K a month in person, interchange-plus pricing from Helcim costs about $4,850 and Stax about $4,475, against $6,900 on Square and about $7,000 on Stripe Terminal (prices checked Oct 2026)." } },
       { "@type": "Question", "name": "Do I need a competing offer in hand to negotiate?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Without a written offer from another processor, you have no leverage. The current processor knows you have not done the work. Get one written quote, even from a discount processor you would not actually use, and show it. Negotiation is a two-quote sport." } },
       { "@type": "Question", "name": "When should I walk instead of renegotiating?", "acceptedAnswer": { "@type": "Answer", "text": "Walk if the processor refuses to move from blended to IC++, refuses to drop the early termination fee, or holds funds in a reserve they will not put a release date on. Those three together mean the relationship is structurally broken, not just expensive." } },
-      { "@type": "Question", "name": "How often should I renegotiate?", "acceptedAnswer": { "@type": "Answer", "text": "Every 18 to 24 months on a stable account. Pricing drifts. Card mix shifts. Network interchange resets twice a year. A two-year-old contract is almost always paying above market by 0.10% to 0.25%." } }
+      { "@type": "Question", "name": "How often should I renegotiate?", "acceptedAnswer": { "@type": "Answer", "text": "Every year on a stable account, starting a month or two before your contract anniversary. Pricing drifts: some contracts let the processor change its markup on written notice. Card mix shifts. Visa updates its interchange schedule periodically; the current U.S. schedule took effect October 24, 2026." } }
     ]
   };
 
@@ -114,7 +114,7 @@ export default function Page() {
 
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-foreground leading-relaxed">
-                Most merchants negotiate one number: the rate. The processor knows that, prices accordingly, and keeps everything else: the reserve, the ETF, the funding delay, the PCI fee, the markup hidden inside the assessments line. A real negotiation works nine levers, in order, and treats the rate as the fourth most important.
+                Most merchants negotiate one number: the rate. The processor knows that, prices accordingly, and keeps everything else: the reserve, the ETF, the funding delay, the PCI fee, the markup hidden inside the assessments line. A real negotiation works nine levers, in order, and treats the rate as one lever among nine.
               </p>
               <p className="text-foreground leading-relaxed">
                 If you have not run an audit yet, do that first. The numbers in this playbook only work when you walk in with three months of effective-rate data. Read the <Link href="/insights/free-statement-audit-playbook" className="text-primary hover:underline">Statement Audit Playbook</Link>, then come back.
@@ -124,10 +124,10 @@ export default function Page() {
                 What is actually negotiable (and what is not)
               </h2>
               <p className="text-foreground leading-relaxed">
-                Interchange is not negotiable. It is set by the issuing bank under rules published by Visa and Mastercard. Nobody, including the largest acquirers, gets a discount on interchange.
+                Interchange is not negotiable for a typical merchant. Visa and Mastercard set it in published schedules, and it is paid to the card-issuing bank. You lower it only by qualifying sales for cheaper categories, for example by reading the card in person or sending Level 3 data on commercial cards.
               </p>
               <p className="text-foreground leading-relaxed">
-                Network assessments are not negotiable. They run 0.13% to 0.15% and are charged by the network on every transaction.
+                Network assessments are not negotiable. The networks charge them on every transaction but do not publish them, so read them off your statement and make sure they are billed at the network&apos;s own rate.
               </p>
               <p className="text-foreground leading-relaxed">
                 Everything else is negotiable. The pricing model is negotiable. The processor markup is negotiable. The reserve is negotiable. The ETF is negotiable. The PCI fee, the monthly minimum, the chargeback fee, the funding window, all negotiable. Treat anyone who tells you otherwise as a salesperson, not a payments operator.
@@ -164,22 +164,22 @@ export default function Page() {
                 Interchange-plus (IC+) splits interchange from markup. IC++ goes further and splits assessments from interchange too. On a clean IC++ contract, your statement reads: interchange (pass-through), assessments (pass-through), processor markup (negotiated). Three numbers. No mystery.
               </p>
               <p className="text-foreground leading-relaxed">
-                On a $200K monthly account moving from tiered to IC++, expect a 0.25% to 0.50% effective-rate drop with no other change. That is the single biggest move in this playbook.
+                How much the switch saves depends on your card mix and the markup you agree, so price it on your own statement. For scale, in our cost model at $250K a month in person, Helcim&apos;s interchange-plus pricing costs about $4,850 and Stax&apos;s about $4,475, against $6,900 on Square and about $7,000 on Stripe Terminal (prices checked Oct 2026). That is why it comes first in this playbook.
               </p>
               <div className="my-8 p-6 bg-primary/5 rounded-lg border-l-4 border-primary">
-                <p className="text-foreground"><strong>Target markup by volume:</strong></p>
-                <p className="text-foreground mt-2">Under $25K monthly: IC + 0.40% + $0.10 is fair.</p>
-                <p className="text-foreground">$25K to $100K: IC + 0.30% + $0.10.</p>
-                <p className="text-foreground">$100K to $500K: IC + 0.20% + $0.08.</p>
-                <p className="text-foreground">$500K to $2M: IC + 0.10% to 0.15% + $0.05.</p>
-                <p className="text-foreground">Above $2M: IC + 0.05% to 0.08% + $0.03 to $0.05.</p>
+                <p className="text-foreground"><strong>Published markups to compare against (prices checked Oct 2026):</strong></p>
+                <p className="text-foreground mt-2">Helcim in person: IC + 0.40% + $0.08 under $50K monthly, stepping down to 0.15% + $0.06 at the top tier.</p>
+                <p className="text-foreground">Helcim online: IC + 0.50% + $0.25 under $50K monthly, falling to 0.15% + $0.15 above $1M.</p>
+                <p className="text-foreground">Stax: interchange at cost + $0.08 in person or $0.15 online, plus $99 to $199+ a month by annual volume.</p>
+                <p className="text-foreground">Adyen online (Visa and Mastercard): interchange++ + 0.60% + $0.13.</p>
+                <p className="text-foreground">Use these as reference points for the markup line in any quote you collect.</p>
               </div>
 
               <h2 id="lever-2" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Lever 2: Drop the markup
               </h2>
               <p className="text-foreground leading-relaxed">
-                Once you are on IC++, the markup is one number on the page. You can attack it directly. Show the processor a competing IC++ quote at a lower markup. The current processor will usually match within 0.05% to avoid losing the account.
+                Once you are on IC++, the markup is one number on the page. You can attack it directly. Show the processor a competing IC++ quote at a lower markup. The current processor may match rather than lose the account, but nothing obliges it to.
               </p>
               <p className="text-foreground leading-relaxed">
                 Do not ask for an aspirational rate. Ask for the rate in the competing offer plus zero. &quot;Match this written quote or I move the volume next month.&quot;
@@ -189,7 +189,7 @@ export default function Page() {
                 Lever 3: Cap the reserve
               </h2>
               <p className="text-foreground leading-relaxed">
-                If the processor holds a reserve, two things matter: the cap (a fixed dollar number) and the path to release (a written date or volume threshold). A rolling reserve at 10% with no cap and no release is a working capital trap, not a risk control. A capped reserve at $50,000 with release after 6 clean months is a normal risk control.
+                If the processor holds a reserve, two things matter: the cap (a fixed dollar number) and the path to release (a written date or volume threshold). For example, a rolling reserve with no cap and no release date is a working capital trap, not a risk control. A reserve capped at a fixed dollar amount with a written release after a set number of clean months is a normal risk control.
               </p>
               <p className="text-foreground leading-relaxed">
                 Insist on both. The full mechanics are in <Link href="/insights/reserves-frozen-funds-capped-vs-rolling" className="text-primary hover:underline">Capped vs Rolling Reserves</Link>.
@@ -199,54 +199,54 @@ export default function Page() {
                 Lever 4: Kill the early termination fee
               </h2>
               <p className="text-foreground leading-relaxed">
-                ETFs run from $295 to $50,000 depending on the contract. Some are tied to remaining contract months. Some are flat. They exist for one reason: to make leaving expensive enough that you stop trying.
+                ETF amounts vary widely by contract. Some are tied to remaining contract months (liquidated damages). Some are flat. They exist for one reason: to make leaving expensive enough that you stop trying.
               </p>
               <p className="text-foreground leading-relaxed">
-                On a renewal, get the ETF struck out entirely. Replace it with a 30-day notice clause. Most processors will agree because the alternative is losing the account today.
+                On a renewal, get the ETF struck out entirely. Replace it with a 30-day notice clause. Some processors will agree because the alternative is losing the account today. Several publish no cancellation fee at all, including Helcim.
               </p>
 
               <h2 id="lever-5" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Lever 5: Lock the assessment pass-through
               </h2>
               <p className="text-foreground leading-relaxed">
-                Some processors quietly mark up the assessment line. Visa charges 0.14%, the statement shows 0.18%, and the 0.04% is silent margin. On $500K monthly that is $200 per month, $2,400 per year, hidden inside what looks like a pass-through.
+                Some processors quietly mark up the assessment line, billing a network fee above the network&apos;s own rate. The difference is silent margin: a 0.04 point pad on $500K monthly is $200 per month, $2,400 per year, hidden inside what looks like a pass-through.
               </p>
               <p className="text-foreground leading-relaxed">
-                Add one line to the contract: &quot;Assessments and dues are billed at network-published rates with no processor markup.&quot; Push back hard if the processor refuses. There is no legitimate reason to refuse.
+                Add one line to the contract: &quot;Assessments and dues are billed at the network&apos;s own rates with no processor markup.&quot; Push back hard if the processor refuses. There is no legitimate reason to refuse.
               </p>
 
               <h2 id="lever-6" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Lever 6: Fix the funding window
               </h2>
               <p className="text-foreground leading-relaxed">
-                Standard funding is T+1 (next business day). T+2 and T+3 exist because the processor uses your money for an extra day or two. On $200K monthly, an extra day of float is roughly $50 to $100 of foregone interest, but the bigger issue is cash flow predictability.
+                Funding times vary. Square, Helcim and Stax fund the next business day, Stripe&apos;s standard payouts take 2 business days, and Shopify Payments takes 3 business days in the U.S. (Oct 2026). On $200K monthly, each extra day of delay keeps about $6,700 of your money with the processor at any time, and the bigger issue is cash flow predictability.
               </p>
               <p className="text-foreground leading-relaxed">
-                Insist on T+1 funding with a same-day cutoff that matches your batch close. If the processor offers same-day funding for a fee, decline. T+1 standard is the right answer.
+                Insist on T+1 funding with a same-day cutoff that matches your batch close. If the processor offers faster funding for a fee (Square charges 1.95% for instant transfers, Stripe 1.5% for Instant Payouts), decline unless you need it. T+1 standard is the right answer.
               </p>
 
               <h2 id="lever-7" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Lever 7: Get rid of the monthly minimum
               </h2>
               <p className="text-foreground leading-relaxed">
-                A $25 monthly minimum becomes a $25 fee any month volume dips. If your business is seasonal, you pay it 4 to 6 months a year. Strike it. Processors give it up easily on a renewal.
+                A monthly minimum charges you the shortfall any month your fees fall below it. If your business is seasonal, you can pay it several months a year. Strike it. A renewal is the time to ask.
               </p>
 
               <h2 id="lever-8" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Lever 8: PCI fee waiver
               </h2>
               <p className="text-foreground leading-relaxed">
-                $20 to $40 a month for PCI compliance is normal. $20 to $40 a month for PCI non-compliance is the processor charging you because nobody filed the SAQ. File the SAQ (it takes 30 minutes online), then ask the processor to refund the last 6 months of non-compliance fees as part of the renewal. Most will.
+                Some processors charge a PCI compliance fee; others, such as Helcim, list none. A PCI non-compliance fee is the processor charging you because nobody filed the SAQ. File the SAQ, then ask the processor to refund the non-compliance fees you paid as part of the renewal. Some will.
               </p>
 
               <h2 id="lever-9" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
                 Lever 9: Chargeback fee floor
               </h2>
               <p className="text-foreground leading-relaxed">
-                $25 per chargeback is normal. $50 to $100 is gouging. On a clean retail account with two chargebacks a month, the difference between $25 and $75 is $1,200 a year. Set the floor at $20 to $25, period.
+                Published chargeback fees give you a benchmark: Stripe charges $15 per dispute, PayPal $20, and Helcim $15 only when you lose (prices checked Oct 2026). If your contract charges much more, ask to bring it in line. On an account with two chargebacks a month, every $10 of fee is $240 a year.
               </p>
               <p className="text-foreground leading-relaxed">
-                Separately: refuse the &quot;representment fee&quot; that some processors charge on top of the chargeback fee for the privilege of disputing it. That one should be zero.
+                Separately: push back on the &quot;representment fee&quot; that some processors charge on top of the chargeback fee for disputing it. Ask for it to be zero, or refunded when you win, as Stripe does with its $15 counter fee.
               </p>
 
               <h2 id="scripts" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -305,13 +305,13 @@ export default function Page() {
                 What happens after you sign the new contract
               </h2>
               <p className="text-foreground leading-relaxed">
-                Two checks in the first 60 days. First check: pull the first new statement and recompute the effective rate. The number should match the contract within 0.05%. If it does not, the implementation has a bug or the processor missed a fee schedule update. Get it fixed in writing.
+                Two checks in the first 60 days. First check: pull the first new statement and recompute the processor markup. The markup line should match the contract exactly. If it does not, the implementation has a bug or the processor missed a fee schedule update. Get it fixed in writing.
               </p>
               <p className="text-foreground leading-relaxed">
                 Second check: confirm every line item that was supposed to be removed (PCI non-compliance, monthly minimum, regulatory fee, ETF) is actually gone. Sometimes processors strike them from the contract and forget to update the billing system. The first statement is the ground truth.
               </p>
               <p className="text-foreground leading-relaxed">
-                Calendar the next renegotiation 18 months out. Do not wait for the contract to renew. Pull statements quarterly to confirm the rate has not drifted. Drift happens.
+                Calendar the next review 12 months out, a month or two before your contract anniversary. Do not wait for the contract to renew. Pull statements quarterly to confirm the rate has not drifted. Drift happens.
               </p>
 
               <h2 id="faq" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -320,11 +320,11 @@ export default function Page() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">How much can I negotiate off my processing fees?</h3>
-                  <p className="text-foreground leading-relaxed">On $50K to $250K monthly volume, 0.15% to 0.30% off the effective rate is realistic. Above $500K monthly, 0.30% to 0.60% is realistic. The dollar value depends on your base. On $1M monthly, even 0.20% is $24,000 a year.</p>
+                  <p className="text-foreground leading-relaxed">There is no reliable average. It depends on how far your current markup and fees sit above the competing quotes you collect. The dollar value depends on your base: every 0.10 point is $250 a month on $250K monthly volume and $1,000 a month ($12,000 a year) on $1M.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What is the single most powerful negotiation lever?</h3>
-                  <p className="text-foreground leading-relaxed">Switching from blended or tiered pricing to interchange-plus. That single change usually delivers 0.20% to 0.50% of savings before any other negotiation, because it strips out the surcharge the processor was hiding inside the blended rate.</p>
+                  <p className="text-foreground leading-relaxed">Switching from blended or tiered pricing to interchange-plus. It shows the processor markup as its own line, so you can see what you pay and attack it. In our cost model at $250K a month in person, interchange-plus pricing from Helcim costs about $4,850 and Stax about $4,475, against $6,900 on Square and about $7,000 on Stripe Terminal (prices checked Oct 2026).</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Do I need a competing offer in hand to negotiate?</h3>
@@ -336,7 +336,7 @@ export default function Page() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">How often should I renegotiate?</h3>
-                  <p className="text-foreground leading-relaxed">Every 18 to 24 months on a stable account. Pricing drifts. Card mix shifts. Network interchange resets twice a year. A two-year-old contract is almost always paying above market by 0.10% to 0.25%.</p>
+                  <p className="text-foreground leading-relaxed">Every year on a stable account, starting a month or two before your contract anniversary. Pricing drifts: some contracts let the processor change its markup on written notice. Card mix shifts. Visa updates its interchange schedule periodically; the current U.S. schedule took effect October 24, 2026.</p>
                 </div>
               </div>
 

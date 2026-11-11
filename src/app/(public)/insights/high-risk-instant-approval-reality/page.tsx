@@ -26,7 +26,7 @@ const baseMetadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "High-Risk Instant Approval: The Honest Reality",
-    description: "Instant approval and offshore merchant accounts, the trade-offs nobody puts in the ad, reviewed by a payments operator.",
+    description: "Instant approval and offshore merchant accounts: the trade-offs nobody puts in the ad.",
   },
 };
 
@@ -287,7 +287,7 @@ export default function HighRiskInstantApprovalRealityPage() {
 
               <ul className="text-foreground space-y-2 ml-6 list-disc">
                 <li><strong>Slower settlement.</strong> Cross-border settlement and banking hours can lengthen the time between a sale and money in your account.</li>
-                <li><strong>Higher fees and reserves.</strong> Offshore acquirers price for the same elevated risk domestic banks declined, often with larger reserves.</li>
+                <li><strong>Higher fees and reserves.</strong> Offshore acquirers price for the same higher risk domestic banks declined, often with larger reserves.</li>
                 <li><strong>Currency conversion.</strong> Settling in a different currency can add conversion cost and FX exposure.</li>
                 <li><strong>More diligence on your side.</strong> You should underwrite the offshore acquirer as carefully as it underwrites you. Settlement reliability and reputation vary widely, and a cheap-looking offshore yes can cost more than a domestic decline.</li>
               </ul>

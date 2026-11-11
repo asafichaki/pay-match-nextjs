@@ -45,7 +45,7 @@ const articleSchema = {
   headline: "CPACharge vs Stripe 2026: Which Wins for Pro Services",
   description: content.description,
   datePublished: "2026-04-02T07:08:41.508Z",
-  dateModified: "2026-09-10",
+  dateModified: "2026-11-11",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.mypayadvisor.com/insights/cpacharge-vs-stripe-comparison-2026-choosing-the-right-payment-processor-for-pro"
@@ -95,7 +95,7 @@ export default function InsightPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">Payment Processing</span>
                 <span>&bull;</span>
-                <span>Sources checked September 10, 2026</span>
+                <span>Sources checked November 11, 2026</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
                 CPACharge vs Stripe 2026: Which Wins for Pro Services

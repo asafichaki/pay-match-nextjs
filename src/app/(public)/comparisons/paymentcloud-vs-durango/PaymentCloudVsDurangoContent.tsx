@@ -6,19 +6,19 @@ import { ArticleByline } from "@/components/seo/ArticleByline";
 const FAQ = [
   {
     q: "Is PaymentCloud or Durango cheaper for high-risk?",
-    a: "Neither publishes a fixed high-risk rate; both quote per merchant after underwriting your industry, chargeback history, and volume. PaymentCloud positions on domestic interchange-plus and tiered pricing; Durango can route domestically or offshore, and an offshore placement sometimes lowers the effective cost or reserve for a heavily penalized vertical. The cheaper option depends on which acquiring bank approves you, so compare written quotes side by side.",
+    a: "PaymentCloud publishes no rates, so every PaymentCloud price is a quote. Durango publishes typical ranges for its high-risk accounts: 1.95% to 4.95% plus $0.15 to $0.25 per authorization, chargeback fees of $15 to $25, and a $5,000 monthly processing minimum for U.S. accounts ($50,000 for international accounts). Durango says these are ranges, not quotes, and that your exact pricing goes into a written offer before you sign. Because PaymentCloud gives no numbers in advance, the only fair comparison is written quotes from both, side by side.",
   },
   {
-    q: "Which one approves CBD, firearms, or nutra?",
-    a: "PaymentCloud publicly accepts CBD, firearms, adult, e-cig, and nutraceutical merchants through domestic acquirers, a common default for U.S. e-commerce. Durango serves these too and adds offshore acquiring, which matters once a vertical, chargeback history, or volume has been declined domestically. For a clean domestic store, PaymentCloud is usually faster; for harder-to-place cases, Durango widens the options.",
+    q: "Which one approves CBD, firearms, nutra, or adult?",
+    a: "PaymentCloud lists CBD, guns and firearms, adult, vape and e-cig, and nutraceuticals among the industries it supports. Durango also approves supplements and nutraceuticals, vape and tobacco, CBD (U.S.-only, with a Certificate of Analysis under 12 months old), and firearms dealers, but it lists adult content, kratom, and outbound tech support among the categories it cannot take. For adult content, PaymentCloud is the one of the two that will consider you. For a supplement, vape, or CBD store, get quotes from both.",
   },
   {
     q: "Do PaymentCloud and Durango both require a rolling reserve?",
-    a: "Both can, because the reserve is set by the acquiring bank behind the account, not the reseller. For high-risk verticals a reserve is common: a percentage of each batch held for a fixed window. It is negotiable over time; after several clean months, a written release request citing a low chargeback ratio and active fraud tooling often reduces the percentage or hold window with either provider.",
+    a: "Either can, because the reserve is set in underwriting by the bank behind the account. PaymentCloud says reserve requirements vary by business type and are discussed before signing, and publishes no percentage. Durango publishes a typical rolling reserve of 5% to 10% held 90 to 180 days, higher after a shutdown or termination, and says new businesses are often approved with a reserve of about 10% for six months. Reserves are often negotiable after several clean months: ask in writing with your chargeback ratio in hand.",
   },
   {
     q: "Can I switch from Stripe to PaymentCloud or Durango after a freeze?",
-    a: "Yes. Both specialize in merchants that Stripe, PayPal, or Square have declined, frozen, or terminated. Move quickly: get the freeze reason in writing, gather your processing history, and apply to a specialist whose acquiring banks already underwrite your category. A prior freeze does not block approval by itself; underwriting weighs it alongside your chargeback ratio and documentation.",
+    a: "Yes. Both work with merchants that Stripe, PayPal, or Square have declined, frozen, or terminated; Durango says most of the merchants it gets approved have been told no before. Move quickly: get the freeze reason in writing, gather your processing history, and apply to a specialist whose banks already underwrite your category. A prior freeze does not block approval by itself; underwriting weighs it alongside your chargeback ratio and documentation. Durango will not open an account while you are on the MATCH list or if your chargeback ratio is 5% or higher over three months.",
   },
 ];
 
@@ -42,12 +42,12 @@ export default function PaymentCloudVsDurangoContent({ aeoAnswer, relatedLinks }
               </h1>
               {aeoAnswer}
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
-                Both are real U.S. high-risk specialists that approve merchants the big processors decline. PaymentCloud is the stronger domestic default for fast onboarding; Durango is the better call when you need offshore acquiring or a domestic bank has already said no.
+                Both are U.S. high-risk specialists that approve merchants the big processors decline. PaymentCloud quotes everything and accepts some verticals Durango turns away, such as adult content; Durango publishes its price and reserve ranges up front and also sets up international accounts in Canada, Europe, and Panama.
               </p>
               <ArticleByline
                 author="Reviewed by Barak Bachar"
                 authorUrl="/about/barak"
-                lastUpdated="2026-08-25"
+                lastUpdated="2026-11-11"
               />
               <MatchCTA
                 variant="inline"
@@ -61,13 +61,13 @@ export default function PaymentCloudVsDurangoContent({ aeoAnswer, relatedLinks }
               <h2 className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Quick Verdict</h2>
               <div className="space-y-4">
                 <p className="text-lg text-foreground leading-relaxed">
-                  PaymentCloud and Durango Merchant Services are both U.S. high-risk specialists. PaymentCloud is the stronger default for domestic CBD, firearms, and nutra e-commerce that wants fast onboarding and month-to-month positioning. Durango is the better choice when you need offshore acquiring, very high volume, or a vertical (some adult, travel, tech-support) that domestic banks decline. The real difference is reserve flexibility and which acquiring banks sit behind each.
+                  PaymentCloud and Durango Merchant Services are both U.S. high-risk specialists with similar stated approval times: 24 hours to 5 days for PaymentCloud, as little as 24 hours and usually 1 to 3 business days for Durango. PaymentCloud publishes no rates, says it has no long-term contracts, and lists adult among its industries. Durango publishes typical ranges (1.95% to 4.95% plus $0.15 to $0.25 per authorization, a 5% to 10% rolling reserve held 90 to 180 days), charges no termination fee on U.S. accounts, and offers international accounts, but will not take adult content, kratom, or outbound tech support. The real difference is published terms and international reach versus a wider list of accepted verticals.
                 </p>
                 <p>
-                  <strong className="text-primary">Choose PaymentCloud</strong> for fast domestic high-risk approval with month-to-month terms and a dedicated account rep.
+                  <strong className="text-primary">Choose PaymentCloud</strong> if your vertical is one Durango turns away, such as adult content, or you want ACH, eCheck, and in-person terminals from the same provider.
                 </p>
                 <p>
-                  <strong className="text-primary">Choose Durango</strong> when a domestic bank has already declined you, or you need offshore acquiring or very high volume.
+                  <strong className="text-primary">Choose Durango</strong> when you want price and reserve ranges in writing before you apply, or you need an international or multi-currency account.
                 </p>
               </div>
             </section>
@@ -94,7 +94,7 @@ export default function PaymentCloudVsDurangoContent({ aeoAnswer, relatedLinks }
             <section id="comparison" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">Side-by-Side Comparison</h2>
               <p className="text-foreground leading-relaxed mb-6">
-                Positioning below reflects each provider&rsquo;s publicly stated focus and onboarding model. Both quote rates per merchant on underwriting, so we do not publish fixed numbers. Treat any &ldquo;guaranteed rate&rdquo; claim as a starting position to verify in writing.
+                Everything below comes from each provider&rsquo;s own site. PaymentCloud publishes no rates. Durango publishes typical ranges and says they are ranges, not quotes. Your final rate, reserve, and limits are set in underwriting, so get them in writing.
               </p>
               <div className="overflow-x-auto my-6">
                 <table className="w-full text-sm">
@@ -108,38 +108,53 @@ export default function PaymentCloudVsDurangoContent({ aeoAnswer, relatedLinks }
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Type</td>
-                      <td className="py-3 pr-4">High-risk specialist, U.S. acquirers</td>
-                      <td className="py-3">High-risk specialist, domestic and offshore</td>
+                      <td className="py-3 pr-4">High-risk specialist, partner banks not named</td>
+                      <td className="py-3">High-risk specialist; registered ISO of Fifth Third Bank, N.A.; U.S. plus international accounts</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-3 pr-4 font-medium">Published pricing</td>
+                      <td className="py-3 pr-4">None; quote-only</td>
+                      <td className="py-3">1.95% to 4.95% plus $0.15 to $0.25 per authorization; chargeback fee $15 to $25 (typical ranges)</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Best-fit verticals</td>
-                      <td className="py-3 pr-4">CBD, firearms, adult, nutra, e-cig, e-commerce</td>
-                      <td className="py-3">Offshore, adult, travel, high-volume, tech-support</td>
+                      <td className="py-3 pr-4">CBD, firearms, adult, nutra, vape, subscription, travel, tech support</td>
+                      <td className="py-3">Supplements, travel, subscriptions, vape, CBD (U.S. only), high ticket, international; no adult content, kratom, or outbound tech support</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Reserve</td>
-                      <td className="py-3 pr-4">Rolling, set by acquirer, negotiable over time</td>
-                      <td className="py-3">Rolling; offshore options can change domestic terms</td>
+                      <td className="py-3 pr-4">Varies by business type; not published</td>
+                      <td className="py-3">5% to 10% typical, held 90 to 180 days</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4 font-medium">Contract positioning</td>
-                      <td className="py-3 pr-4">Month-to-month positioning, no long-term lock advertised</td>
-                      <td className="py-3">Varies by acquiring bank</td>
+                      <td className="py-3 pr-4 font-medium">Contract</td>
+                      <td className="py-3 pr-4">&ldquo;No long-term contracts&rdquo; per its homepage; termination fees not published</td>
+                      <td className="py-3">No early termination fee on U.S. accounts; international terms vary by country</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4 font-medium">Acquiring breadth</td>
-                      <td className="py-3 pr-4">Domestic acquirers</td>
-                      <td className="py-3">Domestic plus offshore acquiring</td>
+                      <td className="py-3 pr-4 font-medium">Stated approval time</td>
+                      <td className="py-3 pr-4">24 hours to 5 days (homepage)</td>
+                      <td className="py-3">As little as 24 hours; most 1 to 3 business days; complex files 3 to 5</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-3 pr-4 font-medium">Volume</td>
+                      <td className="py-3 pr-4">Monthly limit on every account; suggests starting at $5,000 or $10,000</td>
+                      <td className="py-3">$5,000 a month minimum for U.S. accounts; $50,000 for international</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-3 pr-4 font-medium">Where accounts are set up</td>
+                      <td className="py-3 pr-4">U.S.</td>
+                      <td className="py-3">U.S., Canada, Europe, and Panama</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Support model</td>
-                      <td className="py-3 pr-4">Dedicated account rep, U.S.-based</td>
-                      <td className="py-3">High-touch, high-risk focused</td>
+                      <td className="py-3 pr-4">Account manager familiar with your industry; U.S.-based support</td>
+                      <td className="py-3">Dedicated account manager; based in Durango, Colorado, since 2004</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Best for</td>
-                      <td className="py-3 pr-4">Domestic high-risk e-commerce wanting speed and simplicity</td>
-                      <td className="py-3">Merchants declined domestically, or needing offshore / very high volume</td>
+                      <td className="py-3 pr-4">Verticals Durango excludes, or merchants wanting ACH, eCheck, and terminals too</td>
+                      <td className="py-3">Merchants who want published terms, or need an international or multi-currency account</td>
                     </tr>
                   </tbody>
                 </table>
@@ -149,21 +164,21 @@ export default function PaymentCloudVsDurangoContent({ aeoAnswer, relatedLinks }
             <section id="paymentcloud" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">PaymentCloud at a Glance</h2>
               <p className="text-foreground leading-relaxed">
-                <a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a> is a domestic high-risk reseller that places merchants with U.S. acquiring banks. It publicly states acceptance of CBD, firearms, adult, e-cig, nutraceutical, and broad e-commerce verticals, pairs each account with a dedicated rep, and positions on month-to-month terms. Pricing is interchange-plus or tiered and quoted per merchant after underwriting, so the rate you see depends on your industry, chargeback history, and volume, not a published rate card.
+                <a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a> places high-risk merchants with partner banks it does not name. Its industries page lists CBD, guns and firearms, adult, vape and e-cig, nutraceuticals and supplements, continuity and subscription, travel, tech support, and online pharmacy, among others. Its homepage promises support from an account manager familiar with your industry, says it has no long-term contracts, and gives approval times of 24 hours to 5 days. It publishes no rate card: card rates, monthly fees, setup fees, reserves, and termination fees are all quoted after underwriting. Every account has a monthly volume limit, and PaymentCloud suggests starting at $5,000 or $10,000 and asking for increases after three months of clean processing.
               </p>
             </section>
 
             <section id="durango" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">Durango Merchant Services at a Glance</h2>
               <p className="text-foreground leading-relaxed">
-                <a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a> is a high-risk specialist that places accounts with both domestic and offshore acquiring banks. The offshore option is the differentiator: it widens approval for verticals, chargeback profiles, or volume levels that domestic banks decline, and an offshore placement can change the reserve or effective cost. Durango leans toward offshore-suited, adult, travel, tech-support, and high-volume merchants, with high-touch onboarding rather than a self-serve flow.
+                <a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a> is a high-risk specialist based in Durango, Colorado, since 2004 and a registered ISO of Fifth Third Bank, N.A. It sets up U.S. accounts and international, multi-currency accounts in Canada, Europe, and Panama. Unusually for this category, it publishes typical ranges: 1.95% to 4.95% plus $0.15 to $0.25 per authorization, a 5% to 10% rolling reserve held 90 to 180 days, $15 to $25 chargeback fees, and a $5,000 monthly minimum for U.S. accounts ($50,000 for international). U.S. accounts carry no early termination fee. It is also clear about its limits: it will not take adult content, kratom, or outbound tech support, merchants currently on the MATCH list, or chargeback ratios of 5% or higher over three months. Onboarding is handled by a specialist who prepares the application rather than a self-serve flow.
               </p>
             </section>
 
             <section id="reserves" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">Reserves Compared: The Number That Actually Matters</h2>
               <p className="text-foreground leading-relaxed mb-6">
-                With either provider, the reserve is set by the acquiring bank behind your account, not by the reseller. For high-risk verticals a rolling reserve is common, and it is negotiable once you have a clean processing history. This is where an operator&rsquo;s judgment beats a price comparison.
+                With either provider, the reserve is set in underwriting by the bank behind your account. PaymentCloud says reserve requirements vary by business type and are discussed before you sign, without a published figure. Durango publishes a typical 5% to 10% rolling reserve held 90 to 180 days, higher after a shutdown or termination, and says new businesses are often approved with about 10% for six months. Either way it is often negotiable once you have a clean processing history. This is where an operator&rsquo;s judgment beats a price comparison.
               </p>
               <figure id="barak-quote" className="my-8 border-l-4 border-primary bg-muted/40 px-6 py-5 rounded-r-md">
                 <blockquote cite="https://www.mypayadvisor.com/about/barak" className="text-foreground italic leading-relaxed">
@@ -181,10 +196,11 @@ export default function PaymentCloudVsDurangoContent({ aeoAnswer, relatedLinks }
             <section id="vertical" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">Which One Fits Your Vertical</h2>
               <ul className="text-foreground space-y-3 ml-6 list-disc">
-                <li><strong>CBD, firearms, nutra, e-cig (domestic):</strong> PaymentCloud is the usual fast path through U.S. acquirers.</li>
-                <li><strong>Adult, travel, tech-support, or already declined domestically:</strong> Durango&rsquo;s offshore acquiring widens approval.</li>
-                <li><strong>Very high volume needing multiple banks:</strong> Durango, for acquirer breadth and stability.</li>
-                <li><strong>Switching after a Stripe or PayPal freeze:</strong> either works; start with PaymentCloud for speed, fall back to Durango if domestic banks decline.</li>
+                <li><strong>CBD, firearms, nutra, vape (U.S.):</strong> both serve these; get a quote from each. Durango&rsquo;s CBD accounts are U.S.-only and need a Certificate of Analysis under 12 months old.</li>
+                <li><strong>Adult content:</strong> PaymentCloud lists adult among its industries; Durango lists adult content as a category it cannot take. Tech support sellers should note Durango reviews inbound tech support but not outbound.</li>
+                <li><strong>Selling internationally or in several currencies:</strong> Durango, for accounts in Canada, Europe, or Panama (minimum $50,000 a month).</li>
+                <li><strong>Want terms before you apply:</strong> Durango publishes rate, reserve, and fee ranges and charges no termination fee on U.S. accounts.</li>
+                <li><strong>Switching after a Stripe or PayPal freeze:</strong> either works; both state similar approval times, so apply to both and compare written offers.</li>
               </ul>
               <p className="text-foreground leading-relaxed mt-6">
                 For the full category, including reserves, VAMP thresholds, and how to stay approved, read our <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">operator&rsquo;s guide to high-risk merchant accounts</Link>.
@@ -194,7 +210,7 @@ export default function PaymentCloudVsDurangoContent({ aeoAnswer, relatedLinks }
             <section id="verdict" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">The Operator&rsquo;s Verdict</h2>
               <p className="p-4 bg-muted/50 text-foreground leading-relaxed">
-                <strong>Bottom line:</strong> Choose PaymentCloud for fast domestic high-risk approval with month-to-month terms; choose Durango when a domestic bank has already declined you, or you need offshore acquiring or very high volume. Compare written quotes from both, and weigh acquirer breadth over a slightly lower headline rate.
+                <strong>Bottom line:</strong> Choose PaymentCloud if your vertical is one Durango excludes, such as adult content, or you want ACH, eCheck, and terminals from one provider; choose Durango when you want published price and reserve ranges, no termination fee on a U.S. account, or an international account. Approval speed is not the deciding factor: both state similar times. Compare written quotes from both, and weigh stability over a slightly lower headline rate.
               </p>
             </section>
 

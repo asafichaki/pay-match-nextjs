@@ -6,19 +6,19 @@ import { ArticleByline } from "@/components/seo/ArticleByline";
 const FAQ = [
   {
     q: "What is the main difference between PaymentCloud and Easy Pay Direct?",
-    a: "Both are U.S. high-risk specialists that place merchants the big processors decline, but their emphasis differs. PaymentCloud positions as a broad high-risk reseller with a dedicated account rep and fast domestic onboarding across CBD, firearms, and nutra. Easy Pay Direct is known for load balancing, distributing volume across multiple merchant IDs so a single account is less likely to cap or freeze a high-volume merchant. The right pick depends on whether you want fast simple approval or resilient multi-MID routing.",
+    a: "Both are U.S. high-risk specialists that place merchants the big processors decline, and both list CBD, nutraceuticals, firearms, vape, and adult among the verticals they serve. The differences are in what they publish and how they structure accounts. PaymentCloud publishes no rates; it says it has no long-term contracts and approves in 24 hours to 5 days. Easy Pay Direct publishes an online card rate of 2.69% + $0.36 per transaction and a $99 setup fee waived if documents arrive within 24 hours, and builds multi-account transaction routing into its gateway so volume can move to another merchant account if one has a problem.",
   },
   {
     q: "What is multi-MID load balancing and do I need it?",
-    a: "Load balancing splits your volume across more than one merchant ID, often across more than one acquiring bank. The benefit is resilience: if one MID hits a cap, a chargeback spike, or a pause, the others keep processing, so the business does not go fully offline. It matters most for high-volume subscription and e-commerce merchants. A smaller domestic store usually does not need it; a scaling subscription business often does. Easy Pay Direct centers its offer on this model.",
+    a: "Load balancing, which Easy Pay Direct calls multi-account transaction routing, splits your transactions across more than one merchant account, often at different banks. The benefit is resilience: if one account hits a volume limit, a chargeback spike, or a pause, the others keep processing. Easy Pay Direct says it recommends a second merchant account once annual volume passes $250,000 or when you rely on payments for payroll, ad spend, or inventory. A small store usually does not need it; a scaling subscription business often does.",
   },
   {
     q: "Do PaymentCloud and Easy Pay Direct both require a rolling reserve?",
-    a: "Both can, because the reserve is set by the acquiring bank behind the account, not the reseller. For high-risk verticals a rolling reserve is common: a percentage of each batch held for a fixed window. It is negotiable over time; after several clean months, a written release request citing a low chargeback ratio and active fraud tooling often reduces it. With a multi-MID setup, reserve terms can differ per MID, so review each account rather than assuming one number applies across all.",
+    a: "Both can, because the reserve is set during underwriting by the bank behind the account, and neither publishes a fixed percentage. PaymentCloud says reserve requirements vary by business type and are discussed before signing. Easy Pay Direct says some high-risk accounts need a reserve, typically on a six-month rolling cycle with funds held at least 180 days, while others get a capped reserve that stops collecting at a set amount. Reserves are often negotiable after several clean months; ask in writing with your chargeback ratio in hand. With more than one merchant account, terms can differ per account, so review each one.",
   },
   {
     q: "Can I switch from Stripe to PaymentCloud or Easy Pay Direct after a freeze?",
-    a: "Yes. Both specialize in merchants that Stripe, PayPal, or Square have declined, frozen, or terminated. Move quickly: get the freeze reason in writing, gather your processing history, and apply to a specialist whose acquiring banks already underwrite your category. If a freeze hurt you because all volume sat on one account, Easy Pay Direct's multi-MID model is worth weighing, because it reduces the single-point-of-failure that caused the outage.",
+    a: "Yes. Both work with merchants that Stripe, PayPal, or Square have declined, frozen, or terminated. Move quickly: get the freeze reason in writing, gather your processing history, and apply to a specialist whose banks already underwrite your category. If a freeze hurt you because all volume sat on one account, Easy Pay Direct's multi-account routing is worth weighing, because it reduces the single point of failure that caused the outage.",
   },
 ];
 
@@ -42,12 +42,12 @@ export default function PaymentCloudVsEasyPayDirectContent({ aeoAnswer, relatedL
               </h1>
               {aeoAnswer}
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
-                Both are real U.S. high-risk specialists that approve merchants the big processors decline. PaymentCloud is the simpler domestic default; Easy Pay Direct leans on load balancing across multiple MIDs, which matters most for high-volume subscription and e-commerce merchants.
+                Both are U.S. high-risk specialists that approve merchants the big processors decline. PaymentCloud quotes every account and publishes no rates; Easy Pay Direct publishes a starting online rate and builds routing across multiple merchant accounts into its gateway, which matters most for high-volume subscription and e-commerce merchants.
               </p>
               <ArticleByline
                 author="Reviewed by Barak Bachar"
                 authorUrl="/about/barak"
-                lastUpdated="2026-08-25"
+                lastUpdated="2026-11-11"
               />
               <MatchCTA
                 variant="inline"
@@ -61,13 +61,13 @@ export default function PaymentCloudVsEasyPayDirectContent({ aeoAnswer, relatedL
               <h2 className="text-sm font-semibold uppercase tracking-wider text-primary mb-4">Quick Verdict</h2>
               <div className="space-y-4">
                 <p className="text-lg text-foreground leading-relaxed">
-                  PaymentCloud and Easy Pay Direct are both U.S. high-risk specialists. PaymentCloud is the stronger default for domestic CBD, firearms, and nutra e-commerce that wants fast onboarding and a dedicated rep. Easy Pay Direct is the better choice for high-volume subscription and e-commerce merchants who need load balancing across multiple merchant IDs so one capped or frozen account cannot take the whole business offline. The real difference is single-account simplicity versus multi-MID resilience.
+                  PaymentCloud and Easy Pay Direct are both U.S. high-risk specialists, and both list CBD, nutraceuticals, firearms, vape, and adult among their verticals. PaymentCloud is quote-only, says it has no long-term contracts, and approves in 24 hours to 5 days. Easy Pay Direct publishes an online card rate of 2.69% + $0.36 per transaction and routes transactions across multiple merchant accounts so one capped or frozen account cannot take the whole business offline. The real difference is a single quoted account versus a published starting rate plus multi-account resilience.
                 </p>
                 <p>
-                  <strong className="text-primary">Choose PaymentCloud</strong> for fast, simple domestic high-risk approval with a dedicated account rep.
+                  <strong className="text-primary">Choose PaymentCloud</strong> for a single quoted high-risk account with no long-term contract, especially if you also want ACH, eCheck, or in-person terminals.
                 </p>
                 <p>
-                  <strong className="text-primary">Choose Easy Pay Direct</strong> when high volume or subscription billing means you need load balancing across several MIDs.
+                  <strong className="text-primary">Choose Easy Pay Direct</strong> when you want a published starting rate, or high volume or subscription billing means you need routing across several merchant accounts.
                 </p>
               </div>
             </section>
@@ -94,7 +94,7 @@ export default function PaymentCloudVsEasyPayDirectContent({ aeoAnswer, relatedL
             <section id="comparison" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">Side-by-Side Comparison</h2>
               <p className="text-foreground leading-relaxed mb-6">
-                Positioning below reflects each provider&rsquo;s publicly stated focus and onboarding model. Both quote rates per merchant on underwriting, so we do not publish fixed numbers. Treat any &ldquo;guaranteed rate&rdquo; claim as a starting position to verify in writing.
+                Everything below comes from each provider&rsquo;s own site. PaymentCloud publishes no rates. Easy Pay Direct publishes a starting online rate and setup fee, and offers custom pricing for higher volume. Your final rate, reserve, and limits are set in underwriting, so get them in writing.
               </p>
               <div className="overflow-x-auto my-6">
                 <table className="w-full text-sm">
@@ -109,27 +109,37 @@ export default function PaymentCloudVsEasyPayDirectContent({ aeoAnswer, relatedL
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Type</td>
                       <td className="py-3 pr-4">High-risk specialist, U.S. acquirers</td>
-                      <td className="py-3">High-risk specialist, multi-MID load balancing</td>
+                      <td className="py-3">High-risk specialist, says it works with 30+ banking partners</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Best-fit verticals</td>
-                      <td className="py-3 pr-4">CBD, firearms, adult, nutra, e-cig, e-commerce</td>
-                      <td className="py-3">E-commerce, subscription, supplements, high-volume</td>
+                      <td className="py-3 pr-4">CBD, firearms, adult, nutra, vape, subscription, travel, online pharmacy</td>
+                      <td className="py-3">CBD, nutra, firearms, vape, coaching and courses, subscription, telemedicine, adult and dating</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-3 pr-4 font-medium">Published pricing</td>
+                      <td className="py-3 pr-4">None; quote-only</td>
+                      <td className="py-3">Online card rate 2.69% + $0.36; $99 setup fee waived if documents arrive within 24 hours; monthly fee varies</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Signature model</td>
-                      <td className="py-3 pr-4">Single account, dedicated rep, broad acceptance</td>
-                      <td className="py-3">Load balancing across multiple merchant IDs</td>
+                      <td className="py-3 pr-4">Single account with an account manager</td>
+                      <td className="py-3">Multi-account transaction routing across merchant accounts</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Reserve</td>
-                      <td className="py-3 pr-4">Rolling, set by acquirer, negotiable over time</td>
-                      <td className="py-3">Rolling; terms can differ per MID</td>
+                      <td className="py-3 pr-4">Varies by business type; not published</td>
+                      <td className="py-3">Some accounts; typically six-month rolling or capped; can differ per account</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4 font-medium">Contract positioning</td>
-                      <td className="py-3 pr-4">Month-to-month positioning, no long-term lock advertised</td>
-                      <td className="py-3">Varies by acquiring bank and MID setup</td>
+                      <td className="py-3 pr-4 font-medium">Contract</td>
+                      <td className="py-3 pr-4">&ldquo;No long-term contracts&rdquo; per its homepage; termination fees not published</td>
+                      <td className="py-3">Contract length and termination fees not published</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="py-3 pr-4 font-medium">Stated approval time</td>
+                      <td className="py-3 pr-4">24 hours to 5 days (homepage)</td>
+                      <td className="py-3">24 to 48 hours from a complete submission; its FAQ says most take 3 business days to a couple of weeks</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Resilience to a single freeze</td>
@@ -138,8 +148,8 @@ export default function PaymentCloudVsEasyPayDirectContent({ aeoAnswer, relatedL
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4 font-medium">Best for</td>
-                      <td className="py-3 pr-4">Domestic high-risk e-commerce wanting speed and simplicity</td>
-                      <td className="py-3">High-volume or subscription merchants needing multi-MID routing</td>
+                      <td className="py-3 pr-4">Merchants who want one quoted account, plus ACH, eCheck, or in-person terminals</td>
+                      <td className="py-3">High-volume or subscription merchants needing routing across several accounts</td>
                     </tr>
                   </tbody>
                 </table>
@@ -149,21 +159,21 @@ export default function PaymentCloudVsEasyPayDirectContent({ aeoAnswer, relatedL
             <section id="paymentcloud" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">PaymentCloud at a Glance</h2>
               <p className="text-foreground leading-relaxed">
-                <a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a> is a domestic high-risk reseller that places merchants with U.S. acquiring banks. It publicly states acceptance of CBD, firearms, adult, e-cig, nutraceutical, and broad e-commerce verticals, pairs each account with a dedicated rep, and positions on month-to-month terms. Pricing is interchange-plus or tiered and quoted per merchant after underwriting, so the rate you see depends on your industry, chargeback history, and volume, not a published rate card. Its strength is a fast, simple path to a single working account.
+                <a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a> places high-risk merchants with partner banks it does not name. Its industries page lists CBD, guns and firearms, adult, vape and e-cig, nutraceuticals and supplements, continuity and subscription, travel, and online pharmacy, among others. Its homepage promises support from an account manager familiar with your industry, says it has no long-term contracts, and gives approval times of 24 hours to 5 days. It publishes no rate card: card rates, monthly fees, setup fees, reserves, and termination fees are all quoted after underwriting. Its strength is a straightforward path to a single working account, with ACH, eCheck, and in-person terminals available from the same provider.
               </p>
             </section>
 
             <section id="easypaydirect" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">Easy Pay Direct at a Glance</h2>
               <p className="text-foreground leading-relaxed">
-                <a href="https://easypaydirect.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Easy Pay Direct</a> is a high-risk specialist best known for load balancing: distributing a merchant&rsquo;s volume across multiple merchant IDs, often across more than one acquiring bank. The point is resilience. If one MID hits a volume cap, a chargeback spike, or a pause, the others keep processing, so the business does not go fully offline. That model fits high-volume e-commerce and subscription merchants whose monthly volume would strain a single high-risk account, and supplements and recurring-billing categories where chargeback exposure is structurally higher.
+                <a href="https://www.easypaydirect.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Easy Pay Direct</a> is a high-risk specialist best known for load balancing, which it calls multi-account transaction routing: transactions move across more than one merchant account, often at different banks, so that if one account has an issue the others keep processing. It says it works with 30+ banking partners and recommends a second merchant account once annual volume passes $250,000. Its high-risk page publishes an online card rate of 2.69% + $0.36 per transaction, a $99 setup fee waived if documents are submitted within 24 hours, and a monthly fee that varies by business type and volume, with custom pricing for higher-volume merchants. It says every account includes chargeback tools and decline recovery. That model fits high-volume e-commerce and subscription merchants whose volume would strain a single high-risk account.
               </p>
             </section>
 
             <section id="reserves" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">Reserves and Multi-MID: The Setup That Actually Matters</h2>
               <p className="text-foreground leading-relaxed mb-6">
-                With either provider, the reserve is set by the acquiring bank behind your account, not by the reseller. For high-risk verticals a rolling reserve is common, and it is negotiable once you have a clean processing history. With a multi-MID setup, terms can differ per MID, so the question is not only the reserve number but how concentrated your risk is across accounts. This is where an operator&rsquo;s judgment beats a price comparison.
+                With either provider, the reserve is set in underwriting by the bank behind your account. PaymentCloud says reserve requirements vary by business type and are discussed before you sign. Easy Pay Direct says some high-risk accounts need a reserve, typically on a six-month rolling cycle with funds held at least 180 days, while others get a capped reserve. Either way it is often negotiable once you have a clean processing history. With several merchant accounts, terms can differ per account, so the question is not only the reserve number but how concentrated your risk is. This is where an operator&rsquo;s judgment beats a price comparison.
               </p>
               <figure id="barak-quote" className="my-8 border-l-4 border-primary bg-muted/40 px-6 py-5 rounded-r-md">
                 <blockquote cite="https://www.mypayadvisor.com/about/barak" className="text-foreground italic leading-relaxed">
@@ -181,20 +191,21 @@ export default function PaymentCloudVsEasyPayDirectContent({ aeoAnswer, relatedL
             <section id="vertical" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">Which One Fits Your Business</h2>
               <ul className="text-foreground space-y-3 ml-6 list-disc">
-                <li><strong>Domestic CBD, firearms, nutra, e-cig store:</strong> PaymentCloud is the usual fast path through U.S. acquirers.</li>
-                <li><strong>High-volume e-commerce or subscription billing:</strong> Easy Pay Direct, for load balancing across multiple MIDs.</li>
-                <li><strong>Recurring billing with structural chargeback exposure:</strong> Easy Pay Direct&rsquo;s multi-MID model spreads the risk.</li>
-                <li><strong>Switching after a Stripe or PayPal freeze:</strong> either works; if all your volume sat on one account, lean toward Easy Pay Direct to avoid repeating the single-point-of-failure.</li>
+                <li><strong>Domestic CBD, firearms, nutra, or vape store wanting one account:</strong> both list these verticals; get a quote from PaymentCloud and compare it with Easy Pay Direct&rsquo;s published starting rate.</li>
+                <li><strong>High-volume e-commerce or subscription billing:</strong> Easy Pay Direct, for routing across multiple merchant accounts.</li>
+                <li><strong>Recurring billing with structural chargeback exposure:</strong> Easy Pay Direct&rsquo;s multi-account model spreads the risk.</li>
+                <li><strong>Need ACH, eCheck, or in-person terminals too:</strong> PaymentCloud offers all three alongside card processing.</li>
+                <li><strong>Switching after a Stripe or PayPal freeze:</strong> either works; if all your volume sat on one account, lean toward Easy Pay Direct to avoid repeating the single point of failure.</li>
               </ul>
               <p className="text-foreground leading-relaxed mt-6">
-                For the full category, including reserves, VAMP thresholds, and how to stay approved, read our <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">operator&rsquo;s guide to high-risk merchant accounts</Link>. You can also compare PaymentCloud against an offshore-capable specialist in our <Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">PaymentCloud vs Durango</Link> breakdown.
+                For the full category, including reserves, VAMP thresholds, and how to stay approved, read our <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">operator&rsquo;s guide to high-risk merchant accounts</Link>. You can also compare PaymentCloud against a specialist with international accounts in our <Link href="/comparisons/paymentcloud-vs-durango" className="text-primary hover:underline">PaymentCloud vs Durango</Link> breakdown.
               </p>
             </section>
 
             <section id="verdict" className="py-10 border-b border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6">The Operator&rsquo;s Verdict</h2>
               <p className="p-4 bg-muted/50 text-foreground leading-relaxed">
-                <strong>Bottom line:</strong> Choose PaymentCloud for fast, simple domestic high-risk approval with a dedicated rep; choose Easy Pay Direct when high volume or subscription billing means a single account is a liability and you need load balancing across several MIDs. Compare written quotes from both, and weigh resilience over a slightly lower headline rate.
+                <strong>Bottom line:</strong> Choose PaymentCloud for a single quoted high-risk account with no long-term contract and ACH, eCheck, or in-person options from the same provider; choose Easy Pay Direct when you want a published starting rate, or when high volume or subscription billing means a single account is a liability and you need routing across several merchant accounts. Compare written quotes from both, and weigh resilience over a slightly lower headline rate.
               </p>
             </section>
 

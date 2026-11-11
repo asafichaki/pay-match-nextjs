@@ -10,8 +10,8 @@ import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
-  title: "How to Reduce Credit Card Processing Fees: Ultimate 2025 Merchant Statement Audit Guide",
-  description: "Learn how to audit your merchant statement, identify hidden fees, and reduce credit card processing costs by 20-30%. Expert guide to pricing models, junk fees, and effective rate calculations.",
+  title: "Merchant Statement Audit Guide: Cut Processing Fees",
+  description: "Learn how to audit your merchant statement, identify hidden fees, and compare your effective rate with published prices. A guide to pricing models, junk fees, and effective rate calculations.",
   keywords: "merchant statement audit, reduce credit card processing fees, interchange-plus pricing, effective rate calculation, hidden processing fees, junk fees, payment processor markup, tiered pricing, flat rate pricing",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/merchant-statement-audit-guide",
@@ -23,14 +23,14 @@ const baseMetadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/merchant-statement-audit-guide",
-    title: "How to Reduce Credit Card Processing Fees: Ultimate 2025 Merchant Statement Audit Guide",
-    description: "Audit your merchant statement and reduce processing fees by 20-30%. Expert guide to hidden fees, pricing models, and cost optimization.",
+    title: "Merchant Statement Audit Guide: Cut Processing Fees",
+    description: "Audit your merchant statement and find the fees you can cut. A guide to hidden fees, pricing models, and effective rates.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "How to Reduce Credit Card Processing Fees: 2025 Merchant Statement Audit Guide",
-    description: "Learn how to audit your merchant statement and reduce processing fees by 20-30%.",
+    title: "Merchant Statement Audit Guide: Cut Processing Fees",
+    description: "Learn how to audit your merchant statement and find the fees you can cut.",
   },
 };
 
@@ -44,8 +44,8 @@ export default function MerchantStatementAuditGuidePage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "How to Reduce Credit Card Processing Fees: The Ultimate 2025 Guide to Merchant Statement Audits",
-    "description": "Learn how to audit your merchant statement, identify hidden fees, and reduce credit card processing costs by 20-30%. Expert guide to understanding pricing models, junk fees, and effective rate calculations.",
+    "headline": "How to Reduce Credit Card Processing Fees: A Guide to Merchant Statement Audits",
+    "description": "Learn how to audit your merchant statement, identify hidden fees, and compare your effective rate with published prices. A guide to pricing models, junk fees, and effective rate calculations.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
@@ -63,7 +63,7 @@ export default function MerchantStatementAuditGuidePage() {
       }
     },
     "datePublished": "2025-12-26",
-    "dateModified": "2025-12-26",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/merchant-statement-audit-guide"
@@ -91,7 +91,7 @@ export default function MerchantStatementAuditGuidePage() {
         "name": "What is a good effective rate for credit card processing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For a brick-and-mortar retail business, a competitive effective rate is between 2.2% and 2.5%. For e-commerce businesses, due to higher fraud risk, a rate between 2.5% and 2.9% is considered standard. If your rate is consistently above 3.0%, you are likely overpaying."
+          "text": "There is no official benchmark, so compare with published prices for your volume. Our cost tables put in-person processing at $50K a month between 2.04% (Helcim) and 2.90% (Square), and online between 2.40% (Stax) and 3.70% (Clover keyed cards), prices checked Oct 2026. Online usually costs more because card-not-present interchange is higher. If your effective rate sits above the published options for your volume, get competing quotes."
         }
       },
       {
@@ -99,7 +99,7 @@ export default function MerchantStatementAuditGuidePage() {
         "name": "Can I negotiate rates with companies like Square or Stripe?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Generally, no. Stripe and Square operate on a fixed 'Flat Rate' model that is non-negotiable for small businesses. However, if you process over $1 million annually, they may offer custom volume pricing. For most businesses, switching to a dedicated merchant account is the better way to lower fees."
+          "text": "Not at their standard rates. Stripe charges 2.9% + 30¢ online and 2.7% + 5¢ in person; Square charges 2.6% + 15¢ in person on its Free plan (checked Oct 2026). Stripe says it offers custom pricing for businesses with large processing volumes, and Square's pricing page has a contact-sales option. For many businesses, comparing interchange-plus quotes is the more reliable way to lower fees: in our cost tables Helcim costs less than Square and Stripe at every volume we test."
         }
       },
       {
@@ -115,7 +115,7 @@ export default function MerchantStatementAuditGuidePage() {
         "name": "Is Interchange-Plus always better than Tiered Pricing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Interchange-Plus is the only model that offers full transparency. It separates the money going to the bank (Interchange) from the money going to the processor (Markup), ensuring that when card fees drop, your costs drop too. Tiered pricing almost always results in higher costs due to opaque 'downgrades.'"
+          "text": "For transparency, yes. Interchange-plus separates the money going to the card-issuing bank (interchange) from the money going to the processor (markup), so when card costs drop, your costs drop too. On cost it usually wins as well, but the result depends on your card mix and the markup you are quoted. Tiered pricing hides which interchange category each sale lands in, so the only way to compare it is a statement analysis on your own card mix."
         }
       },
       {
@@ -123,7 +123,7 @@ export default function MerchantStatementAuditGuidePage() {
         "name": "What is Level 3 Processing and does it apply to me?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If you sell to other businesses (B2B) or government entities, Level 3 Processing allows you to input extra data (like invoice numbers and tax ID) with the transaction. By doing this, Visa/Mastercard lower the Interchange risk fee, potentially saving you up to 1.0% per transaction."
+          "text": "If you sell to other businesses (B2B) or government entities, Level 3 processing sends extra data with the transaction, such as tax amount, invoice number and line-item detail. On Visa's schedule effective Oct 24, 2026, a corporate or purchasing card costs 2.70% + 10¢ card-not-present, while its Commercial Product 3 rate with Level 3 data is 1.75% + 10¢, a difference of 0.95 percentage points. Visa ended its separate Level 2 rates in April 2026."
         }
       }
     ]
@@ -150,12 +150,12 @@ export default function MerchantStatementAuditGuidePage() {
                 </div>
                 
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                  How to Reduce Credit Card Processing Fees: The Ultimate 2025 Guide to Merchant Statement Audits
+                  How to Reduce Credit Card Processing Fees: A Guide to Merchant Statement Audits
                 </h1>
                 <AeoAnswer kind="insights" slug="merchant-statement-audit-guide" />
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                  Over 90% of U.S. merchants are overpaying for credit card processing. This guide teaches you how to audit your merchant statement, identify hidden fees, and reclaim your bottom line through transparency and smarter pricing strategies.
+                  Many merchants never check what they actually pay for card processing. This guide teaches you how to audit your merchant statement, identify hidden fees, and compare your effective rate with published prices.
                 </p>
 
                 {/* Author Byline */}
@@ -206,17 +206,17 @@ export default function MerchantStatementAuditGuidePage() {
                 </h2>
 
                 <p className="text-lg text-foreground leading-relaxed">
-                  In today's digital-first economy, accepting credit cards is not optional, it is the lifeblood of commerce. Yet, for millions of business owners across the United States, the monthly merchant statement remains the most baffling financial document they receive. It is often more cryptic than a complex tax filing and more volatile than utility costs.
+                  For most businesses, accepting credit cards is not optional. Yet, for millions of business owners across the United States, the monthly merchant statement remains the most baffling financial document they receive. It is often more cryptic than a complex tax filing and more volatile than utility costs.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  This confusion is not accidental; it is a feature, not a bug, of what industry insiders call the <strong>"Obfuscation Economy."</strong>
+                  This confusion is not accidental. Bundled pricing and vague fee names make the processor's margin hard to see, which is what we call the <strong>"Obfuscation Economy."</strong>
                 </p>
 
                 <ExpertQuote
                   pageUrl="https://www.mypayadvisor.com/insights/merchant-statement-audit-guide"
                   quotation={{
-                    text: "Most merchants on a tiered contract pay $400 to $900 a year in flat fees that have nothing to do with card processing, PCI, regulatory product, statement, monthly minimum. Every line is negotiable. The bank earns this revenue because nobody asks in writing for it to be waived. Five minutes and a written request removes most of it.",
+                    text: "On a tiered contract, flat fees that have nothing to do with card processing, PCI, regulatory product, statement, monthly minimum, add up fastest in slow months. The lines are processor-set, so they are negotiable. The bank keeps this revenue when nobody asks in writing for it to be waived.",
                     creator: {
                       "@type": "Person",
                       name: "Barak Bachar",
@@ -235,12 +235,12 @@ export default function MerchantStatementAuditGuidePage() {
                 />
 
                 <p className="text-foreground leading-relaxed">
-                  Credit card processors (ISOs) and acquiring banks rely on a complex web of acronyms, intentionally vague nomenclature, and bundled pricing strategies to mask their true profit margins. Research indicates that <strong>over 90% of U.S. merchants are overpaying for credit card processing</strong>, simply because the invoices are designed to be unreadable.
+                  Many credit card processors (ISOs) and acquiring banks use acronyms, vague fee names, and bundled pricing that make their margins hard to see. If you cannot read the invoice, you cannot tell whether you are overpaying.
                 </p>
 
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <p className="text-foreground">
-                    <strong>The Hidden Truth:</strong> The "secret" behind the massive advertising budgets of payment giants is their reliance on the merchant's inability to calculate the true cost of acceptance. While you focus on growing your business, serving customers, and managing inventory, your processor may be siphoning off 10% to 30% more revenue than necessary through "junk fees" and inflated markups.
+                    <strong>The Hidden Truth:</strong> The "secret" behind the massive advertising budgets of payment giants is their reliance on the merchant's inability to calculate the true cost of acceptance. While you focus on growing your business, serving customers, and managing inventory, your processor may be collecting more than necessary through "junk fees" and inflated markups. Only your own statement shows how much.
                   </p>
                 </div>
 
@@ -264,11 +264,11 @@ export default function MerchantStatementAuditGuidePage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">A. The Card Networks ("The Rails")</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>Who they are:</strong> <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a>, <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>, Discover, and American Express.
+                  <strong>Who they are:</strong> <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a>, Mastercard, Discover, and American Express.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>What they charge:</strong> Assessments. These are the toll collectors of the digital highway. They set the rules and maintain the global infrastructure. Their fees are <strong>non-negotiable</strong> and typically range from 0.13% to 0.15%. If you see a line item for "Brand Usage Fee" or "Network Access," this is them.
+                  <strong>What they charge:</strong> Assessments. These are the toll collectors of the digital highway. They set the rules and maintain the global infrastructure. Their fees are <strong>non-negotiable</strong> when passed through at cost, but the rates are not on Visa's public interchange schedule, so ask your processor for the network's published rate behind each line. If you see a line item for "Brand Usage Fee" or "Network Access," this is them, and anything above the published rate is markup.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">B. The Issuing Banks (The Risk Takers)</h3>
@@ -278,12 +278,12 @@ export default function MerchantStatementAuditGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>What they charge:</strong> Interchange Fees. This is the lion's share of your cost, typically <strong>70% to 90%</strong> of the total fees you pay. The Issuing Bank takes this cut to cover the risk of credit, fraud, and to fund those "cash back" or "airline mile" rewards programs consumers love.
+                  <strong>What they charge:</strong> Interchange Fees. This is usually the largest part of your cost, though its share depends on your pricing model and card mix. The Issuing Bank takes this cut to cover the risk of credit, fraud, and to fund those "cash back" or "airline mile" rewards programs consumers love.
                 </p>
 
                 <div className="my-6 p-4 bg-muted/30 rounded-lg">
                   <p className="text-foreground">
-                    <strong>Note:</strong> You cannot negotiate Interchange rates. They are set at the federal/network level. However, you <em>can</em> optimize how you are billed for them.
+                    <strong>Note:</strong> You cannot negotiate Interchange rates. The card networks set them, and the Federal Reserve's Regulation II caps debit interchange for large issuers. However, you <em>can</em> optimize how you are billed for them.
                   </p>
                 </div>
 
@@ -313,27 +313,27 @@ export default function MerchantStatementAuditGuidePage() {
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  This is the most common model for small businesses and the most deceptive. The processor groups hundreds of different Interchange rates into three vague buckets:
+                  This model is common with small businesses and the least transparent. The processor groups hundreds of different Interchange rates into three vague buckets:
                 </p>
 
                 <ul className="list-disc pl-6 space-y-2 text-foreground">
-                  <li><strong>Qualified (Qual):</strong> The lowest rate. Usually applies only to plain debit cards swiped in person.</li>
+                  <li><strong>Qualified (Qual):</strong> The lowest rate. Often limited to basic cards swiped in person.</li>
                   <li><strong>Mid-Qualified (Mid-Qual):</strong> Higher rate. Applies to some rewards cards or keyed-in transactions.</li>
-                  <li><strong>Non-Qualified (Non-Qual):</strong> The "penalty" rate. This can be double or triple the qualified rate.</li>
+                  <li><strong>Non-Qualified (Non-Qual):</strong> The "penalty" rate, often far above the qualified rate.</li>
                 </ul>
 
                 <p className="text-foreground leading-relaxed mt-4">
-                  <strong>The Scam:</strong> Processors can arbitrarily decide which transactions fall into which bucket. A standard "Visa Rewards" card might be routed to "Non-Qualified," allowing the processor to charge you 3.5% or 4.0% for a transaction that only cost them 1.8%. This is known as a <strong>"Downgrade."</strong>
+                  <strong>The Scam:</strong> The processor decides which transactions fall into which bucket. A Visa Signature card swiped at a retail counter carries interchange of 1.65% + 10¢ on Visa's schedule effective Oct 24, 2026. If the processor bills it at a non-qualified rate of, say, 3.5%, the difference is markup. This is known as a <strong>"Downgrade."</strong>
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">2. Flat Rate Pricing: Simplicity at a Premium</h3>
 
                 <div className="my-4 p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg border-l-4 border-yellow-500">
-                  <p className="font-semibold text-foreground">Verdict: Good for Micro-Merchants (Under $10k/month), bad for scale.</p>
+                  <p className="font-semibold text-foreground">Verdict: Simple and predictable, but in our cost tables it costs more than interchange-plus at every volume we test.</p>
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  Popularized by <a href="https://stripe.com/pricing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a>, <a href="https://squareup.com/us/en/payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a>, and PayPal. You pay a single rate (e.g., 2.9% + $0.30) for everything.
+                  Popularized by <a href="https://stripe.com/pricing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe</a>, <a href="https://squareup.com/us/en/payments" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square</a>, and PayPal. You pay a single rate for each channel (e.g., Stripe's 2.9% + $0.30 online, checked Oct 2026).
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -341,13 +341,13 @@ export default function MerchantStatementAuditGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>Cons:</strong> You overpay on Debit cards. If a debit card costs the processor 0.05% + $0.22 to process, and they charge you 2.9% + $0.30, they are making a massive margin on that transaction.
+                  <strong>Cons:</strong> You overpay on debit cards. Regulated debit interchange is capped at 0.05% + 21¢ (plus 1¢ for issuers that meet fraud-prevention standards) for issuers with $10 billion or more in assets. If you are charged 2.9% + $0.30 on that card, most of the difference is the processor's margin.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">3. Interchange-Plus Pricing: The Gold Standard</h3>
 
                 <div className="my-4 p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border-l-4 border-green-500">
-                  <p className="font-semibold text-foreground">Verdict: The only choice for serious businesses.</p>
+                  <p className="font-semibold text-foreground">Verdict: The most transparent model, and the cheapest in our cost tables.</p>
                 </div>
 
                 <p className="text-foreground leading-relaxed">
@@ -431,13 +431,13 @@ export default function MerchantStatementAuditGuidePage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The Benchmark:</h3>
 
                 <ul className="list-disc pl-6 space-y-2 text-foreground">
-                  <li><strong>Good Rate (Retail/Card-Present):</strong> 2.2% - 2.5%</li>
-                  <li><strong>Good Rate (E-commerce/Card-Not-Present):</strong> 2.4% - 2.9%</li>
+                  <li><strong>In person at $50K a month:</strong> 2.04% (Helcim) to 2.90% (Square) at published prices</li>
+                  <li><strong>Online at $50K a month:</strong> 2.40% (Stax) to 3.70% (Clover keyed cards) at published prices</li>
                 </ul>
 
                 <div className="my-6 p-4 bg-red-50 dark:bg-red-950/20 rounded-lg border-l-4 border-red-500">
                   <p className="text-foreground">
-                    <strong>Red Flag:</strong> If your effective rate is above 3.0% for retail or above 3.5% for e-commerce, you need an immediate audit.
+                    <strong>Red Flag:</strong> If your effective rate is above every published option for your volume and channel (our <Link href="/data/effective-rates-2026" className="text-primary hover:underline">cost tables</Link>, prices checked Oct 2026), audit the statement line by line.
                   </p>
                 </div>
 
@@ -450,34 +450,34 @@ export default function MerchantStatementAuditGuidePage() {
                   The bulk of processor profit comes from line items that sound official but are actually discretionary markups. Grab your statement and look for these specific terms.
                 </p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">1. PCI Non-Compliance Fee ($19.95 - $99.00 / month)</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">1. PCI Non-Compliance Fee</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  This is the most common "lazy tax." If you haven't completed your annual PCI self-assessment questionnaire, the processor charges you a penalty.
+                  This is the most common "lazy tax." If you haven't completed your annual PCI self-assessment questionnaire, the processor charges you a penalty. The amount varies by processor, so check your statement. Checkout.com, for example, publishes $150 a month for Level 4 merchants after a 60-day grace period, while Helcim lists no PCI fee (checked Oct 2026).
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>The Fix:</strong> Complete the survey (it takes 15 minutes). If you have completed it and are still being charged, demand a refund.
+                  <strong>The Fix:</strong> Complete the questionnaire through your processor's compliance portal. If you have completed it and are still being charged, demand a refund.
                 </p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">2. Batch Header / Settlement Fee ($0.10 - $0.50 per day)</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">2. Batch Header / Settlement Fee</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  This is a fee charged every time you "close the batch" (send transactions to the bank).
-                </p>
-
-                <p className="text-foreground leading-relaxed">
-                  <strong>The Reality:</strong> It costs the processor a fraction of a penny to digitally close a batch. If you settle daily, a $0.50 fee adds up to $180 a year for nothing.
-                </p>
-
-                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">3. Statement Fee ($10.00 - $25.00 / month)</h3>
-
-                <p className="text-foreground leading-relaxed">
-                  A fee for mailing you a paper statement.
+                  This is a fee charged every time you "close the batch" (send transactions to the bank). Amounts vary by processor; Authorize.net's gateway-only plan, for example, charges 10 cents per daily batch (checked Oct 2026).
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>The Reality:</strong> Even if you opt for digital statements, many processors still charge a "Digital Statement Fee." This is pure profit.
+                  <strong>The Reality:</strong> It adds up. If you settle every day, a $0.25 batch fee is about $91 a year, and closing several batches a day multiplies it.
+                </p>
+
+                <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">3. Statement Fee</h3>
+
+                <p className="text-foreground leading-relaxed">
+                  A flat monthly fee for producing your statement. The amount varies by processor, so check your statement; Stripe and Square's Free plan publish no monthly fee.
+                </p>
+
+                <p className="text-foreground leading-relaxed">
+                  <strong>The Reality:</strong> Even if you opt for digital statements, some processors still charge it. It is processor revenue, so ask for it to be waived in writing.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">4. Regulatory Product / Compliance Bundle</h3>
@@ -493,21 +493,21 @@ export default function MerchantStatementAuditGuidePage() {
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">5. Next Day Funding Fee</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  Some processors charge a percentage (e.g., 1%) to give you your money the next day.
+                  Some processors charge extra for faster deposits. Published examples (checked Oct 2026): Square and Stax fund the next business day at no extra charge, Helcim deposits the next business morning for free, and Stripe's standard payouts take 2 business days. Instant options cost extra: 1.95% at Square, 1.5% at Stripe, and 1.75% for Clover's Rapid Deposit.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>The Standard:</strong> In 2025, Next Day Funding should be standard and free.
+                  <strong>The Standard:</strong> Next-business-day funding at no charge is available from several providers, so do not pay a monthly fee for it.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">6. Liquidated Damages / Early Termination Fee (ETF)</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  Buried in your contract is likely a clause stating that if you leave, you owe the average of your monthly fees multiplied by the remaining months of the contract.
+                  Your contract may include a liquidated damages clause: if you leave early, you owe your average monthly fees multiplied by the months remaining, sometimes times a recovery factor, on top of any flat termination fee.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>The Fix:</strong> Never sign a contract with an ETF. If you have one, MyPayAdvisor can often help negotiate a waiver during the switch.
+                  <strong>The Fix:</strong> Avoid contracts with an ETF or liquidated damages. Many providers have none: Helcim lists no cancellation fee, Square and Stripe have no contract, and Authorize.net states no early termination fee (checked Oct 2026). If you already have one, compare the exit charges with the savings for the months left before you switch. See <Link href="/insights/exit-fees-and-contract-cancellation-strategies" className="text-primary hover:underline">exit fees and contract cancellation strategies</Link>.
                 </p>
 
                 {/* Section 6 */}
@@ -516,18 +516,18 @@ export default function MerchantStatementAuditGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  A major trend in the last five years is the rise of Integrated POS systems like Toast (for restaurants) and Clover (retail). While the software is excellent, the payment processing model is often predatory.
+                  Integrated POS systems like Toast (for restaurants) and Clover (retail) bundle software, hardware and payments. The software can be good, but the payment processing is usually tied to the system.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">The Problem with Integrated Systems</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  When you buy a Toast POS, you are contractually obligated to use Toast as your payment processor. You cannot shop around for a better rate. This lack of competition allows them to increase rates or keep Durbin Amendment savings for themselves.
+                  Clover hardware is locked to Fiserv, and Square processes payments only through Square, so you cannot take that hardware to a cheaper processor. Ask any all-in-one vendor, Toast included, in writing whether its devices work with another processor. Without competition on the processing side, you cannot shop the rate.
                 </p>
 
                 <ul className="list-disc pl-6 space-y-2 text-foreground mt-4">
-                  <li><strong>Rate Creep:</strong> Merchants report that their rates steadily tick up year over year.</li>
-                  <li><strong>Hardware Lock-in:</strong> If you leave the processor, the expensive hardware you bought often becomes a useless brick (especially with Clover proprietary devices).</li>
+                  <li><strong>Rate Creep:</strong> Read the clause that lets the vendor change fees with notice, and review your effective rate every year.</li>
+                  <li><strong>Hardware Lock-in:</strong> If you leave the processor, locked hardware stops working for payments. Clover hardware subscriptions run 36 months and cannot be canceled (checked Oct 2026).</li>
                 </ul>
 
                 <p className="text-foreground leading-relaxed mt-4">
@@ -540,34 +540,34 @@ export default function MerchantStatementAuditGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  To illustrate the potential savings, here are two anonymized examples from recent audits performed by industry experts.
+                  To illustrate the potential savings, here are two hypothetical examples. The numbers are assumptions chosen to show the math, not results from real merchants.
                 </p>
 
                 <div className="my-8 p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-4">Case Study A: The Family Italian Restaurant</h3>
                   <p className="text-foreground mb-2"><strong>Profile:</strong> A high-volume restaurant processing $80,000/month.</p>
-                  <p className="text-foreground mb-2"><strong>Current Situation:</strong> On a Tiered Pricing plan with a "quoted rate" of 1.6%.</p>
+                  <p className="text-foreground mb-2"><strong>Current Situation:</strong> On a Tiered Pricing plan with a "quoted rate" of 1.6%, no per-transaction fee in this example.</p>
                   <p className="text-foreground mb-2"><strong>The Findings:</strong></p>
                   <ul className="list-disc pl-6 space-y-1 text-foreground mb-4">
-                    <li>The "Qualified" rate was indeed 1.6%, but 65% of their customers used Chase Sapphire or Amex Gold cards.</li>
-                    <li>The processor routed these to "Non-Qualified" at 3.9%.</li>
-                    <li>Effective Rate: <strong>3.65%</strong></li>
+                    <li>The "Qualified" rate is 1.6%, but 65% of volume comes from premium rewards cards.</li>
+                    <li>The processor bills these as "Non-Qualified" at 3.9%: $2,028 a month, plus $448 on the qualified 35%.</li>
+                    <li>Effective Rate: $2,476 on $80,000 = <strong>3.10%</strong></li>
                   </ul>
-                  <p className="text-foreground"><strong>The Solution:</strong> Moved to true Interchange-Plus pricing.</p>
-                  <p className="text-primary font-bold mt-2">Annual Savings: $11,400</p>
+                  <p className="text-foreground"><strong>The Solution:</strong> Move to Interchange-Plus. If interchange and network fees for this card mix averaged 2.1% (an assumption; your statement shows the real figure) and the markup were 0.30%, the cost would be 2.40%, or $1,920 a month.</p>
+                  <p className="text-primary font-bold mt-2">Annual Savings: about $6,672 ($556 a month)</p>
                 </div>
 
                 <div className="my-8 p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-4">Case Study B: The B2B Wholesaler</h3>
                   <p className="text-foreground mb-2"><strong>Profile:</strong> Selling construction materials, processing $250,000/month.</p>
-                  <p className="text-foreground mb-2"><strong>Current Situation:</strong> Flat Rate pricing (2.9%).</p>
+                  <p className="text-foreground mb-2"><strong>Current Situation:</strong> Flat Rate pricing at 2.9% (no per-sale fee in this example): $7,250 a month. Average sale $2,000, so 125 sales a month.</p>
                   <p className="text-foreground mb-2"><strong>The Findings:</strong></p>
                   <ul className="list-disc pl-6 space-y-1 text-foreground mb-4">
-                    <li>Most clients paid with corporate debit cards, which have a regulated cap on fees (very cheap).</li>
-                    <li>The Flat Rate provider was keeping the massive spread between the 0.05% cost and the 2.9% charge.</li>
+                    <li>Most clients pay with corporate and purchasing cards. On Visa's schedule effective Oct 24, 2026, these cost 2.70% + 10¢ card-not-present, so a flat 2.9% leaves little margin to cut on its own.</li>
+                    <li>With Level 3 data (tax amount, invoice number, line items), the same cards can qualify for Visa's Commercial Product 3 rate of 1.75% + 10¢. At interchange + 0.20% + 10¢, that is about $4,900 a month before network fees.</li>
                   </ul>
                   <p className="text-foreground"><strong>The Solution:</strong> Negotiated Interchange-Plus with Level 3 Data optimization.</p>
-                  <p className="text-primary font-bold mt-2">Annual Savings: $42,000</p>
+                  <p className="text-primary font-bold mt-2">Annual Savings: about $28,200 before network fees ($2,350 a month), if every sale qualifies</p>
                 </div>
 
                 {/* Section 8 */}
@@ -576,33 +576,33 @@ export default function MerchantStatementAuditGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  The payment processing industry is designed to be opaque. They have teams of actuaries and pricing strategists working to maximize their yield from your business. You need an expert on your side.
+                  Much of payment processing pricing is hard to read. A second set of eyes helps.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>MyPayAdvisor is not a processor; we are your advocate.</strong> We leverage data and industry expertise to audit your statements, identify hidden leakage, and connect you with transparent solutions.
+                  <strong>MyPayAdvisor is not a processor.</strong> We compare providers on their published prices and match you to a shortlist. Some providers pay us when you open an account through our links; that never changes the ranking (see <Link href="/how-we-make-money" className="text-primary hover:underline">how we make money</Link>).
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">What we do for you:</h3>
 
                 <ul className="list-disc pl-6 space-y-2 text-foreground">
-                  <li><strong>Forensic Audit:</strong> We scan your statements for the "Dirty Dozen" fees.</li>
-                  <li><strong>Rate Negotiation:</strong> We know the wholesale costs and negotiate margins down to the absolute minimum.</li>
-                  <li><strong>Ongoing Monitoring:</strong> We ensure "rate creep" doesn't happen 6 months down the line.</li>
+                  <li><strong>Published-price comparison:</strong> Our <Link href="/data/effective-rates-2026" className="text-primary hover:underline">cost tables</Link> show what each provider costs at $10K, $50K, $250K and $1M a month.</li>
+                  <li><strong>Matched shortlist:</strong> The quiz sends an instant match by email.</li>
+                  <li><strong>Statement read-through:</strong> If you leave a phone number, Barak may call and can read your current statement with you. He does not negotiate another provider's rates on its behalf.</li>
                 </ul>
 
                 {/* CTA */}
                 <div className="my-10 p-8 bg-primary/5 rounded-lg border border-primary/20 text-center">
                   <h3 className="text-2xl font-bold text-foreground mb-4">Stop Leaving Money on the Table</h3>
                   <p className="text-foreground mb-6">
-                    In a tight economy, increasing your net profit margin by 10% usually requires a massive increase in sales. However, reducing your credit card processing fees by 20-30% has the exact same effect on your bottom line, with zero additional sales required.
+                    Every dollar you cut from processing fees goes straight to profit, with no additional sales required.
                   </p>
                   <p className="text-foreground mb-6">
                     Don't let the complexity of the "Obfuscation Economy" intimidate you. By understanding the ecosystem, calculating your effective rate, and demanding Interchange-Plus pricing, you can turn a major expense into a managed cost.
                   </p>
                   <Link href="/quiz">
                     <Button size="lg" className="px-8">
-                      Get Your Free Statement Audit
+                      Get My Matched Shortlist
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                   </Link>
@@ -617,14 +617,14 @@ export default function MerchantStatementAuditGuidePage() {
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-3">What is a "good" effective rate for credit card processing?</h3>
                     <p className="text-foreground">
-                      For a brick-and-mortar retail business, a competitive effective rate is between 2.2% and 2.5%. For e-commerce businesses, due to higher fraud risk, a rate between 2.5% and 2.9% is considered standard. If your rate is consistently above 3.0%, you are likely overpaying.
+                      There is no official benchmark, so compare with published prices for your volume. Our cost tables put in-person processing at $50K a month between 2.04% (Helcim) and 2.90% (Square), and online between 2.40% (Stax) and 3.70% (Clover keyed cards), prices checked Oct 2026. Online usually costs more because card-not-present interchange is higher. If your effective rate sits above the published options for your volume, get competing quotes.
                     </p>
                   </div>
 
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-3">Can I negotiate rates with companies like Square or Stripe?</h3>
                     <p className="text-foreground">
-                      Generally, no. Stripe and Square operate on a fixed "Flat Rate" model that is non-negotiable for small businesses. However, if you process over $1 million annually, they may offer custom volume pricing. For most businesses, switching to a dedicated merchant account is the better way to lower fees.
+                      Not at their standard rates. Stripe charges 2.9% + 30¢ online and 2.7% + 5¢ in person; Square charges 2.6% + 15¢ in person on its Free plan (checked Oct 2026). Stripe says it offers custom pricing for businesses with large processing volumes, and Square's pricing page has a contact-sales option. For many businesses, comparing interchange-plus quotes is the more reliable way to lower fees: in our cost tables Helcim costs less than Square and Stripe at every volume we test.
                     </p>
                   </div>
 
@@ -638,14 +638,14 @@ export default function MerchantStatementAuditGuidePage() {
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-3">Is Interchange-Plus always better than Tiered Pricing?</h3>
                     <p className="text-foreground">
-                      Yes. Interchange-Plus is the only model that offers full transparency. It separates the money going to the bank (Interchange) from the money going to the processor (Markup), ensuring that when card fees drop, your costs drop too. Tiered pricing almost always results in higher costs due to opaque "downgrades."
+                      For transparency, yes. Interchange-plus separates the money going to the card-issuing bank (interchange) from the money going to the processor (markup), so when card costs drop, your costs drop too. On cost it usually wins as well, but the result depends on your card mix and the markup you are quoted. Tiered pricing hides which interchange category each sale lands in, so the only way to compare it is a statement analysis on your own card mix.
                     </p>
                   </div>
 
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-3">What is Level 3 Processing and does it apply to me?</h3>
                     <p className="text-foreground">
-                      If you sell to other businesses (B2B) or government entities, Level 3 Processing allows you to input extra data (like invoice numbers and tax ID) with the transaction. By doing this, Visa/Mastercard lower the Interchange risk fee, potentially saving you up to 1.0% per transaction. MyPayAdvisor can help set this up automatically.
+                      If you sell to other businesses (B2B) or government entities, Level 3 processing sends extra data with the transaction, such as tax amount, invoice number and line-item detail. On Visa's schedule effective Oct 24, 2026, a corporate or purchasing card costs 2.70% + 10¢ card-not-present, while its Commercial Product 3 rate with Level 3 data is 1.75% + 10¢, a difference of 0.95 percentage points. Visa ended its separate Level 2 rates in April 2026.
                     </p>
                   </div>
                 </div>

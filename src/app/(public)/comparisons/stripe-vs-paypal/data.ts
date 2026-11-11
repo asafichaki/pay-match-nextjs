@@ -20,6 +20,10 @@ export const N = {
 /** Monthly gap between the PayPal Checkout button and Stripe at each tier. */
 export const CHECKOUT_GAP = [0, 1, 2].map((t) => dollarsAt(N.ppCheckout, t as 0 | 1 | 2) - dollarsAt(N.stOn, t as 0 | 1 | 2));
 
+/** PayPal dispute fees on payments made through a PayPal account or PayPal checkout (not in vs-pages-2026).
+ *  Read from paypal.com/us/business/paypal-business-fees ("Last Updated: November 4, 2026", Wayback 2026-11-08). */
+export const PP_DISPUTE = { standard: 15, highVolume: 30 } as const;
+
 /** Fee on a single sale, for the ticket-size examples. */
 export const saleFee = (amount: number, f: { pct: number; fixed: number }) => amount * (f.pct / 100) + f.fixed;
 const cents = (n: number) => `$${n.toFixed(2)}`;
@@ -43,7 +47,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Which has lower dispute fees, Stripe or PayPal?",
-    a: `Stripe charges $${st.dispute} per dispute, plus another $${st.disputeCounter} if you counter it manually, refunded if you win. PayPal charges $${pp.chargeback} per chargeback. If you fight most disputes, the two end up close; if you accept most of them, Stripe is $${pp.chargeback - st.dispute} cheaper each time.`,
+    a: `Stripe charges $${st.dispute} per dispute, plus another $${st.disputeCounter} if you counter it manually, refunded if you win. PayPal's fee table lists two fees: a $${pp.chargeback} chargeback fee on card payments that do not go through a PayPal account or guest checkout, and a dispute fee of $${PP_DISPUTE.standard} ($${PP_DISPUTE.highVolume} for high-volume sellers) on payments made through a PayPal account or PayPal checkout. On card payments Stripe is $${pp.chargeback - st.dispute} cheaper per dispute you accept; on PayPal button payments the standard fee matches Stripe's $${st.dispute}.`,
   },
   {
     q: "How fast do Stripe and PayPal pay out?",
