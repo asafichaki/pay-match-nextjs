@@ -289,12 +289,12 @@ export default function ExitIntentPopup() {
               <CheckCircle2 className="h-7 w-7" />
             </div>
             <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-              {detailsSent && phone.trim() ? "Barak will call you." : "You’re on the list."}
+              {detailsSent && phone.trim() ? "We'll call you soon." : "You’re on the list."}
             </h3>
             <p className="text-sm text-muted-foreground mb-6">
               {detailsSent && phone.trim()
                 ? "Usually within one business day."
-                : "Barak sees every signup and replies by email."}
+                : "We'll get back to you soon."}
             </p>
             <Button onClick={close} variant="outline" className="w-full">
               Keep reading

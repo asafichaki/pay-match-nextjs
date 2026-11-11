@@ -41,7 +41,7 @@ export default function NewsletterForm({
     return (
       <div className={`flex items-center gap-2 text-sm text-primary ${className}`}>
         <CheckCircle2 className="h-5 w-5" />
-        <span className="font-medium">You&rsquo;re on the list. Barak sees every signup and replies by email.</span>
+        <span className="font-medium">You&rsquo;re on the list. We&rsquo;ll get back to you soon.</span>
       </div>
     );
   }
