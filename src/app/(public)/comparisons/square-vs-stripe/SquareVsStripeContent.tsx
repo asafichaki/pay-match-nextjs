@@ -10,6 +10,8 @@ import { MatchCTA } from "@/components/MatchCTA";
 import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
 import { VsCostTable } from "@/components/mix/VsCostTable";
+import { VsPicksBox } from "@/components/mix/VsPicksBox";
+import ProviderCTA from "@/components/ProviderCTA";
 import { FEES, RATES_CHECKED, TIER_LABELS, dollarsAt, engineRate, feeLabel, flatEffective, pct, usd } from "@/lib/data/vs-pages-2026";
 import { ANSWER, EXAMPLES, FAQ, N } from "./data";
 
@@ -44,9 +46,13 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
-              lastUpdated="2026-11-02"
+              lastUpdated="2026-11-11"
               className="mt-2 mb-6"
             />
+
+            {/* Verdict with buttons inside the first screen (2026-11-11). The page
+                ranked 11-16 for "stripe vs square" with zero outbound buttons. */}
+            <VsPicksBox a="Square" b="Stripe" from="/comparisons/square-vs-stripe" />
 
             <p className="aeo-answer text-lg md:text-xl text-foreground leading-relaxed" data-speakable="true">
               {ANSWER}
@@ -77,11 +83,6 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               The gap between the two is small, so the better question is which tools you need. Square gives you a free POS app and next-day deposits. Stripe gives you APIs, subscription billing and a checkout you can shape. If fees are the deciding factor, neither is the cheapest option we priced: see <Link href="/comparisons/helcim-vs-stripe" className={link}>Helcim vs Stripe</Link> and <Link href="/comparisons/square-vs-helcim-2026" className={link}>Helcim vs Square</Link>.
             </p>
 
-            <MatchCTA
-              variant="inline"
-              headline="Square or Stripe: which fits your business?"
-              subline="Tell us your channel mix, volume and average sale. We send back the processors that fit, with the questions to ask before you sign."
-            />
           </header>
 
           <section className="py-10 border-b border-border">
@@ -98,6 +99,14 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               </p>
             </div>
           </section>
+
+          <div className="py-6 border-b border-border">
+            <MatchCTA
+              variant="inline"
+              headline="Square or Stripe: which fits your business?"
+              subline="Tell us your channel mix, volume and average sale. We send back the processors that fit, with the questions to ask before you sign."
+            />
+          </div>
 
           <nav className="py-10 border-b border-border">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">In This Article</h2>
@@ -457,6 +466,15 @@ export default function SquareVsStripeContent({ aeoAnswer, relatedLinks }: Conte
               <strong>On fees alone</strong>, the two sit within {pct(Math.abs(N.sqIp[0] - N.stIp[0]))} of each other at {TIER_LABELS[0]} and {TIER_LABELS[1]} a month. Above that, compare both against an interchange-plus quote; Helcim at {pct(engineRate("Helcim", "In-person", 1))} in person at {TIER_LABELS[1]} is the one to beat.
             </p>
           </section>
+
+          <ProviderCTA
+            from="/comparisons/square-vs-stripe"
+            items={[
+              { partner: "square", name: "Square", note: "Free POS app, next-day deposits" },
+              { partner: "stripe", name: "Stripe", note: "Online checkout, billing and APIs" },
+              { partner: "helcim", name: "Helcim", note: "Interchange-plus, lower cost above $50K a month" },
+            ]}
+          />
 
           <section className="py-12 text-center">
             <h2 className="text-2xl font-bold text-foreground mb-4">
