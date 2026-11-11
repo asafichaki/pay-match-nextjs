@@ -10,7 +10,6 @@
   "/insights/free-statement-audit-playbook": "2026-08-26",
   "/insights/funds-frozen-what-to-do": "2026-08-26",
   "/insights/gaming-merchant-account": "2026-08-26",
-  "/insights/helcim-review-2025": "2026-09-08",
   "/insights/high-risk-instant-approval-reality": "2026-08-26",
   "/insights/high-risk-merchant-processing-account-a-2026-guide-to-lowering-fees-thriving": "2026-05-30",
   "/insights/high-risk-payment-processing-guide": "2026-09-09",
@@ -64,7 +63,8 @@
   "/about/barak": "2026-08-26",
   "/pulse": "2026-05-18",
   "/glossary/_terms": "2026-09-09",
-  "__generated": "2026-11-02",
+  "__generated": "2026-11-11",
   "__source": "git-full-history",
-  "__head": "d732fda"
+  "__head": "250e422",
+  "__bumped_in_shallow_build": 0
 }

@@ -15,7 +15,7 @@ interface ArticleSidebarProps {
 const insightArticles: RelatedArticle[] = [
   { title: "Payment Processor Fees Guide", href: "/insights/payment-processor-fees-guide" },
   { title: "Best Payment Gateway for Ecommerce", href: "/insights/best-payment-gateway-ecommerce" },
-  { title: "Helcim Review 2025", href: "/insights/helcim-review-2025" },
+  { title: "Helcim Review 2026", href: "/comparisons/helcim-review-2026" },
   { title: "Online vs In-Store Payments", href: "/insights/online-vs-instore-payments" },
 ];
 

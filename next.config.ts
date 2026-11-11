@@ -62,6 +62,8 @@ const nextConfig: NextConfig = {
       { source: "/comparisons/stripe-vs-helcim-2026", destination: "/comparisons/helcim-vs-stripe", permanent: true },
       // 2026-11-02: duplicate of stripe-vs-paypal, priced on an $85 ticket instead of $50 (0 clicks / 90d).
       { source: "/comparisons/paypal-vs-stripe-2026", destination: "/comparisons/stripe-vs-paypal", permanent: true },
+      // 2026-11-11: static Helcim review (0 GSC impressions in 90d) replaced by the DB review page.
+      { source: "/insights/helcim-review-2025", destination: "/comparisons/helcim-review-2026", permanent: true },
 
       // 404 paths surfaced by QA sweep 2026-05-18 (rage-click hotspots in Clarity)
       { source: "/effective-rate-database", destination: "/data/effective-rates-2026", permanent: true },

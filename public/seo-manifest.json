@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-02T10:50:21.279Z",
+  "generated_at": "2026-11-11T10:30:45.914Z",
   "rules_version": "2026-08-26.1",
   "counts": {
-    "static": 55,
-    "db": 80,
-    "total": 135
+    "static": 54,
+    "db": 94,
+    "total": 148
   },
   "routes": [
     {
@@ -542,28 +542,6 @@
       ]
     },
     {
-      "route": "/insights/helcim-review-2025",
-      "kind": "insights",
-      "slug": "helcim-review-2025",
-      "source": "static",
-      "title_mode": "template",
-      "base_title": "Helcim Review 2026: Real Rates, Hidden Fees, Verdict",
-      "base_description": "Helcim's interchange-plus pricing in 2026: real rates, what we like, what's missing, and when it beats Stripe and Square. No contracts, no fluff.",
-      "outline": [
-        "Quick Verdict",
-        "Table of Contents",
-        "What is Helcim?",
-        "Pricing Breakdown",
-        "Key Features",
-        "Pros and Cons",
-        "Real Cost Comparisons",
-        "Helcim vs Competitors",
-        "Who Should Choose Helcim?",
-        "Final Verdict",
-        "Frequently Asked Questions"
-      ]
-    },
-    {
       "route": "/insights/high-risk-instant-approval-reality",
       "kind": "insights",
       "slug": "high-risk-instant-approval-reality",
@@ -969,6 +947,16 @@
       ]
     },
     {
+      "route": "/comparisons/ach-payment-processing-2026",
+      "kind": "comparisons",
+      "slug": "ach-payment-processing-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "ACH Payment Processing: 2026 Fees and Settlement Times",
+      "base_description": "ACH fees cap at $5 to $10 per payment vs $58.30 for a $2,000 card sale. How ACH works, settlement times, disputes and pricing from Stripe, Helcim and more.",
+      "outline": []
+    },
+    {
       "route": "/comparisons/ai-dispute-management-tools-2026",
       "kind": "comparisons",
       "slug": "ai-dispute-management-tools-2026",
@@ -1016,6 +1004,16 @@
       "title_mode": "template",
       "base_title": "AI Subscription Billing Tools 2026",
       "base_description": "Stripe Billing vs Helcim, Stax, Square, PayPal, Payment Depot. Smart Retries, dunning, and effective rate at $25K to $5M monthly recurring volume.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/best-credit-card-readers-small-business-2026",
+      "kind": "comparisons",
+      "slug": "best-credit-card-readers-small-business-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best Card Reader for Small Business: 2026 Prices Compared",
+      "base_description": "Card readers from $29 to $349 compared: Square, Helcim, Clover, Stripe, PayPal and SumUp. In-person rates, $50-sale fees and monthly costs side by side.",
       "outline": []
     },
     {
@@ -1249,6 +1247,16 @@
       "outline": []
     },
     {
+      "route": "/comparisons/best-pos-systems-for-restaurants-2026",
+      "kind": "comparisons",
+      "slug": "best-pos-systems-for-restaurants-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Best POS System for Restaurants 2026: 5 Compared",
+      "base_description": "Best POS system for restaurants in 2026: Toast, Square, Clover, SpotOn and Lightspeed compared on card rates from 2.3% + 10¢, software fees and contracts.",
+      "outline": []
+    },
+    {
       "route": "/comparisons/best-pos-systems-for-small-business-2026",
       "kind": "comparisons",
       "slug": "best-pos-systems-for-small-business-2026",
@@ -1269,6 +1277,16 @@
       "outline": []
     },
     {
+      "route": "/comparisons/clover-review-2026",
+      "kind": "comparisons",
+      "slug": "clover-review-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Clover Review 2026: Fees, Contracts and Real Costs",
+      "base_description": "Clover review for 2026: 2.3% + 10¢ in person on Growth bundles, 3.5% + 10¢ keyed, 36-month hardware terms, and why bank and reseller prices differ.",
+      "outline": []
+    },
+    {
       "route": "/comparisons/clover-vs-toast-2026",
       "kind": "comparisons",
       "slug": "clover-vs-toast-2026",
@@ -1279,6 +1297,26 @@
       "outline": []
     },
     {
+      "route": "/comparisons/credit-card-surcharging-guide-2026",
+      "kind": "comparisons",
+      "slug": "credit-card-surcharging-guide-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Surcharging Credit Cards: 2026 Rules and Cash Discounts",
+      "base_description": "Visa caps credit card surcharges at 3% and your cost, with 30 days' notice. Surcharge vs cash discount vs dual pricing, state limits and processor support.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/helcim-review-2026",
+      "kind": "comparisons",
+      "slug": "helcim-review-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Helcim Review 2026: Fees, Tiers and Real Costs",
+      "base_description": "Helcim review for 2026: interchange + 0.40% + 8¢ in person, no monthly fee, real monthly cost at $10K to $250K, and where Stax or Square beats it.",
+      "outline": []
+    },
+    {
       "route": "/comparisons/helcim-vs-payment-depot-2026",
       "kind": "comparisons",
       "slug": "helcim-vs-payment-depot-2026",
@@ -1286,6 +1324,46 @@
       "title_mode": "template",
       "base_title": "Helcim vs Payment Depot 2026: Cost Comparison",
       "base_description": "Helcim vs Payment Depot 2026: effective rates at $25K, $100K, $250K monthly volume, crossover math, contract terms, hardware lock-in, and verdict by tier.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/paymentcloud-review-2026",
+      "kind": "comparisons",
+      "slug": "paymentcloud-review-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "PaymentCloud Review 2026: Pricing, Approval, Risks",
+      "base_description": "PaymentCloud review 2026: quote-only pricing, approval in 24 hours to 5 days by its own pages, volume caps and reserves. What it publishes and who it fits.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/paypal-alternatives-2026",
+      "kind": "comparisons",
+      "slug": "paypal-alternatives-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "PayPal Alternatives 2026: Fees, Holds and Switching",
+      "base_description": "PayPal alternatives priced from official pages. At $50K a month online, Helcim costs $1,275 against $1,735 on PayPal. Holds, reserves and how to switch.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/square-alternatives-2026",
+      "kind": "comparisons",
+      "slug": "square-alternatives-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Square Alternatives 2026: Fees, Payouts, Switching",
+      "base_description": "Square alternatives priced from their own pages. At $50K a month in person, Helcim costs $1,020 against $1,450 on Square. Fees, holds and how to switch.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/square-review-2026",
+      "kind": "comparisons",
+      "slug": "square-review-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Square Review 2026: Fees, Plans and Real Costs",
+      "base_description": "Square review for 2026: 2.6% + 15¢ in person on the free plan, what Plus and Premium save, real monthly cost at $10K to $250K, and who should skip it.",
       "outline": []
     },
     {
@@ -1329,6 +1407,16 @@
       "outline": []
     },
     {
+      "route": "/comparisons/stripe-alternatives-2026",
+      "kind": "comparisons",
+      "slug": "stripe-alternatives-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Stripe Alternatives 2026: Fees, Payouts, Switching",
+      "base_description": "Five Stripe alternatives priced from their own pages. At $50K a month online, Helcim costs $1,275 against Stripe's $1,750. Fees, payouts and how to switch.",
+      "outline": []
+    },
+    {
       "route": "/comparisons/stripe-vs-adyen-2026",
       "kind": "comparisons",
       "slug": "stripe-vs-adyen-2026",
@@ -1366,6 +1454,16 @@
       "title_mode": "template",
       "base_title": "Stripe vs Worldpay 2026: Real Cost Compared",
       "base_description": "Stripe vs Worldpay compared on real effective rates, contracts, and onboarding. The crossover volume where Worldpay IC+ beats Stripe flat-rate, with numbers.",
+      "outline": []
+    },
+    {
+      "route": "/comparisons/toast-pos-review-2026",
+      "kind": "comparisons",
+      "slug": "toast-pos-review-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Toast POS Review 2026: Fees, Contract and Real Costs",
+      "base_description": "Toast POS review 2026: 2.49% + 15¢ plus $69 a month, or 3.09% + 15¢ with $0 hardware. Contract terms, exit fees and monthly cost at $10K to $250K.",
       "outline": []
     },
     {
@@ -1466,6 +1564,16 @@
       "title_mode": "template",
       "base_title": "Contractor Financing for Customers: 2026 Costs",
       "base_description": "Contractor financing for customers costs 3.9% to 18.5% of the financed amount, or a flat yearly fee. See what each option costs on an $88,000 remodel.",
+      "outline": []
+    },
+    {
+      "route": "/insights/contractor-payment-schedule",
+      "kind": "insights",
+      "slug": "contractor-payment-schedule",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Contractor Payment Schedule and Fees",
+      "base_description": "A contractor payment schedule with California deposit rules, a $40,000 bathroom example, and what card, ACH and check payments cost the contractor.",
       "outline": []
     },
     {
@@ -1736,6 +1844,16 @@
       "title_mode": "template",
       "base_title": "Network Tokenization 2026: Why Approvals Rise 2-6%",
       "base_description": "Network tokenization replaces card numbers with auto-updating tokens. Visa and Mastercard report 2-6% higher approvals. Real fees, real contracts, May 2026.",
+      "outline": []
+    },
+    {
+      "route": "/insights/visa-mastercard-settlement-2026",
+      "kind": "insights",
+      "slug": "visa-mastercard-settlement-2026",
+      "source": "db",
+      "title_mode": "template",
+      "base_title": "Visa Mastercard Settlement: What Changes",
+      "base_description": "The Visa and Mastercard settlement faces final approval on November 16, 2026. What changes for merchants, when, and why flat-rate pricing hides the savings.",
       "outline": []
     },
     {
