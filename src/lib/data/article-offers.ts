@@ -46,71 +46,71 @@ export const ARTICLE_OFFERS: Record<string, ArticleOffers> = {
 
 ARTICLE_OFFERS["best-payment-processors-mobile-and-on-the-go-2026"] = {
   heading: "Mobile processors at a glance",
-  orderNote: "In the order of the article's ranking: Square under $30K a month, Helcim above $40K, as set out in the At a glance table.",
+  orderNote: "In the order of the article's ranking: Square for sellers under $30K a month who want a free app and offline mode, Helcim as the lower-cost option.",
   checked: "2026",
   items: [
-    { processor: "Square", fact: "2.6% + $0.15 in person, month-to-month, hardware from $59. Best under $30K a month." },
-    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, month-to-month. Best from $25K to $250K a month; no offline mode." },
-    { processor: "Stripe", fact: "2.7% + $0.05 in person, month-to-month. For custom mobile apps; reserve policy is opaque." },
-    { processor: "PayPal", fact: "PayPal Zettle: 2.29% + $0.09 in person, instant to your PayPal balance. Sudden volume can trigger holds." },
-    { processor: "Clover", fact: "2.3% to 2.6% + $0.10 plus a plan fee; contract varies by reseller. Hardware locked to Fiserv." },
-    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month by annual volume plus interchange + $0.08. For $50K+ mobile B2B; breakeven near $30K a month." },
+    { processor: "Square", fact: "2.6% + $0.15 in person, month to month, hardware from $59, offline mode. Best fit under $30K a month." },
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, month to month. About 2.04% at $50K a month in our engine, against 2.90% on Square." },
+    { processor: "Stripe", fact: "2.7% + $0.05 in person with Tap to Pay, month to month. For custom iOS or Android apps." },
+    { processor: "PayPal", fact: "PayPal POS: 2.29% + $0.09 in person. Card reader $29 for your first." },
+    { processor: "Clover", fact: "Clover Go reader $199, on Clover's own processing. The reader usually cannot move with you if you switch." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month by annual volume plus interchange + $0.08. Behind Helcim under $50K, cheapest by $250K." },
   ],
 };
 
 ARTICLE_OFFERS["best-no-contract-payment-processors-2026"] = {
   heading: "No-contract processors at a glance",
-  orderNote: "In the order of the article's verdict: Helcim for $25K to $500K a month, Stripe for online-only, Square under $25K, Stax and Payment Depot above $80K.",
+  orderNote: "In the order of the article's verdict: Helcim first as the cheapest no-contract option in our engine at $10K and $50K a month, then by fit.",
   checked: "2026",
   items: [
-    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no early-termination clause. Best for $25K to $500K a month." },
-    { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person, month-to-month. Online plus developer tools; flat-rate premium above $50K." },
-    { processor: "Square", fact: "2.6% + $0.15 in person, 2.9% + $0.30 online on paid plans (3.3% + $0.30 on Free). Best under $25K retail and food." },
-    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month by annual volume plus interchange + $0.08 in person. Best above $80K a month." },
-    { processor: "Payment Depot", fact: "$79 to $199 a month plus interchange + $0.05 to $0.15, month-to-month. For $40K+ a month; POS hardware not included.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://www.paymentdepot.com/" } },
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no early-termination clause. Cheapest here at $10K and $50K." },
+    { processor: "Square", fact: "2.6% + $0.15 in person, month to month, free POS software. Easiest start for small sellers, not the cheapest." },
+    { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person, month to month. Online and developer-led businesses." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month by annual volume plus interchange + $0.08. Cheaper than Helcim by $250K; contract length not published." },
     { processor: "Clover", fact: "2.3% to 2.6% + 10¢ by plan, software $0 to $89.95+ a month. Hardware subscriptions run 36 months and cannot be canceled." },
-    { processor: "PayPal", fact: "3.49% + $0.49 standard online, 2.29% + $0.09 in person, month-to-month. For low volume with PayPal-preferring buyers." },
+    { processor: "PayPal", fact: "3.49% + $0.49 standard online, 2.29% + $0.09 in person, month to month. For low volume with PayPal-preferring buyers." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus. Pricing page lists $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
   ],
 };
 
 ARTICLE_OFFERS["best-pos-systems-for-small-business-2026"] = {
   heading: "POS systems at a glance",
-  orderNote: "In the order of the article's ranking: Square under $50K a month on free software, Helcim above $50K on interchange-plus.",
+  orderNote: "In the order of the article's ranking: Square as the easiest full POS under $50K a month, Helcim as the lower-cost processor at every volume we model.",
   checked: "2026",
   items: [
-    { processor: "Square", fact: "2.6% + $0.15 in person on the Free plan, month to month, next-day deposits. Best under $50K a month." },
+    { processor: "Square", fact: "2.6% + $0.15 in person on the Free plan, month to month, next-day deposits, hardware from $59. Easiest full POS, not the cheapest." },
     { processor: "Clover", fact: "2.3% to 2.6% + 10¢ by plan, software $0 to $89.95+ a month; hardware subscriptions run 36 months. Restaurants and retail." },
-    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, month to month. Best for $25K to $500K a month; no instant payout option." },
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, month to month. About $1,020 a month at $50K, against $1,450 on Square." },
     { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person, month to month. Online-first businesses." },
-    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month by annual volume plus interchange + $0.08. Worth it from $80K a month, not under $50K." },
-    { processor: "Payment Depot", fact: "$79 to $199 a month plus interchange + $0.05 to $0.15. For $40K to $200K a month; PCI fees extra.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://www.paymentdepot.com/" } },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month by annual volume plus interchange + $0.08. Cheapest in our engine from about $250K a month." },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus, no POS prices listed. $0 setup and no cancellation fees; get a written quote.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
     { processor: "PayPal", fact: "2.29% + $0.09 in person, 3.49% + $0.49 standard online. Online sellers; highest invoice rate." },
   ],
 };
 
 ARTICLE_OFFERS["best-payment-processors-marketplaces-2026"] = {
   heading: "Marketplace processors at a glance",
-  orderNote: "In the order of the article's verdict: Stripe Connect first, PayPal Commerce Platform second, Worldpay for enterprise marketplaces above $100M a year.",
+  orderNote: "In the order of the article's verdict: Stripe Connect first, PayPal second for wallet-heavy B2C marketplaces, Worldpay for enterprise platforms on a custom quote.",
   checked: "2026",
   items: [
-    { processor: "Stripe", fact: "Stripe Connect: 2.9% + $0.30 online plus Connect fees from 0.25% + $0.25 per payout. Split payments, sub-merchant KYC, payouts in 135+ currencies." },
-    { processor: "PayPal", fact: "PayPal Commerce Platform: 2.89% + $0.29 to 3.49% + $0.49. B2C marketplaces with strong wallet conversion; holds on new sellers." },
-    { processor: "Worldpay", fact: "Custom interchange-plus-plus pricing, typically a 3-year contract. $100M+ GMV enterprise marketplaces; 7 to 14 day onboarding.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
-    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, month-to-month. Single-merchant SaaS, no native sub-merchant API." },
-    { processor: "Square", fact: "2.9% + $0.30 online (3.3% + $0.30 on Free), 2.6% + $0.15 in person. Small sellers on Square POS; holds funds on facilitator-like flows." },
+    { processor: "Stripe", fact: "Stripe Connect: 2.9% + $0.30 online; if you set seller pricing, $2 per active account a month plus 0.25% + $0.25 per payout." },
+    { processor: "PayPal", fact: "PayPal Commerce Platform. For B2C marketplaces whose buyers want the PayPal wallet; test whether it lifts checkout enough." },
+    { processor: "Worldpay", fact: "Part of Global Payments since January 2026. Custom pricing for enterprise marketplaces; no published rates.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, month to month. Single-merchant businesses; no sub-merchant platform." },
+    { processor: "Square", fact: "2.9% + $0.30 online on paid plans, 2.6% + $0.15 in person. Small sellers on Square POS; no marketplace facilitator API." },
   ],
 };
 
 ARTICLE_OFFERS["best-fast-funding-payment-processors-2026"] = {
   heading: "Fast-funding options at a glance",
-  orderNote: "In the order of the article's ranking: Square for in-person merchants under $200K a month, Stripe and PayPal at 1.5% for instant transfers, Helcim as the free next-day alternative.",
+  orderNote: "In the order of the article's ranking. Payout fees are from each provider's own page; Helcim is the free next-day option and costs least per sale in our engine.",
   checked: "2026",
   items: [
-    { processor: "Square", fact: "Next business day free; same-day or instant transfer 1.95%. In-person retail under $200K a month; account holds can freeze deposits." },
-    { processor: "Stripe", fact: "T+2 rolling; Instant Payouts 1.5%, $0.50 minimum. Online platforms above $100K a month; first payout takes 7 to 14 days." },
-    { processor: "PayPal", fact: "T+1; instant transfer 1.5%, $0.50 minimum, up to $25,000 per bank transfer. Merchants already paid through PayPal." },
-    { processor: "Clover", fact: "T+1; Rapid Deposit fee set by the acquirer. Restaurants on Clover hardware." },
-    { processor: "Helcim", fact: "T+1, no instant option. Lowest effective rate from $50K a month." },
+    { processor: "Square", fact: "Next business day free; same-day or instant transfer 1.95%, up to $10,000 each. No contract on the Free plan." },
+    { processor: "Stripe", fact: "Instant Payouts 1.5%, $0.50 minimum. Standard payouts take 2 business days; a first payout typically 7 to 14 days." },
+    { processor: "PayPal", fact: "Instant transfer 1.5%, $0.50 minimum, no maximum fee. For merchants already paid through PayPal." },
+    { processor: "Helcim", fact: "Free next-business-morning deposits, no instant option. Cheapest in our engine at every volume we model." },
+    { processor: "Clover", fact: "Rapid Deposit 1.75%; standard settlement 1 to 3 days. Clover sold through a bank can carry different terms." },
   ],
 };
 
@@ -283,7 +283,7 @@ ARTICLE_OFFERS["best-high-risk-friendly-payment-processors-2026"] = {
 
 ARTICLE_OFFERS["best-low-fee-payment-processors-2026"] = {
   heading: "Cheapest processors at $50K a month",
-  orderNote: "Sorted by our engine's monthly in-person cost at $50K with a $50 average sale (prices checked Oct 2026), lowest first. Payment Depot is last because its membership fee is not published, so it cannot be priced.",
+  orderNote: "Sorted by our engine's monthly in-person cost at $50K with a $50 average sale (prices checked Oct 2026), lowest first. Payment Depot is last because its pricing is quote-only, so it cannot be priced.",
   checked: "2026",
   items: [
     { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee. About $1,020 a month at $50K." },
@@ -292,13 +292,13 @@ ARTICLE_OFFERS["best-low-fee-payment-processors-2026"] = {
     { processor: "Clover", fact: "2.3% to 2.6% + $0.10 plus $0 to $89.95+ a month. About $1,335 at $50K; 36-month hardware term." },
     { processor: "Stripe", fact: "2.7% + $0.05 in person, 2.9% + $0.30 online. About $1,400 a month at $50K." },
     { processor: "Square", fact: "2.6% + $0.15 in person on Free. About $1,450 a month at $50K on Plus." },
-    { processor: "Payment Depot", fact: "0% markup + $0.08 in person, $0.15 online, no cancellation fees. Membership fee not shown on its pricing page.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/pricing/", variant: "visit" } },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus, so not priced here. Pricing page lists $0 setup and no cancellation fees.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
   ],
 };
 
 ARTICLE_OFFERS["best-virtual-terminals-2026"] = {
   heading: "Virtual terminals by keyed cost",
-  orderNote: "Sorted by our engine's monthly keyed cost at $50K with a $50 average sale (prices checked Oct 2026), lowest first. Payment Depot is last because its membership fee is not published.",
+  orderNote: "Sorted by our engine's monthly keyed cost at $50K with a $50 average sale (prices checked Oct 2026), lowest first. Payment Depot is last because its pricing is quote-only.",
   checked: "2026",
   items: [
     { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. About $1,200 a month at $50K keyed." },
@@ -307,7 +307,7 @@ ARTICLE_OFFERS["best-virtual-terminals-2026"] = {
     { processor: "Square", fact: "3.5% + $0.15 keyed, no monthly fee. About $1,900 a month at $50K." },
     { processor: "PayPal", fact: "Virtual terminal 3.39% + $0.29 per keyed sale. About $1,985 a month at $50K." },
     { processor: "Stripe", fact: "3.4% + $0.30 for manually entered cards. About $2,000 a month at $50K." },
-    { processor: "Payment Depot", fact: "0% markup + $0.15 per keyed sale, no cancellation fees. Membership fee not shown on its pricing page.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/pricing/", variant: "visit" } },
+    { processor: "Payment Depot", fact: "Quote-only interchange-plus, no keyed rate listed. Pricing page lists $0 setup and no cancellation fees.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/", variant: "quote" } },
   ],
 };
 

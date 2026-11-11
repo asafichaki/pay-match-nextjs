@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T10:46:42.668Z",
+  "generated_at": "2026-11-11T13:16:54.959Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 54,
@@ -1003,7 +1003,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "AI Subscription Billing Tools 2026",
-      "base_description": "Stripe Billing vs Helcim, Stax, Square, PayPal, Payment Depot. Smart Retries, dunning, and effective rate at $25K to $5M monthly recurring volume.",
+      "base_description": "Stripe Billing vs Helcim, Stax, Square, PayPal and Payment Depot: Smart Retries, dunning, and effective rate from $25K to $5M a month. Prices checked Oct 2026.",
       "outline": []
     },
     {
@@ -1083,7 +1083,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Best Payment Gateways for Ecommerce 2026",
-      "base_description": "Helcim wins on price for $25K to $1M ecommerce. Stripe wins on dev tools. Stax above $80K. 8 gateways with cited fees and contract terms.",
+      "base_description": "Helcim is cheapest under about $50K a month, Stax from $50K up, and Stripe wins on dev tools. 8 ecommerce gateways with cited fees and contract terms.",
       "outline": []
     },
     {
@@ -1133,7 +1133,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Best Payment Processors for Ecommerce 2026",
-      "base_description": "Helcim wins ecommerce $25K to $750K monthly with interchange-plus pricing; Stripe under $25K; Stax above $80K. Full 2026 effective-rate comparison.",
+      "base_description": "Helcim is cheapest for ecommerce up to about $50K a month, Stax from $50K up, Stripe wins on tools. Full 2026 effective-rate comparison.",
       "outline": []
     },
     {
@@ -1183,7 +1183,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Best Payment Processors for Marketplaces 2026",
-      "base_description": "Stripe Connect wins for marketplaces from $25K to $50M monthly GMV. We rank 8 processors on split payments, sub-merchant KYC, payouts, and effective rates.",
+      "base_description": "Stripe Connect is our default for marketplaces. We compare 8 processors on split payments, seller KYC, payouts, platform fees and effective rates.",
       "outline": []
     },
     {
@@ -1193,7 +1193,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Best Mobile Payment Processors 2026",
-      "base_description": "Square 2.6% + $0.15 mobile, Helcim interchange-plus saves $90-$130 per $25K above $40K volume. 6 mobile processors ranked by total cost.",
+      "base_description": "Square 2.6% + $0.15 mobile with offline mode; Helcim interchange-plus costs about $430 a month less at $50K. 6 mobile processors compared by total cost.",
       "outline": []
     },
     {
@@ -1203,7 +1203,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Best Payment Processors for Professional Services 2026",
-      "base_description": "Helcim, Stax, and Payment Depot beat flat-rate processors for law firms, accountants, and consulting practices. Compare rates, contracts, and Level 3 data.",
+      "base_description": "Helcim and Stax beat flat-rate processors for law firms, accountants, and consulting practices in our cost model. Compare rates, contracts, and Level 3 data.",
       "outline": []
     },
     {
@@ -1323,7 +1323,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Helcim vs Payment Depot 2026: Cost Comparison",
-      "base_description": "Helcim vs Payment Depot 2026: effective rates at $25K, $100K, $250K monthly volume, crossover math, contract terms, hardware lock-in, and verdict by tier.",
+      "base_description": "Helcim vs Payment Depot 2026: Helcim's published cost at $25K, $100K and $250K a month, what Payment Depot does not publish, and how to check a quote against Helcim.",
       "outline": []
     },
     {
@@ -1393,7 +1393,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Square vs Shopify Payments 2026: Real Cost",
-      "base_description": "Side-by-side fees, plan math, and lock-in for Square vs Shopify Payments at $25K, $100K, and $500K monthly volume. Cited pricing, no fluff.",
+      "base_description": "Side-by-side fees, plan math, and lock-in for Square vs Shopify Payments, with worked examples at $25K and $100K and our published rates at $250K and $1M. Cited pricing.",
       "outline": []
     },
     {
@@ -1423,7 +1423,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Stripe vs Adyen 2026: Fees & Pricing Compared",
-      "base_description": "Adyen vs Stripe fees compared for 2026. Stripe wins below $1M monthly; Adyen's Interchange++ wins above. See break-even math and effective rates by tier.",
+      "base_description": "Adyen vs Stripe fees for 2026: Adyen's interchange++ + 0.60% + 13¢ comes to 2.56% online against 3.50% on Stripe, but Adyen has an unpublished minimum invoice. Prices checked Oct 2026.",
       "outline": []
     },
     {
@@ -1433,7 +1433,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Stripe vs Payment Depot 2026: Fees Compared",
-      "base_description": "Payment Depot beats Stripe above about $30K monthly. Compare 2026 pricing, break-even volume, hidden fees, and effective cost at $50K, $100K, and $250K.",
+      "base_description": "Stripe vs Payment Depot for 2026: Stripe's 2.9% + 30¢ against quote-only interchange-plus. How much room a Payment Depot quote has to beat Stripe at $30K and $250K.",
       "outline": []
     },
     {
@@ -1453,7 +1453,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Stripe vs Worldpay 2026: Real Cost Compared",
-      "base_description": "Stripe vs Worldpay compared on real effective rates, contracts, and onboarding. The crossover volume where Worldpay IC+ beats Stripe flat-rate, with numbers.",
+      "base_description": "Stripe vs Worldpay compared on published rates, contracts and onboarding. Stripe posts 2.9% + 30¢; Worldpay quotes every price. What to compare a Worldpay quote against.",
       "outline": []
     },
     {
@@ -1472,8 +1472,8 @@
       "slug": "3ds2-fallback-strategies",
       "source": "db",
       "title_mode": "template",
-      "base_title": "3DS2 Fallback Strategies: Cut Approval Loss 5 Percent",
-      "base_description": "3DS2 fallback strategies for US merchants: how risk-based routing, exemptions, and soft-decline retry recover 60 to 80 percent of lost approvals quickly.",
+      "base_title": "3DS2 Fallback Strategies for US Merchants (2026)",
+      "base_description": "3DS2 fallback strategies for US merchants: risk-based 3DS, EU exemptions, and soft-decline retry, now that Visa has retired 3DS 1.0.2.",
       "outline": []
     },
     {
@@ -1483,7 +1483,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Acquirer Selection For International (2026)",
-      "base_description": "Cross-border declines run 5 to 15 points higher than domestic. Local acquiring lifts approval 3 to 8 points and trims cross-border fees 0.40 to 1.20 percent.",
+      "base_description": "Cross-border cards cost more: Stripe adds 1.5% for international cards and 1% for conversion. How local acquiring in the EU and UK changes fees and approvals.",
       "outline": []
     },
     {
@@ -1492,8 +1492,8 @@
       "slug": "annual-rate-review-playbook",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Annual Rate Review Playbook: 7 Steps for 2026",
-      "base_description": "Run an annual rate review on your processor in 90 minutes. Pull statements, calculate effective rate, document drift, send a written repricing request.",
+      "base_title": "Annual Rate Review Playbook: 8 Steps for 2026",
+      "base_description": "Run an annual rate review on your processor in roughly 90 minutes once statements are downloaded. Calculate effective rate, document drift, ask in writing.",
       "outline": []
     },
     {
@@ -1502,8 +1502,8 @@
       "slug": "approval-rate-optimization",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Approval Rate Optimization 2026: 8-12 Point Recovery",
-      "base_description": "U.S. e-commerce approval averages 85 to 92 percent. This guide shows how operators recover 8 to 12 points with network tokens, retries, and updaters.",
+      "base_title": "Approval Rate Optimization 2026: Recover Declined Sales",
+      "base_description": "How to raise card approval rates: split soft and hard declines, retry within Visa and Mastercard limits, and use network tokens and account updaters.",
       "outline": []
     },
     {
@@ -1513,7 +1513,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Batch and Authorization Fees: 2026 Operator Guide",
-      "base_description": "Auth fees commonly run 3 to 25 cents per request, batch fees 10 to 35 cents daily on audited statements. How to audit, benchmark, and cut both in 2026.",
+      "base_description": "Authorization and batch fees are processor charges that vary by contract. How to find them on your statement, benchmark them and get them capped in 2026.",
       "outline": []
     },
     {
@@ -1523,7 +1523,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "BIN Routing for Higher Approvals (2026 Guide)",
-      "base_description": "BIN routing lifts CNP approvals 3 to 8 points. Operators at $500K-plus monthly volume recover 1 to 4 percent of revenue. Here is the operator playbook.",
+      "base_description": "BIN routing sends each card to the acquirer most likely to approve it. How to read per-BIN decline data, when a second acquirer pays, and retry limits.",
       "outline": []
     },
     {
@@ -1542,8 +1542,8 @@
       "slug": "card-not-present-surcharges",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Card-Not-Present Surcharges: 0.30% Tax in 2026",
-      "base_description": "Card-not-present interchange runs 0.30% above CP. Processors stack 0.40 to 0.80% on top. Audit your statement, fix AVS, save $16K a year on $200K volume.",
+      "base_title": "Card-Not-Present Surcharges: Online Premium 2026",
+      "base_description": "Online card sales cost more in interchange than in-person ones. What Visa's 2026 schedule shows, where processors add markup, and how to audit it.",
       "outline": []
     },
     {
@@ -1583,7 +1583,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Downgrade Categories Explained: 5 Costly Patterns",
-      "base_description": "Downgrade categories cost merchants 0.30 to 0.80 percent of monthly card volume. The 5 patterns that trigger them, with the math and the fixes.",
+      "base_description": "Downgrade categories can cost more than a full point per sale on Visa's Oct 2026 schedule. The 5 patterns that trigger them, with the math and the fixes.",
       "outline": []
     },
     {
@@ -1593,7 +1593,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "EMV and Chip Card MDR: 2026 Operator Guide",
-      "base_description": "EMV chip cards cut counterfeit fraud but did not cut your MDR. How chip interchange, batch timing, and processor markup actually move card-present rates.",
+      "base_description": "EMV chip cards were built to cut counterfeit fraud, not your MDR. How card-present interchange, batch timing, and processor markup move your rates.",
       "outline": []
     },
     {
@@ -1603,7 +1603,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Exit Fees and Contract Cancellation: 2026 Guide",
-      "base_description": "Processor exit fees run $250 to $50,000+. Read liquidated damages clauses, calculate true cancellation cost, and exit your contract on terms.",
+      "base_description": "Processor exit fees can include a flat ETF, liquidated damages and a separate equipment lease. How to read the clauses and leave on your terms.",
       "outline": []
     },
     {
@@ -1623,7 +1623,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Hardware Lock-In Across Processors (2026 Guide)",
-      "base_description": "How processors trap merchants with encrypted terminals and 48-month leases, plus the exact playbook to escape stranded hardware costs.",
+      "base_description": "How processors tie merchants to terminals through vendor-locked devices, injected keys and non-cancelable leases, and how to avoid stranded hardware costs.",
       "outline": []
     },
     {
@@ -1653,7 +1653,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Interchange Explained: What You Pay in 2026",
-      "base_description": "Interchange is 70 to 90 percent of merchant card fees, set by Visa and Mastercard. Here is what it costs and how to cut markup in 2026.",
+      "base_description": "Interchange is the card-network fee paid to the card issuer on every sale, set by Visa and Mastercard. Here is what it costs and how to cut markup in 2026.",
       "outline": []
     },
     {
@@ -1663,7 +1663,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "International Interchange Fees: 2026 Operator Guide",
-      "base_description": "Three fees stack on cross-border cards: international interchange, network cross-border assessment, FX margin. Pull statements and cut 30 to 40 percent off cost.",
+      "base_description": "Up to three fees stack on cross-border cards: international interchange, a network cross-border assessment and FX. Here is how to read each one and what to negotiate.",
       "outline": []
     },
     {
@@ -1673,7 +1673,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Level 2 and Level 3 Processing Data: 2026 B2B Guide",
-      "base_description": "Level 2 and Level 3 data drop B2B interchange 0.50 to 1.00 percent. How the fields work, where they fail, and the gateway fix that pays back in days.",
+      "base_description": "Level 2 and Level 3 data can cut B2B card interchange. How the fields work, where they fail, and what Visa's Oct 2026 rates mean for commercial cards.",
       "outline": []
     },
     {
@@ -1693,7 +1693,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Multi-Location Reconciliation: 5 Leaks to Fix in 2026",
-      "base_description": "Multi-location reconciliation breaks at MID mapping, batch close times, and chargeback allocation. An 8-step audit to recover 0.15 to 0.40 percent.",
+      "base_description": "Multi-location reconciliation breaks at MID mapping, batch close times, and chargeback allocation. An 8-step audit to find misallocated fees and chargebacks.",
       "outline": []
     },
     {
@@ -1703,7 +1703,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Negotiate IC++ Pricing: 2026 Operator Playbook",
-      "base_description": "Pull your statement, calculate processor margin, and counter with three written IC++ quotes. Most retention teams match within 48 hours.",
+      "base_description": "Pull your statement, calculate processor margin, and counter with three written IC++ quotes. Ask your processor to match in writing.",
       "outline": []
     },
     {
@@ -1713,7 +1713,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Negotiating Reserve Terms: 2026 Operator Guide",
-      "base_description": "Rolling vs upfront reserves, release windows, and the contract clauses that lock 5 to 10 percent of revenue. Tactics that actually move terms.",
+      "base_description": "Rolling vs upfront reserves, release windows, and the contract clauses that set how much revenue a processor can hold. Tactics that actually move terms.",
       "outline": []
     },
     {
@@ -1723,7 +1723,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "PCI Compliance Fees Explained: 2026 Operator Guide",
-      "base_description": "PCI compliance fees cost merchants $99 to $360 yearly. Learn how processors stack them, what to dispute, and the exact statement lines to pull.",
+      "base_description": "PCI compliance fees are set by your processor, not the PCI Council. See published examples, what to dispute, and the statement lines to pull.",
       "outline": []
     },
     {
@@ -1733,7 +1733,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "PIN Debit Routing: Cut Debit Cost in 2026",
-      "base_description": "PIN debit routing is the operator's right under Regulation II to pick the cheapest debit network. Done right, it cuts debit cost by 0.15 to 0.35 percent.",
+      "base_description": "PIN debit routing is your right under Regulation II to pick the debit network. Fed 2024 data: exempt cards averaged 1.41% on Visa/MC vs 0.67% on PIN networks.",
       "outline": []
     },
     {
@@ -1743,7 +1743,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Pulling Rate Quotes From Competing Processors: 2026",
-      "base_description": "Operator playbook for pulling apples-to-apples rate quotes from competing processors. Save 25 to 60 basis points across a 36 month term.",
+      "base_description": "Operator playbook for pulling apples-to-apples rate quotes from competing processors: same statement, same pricing model, every fee in writing.",
       "outline": []
     },
     {
@@ -1753,7 +1753,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Renegotiating Your Processor After Year One (2026)",
-      "base_description": "Reset your merchant processing rate at month 13. Statement audit, competing quote, and the 7-step playbook to recover 0.20 to 0.45 percent of volume.",
+      "base_description": "Reset your merchant processing rate after year one: statement audit, competing quote, and a step-by-step playbook to cut your processor's markup.",
       "outline": []
     },
     {
@@ -1763,7 +1763,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "How High-Volume Merchants Cut Reserves in 2026",
-      "base_description": "Reserves freeze $300K+ in working capital at $2M monthly volume. The full negotiation playbook with chargeback math and capped-reserve counter-proposals.",
+      "base_description": "At $2M a month, a 6 percent reserve held 180 days ties up $720K. The negotiation playbook with chargeback math and capped-reserve counter-proposals.",
       "outline": []
     },
     {
@@ -1773,7 +1773,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Reserve Release Timelines: 2026 Operator Guide",
-      "base_description": "Most processors hold 5-10 percent of volume for 180 days. Calculate the locked capital cost and negotiate your rolling reserve down at renewal.",
+      "base_description": "How reserve release schedules work, what processors' own terms say, how to price the locked capital, and how to negotiate your rolling reserve down at renewal.",
       "outline": []
     },
     {
@@ -1783,7 +1783,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Restaurant POS Setup: 7 Steps to Cut Fees in 2026",
-      "base_description": "Restaurant POS setup decides if your card volume qualifies for Visa CPS/Restaurant interchange. Cut 0.20 to 0.45 percent with 7 fixes that work in 2026.",
+      "base_description": "Restaurant POS setup decides whether card sales get Visa's restaurant interchange or fall to non-qualified rates. 7 setup fixes for 2026, checked against Visa's Oct 2026 rules.",
       "outline": []
     },
     {
@@ -1802,8 +1802,8 @@
       "slug": "retry-logic-that-does-not-violate-card-network-rules",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Card-Network Retry Rules: 15-Attempt Cap and How to Comply",
-      "base_description": "Visa caps card retries at 15 per 30 days. Mastercard flags merchants over 10 declines per day. Build retry logic that branches on decline code, not the clock.",
+      "base_title": "Card-Network Retry Rules: 20-Attempt Cap and How to Comply",
+      "base_description": "Visa allows 20 attempts in 30 days on retryable declines, none on Category 1. Mastercard's limits are 10 in 24 hours and 35 in 30 days. Branch on the code.",
       "outline": []
     },
     {
@@ -1813,7 +1813,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Rewards Card Surcharge: 2026 Rules and Math",
-      "base_description": "Rewards cards run 0.40 to 0.75 percent over standard interchange. How product surcharging recovers it under 2026 Visa, Mastercard, and U.S. state rules.",
+      "base_description": "Premium rewards cards cost about 0.5 to 0.9 points more than standard cards on Visa's 2026 schedule. How product-level surcharging works and its limits.",
       "outline": []
     },
     {
@@ -1823,7 +1823,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Soft Declines vs Hard Declines: 2026 Operator Guide",
-      "base_description": "Soft declines are temporary and retryable. Hard declines trigger Visa misuse fees. Operator playbook with response codes, retry cadence, and dollar math.",
+      "base_description": "Soft declines are temporary and retryable. Hard declines must never be retried, and Visa charges per retry. Response codes, retry limits, and dollar math.",
       "outline": []
     },
     {
@@ -1842,8 +1842,8 @@
       "slug": "tokenization-for-higher-approval-rates",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Network Tokenization 2026: Why Approvals Rise 2-6%",
-      "base_description": "Network tokenization replaces card numbers with auto-updating tokens. Visa and Mastercard report 2-6% higher approvals. Real fees, real contracts, May 2026.",
+      "base_title": "Network Tokenization 2026: Visa Reports a 4.8% Approval Lift",
+      "base_description": "Network tokens replace card numbers with tokens that update on reissue. Visa reports a 4.8% approval lift on CNP. Fees and contracts, checked Nov 2026.",
       "outline": []
     },
     {
@@ -1883,7 +1883,7 @@
       "source": "db",
       "title_mode": "template",
       "base_title": "Working Capital Impact of Payment Reserves in 2026",
-      "base_description": "How payment reserves lock cash and add 40 to 60 basis points to your processing rate, with a worked example at $400K monthly volume and a negotiation playbook.",
+      "base_description": "How payment reserves lock cash and quietly raise your true processing cost, with a worked example at $400K monthly volume and a negotiation playbook.",
       "outline": []
     }
   ]
