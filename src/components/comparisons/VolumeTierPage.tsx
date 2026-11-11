@@ -37,7 +37,7 @@ export function VolumeTierPage({ tier, aeoAnswer, relatedLinks }: Props) {
     description: tier.metaDescription,
     url,
     datePublished: "2026-05-18",
-    dateModified: "2026-05-18",
+    dateModified: "2026-11-11",
     author: { "@id": BARAK_PERSON_ID },
     reviewedBy: { "@id": BARAK_PERSON_ID },
     publisher: { "@id": `${SITE}/#organization` },
@@ -149,9 +149,9 @@ export function VolumeTierPage({ tier, aeoAnswer, relatedLinks }: Props) {
         <section id="picks">
           <h2 className="!mt-12">Recommended processors for {tier.shortLabel}</h2>
           <p>
-            The {tier.picks.length} processors below are the ones whose published rates, contract terms,
-            and operator-side reputation hold up at this volume. Effective rates assume a normalized
-            U.S. SMB card mix (60% credit, 40% debit, 30% rewards). See the{" "}
+            The {tier.picks.length} processors below are ordered by published cost and fit at this volume.
+            Effective rates come from our cost engine: a $50 average sale, 60% credit and 40% debit cards,
+            prices checked Oct 2026. See the{" "}
             <Link href="/research/methodology" className="!text-primary hover:underline">methodology page</Link>{" "}
             for full assumptions.
           </p>
@@ -191,9 +191,9 @@ export function VolumeTierPage({ tier, aeoAnswer, relatedLinks }: Props) {
         <section id="pricing-tiers">
           <h2 className="!mt-12">Pricing-model breakdown at {tier.shortLabel}</h2>
           <p data-speakable="true">
-            At {tier.shortLabel} monthly volume, three pricing models compete: flat-rate or auto-discount
-            interchange-plus on the entry end, subscription interchange-plus in the middle, and custom IC++
-            contracts at the top. Here is the math on each.
+            At {tier.shortLabel}, three pricing models compete: flat rate, interchange-plus with a
+            percentage markup, and subscription interchange-plus with a monthly fee and no percentage
+            markup. Here is the math on each.
           </p>
 
           <div className="not-prose grid gap-4 sm:grid-cols-3 mt-6">
@@ -250,18 +250,7 @@ export function VolumeTierPage({ tier, aeoAnswer, relatedLinks }: Props) {
                 View
               </Link>
             </li>
-            <li>
-              Federal Reserve Payments Study series: U.S. SMB card-mix distribution.{" "}
-              <a
-                href="https://www.federalreserve.gov/paymentsystems.htm"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                federalreserve.gov
-              </a>
-            </li>
-            <li>Processor public pricing pages (captured 2026-04-30): Stripe, Square, Helcim, PayPal, Stax, Payment Depot, Adyen, Worldpay, Clover, Authorize.net, Braintree, Shopify Payments.</li>
+            <li>Processor public pricing pages (checked Oct 29, 2026): Stripe, Square, Helcim, PayPal, Stax, Adyen, Clover, Authorize.net, Braintree, Shopify Payments. Payment Depot and Worldpay publish no merchant rates.</li>
           </ol>
         </section>
 

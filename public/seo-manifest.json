@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T14:43:39.142Z",
+  "generated_at": "2026-11-11T14:55:54.907Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 54,
@@ -142,7 +142,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Best Payment Processors for $100K-$250K Monthly Volume (2026)",
-      "base_description": "At $100K-$250K monthly, every basis point is $100-$250/month. Real 2026 IC++ rates, the negotiation leverage you have at this tier, and the four contract clauses to push on.",
+      "base_description": "At $100K to $250K a month, Stax is the cheapest published price in our 2026 engine ($4,475 in person at $250K). Quotes and contract clauses to push on.",
       "outline": []
     },
     {
@@ -152,7 +152,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Best Payment Processors for $10K-$25K Monthly Volume (2026)",
-      "base_description": "Flat-rate vs interchange-plus at $10K-$25K monthly: real 2026 effective rates for Stripe, Square, Helcim, PayPal, Stax. Which wins on $15K monthly volume.",
+      "base_description": "At $10K to $25K a month, Helcim's interchange-plus costs less than Square, Stripe and PayPal in our 2026 engine: $211 vs $290 for Square at $10K in person.",
       "outline": []
     },
     {
@@ -180,7 +180,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Best Payment Processors for $25K-$50K Monthly Volume (2026)",
-      "base_description": "At $25K-$50K monthly, interchange-plus (Helcim, Stax) starts beating flat-rate (Stripe, Square) by 0.30-0.45% on effective rate. Here is the real math.",
+      "base_description": "At $25K to $50K a month, Helcim and Stax cost 0.7 to 1.1 points less than Stripe and Square in our 2026 engine. The real monthly math at $50K.",
       "outline": []
     },
     {
@@ -190,7 +190,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Best Payment Processors for $500K-$1M Monthly Volume (2026)",
-      "base_description": "$500K-$1M monthly merchants belong on direct acquirer contracts or enterprise IC++ from Adyen, Worldpay, or Global Payments. Real 2026 rates and negotiation leverage.",
+      "base_description": "At $500K to $1M a month, Stax is the cheapest published price in our 2026 engine (1.73% in person at $1M). Enterprise and direct acquirer quotes compared.",
       "outline": []
     },
     {
@@ -200,7 +200,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Best Payment Processors for $50K-$100K Monthly Volume (2026)",
-      "base_description": "$50K-$100K monthly: Helcim, Stax, Payment Depot, and negotiated IC++ from independent ISOs. Real 2026 rates, the four hidden fees to push on, and when to negotiate.",
+      "base_description": "$50K to $100K a month: Helcim, Stax and quote-based interchange-plus compared on 2026 published prices, with the fees to push on before you sign.",
       "outline": []
     },
     {
