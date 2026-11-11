@@ -34,8 +34,8 @@ import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
-  title: "Best Payment Gateway for Ecommerce: Complete 2025 Guide",
-  description: "Complete guide to choosing the best payment gateway for ecommerce in 2025. Compare Stripe, PayPal, Square, Shopify Payments features, fees, and find the perfect solution.",
+  title: "Best Payment Gateway for Ecommerce: 2026 Guide",
+  description: "Helcim is cheapest online up to about $50K a month, Stax from $50K, Stripe wins on developer tools. Fees for 9 ecommerce gateways, checked Oct 2026.",
   keywords: "best payment gateway ecommerce, ecommerce payment gateway, online payment gateway, Stripe vs PayPal, Shopify Payments, payment gateway comparison, ecommerce payment processing",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/best-payment-gateway-ecommerce",
@@ -47,14 +47,14 @@ const baseMetadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/best-payment-gateway-ecommerce",
-    title: "Best Payment Gateway for Ecommerce: Complete 2025 Guide",
-    description: "Everything you need to know about selecting and integrating payment gateways for your online store.",
+    title: "Best Payment Gateway for Ecommerce: 2026 Guide",
+    description: "Helcim is cheapest online up to about $50K a month, Stax from $50K, Stripe wins on developer tools. Fees for 9 ecommerce gateways, checked Oct 2026.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Payment Gateway for Ecommerce (2025)",
-    description: "Complete guide to choosing the right payment gateway for your online store.",
+    title: "Best Payment Gateway for Ecommerce (2026)",
+    description: "Helcim is cheapest online up to about $50K a month, Stax from $50K, Stripe wins on developer tools. Fees for 9 ecommerce gateways, checked Oct 2026.",
   },
 };
 
@@ -69,7 +69,7 @@ export default function BestPaymentGatewayEcommercePage() {
     { id: "what-is-gateway", title: "What is a Payment Gateway?" },
     { id: "why-matters", title: "Why Your Gateway Choice Matters" },
     { id: "key-features", title: "Essential Features to Look For" },
-    { id: "top-gateways", title: "Top Payment Gateways in 2025" },
+    { id: "top-gateways", title: "Top Payment Gateways in 2026" },
     { id: "platform-specific", title: "Platform-Specific Recommendations" },
     { id: "integration", title: "How to Integrate a Payment Gateway" },
     { id: "security", title: "Security and Compliance" },
@@ -84,7 +84,7 @@ export default function BestPaymentGatewayEcommercePage() {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Best Payment Gateway for Ecommerce: Complete Guide to Choosing the Right Solution (2026)",
-    "description": "Complete guide to choosing the best payment gateway for ecommerce in 2026. Compare features, fees, security, and find the perfect solution for your online store.",
+    "description": "How to choose a payment gateway for ecommerce in 2026: published fees for 9 gateways (checked Oct 29, 2026), costs at $50K a month from our effective-rate dataset, integration and PCI basics.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Organization",
@@ -108,7 +108,7 @@ export default function BestPaymentGatewayEcommercePage() {
       }
     },
     "datePublished": "2025-01-15",
-    "dateModified": "2025-12-07",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/best-payment-gateway-ecommerce"
@@ -132,7 +132,7 @@ export default function BestPaymentGatewayEcommercePage() {
         "name": "Which payment gateway is best for small ecommerce businesses?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For small ecommerce businesses processing under $10,000 monthly, Stripe is typically the best choice due to its transparent pricing (2.9% + $0.30), zero monthly fees, excellent documentation, and easy integration. Shopify merchants should use Shopify Payments to avoid additional transaction fees."
+          "text": "On price, Helcim (interchange + 0.50% + $0.25 online, no monthly fee) cost $270 against $350 for Stripe at $10,000 a month in our effective-rate dataset. Stripe (2.9% + $0.30, no monthly fee) is the pick if you want its developer tools. Shopify merchants should use Shopify Payments, because any other processor adds a 0.2% to 2% Shopify transaction fee."
         }
       },
       {
@@ -140,7 +140,7 @@ export default function BestPaymentGatewayEcommercePage() {
         "name": "What are typical payment gateway fees for ecommerce?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Standard ecommerce payment gateway fees range from 2.4% to 3.5% plus $0.10 to $0.49 per transaction. Stripe charges 2.9% + $0.30, PayPal charges 2.99% + $0.49, and Square charges 2.9% + $0.30 for online transactions."
+          "text": "Flat online rates run from 2.89% + $0.29 (PayPal Advanced Credit and Debit, Braintree) through 2.9% + $0.30 (Stripe, Square paid plans, Shopify Payments Basic) to 3.49% + $0.49 (PayPal Checkout). Interchange-plus providers add a margin to the card network cost instead: Helcim + 0.50% + $0.25 online, Adyen + 0.60% + $0.13. Some add a monthly fee ($25 for Authorize.net, $99 to $199+ for Stax), and international cards add 1.5% at Stripe, PayPal and Square. Prices checked Oct 29, 2026."
         }
       },
       {
@@ -148,7 +148,7 @@ export default function BestPaymentGatewayEcommercePage() {
         "name": "Do I need PCI compliance for my payment gateway?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, PCI DSS compliance is mandatory for any business that stores, processes, or transmits credit card information. However, using hosted payment pages or tokenized embedded forms qualifies you for the simplest compliance level (SAQ A with just 22 questions)."
+          "text": "Yes, PCI DSS compliance applies to any business that stores, processes, or transmits card data. Using hosted payment pages or tokenized embedded forms that keep card data off your servers usually qualifies you for the shortest self-assessment questionnaire, SAQ A, instead of the full SAQ D."
         }
       },
       {
@@ -156,7 +156,7 @@ export default function BestPaymentGatewayEcommercePage() {
         "name": "What's the best payment gateway for international ecommerce?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stripe is the best all-around choice for international ecommerce, supporting 135+ currencies across 45+ countries. PayPal works well for customers who prefer PayPal, operating in 200+ markets. For large businesses, Adyen provides the most comprehensive solution with 250+ payment methods."
+          "text": "Stripe is a strong all-around choice: it lets you charge customers in over 135 currencies, and international cards add 1.5% (plus 1% when currency conversion applies). PayPal works well for buyers who prefer to pay with PayPal; its international sales add 1.5%. For large cross-border merchants, Adyen offers interchange++ pricing (+ 0.60% + $0.13 on Visa and Mastercard) and settlement in many currencies, with a minimum monthly invoice it does not publish."
         }
       }
     ]
@@ -164,13 +164,15 @@ export default function BestPaymentGatewayEcommercePage() {
 
   
   const topGateways = [
-    { name: "Stripe", bestFor: "Tech-savvy online businesses", rate: "2.9% + $0.30", monthly: "$0", setup: "$0" },
-    { name: "PayPal", bestFor: "Trust & brand recognition", rate: "2.99% + $0.49", monthly: "$0", setup: "$0" },
-    { name: "Square", bestFor: "Omnichannel retail", rate: "2.9% + $0.30", monthly: "$0", setup: "$0" },
-    { name: "Authorize.Net", bestFor: "Established businesses", rate: "Varies by processor", monthly: "$25", setup: "$49" },
-    { name: "Braintree", bestFor: "Mobile-first businesses", rate: "2.9% + $0.30", monthly: "$0", setup: "$0" },
-    { name: "Adyen", bestFor: "Enterprise & international", rate: "Custom pricing", monthly: "Varies", setup: "$0" },
-    { name: "Shopify Payments", bestFor: "Shopify merchants", rate: "2.4% - 2.9% + $0.30", monthly: "$0", setup: "$0" }
+    { name: "Helcim", bestFor: "Lowest cost up to about $50K a month", rate: "Interchange + 0.50% + $0.25", monthly: "$0", setup: "$0" },
+    { name: "Stax", bestFor: "Lowest cost from about $50K a month", rate: "Interchange + $0.15", monthly: "$99 to $199+ by annual volume", setup: "Not published" },
+    { name: "Stripe", bestFor: "Developer-built checkouts", rate: "2.9% + $0.30", monthly: "$0", setup: "$0" },
+    { name: "PayPal", bestFor: "Second checkout button", rate: "3.49% + $0.49 Checkout; 2.89% + $0.29 Advanced Credit and Debit", monthly: "$0", setup: "Not published" },
+    { name: "Square", bestFor: "Omnichannel retail", rate: "2.9% + $0.30 on paid plans; 3.3% + $0.30 on Free", monthly: "$0 Free; $49 Plus; $149 Premium per location", setup: "Not published" },
+    { name: "Authorize.Net", bestFor: "Carts that require its gateway", rate: "2.9% + $0.30 all-in-one; or $0.10 per sale + your processor", monthly: "$25", setup: "$0" },
+    { name: "Braintree", bestFor: "Cards plus PayPal and Venmo in one integration", rate: "2.89% + $0.29", monthly: "None listed", setup: "Not published" },
+    { name: "Adyen", bestFor: "Large and cross-border merchants", rate: "Interchange++ + 0.60% + $0.13", monthly: "Minimum invoice, amount not published", setup: "$0" },
+    { name: "Shopify Payments", bestFor: "Shopify merchants", rate: "2.9% + $0.30 on Basic, lower on higher plans", monthly: "Shopify plan required (Basic $29, billed yearly)", setup: "Not published" }
   ];
 
   
@@ -181,25 +183,25 @@ const essentialFeatures = [
     { icon: Smartphone, title: "Mobile Optimization", desc: "Responsive checkout forms, mobile wallet integration, and fast load times on mobile networks." },
     { icon: RefreshCw, title: "Recurring Billing", desc: "Automated billing, failed payment retry logic, and subscription management tools." },
     { icon: TrendingUp, title: "Reporting & Analytics", desc: "Transaction history, approval rates, decline reasons, chargeback data, and revenue analytics." },
-    { icon: Users, title: "Customer Support", desc: "24/7 availability, fast response times, and multiple support channels (phone, chat, email)." },
+    { icon: Users, title: "Customer Support", desc: "Support hours and channels (phone, chat, email) that match when you sell. Few providers publish them on their pricing pages, so ask." },
     { icon: Settings, title: "Refund & Dispute Management", desc: "Easy refund processing, chargeback alert systems, and dispute management tools." }
   ];
 
   
 const platformRecommendations = [
-    { platform: "Shopify", primary: "Shopify Payments", reason: "Eliminates 0.5-2% transaction fees, seamless integration, Shop Pay for mobile" },
+    { platform: "Shopify", primary: "Shopify Payments", reason: "Avoids Shopify's 0.2% to 2% fee on third-party processors, built into checkout, Shop Pay for mobile" },
     { platform: "WooCommerce", primary: "Stripe", reason: "Official plugin, comprehensive features, Apple Pay, Google Pay, SEPA support" },
-    { platform: "Magento", primary: "Braintree or Stripe", reason: "Robust extensions, enterprise features, comprehensive documentation" },
-    { platform: "BigCommerce", primary: "BigCommerce Payments", reason: "Competitive rates, no additional transaction fees, native integration" },
-    { platform: "Custom", primary: "Stripe", reason: "Industry-best documentation, extensive libraries in all major programming languages" }
+    { platform: "Magento", primary: "Braintree or Stripe", reason: "Mature extensions, enterprise features, thorough documentation" },
+    { platform: "BigCommerce", primary: "BigCommerce Payments", reason: "Native integration; compare its rate with Stripe and PayPal before choosing" },
+    { platform: "Custom", primary: "Stripe", reason: "Detailed documentation and official client libraries for the major programming languages" }
   ];
 
   
 const integrationTypes = [
-    { type: "Plugin-Based", complexity: "Easiest", timeline: "1-4 hours", description: "Install plugin, configure credentials, test, go live" },
-    { type: "Hosted Payment Page", complexity: "Simple", timeline: "1-2 days", description: "Customer redirects to gateway's secure page for payment" },
-    { type: "Embedded Form", complexity: "Moderate", timeline: "1-3 days", description: "Payment form appears on your site via iframe/JavaScript" },
-    { type: "API Integration", complexity: "Complex", timeline: "1-4 weeks", description: "Complete control over payment experience, highest PCI requirements" }
+    { type: "Plugin-Based", complexity: "Easiest", timeline: "Hours", description: "Install plugin, configure credentials, test, go live" },
+    { type: "Hosted Payment Page", complexity: "Simple", timeline: "Days", description: "Customer redirects to gateway's secure page for payment" },
+    { type: "Embedded Form", complexity: "Moderate", timeline: "Days", description: "Payment form appears on your site via iframe/JavaScript" },
+    { type: "API Integration", complexity: "Complex", timeline: "Weeks", description: "Complete control over payment experience, highest PCI requirements" }
   ];
 
   
@@ -223,7 +225,7 @@ const integrationTypes = [
                     <ShoppingCart className="h-4 w-4" />
                     Ecommerce Guide
                   </span>
-                  <time className="text-sm text-muted-foreground">Updated December 2025</time>
+                  <time className="text-sm text-muted-foreground" dateTime="2026-11-11">Updated November 2026</time>
                 </div>
 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight">
@@ -231,27 +233,27 @@ const integrationTypes = [
                   <span className="bg-gradient-to-r from-slate-700 to-blue-600 dark:from-slate-300 dark:to-blue-400 bg-clip-text text-transparent">
                     Ecommerce
                   </span>
-                  : Complete Guide (2025)
+                  : Complete Guide (2026)
                 </h1>
                 <AeoAnswer kind="insights" slug="best-payment-gateway-ecommerce" />
 
                 <p className="text-xl text-muted-foreground max-w-3xl">
-                  Everything you need to know about selecting, integrating, and optimizing payment gateways for your online store. Boost conversions by 10-30% with the right choice.
+                  Everything you need to know about selecting, integrating, and optimizing payment gateways for your online store, with fees read from each provider's pricing page on Oct 29, 2026.
                 </p>
 
                 {/* Key Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
                   <div className="bg-background/80 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-black text-slate-800 dark:text-slate-200">7</div>
+                    <div className="text-3xl font-black text-slate-800 dark:text-slate-200">9</div>
                     <div className="text-sm text-muted-foreground">Top Gateways Compared</div>
                   </div>
                   <div className="bg-background/80 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-black text-blue-600 dark:text-blue-400">10-30%</div>
-                    <div className="text-sm text-muted-foreground">Conversion Boost</div>
+                    <div className="text-3xl font-black text-blue-600 dark:text-blue-400">3.50%</div>
+                    <div className="text-sm text-muted-foreground">Stripe online, $50 sale</div>
                   </div>
                   <div className="bg-background/80 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-black text-slate-700 dark:text-slate-300">2.4%</div>
-                    <div className="text-sm text-muted-foreground">Lowest Rate</div>
+                    <div className="text-3xl font-black text-slate-700 dark:text-slate-300">2.02%</div>
+                    <div className="text-sm text-muted-foreground">Lowest online rate in our data (Stax, $1M)</div>
                   </div>
                   <div className="bg-background/80 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-center">
                     <div className="text-3xl font-black text-slate-600 dark:text-slate-400">5</div>
@@ -307,10 +309,10 @@ const integrationTypes = [
             <div className="container mx-auto max-w-4xl">
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Choosing the right payment gateway is one of the most critical decisions you will make for your ecommerce business. Your payment gateway does not just process transactions, it directly impacts your conversion rates, customer trust, operational efficiency, and bottom line. A poorly chosen gateway can cost you thousands in lost sales, while the right one can boost conversions by 10-30% and save significant money on processing fees.
+                  Choosing the right payment gateway is one of the most critical decisions you will make for your ecommerce business. Your payment gateway does not just process transactions, it directly impacts your conversion rates, customer trust, operational efficiency, and bottom line. The gap is real money: at $50,000 a month online, our effective-rate dataset puts Stripe at $1,750 a month, Helcim at $1,275 and Stax at $1,200.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  After analyzing hundreds of ecommerce payment implementations, we have learned that there is no single "best" payment gateway for everyone. The ideal solution depends on your business model, target market, technical capabilities, transaction volume, and growth plans. This comprehensive guide will help you navigate these factors and make an informed decision.
+                  There is no single "best" payment gateway for everyone. The right one depends on your business model, target market, technical capabilities, transaction volume, and growth plans. This guide walks through each factor so you can make an informed decision.
                 </p>
               </div>
             </div>
@@ -350,7 +352,7 @@ const integrationTypes = [
                     </li>
                   ))}
                 </ol>
-                <p className="text-sm text-muted-foreground mt-4">This entire process typically takes 2-3 seconds, handling fraud detection, currency conversion, and security protocols simultaneously.</p>
+                <p className="text-sm text-muted-foreground mt-4">The whole round trip usually takes a few seconds, with fraud checks, currency conversion, and security checks running along the way.</p>
               </Card>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -388,13 +390,13 @@ const integrationTypes = [
                     <TrendingUp className="h-5 w-5 text-green-500" />
                     Impact on Conversion Rates
                   </h3>
-                  <p className="text-muted-foreground mb-4">A clunky, slow, or untrustworthy-looking checkout can increase cart abandonment by 20-40%.</p>
+                  <p className="text-muted-foreground mb-4">A clunky, slow, or untrustworthy-looking checkout loses sales the processor never sees.</p>
                   <ul className="space-y-2 text-sm">
                     {[
-                      "17% abandon carts due to payment security concerns",
-                      "Each extra second of load time reduces conversions by 7%",
-                      "Preferred payment methods increase conversion 10-30%",
-                      "Mobile-optimized flows convert 2-3x better"
+                      "Shoppers drop off when the payment step looks unsafe",
+                      "Slow checkout pages lose buyers before they pay",
+                      "Missing a buyer's preferred payment method costs sales",
+                      "Test the mobile checkout as carefully as desktop"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-muted-foreground">
                         <Check className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
@@ -409,13 +411,13 @@ const integrationTypes = [
                     <DollarSign className="h-5 w-5 text-blue-500" />
                     Cost Implications
                   </h3>
-                  <p className="text-muted-foreground mb-4">Processing fees typically range from 2.5% to 3.5% of revenue, one of your largest operational expenses.</p>
+                  <p className="text-muted-foreground mb-4">In our effective-rate dataset (a $50 sale), online processing costs 2.02% to 3.75% of sales depending on provider and volume.</p>
                   <ul className="space-y-2 text-sm">
                     {[
-                      "Monthly fees: $10-50 regardless of volume",
-                      "Transaction fees: $0.10-0.30 per transaction",
-                      "Setup fees: $0-500 one-time",
-                      "International fees: Additional 1-3%"
+                      "Monthly fees: $0 (Stripe, Helcim) to $25 (Authorize.net) or $99 to $199+ (Stax)",
+                      "Fixed online fees: $0.10 (Clover keyed) to $0.49 (PayPal Checkout) per transaction",
+                      "Setup fees: $0 at Helcim, Stripe, Adyen and Authorize.net",
+                      "International cards: 1.5% extra at Stripe, PayPal and Square"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-muted-foreground">
                         <DollarSign className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
@@ -432,8 +434,8 @@ const integrationTypes = [
                   </h3>
                   <p className="text-muted-foreground mb-4">The wrong choice can result in significant development costs and ongoing maintenance burden.</p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Development costs of $2,000-10,000 for custom integration</li>
-                    <li>• Weeks or months of implementation time</li>
+                    <li>• Developer time for a custom integration</li>
+                    <li>• Weeks of implementation time for an API build</li>
                     <li>• Limited customization capabilities</li>
                   </ul>
                 </Card>
@@ -489,7 +491,7 @@ const integrationTypes = [
                     "Customizable checkout",
                     "Advanced fraud tools (ML-based)",
                     "Multi-currency settlement",
-                    "Robust API flexibility"
+                    "Flexible API"
                   ].map((feature) => (
                     <div key={feature} className="flex items-center gap-2 p-2 bg-background rounded-lg text-sm text-muted-foreground">
                       <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
@@ -506,7 +508,7 @@ const integrationTypes = [
             <div className="container mx-auto max-w-5xl">
               <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <Calculator className="h-8 w-8 text-primary" />
-                Top Payment Gateways for Ecommerce in 2025
+                Top Payment Gateways for Ecommerce in 2026
               </h2>
 
               <div className="overflow-x-auto mb-8">
@@ -544,7 +546,7 @@ const integrationTypes = [
                       <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Strengths</h4>
                       <ul className="space-y-1 text-sm text-muted-foreground">
                         <li>• Excellent documentation and developer resources</li>
-                        <li>• Supports 135+ currencies and 45+ countries</li>
+                        <li>• Charge customers in over 135 currencies; available in 45+ countries</li>
                         <li>• Advanced fraud detection (Stripe Radar)</li>
                         <li>• Transparent pricing: 2.9% + $0.30</li>
                         <li>• No monthly fees or setup costs</li>
@@ -554,14 +556,14 @@ const integrationTypes = [
                       <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">Limitations</h4>
                       <ul className="space-y-1 text-sm text-muted-foreground">
                         <li>• Requires technical knowledge for custom implementations</li>
-                        <li>• Support can be slow for non-urgent issues</li>
-                        <li>• Account holds reported by some merchants</li>
-                        <li>• Limited phone support options</li>
+                        <li>• Flat rate never drops without a custom deal: 3.50% on a $50 sale at every volume in our dataset</li>
+                        <li>• Manually entered cards cost 3.4% + $0.30</li>
+                        <li>• International cards add 1.5%, plus 1% for currency conversion</li>
                       </ul>
                     </div>
                   </div>
                   <div className="p-3 bg-primary/10 rounded-lg">
-                    <p className="text-sm text-muted-foreground"><strong className="text-foreground">Best for:</strong> Online-first businesses, startups, SaaS companies, subscription businesses, merchants selling in multiple countries. Processing $5,000-$500,000 monthly.</p>
+                    <p className="text-sm text-muted-foreground"><strong className="text-foreground">Best for:</strong> Online-first businesses, startups, SaaS companies, subscription businesses, and merchants selling in multiple countries who value the developer tools over the lowest rate. On price alone, Helcim cost less at every volume in our dataset.</p>
                   </div>
                 </Card>
 
@@ -572,9 +574,9 @@ const integrationTypes = [
                     <div className="p-4 bg-green-500/10 rounded-lg">
                       <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Strengths</h4>
                       <ul className="space-y-1 text-sm text-muted-foreground">
-                        <li>• Highest brand recognition and trust</li>
-                        <li>• PayPal account holders check out faster</li>
-                        <li>• Operates in 200+ markets</li>
+                        <li>• PayPal and Venmo buttons many buyers already use</li>
+                        <li>• PayPal account holders can check out without typing a card</li>
+                        <li>• Free standard withdrawals; instant transfers 1.5% ($0.50 minimum)</li>
                         <li>• Working capital loans available</li>
                         <li>• Simple setup, no technical skills required</li>
                       </ul>
@@ -582,15 +584,15 @@ const integrationTypes = [
                     <div className="p-4 bg-red-500/10 rounded-lg">
                       <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">Limitations</h4>
                       <ul className="space-y-1 text-sm text-muted-foreground">
-                        <li>• Higher fees: 2.99% + $0.49 online</li>
-                        <li>• Frequent account holds and freezes</li>
-                        <li>• Dispute process favors buyers</li>
+                        <li>• PayPal Checkout costs 3.49% + $0.49 (4.47% on a $50 sale)</li>
+                        <li>• Can hold payments for new or higher-risk sellers</li>
+                        <li>• Chargebacks cost $20; international sales add 1.5%</li>
                         <li>• Customers leave your site during checkout</li>
                       </ul>
                     </div>
                   </div>
                   <div className="p-3 bg-primary/10 rounded-lg">
-                    <p className="text-sm text-muted-foreground"><strong className="text-foreground">Best for:</strong> Businesses targeting older demographics, international sellers, merchants who want to minimize payment friction, and those who value buyer trust over the lowest fees.</p>
+                    <p className="text-sm text-muted-foreground"><strong className="text-foreground">Best for:</strong> A second checkout button next to a primary processor, for stores whose buyers already pay with PayPal. The cheaper Advanced Credit and Debit card rate (2.89% + $0.29) needs PayPal's approval.</p>
                   </div>
                 </Card>
 
@@ -611,7 +613,8 @@ const integrationTypes = [
                     <div className="p-4 bg-red-500/10 rounded-lg">
                       <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">Limitations</h4>
                       <ul className="space-y-1 text-sm text-muted-foreground">
-                        <li>• Higher online rates: 2.9% + $0.30</li>
+                        <li>• Free plan charges 3.3% + $0.30 online (2.9% + $0.30 on Plus at $49 or Premium at $149 a month per location)</li>
+                        <li>• Instant or same-day transfers cost 1.95%</li>
                         <li>• Limited international support</li>
                         <li>• Basic ecommerce features</li>
                         <li>• Less customization than Stripe</li>
@@ -631,8 +634,8 @@ const integrationTypes = [
                       <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Strengths</h4>
                       <ul className="space-y-1 text-sm text-muted-foreground">
                         <li>• Zero-click integration with Shopify</li>
-                        <li>• No transaction fees (saves 0.5-2%)</li>
-                        <li>• Competitive processing rates</li>
+                        <li>• No Shopify transaction fee (other processors add 0.2% to 2%)</li>
+                        <li>• Rates fall on higher plans: 2.9% + $0.30 on Basic, 2.7% on Grow, 2.5% on Advanced</li>
                         <li>• Shop Pay for faster mobile checkout</li>
                         <li>• Unified dashboard with store analytics</li>
                       </ul>
@@ -643,12 +646,12 @@ const integrationTypes = [
                         <li>• Only works with Shopify stores</li>
                         <li>• Not available in all countries</li>
                         <li>• Limited customization options</li>
-                        <li>• Restricted product categories</li>
+                        <li>• U.S. payouts take 3 business days</li>
                       </ul>
                     </div>
                   </div>
                   <div className="p-3 bg-primary/10 rounded-lg">
-                    <p className="text-sm text-muted-foreground"><strong className="text-foreground">Best for:</strong> Any Shopify merchant selling permitted products in supported countries. The elimination of transaction fees alone typically makes this the most cost-effective choice.</p>
+                    <p className="text-sm text-muted-foreground"><strong className="text-foreground">Best for:</strong> Any Shopify merchant selling permitted products in supported countries. Avoiding Shopify's 0.2% to 2% third-party fee usually makes this the cheapest choice inside Shopify.</p>
                   </div>
                 </Card>
               </div>
@@ -686,7 +689,7 @@ const integrationTypes = [
                   <AlertTriangle className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Important Note for Shopify Users</h4>
-                    <p className="text-sm text-muted-foreground">Using third-party payment gateways on Shopify incurs additional transaction fees of 0.5% to 2% depending on your plan, making them significantly more expensive than Shopify Payments in most cases.</p>
+                    <p className="text-sm text-muted-foreground">Using a third-party payment gateway on Shopify adds a transaction fee of 0.2% to 2% per sale depending on your plan, which usually makes it more expensive than Shopify Payments.</p>
                   </div>
                 </div>
               </Card>
@@ -766,10 +769,10 @@ const integrationTypes = [
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 {[
-                  { level: "Level 1", volume: "6+ million transactions/year", requirement: "Annual onsite audit by QSA", color: "red" },
-                  { level: "Level 2", volume: "1-6 million transactions/year", requirement: "Annual SAQ + quarterly network scans", color: "orange" },
-                  { level: "Level 3", volume: "20,000-1 million ecommerce/year", requirement: "Annual SAQ + quarterly network scans", color: "yellow" },
-                  { level: "Level 4", volume: "Under 20,000 ecommerce/year", requirement: "Annual SAQ, scans recommended", color: "green" }
+                  { level: "Level 1", volume: "More than 6 million Visa or Mastercard transactions a year", requirement: "Annual Report on Compliance by a QSA + quarterly ASV scans", color: "red" },
+                  { level: "Level 2", volume: "1 to 6 million transactions a year", requirement: "Annual SAQ + quarterly ASV scans", color: "orange" },
+                  { level: "Level 3", volume: "20,000 to 1 million online transactions a year", requirement: "Annual SAQ + quarterly ASV scans", color: "yellow" },
+                  { level: "Level 4", volume: "Fewer than 20,000 online transactions a year", requirement: "SAQ as your acquirer requires; scans may apply", color: "green" }
                 ].map((compliance) => (
                   <Card key={compliance.level} className={`p-6 border-l-4 border-l-${compliance.color}-500`}>
                     <h4 className="font-bold text-foreground mb-2">{compliance.level}</h4>
@@ -784,7 +787,7 @@ const integrationTypes = [
                   <Lock className="h-5 w-5 text-green-500" />
                   Minimizing Your PCI Burden
                 </h3>
-                <p className="text-muted-foreground mb-4">Use hosted payment pages or tokenized embedded forms to qualify for the simplest compliance level (SAQ A with just 22 questions) instead of handling card data directly (SAQ D with 329 questions).</p>
+                <p className="text-muted-foreground mb-4">Use hosted payment pages or tokenized embedded forms that keep card data off your servers. That usually qualifies you for the shortest questionnaire (SAQ A) instead of the full SAQ D you face when you handle card data directly. Level thresholds above follow <a href="https://stripe.com/guides/pci-compliance" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Stripe's PCI guide</a>; your acquirer confirms your level. The current standard is PCI DSS v4.0.1.</p>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
                     "Use tokenization to protect customer data",
@@ -819,7 +822,7 @@ const integrationTypes = [
                       "Display trust badges and security indicators",
                       "Use single-page checkout when possible",
                       "Never require account creation before purchase",
-                      "Ensure fast page load times (under 3 seconds)",
+                      "Keep checkout pages fast to load",
                       "Show all costs upfront with no surprise fees"
                     ].map((tip, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -834,7 +837,7 @@ const integrationTypes = [
                   <h3 className="text-xl font-bold text-foreground mb-4">Mobile Checkout Optimization</h3>
                   <ul className="space-y-2">
                     {[
-                      "Integrate Apple Pay and Google Pay (2-3x better conversion)",
+                      "Integrate Apple Pay and Google Pay",
                       "Use large, touch-friendly form fields (44x44px minimum)",
                       "Implement auto-fill support for addresses",
                       "Trigger appropriate keyboards (numeric for cards)",
@@ -861,26 +864,26 @@ const integrationTypes = [
               </h2>
 
               <Card className="p-6 mb-6">
-                <h3 className="text-xl font-bold text-foreground mb-4">Example Cost Calculation ($30,000/month, $75 avg order)</h3>
+                <h3 className="text-xl font-bold text-foreground mb-4">Example Cost Calculation ($50,000/month online, $50 average sale, 1,000 sales)</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="p-4 bg-muted/50 rounded-lg">
                     <h4 className="font-semibold text-foreground mb-2">Option 1: Stripe (2.9% + $0.30)</h4>
-                    <p className="text-sm text-muted-foreground">Transaction fees: $870 + $120 = $990</p>
+                    <p className="text-sm text-muted-foreground">Transaction fees: $1,450 + $300 = $1,750</p>
                     <p className="text-sm text-muted-foreground">Monthly fees: $0</p>
-                    <p className="font-bold text-foreground mt-2">Total: $990/month</p>
+                    <p className="font-bold text-foreground mt-2">Total: $1,750/month (3.50%)</p>
                   </div>
                   <div className="p-4 bg-green-500/10 rounded-lg">
-                    <h4 className="font-semibold text-foreground mb-2">Option 2: Authorize.Net + Merchant Account</h4>
-                    <p className="text-sm text-muted-foreground">Transaction fees (2.5% + $0.10): $750 + $40</p>
-                    <p className="text-sm text-muted-foreground">Gateway fee: $25</p>
-                    <p className="font-bold text-green-600 dark:text-green-400 mt-2">Total: $815/month (saves $175/mo or $2,100/yr)</p>
+                    <h4 className="font-semibold text-foreground mb-2">Option 2: Stax (subscription + interchange + $0.15)</h4>
+                    <p className="text-sm text-muted-foreground">Interchange at our 1.70% online estimate: $850; per-sale fees: $150</p>
+                    <p className="text-sm text-muted-foreground">Subscription: $199 ($600,000 a year in volume)</p>
+                    <p className="font-bold text-green-600 dark:text-green-400 mt-2">Total: about $1,200/month (2.40%), saving $550/mo or $6,600/yr</p>
                   </div>
                 </div>
               </Card>
 
               <Card className="p-6 bg-primary/5">
                 <p className="text-muted-foreground">
-                  <strong className="text-foreground">Pro Tip:</strong> Always calculate based on your actual or projected transaction volume and average order value. The "best" solution changes dramatically at different volume levels.
+                  <strong className="text-foreground">Pro Tip:</strong> Always calculate based on your actual or projected transaction volume and average order value. The "best" solution changes with volume: in our dataset Helcim (no monthly fee) costs $1,275 at this volume, and it is cheaper than Stax at $10,000 a month ($270 against $299). Interchange depends on your card mix, so treat the 1.70% as an estimate.
                 </p>
               </Card>
             </div>
@@ -927,12 +930,12 @@ const integrationTypes = [
                 <h3 className="text-xl font-bold text-foreground mb-4">Final Recommendations by Business Type</h3>
                 <ul className="space-y-3">
                   {[
-                    { type: "New online stores under $10k monthly", rec: "Stripe or platform's native solution" },
+                    { type: "New online stores under $10k monthly", rec: "Helcim on price, Stripe for developer tools, or your platform's native solution" },
                     { type: "Omnichannel retail", rec: "Square for unified online and in-person" },
                     { type: "International businesses", rec: "Stripe, PayPal, or Adyen based on volume" },
                     { type: "Mobile-first businesses", rec: "Braintree or Stripe with mobile wallets" },
                     { type: "Subscription businesses", rec: "Stripe, Chargebee, or Recurly" },
-                    { type: "High-volume established", rec: "Authorize.Net with interchange-plus or Adyen" }
+                    { type: "High-volume established", rec: "Stax from about $50K a month, or Adyen for large cross-border merchants" }
                   ].map((item) => (
                     <li key={item.type} className="flex items-start gap-2">
                       <Check className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
@@ -967,31 +970,31 @@ const integrationTypes = [
                   },
                   {
                     q: "Which payment gateway is best for small ecommerce businesses?",
-                    a: "For small businesses under $10,000 monthly, Stripe is typically the best choice due to transparent pricing (2.9% + $0.30), zero monthly fees, and easy integration. Shopify merchants should use Shopify Payments to avoid additional transaction fees."
+                    a: "On price, Helcim (interchange + 0.50% + $0.25 online, no monthly fee) cost $270 against $350 for Stripe at $10,000 a month in our effective-rate dataset. Stripe (2.9% + $0.30, no monthly fee) is the pick if you want its developer tools. Shopify merchants should use Shopify Payments, because any other processor adds a 0.2% to 2% Shopify transaction fee."
                   },
                   {
                     q: "What are typical payment gateway fees for ecommerce?",
-                    a: "Standard fees range from 2.4% to 3.5% plus $0.10 to $0.49 per transaction. Stripe charges 2.9% + $0.30, PayPal charges 2.99% + $0.49. Some add monthly fees ($0-50), setup fees ($0-500), and international card fees (1-3%)."
+                    a: "Flat online rates run from 2.89% + $0.29 (PayPal Advanced Credit and Debit, Braintree) through 2.9% + $0.30 (Stripe, Square paid plans, Shopify Payments Basic) to 3.49% + $0.49 (PayPal Checkout). Interchange-plus providers add a margin to the card network cost instead: Helcim + 0.50% + $0.25 online, Adyen + 0.60% + $0.13. Some add a monthly fee ($25 for Authorize.net, $99 to $199+ for Stax), and international cards add 1.5% at Stripe, PayPal and Square. Prices checked Oct 29, 2026."
                   },
                   {
                     q: "Do I need PCI compliance for my payment gateway?",
-                    a: "Yes, PCI DSS compliance is mandatory. However, using hosted payment pages or tokenized forms qualifies you for the simplest compliance level (SAQ A with 22 questions) instead of full compliance (SAQ D with 329 questions)."
+                    a: "Yes, PCI DSS compliance applies to any business that stores, processes, or transmits card data. Using hosted payment pages or tokenized embedded forms that keep card data off your servers usually qualifies you for the shortest self-assessment questionnaire, SAQ A, instead of the full SAQ D."
                   },
                   {
                     q: "Can I use multiple payment gateways on my store?",
-                    a: "Yes, offering both Stripe (for cards) and PayPal can increase conversion by 10-20% by providing payment choice. High-volume businesses sometimes use multiple gateways for redundancy during outages."
+                    a: "Yes. Many stores run a card processor (Stripe, Helcim or Stax) with a PayPal button beside it to give buyers a choice; test whether it lifts your own conversion. High-volume businesses sometimes use multiple gateways for redundancy during outages."
                   },
                   {
                     q: "What is the best payment gateway for international ecommerce?",
-                    a: "Stripe supports 135+ currencies across 45+ countries with competitive FX rates. PayPal operates in 200+ markets with high brand recognition. For large businesses ($5M+), Adyen provides 250+ payment methods with advanced orchestration."
+                    a: "Stripe is a strong all-around choice: it lets you charge customers in over 135 currencies, and international cards add 1.5% (plus 1% when currency conversion applies). PayPal works well for buyers who prefer to pay with PayPal; its international sales add 1.5%. For large cross-border merchants, Adyen offers interchange++ pricing (+ 0.60% + $0.13 on Visa and Mastercard) and settlement in many currencies, with a minimum monthly invoice it does not publish."
                   },
                   {
                     q: "How long does it take to receive payments?",
-                    a: "Standard payout is 2-7 business days. Stripe typically pays in 2 days, Square next business day, PayPal offers instant transfer for 1% fee. New accounts may face 7-30 day holds."
+                    a: "Stripe pays out in 2 business days, Square and Stax the next business day, Helcim the next business morning, and Shopify Payments in 3 business days in the U.S. Instant payouts cost 1.5% at Stripe and PayPal ($0.50 minimum) and 1.95% at Square. Any processor can hold funds or set a reserve on a new account, so ask how that works before you sign."
                   },
                   {
                     q: "Should I use my platform's native payment solution?",
-                    a: "Generally yes. Shopify Payments and WooCommerce Payments eliminate additional fees and offer seamless integration. Choose third-party only if you need specific features, operate in unsupported countries, or can negotiate better rates at high volume."
+                    a: "On Shopify, generally yes: Shopify Payments avoids the 0.2% to 2% fee Shopify adds to third-party processors. WooCommerce does not add such a fee, so there you can choose on rate and features. Choose a third-party processor if you need specific features, operate in unsupported countries, or can get a lower rate at high volume."
                   },
                   {
                     q: "How do I reduce cart abandonment related to payment?",
@@ -999,7 +1002,7 @@ const integrationTypes = [
                   },
                   {
                     q: "Is switching payment gateways worth it to save on fees?",
-                    a: "Yes, if annual savings exceed switching costs by at least 3x. For $50,000 monthly volume, reducing rate from 2.9% to 2.5% saves $2,400/year. Consider integration costs ($500-5,000), testing time, and temporary conversion dips."
+                    a: "Yes, if annual savings clearly exceed switching costs. For $50,000 monthly volume, reducing the rate from 2.9% to 2.5% saves $2,400 a year; moving from Stripe to Stax in our dataset saves $550 a month, or $6,600 a year. Weigh that against integration work, testing time, and any exit fee in your current contract."
                   }
                 ].map((item, i) => (
                   <Card key={i} className="p-6">

@@ -33,7 +33,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What are Helcim's rates?",
-    a: `In person, interchange plus ${feeLabel(hc.inPersonFirstTier)} under $50K a month, falling to 0.35% + 7¢, 0.25% + 7¢, 0.20% + 6¢ and 0.15% + 6¢ as volume grows. Online and keyed, interchange plus ${feeLabel(hc.onlineFirstTier)}, falling to 0.15% + 15¢ above $1M. The margin drops automatically at ${hc.tierBreaks} a month. There is no monthly, setup, PCI or cancellation fee.`,
+    a: `In person, interchange plus ${feeLabel(hc.inPersonFirstTier)} under $50K a month, falling to 0.35% + 7¢, 0.25% + 7¢, 0.20% + 6¢ and 0.15% + 6¢ as volume grows. Online and keyed, interchange plus ${feeLabel(hc.onlineFirstTier)}, falling to 0.15% + 15¢ above $1M. The margin drops automatically at ${hc.tierBreaks} a month, based on your average volume over the last three months.There is no monthly, setup, PCI or cancellation fee.`,
   },
   {
     q: "Does Stripe negotiate below 2.9%?",

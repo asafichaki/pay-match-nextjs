@@ -66,7 +66,7 @@ export default function GamingMerchantAccountPage() {
       }
     },
     "datePublished": "2026-08-19",
-    "dateModified": "2026-08-19",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/gaming-merchant-account"
@@ -117,7 +117,7 @@ export default function GamingMerchantAccountPage() {
         "name": "Why are video game businesses considered high-risk if they are not gambling?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Because the risk underwriters price is chargeback and fraud exposure, not legality. Video game merchants sell intangible digital goods with no delivery confirmation, which makes disputes hard to win. Friendly fraud is endemic: a family member makes in-game purchases, the cardholder does not recognize the charge, and the bank files a chargeback. Volume is card-not-present, often recurring, and attractive to account-takeover fraud. With Visa's VAMP merchant threshold tightening to 1.5% in April 2026, acquirers have less headroom than ever, so even a completely legal game studio gets underwritten as high-risk."
+          "text": "Because the risk underwriters price is chargeback and fraud exposure, not legality. Video game merchants sell intangible digital goods with no delivery confirmation, which makes disputes hard to win. Friendly fraud is endemic: a family member makes in-game purchases, the cardholder does not recognize the charge, and the bank files a chargeback. Volume is card-not-present, often recurring, and attractive to account-takeover fraud. With Visa's VAMP merchant Excessive threshold in the US lowered to 1.5% in April 2026, acquirers have less headroom, so even a completely legal game studio gets underwritten as high-risk."
         }
       },
       {
@@ -169,7 +169,7 @@ export default function GamingMerchantAccountPage() {
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk gaming pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; no published PaymentCloud rates"
             }
           }
         }
@@ -189,7 +189,7 @@ export default function GamingMerchantAccountPage() {
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "Licensed iGaming pricing; rate quoted per merchant on underwriting"
+              "description": "Advertises rates as low as a blended 2.95% for licensed gambling merchants"
             }
           }
         }
@@ -209,7 +209,7 @@ export default function GamingMerchantAccountPage() {
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk skill-gaming and fantasy pricing; rate quoted per merchant and acquirer"
+              "description": "Publishes discount rates of 1.95% to 4.95% for fantasy sports accounts"
             }
           }
         }
@@ -242,7 +242,7 @@ export default function GamingMerchantAccountPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">High-Risk Processing</span>
                 <span>•</span>
-                <span>Updated August 2026</span>
+                <span>Updated November 2026</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
@@ -299,7 +299,7 @@ export default function GamingMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>The card networks enforce hard math.</strong> Visa&rsquo;s Acquirer Monitoring Program (VAMP) combines fraud reports and disputes into a single ratio, and on April 1, 2026 the merchant &ldquo;Excessive&rdquo; threshold tightened from 2.2% to 1.5% in the US, Canada, the EU, and Asia-Pacific, per Visa&rsquo;s own program fact sheet; Latin America and the Caribbean already sat at 1.5%, and CEMEA remains at 2.2%. Per Chargeback Gurus&rsquo; program guide, merchants identified as Excessive expose their acquirer to enforcement fees of $8 per fraudulent or disputed transaction, with a three-month grace period on first identification within a rolling 12-month period. Mastercard&rsquo;s Excessive Chargeback Merchant program identifies a merchant at 100 to 299 chargebacks in a month combined with a chargeback ratio of 1.5% to 2.99%, sustained for two consecutive months; 300+ chargebacks at a 3%+ ratio moves you to its High Excessive tier, with fines that grow the longer a merchant stays in the program. An acquirer approving a gaming merchant is underwriting its own exposure to these programs, which is why the approval bar is high and why processors ask about your dispute stack before your revenue.
+                <strong>The card networks enforce hard math.</strong> Visa&rsquo;s Acquirer Monitoring Program (VAMP) combines fraud reports and disputes on card-not-present transactions into a single ratio. On April 1, 2026 the merchant &ldquo;Excessive&rdquo; threshold dropped from 2.2% to 1.5% in the US, Canada, the EU, and Asia-Pacific, with a minimum of 1,500 fraud reports and disputes in the month, per <a href="https://corporate.visa.com/content/dam/VCOM/corporate/visa-perspectives/security-and-trust/documents/visa-acquirer-monitoring-program-fact-sheet-2025.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa&rsquo;s own program fact sheet</a>; Latin America and the Caribbean already sat at 1.5%, and CEMEA remains at 2.2%. Mastercard runs its own Excessive Chargeback Program, with thresholds set in its Security Rules and Procedures; ask your acquirer for the current figures. An acquirer approving a gaming merchant is underwriting its own exposure to these programs, which is why the approval bar is high and why processors ask about your dispute stack before your revenue.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -324,7 +324,7 @@ export default function GamingMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Real-money iGaming and gambling (MCC 7995).</strong> Online casinos, sportsbooks, poker, real-money bingo and lottery couriers. In the US this is state-regulated: the Unlawful Internet Gambling Enforcement Act of 2006 restricts payment acceptance for unlawful internet gambling, and since the Supreme Court struck down the federal sports-betting ban in Murphy v. NCAA (2018), states license it individually. Online sports betting is now licensed in most states; full online casino play is licensed in only a small group of states. A US processor can only board you for volume originating where you hold a license, and Visa requires acquirers to register gambling merchants under its Integrity Risk Program (VIRP, which replaced the Global Brand Protection Program in May 2023). Registration carries fees paid through your acquirer. No license, no account. Any provider suggesting otherwise is describing a miscoded account, which is the fastest known route to a MATCH listing.
+                <strong>Real-money iGaming and gambling (MCC 7995).</strong> Online casinos, sportsbooks, poker, real-money bingo and lottery couriers. In the US this is state-regulated: the Unlawful Internet Gambling Enforcement Act of 2006 restricts payment acceptance for unlawful internet gambling, and since the Supreme Court struck down the federal sports-betting ban in Murphy v. NCAA (2018), states license it individually. Online sports betting is now licensed in many states; full online casino play is licensed in only a small group of states. A US processor can only board you for volume originating where you hold a license, and Visa requires acquirers to register gambling merchants under its Integrity Risk Program (VIRP, which replaced the Global Brand Protection Program in May 2023). Registration carries fees paid through your acquirer. No license, no account. Any provider suggesting otherwise is describing a miscoded account, which is the fastest known route to a MATCH listing.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -361,32 +361,32 @@ export default function GamingMerchantAccountPage() {
                   </thead>
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
+                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com/industries/online-gaming/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
                       <td className="py-3 pr-4">Video games and esports titles: MOBA, FPS, RPG, battle royale, mobile, sports games</td>
                       <td className="py-3 pr-4">Not published</td>
                       <td className="py-3 pr-4">Not published</td>
-                      <td className="py-3">Publishes a processing range of 1.5%-3.5% plus $0.10-$0.30 per transaction; its gaming page does not advertise real-money gambling support</td>
+                      <td className="py-3">Quote-only: its gaming page cites 1.5% to 3.5% plus $0.10 to $0.30 as a typical industry range, not as its own rate; the page does not advertise real-money gambling support</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://corepay.net" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Corepay</a></td>
+                      <td className="py-3 pr-4"><a href="https://corepay.net/industries/best-online-gambling-merchant-account/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Corepay</a></td>
                       <td className="py-3 pr-4">Licensed real-money iGaming: sports betting, online casino, esports, poker, live betting, lottery, bingo, fantasy</td>
                       <td className="py-3 pr-4">Not published</td>
-                      <td className="py-3 pr-4">Pre-approvals in 24-72 hours (their claim)</td>
-                      <td className="py-3">Requires a copy of your gaming license and a chargeback ratio under 2% to apply; advertises &ldquo;rates as low as a blended 2.95%&rdquo; with waived application, setup, and annual fees</td>
+                      <td className="py-3 pr-4">Pre-approvals within 24 to 72 hours (their claim)</td>
+                      <td className="py-3">Requires a copy of your gaming license and a chargeback ratio under 2% to apply; advertises &ldquo;rates as low as a blended 2.95%&rdquo; and waived application, setup, and annual fees</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
+                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com/fantasy-sports-merchant-account/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
                       <td className="py-3 pr-4">Fantasy sports, sports forecasting, skill gaming</td>
-                      <td className="py-3 pr-4">Publishes rolling reserves of 0%-10%</td>
+                      <td className="py-3 pr-4">Publishes rolling reserves of 0% to 10%</td>
                       <td className="py-3 pr-4">Setup &ldquo;within a week or two&rdquo; of approval (their claim)</td>
-                      <td className="py-3">Publishes discount rates of 1.95%-4.95%, authorization fees $0.15-$0.25, and monthly processing minimums of $5,000 (US) / $50,000 (international)</td>
+                      <td className="py-3">Publishes discount rates of 1.95% to 4.95%, authorization fees of $0.15 to $0.25, and minimum processing of $5,000 for US accounts and $50,000 for international accounts</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
               <p className="text-foreground leading-relaxed">
-                Read the table as a starting map, not a ranking. The right processor depends on which side of the legal line you sit on, your volume, and your corporate setup. Corepay&rsquo;s program is built for licensed gambling operators and will ask for the license up front. PaymentCloud&rsquo;s gaming program is built for the video-game side. Durango&rsquo;s strength is the skill-gaming and fantasy middle. Easy Pay Direct markets both gaming and gambling merchant accounts, and providers like PayKings and Host Merchant Services also publish gaming programs, though we did not verify those providers&rsquo; program terms in detail at write time.
+                Read the table as a starting map, not a ranking. The right processor depends on which side of the legal line you sit on, your volume, and your corporate setup. Corepay&rsquo;s program is built for licensed gambling operators and will ask for the license up front. PaymentCloud&rsquo;s gaming program is built for the video-game side. Durango&rsquo;s strength is the skill-gaming and fantasy middle. Easy Pay Direct also markets online gaming merchant accounts and says it places them with banks that underwrite gambling, casino, sports betting, fantasy sports, and iGaming; its site blocks automated checks of the full terms, so it is not in the table.
               </p>
 
               {/* Section 4 */}
@@ -395,7 +395,7 @@ export default function GamingMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                A rolling reserve is a percentage of every settlement the acquirer holds back for a defined window to cover potential future chargebacks and merchant default, released on a rolling schedule as the window ages out. (Full definition at our <Link href="/glossary#reserve" className="text-primary hover:underline">glossary entry on reserves</Link>.) In published gaming-adjacent terms, Durango lists rolling reserves from 0% to 10% for fantasy-sports accounts. Reserves are the single most negotiable term in a gaming merchant agreement, and the bigger you are, the more of this list is realistically on the table:
+                A rolling reserve is a percentage of every settlement the acquirer holds back for a defined window to cover potential future chargebacks and merchant default, released on a rolling schedule as the window ages out. (Full definition at our <Link href="/glossary#reserve" className="text-primary hover:underline">glossary entry on reserves</Link>.) In published gaming-adjacent terms, Durango lists rolling reserves from 0% to 10% for fantasy-sports accounts. Reserve terms are among the most negotiable parts of a gaming merchant agreement, and the bigger you are, the more of this list is realistically on the table:
               </p>
 
               <ul className="text-foreground space-y-2 ml-6 list-disc">
@@ -439,7 +439,7 @@ export default function GamingMerchantAccountPage() {
               <ul className="text-foreground space-y-2 ml-6 list-disc">
                 <li><strong>Financials that can absorb the risk.</strong> Personal and business financial statements showing capital adequate to cover a chargeback wave. Corepay lists financial statements among its required documents for gambling merchants; expect every acquirer to weight them harder at high volume.</li>
                 <li><strong>A credible volume story.</strong> Marketing plan, user acquisition funnel, comparable metrics from a prior product, or contracts that explain where the volume comes from. Unexplained projected volume reads as transaction laundering risk.</li>
-                <li><strong>A fraud and dispute stack already in place.</strong> 3-D Secure, AVS/CVV rules, velocity limits, chargeback alerts (Verifi/Ethoca style), and clear billing descriptors. Naming the tools in your application tells the underwriter you know the VAMP math is now 1.5%.</li>
+                <li><strong>A fraud and dispute stack already in place.</strong> 3-D Secure, AVS/CVV rules, velocity limits, chargeback alerts (Verifi/Ethoca style), and clear billing descriptors. Naming the tools in your application tells the underwriter you know Visa&rsquo;s US merchant threshold is now 1.5%.</li>
                 <li><strong>Principals with clean processing history.</strong> A prior MATCH listing on any principal is a near-automatic decline; disclose and explain history before the underwriter finds it.</li>
                 <li><strong>A realistic ramp.</strong> Asking for a $1M monthly cap from day one gets declined where asking for a staged cap with scheduled increases gets approved. Underwriters raise limits for merchants who hit their numbers cleanly.</li>
               </ul>
@@ -493,7 +493,7 @@ export default function GamingMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Getting a gaming merchant account approved in 2026 comes down to three things: knowing which legal category you are actually in, arriving with the file an underwriter needs to say yes at your volume, and negotiating reserves and caps like the term sheet it is. The processors above are a real starting map, but the right shortlist depends on your vertical, licensing, and volume. If you want a second set of eyes: take our matching quiz at <Link href="/quiz" className="text-primary hover:underline">myPayAdvisor</Link> and Barak will review your shortlist against what you are actually building.
+                Getting a gaming merchant account approved in 2026 comes down to three things: knowing which legal category you are actually in, arriving with the file an underwriter needs to say yes at your volume, and negotiating reserves and caps like the term sheet it is. The processors above are a real starting map, but the right shortlist depends on your vertical, licensing, and volume. If you want a shortlist matched to your vertical and volume, take our <Link href="/quiz" className="text-primary hover:underline">matching quiz</Link>.
               </p>
 
               {/* FAQ Section */}
@@ -509,7 +509,7 @@ export default function GamingMerchantAccountPage() {
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">Why are video game businesses considered high-risk if they are not gambling?</h3>
-                  <p className="text-foreground">Because the risk underwriters price is chargeback and fraud exposure, not legality. Video game merchants sell intangible digital goods with no delivery confirmation, which makes disputes hard to win. Friendly fraud is endemic: a family member makes in-game purchases, the cardholder does not recognize the charge, and the bank files a chargeback. Volume is card-not-present, often recurring, and attractive to account-takeover fraud. With Visa&rsquo;s VAMP merchant threshold tightening to 1.5% in April 2026, acquirers have less headroom than ever, so even a completely legal game studio gets underwritten as high-risk.</p>
+                  <p className="text-foreground">Because the risk underwriters price is chargeback and fraud exposure, not legality. Video game merchants sell intangible digital goods with no delivery confirmation, which makes disputes hard to win. Friendly fraud is endemic: a family member makes in-game purchases, the cardholder does not recognize the charge, and the bank files a chargeback. Volume is card-not-present, often recurring, and attractive to account-takeover fraud. With Visa&rsquo;s VAMP merchant Excessive threshold in the US lowered to 1.5% in April 2026, acquirers have less headroom, so even a completely legal game studio gets underwritten as high-risk.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">

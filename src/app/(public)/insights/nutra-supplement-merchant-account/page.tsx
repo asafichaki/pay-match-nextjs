@@ -66,7 +66,7 @@ export default function NutraSupplementMerchantAccountPage() {
       }
     },
     "datePublished": "2026-05-30",
-    "dateModified": "2026-08-19",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/nutra-supplement-merchant-account"
@@ -117,7 +117,7 @@ export default function NutraSupplementMerchantAccountPage() {
         "name": "What chargeback ratio does a supplement brand need to stay under in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Treat 1.5% as the hard ceiling on both networks, and manage to well under 1% in practice. Visa's VAMP Excessive threshold dropped from 2.2% to 1.5% on April 1, 2026, and the VAMP ratio counts reported fraud plus non-fraud disputes against settled card-absent transactions, so it climbs faster than an old-style chargeback ratio. Mastercard's ECM program identifies you at 100+ monthly chargebacks combined with a 1.5%+ ratio held for two consecutive months. Because monitoring math includes absolute counts as well as ratios, high-volume merchants should track both numbers weekly, enroll in Ethoca and Verifi alerts, and treat every refund request inside 48 hours as cheaper than the dispute it prevents."
+          "text": "Treat Visa's 1.5% as a ceiling and manage well under it. Visa's VAMP merchant Excessive threshold in the US dropped from 2.2% to 1.5% on April 1, 2026, with a minimum of 1,500 fraud reports and disputes in the month, and the VAMP ratio counts reported fraud plus disputes against settled card-not-present transactions, so it climbs faster than an old-style chargeback ratio. Acquirers often act before a merchant reaches the network threshold. Mastercard runs its own Excessive Chargeback Program; ask your acquirer for its current thresholds. Because monitoring math includes absolute counts as well as ratios, high-volume merchants should track both numbers weekly, enroll in Ethoca and Verifi alerts, and handle refund requests fast, because a refund costs less than the dispute it prevents."
         }
       },
       {
@@ -133,7 +133,7 @@ export default function NutraSupplementMerchantAccountPage() {
         "name": "Do supplement companies need LegitScript certification to get payment processing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Not as a blanket rule for standard supplements, but it increasingly matters at the edges of the category. Corepay, for example, publishes that it accepts GLP-1 supplement merchants only if they are compliant and LegitScript certified, and certification is a common requirement where products border on telehealth, weight-loss pharmaceuticals, or ingredients with regulatory history. For a conventional vitamin or sports-nutrition brand, what underwriters check instead is claims discipline on your site and ads, honest labeling, and manufacturer documentation. If your roadmap includes anything GLP-1 adjacent or advertising on platforms that gate health products, budget time for certification early."
+          "text": "Not as a blanket rule for standard supplements, but it matters at the edges of the category. Corepay, for example, publishes that it can work with merchants in the GLP-1 space provided they are compliant and LegitScript certified, and certification is a common requirement where products border on telehealth, weight-loss pharmaceuticals, or ingredients with regulatory history. For a conventional vitamin or sports-nutrition brand, what underwriters check instead is claims discipline on your site and ads, honest labeling, and manufacturer documentation. If your roadmap includes anything GLP-1 adjacent or advertising on platforms that gate health products, budget time for certification early."
         }
       },
       {
@@ -141,7 +141,7 @@ export default function NutraSupplementMerchantAccountPage() {
         "name": "How long does approval take for a nutraceutical merchant account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "With a complete file, days, not months, per the providers' own published timelines: PaymentCloud states 24 hours to 5 days with most approvals in 24-48 hours, Corepay states 24-72 hours, and Durango states 3-7 days as typical. The variable is almost never the processor's speed; it is whether your application is actually complete. Missing processing statements, a checkout page without renewal disclosure, or a product label the underwriter cannot match to an ingredient list each add a round trip of days. Assemble the full checklist above before you apply, and treat the website review as part of the application, because the underwriter will."
+          "text": "With a complete file, days, not months, per the providers' own published timelines: PaymentCloud says merchants can start accepting payments anywhere from 24 hours to 5 days and that most approvals are completed within 24 to 48 hours of receiving all documents, Corepay states 24 to 72 hours after a complete application, and Durango states an average of 1 to 3 days once documents are complete. The variable is almost never the processor's speed; it is whether your application is actually complete. Missing processing statements, a checkout page without renewal disclosure, or a product label the underwriter cannot match to an ingredient list each add a round trip of days. Assemble the full checklist above before you apply, and treat the website review as part of the application, because the underwriter will."
         }
       }
     ]
@@ -169,7 +169,7 @@ export default function NutraSupplementMerchantAccountPage() {
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk nutraceutical pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; no published nutraceutical rates"
             }
           }
         }
@@ -189,7 +189,7 @@ export default function NutraSupplementMerchantAccountPage() {
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk supplement pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; no published rates on its weight-loss supplement page"
             }
           }
         }
@@ -209,7 +209,7 @@ export default function NutraSupplementMerchantAccountPage() {
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk nutraceutical pricing; rate quoted per merchant and acquirer"
+              "description": "Publishes effective rates of about 1.95% to 4.95% for nutraceutical accounts"
             }
           }
         }
@@ -229,7 +229,7 @@ export default function NutraSupplementMerchantAccountPage() {
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "PriceSpecification",
-              "description": "High-risk nutraceutical pricing; rate quoted per merchant on underwriting"
+              "description": "Quote-only; no published nutraceutical rates"
             }
           }
         }
@@ -262,7 +262,7 @@ export default function NutraSupplementMerchantAccountPage() {
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <span className="font-medium text-primary">High-Risk Processing</span>
                 <span>•</span>
-                <span>Updated August 2026</span>
+                <span>Updated November 2026</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
@@ -315,11 +315,11 @@ export default function NutraSupplementMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Chargebacks driven by continuity billing.</strong> Most nutra revenue is recurring: auto-ship, monthly replenishment, subscribe-and-save. Recurring billing produces disputes in a predictable way. A customer forgets the subscription exists, does not recognize the descriptor, or finds cancellation harder than signup, and the path of least resistance is calling their bank. PaymentCloud&rsquo;s own industry page attributes the category&rsquo;s &ldquo;higher-than-average chargeback rates&rdquo; primarily to subscription renewals and expectation mismatches. Subscription merchants in card-not-present channels are also commonly classified under MCC 5968 (Direct Marketing, Continuity/Subscription Merchants), an MCC that acquirers themselves treat as high-risk regardless of what is being sold.
+                <strong>Chargebacks driven by continuity billing.</strong> Most nutra revenue is recurring: auto-ship, monthly replenishment, subscribe-and-save. Recurring billing produces disputes in a predictable way. A customer forgets the subscription exists, does not recognize the descriptor, or finds cancellation harder than signup, and the path of least resistance is calling their bank. PaymentCloud&rsquo;s own industry page attributes the category&rsquo;s &ldquo;higher-than-average chargeback rates&rdquo; primarily to subscription renewals and expectation mismatches. Subscription merchants in card-not-present channels are also commonly classified under MCC 5968 (Direct Marketing, Continuity/Subscription Merchants), an MCC that underwriters look at closely regardless of what is being sold.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Trial-offer economics.</strong> Free trials and &ldquo;free plus shipping&rdquo; offers convert cheaply on the front end and generate disputes on the back end, because the customer who paid $4.95 for shipping did not internalize that a $79 charge follows in 14 days. The dispute rate on negative-option trial conversions is the single biggest reason acquiring banks lost money on nutra portfolios, and it is why some specialist processors now refuse trial offers outright even while approving the rest of the category (more on this below).
+                <strong>Trial-offer economics.</strong> Free trials and &ldquo;free plus shipping&rdquo; offers convert cheaply on the front end and generate disputes on the back end. In a typical example, a customer who paid a few dollars for shipping did not register that a full-price charge follows two weeks later. Trial conversions are where underwriters expect nutra disputes to cluster, which is why some specialist processors refuse trial offers outright even while approving the rest of the category (more on this below).
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -340,7 +340,7 @@ export default function NutraSupplementMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                The FTC&rsquo;s Negative Option Rule, widely covered as the &ldquo;click-to-cancel&rdquo; rule, was vacated in its entirety by the U.S. Court of Appeals for the Eighth Circuit in July 2025, days before its main compliance deadline. The court found the FTC skipped a required preliminary regulatory analysis, a procedural failure, not a judgment that the substance was wrong. The FTC then restarted the rulemaking: it sent a draft Advance Notice of Proposed Rulemaking to OIRA on January 30, 2026, announced the public comment period on March 11, 2026, and took comments through April 13, 2026 (source: Gibson Dunn&rsquo;s tracking of the docket). As of August 2026 there is no new final rule in force.
+                The FTC&rsquo;s Negative Option Rule, widely covered as the &ldquo;click-to-cancel&rdquo; rule, was vacated in its entirety by the U.S. Court of Appeals for the Eighth Circuit in July 2025, days before its main compliance deadline. The court found the FTC skipped a required preliminary regulatory analysis, a procedural failure, not a judgment that the substance was wrong. The FTC then restarted the rulemaking: it sent a draft Advance Notice of Proposed Rulemaking to OIRA on January 30, 2026, announced the notice on March 11, 2026, and took comments through April 13, 2026 (source: <a href="https://www.gibsondunn.com/ftc-restarts-negative-option-rulemaking-after-eighth-circuit-vacatur-enforcement-under-rosca-continues/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Gibson Dunn&rsquo;s tracking of the docket</a>). As of this November 2026 update we found no proposed or final rule published.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -348,13 +348,13 @@ export default function NutraSupplementMerchantAccountPage() {
               </p>
 
               <ul className="text-foreground space-y-2 ml-6 list-disc">
-                <li><strong>ROSCA</strong> (the Restore Online Shoppers&rsquo; Confidence Act) still federally requires clear disclosure of subscription terms, express informed consent before charging, and a simple cancellation mechanism for anything sold online with a negative option feature. The FTC&rsquo;s recent negative-option settlements, totaling over $70 million by Gibson Dunn&rsquo;s count, were brought under ROSCA and Section 5, not under the vacated rule.</li>
+                <li><strong>ROSCA</strong> (the Restore Online Shoppers&rsquo; Confidence Act) still federally requires clear disclosure of subscription terms, express informed consent before charging, and a simple cancellation mechanism for anything sold online with a negative option feature. The FTC&rsquo;s recent negative-option settlements were brought under ROSCA and Section 5, not under the vacated rule.</li>
                 <li><strong>FTC Act Section 5</strong> still covers deceptive trial offers and buried disclosures.</li>
-                <li><strong>State automatic renewal laws</strong> are now the strictest layer. California&rsquo;s amended ARL (AB 2863, effective July 1, 2025) extends full disclosure, affirmative-consent, and click-to-quit cancellation requirements to free-to-paid conversions, requires annual renewal reminders, and requires you to keep consent records for at least three years, or one year after the contract ends, whichever is longer. Colorado, Minnesota, New York, and most other states have their own versions.</li>
+                <li><strong>State automatic renewal laws</strong> are now the strictest layer. California&rsquo;s amended ARL (AB 2863, effective July 1, 2025) extends disclosure, affirmative-consent, and click-to-quit cancellation requirements to free-to-paid conversions, requires annual renewal reminders, and requires you to keep verification of the consumer&rsquo;s consent. Many other states have their own automatic renewal laws.</li>
               </ul>
 
               <p className="text-foreground leading-relaxed">
-                What this means for your billing flow is simple: build to the ROSCA-plus-California standard now, regardless of where the federal rule lands. Checkout shows the renewal price and cadence before the pay button, consent to the subscription is a separate affirmative act, cancellation works in the same channel as signup, and you keep the consent records. Underwriters have converged on the same checklist. Durango&rsquo;s published document list for nutra applicants literally asks for screenshots of your cancellation flow. A compliant flow is no longer just legal hygiene; it is an approval document.
+                What this means for your billing flow is simple: build to the ROSCA-plus-California standard now, regardless of where the federal rule lands. Checkout shows the renewal price and cadence before the pay button, consent to the subscription is a separate affirmative act, cancellation works in the same channel as signup, and you keep the consent records. Underwriters have converged on the same checklist. Durango&rsquo;s published document list for nutra applicants asks for website screenshots including checkout and cancellation. A compliant flow is no longer just legal hygiene; it is an approval document.
               </p>
 
               <p className="text-sm text-muted-foreground italic">
@@ -367,19 +367,19 @@ export default function NutraSupplementMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Chargeback monitoring programs are the card-network programs, Visa VAMP and Mastercard ECM, that identify and penalize merchants whose fraud and dispute numbers exceed published thresholds. Approval is not the finish line: nutra accounts die at these thresholds, so know them before you scale spend.
+                Chargeback monitoring programs are the card-network programs, such as Visa&rsquo;s VAMP and Mastercard&rsquo;s Excessive Chargeback Program, that identify and penalize merchants whose fraud and dispute numbers exceed set thresholds. Approval is not the finish line: nutra accounts die at these thresholds, so know them before you scale spend.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Visa VAMP.</strong> On April 1, 2025, Visa replaced its separate dispute and fraud monitoring programs (VDMP and VFMP) with the consolidated Visa Acquirer Monitoring Program. Your VAMP ratio is reported fraud (TC40) plus non-fraud disputes, divided by settled card-absent transactions. The merchant &ldquo;Excessive&rdquo; threshold tightened from 2.2% to 1.5% on April 1, 2026 in the US, Canada, the EU, and Asia-Pacific, per Visa&rsquo;s own program fact sheet; Latin America and the Caribbean already sat at 1.5%, and CEMEA remains at 2.2%. Per Chargeback Gurus&rsquo; program guide, merchants identified as Excessive expose their acquirer to enforcement fees of $8 per fraudulent or disputed transaction, with a three-month grace period on first identification within a rolling 12-month period.
+                <strong>Visa VAMP.</strong> In 2025, Visa folded its separate dispute and fraud monitoring programs (VDMP and VFMP) into the consolidated Visa Acquirer Monitoring Program, with the new thresholds effective June 1, 2025. Your VAMP ratio is the count of reported fraud (TC40) plus disputes (TC15), divided by the count of settled card-not-present transactions. The merchant &ldquo;Excessive&rdquo; threshold dropped from 2.2% to 1.5% on April 1, 2026 in the US, Canada, the EU, and Asia-Pacific, with a minimum of 1,500 fraud reports and disputes in the month, per <a href="https://corporate.visa.com/content/dam/VCOM/corporate/visa-perspectives/security-and-trust/documents/visa-acquirer-monitoring-program-fact-sheet-2025.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa&rsquo;s own program fact sheet</a>; Latin America and the Caribbean already sat at 1.5%, and CEMEA remains at 2.2%.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Mastercard ECM.</strong> Mastercard&rsquo;s Excessive Chargeback Merchant program identifies a merchant at 100-299 chargebacks in a month combined with a chargeback ratio of 1.5%-2.99%, sustained for two consecutive months; 300+ chargebacks at a 3%+ ratio moves you to High Excessive (HECM). Published program summaries describe fines that escalate the longer a merchant stays in the program, plus possible MATCH listing, which is the industry blacklist that follows the business owner, not just the business.
+                <strong>Mastercard.</strong> Mastercard runs its own Excessive Chargeback Program, with thresholds set in its Security Rules and Procedures; ask your acquirer for the current figures. A termination for excessive chargebacks can also lead to a MATCH listing, the industry blacklist that records the principal owner, not just the business, and stays active for five years.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                The practical takeaway for a subscription supplement brand: 1.5% is now the number on both networks, and the VAMP math is harsher than it looks because fraud reports and the disputes they become can both count. A merchant doing 20,000 transactions a month hits the Visa threshold at 300 combined fraud-plus-dispute events. Dispute-alert services (Ethoca, Verifi), tight descriptors, pre-renewal reminder emails, and fast refunds on cancellation requests are not optional extras in this category; they are what keeps the account alive. This is the same discipline required in other flagged verticals; if you also operate in gaming, the <Link href="/insights/gaming-merchant-account" className="text-primary hover:underline">gaming merchant account</Link> side of the same problem is covered separately.
+                The practical takeaway for a subscription supplement brand: 1.5% is now Visa&rsquo;s US merchant number, and the VAMP math is harsher than it looks because fraud reports and disputes are added together. A merchant doing 20,000 card-not-present transactions a month reaches a 1.5% ratio at 300 combined fraud-plus-dispute events. Visa&rsquo;s merchant Excessive identification also needs at least 1,500 events in the month, but acquirers watch the ratio and often act well before a merchant reaches the network level. Dispute-alert services (Ethoca, Verifi), tight descriptors, pre-renewal reminder emails, and fast refunds on cancellation requests are not optional extras in this category; they are what keeps the account alive. This is the same discipline required in other flagged verticals; if you also operate in gaming, the <Link href="/insights/gaming-merchant-account" className="text-primary hover:underline">gaming merchant account</Link> side of the same problem is covered separately.
               </p>
 
               {/* Section 4 */}
@@ -388,7 +388,7 @@ export default function NutraSupplementMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                These are providers whose own live pages state appetite for nutraceutical or supplement merchants. Every row below was verified against the provider&rsquo;s published page in August 2026. This is a map, not a ranking; the right fit depends on your volume, your billing model, and your history.
+                These are providers whose own live pages state appetite for nutraceutical or supplement merchants. Every row below was checked against the provider&rsquo;s published page on November 11, 2026. This is a map, not a ranking; the right fit depends on your volume, your billing model, and your history.
               </p>
 
               <p className="text-sm text-muted-foreground">
@@ -408,25 +408,25 @@ export default function NutraSupplementMerchantAccountPage() {
                   </thead>
                   <tbody className="text-foreground">
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
-                      <td className="py-3 pr-4">Dedicated nutraceutical/supplement page; supports one-time and subscription billing</td>
+                      <td className="py-3 pr-4"><a href="https://paymentcloudinc.com/industries/nutraceutical-supplements/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PaymentCloud</a></td>
+                      <td className="py-3 pr-4">Dedicated nutraceutical/supplement page; supports recurring billing for subscription supplement businesses</td>
                       <td className="py-3 pr-4">Not published</td>
-                      <td className="py-3 pr-4">24 hours to 5 days, most commonly 24-48 hours</td>
+                      <td className="py-3 pr-4">Accepting payments in 24 hours to 5 days; most approvals within 24 to 48 hours of receiving all documents</td>
                       <td className="py-3">Publishes its underwriting document list; FDA/FTC compliance emphasis</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://corepay.net" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Corepay</a></td>
+                      <td className="py-3 pr-4"><a href="https://corepay.net/industries/best-weight-loss-supplement-merchant-accounts/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Corepay</a></td>
                       <td className="py-3 pr-4">Dedicated weight-loss supplement page; native recurring billing, auto-ship, bundles</td>
                       <td className="py-3 pr-4">Not published on the nutra page</td>
-                      <td className="py-3 pr-4">24-72 hours with a complete application</td>
-                      <td className="py-3">Ethoca and Verifi dispute alerts integrated; LegitScript-certified GLP-1 supplement merchants accepted; 30+ countries</td>
+                      <td className="py-3 pr-4">24 to 72 hours with a complete application</td>
+                      <td className="py-3">Ethoca and Verifi dispute alerts integrated; works with GLP-1 merchants that are compliant and LegitScript certified; processing in 30+ countries</td>
                     </tr>
                     <tr className="border-b border-border">
-                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
-                      <td className="py-3 pr-4">Dedicated supplement/nutraceutical page &ldquo;designed for long-term stability,&rdquo; subscription models supported</td>
-                      <td className="py-3 pr-4">Publishes 0%-10% rolling reserve, 5-10% typical, renegotiable with low disputes</td>
-                      <td className="py-3 pr-4">3-7 days typical</td>
-                      <td className="py-3">Only provider here publishing full rate ranges (1.95%-4.95% published discount rate); website pre-review before submission</td>
+                      <td className="py-3 pr-4"><a href="https://www.durangomerchantservices.com/natural-supplement-and-nutraceutical-merchant-account/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Durango Merchant Services</a></td>
+                      <td className="py-3 pr-4">Dedicated supplement/nutraceutical page; custom billing cycles, card account updater, and a customer portal to pause or skip shipments</td>
+                      <td className="py-3 pr-4">Rolling reserve often 5% to 10%, usually held 90 to 180 days; can be reduced as chargebacks stay low</td>
+                      <td className="py-3 pr-4">1 to 3 days on average once documents are complete</td>
+                      <td className="py-3">Only provider here publishing a rate range (effective rates of about 1.95% to 4.95%); reviews your business before you apply</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-3 pr-4"><a href="https://www.soarpay.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Soar Payments</a></td>
@@ -440,7 +440,7 @@ export default function NutraSupplementMerchantAccountPage() {
               </div>
 
               <p className="text-foreground leading-relaxed">
-                Easy Pay Direct also maintains a dedicated nutraceutical merchant account page and is a fixture in this vertical, but its site blocked our verification crawl, so its terms are not tabled here.
+                Easy Pay Direct also maintains a dedicated nutraceutical merchant account page that lists recurring and continuity billing, but its site blocks automated checks of the full terms, so it is not tabled here.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -453,7 +453,7 @@ export default function NutraSupplementMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                A rolling reserve is a percentage of every settlement the acquirer holds back for a defined window to cover potential future chargebacks and merchant default, released on a rolling schedule as the window ages out. (Full definition at our <Link href="/glossary#reserve" className="text-primary hover:underline">glossary entry on reserves</Link>.) In nutra, some reserve at the start is normal, not punitive. Durango, the only provider in the table that publishes numbers, lists 0%-10%, with 5-10% typical for new supplement accounts, and states plainly that reserves are renegotiable once the account shows low disputes.
+                A rolling reserve is a percentage of every settlement the acquirer holds back for a defined window to cover potential future chargebacks and merchant default, released on a rolling schedule as the window ages out. (Full definition at our <Link href="/glossary#reserve" className="text-primary hover:underline">glossary entry on reserves</Link>.) In nutra, some reserve at the start is common, not punitive. Durango, the only provider in the table that publishes numbers, says its rolling reserve is often 5% to 10%, usually held 90 to 180 days, and that it can be reduced as chargebacks stay low.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -461,7 +461,7 @@ export default function NutraSupplementMerchantAccountPage() {
               </p>
 
               <ul className="text-foreground space-y-2 ml-6 list-disc">
-                <li><strong>Processing history.</strong> Six to twelve months of statements showing dispute ratios comfortably under the 1.5% network thresholds is the strongest single document you own.</li>
+                <li><strong>Processing history.</strong> Six to twelve months of statements showing dispute ratios comfortably under Visa&rsquo;s 1.5% threshold is the strongest single document you own.</li>
                 <li><strong>Dispute infrastructure.</strong> Enrolled dispute alerts, documented refund-first policies, and pre-renewal notifications show the bank the ratio is managed, not lucky.</li>
                 <li><strong>Offer structure.</strong> A brand running straight subscriptions with transparent renewal terms is priced differently from one running trial funnels, because the bank&rsquo;s loss models say they should be.</li>
                 <li><strong>A clean funnel.</strong> Claims-compliant product pages and a cancellation flow that works remove the regulatory tail risk that reserves partly exist to cover.</li>
@@ -532,7 +532,7 @@ export default function NutraSupplementMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                <strong>Standard subscription.</strong> Subscribe-and-save with the renewal price and cadence disclosed at checkout is approvable across every provider in the table above; all four state recurring billing support. Expect the underwriter to test your cancellation flow personally. Soar&rsquo;s published cap is worth noting as a category signal: subscriptions over 12 months are outside its box entirely.
+                <strong>Standard subscription.</strong> Subscribe-and-save with the renewal price and cadence disclosed at checkout is approvable across every provider in the table above; all four state recurring billing support. Expect the underwriter to check your cancellation flow. Soar&rsquo;s published cap is worth noting as a category signal: subscriptions over 12 months are outside its box entirely.
               </p>
 
               <p className="text-foreground leading-relaxed">
@@ -540,7 +540,7 @@ export default function NutraSupplementMerchantAccountPage() {
               </p>
 
               <p className="text-foreground leading-relaxed">
-                The pattern across all three: the more your offer relies on the customer not noticing the next charge, the worse your approval odds, your reserve, and your survival against the 1.5% thresholds. Structure the offer so the customer expects every charge, and the processing problem mostly dissolves.
+                The pattern across all three: the more your offer relies on the customer not noticing the next charge, the worse your approval odds, your reserve, and your margin under Visa&rsquo;s 1.5% threshold. Structure the offer so the customer expects every charge, and the processing problem mostly dissolves.
               </p>
 
               {/* Section 8 */}
@@ -549,11 +549,11 @@ export default function NutraSupplementMerchantAccountPage() {
               </h2>
 
               <p className="text-foreground leading-relaxed">
-                Nutraceutical processing in 2026 rewards exactly one thing: showing the acquiring bank a risk profile it can price. Classify yourself honestly as a continuity merchant, build the billing flow to ROSCA-plus-California standard, keep the combined fraud-and-dispute ratio under 1.5% with alerts and reminders, and apply with the full document file. The providers above approve this category every day; they decline chaos, not supplements.
+                Nutraceutical processing in 2026 rewards exactly one thing: showing the acquiring bank a risk profile it can price. Classify yourself honestly as a continuity merchant, build the billing flow to ROSCA-plus-California standard, keep the combined fraud-and-dispute ratio under 1.5% with alerts and reminders, and apply with the full document file. The providers above publish appetite for this category; what they decline is chaos, not supplements.
               </p>
 
               <p className="text-foreground leading-relaxed">
-                Which of them fits your volume, your billing model, and your history is the part that benefits from a second pair of eyes. Take the <Link href="/quiz" className="text-primary hover:underline">matching quiz</Link> and Barak will review your shortlist against what you actually sell and how you bill. The same underwriting logic, applied to other flagged verticals, is covered in our guides to <Link href="/insights/gaming-merchant-account" className="text-primary hover:underline">gaming merchant accounts</Link> and <Link href="/insights/travel-merchant-account" className="text-primary hover:underline">travel merchant accounts</Link>.
+                Which of them fits your volume, your billing model, and your history is the part that benefits from a second pair of eyes. Take the <Link href="/quiz" className="text-primary hover:underline">matching quiz</Link> for a shortlist matched to what you sell and how you bill. The same underwriting logic, applied to other flagged verticals, is covered in our guides to <Link href="/insights/gaming-merchant-account" className="text-primary hover:underline">gaming merchant accounts</Link> and <Link href="/insights/travel-merchant-account" className="text-primary hover:underline">travel merchant accounts</Link>.
               </p>
 
               {/* FAQ Section */}
@@ -569,7 +569,7 @@ export default function NutraSupplementMerchantAccountPage() {
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">What chargeback ratio does a supplement brand need to stay under in 2026?</h3>
-                  <p className="text-foreground">Treat 1.5% as the hard ceiling on both networks, and manage to well under 1% in practice. Visa&rsquo;s VAMP Excessive threshold dropped from 2.2% to 1.5% on April 1, 2026, and the VAMP ratio counts reported fraud plus non-fraud disputes against settled card-absent transactions, so it climbs faster than an old-style chargeback ratio. Mastercard&rsquo;s ECM program identifies you at 100+ monthly chargebacks combined with a 1.5%+ ratio held for two consecutive months. Because monitoring math includes absolute counts as well as ratios, high-volume merchants should track both numbers weekly, enroll in Ethoca and Verifi alerts, and treat every refund request inside 48 hours as cheaper than the dispute it prevents.</p>
+                  <p className="text-foreground">Treat Visa&rsquo;s 1.5% as a ceiling and manage well under it. Visa&rsquo;s VAMP merchant Excessive threshold in the US dropped from 2.2% to 1.5% on April 1, 2026, with a minimum of 1,500 fraud reports and disputes in the month, and the VAMP ratio counts reported fraud plus disputes against settled card-not-present transactions, so it climbs faster than an old-style chargeback ratio. Acquirers often act before a merchant reaches the network threshold. Mastercard runs its own Excessive Chargeback Program; ask your acquirer for its current thresholds. Because monitoring math includes absolute counts as well as ratios, high-volume merchants should track both numbers weekly, enroll in Ethoca and Verifi alerts, and handle refund requests fast, because a refund costs less than the dispute it prevents.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
@@ -579,12 +579,12 @@ export default function NutraSupplementMerchantAccountPage() {
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">Do supplement companies need LegitScript certification to get payment processing?</h3>
-                  <p className="text-foreground">Not as a blanket rule for standard supplements, but it increasingly matters at the edges of the category. Corepay, for example, publishes that it accepts GLP-1 supplement merchants only if they are compliant and LegitScript certified, and certification is a common requirement where products border on telehealth, weight-loss pharmaceuticals, or ingredients with regulatory history. For a conventional vitamin or sports-nutrition brand, what underwriters check instead is claims discipline on your site and ads, honest labeling, and manufacturer documentation. If your roadmap includes anything GLP-1 adjacent or advertising on platforms that gate health products, budget time for certification early.</p>
+                  <p className="text-foreground">Not as a blanket rule for standard supplements, but it matters at the edges of the category. Corepay, for example, publishes that it can work with merchants in the GLP-1 space provided they are compliant and LegitScript certified, and certification is a common requirement where products border on telehealth, weight-loss pharmaceuticals, or ingredients with regulatory history. For a conventional vitamin or sports-nutrition brand, what underwriters check instead is claims discipline on your site and ads, honest labeling, and manufacturer documentation. If your roadmap includes anything GLP-1 adjacent or advertising on platforms that gate health products, budget time for certification early.</p>
                 </div>
 
                 <div className="p-6 bg-muted/30 rounded-lg">
                   <h3 className="text-lg font-semibold text-foreground mb-3">How long does approval take for a nutraceutical merchant account?</h3>
-                  <p className="text-foreground">With a complete file, days, not months, per the providers&rsquo; own published timelines: PaymentCloud states 24 hours to 5 days with most approvals in 24-48 hours, Corepay states 24-72 hours, and Durango states 3-7 days as typical. The variable is almost never the processor&rsquo;s speed; it is whether your application is actually complete. Missing processing statements, a checkout page without renewal disclosure, or a product label the underwriter cannot match to an ingredient list each add a round trip of days. Assemble the full checklist above before you apply, and treat the website review as part of the application, because the underwriter will.</p>
+                  <p className="text-foreground">With a complete file, days, not months, per the providers&rsquo; own published timelines: PaymentCloud says merchants can start accepting payments anywhere from 24 hours to 5 days and that most approvals are completed within 24 to 48 hours of receiving all documents, Corepay states 24 to 72 hours after a complete application, and Durango states an average of 1 to 3 days once documents are complete. The variable is almost never the processor&rsquo;s speed; it is whether your application is actually complete. Missing processing statements, a checkout page without renewal disclosure, or a product label the underwriter cannot match to an ingredient list each add a round trip of days. Assemble the full checklist above before you apply, and treat the website review as part of the application, because the underwriter will.</p>
                 </div>
               </div>
 

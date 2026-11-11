@@ -8,8 +8,8 @@ import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
-  title: "Level 2 & 3 Processing Guide: Cut B2B Merchant Fees by 1.5%",
-  description: "Learn how Level 2 and Level 3 credit card processing can reduce B2B merchant fees by up to 1.5% per transaction. Complete guide to implementation, requirements, and savings calculations.",
+  title: "Level 2 & 3 Processing Guide for B2B Merchants (2026)",
+  description: "How Level 2 and Level 3 data lower interchange on commercial cards in 2026: Visa Product 3 at 1.75% + 10¢ vs 2.70% + 10¢, required fields, and who passes the savings on.",
   keywords: "level 2 processing, level 3 processing, B2B payment processing, corporate card processing, interchange fees, purchasing card, merchant fees, government card processing, interchange-plus pricing",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/level-2-level-3-processing-guide",
@@ -21,13 +21,13 @@ const baseMetadata: Metadata = {
   openGraph: {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/level-2-level-3-processing-guide",
-    title: "B2B Merchants: How Level 2 & 3 Processing Can Slash Your Fees by 1.5%",
-    description: "Learn how Level 2 and Level 3 processing can reduce B2B merchant fees by up to 1.5% per transaction.",
+    title: "B2B Merchants: How Level 2 & 3 Processing Data Lowers Interchange",
+    description: "How Level 2 and Level 3 data lower interchange on commercial cards, and why Visa now needs Product 3 data.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Level 2 & 3 Processing: Cut B2B Merchant Fees by 1.5%",
+    title: "Level 2 & 3 Processing Guide for B2B Merchants (2026)",
     description: "Complete guide to reducing B2B payment processing fees through Level 2 and Level 3 data optimization.",
   },
 };
@@ -42,8 +42,8 @@ export default function Level2Level3ProcessingGuidePage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "B2B Merchants: How Level 2 & 3 Processing Can Slash Your Merchant Fees by Up to 1.5%",
-    "description": "Learn how Level 2 and Level 3 credit card processing can reduce B2B merchant fees by up to 1.5% per transaction. Complete guide to implementation, requirements, and savings calculations.",
+    "headline": "B2B Merchants: How Level 2 & 3 Processing Data Can Lower Your Merchant Fees",
+    "description": "How Level 2 and Level 3 data lower interchange on commercial cards in 2026: Visa Product 3 at 1.75% + 10¢ vs 2.70% + 10¢, required fields, and who passes the savings on.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
@@ -61,7 +61,7 @@ export default function Level2Level3ProcessingGuidePage() {
       }
     },
     "datePublished": "2025-12-30",
-    "dateModified": "2025-12-30",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/level-2-level-3-processing-guide"
@@ -89,7 +89,7 @@ export default function Level2Level3ProcessingGuidePage() {
         "name": "What types of businesses benefit most from Level 3 processing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Any business that regularly accepts corporate purchasing cards, government cards, or business credit cards benefits from Level 3 processing. This includes wholesalers, distributors, manufacturers, B2B service providers, software companies, and government contractors."
+          "text": "Any business on interchange-plus pricing that regularly accepts corporate purchasing cards, government cards, or business credit cards. This includes wholesalers, distributors, manufacturers, B2B service providers, software companies, and government contractors. On a flat-rate plan the savings stay with the processor."
         }
       },
       {
@@ -97,15 +97,15 @@ export default function Level2Level3ProcessingGuidePage() {
         "name": "Do consumer credit cards qualify for Level 3 rates?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, Level 2 and Level 3 reduced rates only apply to corporate purchasing cards, business credit cards, and government cards issued by Visa, Mastercard, and Discover."
+          "text": "No. Level 2 and Level 3 categories exist only on commercial cards: business, corporate, purchasing and fleet cards, including government purchasing cards. Per Stripe's documentation, Visa Product 3 covers Purchasing, Corporate and Business cards, and Mastercard Level 3 covers Purchasing and Corporate cards only. Sending the data on a consumer card does not change its rate."
         }
       },
       {
         "@type": "Question",
-        "name": "How much can I save with Level 3 processing?",
+        "name": "Can Level 3 processing help with chargebacks?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Businesses can save between 0.50% and 0.90% on corporate and purchasing card transactions. For a business processing $100,000 monthly in B2B sales, this could mean saving $18,000 annually."
+          "text": "It can help. Detailed invoice data gives you more evidence to submit if a buyer disputes a charge, and line items the buyer can match to their purchase order make disputes less likely."
         }
       },
       {
@@ -113,7 +113,7 @@ export default function Level2Level3ProcessingGuidePage() {
         "name": "Does Level 3 processing work for online transactions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, absolutely. Level 3 processing is particularly valuable for e-commerce and phone-order B2B sales where interchange rates are typically higher than in-person transactions."
+          "text": "Yes. It is particularly valuable for e-commerce and phone-order B2B sales, where interchange is higher than in person: in Visa's October 24, 2026 schedule, a Purchasing or Corporate card sale without qualifying data costs 2.70% + 10 cents card not present against 2.50% + 10 cents card present, and 1.75% + 10 cents with Product 3 data."
         }
       },
       {
@@ -121,7 +121,7 @@ export default function Level2Level3ProcessingGuidePage() {
         "name": "How long does it take to implement Level 3 processing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Implementation time varies. With modern integrated payment gateways, setup can be completed in as little as one week. Custom implementations involving ERP integration might take 4-6 weeks."
+          "text": "Implementation time varies. If your gateway already supports the fields, it can be a configuration change plus a test batch; custom ERP integrations take longer. Get the timeline and any setup cost in writing."
         }
       }
     ]
@@ -148,12 +148,12 @@ export default function Level2Level3ProcessingGuidePage() {
                 </div>
                 
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
-                  B2B Merchants: How Level 2 & 3 Processing Can Slash Your Merchant Fees by Up to 1.5%
+                  B2B Merchants: How Level 2 & 3 Processing Data Can Lower Your Merchant Fees
                 </h1>
                 <AeoAnswer kind="insights" slug="level-2-level-3-processing-guide" />
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                  If your business primarily sells to other companies (B2B) or government agencies, you're likely dealing with high corporate card interchange rates. What most business owners don't realize is that they're often paying a "lazy tax" on these transactions, sometimes hundreds or even thousands of dollars every month.
+                  If your business primarily sells to other companies (B2B) or government agencies, you're likely dealing with high corporate card interchange rates. What many business owners don't realize is that, on interchange-plus pricing, they can pay a "lazy tax" on these transactions whenever their gateway leaves out the extra data, which can add up to hundreds or thousands of dollars a month on large commercial card volume.
                 </p>
 
                 {/* Author Byline */}
@@ -185,17 +185,18 @@ export default function Level2Level3ProcessingGuidePage() {
                   <DollarSign className="w-8 h-8 text-primary" />
                   <h2 className="text-xl font-semibold text-foreground">Potential Annual Savings</h2>
                 </div>
+                <p className="text-sm text-muted-foreground mb-4">Hypothetical: all volume on Visa Purchasing and Corporate cards taken online, on interchange-plus pricing, at the 0.95 point gap between Commercial Card Not Present (2.70% + 10¢) and Commercial Product 3 (1.75% + 10¢) in Visa&apos;s October 24, 2026 schedule.</p>
                 <div className="grid md:grid-cols-3 gap-4 text-center">
                   <div className="p-4 bg-background rounded-lg">
-                    <p className="text-3xl font-bold text-primary">$5,400</p>
+                    <p className="text-3xl font-bold text-primary">$5,700</p>
                     <p className="text-sm text-muted-foreground">$50K/month processing</p>
                   </div>
                   <div className="p-4 bg-background rounded-lg">
-                    <p className="text-3xl font-bold text-primary">$27,000</p>
+                    <p className="text-3xl font-bold text-primary">$28,500</p>
                     <p className="text-sm text-muted-foreground">$250K/month processing</p>
                   </div>
                   <div className="p-4 bg-background rounded-lg">
-                    <p className="text-3xl font-bold text-primary">$108,000</p>
+                    <p className="text-3xl font-bold text-primary">$114,000</p>
                     <p className="text-sm text-muted-foreground">$1M/month processing</p>
                   </div>
                 </div>
@@ -226,7 +227,7 @@ export default function Level2Level3ProcessingGuidePage() {
                 </h2>
 
                 <p className="text-lg text-foreground leading-relaxed">
-                  The card networks (<a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> and <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>) want to encourage security and transparency in commercial transactions. To incentivize businesses to provide detailed transaction information, they offer significantly lower <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">interchange rates</Link> for transactions that include comprehensive invoice data.
+                  The card networks (<a href="https://usa.visa.com/content/dam/VCOM/download/merchants/visa-usa-interchange-reimbursement-fees.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> and <a href="https://www.mastercard.com/us/en/business/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a>) want to encourage security and transparency in commercial transactions. To incentivize businesses to provide detailed transaction information, they offer lower <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">interchange rates</Link> for transactions that include comprehensive invoice data.
                 </p>
 
                 <div className="my-8 p-6 bg-red-50 dark:bg-red-950/30 rounded-lg border-l-4 border-red-500">
@@ -244,33 +245,32 @@ export default function Level2Level3ProcessingGuidePage() {
                     <li>Transaction amount</li>
                   </ul>
                   <p className="text-foreground leading-relaxed mb-2">
-                    <strong>Typical Interchange Rate:</strong> 2.70% + $0.10 for large ticket corporate cards
+                    <strong>Visa Purchasing and Corporate cards without qualifying data:</strong> 2.70% + $0.10 card not present, 2.50% + $0.10 card present (Visa schedule effective Oct 24, 2026)
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Unfortunately, this is where most businesses inadvertently process their commercial transactions simply because their payment processor hasn't configured their system properly.
+                    This is where many businesses process their commercial transactions without knowing it, because their gateway sends only Level 1 data.
                   </p>
                 </div>
 
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <h3 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
                     <span className="bg-amber-500 text-white px-2 py-1 rounded text-sm">Level 2</span>
-                    Professional B2B Requirements (Moderate Savings)
+                    Professional B2B Requirements (Mastercard Only Since April 2026)
                   </h3>
                   <p className="text-foreground leading-relaxed mb-4">
-                    Level 2 processing requires additional fields beyond basic card information:
+                    Level 2 processing adds a few fields to the basic card data. Stripe&apos;s documentation lists the minimum as:
                   </p>
                   <ul className="list-disc list-inside text-foreground space-y-1 mb-4">
-                    <li>Customer Code or Purchase Order (PO) Number</li>
-                    <li>Sales Tax Amount (must be between 0.1% and 22%)</li>
-                    <li>Merchant Tax ID</li>
-                    <li>Merchant ZIP code</li>
-                    <li>Merchant category code</li>
+                    <li>Order reference or Purchase Order (PO) Number</li>
+                    <li>Sales Tax Amount (for Mastercard, between 0.1% and 30% of the sale)</li>
+                    <li>A customer reference (accepted, not required)</li>
+                    <li>Some gateways also ask for the merchant or ship-to postal code</li>
                   </ul>
                   <p className="text-foreground leading-relaxed mb-2">
-                    <strong>Typical Interchange Rate:</strong> 2.20% + $0.10 for large ticket corporate cards
+                    <strong>Visa:</strong> no Level 2 rate since April 2026 (Visa&apos;s schedule shows a Level II rate only for fuel). <strong>Mastercard:</strong> still has Level 2 categories; we could not open its schedule to quote them.
                   </p>
                   <p className="text-sm text-primary font-medium">
-                    Savings vs. Level 1: Approximately 0.50% per transaction
+                    Savings: Mastercard commercial cards only; check the category names on your statement
                   </p>
                 </div>
 
@@ -280,25 +280,23 @@ export default function Level2Level3ProcessingGuidePage() {
                     The Enterprise Discount (Maximum Savings)
                   </h3>
                   <p className="text-foreground leading-relaxed mb-4">
-                    This is where the substantial savings happen. Level 3 processing requires line-item detail that mirrors a complete invoice:
+                    This is where the larger savings happen, and since April 2026 it is the only way to earn Visa&apos;s data rate (Commercial Product 3). Level 3 adds line-item detail that mirrors an invoice. Per Stripe&apos;s documentation, each line needs:
                   </p>
                   <ul className="list-disc list-inside text-foreground space-y-1 mb-4">
-                    <li>Product codes (SKU or item numbers)</li>
-                    <li>Detailed product descriptions</li>
+                    <li>Product name or description</li>
+                    <li>Product code (SKU or item number)</li>
                     <li>Quantity of each item</li>
                     <li>Unit of measure (each, box, case, etc.)</li>
-                    <li>Unit price per item</li>
-                    <li>Line item totals</li>
-                    <li>Freight/shipping amount</li>
-                    <li>Discount amounts</li>
-                    <li>Destination ZIP code</li>
-                    <li>Item commodity codes</li>
+                    <li>Unit cost per item</li>
+                    <li>Tax amount for the line</li>
+                    <li>Plus an order reference for the whole sale</li>
+                    <li>Optional: freight/shipping, discount, commodity code, ship-from and ship-to ZIP codes</li>
                   </ul>
                   <p className="text-foreground leading-relaxed mb-2">
-                    <strong>Typical Interchange Rate:</strong> 1.80% + $0.10 for large ticket corporate cards
+                    <strong>Visa Commercial Product 3 (Purchasing and Corporate cards):</strong> 1.75% + $0.10
                   </p>
                   <p className="text-sm text-primary font-medium">
-                    Savings vs. Level 1: Up to 0.90% per transaction
+                    Savings vs. Commercial Card Not Present: 0.95 percentage points
                   </p>
                 </div>
 
@@ -308,7 +306,7 @@ export default function Level2Level3ProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed mb-6">
-                  Let's examine concrete examples across different business sizes to illustrate the financial impact of Level 3 processing.
+                  Let's examine hypothetical examples across different business sizes. Each assumes all volume is on Visa Purchasing and Corporate cards taken online, priced on interchange-plus, so only the interchange line changes: 2.70% + $0.10 without qualifying data, 1.75% + $0.10 with Product 3 data. Mixed card volumes save less, and very large tickets can fall under Visa&apos;s separate Large Ticket rates.
                 </p>
 
                 {/* Small Business Example */}
@@ -317,21 +315,21 @@ export default function Level2Level3ProcessingGuidePage() {
                     <Building2 className="w-5 h-5 text-primary" />
                     Small B2B Business ($50,000 Monthly Processing)
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4">Scenario: Office supply distributor, average transaction $1,000</p>
+                  <p className="text-sm text-muted-foreground mb-4">Hypothetical scenario: office supply distributor, average transaction $1,000 (50 sales)</p>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-4 bg-red-50 dark:bg-red-950/30 rounded-lg">
                       <p className="font-semibold text-foreground mb-2">At Level 1 Processing:</p>
                       <p className="text-sm text-foreground">Rate: 2.70% + $0.10</p>
-                      <p className="text-sm text-foreground">Monthly fees: <strong>$1,355</strong></p>
+                      <p className="text-sm text-foreground">Monthly interchange: <strong>$1,355</strong></p>
                     </div>
                     <div className="p-4 bg-green-50 dark:bg-green-950/30 rounded-lg">
                       <p className="font-semibold text-foreground mb-2">At Level 3 Processing:</p>
-                      <p className="text-sm text-foreground">Rate: 1.80% + $0.10</p>
-                      <p className="text-sm text-foreground">Monthly fees: <strong>$905</strong></p>
+                      <p className="text-sm text-foreground">Rate: 1.75% + $0.10</p>
+                      <p className="text-sm text-foreground">Monthly interchange: <strong>$880</strong></p>
                     </div>
                   </div>
                   <div className="mt-4 p-3 bg-primary/10 rounded-lg text-center">
-                    <p className="text-lg font-bold text-primary">Annual Savings: $5,400</p>
+                    <p className="text-lg font-bold text-primary">Annual Savings: $5,700</p>
                   </div>
                 </div>
 
@@ -341,21 +339,21 @@ export default function Level2Level3ProcessingGuidePage() {
                     <Building2 className="w-5 h-5 text-primary" />
                     Medium B2B Business ($250,000 Monthly Processing)
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4">Scenario: Industrial equipment supplier, average transaction $5,000</p>
+                  <p className="text-sm text-muted-foreground mb-4">Hypothetical scenario: industrial equipment supplier, average transaction $5,000 (50 sales)</p>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-4 bg-red-50 dark:bg-red-950/30 rounded-lg">
                       <p className="font-semibold text-foreground mb-2">At Level 1 Processing:</p>
                       <p className="text-sm text-foreground">Rate: 2.70% + $0.10</p>
-                      <p className="text-sm text-foreground">Monthly fees: <strong>$6,755</strong></p>
+                      <p className="text-sm text-foreground">Monthly interchange: <strong>$6,755</strong></p>
                     </div>
                     <div className="p-4 bg-green-50 dark:bg-green-950/30 rounded-lg">
                       <p className="font-semibold text-foreground mb-2">At Level 3 Processing:</p>
-                      <p className="text-sm text-foreground">Rate: 1.80% + $0.10</p>
-                      <p className="text-sm text-foreground">Monthly fees: <strong>$4,505</strong></p>
+                      <p className="text-sm text-foreground">Rate: 1.75% + $0.10</p>
+                      <p className="text-sm text-foreground">Monthly interchange: <strong>$4,380</strong></p>
                     </div>
                   </div>
                   <div className="mt-4 p-3 bg-primary/10 rounded-lg text-center">
-                    <p className="text-lg font-bold text-primary">Annual Savings: $27,000</p>
+                    <p className="text-lg font-bold text-primary">Annual Savings: $28,500</p>
                   </div>
                 </div>
 
@@ -365,21 +363,21 @@ export default function Level2Level3ProcessingGuidePage() {
                     <Building2 className="w-5 h-5 text-primary" />
                     Enterprise B2B Business ($1,000,000 Monthly Processing)
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4">Scenario: SaaS company processing corporate subscriptions</p>
+                  <p className="text-sm text-muted-foreground mb-4">Hypothetical scenario: SaaS company processing corporate subscriptions (400 sales)</p>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-4 bg-red-50 dark:bg-red-950/30 rounded-lg">
                       <p className="font-semibold text-foreground mb-2">At Level 1 Processing:</p>
                       <p className="text-sm text-foreground">Rate: 2.70% + $0.10</p>
-                      <p className="text-sm text-foreground">Monthly fees: <strong>$27,040</strong></p>
+                      <p className="text-sm text-foreground">Monthly interchange: <strong>$27,040</strong></p>
                     </div>
                     <div className="p-4 bg-green-50 dark:bg-green-950/30 rounded-lg">
                       <p className="font-semibold text-foreground mb-2">At Level 3 Processing:</p>
-                      <p className="text-sm text-foreground">Rate: 1.80% + $0.10</p>
-                      <p className="text-sm text-foreground">Monthly fees: <strong>$18,040</strong></p>
+                      <p className="text-sm text-foreground">Rate: 1.75% + $0.10</p>
+                      <p className="text-sm text-foreground">Monthly interchange: <strong>$17,540</strong></p>
                     </div>
                   </div>
                   <div className="mt-4 p-3 bg-primary/10 rounded-lg text-center">
-                    <p className="text-lg font-bold text-primary">Annual Savings: $108,000</p>
+                    <p className="text-lg font-bold text-primary">Annual Savings: $114,000</p>
                   </div>
                 </div>
 
@@ -395,15 +393,15 @@ export default function Level2Level3ProcessingGuidePage() {
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <h3 className="text-xl font-semibold text-foreground mb-3">The Hidden Cost of Ignorance</h3>
                   <p className="text-foreground leading-relaxed mb-4">
-                    For a typical B2B transaction of $5,000 on a corporate purchasing card:
+                    For a $5,000 B2B transaction on a Visa purchasing card taken online (interchange only):
                   </p>
                   <ul className="list-none space-y-2 text-foreground">
-                    <li>Level 1 processing cost: <strong>$135.10</strong></li>
-                    <li>Level 3 processing cost: <strong>$90.10</strong></li>
-                    <li className="text-primary font-semibold">Difference: $45 saved on a single invoice</li>
+                    <li>Without qualifying data (2.70% + $0.10): <strong>$135.10</strong></li>
+                    <li>With Product 3 data (1.75% + $0.10): <strong>$87.60</strong></li>
+                    <li className="text-primary font-semibold">Difference: $47.50 saved on a single invoice</li>
                   </ul>
                   <p className="text-foreground leading-relaxed mt-4">
-                    If your business processes just 20 of these transactions weekly, you're losing <strong>$3,600 monthly, or $43,200 annually</strong>, simply by not capturing the required data fields.
+                    If your business processes 20 of these transactions a week, you&apos;re paying an extra <strong>$950 a week, or $49,400 a year</strong>, simply by not capturing the required data fields.
                   </p>
                 </div>
 
@@ -412,11 +410,11 @@ export default function Level2Level3ProcessingGuidePage() {
                 <div className="grid gap-4 my-6">
                   <div className="p-4 bg-muted/30 rounded-lg">
                     <p className="font-semibold text-foreground">Wholesale Distributors</p>
-                    <p className="text-sm text-muted-foreground">With typical order values of $2,000-$10,000 and frequent corporate card usage, wholesalers can see 6-figure annual savings.</p>
+                    <p className="text-sm text-muted-foreground">With large orders and frequent commercial card usage, wholesalers can see some of the biggest savings.</p>
                   </div>
                   <div className="p-4 bg-muted/30 rounded-lg">
                     <p className="font-semibold text-foreground">Professional Services</p>
-                    <p className="text-sm text-muted-foreground">Consulting firms, law practices, and agencies billing $5,000+ per project benefit enormously, especially when clients pay with corporate cards.</p>
+                    <p className="text-sm text-muted-foreground">Consulting firms, law practices, and agencies billing large projects benefit when clients pay with corporate cards.</p>
                   </div>
                   <div className="p-4 bg-muted/30 rounded-lg">
                     <p className="font-semibold text-foreground">Manufacturing Suppliers</p>
@@ -428,7 +426,7 @@ export default function Level2Level3ProcessingGuidePage() {
                   </div>
                   <div className="p-4 bg-muted/30 rounded-lg">
                     <p className="font-semibold text-foreground">Government Contractors</p>
-                    <p className="text-sm text-muted-foreground">All government purchasing cards qualify for Level 3 rates, and government buyers often require this data for procurement compliance anyway.</p>
+                    <p className="text-sm text-muted-foreground">Government purchasing cards are commercial cards, so they can qualify when the data is complete, and some purchasing card programs ask suppliers for Level 3 data anyway.</p>
                   </div>
                 </div>
 
@@ -438,16 +436,16 @@ export default function Level2Level3ProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  Here's an uncomfortable truth about the payment processing industry: many processors have a financial incentive to keep you in the dark about Level 3 processing.
+                  Here's an uncomfortable truth about the payment processing industry: on some pricing models, the processor, not you, keeps the Level 3 savings.
                 </p>
 
                 <div className="my-8 p-6 bg-red-50 dark:bg-red-950/30 rounded-lg border-l-4 border-red-500">
                   <h3 className="text-xl font-semibold text-foreground mb-3">The Flat-Rate Pricing Trap</h3>
                   <p className="text-foreground leading-relaxed">
-                    Processors like <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">Square and Stripe</Link> charge a flat rate (typically 2.9% + $0.30). When you process a corporate card that qualifies for Level 3 data, the actual interchange cost drops to 1.80%, but you still pay 2.9%.
+                    Processors like <Link href="/comparisons/square-vs-stripe" className="text-primary hover:underline">Square and Stripe</Link> charge a flat rate (Stripe&apos;s standard online plan is 2.9% + $0.30, prices checked Oct 2026) whatever the card. When a Visa Purchasing or Corporate sale qualifies for Commercial Product 3, interchange drops to 1.75% + $0.10, but you still pay the same flat rate.
                   </p>
                   <p className="text-foreground leading-relaxed mt-2 font-semibold">
-                    The processor pockets the 1.1% difference, $1,100 on every $100,000 you process.
+                    The lower interchange stays with the processor. Stripe&apos;s documentation says its Level 2/3 savings apply to its interchange-plus (IC+) users.
                   </p>
                 </div>
 
@@ -466,15 +464,15 @@ export default function Level2Level3ProcessingGuidePage() {
                   <div className="grid md:grid-cols-2 gap-4 mt-4">
                     <div className="p-4 bg-background rounded-lg">
                       <p className="font-semibold text-foreground mb-2">Interchange-Plus on $10K:</p>
-                      <p className="text-sm text-foreground">Interchange: 1.80% + $0.10</p>
-                      <p className="text-sm text-foreground">Markup: 0.30% + $0.10</p>
-                      <p className="text-sm text-foreground font-semibold">Total: $212</p>
+                      <p className="text-sm text-foreground">Interchange: 1.75% + $0.10</p>
+                      <p className="text-sm text-foreground">Markup (hypothetical): 0.30% + $0.10</p>
+                      <p className="text-sm text-foreground font-semibold">Total: $205.20</p>
                     </div>
                     <div className="p-4 bg-background rounded-lg">
                       <p className="font-semibold text-foreground mb-2">Flat Rate on $10K:</p>
                       <p className="text-sm text-foreground">Rate: 2.9% + $0.30</p>
-                      <p className="text-sm text-foreground font-semibold">Total: $293</p>
-                      <p className="text-sm text-primary font-semibold mt-2">Difference: $81 per transaction</p>
+                      <p className="text-sm text-foreground font-semibold">Total: $290.30</p>
+                      <p className="text-sm text-primary font-semibold mt-2">Difference: $85.10 per transaction</p>
                     </div>
                   </div>
                 </div>
@@ -485,13 +483,13 @@ export default function Level2Level3ProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  The good news is that you don't need to manually enter detailed invoice data for every sale. Modern B2B payment solutions can seamlessly integrate with your existing business systems.
+                  The good news is that you don't need to manually enter detailed invoice data for every sale. Many B2B payment solutions can connect to your existing business systems.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">ERP and Accounting Software Integration</h3>
 
                 <p className="text-foreground leading-relaxed mb-4">
-                  Leading <Link href="/insights/best-payment-gateway-ecommerce" className="text-primary hover:underline">payment gateways</Link> offer direct integrations with popular enterprise software platforms:
+                  Leading <Link href="/insights/best-payment-gateway-ecommerce" className="text-primary hover:underline">payment gateways</Link> and platforms offer payment connectors. Whether a given connector sends Level 3 line items varies, so ask the vendor and who configures it. Systems worth asking about include:
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-4 my-6">
@@ -539,14 +537,14 @@ export default function Level2Level3ProcessingGuidePage() {
                     <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold text-foreground">Tax Amount Accuracy</p>
-                      <p className="text-sm text-muted-foreground">Sales tax must be between 0.1% and 22% of the transaction total. For tax-exempt sales, submit a nominal $0.01 tax amount to maintain qualification.</p>
+                      <p className="text-sm text-muted-foreground">For Mastercard Level 2, sales tax must be between 0.1% and 30% of the sale (Visa required 0.1% to 22% before it ended Level 2). Level 3 and Visa Product 3 accept $0 when no tax was collected, but the value must be accurate; never send a placeholder amount. Ask your processor how to mark tax-exempt buyers.</p>
                     </div>
                   </div>
                   <div className="p-4 bg-muted/30 rounded-lg flex gap-4">
                     <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold text-foreground">Customer Code Requirements</p>
-                      <p className="text-sm text-muted-foreground">The customer code or PO number field cannot be blank or filled with "N/A" or "000000." Use your internal customer ID or request a PO number.</p>
+                      <p className="text-sm text-muted-foreground">Send a real order reference or PO number the buyer can match to their records, not a placeholder like "N/A." Stripe truncates it to 25 alphanumeric characters.</p>
                     </div>
                   </div>
                   <div className="p-4 bg-muted/30 rounded-lg flex gap-4">
@@ -565,21 +563,21 @@ export default function Level2Level3ProcessingGuidePage() {
                     <XCircle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold text-foreground">Missing Required Fields</p>
-                      <p className="text-sm text-muted-foreground">A single missing field (even the destination ZIP code) will cause the entire transaction to downgrade to Level 1 rates.</p>
+                      <p className="text-sm text-muted-foreground">If a required field is missing or malformed, the transaction misses the lower category and prices at the standard commercial rate. Stripe notes its API does not reject line items that fail network rules; those sales simply miss the saving.</p>
                     </div>
                   </div>
                   <div className="p-4 bg-red-50 dark:bg-red-950/30 rounded-lg flex gap-4">
                     <XCircle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold text-foreground">Delayed Data Submission</p>
-                      <p className="text-sm text-muted-foreground">Level 3 data must be submitted during authorization or within 24 hours. Post-sale additions won't qualify.</p>
+                      <p className="text-sm text-muted-foreground">Send the data at authorization or capture, depending on your gateway (Stripe accepts line items at either step). Data added after the sale settles will not change its category.</p>
                     </div>
                   </div>
                   <div className="p-4 bg-red-50 dark:bg-red-950/30 rounded-lg flex gap-4">
                     <XCircle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold text-foreground">Inconsistent Transaction Amounts</p>
-                      <p className="text-sm text-muted-foreground">The sum of all line items must exactly match the authorized amount. Even a one-cent discrepancy causes a downgrade.</p>
+                      <p className="text-sm text-muted-foreground">Line items must add up to the order total. Stripe validates the arithmetic and does not send line items with errors to the networks, so those sales miss the lower rate.</p>
                     </div>
                   </div>
                 </div>
@@ -627,27 +625,27 @@ export default function Level2Level3ProcessingGuidePage() {
                 <div className="space-y-6 my-8">
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-2">What types of businesses benefit most from Level 3 processing?</h3>
-                    <p className="text-muted-foreground">Any business that regularly accepts corporate purchasing cards, government cards, or business credit cards. This includes wholesalers, distributors, manufacturers, B2B service providers, software companies, and government contractors.</p>
+                    <p className="text-muted-foreground">Any business on interchange-plus pricing that regularly accepts corporate purchasing cards, government cards, or business credit cards. This includes wholesalers, distributors, manufacturers, B2B service providers, software companies, and government contractors. On a flat-rate plan the savings stay with the processor.</p>
                   </div>
                   
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-2">Do consumer credit cards qualify for Level 3 rates?</h3>
-                    <p className="text-muted-foreground">No, Level 2 and Level 3 reduced rates only apply to corporate purchasing cards, business credit cards, and government cards issued by Visa, Mastercard, and Discover.</p>
+                    <p className="text-muted-foreground">No. Level 2 and Level 3 categories exist only on commercial cards: business, corporate, purchasing and fleet cards, including government purchasing cards. Per Stripe's documentation, Visa Product 3 covers Purchasing, Corporate and Business cards, and Mastercard Level 3 covers Purchasing and Corporate cards only. Sending the data on a consumer card does not change its rate.</p>
                   </div>
                   
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-2">Does Level 3 processing work for online transactions?</h3>
-                    <p className="text-muted-foreground">Yes, absolutely. Level 3 processing is particularly valuable for e-commerce and phone-order B2B sales where interchange rates are typically higher than in-person transactions.</p>
+                    <p className="text-muted-foreground">Yes. It is particularly valuable for e-commerce and phone-order B2B sales, where interchange is higher than in person: in Visa&apos;s October 24, 2026 schedule, a Purchasing or Corporate card sale without qualifying data costs 2.70% + 10¢ card not present against 2.50% + 10¢ card present, and 1.75% + 10¢ with Product 3 data.</p>
                   </div>
                   
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-2">How long does it take to implement Level 3 processing?</h3>
-                    <p className="text-muted-foreground">With modern integrated payment gateways, setup can be completed in as little as one week. Custom ERP integrations might take 4-6 weeks.</p>
+                    <p className="text-muted-foreground">Implementation time varies. If your gateway already supports the fields, it can be a configuration change plus a test batch; custom ERP integrations take longer. Get the timeline and any setup cost in writing.</p>
                   </div>
                   
                   <div className="p-6 bg-muted/30 rounded-lg">
                     <h3 className="font-semibold text-foreground mb-2">Can Level 3 processing help with chargebacks?</h3>
-                    <p className="text-muted-foreground">Yes! The comprehensive invoice information serves as strong evidence in chargeback disputes, and increased transparency reduces instances of "friendly fraud." Learn more in our <Link href="/insights/high-risk-payment-processing-guide" className="text-primary hover:underline">chargeback management guide</Link>.</p>
+                    <p className="text-muted-foreground">It can help. Detailed invoice data gives you more evidence to submit if a buyer disputes a charge, and line items the buyer can match to their purchase order make disputes less likely. Learn more in our <Link href="/insights/chargeback-management-solutions-a-merchant-s-guide-to-prevention-recovery" className="text-primary hover:underline">chargeback management guide</Link>.</p>
                   </div>
                 </div>
 
@@ -661,7 +659,7 @@ export default function Level2Level3ProcessingGuidePage() {
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                      <span className="text-foreground"><strong>Reduced Interchange Costs:</strong> Save 0.50% - 0.90% on corporate and purchasing card transactions</span>
+                      <span className="text-foreground"><strong>Reduced Interchange Costs:</strong> On Visa Purchasing and Corporate cards, 1.75% + 10¢ with Product 3 data against 2.70% + 10¢ card not present without it (on interchange-plus pricing)</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
@@ -681,7 +679,7 @@ export default function Level2Level3ProcessingGuidePage() {
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <h3 className="text-xl font-semibold text-foreground mb-4">Our Expert Recommendation</h3>
                   <p className="text-foreground leading-relaxed">
-                    <strong>If your B2B sales exceed $20,000 per month, you should not remain on a Flat-Rate pricing plan.</strong> We strongly recommend switching to an Interchange-Plus provider that offers automated Level 3 data "wrapping" or integration with your existing business systems.
+                    <strong>If a meaningful share of your sales runs on commercial cards, a Flat-Rate pricing plan passes none of these savings to you.</strong> We recommend pricing a switch to an Interchange-Plus provider that offers automated Level 3 data "wrapping" or integration with your existing business systems.
                   </p>
                 </div>
 
@@ -692,7 +690,7 @@ export default function Level2Level3ProcessingGuidePage() {
                   <li><strong>Calculate Your Potential Savings:</strong> Use our <Link href="/calculator" className="text-primary hover:underline">fee calculator</Link> to estimate monthly savings based on your processing volume.</li>
                   <li><strong>Evaluate Your Processor:</strong> Determine whether your current payment processor supports Level 3 processing and <Link href="/insights/merchant-statement-audit-guide" className="text-primary hover:underline">Interchange-Plus pricing</Link>.</li>
                   <li><strong>Request a Technical Assessment:</strong> Have a qualified payment consultant evaluate your current systems.</li>
-                  <li><strong>Implement Gradually:</strong> Start with Level 2 data for immediate savings, then expand to full Level 3.</li>
+                  <li><strong>Implement Gradually:</strong> Start with the fields your gateway already supports. Level 2 still earns lower rates on Mastercard, while Visa savings need full Product 3 line-item data.</li>
                 </ol>
 
                 {/* CTA Section */}
@@ -701,7 +699,7 @@ export default function Level2Level3ProcessingGuidePage() {
                     Stop Guessing, Start Saving
                   </h3>
                   <p className="text-foreground leading-relaxed mb-6">
-                    Most B2B merchants are unknowingly overpaying on credit card processing fees by thousands of dollars monthly. At myPayAdvisor, we specialize in helping B2B businesses optimize their payment processing through comprehensive audits and Level 2 & 3 implementation planning.
+                    B2B merchants on flat-rate plans, or with gateways that send only Level 1 data, pay the higher commercial category on every eligible sale. Use our calculator and quiz to compare processors that pass Level 2 and Level 3 savings through.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link href="/calculator">
@@ -730,7 +728,7 @@ export default function Level2Level3ProcessingGuidePage() {
                         How to Reduce Processing Fees: Merchant Statement Audit Guide
                       </h4>
                       <p className="text-sm text-muted-foreground mt-1">
-                        Learn how to audit your statement and reduce fees by 20-30%.
+                        Learn how to audit your statement line by line.
                       </p>
                     </Link>
                     <Link href="/insights/payment-processor-fees-guide" 

@@ -8,7 +8,7 @@ import { AeoAnswer } from "@/components/seo/AeoAnswer";
 import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
-  title: "Merchant Services Glossary: Complete Payment Processing Terms Guide 2025",
+  title: "Merchant Services Glossary: Payment Processing Terms",
   description: "Master essential payment processing terminology. Learn key terms like Interchange, Effective Rate, Acquirer, Payment Gateway, and more to negotiate better rates and reduce merchant fees.",
   keywords: "merchant services glossary, payment processing terms, interchange fee, effective rate, acquirer, payment gateway, chargeback, PCI compliance, basis points, MCC code, surcharge, cash discount",
   alternates: {
@@ -61,7 +61,7 @@ export default function MerchantServicesGlossaryPage() {
       }
     },
     "datePublished": "2025-12-30",
-    "dateModified": "2025-12-30",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/merchant-services-glossary"
@@ -94,7 +94,7 @@ export default function MerchantServicesGlossaryPage() {
       {
         "@type": "DefinedTerm",
         "name": "Interchange Fee",
-        "description": "The base fee set by Visa/Mastercard and paid to the card-issuing bank."
+        "description": "The base fee set by the card networks, such as Visa and Mastercard, and paid to the card-issuing bank."
       },
       {
         "@type": "DefinedTerm",
@@ -224,10 +224,10 @@ export default function MerchantServicesGlossaryPage() {
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <h3 className="text-xl font-semibold text-foreground mb-3">Interchange Fee (The Wholesale Cost)</h3>
                   <p className="text-foreground leading-relaxed mb-4">
-                    The base fee set by <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> and <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a> and paid to the card-issuing bank.
+                    The base fee set by the card networks, such as <a href="https://usa.visa.com/content/dam/VCOM/download/merchants/visa-usa-interchange-reimbursement-fees.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> and Mastercard, and paid to the card-issuing bank.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> This is the largest portion of your bill. Since these are non-negotiable, your goal should be to move to an Interchange-Plus pricing model to ensure you aren't paying hidden markups on top of these base rates. Read our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">complete guide to credit card processing fees</Link> for more details.
+                    <strong>Why it matters:</strong> This is usually the largest portion of your bill. Since these are non-negotiable, your goal should be to move to an Interchange-Plus pricing model to ensure you aren't paying hidden markups on top of these base rates. Read our <Link href="/insights/payment-processor-fees-guide" className="text-primary hover:underline">complete guide to credit card processing fees</Link> for more details.
                   </p>
                 </div>
 
@@ -237,7 +237,7 @@ export default function MerchantServicesGlossaryPage() {
                     The total fees paid divided by your total processing volume.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> This is the only metric that matters for comparing merchant services. It ignores "teaser rates" and shows the real percentage you pay. Use our <Link href="/calculator" className="text-primary hover:underline">effective rate calculator</Link> to see if you're being overcharged.
+                    <strong>Why it matters:</strong> This is the single best metric for comparing merchant services. It ignores "teaser rates" and shows the real percentage you pay. Use our <Link href="/calculator" className="text-primary hover:underline">effective rate calculator</Link> to see if you're being overcharged.
                   </p>
                 </div>
 
@@ -247,7 +247,7 @@ export default function MerchantServicesGlossaryPage() {
                     A unit of measure equal to 1/100th of 1% (0.01%).
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> In payment negotiations, we fight for every point. Understanding BPS allows you to negotiate like a pro when <Link href="/comparisons" className="text-primary hover:underline">switching payment providers</Link>.
+                    <strong>Why it matters:</strong> In payment negotiations, every basis point counts: on $100K a month, 10 basis points is $100. Understanding BPS allows you to negotiate like a pro when <Link href="/comparisons" className="text-primary hover:underline">switching payment providers</Link>.
                   </p>
                 </div>
 
@@ -272,7 +272,7 @@ export default function MerchantServicesGlossaryPage() {
                     A service where funds are deposited by the next business day.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> Cash flow is oxygen. If your current provider takes 3-5 days to settle, you are losing interest and liquidity. Check our <Link href="/comparisons" className="text-primary hover:underline">list of processors with the fastest funding</Link>.
+                    <strong>Why it matters:</strong> Cash flow is oxygen. Published examples (checked Oct 2026): Square and Stax fund the next business day, Helcim the next business morning, and Stripe's standard payouts take 2 business days. Check our <Link href="/comparisons/best-fast-funding-payment-processors-2026" className="text-primary hover:underline">list of processors with the fastest funding</Link>.
                   </p>
                 </div>
 
@@ -287,7 +287,7 @@ export default function MerchantServicesGlossaryPage() {
                     Surcharge adds a fee for credit cards; Cash Discount offers a lower price for cash.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> These are the most popular ways to get $0 processing fees. However, you must follow strict state-by-state surcharge regulations to avoid legal trouble. The <a href="https://www.ncsl.org/financial-services/credit-or-debit-card-surcharges-statutes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">National Conference of State Legislatures</a> maintains current surcharge laws by state.
+                    <strong>Why it matters:</strong> Both pass some or all of the card cost to the customer. Visa's rules allow surcharges on credit cards only, capped at 3%, and ban surcharging debit cards. State rules also apply and change, so check your state's current law and our <Link href="/comparisons/credit-card-surcharging-guide-2026" className="text-primary hover:underline">surcharging guide</Link> before you start.
                   </p>
                 </div>
 
@@ -297,7 +297,7 @@ export default function MerchantServicesGlossaryPage() {
                     A 4-digit code classifying your business type.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> Your MCC determines your interchange rates. A simple misclassification can lead to thousands of dollars in unnecessary overpayment of fees. The <a href="https://www.irs.gov/businesses/small-businesses-self-employed/merchant-category-codes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">IRS maintains a list of MCCs</a> that you can reference.
+                    <strong>Why it matters:</strong> Your MCC affects which interchange categories your sales can qualify for; Visa's schedule, for example, has separate rates for restaurants and supermarkets. A misclassification can cost you on every sale, so check the MCC your processor assigned.
                   </p>
                 </div>
 
@@ -312,7 +312,7 @@ export default function MerchantServicesGlossaryPage() {
                     The legal entity whose name appears on the customer's bank statement.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> This is your first line of defense against disputes. If your MOR name doesn't match your store name, customers won't recognize the charge, leading to an immediate preventable chargeback.
+                    <strong>Why it matters:</strong> This is your first line of defense against disputes. If your MOR name doesn't match your store name, customers won't recognize the charge, which can lead to preventable chargebacks.
                   </p>
                 </div>
 
@@ -322,7 +322,7 @@ export default function MerchantServicesGlossaryPage() {
                     A forced reversal of a transaction by the customer's bank.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> Beyond losing the sale, you pay a "Chargeback Fee" (typically $15-$100). High rates can land you on the <a href="https://www.mastercard.us/en-us/business/overview/support/member-alert-to-control-high-risk-merchants.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">MATCH list</a> (Member Alert to Control High-Risk Merchants), making it nearly impossible to get a new merchant account.
+                    <strong>Why it matters:</strong> Beyond losing the sale, you pay a "Chargeback Fee" set by your processor. Published examples (checked Oct 2026): Stripe charges $15 per dispute plus $15 more to counter it (refunded if you win), PayPal $20, and Helcim $15 on a lost chargeback. Excessive chargebacks can get an account terminated and the business added to Mastercard's <a href="https://docs.stripe.com/disputes/match" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">MATCH list</a> (Member Alert to Control High-Risk Merchants), which makes a new merchant account much harder to get.
                   </p>
                 </div>
 
@@ -332,7 +332,7 @@ export default function MerchantServicesGlossaryPage() {
                     The security standards for protecting cardholder data, maintained by the <a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">PCI Security Standards Council</a>.
                   </p>
                   <p className="text-foreground leading-relaxed">
-                    <strong>Why it matters:</strong> Being "Compliant" isn't just about safety, it's about avoiding "Non-Compliance Fees" that can range from $19.95 to $99.00 per month. Learn how to avoid these fees in our <Link href="/insights/how-to-read-merchant-statement" className="text-primary hover:underline">merchant statement guide</Link>.
+                    <strong>Why it matters:</strong> Being "Compliant" isn't just about safety, it's about avoiding "Non-Compliance Fees" set by your processor. Checkout.com, for example, publishes $150 a month for Level 4 merchants after a 60-day grace period, while Helcim lists no PCI fee (checked Oct 2026). Learn how to avoid these fees in our <Link href="/insights/how-to-read-merchant-statement" className="text-primary hover:underline">merchant statement guide</Link>.
                   </p>
                 </div>
 
@@ -369,7 +369,7 @@ export default function MerchantServicesGlossaryPage() {
                     Ready to Find a Transparent Partner?
                   </h3>
                   <p className="text-foreground leading-relaxed mb-6">
-                    Now that you understand the language, let us help you find a processor that speaks it honestly. Compare top-rated merchant services providers and get personalized recommendations.
+                    Now that you understand the language, let us help you find a processor that speaks it honestly. Compare merchant services providers on published prices and get personalized recommendations.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link href="/comparisons">
@@ -395,7 +395,7 @@ export default function MerchantServicesGlossaryPage() {
                       className="p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors group"
                     >
                       <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                        How to Read Your Merchant Statement: The Ultimate 2025 Guide
+                        How to Read Your Merchant Statement: A Guide to Decoding Fees
                       </h4>
                       <p className="text-sm text-muted-foreground mt-1">
                         Decode your processing fees and spot hidden charges with our step-by-step guide.
@@ -408,7 +408,7 @@ export default function MerchantServicesGlossaryPage() {
                         How to Reduce Processing Fees: Merchant Statement Audit Guide
                       </h4>
                       <p className="text-sm text-muted-foreground mt-1">
-                        Learn how to audit your statement and reduce fees by 20-30%.
+                        Learn how to audit your statement and find the fees you can cut.
                       </p>
                     </Link>
                     <Link href="/insights/payment-processor-fees-guide" 

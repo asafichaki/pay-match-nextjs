@@ -11,7 +11,7 @@ import ReviewerBioBox from "@/components/ReviewerBioBox";
 import { ArticleByline } from "@/components/seo/ArticleByline";
 import { VsCostTable } from "@/components/mix/VsCostTable";
 import { FEES, RATES_CHECKED, TIER_LABELS, dollarsAt, engineRate, feeLabel, flatEffective, pct, usd } from "@/lib/data/vs-pages-2026";
-import { ANSWER, CHECKOUT_GAP, FAQ, N, saleFee } from "./data";
+import { ANSWER, CHECKOUT_GAP, FAQ, N, PP_DISPUTE, saleFee } from "./data";
 
 interface ContentSlots {
   /** <AeoAnswer> from page.tsx. Rendered directly under the H1. */
@@ -43,7 +43,7 @@ export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: Conte
             <ArticleByline
               author="Reviewed by Barak Bachar"
               authorUrl="/about/barak"
-              lastUpdated="2026-11-02"
+              lastUpdated="2026-11-11"
               className="mt-2 mb-6"
             />
 
@@ -139,7 +139,7 @@ export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: Conte
                     { feature: "Monthly fee", stripe: "$0", paypal: "$0 on POS and Advanced Credit and Debit" },
                     { feature: "Standard payout", stripe: "2 business days", paypal: "Free withdrawal to bank" },
                     { feature: "Instant payout", stripe: `${st.instantPayoutPct}%`, paypal: `${pp.instantPayoutPct}%` },
-                    { feature: "Dispute fee", stripe: `$${st.dispute} (+$${st.disputeCounter} to counter)`, paypal: `$${pp.chargeback}` },
+                    { feature: "Dispute fee", stripe: `$${st.dispute} (+$${st.disputeCounter} to counter)`, paypal: `$${pp.chargeback} card chargeback; $${PP_DISPUTE.standard} ($${PP_DISPUTE.highVolume} high volume) on PayPal checkout` },
                     { feature: "Setup", stripe: "Minutes for links, longer for custom", paypal: "Minutes", paypalWins: true },
                     { feature: "Buyer-facing brand", stripe: "Invisible to buyers", paypal: "PayPal and Venmo buttons", paypalWins: true },
                     { feature: "Developer tools", stripe: "Extensive", paypal: "Good", stripeWins: true },
@@ -180,7 +180,7 @@ export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: Conte
                     { type: "In person", stripe: `${feeLabel(st.inPerson)} (${pct(N.stIp)})`, paypal: `${feeLabel(pp.pos)} (${pct(N.ppPos)})`, winner: "PayPal" },
                     { type: "ACH bank payment", stripe: `${st.achPct}%, cap $${st.achCap}`, paypal: `${pp.achPct}%, cap $${pp.achCap}`, winner: "Tie" },
                     { type: "International card", stripe: `+${st.internationalAddPct}%, +${st.conversionAddPct}% to convert`, paypal: `+${pp.internationalAddPct}%`, winner: "Tie in USD" },
-                    { type: "Chargeback", stripe: `$${st.dispute}`, paypal: `$${pp.chargeback}`, winner: "Stripe" },
+                    { type: "Chargeback or dispute", stripe: `$${st.dispute}`, paypal: `$${pp.chargeback} on cards; $${PP_DISPUTE.standard} standard dispute fee on PayPal checkout`, winner: "Stripe on cards, tie on the button" },
                   ].map((row, i) => (
                     <tr key={i}>
                       <td className="py-3 pr-2 font-medium">{row.type}</td>
@@ -236,7 +236,7 @@ export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: Conte
           <section id="payouts" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-4">Payout Speed</h2>
             <p className="text-muted-foreground mb-4">
-              Stripe pays out to your bank in 2 business days. A new account&apos;s first payout typically takes 7 to 14 days, which catches people who launch and expect money that week. Instant Payouts cost {st.instantPayoutPct}% with a 50¢ minimum and are not available to new accounts right away.
+              Stripe pays out to your bank in 2 business days. A new account&apos;s first payout typically takes 7 to 14 days, which catches people who launch and expect money that week. Instant Payouts cost {st.instantPayoutPct}% with a 50¢ minimum and, as Stripe says, new users are not immediately eligible for them.
             </p>
             <p className="text-muted-foreground">
               PayPal holds your sales in a PayPal balance. A standard withdrawal to your bank is free; an instant transfer costs {pp.instantPayoutPct}% (50¢ minimum), up to $25,000 per bank transfer. If cash flow drives your choice, compare these with free next-day options in our guide to <Link href="/comparisons/best-payment-processors-with-same-day-deposit-2026" className={link}>same-day deposit processors</Link>.
@@ -246,10 +246,10 @@ export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: Conte
           <section id="disputes" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-4">Disputes and Chargebacks</h2>
             <p className="text-muted-foreground mb-4">
-              Stripe charges ${st.dispute} when a buyer disputes a payment. If you counter the dispute manually, Stripe charges another ${st.disputeCounter}, which it refunds if you win. PayPal charges ${pp.chargeback} per card chargeback.
+              Stripe charges ${st.dispute} when a buyer disputes a payment. If you counter the dispute manually, Stripe charges another ${st.disputeCounter}, which it refunds if you win. PayPal charges ${pp.chargeback} per chargeback on card payments that do not go through a PayPal account or guest checkout, and a dispute fee of ${PP_DISPUTE.standard} (${PP_DISPUTE.highVolume} for high-volume sellers) on payments made through a PayPal account or PayPal checkout; its user agreement sets when the dispute fee applies.
             </p>
             <p className="text-muted-foreground">
-              Ten disputes a month cost ${st.dispute * 10} on Stripe if you accept them, ${(st.dispute + st.disputeCounter) * 10} if you fight and lose them all, and ${pp.chargeback * 10} on PayPal. Disputes also count against you: both providers can hold funds or close an account whose dispute rate climbs. For a deeper look, see the <Link href="/insights/chargeback-management-solutions-a-merchant-s-guide-to-prevention-recovery" className={link}>chargeback prevention guide</Link>.
+              Ten disputes a month cost ${st.dispute * 10} on Stripe if you accept them, ${(st.dispute + st.disputeCounter) * 10} if you fight and lose them all, and ${pp.chargeback * 10} on PayPal card payments (${PP_DISPUTE.standard * 10} at the standard dispute fee on PayPal button payments). Disputes also count against you: both providers can hold funds or close an account whose dispute rate climbs. For a deeper look, see the <Link href="/insights/chargeback-management-solutions-a-merchant-s-guide-to-prevention-recovery" className={link}>chargeback prevention guide</Link>.
             </p>
           </section>
 
@@ -352,7 +352,7 @@ export default function StripeVsPayPalContent({ aeoAnswer, relatedLinks }: Conte
           <ReviewerBioBox linkProfile={false} />
 
           <footer className="py-8 border-t border-border">
-            <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links.</p>
+            <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links. <a href="/how-we-make-money" className="underline">How we make money</a>.</p>
           </footer>
         </article>
 

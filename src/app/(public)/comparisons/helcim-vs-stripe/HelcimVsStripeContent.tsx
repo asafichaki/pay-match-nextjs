@@ -143,7 +143,7 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
           <section id="helcim" className="py-10 border-b border-border">
             <h2 className="text-2xl font-bold text-foreground mb-4">What Is Helcim?</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Helcim</a> is a Canadian payment processor founded in 2007 that publishes its full interchange-plus price list, including the US volume tiers. {hc.contract}.
+              <a href="https://www.helcim.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Helcim</a> is a payment processor based in Calgary, Canada, that publishes its full interchange-plus price list, including the US volume tiers. {hc.contract}.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               It also competes with Square for in-person sellers; the <Link href="/comparisons/square-vs-helcim-2026" className={link}>Helcim vs Square</Link> breakdown runs the same cost table for Square&apos;s plans.
@@ -332,7 +332,7 @@ export default function HelcimVsStripeContent({ aeoAnswer, relatedLinks }: Conte
           <ReviewerBioBox linkProfile={false} />
 
           <footer className="py-8 border-t border-border">
-            <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links.</p>
+            <p className="text-xs text-muted-foreground">Disclosure: We may earn a commission if you sign up through our links. <a href="/how-we-make-money" className="underline">How we make money</a>.</p>
           </footer>
         </article>
 

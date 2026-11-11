@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T13:21:18.828Z",
+  "generated_at": "2026-11-11T14:43:39.142Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 54,
@@ -232,8 +232,8 @@
       "slug": "paymentcloud-vs-durango",
       "source": "static",
       "title_mode": "absolute",
-      "base_title": "PaymentCloud vs Durango 2026: Which High-Risk Processor Approves You Faster",
-      "base_description": "PaymentCloud vs Durango Merchant Services for high-risk merchants. Approved verticals, reserves, approval speed, and offshore options compared. Reviewed by a payments operator.",
+      "base_title": "PaymentCloud vs Durango 2026: High-Risk Terms Compared",
+      "base_description": "PaymentCloud vs Durango Merchant Services for high-risk merchants. Published price ranges, reserves, verticals, approval times, and international accounts compared.",
       "outline": [
         "Quick Verdict",
         "In This Article",
@@ -253,7 +253,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "PaymentCloud vs Easy Pay Direct 2026: High-Risk Approval and Multi-MID Compared",
-      "base_description": "PaymentCloud vs Easy Pay Direct for high-risk merchants. Approved verticals, reserves, load balancing across multiple MIDs, and approval speed compared. Reviewed by a payments operator.",
+      "base_description": "PaymentCloud vs Easy Pay Direct for high-risk merchants. Published pricing, verticals, reserves, multi-account routing, and approval times compared from each provider's own site.",
       "outline": [
         "Quick Verdict",
         "In This Article",
@@ -319,7 +319,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Stripe High-Risk Alternatives 2026: Where to Go After a Freeze",
-      "base_description": "Stripe froze your account or holds your funds? Here are real high-risk payment processors that approve merchants Stripe declines: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, and Host Merchant Services. Reviewed by a payments operator.",
+      "base_description": "Stripe froze your account or holds your funds? Here are real high-risk payment processors that approve merchants Stripe declines: PaymentCloud, Durango, Easy Pay Direct, Soar Payments, and Host Merchant Services, with what each publishes.",
       "outline": [
         "Quick Answer",
         "In This Article",
@@ -383,8 +383,8 @@
       "slug": "best-payment-gateway-ecommerce",
       "source": "static",
       "title_mode": "template",
-      "base_title": "Best Payment Gateway for Ecommerce: Complete 2025 Guide",
-      "base_description": "Complete guide to choosing the best payment gateway for ecommerce in 2025. Compare Stripe, PayPal, Square, Shopify Payments features, fees, and find the perfect solution.",
+      "base_title": "Best Payment Gateway for Ecommerce: 2026 Guide",
+      "base_description": "Helcim is cheapest online up to about $50K a month, Stax from $50K, Stripe wins on developer tools. Fees for 9 ecommerce gateways, checked Oct 2026.",
       "outline": [
         "Conclusion: Making the Right Decision",
         "Related Articles"
@@ -401,7 +401,7 @@
       "outline": [
         "General retail and mobile selling: start with Square",
         "A Shopify store selling in person: compare Shopify POS",
-        "Restaurants and cafes: compare Toast around service flow",
+        "Restaurants and cafes: compare Toast and Clover around service flow",
         "Salons and appointment-based services: compare Vagaro",
         "Complex retail inventory: include Lightspeed",
         "Compare total cost using your own sales",
@@ -434,7 +434,7 @@
       "source": "static",
       "title_mode": "absolute",
       "base_title": "Cost of Payment Processing Solutions for Small Professional",
-      "base_description": "Small professional services businesses can expect payment processing costs to range from 1.5% to 3.5% per transaction in 2025-2026, plus monthly fees. This guide details fee structures, hidden costs, and strategies for consultants, lawyers, and therapists.",
+      "base_description": "On published 2026 pricing, small professional services firms pay roughly 2% to 3.5% of card volume, plus any monthly fees. Fee structures, hidden costs, and strategies for consultants, lawyers, and therapists.",
       "outline": [
         "What are the Typical Payment Processing Costs for Small Professional Services Businesses in 2025-2026?",
         "How Do Different Payment Processing Pricing Models Impact Professional Services Businesses?",
@@ -587,8 +587,8 @@
       "slug": "how-to-read-merchant-statement",
       "source": "static",
       "title_mode": "template",
-      "base_title": "How to Read Your Merchant Statement: Ultimate 2025 Guide to Decoding Processing Fees",
-      "base_description": "Learn how to decode your merchant statement, understand processing fee acronyms like MTOT and NQUAL, calculate your effective rate, and identify junk fees costing your business thousands.",
+      "base_title": "How to Read Your Merchant Statement: Decode Your Fees",
+      "base_description": "Learn how to decode your merchant statement, understand processing fee acronyms like MTOT and NQUAL, calculate your effective rate, and identify the junk fees you can remove.",
       "outline": [
         "Table of Contents",
         "1. Introduction: The Most Confusing Document on Your Desk",
@@ -597,7 +597,7 @@
         "4. The \"Effective Rate\" Test: Are You Paying Too Much?",
         "5. Decoding the Acronyms: A Glossary for Merchants",
         "6. Red Flags: 5 Fees You Should Never Pay",
-        "7. Step-by-Step: How to Audit Your Statement in 5 Minutes",
+        "7. Step-by-Step: How to Audit Your Statement Quickly",
         "8. Conclusion: Transparency is Power",
         "9. Frequently Asked Questions"
       ]
@@ -630,8 +630,8 @@
       "slug": "level-2-level-3-processing-guide",
       "source": "static",
       "title_mode": "template",
-      "base_title": "Level 2 & 3 Processing Guide: Cut B2B Merchant Fees by 1.5%",
-      "base_description": "Learn how Level 2 and Level 3 credit card processing can reduce B2B merchant fees by up to 1.5% per transaction. Complete guide to implementation, requirements, and savings calculations.",
+      "base_title": "Level 2 & 3 Processing Guide for B2B Merchants (2026)",
+      "base_description": "How Level 2 and Level 3 data lower interchange on commercial cards in 2026: Visa Product 3 at 1.75% + 10¢ vs 2.70% + 10¢, required fields, and who passes the savings on.",
       "outline": [
         "Potential Annual Savings",
         "Table of Contents",
@@ -652,8 +652,8 @@
       "slug": "lowest-transaction-fees-for-merchant-payment-apps-2026-a-mypayadvisor-guide",
       "source": "static",
       "title_mode": "absolute",
-      "base_title": "Lowest Transaction Fees 2026: 12 Apps Compared",
-      "base_description": "Twelve payment apps compared on real 2026 effective rates, hidden fees, and contract terms. Includes side-by-side savings examples for $50K to $1M monthly.",
+      "base_title": "Lowest Transaction Fees 2026: Payment Apps Compared",
+      "base_description": "Square, Stripe, PayPal, Helcim, Stax and SumUp compared on fees published in 2026, with monthly cost at $10K and $50K from our rate dataset.",
       "outline": [
         "How do payment app fee structures compare in 2026?",
         "Which payment apps offer the best value for small businesses in 2026?",
@@ -686,8 +686,8 @@
       "slug": "merchant-contract-cancellation-guide",
       "source": "static",
       "title_mode": "template",
-      "base_title": "How to Cancel Merchant Agreement Without ETF | Complete Guide 2025",
-      "base_description": "Learn 5 proven strategies to cancel your merchant processing contract without paying early termination fees. Escape liquidated damages clauses and save thousands.",
+      "base_title": "How to Cancel a Merchant Agreement Without an ETF",
+      "base_description": "Five ways to leave a merchant processing contract with a lower or no early termination fee, how liquidated damages work, and when waiting is cheaper.",
       "outline": [
         "In This Guide",
         "You're Not Stuck, You Have Options"
@@ -699,7 +699,7 @@
       "slug": "merchant-services-glossary",
       "source": "static",
       "title_mode": "template",
-      "base_title": "Merchant Services Glossary: Complete Payment Processing Terms Guide 2025",
+      "base_title": "Merchant Services Glossary: Payment Processing Terms",
       "base_description": "Master essential payment processing terminology. Learn key terms like Interchange, Effective Rate, Acquirer, Payment Gateway, and more to negotiate better rates and reduce merchant fees.",
       "outline": [
         "Table of Contents",
@@ -717,8 +717,8 @@
       "slug": "merchant-statement-audit-guide",
       "source": "static",
       "title_mode": "template",
-      "base_title": "How to Reduce Credit Card Processing Fees: Ultimate 2025 Merchant Statement Audit Guide",
-      "base_description": "Learn how to audit your merchant statement, identify hidden fees, and reduce credit card processing costs by 20-30%. Expert guide to pricing models, junk fees, and effective rate calculations.",
+      "base_title": "Merchant Statement Audit Guide: Cut Processing Fees",
+      "base_description": "Learn how to audit your merchant statement, identify hidden fees, and compare your effective rate with published prices. A guide to pricing models, junk fees, and effective rate calculations.",
       "outline": [
         "Table of Contents",
         "1. The Billion-Dollar Confusion in Merchant Services",
@@ -759,7 +759,7 @@
       "source": "static",
       "title_mode": "template",
       "base_title": "Online vs In-Store Payments 2026: The Real Cost Gap",
-      "base_description": "Card-Not-Present runs 0.50 to 1.20 percent higher than Card-Present in 2026. Why, what it costs you per year, and the 4 levers that close the gap.",
+      "base_description": "At $10K a month, online card sales cost 0.29 to 1.00 points more than in-store at 7 processors in our 2026 dataset. Why, what it costs, and how to close it.",
       "outline": [
         "Table of Contents",
         "The Great Divide in Payment Processing",
@@ -778,7 +778,7 @@
       "source": "static",
       "title_mode": "template",
       "base_title": "Payment Advisory Solutions: Optimize Merchant Operations & Fees",
-      "base_description": "Unlock significant savings with payment advisory solutions. Optimize processing fees, enhance security, and boost conversion rates. Get expert, unbiased advice for your business.",
+      "base_description": "What payment advisory services do, how an engagement works, and what to check before you hire one, from fee reviews to processor selection and PCI.",
       "outline": [
         "What are Payment Advisory Solutions and how do they differ from payment processors?",
         "What specific problems do payment advisory solutions solve for businesses?",
@@ -812,8 +812,8 @@
       "slug": "payment-processor-fees-guide",
       "source": "static",
       "title_mode": "absolute",
-      "base_title": "Average Credit Card Processing Fees 2026: 1.5%-3.5%",
-      "base_description": "The average U.S. credit card processing fee in 2026 runs 1.5% to 3.5%: interchange 1.5%-3.5% plus markup 0.10%-2.00%. Square comes to 2.90% on a $50 sale.",
+      "base_title": "Average Credit Card Processing Fees 2026: 2.65% to 3.31%",
+      "base_description": "Our 2026 data on 10 U.S. processors: average effective rate 2.65% in person and 3.31% online at $10K a month on a $50 sale. Full range 1.73% to 3.75%.",
       "outline": [
         "Table of Contents",
         "What Are Payment Processor Fees?",
@@ -881,7 +881,7 @@
       "source": "static",
       "title_mode": "template",
       "base_title": "Same Payment Options Online & In-Store? 2026 Merchant Guide",
-      "base_description": "Discover if offering consistent payment options online and in-store is crucial for your business in 2026. Learn best practices, customer expectations, and operational trade-offs.",
+      "base_description": "Should customers see the same payment options online and in-store? Which methods to keep consistent, what each channel costs, and where exceptions make sense.",
       "outline": [
         "Why is Payment Option Consistency Crucial for Customer Experience in 2026?",
         "What Payment Options Are Stable Across Online and In-Store Channels?",
@@ -898,7 +898,7 @@
       "source": "static",
       "title_mode": "template",
       "base_title": "Stop Overpaying: Small Business Guide to Credit Card Processing Fees",
-      "base_description": "Most small businesses overpay 20-40% on credit card processing fees. Learn exactly how to cut costs and reclaim thousands of dollars annually through smarter payment processing strategies.",
+      "base_description": "Where small businesses overpay on credit card processing fees and how to cut them: pricing models, published rates, statement checks and contract traps.",
       "outline": [
         "Table of Contents",
         "Where Does Your Money Actually Go? Understanding Credit Card Processing Fees",
@@ -918,7 +918,7 @@
       "source": "static",
       "title_mode": "template",
       "base_title": "Subscription Merchant Account: Recurring Billing, Dunning & Approval (2026)",
-      "base_description": "How subscription merchant accounts work in 2026. Reduce failed recurring payments, recover declines with dunning and account updater, and get approved as a recurring-billing business. Reviewed by a payments operator.",
+      "base_description": "How subscription merchant accounts work in 2026. Reduce failed recurring payments, recover declines with dunning and account updater, and get approved as a recurring-billing business.",
       "outline": [
         "What a subscription merchant account actually is",
         "Failed recurring payments: where the revenue actually leaks",

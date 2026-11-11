@@ -37,7 +37,7 @@ export default function Page() {
     "reviewedBy": BARAK_PERSON_SCHEMA,
     "publisher": { "@type": "Organization", "name": "myPayAdvisor", "logo": { "@type": "ImageObject", "url": "https://www.mypayadvisor.com/og-logo.png" } },
     "datePublished": "2026-05-07",
-    "dateModified": "2026-05-07",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": { "@type": "WebPage", "@id": URL }
   };
 
@@ -56,10 +56,10 @@ export default function Page() {
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "Why do payment processors hold a reserve?", "acceptedAnswer": { "@type": "Answer", "text": "A reserve protects the processor against future chargebacks, refunds, and merchant insolvency. The processor is on the hook to the card networks if your business disappears with unfulfilled orders. The reserve is their hedge. The amount and structure are negotiable. Whether one exists at all is sometimes negotiable too." } },
-      { "@type": "Question", "name": "Is a rolling reserve normal?", "acceptedAnswer": { "@type": "Answer", "text": "Rolling reserves are normal in higher-risk verticals (subscriptions with churn, travel, ticketing, supplements, anything regulated). They are not normal for low-risk retail or services. If you are being offered a rolling reserve in a low-risk vertical, push back hard or move to a processor that offers a capped reserve or none at all." } },
-      { "@type": "Question", "name": "How long does a typical reserve last?", "acceptedAnswer": { "@type": "Answer", "text": "Rolling reserves at 5% to 10% with 180-day hold are typical at onboarding. Most processors will release after 6 to 12 months of clean operation if you ask in writing. The key is having a written release path in the contract before signing, not after." } },
-      { "@type": "Question", "name": "What happens to my reserve if I change processors?", "acceptedAnswer": { "@type": "Answer", "text": "The reserve releases on the schedule in the contract, regardless of whether you stay or leave. If you leave, the processor holds the reserve until the chargeback window for the last batch of transactions closes (180 days for most card-not-present). Plan for 6 months between switching processors and getting the final reserve back." } },
-      { "@type": "Question", "name": "Can I negotiate a reserve down after the account is open?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, after 6 months of clean operation. Email the processor with your chargeback rate (it should be under 1%), your refund rate, and a request to release the reserve or convert from rolling to capped. Most processors will agree because keeping a reserve on a clean account is operational overhead they would rather drop." } }
+      { "@type": "Question", "name": "Is a rolling reserve normal?", "acceptedAnswer": { "@type": "Answer", "text": "Rolling reserves are common in higher-risk verticals (subscriptions with churn, travel, ticketing, supplements, anything regulated). Established low-risk accounts with clean chargeback history often carry no reserve at all. If you are being offered a rolling reserve in a low-risk vertical, push back hard or move to a processor that offers a capped reserve or none at all." } },
+      { "@type": "Question", "name": "How long does a typical reserve last?", "acceptedAnswer": { "@type": "Answer", "text": "There is no single standard; the processor sets the percentage and the hold period in your agreement. Processors' own examples are short: PayPal describes 5 percent held on a 60-day rolling basis, and Stripe describes a 30-day rolling window. Higher-risk accounts can see longer holds, such as the 180 days in our examples. After 6 to 12 months of clean processing, ask in writing for a step-down. The key is having a written release path in the contract before signing, not after." } },
+      { "@type": "Question", "name": "What happens to my reserve if I change processors?", "acceptedAnswer": { "@type": "Answer", "text": "The reserve stays with the old processor and releases on the schedule in the contract, regardless of whether you stay or leave. Under many agreements the processor can hold the final balance longer to cover disputes that can still arrive: under Visa's rules, most disputes must be processed within 120 days of the transaction processing date, and some non-delivery disputes up to 540 days. On a 180-day rolling reserve, plan for at least six months after your last batch, and get the release dates in writing." } },
+      { "@type": "Question", "name": "Can I negotiate a reserve down after the account is open?", "acceptedAnswer": { "@type": "Answer", "text": "Often, after 6 to 12 months of clean operation. Email the processor with your fraud and dispute ratio, your refund rate, and a request to release the reserve or convert from rolling to capped. Keep the ratio well under Visa's VAMP line (1.5% for a U.S. merchant with at least 1,500 cases a month), because acquirers are judged on their whole portfolio at 0.5% and 0.7% and may act sooner. Processors rarely volunteer a reduction; a competing term sheet from another acquirer is your strongest lever." } }
     ]
   };
 
@@ -83,7 +83,7 @@ export default function Page() {
               </h1>
               <AeoAnswer kind="insights" slug="reserves-frozen-funds-capped-vs-rolling" />
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                A rolling reserve is a percentage of every card deposit your processor withholds for a fixed hold period, usually 180 days, as a hedge against future chargebacks. A rolling reserve at 10% on $500K monthly volume traps $300,000 of your working capital across 180 days. That is not a risk control. That is a structural problem with the contract. Here is how reserves actually work, what to insist on, and what to do if your funds are already frozen.
+                A rolling reserve is a percentage of every card deposit your processor withholds for a fixed hold period set in your agreement, as a hedge against future chargebacks. A hypothetical 10% rolling reserve held 180 days on $500K monthly volume traps $300,000 of your working capital for as long as you keep processing. That is not a risk control. That is a structural problem with the contract. Here is how reserves actually work, what to insist on, and what to do if your funds are already frozen.
               </p>
               <p className="text-sm text-muted-foreground mt-3">
                 By{" "}
@@ -118,10 +118,10 @@ export default function Page() {
                 What a reserve is and why processors hold one
               </h2>
               <p className="text-foreground leading-relaxed">
-                A reserve is a portion of your settlements held by the processor as a hedge against future chargebacks, refunds, and merchant insolvency. If a customer disputes a charge 90 days after purchase, the processor refunds the customer. If your business has shut down by then, the processor eats the loss unless they have your money on hand.
+                A reserve is a portion of your settlements held by the processor as a hedge against future chargebacks, refunds, and merchant insolvency. If a customer disputes a charge 90 days after purchase, the acquirer covers the chargeback and then tries to collect it from you. If your business has shut down by then, the acquirer eats the loss unless it has your money on hand. Under <a href="https://usa.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa&apos;s rules</a>, most disputes must be processed within 120 days of the transaction processing date, and some non-delivery disputes can run up to 540 days.
               </p>
               <p className="text-foreground leading-relaxed">
-                That is the legitimate reason reserves exist. The legitimate amount, on a low-risk merchant, is zero. The legitimate amount, on a higher-risk merchant, is enough to cover 60 to 90 days of expected chargebacks plus a buffer. Anything beyond that is the processor using your money as float.
+                That is the legitimate reason reserves exist. The legitimate amount, on a low-risk merchant, is zero. The legitimate amount, on a higher-risk merchant, is enough to cover the chargebacks and refunds expected over the dispute window, plus a buffer. Visa&apos;s rules let an acquirer hold a merchant reserve but do not set its size; the acquirer does. Anything beyond the real exposure is the processor using your money as float.
               </p>
               <p className="text-foreground leading-relaxed">
                 Three reserve structures exist. Capped reserve, rolling reserve, and upfront reserve. Each works differently. Each has different working-capital implications.
@@ -131,18 +131,18 @@ export default function Page() {
                 Rolling reserve mechanics
               </h2>
               <p className="text-foreground leading-relaxed">
-                Rolling reserve withholds a percentage of every settlement and releases each batch back after a fixed period, usually 180 days. The reserve is always growing as new volume comes in and always releasing as old batches mature.
+                Rolling reserve withholds a percentage of every settlement and releases each batch back after a fixed period set in your agreement (180 days in the example below). The reserve is always growing as new volume comes in and always releasing as old batches mature.
               </p>
               <div className="my-8 p-6 bg-orange-50 dark:bg-orange-950/20 rounded-lg border-l-4 border-orange-500">
-                <p className="text-foreground"><strong>The math on $500K monthly volume at 10% rolling, 180-day hold:</strong></p>
+                <p className="text-foreground"><strong>Hypothetical example, $500K monthly volume at 10% rolling, 180-day hold:</strong></p>
                 <p className="text-foreground mt-2">Month 1: $50,000 withheld. Cumulative: $50,000.</p>
                 <p className="text-foreground">Month 2: $50,000 withheld. Cumulative: $100,000.</p>
                 <p className="text-foreground">Month 6: $50,000 withheld. Cumulative: $300,000.</p>
                 <p className="text-foreground">Month 7: $50,000 withheld. Month 1 releases. Cumulative: $300,000.</p>
-                <p className="text-foreground mt-2">Steady state after 6 months: $300,000 of your working capital permanently parked at the processor as long as the reserve structure is in force.</p>
+                <p className="text-foreground mt-2">Steady state after 6 months: $300,000 of your working capital parked at the processor for as long as the reserve structure is in force.</p>
               </div>
               <p className="text-foreground leading-relaxed">
-                That $300,000 is not earning you interest. It is not available for inventory, payroll, or growth. It is sitting in a processor-controlled account, often non-interest-bearing, until the rolling release schedule says it can come back. And every new month adds more.
+                That $300,000 is not earning you interest. It is not available for inventory, payroll, or growth. It is sitting in a processor-controlled account until the rolling release schedule says it can come back, and under standard terms such as <a href="https://squareup.com/us/en/legal/general/payment" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Square&apos;s Payment Terms</a> you earn no interest on it. And if your volume grows, the held balance grows with it.
               </p>
 
               <h2 id="capped-mechanics" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -171,13 +171,13 @@ export default function Page() {
                 <strong>A release schedule.</strong> Capped reserves should release in full no later than 180 days after account closure. Rolling reserves should release each batch on its 180-day mark, automatic and visible in the dashboard.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>A step-down trigger.</strong> &quot;After 6 months of operation with chargeback rate below 1.0%, the reserve percentage steps down by half. After 12 months at the same threshold, the reserve releases entirely.&quot; This single sentence is worth more than any rate concession.
+                <strong>A step-down trigger.</strong> &quot;After 6 months of operation with a chargeback ratio below Y%, the reserve percentage steps down by half. After 12 months at the same threshold, the reserve releases entirely.&quot; Pick Y with your processor, well under the network monitoring lines. This single sentence can be worth more than a rate concession.
               </p>
               <p className="text-foreground leading-relaxed">
-                <strong>An interest-bearing requirement (where possible).</strong> Some processors will hold the reserve in an interest-bearing account if you ask. Many will not, but it is worth asking. On $300,000 at 4%, that is $12,000 a year you are otherwise donating to the processor.
+                <strong>An interest-bearing requirement (where possible).</strong> Some large merchants negotiate interest on reserve balances. The answer is usually no, and Square&apos;s Payment Terms, for example, assign any interest on held funds to Square, but it is worth asking in writing. On $300,000 at 4%, that is $12,000 a year you are otherwise giving up.
               </p>
               <div className="my-8 p-6 bg-primary/5 rounded-lg border-l-4 border-primary">
-                <p className="text-foreground"><strong>Sample contract language:</strong> &quot;Reserve shall be capped at $X. Following 6 consecutive months of operation with chargeback rate below 1.0% and no fraud-related chargebacks, the reserve cap shall reduce by 50%. Following 12 consecutive months at the same threshold, the reserve shall be released in full. Any unreleased reserve at account closure shall be returned to merchant within 180 days, less any documented chargebacks or refunds.&quot;</p>
+                <p className="text-foreground"><strong>Sample contract language:</strong> &quot;Reserve shall be capped at $X. Following 6 consecutive months of operation with chargeback ratio below Y% and no fraud-related chargebacks, the reserve cap shall reduce by 50%. Following 12 consecutive months at the same threshold, the reserve shall be released in full. Any unreleased reserve at account closure shall be returned to merchant within 180 days, less any documented chargebacks or refunds.&quot;</p>
               </div>
 
               <h2 id="push-back" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -190,7 +190,7 @@ export default function Page() {
                 &quot;Rolling reserve does not work for the cash flow profile of this business. I am willing to accept a capped reserve at $X with the step-down language we just discussed. If you cannot offer that structure, I need to understand exactly what risk profile is driving the rolling structure, because the chargeback rate in the vertical is well below the threshold that should trigger it.&quot;
               </p>
               <p className="text-foreground leading-relaxed">
-                Three things happen. The processor moves to capped (most common, especially in low-risk verticals). The processor explains the underwriting reason for rolling (fair, especially in higher-risk verticals). The processor refuses to move and refuses to explain. That third option is your signal to walk to a different processor.
+                One of three things usually happens. The processor moves to capped. The processor explains the underwriting reason for rolling (fair, especially in higher-risk verticals). The processor refuses to move and refuses to explain. That third option is your signal to walk to a different processor.
               </p>
               <p className="text-foreground leading-relaxed">
                 The full negotiation framework, including this specific lever, is in the <Link href="/insights/payment-processor-negotiation-playbook" className="text-primary hover:underline">Negotiation Playbook</Link>.
@@ -209,10 +209,10 @@ export default function Page() {
                 Step two: assess the trigger. Chargeback spike? Pull the chargeback list and identify the cause. Regulatory inquiry? Get counsel. Underwriting re-review? Provide the documentation requested.
               </p>
               <p className="text-foreground leading-relaxed">
-                Step three: stage your alternative. While the funds are frozen, set up a new merchant account with a different processor on different acquiring rails. New transactions go there. The frozen funds will eventually release on the contract schedule (typically 180 days after the last batch). Do not let the frozen funds tie you to the processor that froze them.
+                Step three: stage your alternative. While the funds are frozen, set up a new merchant account with a different processor on different acquiring rails. New transactions go there. The frozen funds will eventually release on the contract schedule, which can run months past your last batch. Do not let the frozen funds tie you to the processor that froze them.
               </p>
               <p className="text-foreground leading-relaxed">
-                Step four: if the freeze is unjustified, escalate. The acquirer (the bank behind the processor) is the actual decision maker. A letter from counsel to the acquirer&apos;s risk team often resolves freezes that the processor would not unwind.
+                Step four: if the freeze is unjustified, escalate. The acquirer (the bank behind the processor) is the actual decision maker. A letter from counsel to the acquirer&apos;s risk team can move a freeze that the processor would not unwind.
               </p>
               <p className="text-foreground leading-relaxed">
                 Before you scale into a vertical that triggers reserves and freezes routinely, audit the contract. Start with the <Link href="/insights/free-statement-audit-playbook" className="text-primary hover:underline">Statement Audit Playbook</Link> to confirm there is no hidden reserve language already in force.
@@ -241,10 +241,10 @@ export default function Page() {
                 <strong>Trapped capital cost = (steady-state reserve balance) × (your cost of capital).</strong>
               </p>
               <p className="text-foreground leading-relaxed">
-                On $500K monthly volume, 10% rolling, 180-day hold, the steady-state reserve balance is $300,000. If your cost of capital is 12% (typical for a small business with a working capital line), the reserve costs $36,000 per year in pure opportunity cost. Compare that to a 0.10% rate negotiation, which on $500K monthly is $6,000 per year. The reserve structure is six times the rate, and nobody is negotiating it.
+                On $500K monthly volume, 10% rolling, 180-day hold, the steady-state reserve balance is $300,000. If your cost of capital is 12% (an assumption; use the rate on your own working capital line), the reserve costs $36,000 per year in pure opportunity cost. Compare that to a 0.10% rate negotiation, which on $500K monthly is $6,000 per year. The reserve structure is six times the rate, and nobody is negotiating it.
               </p>
               <p className="text-foreground leading-relaxed">
-                When evaluating two processor offers, always compute reserve cost in dollars per year alongside the rate cost in dollars per year. The processor with the slightly higher rate but capped reserve usually wins.
+                When evaluating two processor offers, always compute reserve cost in dollars per year alongside the rate cost in dollars per year. The processor with the slightly higher rate but capped reserve often wins.
               </p>
 
               <h2 id="faq" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -257,19 +257,19 @@ export default function Page() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Is a rolling reserve normal?</h3>
-                  <p className="text-foreground leading-relaxed">Rolling reserves are normal in higher-risk verticals (subscriptions with churn, travel, ticketing, supplements, anything regulated). They are not normal for low-risk retail or services. If you are being offered a rolling reserve in a low-risk vertical, push back hard or move to a processor that offers a capped reserve or none at all.</p>
+                  <p className="text-foreground leading-relaxed">Rolling reserves are common in higher-risk verticals (subscriptions with churn, travel, ticketing, supplements, anything regulated). Established low-risk accounts with clean chargeback history often carry no reserve at all. If you are being offered a rolling reserve in a low-risk vertical, push back hard or move to a processor that offers a capped reserve or none at all.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">How long does a typical reserve last?</h3>
-                  <p className="text-foreground leading-relaxed">Rolling reserves at 5% to 10% with 180-day hold are typical at onboarding. Most processors will release after 6 to 12 months of clean operation if you ask in writing. The key is having a written release path in the contract before signing, not after.</p>
+                  <p className="text-foreground leading-relaxed">There is no single standard; the processor sets the percentage and the hold period in your agreement. Processors&apos; own examples are short: PayPal describes 5 percent held on a 60-day rolling basis, and Stripe describes a 30-day rolling window. Higher-risk accounts can see longer holds, such as the 180 days in our examples. After 6 to 12 months of clean processing, ask in writing for a step-down. The key is having a written release path in the contract before signing, not after.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">What happens to my reserve if I change processors?</h3>
-                  <p className="text-foreground leading-relaxed">The reserve releases on the schedule in the contract, regardless of whether you stay or leave. If you leave, the processor holds the reserve until the chargeback window for the last batch of transactions closes (180 days for most card-not-present). Plan for 6 months between switching processors and getting the final reserve back.</p>
+                  <p className="text-foreground leading-relaxed">The reserve stays with the old processor and releases on the schedule in the contract, regardless of whether you stay or leave. Under many agreements the processor can hold the final balance longer to cover disputes that can still arrive: under Visa&apos;s rules, most disputes must be processed within 120 days of the transaction processing date, and some non-delivery disputes up to 540 days. On a 180-day rolling reserve, plan for at least six months after your last batch, and get the release dates in writing.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">Can I negotiate a reserve down after the account is open?</h3>
-                  <p className="text-foreground leading-relaxed">Yes, after 6 months of clean operation. Email the processor with your chargeback rate (it should be under 1%), your refund rate, and a request to release the reserve or convert from rolling to capped. Most processors will agree because keeping a reserve on a clean account is operational overhead they would rather drop.</p>
+                  <p className="text-foreground leading-relaxed">Often, after 6 to 12 months of clean operation. Email the processor with your fraud and dispute ratio, your refund rate, and a request to release the reserve or convert from rolling to capped. Keep the ratio well under Visa&apos;s VAMP line (1.5% for a U.S. merchant with at least 1,500 cases a month), because acquirers are judged on their whole portfolio at 0.5% and 0.7% and may act sooner. Processors rarely volunteer a reduction; a competing term sheet from another acquirer is your strongest lever.</p>
                 </div>
               </div>
 

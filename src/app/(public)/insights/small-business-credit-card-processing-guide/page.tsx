@@ -9,7 +9,7 @@ import { RelatedLinks } from "@/components/seo/RelatedLinks";
 
 const baseMetadata: Metadata = {
   title: "Stop Overpaying: Small Business Guide to Credit Card Processing Fees",
-  description: "Most small businesses overpay 20-40% on credit card processing fees. Learn exactly how to cut costs and reclaim thousands of dollars annually through smarter payment processing strategies.",
+  description: "Where small businesses overpay on credit card processing fees and how to cut them: pricing models, published rates, statement checks and contract traps.",
   keywords: "credit card processing fees small business, reduce processing fees, interchange-plus pricing, flat rate vs interchange plus, payment processor comparison, merchant account fees, how to lower credit card fees",
   alternates: {
     canonical: "https://www.mypayadvisor.com/insights/small-business-credit-card-processing-guide",
@@ -22,13 +22,13 @@ const baseMetadata: Metadata = {
     type: "article",
     url: "https://www.mypayadvisor.com/insights/small-business-credit-card-processing-guide",
     title: "Stop Overpaying: A Small Business Guide to Credit Card Processing Fees",
-    description: "Most small businesses overpay 20-40% on processing fees. Learn how to cut costs and save thousands annually.",
+    description: "Where small businesses overpay on processing fees and how to cut them, with published 2026 rates.",
     images: [{ url: "https://www.mypayadvisor.com/og-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Stop Overpaying: Small Business Guide to Credit Card Processing Fees",
-    description: "Learn how to reduce your credit card processing fees by 20-40% with proven strategies.",
+    description: "How to reduce your credit card processing fees: pricing models, published rates and contract traps.",
   },
 };
 
@@ -43,7 +43,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Stop Overpaying: A Small Business Guide to Credit Card Processing Fees",
-    "description": "Most small businesses overpay 20-40% on credit card processing fees. Learn exactly how to cut costs and reclaim thousands of dollars annually through smarter payment processing strategies.",
+    "description": "Where small businesses overpay on credit card processing fees and how to cut them: pricing models, published rates, statement checks and contract traps.",
     "image": "https://www.mypayadvisor.com/og-logo.png",
     "author": {
       "@type": "Person",
@@ -61,7 +61,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
       }
     },
     "datePublished": "2025-01-15",
-    "dateModified": "2025-01-15",
+    "dateModified": "2026-11-11",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://www.mypayadvisor.com/insights/small-business-credit-card-processing-guide"
@@ -89,7 +89,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
         "name": "What is a good credit card processing rate for small businesses?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For businesses processing over $10,000 monthly, competitive interchange-plus rates typically range from 0.20% to 0.50% above the base interchange fee. Flat-rate pricing (2.6-2.9%) works for low-volume businesses under $5,000/month."
+          "text": "Compare against published pricing (checked Oct 2026). Flat rates run from 2.29% + $0.09 (PayPal POS in person) to 2.9% + $0.30 (Stripe online). Published interchange-plus markups include Helcim at interchange + 0.40% + $0.08 in person and + 0.50% + $0.25 online under $50,000 a month. In our cost model, Helcim costs about $211 a month on $10,000 of in-person sales against $290 on Square."
         }
       },
       {
@@ -97,7 +97,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
         "name": "Can I pass credit card fees to customers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, in most US states. Surcharging allows adding up to 3% to credit card transactions (not debit) with proper signage. Cash discount programs offering lower prices for cash payments are legal nationwide."
+          "text": "In most US states, yes, on credit cards. Visa's rules allow a surcharge on credit cards only, capped at 3%, with clear disclosure; surcharging debit cards is not allowed. Some states add their own rules, so check your state's current law. Cash discount programs, which give a lower price for cash, follow separate rules; confirm the setup with your processor."
         }
       },
       {
@@ -105,7 +105,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
         "name": "Are credit card processing fees negotiable?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, the processor markup (10-20% of total fees) is 100% negotiable. Interchange and assessment fees are set by card networks and non-negotiable. Always shop around and use competing offers as leverage."
+          "text": "Yes, the processor markup is negotiable. Interchange and assessment fees are set by card networks and non-negotiable. Always shop around and use competing offers as leverage."
         }
       },
       {
@@ -113,7 +113,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
         "name": "When should I switch from flat-rate to interchange-plus pricing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Once your monthly processing volume consistently exceeds $5,000-$10,000, switching to interchange-plus pricing typically saves 10-40% compared to flat-rate providers like Square or Stripe."
+          "text": "Price it on your own statement, but in our cost model (published pricing, Oct 2026) interchange-plus already wins at $10,000 a month in person: Helcim about $211 against $290 on Square, roughly 27% less. At $50,000 a month in person it is about $1,020 against $1,450."
         }
       }
     ]
@@ -150,7 +150,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 <AeoAnswer kind="insights" slug="small-business-credit-card-processing-guide" />
                 
                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                  Most small businesses overpay 20-40% on credit card processing fees without realizing it. This guide shows you exactly how to cut costs and reclaim thousands of dollars annually through smarter payment processing strategies.
+                  Many small businesses overpay on credit card processing fees without realizing it. This guide shows you where the money goes and how to cut costs through smarter payment processing choices.
                 </p>
 
                 {/* Author Byline */}
@@ -201,24 +201,12 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  It is painful to see a customer buy $100 worth of goods, only to have significantly less land in your bank account. It is even more frustrating when a competitor next door, or a friend with an online store, tells you they are selling the same volume but paying 20% less in fees.
+                  It is painful to see a customer buy $100 worth of goods, only to have significantly less land in your bank account. It is even more frustrating when a competitor next door, or a friend with an online store, tells you they are selling the same volume but paying less in fees.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
                   The payments industry thrives on complexity. However, you don't need a finance degree to optimize your costs. Below is a breakdown of why you might be overpaying and exactly how to fix it, whether you sell in-store or online.
                 </p>
-
-                {/* Infographic */}
-                <figure className="my-10">
-                  <img 
-                    src="/images/credit-card-fees-infographic.png" 
-                    alt="Infographic: Stop Leaking Profits - A Small Business Guide to Credit Card Fees showing the problem of overpaying and solutions to cut costs"
-                    className="w-full rounded-lg shadow-lg"
-                  />
-                  <figcaption className="text-center text-sm text-muted-foreground mt-3">
-                    Credit card processing fees breakdown: The problem and the solution
-                  </figcaption>
-                </figure>
 
                 {/* Section 1 */}
                 <h2 id="understanding-fees" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">
@@ -234,7 +222,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                     <strong>Interchange (The Bank's Cut):</strong> This fee goes to the bank that issued your customer's card (such as Chase or Citi). It covers their risk and funds the rewards programs your customers love. You cannot negotiate this.
                   </p>
                   <p className="text-foreground mb-4">
-                    <strong>Assessment Fees (The Brand's Cut):</strong> A small percentage (approximately 0.14%) goes to <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> or <a href="https://www.mastercard.us/en-us/business/overview/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a> for operating the network. You cannot negotiate this.
+                    <strong>Assessment Fees (The Brand's Cut):</strong> A small percentage plus per-transaction fees, which the networks do not publish, goes to <a href="https://www.visa.com/en-us/support/business/regulation-fees" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Visa</a> or <a href="https://www.mastercard.com/us/en/business/support/merchant-interchange-rates.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Mastercard</a> for operating the network. You cannot negotiate this.
                   </p>
                   <p className="text-foreground">
                     <strong>The Markup (The Processor's Cut):</strong> This portion goes to the company processing your payments. This is 100% negotiable.
@@ -243,7 +231,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
 
                 <div className="my-8 p-6 bg-amber-50 dark:bg-amber-950/30 rounded-lg border-l-4 border-amber-500">
                   <p className="text-foreground">
-                    <strong>The Core Issue:</strong> If your payment processor bundles these three components together, a pricing model often called "Tiered," "Blended," or "Flat Rate", they can easily hide a massive markup behind the scenes. This is where you're likely overpaying.
+                    <strong>The Core Issue:</strong> If your payment processor bundles these three components together, a pricing model often called "Tiered," "Blended," or "Flat Rate", they can easily hide a large markup behind the scenes. This is where you're likely overpaying.
                   </p>
                 </div>
 
@@ -262,35 +250,35 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                       <tr className="border-b-2 border-foreground">
                         <th className="text-left py-3 pr-4 font-semibold text-foreground">Monthly Processing Volume</th>
                         <th className="text-left py-3 pr-4 font-semibold text-foreground">Best Pricing Model</th>
-                        <th className="text-left py-3 font-semibold text-foreground">Typical Savings Opportunity</th>
+                        <th className="text-left py-3 font-semibold text-foreground">What Our Cost Model Shows (in person, Oct 2026 pricing)</th>
                       </tr>
                     </thead>
                     <tbody className="text-foreground">
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Under $5,000</td>
-                        <td className="py-3 pr-4">Flat Rate (Square, Stripe, PayPal)</td>
-                        <td className="py-3">Minimal - simplicity justifies slightly higher rates</td>
+                        <td className="py-3 pr-4">Flat Rate (Square, Stripe, PayPal) or a no-monthly-fee interchange-plus plan</td>
+                        <td className="py-3">Small in dollars; compare both before you choose</td>
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">$5,000 - $10,000</td>
                         <td className="py-3 pr-4">Consider switching to Interchange-Plus</td>
-                        <td className="py-3">10-15% potential savings</td>
+                        <td className="py-3">At $10,000 a month: Helcim about $211, Stax $270, Square $290</td>
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Over $10,000</td>
                         <td className="py-3 pr-4">Interchange-Plus pricing (professional merchant account)</td>
-                        <td className="py-3">20-40% potential savings</td>
+                        <td className="py-3">At $50,000 a month: Helcim about $1,020, Stax $1,055, Square $1,450</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>When Flat Rate Works:</strong> If you process less than $5,000 a month, flat-rate providers are excellent. You typically pay no monthly fees, and the simplicity justifies the slightly higher transaction rate.
+                  <strong>When Flat Rate Works:</strong> If you process less than $5,000 a month, flat-rate providers are a reasonable choice. You typically pay no monthly fees, and the simplicity can justify a slightly higher transaction rate. Interchange-plus with no monthly fee (Helcim, for example) is worth pricing too.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>When to Switch:</strong> Once you cross the $5,000–$10,000 monthly threshold, you are likely overpaying. A proper merchant account using "Interchange-Plus" pricing usually lowers your effective rate significantly because you stop subsidizing smaller merchants.
+                  <strong>When to Switch:</strong> Once you cross roughly $5,000 to $10,000 a month, you are likely overpaying on a flat rate. A merchant account using "Interchange-Plus" pricing usually lowers your effective rate because you pay each card's actual interchange plus a visible markup, instead of one rate set high enough to cover expensive cards.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -330,11 +318,11 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>1. The "Settlement" Penalty:</strong> If you do not "settle" (finalize) your transactions within 24 hours, Visa and Mastercard may downgrade the transactions and charge a higher interchange rate.
+                  <strong>1. The "Settlement" Penalty:</strong> If you do not "settle" (finalize) your transactions promptly, they can miss the timing rules of their interchange category and downgrade to a more expensive one.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>The Solution:</strong> Ensure your Point of Sale (POS) system is set to Auto-Batch every night. Never leave a batch open for more than 24 hours. This simple step can save you 0.5-1% per transaction.
+                  <strong>The Solution:</strong> Ensure your Point of Sale (POS) system is set to Auto-Batch every night. Never leave a batch open for more than 24 hours. This simple step avoids those downgrades.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -343,7 +331,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
 
                 <div className="my-8 p-6 bg-red-50 dark:bg-red-950/30 rounded-lg border-l-4 border-red-500">
                   <p className="text-foreground">
-                    <strong>Warning:</strong> Never lease a credit card terminal. You could end up paying $2,000 for a device worth $300 over a 4-year non-cancellable lease. Always buy your equipment outright. Modern terminals cost between $200-$500 when purchased directly.
+                    <strong>Warning:</strong> Never lease a credit card terminal. Over a multi-year non-cancellable lease you can pay many times what the device costs to buy. Always buy your equipment outright. For reference, Helcim sells its Card Reader for $199 and Smart Terminal for $349, and Stax lists the SwipeSimple reader at $125 and the Dejavoo QD4 countertop at $310 (prices checked Oct 2026).
                   </p>
                 </div>
 
@@ -354,7 +342,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>1. The "AVS" (Address Verification Service) Downgrade:</strong> Online transactions are considered riskier than in-store ones. If you skip security checks, you not only invite fraud but also pay higher fees. Transactions without address verification are often classified as "Non-Qualified," carrying a higher price tag.
+                  <strong>1. The "AVS" (Address Verification Service) Downgrade:</strong> Online transactions are considered riskier than in-store ones. If you skip security checks, you not only invite fraud but also pay higher fees. Transactions without address verification can fall into a more expensive fallback category, or "Non-Qualified" on a tiered plan.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -376,7 +364,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </p>
 
                 <p className="text-foreground leading-relaxed">
-                  <strong>The Solution:</strong> Ask your processor to enable Level 2 or Level 3 Processing. This automatically passes data like sales tax and invoice numbers to the card brand. This simple backend switch can lower your fees on corporate cards by 0.50%–1.00% instantly.
+                  <strong>The Solution:</strong> Ask your processor to pass enhanced data: sales tax and an order reference (Level 2), plus line-item detail (Level 3). Visa ended its Level 2 rates in April 2026, so Visa savings now come through Commercial Enhanced Data (Product 3); Mastercard still has Level 2 and Level 3 categories. On Visa Purchasing and Corporate cards, Visa&apos;s October 24, 2026 schedule lists Commercial Product 3 at 1.75% + 10¢ against 2.70% + 10¢ for Commercial Card Not Present. You only see that saving on interchange-plus pricing; a flat rate stays the same. More in our guide to <Link href="/insights/level-2-and-level-3-processing-data" className="text-primary hover:underline">Level 2 and Level 3 processing data</Link>.
                 </p>
 
                 {/* Section 4 */}
@@ -385,7 +373,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  When you are ready to switch, do not just look at the headline rate. You must examine the contract terms. You can <Link href="/comparisons" className="text-primary hover:underline">compare the top payment providers for 2026</Link> to find partners that meet industry "Fair Play" standards.
+                  When you are ready to switch, do not just look at the headline rate. You must examine the contract terms. You can <Link href="/comparisons" className="text-primary hover:underline">compare the top payment providers for 2026</Link> to find processors with transparent pricing and fair contract terms.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">Rule #1: Create Competition</h3>
@@ -411,8 +399,8 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 <ul className="text-foreground space-y-3 ml-6 list-disc">
                   <li><strong>Liquidated Damages:</strong> Look for this phrase in the fine print. It implies that if you cancel early, you owe the processor the profit they would have made had you stayed for the full term. This can cost thousands.</li>
                   <li><strong>"Qualified / Non-Qualified" Rates:</strong> If a quote offers a low rate for "Qualified" cards but high rates for "Non-Qualified," you are looking at Tiered pricing. Avoid this model, it's designed to hide excessive markups.</li>
-                  <li><strong>Equipment Leases:</strong> As mentioned above, never lease terminals. Unscrupulous sales agents make huge commissions on these leases while you pay 5-10x the actual equipment cost.</li>
-                  <li><strong>PCI Compliance Fees:</strong> While PCI compliance is required, many processors charge excessive monthly "compliance fees" ($10-$50/month) that are pure profit. Look for processors that include basic PCI compliance.</li>
+                  <li><strong>Equipment Leases:</strong> As mentioned above, never lease terminals. A non-cancellable lease can cost far more than buying the device outright.</li>
+                  <li><strong>PCI Compliance Fees:</strong> While PCI compliance is required, some processors charge a monthly or annual "compliance fee" on top. Look for processors that include basic PCI compliance; Helcim, for example, lists no PCI fee.</li>
                 </ul>
 
                 {/* Section 5 */}
@@ -445,8 +433,8 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                   <li><strong>Batch daily:</strong> As discussed, settling within 24 hours prevents downgrades</li>
                   <li><strong>Use AVS:</strong> For online transactions, always enable address verification</li>
                   <li><strong>Swipe/dip/tap when possible:</strong> Card-present transactions have significantly lower rates than keyed-in transactions</li>
-                  <li><strong>Collect CVV:</strong> The 3-digit security code reduces fraud risk and can lower your rate</li>
-                  <li><strong>Provide Level 2/3 data:</strong> Essential for B2B transactions with corporate cards</li>
+                  <li><strong>Collect CVV:</strong> The 3-digit security code reduces fraud risk and helps online sales qualify for the intended category</li>
+                  <li><strong>Provide Level 2/3 data:</strong> Essential for B2B transactions with commercial cards (Visa now uses Product 3 data only)</li>
                 </ul>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">3. Consider Alternative Payment Methods</h3>
@@ -456,7 +444,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong>ACH/Bank Transfers:</strong> Typically cost $0.20-$1.50 per transaction regardless of amount</li>
+                  <li><strong>ACH/Bank Transfers:</strong> Often capped per payment: Helcim charges 0.5% + $0.25 capped at $6, Stripe 0.8% capped at $5, Square 1% (Oct 2026)</li>
                   <li><strong>Wire Transfers:</strong> For very large transactions (greater than $10,000)</li>
                   <li><strong>Cash Discounts:</strong> Offer a small discount (1-2%) for cash payments to incentivize lower-cost payment methods</li>
                 </ul>
@@ -483,7 +471,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  Many business owners ask: "What is a good credit card processing rate?" The answer depends on your business model, but here are industry benchmarks:
+                  Many business owners ask: "What is a good credit card processing rate?" The answer depends on your business model, but here are published reference points (prices checked Oct 2026):
                 </p>
 
                 <div className="overflow-x-auto my-8">
@@ -498,30 +486,30 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                     <tbody className="text-foreground">
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Flat Rate</td>
-                        <td className="py-3 pr-4">2.6% - 2.9% + $0.10-$0.30</td>
+                        <td className="py-3 pr-4">2.29% + $0.09 (PayPal POS) to 2.9% + $0.30 (Stripe online); PayPal Checkout 3.49% + $0.49</td>
                         <td className="py-3">Low volume (under $5K/month), simple setup</td>
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Interchange-Plus</td>
-                        <td className="py-3 pr-4">Interchange + 0.20% - 0.50% + $0.10-$0.25</td>
-                        <td className="py-3">Medium to high volume (over $5K/month), transparency</td>
+                        <td className="py-3 pr-4">Helcim: Interchange + 0.40% + $0.08 in person, + 0.50% + $0.25 online (under $50K/month); Adyen: Interchange++ + 0.60% + $0.13</td>
+                        <td className="py-3">Transparency at almost any volume; Helcim has no monthly fee</td>
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Tiered</td>
-                        <td className="py-3 pr-4">1.5% - 3.5% (varies by tier)</td>
+                        <td className="py-3 pr-4">Set by each processor per tier</td>
                         <td className="py-3">Avoid if possible - lacks transparency</td>
                       </tr>
                       <tr className="border-b border-border">
                         <td className="py-3 pr-4">Membership/Subscription</td>
-                        <td className="py-3 pr-4">Interchange + $50-$150/month flat fee</td>
-                        <td className="py-3">Very high volume (over $50K/month)</td>
+                        <td className="py-3 pr-4">Stax: Interchange + $0.08 in person or $0.15 online, plus $99 to $199+/month</td>
+                        <td className="py-3">Steady volume from about $50K/month</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
                 <p className="text-foreground leading-relaxed">
-                  For interchange-plus pricing, competitive rates typically range from 0.20% to 0.50% above the base interchange fee. If you're being quoted 0.75% or higher, keep shopping.
+                  For interchange-plus pricing, published markups such as Helcim&apos;s 0.40% in person and 0.50% online under $50,000 a month (stepping down as volume grows) are a useful yardstick. If you&apos;re quoted well above that for similar volume, keep shopping.
                 </p>
 
                 {/* Section 7 - FAQ */}
@@ -536,26 +524,26 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong>Surcharging:</strong> You can add up to 3% to credit card transactions (not debit). Must post clear signage and notify your processor 30 days in advance. Prohibited in Connecticut, Massachusetts, and Puerto Rico.</li>
-                  <li><strong>Cash Discount Programs:</strong> You can display a higher "cash price" and offer a discount for cash/debit payments. This is legal nationwide and often preferred by customers.</li>
-                  <li><strong>Convenience Fees:</strong> For alternative payment channels (online, phone), you can charge a flat fee (not percentage) that applies to all payment methods for that channel.</li>
+                  <li><strong>Surcharging:</strong> Visa&apos;s rules allow up to 3% on credit card transactions only, never debit. You must disclose it clearly and notify your processor in advance. Some states add their own rules, so check your state&apos;s current law first (see our <Link href="/comparisons/credit-card-surcharging-guide-2026" className="text-primary hover:underline">surcharging guide</Link>).</li>
+                  <li><strong>Cash Discount Programs:</strong> You can display a card price and offer a discount for paying cash. These follow different rules from surcharges; confirm the setup with your processor.</li>
+                  <li><strong>Convenience Fees:</strong> For an alternative payment channel (online, phone), card network rules may allow a convenience fee; the conditions differ by network, so check with your processor.</li>
                 </ul>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">How much can I realistically save?</h3>
 
                 <p className="text-foreground leading-relaxed">
-                  Based on our analysis of hundreds of small businesses:
+                  It depends on your volume, card mix and current pricing. Our <Link href="/data/effective-rates-2026" className="text-primary hover:underline">cost model</Link>, built on published pricing checked in October 2026, gives a sense of scale:
                 </p>
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
-                  <li><strong>Switching from flat-rate to interchange-plus:</strong> 15-30% savings</li>
-                  <li><strong>Implementing technical optimizations</strong> (AVS, daily batching, Level 2/3): 5-15% savings</li>
-                  <li><strong>Negotiating your current processor's rates:</strong> 10-20% savings</li>
-                  <li><strong>Combined approach:</strong> 25-45% total savings</li>
+                  <li><strong>$10,000 a month in person:</strong> Helcim about $211, Stax $270, Stripe Terminal $280, Square $290</li>
+                  <li><strong>$50,000 a month in person:</strong> Helcim about $1,020, Stax $1,055, Stripe Terminal $1,400, Square $1,450</li>
+                  <li><strong>$50,000 a month online:</strong> Stax about $1,200, Helcim $1,275, Stripe $1,750</li>
+                  <li><strong>Technical fixes</strong> (AVS, daily batching, Level 3 data) only show up as savings on interchange-plus pricing</li>
                 </ul>
 
                 <p className="text-foreground leading-relaxed mt-4">
-                  For a business processing $20,000/month at an effective rate of 3.0%, this translates to savings of $150-$270/month or $1,800-$3,240 annually.
+                  For a business processing $20,000 a month at an effective rate of 3.0% ($600 a month), every 0.10 point you cut is $20 a month, or $240 a year.
                 </p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">When should I switch processors?</h3>
@@ -566,10 +554,10 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
 
                 <ul className="text-foreground space-y-2 ml-6 list-disc">
                   <li>Your monthly volume has grown significantly since signing up</li>
-                  <li>You're paying more than 2.5% effective rate (total fees ÷ total processing volume)</li>
-                  <li>You're paying excessive monthly fees (over $50 for basic services)</li>
+                  <li>Your effective rate (total fees ÷ total processing volume) is well above written quotes for the same volume and card mix</li>
+                  <li>You're paying monthly fees you cannot match to a service you use</li>
                   <li>Your processor is unresponsive to service issues</li>
-                  <li>You're on a flat-rate model and processing over $10,000/month</li>
+                  <li>You're on a flat-rate model and processing over $10,000/month (in our cost model, interchange-plus already costs less at that volume)</li>
                   <li>You've discovered you're paying for a terminal lease</li>
                 </ul>
 
@@ -585,7 +573,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                 </h2>
 
                 <p className="text-foreground leading-relaxed">
-                  Payment processing is not just a utility; it is a manageable business expense. By demanding transparency, optimizing your technical setup (such as AVS and Auto-Batching), and avoiding common leasing pitfalls, you can reclaim lost revenue and put that 20-40% savings back where it belongs: in your pocket.
+                  Payment processing is not just a utility; it is a manageable business expense. By demanding transparency, optimizing your technical setup (such as AVS and Auto-Batching), and avoiding common leasing pitfalls, you can reclaim lost revenue and put those savings back where they belong: in your pocket.
                 </p>
 
                 <p className="text-foreground leading-relaxed">
@@ -638,7 +626,7 @@ export default function SmallBusinessCreditCardProcessingGuidePage() {
                         </a>
                       </div>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        Barak Bachar is a Global Payments Manager and recognized expert in the payments industry. With a background as a commercial lawyer and extensive experience in the highly regulated iGaming industry, Barak specializes in managing complex payment ecosystems and fraud prevention. He leverages his expertise in high-risk global markets to help businesses of all sizes, from local retailers to digital enterprises, demystify processing fees and optimize their revenue. Through myPayAdvisor.com, Barak has helped hundreds of small businesses save thousands of dollars annually on credit card processing fees.
+                        Barak Bachar is a Global Payments Manager and recognized expert in the payments industry. With a background as a commercial lawyer and extensive experience in the highly regulated iGaming industry, Barak specializes in managing complex payment ecosystems and fraud prevention. He leverages his expertise in high-risk global markets to help businesses of all sizes, from local retailers to digital enterprises, demystify processing fees and optimize their revenue.
                       </p>
                     </div>
                   </div>

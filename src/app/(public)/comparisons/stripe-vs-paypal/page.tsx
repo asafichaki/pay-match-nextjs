@@ -30,7 +30,7 @@ const baseMetadata: Metadata = {
   },
   other: {
     "article:published_time": "2025-11-15T00:00:00.000Z",
-    "article:modified_time": "2026-11-02T00:00:00.000Z",
+    "article:modified_time": "2026-11-11T00:00:00.000Z",
   },
 };
 
@@ -65,7 +65,7 @@ export default function StripeVsPayPalPage() {
         description={META_DESCRIPTION}
         slug="stripe-vs-paypal"
         datePublished="2025-11-15"
-        dateModified="2026-11-02"
+        dateModified="2026-11-11"
         breadcrumbItems={[
           { name: "Home", item: "https://www.mypayadvisor.com" },
           { name: "Comparisons", item: "https://www.mypayadvisor.com/comparisons" },
