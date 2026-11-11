@@ -145,7 +145,7 @@ export default function LeadCaptureBrief() {
                       You&rsquo;re on the list.
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Barak sees every signup and replies by email.
+                      We&rsquo;ll get back to you soon.
                     </p>
                   </div>
                 )}
