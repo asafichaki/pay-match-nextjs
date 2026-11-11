@@ -64,7 +64,7 @@ const TERM_TO_CORNERSTONES: Record<string, { label: string; href: string }[]> = 
   ],
   "interchange-plus": [
     { label: "Payment Processor Negotiation Playbook", href: "/insights/payment-processor-negotiation-playbook" },
-    { label: "Helcim Review 2026", href: "/insights/helcim-review-2025" },
+    { label: "Helcim Review 2026", href: "/comparisons/helcim-review-2026" },
   ],
   "flat-rate-pricing": [
     { label: "Square vs Stripe 2026", href: "/comparisons/square-vs-stripe" },

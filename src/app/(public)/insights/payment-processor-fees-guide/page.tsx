@@ -1180,7 +1180,7 @@ export default function PaymentProcessorFeesGuidePage() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/insights/helcim-review-2025" className="text-primary hover:underline">
+                    <Link href="/comparisons/helcim-review-2026" className="text-primary hover:underline">
                       Helcim Review 2025: Is This the Best Low-Fee Payment Processor?
                     </Link>
                   </li>

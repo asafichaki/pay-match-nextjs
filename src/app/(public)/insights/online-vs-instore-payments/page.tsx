@@ -383,7 +383,7 @@ export default function OnlineVsInStorePaymentsPage() {
               </ul>
 
               <p className="text-foreground leading-relaxed">
-                Processors like <Link href="/insights/helcim-review-2025" className="text-primary hover:underline">Helcim</Link> offer unified platforms that handle both in-store and online transactions, simplifying reconciliation and providing consistent reporting.
+                Processors like <Link href="/comparisons/helcim-review-2026" className="text-primary hover:underline">Helcim</Link> offer unified platforms that handle both in-store and online transactions, simplifying reconciliation and providing consistent reporting.
               </p>
 
               <h2 id="conclusion" className="text-2xl font-serif font-bold text-foreground mt-12 mb-6 pt-8 border-t border-border">

@@ -68,7 +68,7 @@ ARTICLE_OFFERS["best-no-contract-payment-processors-2026"] = {
     { processor: "Square", fact: "2.6% + $0.15 in person, 2.9% + $0.30 online on paid plans (3.3% + $0.30 on Free). Best under $25K retail and food." },
     { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month by annual volume plus interchange + $0.08 in person. Best above $80K a month." },
     { processor: "Payment Depot", fact: "$79 to $199 a month plus interchange + $0.05 to $0.15, month-to-month. For $40K+ a month; POS hardware not included.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://www.paymentdepot.com/" } },
-    { processor: "Clover", fact: "$14.95 to $54.95 a month plus 2.3% to 2.6% + $0.10. Month-to-month direct from Clover.com; reseller contracts run 36 to 48 months." },
+    { processor: "Clover", fact: "2.3% to 2.6% + 10¢ by plan, software $0 to $89.95+ a month. Hardware subscriptions run 36 months and cannot be canceled." },
     { processor: "PayPal", fact: "3.49% + $0.49 standard online, 2.29% + $0.09 in person, month-to-month. For low volume with PayPal-preferring buyers." },
   ],
 };
@@ -79,7 +79,7 @@ ARTICLE_OFFERS["best-pos-systems-for-small-business-2026"] = {
   checked: "2026",
   items: [
     { processor: "Square", fact: "2.6% + $0.15 in person on the Free plan, month to month, next-day deposits. Best under $50K a month." },
-    { processor: "Clover", fact: "$14.95 to $54.95 a month plus 2.3% to 2.6% + $0.10; hardware leases run 36 to 48 months. Restaurants and retail." },
+    { processor: "Clover", fact: "2.3% to 2.6% + 10¢ by plan, software $0 to $89.95+ a month; hardware subscriptions run 36 months. Restaurants and retail." },
     { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, month to month. Best for $25K to $500K a month; no instant payout option." },
     { processor: "Stripe", fact: "2.9% + $0.30 online, 2.7% + $0.05 in person, month to month. Online-first businesses." },
     { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month by annual volume plus interchange + $0.08. Worth it from $80K a month, not under $50K." },
@@ -124,6 +124,159 @@ ARTICLE_OFFERS["best-high-risk-friendly-payment-processors-2026"] = {
     { processor: "Stax (Fattmerchant)", fact: "$99 a month plus interchange + $0.08 in person, month-to-month. $50K+ low-risk volume; standard underwriting, no high-risk desk." },
     { processor: "Payment Depot", fact: "$79 to $199 a month plus interchange + $0.05 to $0.15, month-to-month. $25K+ low-risk volume; same underwriting posture as Stax.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://www.paymentdepot.com/" } },
     { processor: "Clover", fact: "$14.95 to $54.95 a month plus 2.3% to 2.6%; 1 to 3 year hardware term. Low-risk brick-and-mortar; the Fiserv backend declines high-risk." },
+  ],
+};
+
+// Stage 2 pages, 2026-11-11 (reviews, alternatives, guides). Facts copied from each page body.
+ARTICLE_OFFERS["square-review-2026"] = {
+  heading: "Square and its closest alternatives",
+  orderNote: "Square first because this page reviews it, then the alternatives by in-person monthly cost at $50K in our engine, lowest first.",
+  checked: "2026",
+  items: [
+    { processor: "Square", fact: "2.6% + 15¢ in person on the $0 Free plan, no contract, next-day deposits free. About $290 a month at $10K in person." },
+    { processor: "Helcim", fact: "Interchange + 0.40% + 8¢ in person, no monthly fee. About $1,020 a month at $50K in person, against $1,450 on Square." },
+    { processor: "PayPal", fact: "PayPal POS at 2.29% + 9¢ in person, no monthly fee. About $1,235 a month at $50K in person." },
+    { processor: "Stripe", fact: "2.7% + 5¢ in person with Terminal, 2.9% + 30¢ online. About $1,400 a month at $50K in person." },
+  ],
+};
+
+ARTICLE_OFFERS["helcim-review-2026"] = {
+  heading: "Helcim and its closest alternatives",
+  orderNote: "Helcim first because this page reviews it, then the alternatives by in-person monthly cost at $250K in our engine, lowest first.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + 8¢ in person, $0 monthly fee, no contract. About $211 a month at $10K in person." },
+    { processor: "Stax (Fattmerchant)", fact: "Interchange at cost + 8¢ in person, plus $99 to $199+ a month. About $4,475 a month at $250K in person." },
+    { processor: "Square", fact: "2.6% + 15¢ in person on the $0 Free plan, hardware from $59. About $6,900 a month at $250K in person." },
+    { processor: "Stripe", fact: "2.7% + 5¢ in person, 2.9% + 30¢ online, no monthly fee. About $7,000 a month at $250K in person." },
+  ],
+};
+
+ARTICLE_OFFERS["clover-review-2026"] = {
+  heading: "Clover and its closest alternatives",
+  orderNote: "Clover first because this page reviews it, then the alternatives by in-person monthly cost at $50K in our engine, lowest first.",
+  checked: "2026",
+  items: [
+    { processor: "Clover", fact: "2.3% + 10¢ in person on Clover.com Growth bundles; 36-month hardware subscriptions cannot be canceled. About $1,335 a month at $50K before hardware." },
+    { processor: "Helcim", fact: "Interchange + 0.40% + 8¢ in person, no monthly fee or contract. About $1,020 a month at $50K in person." },
+    { processor: "Stax (Fattmerchant)", fact: "Interchange at cost + 8¢ in person, plus $99 to $199+ a month. About $1,055 a month at $50K in person." },
+    { processor: "Square", fact: "2.6% + 15¢ in person on the $0 Free plan, no contract, hardware from $59. About $1,450 a month at $50K in person." },
+  ],
+};
+
+ARTICLE_OFFERS["toast-pos-review-2026"] = {
+  heading: "Toast and the closest alternatives",
+  orderNote: "Ordered by our engine's monthly cost at $50K in person, with Toast placed by the same formula; Clover is lowest at that volume.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + 8¢ in person, no monthly fee, no contract. About $1,020 a month at $50K in our engine." },
+    { processor: "Clover", fact: "2.3% + 10¢ in person on Growth bundles; about $1,335 a month at $50K. Hardware subscriptions run 36 months." },
+    { processor: "Square", fact: "2.5% + 15¢ in person on Plus at $49 a month, no contract. About $1,450 a month at $50K." },
+    { processor: "Toast", fact: "2.49% + 15¢ plus $69 a month on Traditional, about $1,464 at $50K. 2-year agreement.", custom: { name: "Toast", partnerSlug: "toast", url: "https://pos.toasttab.com/pricing", variant: "visit" } },
+  ],
+};
+
+ARTICLE_OFFERS["paymentcloud-review-2026"] = {
+  heading: "High-risk options at a glance",
+  orderNote: "High-risk providers first, in the order of this review; none of the three publishes a full high-risk rate, so cost cannot set the order. Helcim is listed for mid-risk businesses.",
+  checked: "2026",
+  items: [
+    { processor: "PaymentCloud", fact: "Quote-only pricing. Approval in 24 hours to 5 days per its homepage; free terminal per location advertised.", custom: { name: "PaymentCloud", partnerSlug: "paymentcloud", url: "https://paymentcloudinc.com/", variant: "quote" } },
+    { processor: "Durango Merchant Services", fact: "Interchange-plus pricing by quote; over 20 years in business; offshore placement options.", custom: { name: "Durango Merchant Services", partnerSlug: "durango", url: "https://durangomerchantservices.com/", variant: "quote" } },
+    { processor: "Easy Pay Direct", fact: "Standard accounts: 2.69% + $0.36 online, 1.59% + $0.19 swiped, monthly typically $36.", custom: { name: "Easy Pay Direct", partnerSlug: "easy-pay-direct", url: "https://www.easypaydirect.com/", variant: "visit" } },
+    { processor: "Helcim", fact: "Interchange + 0.50% + 25¢ online, no monthly fee, no contract. Mid-risk only; declines most high-risk categories." },
+  ],
+};
+
+ARTICLE_OFFERS["best-pos-systems-for-restaurants-2026"] = {
+  heading: "Restaurant POS systems at a glance",
+  orderNote: "Sorted by monthly cost at $50K in card sales and a $50 check, lowest first; Lightspeed is last because it does not publish card rates.",
+  checked: "2026",
+  items: [
+    { processor: "Clover", fact: "2.3% + 10¢ in person on Restaurant Growth; about $1,335 a month at $50K. 36-month hardware subscription." },
+    { processor: "SpotOn", fact: "POS Essentials: $55 a station, 2.45% + 15¢, month to month. About $1,430 at $50K excluding Amex.", custom: { name: "SpotOn", partnerSlug: null, url: "https://www.spoton.com/pricing/", variant: "visit" } },
+    { processor: "Square", fact: "Plus: $49 a month, 2.5% + 15¢ in person, no contract. About $1,450 a month at $50K." },
+    { processor: "Toast", fact: "Traditional: 2.49% + 15¢ plus $69 a month, about $1,464 at $50K. 2-year agreement.", custom: { name: "Toast", partnerSlug: "toast", url: "https://pos.toasttab.com/pricing", variant: "visit" } },
+    { processor: "Lightspeed Restaurant", fact: "Plans listed at $69, $189 and $399; card rates by quote.", custom: { name: "Lightspeed Restaurant", partnerSlug: null, url: "https://www.lightspeedhq.com/pos/restaurant/pricing/", variant: "quote" } },
+  ],
+};
+
+ARTICLE_OFFERS["stripe-alternatives-2026"] = {
+  heading: "Stripe alternatives at a glance",
+  orderNote: "Sorted by our engine's monthly cost for $50K a month in online sales, lowest first; Square is listed last as the in-person POS option.",
+  checked: "2026",
+  items: [
+    { processor: "Stax (Fattmerchant)", fact: "$1,200 a month at $50K online, $5,200 at $250K. Interchange at cost + 15¢, plus $99 to $199+ a month." },
+    { processor: "Helcim", fact: "$1,275 a month at $50K online against $1,750 on Stripe. No monthly fee, no contract." },
+    { processor: "Adyen", fact: "2.56% online in our engine; minimum monthly invoice not published." },
+    { processor: "Braintree", fact: "2.89% + 29¢ for cards and wallets, with PayPal and Venmo in one integration. Online only." },
+    { processor: "Square", fact: "2.6% + 15¢ in person on the $0 plan, free next-day transfers. Not cheaper than Stripe Terminal." },
+  ],
+};
+
+ARTICLE_OFFERS["paypal-alternatives-2026"] = {
+  heading: "PayPal alternatives at a glance",
+  orderNote: "Sorted by our engine's monthly cost for $50K a month in online sales, lowest first; Square is listed last as the in-person POS option.",
+  checked: "2026",
+  items: [
+    { processor: "Stax (Fattmerchant)", fact: "$1,200 a month at $50K online against $1,735 on PayPal. Interchange at cost + 15¢, plus $99 to $199+ a month." },
+    { processor: "Helcim", fact: "$1,275 a month at $50K online against $1,735 on PayPal. No monthly fee, no contract." },
+    { processor: "Stripe", fact: "2.9% + 30¢ online against 3.49% + 49¢ for PayPal Checkout. $15 dispute fee." },
+    { processor: "Shopify Payments", fact: "2.9% + 30¢ online on Basic, lower on higher plans. Shopify stores only." },
+    { processor: "Square", fact: "2.6% + 15¢ in person on the $0 plan with a free POS app. Costs more than PayPal POS." },
+  ],
+};
+
+ARTICLE_OFFERS["square-alternatives-2026"] = {
+  heading: "Square alternatives at a glance",
+  orderNote: "Sorted by our engine's monthly cost for $50K a month in in-person sales, lowest first.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "$1,020 a month at $50K in person against $1,450 on Square. No monthly fee, no contract." },
+    { processor: "Stax (Fattmerchant)", fact: "$1,055 a month at $50K in person, $4,475 at $250K. Plus $99 to $199+ a month." },
+    { processor: "PayPal", fact: "2.29% + 9¢ in person, the lowest flat rate we found. $1,235 a month at $50K." },
+    { processor: "Clover", fact: "2.3% + 10¢ on Growth bundles; $1,335 a month at $50K. 36-month hardware term." },
+    { processor: "Stripe", fact: "2.7% + 5¢ in person, 2.9% + 30¢ online, no monthly fee. $1,400 a month at $50K in person." },
+  ],
+};
+
+ARTICLE_OFFERS["best-credit-card-readers-small-business-2026"] = {
+  heading: "Card readers at a glance",
+  orderNote: "Ordered by in-person monthly cost at $50K in our engine, lowest first; SumUp is last because it is not in the engine yet.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Card Reader $199; interchange + 0.40% + 8¢ in person, no monthly fee. $1,020 a month at $50K in our engine." },
+    { processor: "PayPal", fact: "Card Reader $29 for your first, then $79; 2.29% + 9¢ in person. $1,235 a month at $50K." },
+    { processor: "Clover", fact: "Clover Go $199; 2.3% to 2.6% + 10¢ by plan; 36-month hardware terms. $1,335 a month at $50K on Retail Growth." },
+    { processor: "Stripe", fact: "Reader M2 $59; 2.7% + 5¢ in person, no monthly fee. $1,400 a month at $50K." },
+    { processor: "Square", fact: "Reader $59; 2.6% + 15¢ on the Free plan, free next-day deposits. $1,450 a month at $50K." },
+    { processor: "SumUp", fact: "Plus reader $37 on sale ($54 list); 2.6% + 10¢ in person, $0 Standard plan. Not yet in our cost engine.", custom: { name: "SumUp", partnerSlug: null, url: "https://www.sumup.com/en-us/pricing/", variant: "visit" } },
+  ],
+};
+
+ARTICLE_OFFERS["credit-card-surcharging-guide-2026"] = {
+  heading: "Processors with a published surcharge feature",
+  orderNote: "Ordered by in-person monthly cost at $50K in our engine, lowest first; only processors whose own pages describe surcharging are listed.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Fee Saver: customers pay 3.0% on credit cards, you pay 0%; PIN debit costs you 1.0% + 8¢. $1,020 a month at $50K before Fee Saver." },
+    { processor: "Stax (Fattmerchant)", fact: "Surcharges credit cards only, detects debit by BIN; $99 to $199+ a month plus interchange + 8¢ in person." },
+    { processor: "Clover", fact: "Most US merchants surcharge at 3.00%, credit cards only; states with restrictions excluded." },
+    { processor: "Square", fact: "Open beta for US sellers, capped at 3% and your cost; not on Kiosk, Virtual Terminal or Square Website." },
+  ],
+};
+
+ARTICLE_OFFERS["ach-payment-processing-2026"] = {
+  heading: "ACH fees at a glance",
+  orderNote: "Sorted by the published fee to receive one $2,000 ACH payment, lowest first; ties in alphabetical order.",
+  checked: "2026",
+  items: [
+    { processor: "Melio", fact: "Receiving ACH by payment request or link is free; card payments received cost 2.9%.", custom: { name: "Melio", partnerSlug: "melio", url: "https://www.melio.com/pricing", variant: "visit" } },
+    { processor: "PayPal", fact: "Online ACH Services 0.80%, capped at $5; invoice Pay by Bank 1%, capped at $10." },
+    { processor: "Stripe", fact: "ACH Direct Debit 0.8%, capped at $5; $4 per failed payment, $15 per dispute; settles in up to 4 business days." },
+    { processor: "Helcim", fact: "ACH 0.5% + 25¢, capped at $6; $5 per rejected payment; no monthly fee." },
+    { processor: "Square", fact: "ACH 1%, $1 minimum; capped at $10 on Plus and Premium invoices, $5 through the API." },
+    { processor: "Stax (Fattmerchant)", fact: "ACH 1%, capped at $10, plus a $99 to $199+ monthly subscription." },
   ],
 };
 

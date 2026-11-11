@@ -35,7 +35,7 @@ const COPY = {
     bookSub: "Barak reviews your terminal setup and current MDR, then emails you directly, usually within one business day, with the questions to ask before signing anything.",
     readMoreLinks: [
       { href: "/insights/online-vs-instore-payments", label: "The real cost gap between online and in-store" },
-      { href: "/insights/helcim-review-2025", label: "Helcim review: real rates and verdict" },
+      { href: "/comparisons/helcim-review-2026", label: "Helcim review: real rates and verdict" },
       { href: "/comparisons", label: "Side-by-side processor comparisons" },
     ],
   },

@@ -34,6 +34,8 @@ export const RETIRED_LINK_TARGETS: Record<string, string> = {
   // Comparison duplicates absorbed in PR 1.
   "/comparisons/stripe-vs-square-2026": "/comparisons/square-vs-stripe",
   "/comparisons/stripe-vs-helcim-2026": "/comparisons/helcim-vs-stripe",
+  // Static Helcim review replaced by the DB review page, 2026-11-11.
+  "/insights/helcim-review-2025": "/comparisons/helcim-review-2026",
 };
 
 const HREF_RE = /(href=["'])([^"'#?]+)((?:[#?][^"']*)?["'])/gi;
