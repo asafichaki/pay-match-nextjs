@@ -8,8 +8,8 @@ import { subscribeNewsletter, enrichNewsletterLead } from "@/app/actions/newslet
 import { openSortingHat } from "./sorting-hat/useSortingHatModal";
 
 const BULLETS = [
-  "2026 effective rates, by tier.",
-  "The four hidden statement fees.",
+  "What you should be paying, by channel.",
+  "The hidden fees on your statement.",
   "Contract clauses to push on.",
 ];
 
@@ -112,7 +112,7 @@ export default function ExitIntentPopup() {
       }}
       role="dialog"
       aria-modal="true"
-      aria-label="The Rate Brief"
+      aria-label="Free rate check"
     >
       <div className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-card shadow-2xl animate-fade-in-up">
         <button
@@ -127,7 +127,7 @@ export default function ExitIntentPopup() {
           <div className="p-6 sm:p-8">
             <p className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] font-bold text-primary mb-3">
               <FileText className="h-3.5 w-3.5" />
-              The Rate Brief · free
+              Free rate check
             </p>
             <h3 className="font-display text-2xl sm:text-3xl font-bold leading-[1.1] tracking-tight text-foreground mb-2">
               Stop overpaying{" "}
@@ -135,7 +135,7 @@ export default function ExitIntentPopup() {
               on processing.
             </h3>
             <p className="text-sm text-muted-foreground mb-5">
-              A two-minute weekly note. Real rates, no fluff.
+              Leave your email and we&rsquo;ll get back to you with a straight answer. No fluff.
             </p>
 
             <ul className="space-y-2 mb-6">
@@ -179,18 +179,18 @@ export default function ExitIntentPopup() {
                 {isPending ? (
                   <>
                     <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                    Sending the brief…
+                    Sending…
                   </>
                 ) : (
                   <>
-                    Send me the Rate Brief
+                    Check my rates
                     <ArrowRight className="h-4 w-4 ml-1" />
                   </>
                 )}
               </Button>
               <p className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
                 <Lock className="h-3 w-3" />
-                No spam. Unsubscribe in one click.
+                No spam. We never share your email.
               </p>
             </form>
 
@@ -280,7 +280,7 @@ export default function ExitIntentPopup() {
               onClick={() => setDetailsSent(true)}
               className="mt-4 w-full text-center text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
             >
-              No thanks, just send the brief
+              No thanks, email is fine
             </button>
           </div>
         ) : (

@@ -7,9 +7,9 @@ import { Input } from "@/components/ui/input";
 import { subscribeNewsletter } from "@/app/actions/newsletter";
 
 const POINTS = [
-  "Real 2026 effective rates by tier and channel, side-by-side.",
-  "The four hidden fees most merchants miss on their statement.",
-  "The exact contract clauses to push on before you sign anywhere.",
+  "What a business like yours should be paying, by channel.",
+  "The hidden fees most merchants miss on their statement.",
+  "The contract clauses to push on before you sign anywhere.",
 ];
 
 export default function LeadCaptureBrief() {
@@ -52,17 +52,17 @@ export default function LeadCaptureBrief() {
             <div className="relative text-center lg:text-left">
               <p className="inline-flex items-center gap-2 text-[11px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.18em] font-bold text-primary mb-3 sm:mb-4">
                 <FileText className="h-3.5 w-3.5" />
-                The Rate Brief · free
+                Free rate check
               </p>
               <h2
                 id="brief-heading"
                 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.1] sm:leading-[1.05] mb-4 sm:mb-5"
               >
-                Get the 2026 payment-rate brief.{" "}
+                Find out what you should be paying.{" "}
                 <span className="text-primary">Free, no fluff.</span>
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-5 sm:mb-6 max-w-xl mx-auto lg:mx-0">
-                A short PDF plus a weekly two-minute note. Numbers, contract clauses, what changed. Nothing else.
+                Leave your email and we&rsquo;ll get back to you with a straight answer. A real reply from a person, not a newsletter.
               </p>
 
               <ul className="space-y-2.5 sm:space-y-3 mb-2 max-w-xl mx-auto lg:mx-0 text-left">
@@ -86,9 +86,9 @@ export default function LeadCaptureBrief() {
                       </div>
                       <div>
                         <p className="font-display text-lg font-semibold text-foreground tracking-tight">
-                          Send me the brief
+                          Check my rates
                         </p>
-                        <p className="text-sm text-muted-foreground">First note lands today.</p>
+                        <p className="text-sm text-muted-foreground">We reply personally.</p>
                       </div>
                     </div>
 
@@ -126,14 +126,14 @@ export default function LeadCaptureBrief() {
                         </>
                       ) : (
                         <>
-                          Get the brief
+                          Check my rates
                           <ArrowRight className="h-4 w-4 ml-1" />
                         </>
                       )}
                     </Button>
 
                     <p className="text-xs text-muted-foreground text-center pt-1">
-                      No spam. Unsubscribe in one click. We never share your email.
+                      No spam. We never share your email.
                     </p>
                   </form>
                 ) : (

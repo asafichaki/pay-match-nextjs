@@ -68,7 +68,7 @@ export default function NewsletterForm({
           disabled={status === "loading"}
         />
         <Button type="submit" size="sm" className="h-10 px-4 text-sm whitespace-nowrap" disabled={status === "loading"}>
-          {status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : "Subscribe"}
+          {status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : "Send"}
         </Button>
         {status === "error" && (
           <p className="text-xs text-destructive mt-1">{errorMessage}</p>
@@ -106,7 +106,7 @@ export default function NewsletterForm({
           {status === "loading" ? (
             <Loader2 className="h-5 w-5 animate-spin" />
           ) : (
-            "Send me the brief"
+            "Check my rates"
           )}
         </Button>
       </div>
@@ -115,7 +115,7 @@ export default function NewsletterForm({
       )}
       <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-3">
         <Lock className="h-3 w-3" />
-        No spam. Unsubscribe anytime. We&rsquo;ll never share your email.
+        No spam. We&rsquo;ll never share your email.
       </p>
     </form>
   );
