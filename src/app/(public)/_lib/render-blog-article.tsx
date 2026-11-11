@@ -435,6 +435,13 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           {kind === "comparisons" && COST_WIDGET_PLACEMENTS[article.slug] ? (
             <CostAtVolume from={`/${kind}/${article.slug}`} className="mt-6" {...COST_WIDGET_PLACEMENTS[article.slug]} />
           ) : null}
+          {/* Provider box directly under the answer (2026-11-11): on pages with an
+              AEO answer the first button sat below the first mobile screen. */}
+          {ARTICLE_OFFERS[article.slug] ? (
+            <ArticleOffersBox offers={ARTICLE_OFFERS[article.slug]} from={`/${kind}/${article.slug}`} />
+          ) : ARTICLE_VS[article.slug] ? (
+            <VsPicksBox a={ARTICLE_VS[article.slug][0]} b={ARTICLE_VS[article.slug][1]} from={`/${kind}/${article.slug}`} />
+          ) : null}
           <p
             data-speakable="true"
             className="mt-5 text-lg leading-relaxed text-muted-foreground sm:text-xl"
@@ -457,11 +464,6 @@ export async function renderBlogArticle(kind: Kind, slug: string) {
           </div>
         </header>
 
-        {ARTICLE_OFFERS[article.slug] ? (
-          <ArticleOffersBox offers={ARTICLE_OFFERS[article.slug]} from={`/${kind}/${article.slug}`} />
-        ) : ARTICLE_VS[article.slug] ? (
-          <VsPicksBox a={ARTICLE_VS[article.slug][0]} b={ARTICLE_VS[article.slug][1]} from={`/${kind}/${article.slug}`} />
-        ) : null}
 
         {kind === "comparisons" && article.slug === "best-payment-processors-with-same-day-deposit-2026" ? (
           <MatchCTA
