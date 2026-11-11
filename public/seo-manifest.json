@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T10:30:45.914Z",
+  "generated_at": "2026-11-11T10:46:42.668Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 54,
@@ -1032,8 +1032,8 @@
       "slug": "best-high-risk-friendly-payment-processors-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Best High-Risk Payment Processors 2026: Comparison",
-      "base_description": "Compare 8 payment processors for high-risk merchants in 2026. Worldpay leads on underwriting; Stripe, Square, and PayPal prohibit most high-risk MCCs at signup.",
+      "base_title": "High Risk Payment Processors 2026: Who Accepts What",
+      "base_description": "High risk merchant account options: Stripe, Square and PayPal ban many categories. PaymentCloud says it approves high-risk files in 24 hours to 5 days.",
       "outline": []
     },
     {
@@ -1052,8 +1052,8 @@
       "slug": "best-low-fee-payment-processors-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Best Low-Fee Payment Processors: 2026 Comparison",
-      "base_description": "Compare seven low-fee payment processors for 2026: Helcim, Stax, Payment Depot, Stripe, Square, Clover, PayPal. Effective rates by volume tier explained.",
+      "base_title": "Cheapest Credit Card Processing 2026: Real Monthly Cost",
+      "base_description": "Cheapest credit card processing by volume, prices checked Oct 2026: Helcim costs about $1,020 a month at $50K in person, Stax $4,475 at $250K. 7 compared.",
       "outline": []
     },
     {
@@ -1272,8 +1272,8 @@
       "slug": "best-virtual-terminals-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Best Virtual Terminals 2026: 7 Providers Compared",
-      "base_description": "Compare keyed rates, monthly fees, and B2B support across the top 7 virtual terminal providers. Find the winner for your monthly volume tier.",
+      "base_title": "Best Virtual Terminal 2026: Keyed Rates and Real Cost",
+      "base_description": "Virtual terminal fees, checked Oct 2026: keyed sales cost about $1,275 a month at $50K on Helcim, $1,900 on Square and $2,000 on Stripe. 7 providers.",
       "outline": []
     },
     {
@@ -1292,8 +1292,8 @@
       "slug": "clover-vs-toast-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Clover vs Toast 2026: Which Costs Less for Your Volume",
-      "base_description": "Clover plans start at $14.95/mo with 2.3-2.6% in-person rates. Toast Starter is free with 2.99% + $0.15. See which actually costs less at your volume.",
+      "base_title": "Toast vs Clover 2026: Rates, Contracts and Real Cost",
+      "base_description": "Toast vs Clover: Clover Starter is 2.6% + 10¢ with a $0 software fee. Toast is 2.49% + 15¢ plus $69 a month and a $1,153 kit, or 3.09% + 15¢ with $0 down.",
       "outline": []
     },
     {
@@ -1372,8 +1372,8 @@
       "slug": "square-vs-clover-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Square vs Clover 2026: Real Cost Comparison",
-      "base_description": "Square vs Clover 2026: real rates, plan fees, hardware lock-in, and which processor costs less for retail and food service at your monthly volume.",
+      "base_title": "Clover vs Square 2026: Fees and Monthly Cost Compared",
+      "base_description": "Clover vs Square, prices checked Oct 2026: Clover Starter is 2.6% + $0.10 in person, Square Free 2.6% + $0.15. Monthly cost at $10K to $250K and contracts.",
       "outline": []
     },
     {
@@ -1402,8 +1402,8 @@
       "slug": "square-vs-toast-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Square vs Toast 2026: Restaurant POS Compared",
-      "base_description": "Toast wins at $50K+ monthly with KDS depth. Square wins below $50K with no contract. Real effective-rate math at $250K monthly card volume.",
+      "base_title": "Square vs Toast 2026: Fees, Contracts and Monthly Cost",
+      "base_description": "Square vs Toast: Square charges 2.6% + 15¢ with no contract. Toast is 2.49% + 15¢ plus $69 a month, or 3.09% + 15¢ with $0 upfront, on a 2-year agreement.",
       "outline": []
     },
     {

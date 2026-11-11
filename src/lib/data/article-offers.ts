@@ -114,18 +114,6 @@ ARTICLE_OFFERS["best-fast-funding-payment-processors-2026"] = {
   ],
 };
 
-ARTICLE_OFFERS["best-high-risk-friendly-payment-processors-2026"] = {
-  heading: "Who actually takes high-risk merchants",
-  orderNote: "In the order of the article's verdict: only Worldpay runs a dedicated high-risk desk; Helcim, Stax, Payment Depot and Clover take mid-risk; Stripe, Square and PayPal exclude most high-risk MCCs at signup.",
-  checked: "2026",
-  items: [
-    { processor: "Worldpay", fact: "Custom interchange-plus, 1 to 3 year contract, 1-day settlement. Dedicated high-risk underwriting with rolling reserves; 7 to 14 day underwriting.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en-us/contact", variant: "quote" } },
-    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no contract. Mid-risk B2B and retail; declines most high-risk MCCs." },
-    { processor: "Stax (Fattmerchant)", fact: "$99 a month plus interchange + $0.08 in person, month-to-month. $50K+ low-risk volume; standard underwriting, no high-risk desk." },
-    { processor: "Payment Depot", fact: "$79 to $199 a month plus interchange + $0.05 to $0.15, month-to-month. $25K+ low-risk volume; same underwriting posture as Stax.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://www.paymentdepot.com/" } },
-    { processor: "Clover", fact: "$14.95 to $54.95 a month plus 2.3% to 2.6%; 1 to 3 year hardware term. Low-risk brick-and-mortar; the Fiserv backend declines high-risk." },
-  ],
-};
 
 // Stage 2 pages, 2026-11-11 (reviews, alternatives, guides). Facts copied from each page body.
 ARTICLE_OFFERS["square-review-2026"] = {
@@ -277,6 +265,83 @@ ARTICLE_OFFERS["ach-payment-processing-2026"] = {
     { processor: "Helcim", fact: "ACH 0.5% + 25¢, capped at $6; $5 per rejected payment; no monthly fee." },
     { processor: "Square", fact: "ACH 1%, $1 minimum; capped at $10 on Plus and Premium invoices, $5 through the API." },
     { processor: "Stax (Fattmerchant)", fact: "ACH 1%, capped at $10, plus a $99 to $199+ monthly subscription." },
+  ],
+};
+
+// Refreshed pages, 2026-11-11: facts corrected to the Oct 29 data and official pages.
+ARTICLE_OFFERS["best-high-risk-friendly-payment-processors-2026"] = {
+  heading: "Where a high-risk business can apply",
+  orderNote: "Ordered by fit for high-risk files: specialists that say they take high-risk accounts first, then the quote-only acquirer, then the lowest-cost published option for businesses that are not high-risk. None of the first three publishes rates.",
+  checked: "2026",
+  items: [
+    { processor: "PaymentCloud", fact: "Says it serves high-risk businesses, approves in 24 hours to 5 days, no long-term contracts. Pricing is quote-only.", custom: { name: "PaymentCloud", partnerSlug: "paymentcloud", url: "https://paymentcloudinc.com/", variant: "quote" } },
+    { processor: "Durango Merchant Services", fact: "Says it opens high-risk and large-volume accounts with interchange-plus pricing. Pricing is quote-only.", custom: { name: "Durango Merchant Services", partnerSlug: "durango", url: "https://durangomerchantservices.com/", variant: "quote" } },
+    { processor: "Worldpay", fact: "Publishes no price list or high-risk terms; every account is priced by quote. Ask for reserve and contract terms in writing.", custom: { name: "Worldpay", partnerSlug: "worldpay", url: "https://www.worldpay.com/en/small-business", variant: "quote" } },
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 online, no contract, no monthly fee. No high-risk program on its pricing page." },
+  ],
+};
+
+ARTICLE_OFFERS["best-low-fee-payment-processors-2026"] = {
+  heading: "Cheapest processors at $50K a month",
+  orderNote: "Sorted by our engine's monthly in-person cost at $50K with a $50 average sale (prices checked Oct 2026), lowest first. Payment Depot is last because its membership fee is not published, so it cannot be priced.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee. About $1,020 a month at $50K." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08. About $1,055 at $50K; cheapest at $250K ($4,475)." },
+    { processor: "PayPal", fact: "PayPal POS 2.29% + $0.09 in person. About $1,235 a month at $50K." },
+    { processor: "Clover", fact: "2.3% to 2.6% + $0.10 plus $0 to $89.95+ a month. About $1,335 at $50K; 36-month hardware term." },
+    { processor: "Stripe", fact: "2.7% + $0.05 in person, 2.9% + $0.30 online. About $1,400 a month at $50K." },
+    { processor: "Square", fact: "2.6% + $0.15 in person on Free. About $1,450 a month at $50K on Plus." },
+    { processor: "Payment Depot", fact: "0% markup + $0.08 in person, $0.15 online, no cancellation fees. Membership fee not shown on its pricing page.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/pricing/", variant: "visit" } },
+  ],
+};
+
+ARTICLE_OFFERS["best-virtual-terminals-2026"] = {
+  heading: "Virtual terminals by keyed cost",
+  orderNote: "Sorted by our engine's monthly keyed cost at $50K with a $50 average sale (prices checked Oct 2026), lowest first. Payment Depot is last because its membership fee is not published.",
+  checked: "2026",
+  items: [
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.15 online. About $1,200 a month at $50K keyed." },
+    { processor: "Helcim", fact: "Interchange + 0.50% + $0.25 keyed, no monthly fee. About $1,275 at $50K; cheapest at $10K ($270)." },
+    { processor: "Clover", fact: "3.5% + $0.10 keyed on every bundle. About $1,850 a month at $50K." },
+    { processor: "Square", fact: "3.5% + $0.15 keyed, no monthly fee. About $1,900 a month at $50K." },
+    { processor: "PayPal", fact: "Virtual terminal 3.39% + $0.29 per keyed sale. About $1,985 a month at $50K." },
+    { processor: "Stripe", fact: "3.4% + $0.30 for manually entered cards. About $2,000 a month at $50K." },
+    { processor: "Payment Depot", fact: "0% markup + $0.15 per keyed sale, no cancellation fees. Membership fee not shown on its pricing page.", custom: { name: "Payment Depot", partnerSlug: "payment-depot", url: "https://paymentdepot.com/pricing/", variant: "visit" } },
+  ],
+};
+
+ARTICLE_OFFERS["clover-vs-toast-2026"] = {
+  heading: "Toast vs Clover, with two alternatives",
+  orderNote: "Sorted by monthly in-person cost at $50K with a $50 average sale, lowest first: Helcim, Clover and Square from our ranking engine, Toast's published Traditional plan run through the same formula.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no contract. About $1,020 a month at $50K; no restaurant POS." },
+    { processor: "Clover", fact: "2.6% + $0.10 on Starter ($0 software), 2.3% + $0.10 on Growth. About $1,335 at $50K; 36-month hardware term." },
+    { processor: "Square", fact: "2.6% + $0.15 in person, no contract. About $1,450 a month at $50K on Plus." },
+    { processor: "Toast", fact: "2.49% + $0.15 plus $69+ a month and a $1,153 kit, or 3.09% + $0.15 with $0 upfront. About $1,464 at $50K; 2-year agreement.", custom: { name: "Toast", partnerSlug: "toast", url: "https://pos.toasttab.com/pricing", variant: "visit" } },
+  ],
+};
+
+ARTICLE_OFFERS["square-vs-clover-2026"] = {
+  heading: "Clover vs Square, and two cheaper alternatives",
+  orderNote: "Sorted by monthly in-person cost at $50K in our engine (prices checked Oct 2026), lowest first. Helcim and Stax are the interchange-plus alternatives the page compares.",
+  checked: "2026",
+  items: [
+    { processor: "Helcim", fact: "Interchange + 0.40% + $0.08 in person, no monthly fee, no contract. About $1,020 a month at $50K." },
+    { processor: "Stax (Fattmerchant)", fact: "$99 to $199+ a month plus interchange + $0.08 in person. About $1,055 a month at $50K." },
+    { processor: "Clover", fact: "2.6% + $0.10 on Starter, 2.3% + $0.10 on Growth from $84.95 a month. About $1,335 at $50K; 36-month hardware term." },
+    { processor: "Square", fact: "2.6% + $0.15 in person on Free, no contract, next-day deposits free. About $1,450 at $50K on Plus." },
+  ],
+};
+
+ARTICLE_OFFERS["square-vs-toast-2026"] = {
+  heading: "Square vs Toast at a glance",
+  orderNote: "Sorted by monthly cost at $50K with a $50 average sale, lowest first: Square from our ranking engine, Toast's published Traditional plan run through the same formula.",
+  checked: "2026",
+  items: [
+    { processor: "Square", fact: "2.6% + $0.15 in person on Free, no contract. About $1,450 a month at $50K on Plus." },
+    { processor: "Toast", fact: "2.49% + $0.15 plus $69+ a month and a $1,153 kit, or 3.09% + $0.15 with $0 upfront. 2-year agreement.", custom: { name: "Toast", partnerSlug: "toast", url: "https://pos.toasttab.com/pricing", variant: "visit" } },
   ],
 };
 
