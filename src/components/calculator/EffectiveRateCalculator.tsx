@@ -175,7 +175,7 @@ export default function EffectiveRateCalculator({ defaultChannel = "online" }: P
               <p className="text-xs uppercase tracking-[0.14em] font-semibold text-muted-foreground">
                 Your rate vs. 2026 benchmark
               </p>
-              <p className="text-xs text-muted-foreground">scale 0–4%</p>
+              <p className="text-xs text-muted-foreground">scale 0% to 4%</p>
             </div>
 
             {/* Current rate bar */}

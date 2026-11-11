@@ -130,9 +130,8 @@ export default function ExitIntentPopup() {
               Free rate check
             </p>
             <h3 className="font-display text-2xl sm:text-3xl font-bold leading-[1.1] tracking-tight text-foreground mb-2">
-              Stop overpaying{" "}
-              <span className="text-primary">0.30–0.45%</span>{" "}
-              on processing.
+              Stop overpaying on{" "}
+              <span className="text-primary">card processing</span>.
             </h3>
             <p className="text-sm text-muted-foreground mb-5">
               Leave your email and we&rsquo;ll get back to you with a straight answer. No fluff.
