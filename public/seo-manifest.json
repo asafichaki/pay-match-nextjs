@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T07:28:10.851Z",
+  "generated_at": "2026-09-14T07:39:02.062Z",
   "rules_version": "2026-08-26.1",
   "counts": {
     "static": 55,
@@ -1315,8 +1315,8 @@
       "slug": "square-vs-helcim-2026",
       "source": "db",
       "title_mode": "template",
-      "base_title": "Square vs Helcim 2026: Helcim Saves $90-$130",
-      "base_description": "Verdict May 2026: Helcim beats Square above $10K monthly. Interchange-plus saves $90-$130 per $25K of volume. Square wins only for micro-merchants.",
+      "base_title": "Square vs Helcim: Fees & Card Mix (2026)",
+      "base_description": "Compare Square plans with Helcim interchange-plus pricing. See a $25,000 sales example where the card mix changes which provider costs less.",
       "outline": []
     },
     {
